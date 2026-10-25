@@ -7,7 +7,7 @@ const app = Vue.createApp({
       segLabel: { hidden: 'Ẩn', open: 'Mở', closed: 'Đóng', revealed: 'Công bố' },
       index: [], classes: [], newName: '', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
-      tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null,
+      tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null, rev: 0, polling: false,
       gradeDrafts: {}, grading: {},
       showOutline: false, showActivities: false,
     };
@@ -95,8 +95,13 @@ const app = Vue.createApp({
     stop() { if (this.timer) clearInterval(this.timer); this.timer = null; },
     async refresh(jump) {
       if (!this.cls) return;
+      // không chồng request khi mạng chậm; bỏ kết quả cũ nếu vừa có thao tác mới
+      if (!jump && this.polling) return;
+      const rev = this.rev, mod = this.viewModule;
       let r;
-      try { r = await this.call('GET', `/api/t/classes/${this.cls.id}/state?module=${this.viewModule}`); } catch (e) { return; }
+      this.polling = true;
+      try { r = await this.call('GET', `/api/t/classes/${this.cls.id}/state?module=${mod}`); } catch (e) { return; } finally { this.polling = false; }
+      if (!jump && (rev !== this.rev || mod !== this.viewModule)) return;
       this.room = r; this.cls = r.cls;
       if (jump && r.view) this.localSection = r.view.current_section;
       if (this.results) await this.loadResults(this.results.activity.id, true);
@@ -113,9 +118,15 @@ const app = Vue.createApp({
       this.flash('Lớp đã chuyển sang buổi ' + no);
     },
     async setView(patch) {
-      const v = await this.call('POST', `/api/t/classes/${this.cls.id}/view`, { module: this.viewModule, ...patch });
-      this.room.view = v;
-      return v;
+      // hiện ngay trên giao diện, server xác nhận sau
+      this.rev++;
+      if (this.room.view) this.room.view = { ...this.room.view, ...patch };
+      try {
+        const v = await this.call('POST', `/api/t/classes/${this.cls.id}/view`, { module: this.viewModule, ...patch });
+        this.rev++;
+        this.room.view = v;
+        return v;
+      } catch (e) { this.rev++; this.refresh(true); throw e; }
     },
     async presentSection(id) {
       await this.setView({ current_section: id });
@@ -137,9 +148,13 @@ const app = Vue.createApp({
     scrollTop() { window.scrollTo({ top: 0 }); },
     actStatus(id) { const a = this.room.activities.find(x => x.id === id); return a ? a.status : 'hidden'; },
     async setStatus(id, status) {
-      await this.call('POST', `/api/t/classes/${this.cls.id}/activities/${id}`, { status });
       const a = this.room.activities.find(x => x.id === id);
+      const before = a && a.status;
+      this.rev++;
       if (a) a.status = status;
+      try {
+        await this.call('POST', `/api/t/classes/${this.cls.id}/activities/${id}`, { status });
+      } catch (e) { if (a) a.status = before; throw e; } finally { this.rev++; }
       if (this.results && this.results.activity.id === id) this.results.status = status;
     },
     async openResults(id) { this.focusGroup = null; this.showKey = false; this.showActivities = false; await this.loadResults(id, false); this.scrollTop(); },

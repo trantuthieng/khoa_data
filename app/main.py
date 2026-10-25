@@ -224,6 +224,7 @@ def visible_modules(class_id):
 
 
 @app.get("/api/s/state")
+@db.batched
 def student_state(st=Depends(current_student)):
     db.x("UPDATE students SET last_seen=:t WHERE id=:id", t=now(), id=st["id"])
     cid, active = st["class_id"], st["active_module"]
@@ -256,6 +257,7 @@ def student_state(st=Depends(current_student)):
 
 
 @app.get("/api/s/module/{no}")
+@db.batched
 def student_module_content(no: int, st=Depends(current_student)):
     if no not in visible_modules(st["class_id"]):
         raise HTTPException(403, "Buổi học này chưa mở")
@@ -285,6 +287,7 @@ def response_out(r, revealed=False):
 
 
 @app.get("/api/s/activity/{aid}")
+@db.batched
 def student_activity(aid: str, st=Depends(current_student)):
     a = get_activity(aid)
     status = activity_states(st["class_id"]).get(aid, "hidden")
@@ -313,6 +316,7 @@ def has_work(value):
 
 
 @app.post("/api/s/activity/{aid}")
+@db.batched
 def student_submit(aid: str, body: SubmitIn, st=Depends(current_student)):
     a = get_activity(aid)
     status = activity_states(st["class_id"]).get(aid, "hidden")
@@ -388,6 +392,7 @@ def get_class(cid):
 
 
 @app.get("/api/t/classes")
+@db.batched
 def list_classes(_=Depends(teacher)):
     rows = db.q("""SELECT c.*, (SELECT COUNT(*) FROM students s WHERE s.class_id=c.id) AS n_students
                    FROM classes c ORDER BY c.archived, c.created_at DESC""")
@@ -417,6 +422,7 @@ class ClassPatch(BaseModel):
 
 
 @app.patch("/api/t/classes/{cid}")
+@db.batched
 def patch_class(cid: int, body: ClassPatch, _=Depends(teacher)):
     get_class(cid)
     if body.name is not None:
@@ -447,6 +453,7 @@ def teacher_module(no: int, _=Depends(teacher)):
 
 
 @app.get("/api/t/classes/{cid}/state")
+@db.batched
 def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
     cls = get_class(cid)
     no = module if module in MODULES else cls["active_module"]
@@ -476,6 +483,7 @@ class ViewIn(BaseModel):
 
 
 @app.post("/api/t/classes/{cid}/view")
+@db.batched
 def set_view(cid: int, body: ViewIn, _=Depends(teacher)):
     get_class(cid)
     if body.module not in MODULES or body.module == 0:
@@ -500,6 +508,7 @@ class StatusIn(BaseModel):
 
 
 @app.post("/api/t/classes/{cid}/activities/{aid}")
+@db.batched
 def set_activity_status(cid: int, aid: str, body: StatusIn, _=Depends(teacher)):
     get_class(cid)
     a = get_activity(aid)
@@ -533,6 +542,7 @@ def mcq_stats(cid, a):
 
 
 @app.get("/api/t/classes/{cid}/activities/{aid}/results")
+@db.batched
 def activity_results(cid: int, aid: str, _=Depends(teacher)):
     get_class(cid)
     a = get_activity(aid)
@@ -562,6 +572,7 @@ class GradeIn(BaseModel):
 
 
 @app.post("/api/t/classes/{cid}/responses/{rid}/grade")
+@db.batched
 def grade_response(cid: int, rid: int, body: GradeIn, _=Depends(teacher)):
     response = db.q1("SELECT * FROM responses WHERE id=:r AND class_id=:c", r=rid, c=cid)
     if not response:

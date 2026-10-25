@@ -1,4 +1,6 @@
 """Kết nối cơ sở dữ liệu: Supabase Postgres khi có DATABASE_URL, SQLite khi chạy thử trên máy."""
+import contextvars
+import functools
 import os
 
 from sqlalchemy import create_engine, event, text
@@ -109,7 +111,29 @@ def init_db():
                 c.execute(text(f"ALTER TABLE {t} ENABLE ROW LEVEL SECURITY"))
 
 
+# Một request gọi nhiều truy vấn: dùng chung một kết nối để chỉ kiểm tra kết nối (pre_ping)
+# một lần. Supabase ở xa nên mỗi lượt đi về tốn khoảng 0,1 giây.
+_conn = contextvars.ContextVar("db_conn", default=None)
+
+
+def batched(fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+        if _conn.get() is not None:
+            return fn(*args, **kwargs)
+        with engine.connect() as c:
+            token = _conn.set(c)
+            try:
+                return fn(*args, **kwargs)
+            finally:
+                _conn.reset(token)
+    return wrapper
+
+
 def q(sql, **params):
+    c = _conn.get()
+    if c is not None:
+        return [dict(r._mapping) for r in c.execute(text(sql), params)]
     with engine.connect() as c:
         return [dict(r._mapping) for r in c.execute(text(sql), params)]
 
@@ -120,6 +144,16 @@ def q1(sql, **params):
 
 
 def x(sql, **params):
+    c = _conn.get()
+    if c is not None:
+        try:
+            res = c.execute(text(sql), params)
+            out = [dict(r._mapping) for r in res] if res.returns_rows else []
+            c.commit()
+            return out
+        except Exception:
+            c.rollback()
+            raise
     with engine.begin() as c:
         res = c.execute(text(sql), params)
         return [dict(r._mapping) for r in res] if res.returns_rows else []
