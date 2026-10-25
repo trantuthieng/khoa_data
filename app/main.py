@@ -124,7 +124,8 @@ def get_activity(aid):
 # ---------------------------------------------------------------- học viên
 
 class JoinIn(BaseModel):
-    code: str = Field(min_length=4, max_length=12)
+    code: Optional[str] = Field(default=None, max_length=12)
+    phone: Optional[str] = Field(default=None, max_length=20)
     name: Optional[str] = Field(default=None, max_length=60)
     rejoin: Optional[str] = Field(default=None, max_length=12)
 
@@ -139,10 +140,28 @@ def _throttle(key, bucket, limit=10, window=300):
         raise HTTPException(429, "Bạn đã thử nhiều lần liên tiếp. Vui lòng chờ vài phút rồi thử lại.")
 
 
+def norm_phone(raw):
+    d = "".join(ch for ch in raw or "" if ch.isdigit())
+    if d.startswith("84") and len(d) == 11:
+        d = "0" + d[2:]
+    if len(d) == 9 and not d.startswith("0"):
+        d = "0" + d  # Excel thường làm mất số 0 đầu
+    return d if len(d) == 10 and d.startswith("0") else None
+
+
+def phone_hash(phone):
+    # chỉ lưu giá trị băm để tra cứu, không lưu số điện thoại dạng rõ
+    return sha("phone:" + phone)
+
+
 @app.post("/api/join")
 def join(body: JoinIn, request: Request):
     ip = request.client.host if request.client else "?"
     _throttle(ip, _join_fail)
+    if body.phone is not None:
+        return join_by_phone(body, ip)
+    if not body.code or len(body.code.strip()) < 4:
+        raise HTTPException(400, "Vui lòng nhập mã lớp.")
     cls = db.q1("SELECT * FROM classes WHERE code=:c AND archived=0", c=body.code.strip().upper())
     if not cls:
         _join_fail[ip].append(now())
@@ -156,7 +175,7 @@ def join(body: JoinIn, request: Request):
             raise HTTPException(404, "Mã vào lại cá nhân không hợp lệ. Vui lòng kiểm tra cả mã lớp và mã cá nhân.")
         # đăng nhập trên thiết bị mới: thay token, thiết bị cũ tự đăng xuất
         db.x("UPDATE students SET token_hash=:h, last_seen=:t WHERE id=:id", h=sha(token), t=now(), id=st["id"])
-        return {"token": token, "name": st["name"], "rejoin": body.rejoin.strip().upper()}
+        return {"token": token, "name": st["name"], "rejoin": body.rejoin.strip().upper(), "cls": cls["code"]}
     name = (body.name or "").strip()
     if len(name) < 2:
         raise HTTPException(400, "Vui lòng nhập họ và tên để vào lớp.")
@@ -164,7 +183,27 @@ def join(body: JoinIn, request: Request):
     db.x("""INSERT INTO students (class_id, name, group_name, token_hash, rejoin_hash, created_at, last_seen)
             VALUES (:c, :n, :g, :h, :r, :t, :t)""",
          c=cls["id"], n=name, g="", h=sha(token), r=sha(f"{cls['id']}:{rejoin}"), t=now())
-    return {"token": token, "name": name, "rejoin": rejoin}
+    return {"token": token, "name": name, "rejoin": rejoin, "cls": cls["code"]}
+
+
+def join_by_phone(body, ip):
+    phone = norm_phone(body.phone)
+    if not phone:
+        raise HTTPException(400, "Số điện thoại chưa đúng. Vui lòng nhập đủ 10 số, ví dụ 0912345678.")
+    sql = """SELECT s.*, c.code AS class_code FROM students s JOIN classes c ON c.id = s.class_id
+             WHERE s.phone_hash=:p AND c.archived=0"""
+    params = {"p": phone_hash(phone)}
+    if body.code and body.code.strip():
+        sql += " AND c.code=:c"
+        params["c"] = body.code.strip().upper()
+    st = db.q1(sql + " ORDER BY c.created_at DESC", **params)
+    if not st:
+        _join_fail[ip].append(now())
+        raise HTTPException(404, "Số điện thoại này chưa có trong danh sách lớp. Vui lòng kiểm tra với giảng viên.")
+    token = secrets.token_urlsafe(32)
+    # đăng nhập trên thiết bị mới: thay token, thiết bị cũ tự đăng xuất
+    db.x("UPDATE students SET token_hash=:h, last_seen=:t WHERE id=:id", h=sha(token), t=now(), id=st["id"])
+    return {"token": token, "name": st["name"], "rejoin": None, "cls": st["class_code"]}
 
 
 def current_student(request: Request):
@@ -413,9 +452,12 @@ def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
     no = module if module in MODULES else cls["active_module"]
     view = view_row(cid, no, create=no != 0) if no != 0 else None
     t = now()
-    students = db.q("SELECT id, name, last_seen, created_at FROM students WHERE class_id=:c ORDER BY name", c=cid)
+    students = db.q("""SELECT id, name, group_name, last_seen, created_at, phone_hash IS NOT NULL AS by_phone
+                       FROM students WHERE class_id=:c ORDER BY name""", c=cid)
     for s in students:
         s["online"] = t - s["last_seen"] < ONLINE_SECONDS
+        s["by_phone"] = bool(s["by_phone"])
+        s["joined"] = s["last_seen"] > s["created_at"]
     states = activity_states(cid)
     counts = {r["activity_id"]: r["n"] for r in
               db.q("SELECT activity_id, COUNT(*) AS n FROM responses WHERE class_id=:c GROUP BY activity_id", c=cid)}
@@ -553,6 +595,46 @@ def delete_student(cid: int, sid: int, _=Depends(teacher)):
     db.x("DELETE FROM responses WHERE student_id=:id AND class_id=:c AND owner_key=:o", id=sid, c=cid, o=f"s:{sid}")
     db.x("DELETE FROM students WHERE id=:id AND class_id=:c", id=sid, c=cid)
     return {"ok": True}
+
+
+class RosterIn(BaseModel):
+    text: str = Field(max_length=50_000)
+
+
+def add_roster(cid, text):
+    """Mỗi dòng: Họ và tên, số điện thoại[, đơn vị]; phân tách bằng tab, dấu phẩy hoặc chấm phẩy."""
+    added, updated, errors = 0, 0, []
+    for no, line in enumerate(text.splitlines(), 1):
+        if not line.strip():
+            continue
+        sep = "	" if "	" in line else (";" if ";" in line else ",")
+        cells = [x.strip() for x in line.split(sep)]
+        idx = next((i for i, x in enumerate(cells) if norm_phone(x)), None)
+        name = cells[0] if cells else ""
+        if idx is None or idx == 0 or len(name) < 2:
+            errors.append(f"Dòng {no}: cần có họ tên và số điện thoại 10 số")
+            continue
+        phone = norm_phone(cells[idx])
+        unit = ", ".join(x for i, x in enumerate(cells) if i not in (0, idx) and x)[:200]
+        ph = phone_hash(phone)
+        old = db.q1("SELECT id FROM students WHERE class_id=:c AND phone_hash=:p", c=cid, p=ph)
+        if old:
+            db.x("UPDATE students SET name=:n, group_name=:g WHERE id=:id", n=name[:60], g=unit, id=old["id"])
+            updated += 1
+        else:
+            t = now()
+            # token_hash/rejoin_hash ngẫu nhiên: chỉ đăng nhập được bằng số điện thoại
+            db.x("""INSERT INTO students (class_id, name, group_name, token_hash, rejoin_hash, phone_hash, created_at, last_seen)
+                    VALUES (:c, :n, :g, :h, :r, :p, :t, :t)""",
+                 c=cid, n=name[:60], g=unit, h=sha(secrets.token_urlsafe(32)), r=sha(secrets.token_urlsafe(32)), p=ph, t=t)
+            added += 1
+    return {"added": added, "updated": updated, "errors": errors}
+
+
+@app.post("/api/t/classes/{cid}/roster")
+def import_roster(cid: int, body: RosterIn, _=Depends(teacher)):
+    get_class(cid)
+    return add_roster(cid, body.text)
 
 
 def _csv_safe(v):

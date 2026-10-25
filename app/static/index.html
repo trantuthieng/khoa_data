@@ -31,7 +31,7 @@
   <div class="card join-card">
     <span class="eyebrow">BẮT ĐẦU BUỔI HỌC</span>
     <h1>Vào lớp học</h1>
-    <p class="muted" style="margin-top:0">Nhập mã lớp do giảng viên cung cấp.</p>
+    <p class="muted" style="margin-top:0">{{ mode==='phone' ? 'Nhập số điện thoại đã đăng ký với lớp học.' : 'Nhập mã lớp do giảng viên cung cấp.' }}</p>
 
     <div v-if="hasSession" class="banner">
       <span class="grow">Thông tin vào lớp đã lưu: <b>{{ saved.cls }}</b> · <b>{{ saved.name }}</b>.</span>
@@ -39,18 +39,25 @@
     </div>
 
     <div class="seg" style="margin:8px 0 4px">
-      <button :class="{on: mode==='new'}" @click="mode='new'">Lần đầu vào lớp</button>
-      <button :class="{on: mode==='rejoin'}" @click="mode='rejoin'">Vào lại bằng mã cá nhân</button>
+      <button :class="{on: mode==='phone'}" @click="mode='phone'">Số điện thoại</button>
+      <button :class="{on: mode==='new'}" @click="mode='new'">Mã lớp</button>
+      <button :class="{on: mode==='rejoin'}" @click="mode='rejoin'">Mã cá nhân</button>
     </div>
 
     <form @submit.prevent="join">
-      <label class="field" for="code">Mã lớp</label>
-      <input id="code" v-model="code" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="Ví dụ: K7M2QX" style="text-transform:uppercase;letter-spacing:.1em;font-weight:700">
+      <template v-if="mode==='phone'">
+        <label class="field" for="phone">Số điện thoại</label>
+        <input id="phone" v-model="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="20" placeholder="Ví dụ: 0912345678" style="letter-spacing:.06em;font-weight:700">
+      </template>
+      <template v-else>
+        <label class="field" for="code">Mã lớp</label>
+        <input id="code" v-model="code" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="Ví dụ: K7M2QX" style="text-transform:uppercase;letter-spacing:.1em;font-weight:700">
+      </template>
       <template v-if="mode==='new'">
         <label class="field" for="name">Họ và tên</label>
         <input id="name" v-model="name" maxlength="60" autocomplete="name">
       </template>
-      <template v-else>
+      <template v-if="mode==='rejoin'">
         <label class="field" for="rj">Mã vào lại cá nhân <span class="hint">Gồm 6 ký tự, xem bằng cách chọn tên của bạn trong lớp.</span></label>
         <input id="rj" v-model="rejoin" maxlength="12" autocomplete="off" style="text-transform:uppercase;letter-spacing:.1em">
       </template>

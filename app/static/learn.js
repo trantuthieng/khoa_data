@@ -124,7 +124,10 @@ const app = Vue.createApp({
       } finally { this.saving = false; }
     },
     logout() {
-      if (!confirm('Rời lớp trên thiết bị này? Hãy lưu mã vào lại cá nhân trước khi rời lớp: ' + this.session.rejoin)) return;
+      const msg = this.session.rejoin
+        ? 'Rời lớp trên thiết bị này? Hãy lưu mã vào lại cá nhân trước khi rời lớp: ' + this.session.rejoin
+        : 'Rời lớp trên thiết bị này? Bạn có thể vào lại bằng số điện thoại.';
+      if (!confirm(msg)) return;
       store.del('session');
       location.replace('/');
     },

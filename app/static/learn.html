@@ -23,14 +23,17 @@
     <button class="btn sm" :class="{on: mode==='activities'}" @click="mode = mode === 'activities' ? 'lesson' : 'activities'">
       Bài tập <span v-if="openCount" class="tag open">{{ openCount }}</span>
     </button>
-    <button class="btn sm ghost" @click="showMe = !showMe" :title="'Mã vào lại: ' + (session && session.rejoin)">{{ session && session.name }}</button>
+    <button class="btn sm ghost" @click="showMe = !showMe" :title="session && session.rejoin ? 'Mã vào lại: ' + session.rejoin : 'Đăng nhập bằng số điện thoại'">{{ session && session.name }}</button>
     <button class="btn sm ghost" @click="themeToggle" title="Đổi giao diện sáng/tối">◐</button>
   </header>
 
   <div v-if="showMe" class="card" style="position:fixed;right:16px;top:64px;z-index:40;max-width:340px">
     <div><b>{{ session.name }}</b></div>
-    <p class="muted" style="font-size:14px">Dùng mã này để vào lại lớp trên thiết bị khác hoặc khi không còn thông tin đăng nhập đã lưu. Giữ mã riêng, không chia sẻ:</p>
-    <div class="rejoin-code">{{ session.rejoin }}</div>
+    <template v-if="session.rejoin">
+      <p class="muted" style="font-size:14px">Dùng mã này để vào lại lớp trên thiết bị khác hoặc khi không còn thông tin đăng nhập đã lưu. Giữ mã riêng, không chia sẻ:</p>
+      <div class="rejoin-code">{{ session.rejoin }}</div>
+    </template>
+    <p v-else class="muted" style="font-size:14px">Bạn vào lớp bằng số điện thoại. Trên thiết bị khác, nhập lại số điện thoại; thiết bị cũ sẽ tự thoát.</p>
     <div class="row" style="margin-top:12px">
       <button class="btn sm" @click="showMe=false">Đóng</button>
       <button class="btn sm danger" @click="logout">Rời lớp trên máy này</button>

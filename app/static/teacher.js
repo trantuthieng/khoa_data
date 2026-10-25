@@ -5,7 +5,7 @@ const app = Vue.createApp({
       logo: LOGO, authed: null, password: '', err: '', toast: '',
       statusLabel: STATUS_LABEL, typeLabel: TYPE_LABEL, statuses: ['hidden', 'open', 'closed', 'revealed'],
       segLabel: { hidden: 'Ẩn', open: 'Mở', closed: 'Đóng', revealed: 'Công bố' },
-      index: [], classes: [], newName: '', preview: null,
+      index: [], classes: [], newName: '', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
       tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null,
       gradeDrafts: {}, grading: {},
@@ -185,6 +185,12 @@ const app = Vue.createApp({
       if (!confirm('Xóa bài nộp này? Điểm và nhận xét cũng sẽ bị xóa. Học viên chỉ có thể nộp lại khi bài được mở.')) return;
       await this.call('DELETE', `/api/t/classes/${this.cls.id}/responses/${r.id}`);
       await this.loadResults(this.results.activity.id, true);
+    },
+    async importRoster() {
+      const r = await this.call('POST', `/api/t/classes/${this.cls.id}/roster`, { text: this.rosterText });
+      this.rosterMsg = `Đã tạo ${r.added} tài khoản, cập nhật ${r.updated}.` + (r.errors.length ? '\n' + r.errors.join('\n') : '');
+      if (!r.errors.length) this.rosterText = '';
+      this.refresh(false);
     },
     async kick(s) {
       if (!confirm('Xóa học viên ' + s.name + ' khỏi lớp? Toàn bộ bài nộp, điểm và nhận xét của học viên này cũng sẽ bị xóa.')) return;

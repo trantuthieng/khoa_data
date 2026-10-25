@@ -95,6 +95,12 @@ def init_db():
     with engine.begin() as c:
         for stmt in SCHEMA:
             c.execute(text(stmt))
+        # thêm cột cho đăng nhập bằng số điện thoại (CSDL tạo từ bản cũ chưa có)
+        if IS_PG:
+            c.execute(text("ALTER TABLE students ADD COLUMN IF NOT EXISTS phone_hash TEXT"))
+        elif "phone_hash" not in {r[1] for r in c.execute(text("PRAGMA table_info(students)"))}:
+            c.execute(text("ALTER TABLE students ADD COLUMN phone_hash TEXT"))
+        c.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS students_class_phone ON students(class_id, phone_hash)"))
         if IS_PG:
             # Supabase tự mở các bảng trong schema public qua Data API (khóa anon).
             # Bật RLS và không tạo policy nào => API công khai không đọc/ghi được;

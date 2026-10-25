@@ -251,10 +251,18 @@
         <template v-else>
           <div v-for="s in room.students" :key="s.id" class="stu">
             <span class="dot" :class="{on: s.online}" :title="s.online ? 'Đang trực tuyến' : 'Truy cập gần nhất: ' + fmtTime(s.last_seen)"></span>
-            <span class="grow">{{ s.name }}</span>
+            <span class="grow">{{ s.name }}<small v-if="s.group_name" class="muted" style="display:block;font-size:12px;line-height:1.3">{{ s.group_name }}</small></span>
+            <span v-if="s.by_phone && !s.joined" class="muted" style="font-size:12px" title="Đã có tài khoản, chưa đăng nhập lần nào">chưa vào</span>
             <button class="btn sm ghost danger" @click="kick(s)" :aria-label="'Xóa học viên ' + s.name + ' khỏi lớp'" title="Xóa học viên và bài nộp khỏi lớp">✕</button>
           </div>
           <p v-if="!room.students.length" class="muted">Chưa có học viên. Học viên vào trang chủ và nhập mã <b>{{ cls.code }}</b>.</p>
+          <details class="card" style="padding:10px 12px;margin-top:12px">
+            <summary style="cursor:pointer;font-weight:600">Thêm danh sách học viên</summary>
+            <p class="muted" style="font-size:13px">Mỗi dòng một người: <b>Họ và tên, số điện thoại, đơn vị</b> (có thể dán thẳng từ Excel). Học viên đăng nhập bằng số điện thoại. Hệ thống chỉ lưu giá trị băm của số điện thoại; trùng số thì cập nhật tên và đơn vị.</p>
+            <textarea v-model="rosterText" rows="6" style="width:100%" placeholder="Nguyễn Văn A, 0912345678, Công ty Điện lực X" aria-label="Danh sách học viên"></textarea>
+            <div class="row" style="margin-top:8px"><button class="btn sm primary" :disabled="!rosterText.trim()" @click="importRoster">Tạo tài khoản</button></div>
+            <p v-if="rosterMsg" style="font-size:13px;white-space:pre-line">{{ rosterMsg }}</p>
+          </details>
         </template>
       </aside>
     </div>
