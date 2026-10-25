@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -333,32 +333,19 @@
     {
      "t": "p",
      "html": "Giảng viên hỏi lớp, ghi câu trả lời lên bảng và giữ đến cuối buổi:",
-     "plain": "Giảng viên hỏi lớp, ghi câu trả lời lên bảng và giữ đến cuối buổi:"
+     "plain": "Giảng viên hỏi lớp, ghi câu trả lời lên bảng và giữ đến cuối buổi:",
+     "teacher": true
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "File này có những loại thông tin gì? Cái nào là thông tin cá nhân?",
-       "level": 0,
-       "plain": "File này có những loại thông tin gì? Cái nào là thông tin cá nhân?"
-      },
-      {
-       "html": "Nếu file lọt ra ngoài, ai bị thiệt hại và thiệt hại thế nào? Nếu một cột số nợ bị sai thì sao?",
-       "level": 0,
-       "plain": "Nếu file lọt ra ngoài, ai bị thiệt hại và thiệt hại thế nào? Nếu một cột số nợ bị sai thì sao?"
-      },
-      {
-       "html": "Ngay lúc này file đang nằm ở mấy nơi?",
-       "level": 0,
-       "plain": "Ngay lúc này file đang nằm ở mấy nơi?"
-      },
-      {
-       "html": "Anh Cường có nên dán file vào chatbot không? Nếu không, anh nên làm gì để vẫn xong việc trong một phút?",
-       "level": 0,
-       "plain": "Anh Cường có nên dán file vào chatbot không? Nếu không, anh nên làm gì để vẫn xong việc trong một phút?"
-      }
+     "t": "activity",
+     "id": "m01-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "File này có những loại thông tin gì? Cái nào là thông tin cá nhân?",
+      "Nếu file lọt ra ngoài, ai bị thiệt hại và thiệt hại thế nào? Nếu một cột số nợ bị sai thì sao?",
+      "Ngay lúc này file đang nằm ở mấy nơi?",
+      "Anh Cường có nên dán file vào chatbot không? Nếu không, anh nên làm gì để vẫn xong việc trong một phút?"
      ]
     },
     {
@@ -373,12 +360,23 @@
     {
      "t": "p",
      "html": "Trước khi vào bài, mỗi học viên trả lời: \"Trong tuần qua, anh/chị đã gửi hoặc nhận một file có thông tin khách hàng chưa? Gửi cho ai, qua kênh nào – email, Zalo, USB, ổ chia sẻ?\" Giảng viên ghi lại danh sách. Buổi chiều sẽ dùng chính danh sách này để vẽ luồng dữ liệu.",
-     "plain": "Trước khi vào bài, mỗi học viên trả lời: \"Trong tuần qua, anh/chị đã gửi hoặc nhận một file có thông tin khách hàng chưa? Gửi cho ai, qua kênh nào – email, Zalo, USB, ổ chia sẻ?\" Giảng viên ghi lại danh sách. Buổi chiều sẽ dùng chính danh sách này để vẽ luồng dữ liệu."
+     "plain": "Trước khi vào bài, mỗi học viên trả lời: \"Trong tuần qua, anh/chị đã gửi hoặc nhận một file có thông tin khách hàng chưa? Gửi cho ai, qua kênh nào – email, Zalo, USB, ổ chia sẻ?\" Giảng viên ghi lại danh sách. Buổi chiều sẽ dùng chính danh sách này để vẽ luồng dữ liệu.",
+     "teacher": true
+    },
+    {
+     "t": "activity",
+     "id": "m01-warmup",
+     "title": "Khởi động: dữ liệu khách hàng trong tuần của bạn",
+     "inline": true,
+     "questions": [
+      "Trong tuần qua, anh/chị đã gửi hoặc nhận một file có thông tin khách hàng chưa? Gửi cho ai, qua kênh nào – email, Zalo, USB, ổ chia sẻ?"
+     ]
     },
     {
      "t": "p",
      "html": "Hầu như lớp nào cũng có người \"vừa làm hôm qua\". Đó là điểm cần nhấn mạnh: an toàn dữ liệu là việc hằng ngày của người làm nghiệp vụ, không phải chuyện riêng của phòng CNTT.",
-     "plain": "Hầu như lớp nào cũng có người \"vừa làm hôm qua\". Đó là điểm cần nhấn mạnh: an toàn dữ liệu là việc hằng ngày của người làm nghiệp vụ, không phải chuyện riêng của phòng CNTT."
+     "plain": "Hầu như lớp nào cũng có người \"vừa làm hôm qua\". Đó là điểm cần nhấn mạnh: an toàn dữ liệu là việc hằng ngày của người làm nghiệp vụ, không phải chuyện riêng của phòng CNTT.",
+     "teacher": true
     }
    ],
    "id": "s4"
@@ -754,7 +752,14 @@
     {
      "t": "p",
      "html": "Dùng cho trò chơi thẻ màu: giảng viên đọc tình huống, học viên giơ thẻ C, I, A (có thể giơ nhiều thẻ), rồi giải thích.",
-     "plain": "Dùng cho trò chơi thẻ màu: giảng viên đọc tình huống, học viên giơ thẻ C, I, A (có thể giơ nhiều thẻ), rồi giải thích."
+     "plain": "Dùng cho trò chơi thẻ màu: giảng viên đọc tình huống, học viên giơ thẻ C, I, A (có thể giơ nhiều thẻ), rồi giải thích.",
+     "teacher": true
+    },
+    {
+     "t": "activity",
+     "id": "m01-cia",
+     "title": "Trò chơi thẻ C – I – A: sự việc này phá mục tiêu nào?",
+     "inline": false
     },
     {
      "t": "table",
@@ -1302,8 +1307,8 @@
     },
     {
      "t": "p",
-     "html": "<strong>Câu hỏi cho lớp:</strong> \"Giả sử hôm nay anh/chị cần hủy một file danh sách khách hàng cũ. File đó có thể đang nằm ở những đâu?\" Kỳ vọng: máy cá nhân, ổ chia sẻ, email gửi và nhận, Zalo, USB, bản in, bản sao lưu, điện thoại.",
-     "plain": "Câu hỏi cho lớp: \"Giả sử hôm nay anh/chị cần hủy một file danh sách khách hàng cũ. File đó có thể đang nằm ở những đâu?\" Kỳ vọng: máy cá nhân, ổ chia sẻ, email gửi và nhận, Zalo, USB, bản in, bản sao lưu, điện thoại.",
+     "html": "<strong>Câu hỏi suy ngẫm:</strong> \"Giả sử hôm nay anh/chị cần hủy một file danh sách khách hàng cũ. File đó có thể đang nằm ở những đâu?\"",
+     "plain": "Câu hỏi suy ngẫm: \"Giả sử hôm nay anh/chị cần hủy một file danh sách khách hàng cũ. File đó có thể đang nằm ở những đâu?\"",
      "callout": "question"
     }
    ],
@@ -2315,6 +2320,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m01-th1",
+     "title": "Thực hành 1 – Phân loại dữ liệu điện lực (35 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -2326,7 +2337,7 @@
     },
     {
      "t": "h3",
-     "text": "Cách tổ chức"
+     "text": "Cách làm bài"
     },
     {
      "t": "list",
@@ -2336,11 +2347,6 @@
        "html": "Mỗi học viên điền một bảng phân loại theo mẫu C1 ngay trong bài làm trên web.",
        "level": 0,
        "plain": "Mỗi học viên điền một bảng phân loại theo mẫu C1 ngay trong bài làm trên web."
-      },
-      {
-       "html": "Bạn có 20 phút làm bài. Trong 15 phút còn lại, giảng viên mời một vài học viên trình bày và cùng lớp chữa bài.",
-       "level": 0,
-       "plain": "Bạn có 20 phút làm bài. Trong 15 phút còn lại, giảng viên mời một vài học viên trình bày và cùng lớp chữa bài."
       },
       {
        "html": "Khi chữa bài, hãy so sánh góc nhìn của các bộ phận kinh doanh, kỹ thuật và tổng hợp.",
@@ -2851,6 +2857,24 @@
        "plain": "Trước khi dán vào AI: công cụ được duyệt chưa, dữ liệu đã tối thiểu chưa, kiểm tra kết quả bằng cách nào."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m01-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m01-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m01-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -3531,6 +3555,12 @@
    "activity": "m01-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m01-case-v2",
+     "title": "Bài tập thêm – Một báo cáo, ba phiên bản",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -3584,6 +3614,44 @@
   }
  ],
  "activities": [
+  {
+   "id": "m01-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "File này có những loại thông tin gì? Cái nào là thông tin cá nhân?"
+    },
+    {
+     "id": "q2",
+     "text": "Nếu file lọt ra ngoài, ai bị thiệt hại và thiệt hại thế nào? Nếu một cột số nợ bị sai thì sao?"
+    },
+    {
+     "id": "q3",
+     "text": "Ngay lúc này file đang nằm ở mấy nơi?"
+    },
+    {
+     "id": "q4",
+     "text": "Anh Cường có nên dán file vào chatbot không? Nếu không, anh nên làm gì để vẫn xong việc trong một phút?"
+    }
+   ]
+  },
+  {
+   "id": "m01-warmup",
+   "type": "open",
+   "scope": "student",
+   "title": "Khởi động: dữ liệu khách hàng trong tuần của bạn",
+   "intro": "Chia sẻ một trường hợp từ công việc của bạn. Không ghi dữ liệu thật của khách hàng.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Trong tuần qua, anh/chị đã gửi hoặc nhận một file có thông tin khách hàng chưa? Gửi cho ai, qua kênh nào – email, Zalo, USB, ổ chia sẻ?"
+    }
+   ]
+  },
   {
    "id": "m01-check-v2",
    "type": "mcq",

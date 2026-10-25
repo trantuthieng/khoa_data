@@ -1661,7 +1661,8 @@
     {
      "t": "p",
      "html": "<strong>Tờ \"Việc hẹn sửa sau\":</strong> từ buổi 3, giảng viên dán một tờ giấy A0 lên tường và ghi mọi điểm bỏ ngỏ của câu chuyện. Đến buổi 10, tờ này được lật ra cạnh bảng bảy lỗ hổng để lớp tự thấy các mắt xích.",
-     "plain": "Tờ \"Việc hẹn sửa sau\": từ buổi 3, giảng viên dán một tờ giấy A0 lên tường và ghi mọi điểm bỏ ngỏ của câu chuyện. Đến buổi 10, tờ này được lật ra cạnh bảng bảy lỗ hổng để lớp tự thấy các mắt xích."
+     "plain": "Tờ \"Việc hẹn sửa sau\": từ buổi 3, giảng viên dán một tờ giấy A0 lên tường và ghi mọi điểm bỏ ngỏ của câu chuyện. Đến buổi 10, tờ này được lật ra cạnh bảng bảy lỗ hổng để lớp tự thấy các mắt xích.",
+     "teacher": true
     }
    ],
    "id": "s4"

@@ -4,8 +4,69 @@ if (!session || !session.token) location.replace('/');
 
 const sapi = (method, url, body) => api(method, url, body, session && session.token);
 
+/* Hoạt động đặt ngay trong bài: trả lời tại chỗ, hoặc thẻ bấm để mở bài làm.
+   Chỉ nhận bài khi giảng viên đã mở hoạt động. */
+const InlineActivity = {
+  components: { ActivityForm },
+  props: { b: Object, info: Object },
+  emits: ['open', 'submitted'],
+  data() { return { act: null, payload: null, dirty: false, saving: false, err: '', statusLabel: STATUS_LABEL }; },
+  computed: { status() { return this.info ? this.info.status : 'hidden'; } },
+  watch: {
+    status: {
+      immediate: true,
+      handler(s) { if (this.b.inline && s !== 'hidden' && (!this.act || this.act.status !== s)) this.load(); },
+    },
+  },
+  methods: {
+    fmtTime,
+    async load() {
+      try {
+        const a = await sapi('GET', '/api/s/activity/' + this.b.id);
+        if (!this.dirty || a.status !== 'open') { this.payload = initPayload(a, a.response && a.response.payload); this.dirty = false; }
+        this.act = a;
+      } catch (e) { this.err = e.message; }
+    },
+    async save() {
+      this.saving = true; this.err = '';
+      try {
+        const r = await sapi('POST', '/api/s/activity/' + this.b.id, { payload: this.payload });
+        this.act.response = r.response;
+        this.dirty = false;
+        this.$emit('submitted', this.b.id);
+      } catch (e) { this.err = e.message; } finally { this.saving = false; }
+    },
+  },
+  template: `
+  <div class="card act-embed">
+    <div class="row" style="justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px">
+      <b>{{ b.inline ? 'Câu trả lời của bạn' : b.title }}</b><span class="tag" :class="status">{{ statusLabel[status] }}</span>
+    </div>
+    <template v-if="b.inline">
+      <template v-if="act && status !== 'hidden'">
+        <activity-form :act="act" :payload="payload" :readonly="status !== 'open'" :show-answers="status === 'revealed'" @dirty="dirty = true"></activity-form>
+        <div v-if="status === 'open'" class="row" style="align-items:center;gap:10px">
+          <button class="btn primary" :disabled="saving" @click="save">{{ saving ? 'Đang nộp…' : (act.response ? 'Cập nhật câu trả lời' : 'Nộp câu trả lời') }}</button>
+          <span v-if="err" class="error">{{ err }}</span>
+          <span v-else-if="dirty" class="muted">Có thay đổi chưa nộp</span>
+          <span v-else-if="act.response" class="muted">Đã nộp lúc {{ fmtTime(act.response.updated_at) }}</span>
+        </div>
+        <p v-else-if="status === 'closed'" class="muted">Đã ngừng nhận câu trả lời.</p>
+      </template>
+      <template v-else>
+        <ol><li v-for="(q, j) in b.questions" :key="j">{{ q }}</li></ol>
+        <p class="muted" style="margin-bottom:0">Ô trả lời sẽ hiện khi giảng viên mở hoạt động này.</p>
+      </template>
+    </template>
+    <template v-else>
+      <p v-if="status === 'hidden'" class="muted" style="margin:0">Giảng viên chưa mở hoạt động này.</p>
+      <button v-else class="btn primary" @click="$emit('open', b.id)">{{ status === 'open' ? (info.submitted ? 'Xem và cập nhật bài làm' : 'Làm bài ngay') : 'Xem bài làm' }}</button>
+    </template>
+  </div>`,
+};
+
 const app = Vue.createApp({
-  components: { ContentBlocks, ActivityForm },
+  components: { ContentBlocks, ActivityForm, InlineActivity },
   data() {
     return {
       logo: LOGO, session, state: null, loadErr: '', statusLabel: STATUS_LABEL, typeLabel: TYPE_LABEL,
@@ -36,6 +97,7 @@ const app = Vue.createApp({
   methods: {
     fmtTime, themeToggle,
     activityById(id) { return this.state && this.state.activities.find(a => a.id === id); },
+    markSubmitted(id) { const a = this.activityById(id); if (a) a.submitted = true; },
     async loadModule(no) {
       const key = this.state.content_keys[no];
       const cached = this.modules[no];

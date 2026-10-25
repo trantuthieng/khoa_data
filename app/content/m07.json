@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -222,29 +222,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Đặt bộ lọc mặc định theo đơn vị, như gợi ý của trưởng phòng Điện lực Y, có đủ không?",
-       "level": 0,
-       "plain": "Đặt bộ lọc mặc định theo đơn vị, như gợi ý của trưởng phòng Điện lực Y, có đủ không?"
-      },
-      {
-       "html": "RLS đặt ở đâu, hoạt động thế nào? Nếu Công ty có 30 điện lực thì có phải tạo 30 vai trò?",
-       "level": 0,
-       "plain": "RLS đặt ở đâu, hoạt động thế nào? Nếu Công ty có 30 điện lực thì có phải tạo 30 vai trò?"
-      },
-      {
-       "html": "Vì sao anh Tuấn thấy trang trống lúc đầu, và vì sao sau khi thành Member anh lại thấy cả Điện lực Y? Sửa thế nào cho đúng?",
-       "level": 0,
-       "plain": "Vì sao anh Tuấn thấy trang trống lúc đầu, và vì sao sau khi thành Member anh lại thấy cả Điện lực Y? Sửa thế nào cho đúng?"
-      },
-      {
-       "html": "Ngoài màn hình báo cáo, số liệu có thể đi ra ngoài bằng những đường nào?",
-       "level": 0,
-       "plain": "Ngoài màn hình báo cáo, số liệu có thể đi ra ngoài bằng những đường nào?"
-      }
+     "t": "activity",
+     "id": "m07-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Đặt bộ lọc mặc định theo đơn vị, như gợi ý của trưởng phòng Điện lực Y, có đủ không?",
+      "RLS đặt ở đâu, hoạt động thế nào? Nếu Công ty có 30 điện lực thì có phải tạo 30 vai trò?",
+      "Vì sao anh Tuấn thấy trang trống lúc đầu, và vì sao sau khi thành Member anh lại thấy cả Điện lực Y? Sửa thế nào cho đúng?",
+      "Ngoài màn hình báo cáo, số liệu có thể đi ra ngoài bằng những đường nào?"
      ]
     },
     {
@@ -849,8 +835,8 @@
     },
     {
      "t": "p",
-     "html": "\"Tĩnh\" nghĩa là mỗi role ghi cứng một giá trị. Giảng viên làm, học viên làm theo (tên menu có thể khác theo phiên bản):",
-     "plain": "\"Tĩnh\" nghĩa là mỗi role ghi cứng một giá trị. Giảng viên làm, học viên làm theo (tên menu có thể khác theo phiên bản):"
+     "html": "\"Tĩnh\" nghĩa là mỗi role ghi cứng một giá trị. Các bước thực hiện (tên menu có thể khác theo phiên bản):",
+     "plain": "\"Tĩnh\" nghĩa là mỗi role ghi cứng một giá trị. Các bước thực hiện (tên menu có thể khác theo phiên bản):"
     },
     {
      "t": "list",
@@ -2272,6 +2258,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-th8",
+     "title": "Thực hành 8 – Báo cáo quản trị ngành điện có RLS (60 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -3205,6 +3197,24 @@
        "plain": "Publish to web là công khai trên Internet, không cần đăng nhập. Bị lộ thì xóa mã nhúng trong Power BI – xóa bài đăng là chưa đủ."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m07-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m07-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m07-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -3924,6 +3934,12 @@
    "activity": "m07-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-case-v2",
+     "title": "Bài tập thêm – Đọc bảng kiểm thử phân quyền báo cáo",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -4045,6 +4061,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi01-v1",
+     "title": "BI 01 – Nhập ba bảng nhỏ",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Nhập dữ liệu bằng Enter data.",
      "html": "Nhập dữ liệu bằng Enter data."
@@ -4099,6 +4121,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi02-v1",
+     "title": "BI 02 – Nối bảng đơn vị và ngày",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Tạo và kiểm tra hai quan hệ một–nhiều trong mô hình thực hành.",
      "html": "Tạo và kiểm tra hai quan hệ một–nhiều trong mô hình thực hành."
@@ -4152,6 +4180,12 @@
    "title": "BI 03 – Tạo một thẻ tổng sản lượng",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m07-bi03-v1",
+     "title": "BI 03 – Tạo một thẻ tổng sản lượng",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Tạo measure SUM đơn giản.",
@@ -4216,6 +4250,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi04-v1",
+     "title": "BI 04 – Đếm khách khác với đếm dòng",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng DISTINCTCOUNT trên mã khách hàng.",
      "html": "Dùng DISTINCTCOUNT trên mã khách hàng."
@@ -4279,6 +4319,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi05-v1",
+     "title": "BI 05 – Thử slicer và hiểu giới hạn",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng bộ lọc để phân tích.",
      "html": "Dùng bộ lọc để phân tích."
@@ -4332,6 +4378,12 @@
    "title": "BI 06 – Thử RLS cho từng đơn vị",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m07-bi06-v1",
+     "title": "BI 06 – Thử RLS cho từng đơn vị",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Tạo RLS tĩnh và View as.",
@@ -4396,6 +4448,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi07-v1",
+     "title": "BI 07 – Tìm lỗi quan hệ bị tắt",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Thấy vì sao RLS cần mô hình đúng.",
      "html": "Thấy vì sao RLS cần mô hình đúng."
@@ -4449,6 +4507,12 @@
    "title": "BI 08 – Một người có hai role",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m07-bi08-v1",
+     "title": "BI 08 – Một người có hai role",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Kiểm tra quyền là hợp của các role.",
@@ -4504,6 +4568,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi09-v1",
+     "title": "BI 09 – Lọc theo ngày",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng DimNgay và kiểm tra tổng theo ngày.",
      "html": "Dùng DimNgay và kiểm tra tổng theo ngày."
@@ -4558,6 +4628,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m07-bi10-v1",
+     "title": "BI 10 – Kiểm thử người xem trên service (tùy chọn)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Phân biệt View as với quyền người dùng thật.",
      "html": "Phân biệt View as với quyền người dùng thật."
@@ -4608,6 +4684,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m07-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Đặt bộ lọc mặc định theo đơn vị, như gợi ý của trưởng phòng Điện lực Y, có đủ không?"
+    },
+    {
+     "id": "q2",
+     "text": "RLS đặt ở đâu, hoạt động thế nào? Nếu Công ty có 30 điện lực thì có phải tạo 30 vai trò?"
+    },
+    {
+     "id": "q3",
+     "text": "Vì sao anh Tuấn thấy trang trống lúc đầu, và vì sao sau khi thành Member anh lại thấy cả Điện lực Y? Sửa thế nào cho đúng?"
+    },
+    {
+     "id": "q4",
+     "text": "Ngoài màn hình báo cáo, số liệu có thể đi ra ngoài bằng những đường nào?"
+    }
+   ]
+  },
   {
    "id": "m07-check-v2",
    "type": "mcq",

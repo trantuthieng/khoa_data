@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -226,29 +226,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Anh Minh cần gì để dự báo theo phường, không cần gì? Bỏ cột tên và số điện thoại rồi thì file đã \"ẩn danh\" chưa?",
-       "level": 0,
-       "plain": "Anh Minh cần gì để dự báo theo phường, không cần gì? Bỏ cột tên và số điện thoại rồi thì file đã \"ẩn danh\" chưa?"
-      },
-      {
-       "html": "Làm bản giao thế nào cho đúng, bằng Excel, SQL hay Python? Phường Cảng Mới xử lý ra sao?",
-       "level": 0,
-       "plain": "Làm bản giao thế nào cho đúng, bằng Excel, SQL hay Python? Phường Cảng Mới xử lý ra sao?"
-      },
-      {
-       "html": "Nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không? Nếu có thì với điều kiện gì?",
-       "level": 0,
-       "plain": "Nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không? Nếu có thì với điều kiện gì?"
-      },
-      {
-       "html": "Lỗi lạ khi gõ dấu nháy đơn nói lên điều gì? Chị Dung nên làm gì – và không nên làm gì?",
-       "level": 0,
-       "plain": "Lỗi lạ khi gõ dấu nháy đơn nói lên điều gì? Chị Dung nên làm gì – và không nên làm gì?"
-      }
+     "t": "activity",
+     "id": "m06-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Anh Minh cần gì để dự báo theo phường, không cần gì? Bỏ cột tên và số điện thoại rồi thì file đã \"ẩn danh\" chưa?",
+      "Làm bản giao thế nào cho đúng, bằng Excel, SQL hay Python? Phường Cảng Mới xử lý ra sao?",
+      "Nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không? Nếu có thì với điều kiện gì?",
+      "Lỗi lạ khi gõ dấu nháy đơn nói lên điều gì? Chị Dung nên làm gì – và không nên làm gì?"
      ]
     },
     {
@@ -1820,7 +1806,7 @@
     {
      "t": "p",
      "html": "<strong>Demo cho giảng viên</strong> – một script chạy được với Python 3, không cần cài thêm gì, dữ liệu hoàn toàn giả lập:",
-     "plain": "Demo cho giảng viên – một script chạy được với Python 3, không cần cài thêm gì, dữ liệu hoàn toàn giả lập:"
+     "plain": "Minh họa – một script chạy được với Python 3, không cần cài thêm gì, dữ liệu hoàn toàn giả lập:"
     },
     {
      "t": "code",
@@ -2307,8 +2293,8 @@
     },
     {
      "t": "p",
-     "html": "Ví dụ cho giảng viên (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):",
-     "plain": "Ví dụ cho giảng viên (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):"
+     "html": "Ví dụ (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):",
+     "plain": "Ví dụ (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):"
     },
     {
      "t": "code",
@@ -2600,8 +2586,8 @@
     },
     {
      "t": "p",
-     "html": "Minh họa cho giảng viên – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:",
-     "plain": "Minh họa cho giảng viên – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:"
+     "html": "Minh họa – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:",
+     "plain": "Minh họa – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:"
     },
     {
      "t": "code",
@@ -2988,6 +2974,12 @@
    "title": "Thực hành 7 – Chuẩn bị dữ liệu cho phân tích và AI (55 phút)",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-th7",
+     "title": "Thực hành 7 – Chuẩn bị dữ liệu cho phân tích và AI (55 phút)",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
@@ -3683,7 +3675,8 @@
     {
      "t": "p",
      "html": "Tờ \"Việc hẹn sửa sau\" sau sáu chương:",
-     "plain": "Tờ \"Việc hẹn sửa sau\" sau sáu chương:"
+     "plain": "Tờ \"Việc hẹn sửa sau\" sau sáu chương:",
+     "teacher": true
     },
     {
      "t": "table",
@@ -3875,6 +3868,24 @@
        "plain": "CSV injection: ô bắt đầu bằng =, +, -, @ có thể thành công thức. Người dùng không bấm cho phép nội dung lạ, thấy lỗi lạ thì báo, không tự thử."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m06-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m06-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m06-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -4442,11 +4453,6 @@
        "plain": "Ví dụ bài thi (băng dính – số phách – điểm trung bình tỉnh) giúp phân biệt ba khái niệm nhanh hơn mọi định nghĩa."
       },
       {
-       "html": "Giảng viên chọn bài theo kinh nghiệm của học viên. Người mới bắt đầu làm các bài ngắn có mẫu điền tiếp; người đã sử dụng SQL/Python tập trung vào kết quả, phạm vi dữ liệu và bằng chứng kiểm tra. Chỉ ghi đã thực hiện khi đã chạy mã trên dữ liệu giả lập.",
-       "level": 0,
-       "plain": "Giảng viên chọn bài theo kinh nghiệm của học viên. Người mới bắt đầu làm các bài ngắn có mẫu điền tiếp; người đã sử dụng SQL/Python tập trung vào kết quả, phạm vi dữ liệu và bằng chứng kiểm tra. Chỉ ghi đã thực hiện khi đã chạy mã trên dữ liệu giả lập."
-      },
-      {
        "html": "Trong Thực hành 7, để nhóm tự dừng ở bước gộp Cảng Mới rồi mới đưa phép kiểm tra E – khoảnh khắc \"đã gộp mà vẫn lộ\" được nhớ lâu nhất.",
        "level": 0,
        "plain": "Trong Thực hành 7, để nhóm tự dừng ở bước gộp Cảng Mới rồi mới đưa phép kiểm tra E – khoảnh khắc \"đã gộp mà vẫn lộ\" được nhớ lâu nhất."
@@ -4604,6 +4610,12 @@
    "kind": "practice",
    "activity": "m06-case-v2",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-case-v2",
+     "title": "Bài tập thêm – Tổng hợp rồi đã an toàn chưa?",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
@@ -4891,6 +4903,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-sql01-v1",
+     "title": "SQL 01 – Chỉ lấy hai cột cần dùng",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Chọn cột bằng SELECT.",
      "html": "Chọn cột bằng SELECT."
@@ -4958,6 +4976,12 @@
    "title": "SQL 02 – Chỉ lấy đơn vị được giao",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-sql02-v1",
+     "title": "SQL 02 – Chỉ lấy đơn vị được giao",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Lọc dòng bằng WHERE.",
@@ -5027,6 +5051,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-sql03-v1",
+     "title": "SQL 03 – Lọc mức sản lượng",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng điều kiện >=.",
      "html": "Dùng điều kiện &gt;=."
@@ -5094,6 +5124,12 @@
    "title": "SQL 04 – Đếm khách và cộng sản lượng",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-sql04-v1",
+     "title": "SQL 04 – Đếm khách và cộng sản lượng",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Dùng COUNT và SUM trên bảng mỗi khách một dòng.",
@@ -5163,6 +5199,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-sql05-v1",
+     "title": "SQL 05 – Tổng hợp theo đơn vị",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Tổng hợp kết quả theo đơn vị bằng GROUP BY.",
      "html": "Tổng hợp kết quả theo đơn vị bằng GROUP BY."
@@ -5230,6 +5272,12 @@
    "title": "SQL 06 – Tìm nhóm nhỏ trước khi giao",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-sql06-v1",
+     "title": "SQL 06 – Tìm nhóm nhỏ trước khi giao",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Dùng HAVING để kiểm tra kết quả đã gộp.",
@@ -5299,6 +5347,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-sql07-v1",
+     "title": "SQL 07 – Ghép hai điều kiện",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Giới hạn đơn vị và mức sản lượng bằng AND.",
      "html": "Giới hạn đơn vị và mức sản lượng bằng AND."
@@ -5366,6 +5420,12 @@
    "title": "SQL 08 – Tìm một mã bằng tham số",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-sql08-v1",
+     "title": "SQL 08 – Tìm một mã bằng tham số",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Truyền giá trị qua tham số của sqlite3, tách giá trị khỏi cấu trúc truy vấn.",
@@ -5435,6 +5495,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-py01-v1",
+     "title": "Python 01 – Đọc sáu bản ghi mẫu",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Đọc danh sách và một trường, chưa cần pandas.",
      "html": "Đọc danh sách và một trường, chưa cần pandas."
@@ -5502,6 +5568,12 @@
    "title": "Python 02 – Che một số điện thoại",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-py02-v1",
+     "title": "Python 02 – Che một số điện thoại",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Dùng lát cắt chuỗi để che một phần số điện thoại giả lập.",
@@ -5571,6 +5643,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-py03-v1",
+     "title": "Python 03 – Bỏ hẳn cột không cần",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Tạo danh sách mới chỉ có region và kwh.",
      "html": "Tạo danh sách mới chỉ có region và kwh."
@@ -5638,6 +5716,12 @@
    "title": "Python 04 – Lọc một đơn vị",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-py04-v1",
+     "title": "Python 04 – Lọc một đơn vị",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Dùng for và if để chọn DV_A.",
@@ -5707,6 +5791,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-py05-v1",
+     "title": "Python 05 – Cộng sản lượng theo đơn vị",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng từ điển để tổng hợp, so với SQL 05.",
      "html": "Dùng từ điển để tổng hợp, so với SQL 05."
@@ -5774,6 +5864,12 @@
    "title": "Python 06 – Xử lý ô điện thoại trống",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m06-py06-v1",
+     "title": "Python 06 – Xử lý ô điện thoại trống",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Kiểm tra đầu vào trước khi cắt chuỗi.",
@@ -5843,6 +5939,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-py07-v1",
+     "title": "Python 07 – Đổi chuỗi số thành số",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Dùng int trước khi tính.",
      "html": "Dùng int trước khi tính."
@@ -5911,6 +6013,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m06-py08-v1",
+     "title": "Python 08 – Lưu và kiểm tra đúng bản gửi",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Xuất JSON rồi đọc lại để kiểm tra cột.",
      "html": "Xuất JSON rồi đọc lại để kiểm tra cột."
@@ -5975,6 +6083,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m06-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Anh Minh cần gì để dự báo theo phường, không cần gì? Bỏ cột tên và số điện thoại rồi thì file đã \"ẩn danh\" chưa?"
+    },
+    {
+     "id": "q2",
+     "text": "Làm bản giao thế nào cho đúng, bằng Excel, SQL hay Python? Phường Cảng Mới xử lý ra sao?"
+    },
+    {
+     "id": "q3",
+     "text": "Nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không? Nếu có thì với điều kiện gì?"
+    },
+    {
+     "id": "q4",
+     "text": "Lỗi lạ khi gõ dấu nháy đơn nói lên điều gì? Chị Dung nên làm gì – và không nên làm gì?"
+    }
+   ]
+  },
   {
    "id": "m06-check-v2",
    "type": "mcq",

@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -227,29 +227,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?",
-       "level": 0,
-       "plain": "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?"
-      },
-      {
-       "html": "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?",
-       "level": 0,
-       "plain": "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?"
-      },
-      {
-       "html": "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?",
-       "level": 0,
-       "plain": "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?"
-      },
-      {
-       "html": "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?",
-       "level": 0,
-       "plain": "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?"
-      }
+     "t": "activity",
+     "id": "m02-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?",
+      "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?",
+      "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?",
+      "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?"
      ]
     },
     {
@@ -1790,6 +1776,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m02-th2",
+     "title": "Thực hành 2 – Vẽ sơ đồ luồng dữ liệu (60 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -2420,6 +2412,24 @@
        "plain": "Sơ đồ luồng dữ liệu cho biết dữ liệu đi đâu, qua ai, vượt ranh giới nào – và vì vậy cần đặt kiểm soát ở đâu."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m02-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m02-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m02-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -3028,6 +3038,12 @@
    "activity": "m02-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m02-case-v2",
+     "title": "Bài tập thêm – Tìm những bản sao bị bỏ quên",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -3081,6 +3097,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m02-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?"
+    },
+    {
+     "id": "q2",
+     "text": "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?"
+    },
+    {
+     "id": "q3",
+     "text": "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?"
+    },
+    {
+     "id": "q4",
+     "text": "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?"
+    }
+   ]
+  },
   {
    "id": "m02-check-v2",
    "type": "mcq",

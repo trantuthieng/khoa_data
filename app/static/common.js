@@ -104,6 +104,15 @@ const ContentBlocks = {
       <pre v-else-if="b.t === 'code'"><code>{{ b.text }}</code></pre>
       <blockquote v-else-if="b.t === 'quote'" v-html="b.html"></blockquote>
       <img v-else-if="b.t === 'img'" :src="b.src" alt="Hình minh họa trong giáo trình" loading="lazy">
+      <div v-else-if="b.t === 'activity'" class="act-slot">
+        <slot name="activity" :b="b">
+          <div class="card act-embed">
+            <span class="eyebrow">{{ b.inline ? 'Học viên trả lời ngay trong bài' : 'Thẻ mở bài làm' }}</span>
+            <div><b>{{ b.title }}</b></div>
+            <ol v-if="b.questions"><li v-for="(q, j) in b.questions" :key="j">{{ q }}</li></ol>
+          </div>
+        </slot>
+      </div>
     </div>
   </div>`,
 };

@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -222,29 +222,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?",
-       "level": 0,
-       "plain": "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?"
-      },
-      {
-       "html": "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?",
-       "level": 0,
-       "plain": "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?"
-      },
-      {
-       "html": "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?",
-       "level": 0,
-       "plain": "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?"
-      },
-      {
-       "html": "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?",
-       "level": 0,
-       "plain": "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?"
-      }
+     "t": "activity",
+     "id": "m03-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?",
+      "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?",
+      "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?",
+      "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?"
      ]
     },
     {
@@ -656,8 +642,8 @@
     },
     {
      "t": "p",
-     "html": "<strong>Câu hỏi cho lớp:</strong> \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\" Thường sẽ có người trả lời có.",
-     "plain": "Câu hỏi cho lớp: \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\" Thường sẽ có người trả lời có.",
+     "html": "<strong>Câu hỏi suy ngẫm:</strong> \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\"",
+     "plain": "Câu hỏi suy ngẫm: \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\"",
      "callout": "question"
     },
     {
@@ -2374,6 +2360,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m03-th3",
+     "title": "Thực hành 3 – Xây ma trận quyền (40 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -2655,6 +2647,12 @@
    "title": "Thực hành 4 – Chuyển đơn vị còn quyền cũ (25 phút)",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m03-th4",
+     "title": "Thực hành 4 – Chuyển đơn vị còn quyền cũ (25 phút)",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
@@ -2960,6 +2958,24 @@
        "plain": "Tài khoản đặc quyền cần ít người, MFA mạnh, tài khoản riêng và ghi log riêng."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m03-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m03-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m03-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s13"
@@ -3630,6 +3646,12 @@
    "activity": "m03-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m03-case-v2",
+     "title": "Bài tập thêm – Cấp quyền đủ để bàn giao",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -3683,6 +3705,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m03-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?"
+    },
+    {
+     "id": "q2",
+     "text": "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?"
+    },
+    {
+     "id": "q3",
+     "text": "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?"
+    },
+    {
+     "id": "q4",
+     "text": "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?"
+    }
+   ]
+  },
   {
    "id": "m03-check-v2",
    "type": "mcq",

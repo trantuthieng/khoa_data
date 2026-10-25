@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -236,29 +236,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "File của chị Dung nằm trên máy chị, đi qua Internet, nằm trên máy đối tác. Ở mỗi nơi, cái gì bảo vệ nó?",
-       "level": 0,
-       "plain": "File của chị Dung nằm trên máy chị, đi qua Internet, nằm trên máy đối tác. Ở mỗi nơi, cái gì bảo vệ nó?"
-      },
-      {
-       "html": "Vì sao chị Dung không ghi mật khẩu vào cùng email? Nếu chị quên mật khẩu thì sao?",
-       "level": 0,
-       "plain": "Vì sao chị Dung không ghi mật khẩu vào cùng email? Nếu chị quên mật khẩu thì sao?"
-      },
-      {
-       "html": "Trang OneDrive có ổ khóa HTTPS. Vậy link \"Anyone\" của anh Cường có an toàn không?",
-       "level": 0,
-       "plain": "Trang OneDrive có ổ khóa HTTPS. Vậy link \"Anyone\" của anh Cường có an toàn không?"
-      },
-      {
-       "html": "Hai cách gửi khác nhau ở những bước nào? Nếu chỉ được sửa một điều ở cấp đơn vị để cách của anh Cường không còn xảy ra, sửa gì?",
-       "level": 0,
-       "plain": "Hai cách gửi khác nhau ở những bước nào? Nếu chỉ được sửa một điều ở cấp đơn vị để cách của anh Cường không còn xảy ra, sửa gì?"
-      }
+     "t": "activity",
+     "id": "m05-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "File của chị Dung nằm trên máy chị, đi qua Internet, nằm trên máy đối tác. Ở mỗi nơi, cái gì bảo vệ nó?",
+      "Vì sao chị Dung không ghi mật khẩu vào cùng email? Nếu chị quên mật khẩu thì sao?",
+      "Trang OneDrive có ổ khóa HTTPS. Vậy link \"Anyone\" của anh Cường có an toàn không?",
+      "Hai cách gửi khác nhau ở những bước nào? Nếu chỉ được sửa một điều ở cấp đơn vị để cách của anh Cường không còn xảy ra, sửa gì?"
      ]
     },
     {
@@ -1135,8 +1121,8 @@
     },
     {
      "t": "p",
-     "html": "Giảng viên có thể chạy đoạn mã dưới đây để cả lớp thấy ba kỹ thuật khác nhau thế nào. Dữ liệu là giả lập. Cần cài thư viện: pip install cryptography.",
-     "plain": "Giảng viên có thể chạy đoạn mã dưới đây để cả lớp thấy ba kỹ thuật khác nhau thế nào. Dữ liệu là giả lập. Cần cài thư viện: pip install cryptography."
+     "html": "Đoạn mã dưới đây cho thấy ba kỹ thuật khác nhau thế nào. Dữ liệu là giả lập. Cần cài thư viện: pip install cryptography.",
+     "plain": "Đoạn mã dưới đây cho thấy ba kỹ thuật khác nhau thế nào. Dữ liệu là giả lập. Cần cài thư viện: pip install cryptography."
     },
     {
      "t": "code",
@@ -1153,8 +1139,8 @@
     },
     {
      "t": "p",
-     "html": "Câu hỏi cho lớp sau khi chạy: dòng nào cần khóa mới đảo ngược được, dòng nào không đảo được, dòng nào ai cũng đảo được? Nếu chương trình lưu biến khoa vào cùng thư mục với bản mã thì sao?",
-     "plain": "Câu hỏi cho lớp sau khi chạy: dòng nào cần khóa mới đảo ngược được, dòng nào không đảo được, dòng nào ai cũng đảo được? Nếu chương trình lưu biến khoa vào cùng thư mục với bản mã thì sao?",
+     "html": "Câu hỏi suy ngẫm: dòng nào cần khóa mới đảo ngược được, dòng nào không đảo được, dòng nào ai cũng đảo được? Nếu chương trình lưu biến khoa vào cùng thư mục với bản mã thì sao?",
+     "plain": "Câu hỏi suy ngẫm: dòng nào cần khóa mới đảo ngược được, dòng nào không đảo được, dòng nào ai cũng đảo được? Nếu chương trình lưu biến khoa vào cùng thư mục với bản mã thì sao?",
      "callout": "question"
     },
     {
@@ -3197,6 +3183,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m05-th6",
+     "title": "Thực hành 6 – Bảo vệ báo cáo trước khi gửi (60 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -3783,7 +3775,8 @@
     {
      "t": "p",
      "html": "Tờ \"Việc hẹn sửa sau\" sau năm chương:",
-     "plain": "Tờ \"Việc hẹn sửa sau\" sau năm chương:"
+     "plain": "Tờ \"Việc hẹn sửa sau\" sau năm chương:",
+     "teacher": true
     },
     {
      "t": "table",
@@ -3970,6 +3963,24 @@
        "plain": "Link \"Anyone\" chỉ dành cho tài liệu Công khai. Sửa điều kiện cho phép sai (cấu hình tổ chức) bền hơn nhắc từng người cẩn thận."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m05-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m05-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m05-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -4724,6 +4735,12 @@
    "activity": "m05-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m05-case-v2",
+     "title": "Bài tập thêm – Kiểm tra một gói báo cáo trước khi gửi",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -4777,6 +4794,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m05-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "File của chị Dung nằm trên máy chị, đi qua Internet, nằm trên máy đối tác. Ở mỗi nơi, cái gì bảo vệ nó?"
+    },
+    {
+     "id": "q2",
+     "text": "Vì sao chị Dung không ghi mật khẩu vào cùng email? Nếu chị quên mật khẩu thì sao?"
+    },
+    {
+     "id": "q3",
+     "text": "Trang OneDrive có ổ khóa HTTPS. Vậy link \"Anyone\" của anh Cường có an toàn không?"
+    },
+    {
+     "id": "q4",
+     "text": "Hai cách gửi khác nhau ở những bước nào? Nếu chỉ được sửa một điều ở cấp đơn vị để cách của anh Cường không còn xảy ra, sửa gì?"
+    }
+   ]
+  },
   {
    "id": "m05-check-v2",
    "type": "mcq",

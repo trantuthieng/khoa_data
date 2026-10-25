@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -215,29 +215,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?",
-       "level": 0,
-       "plain": "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?"
-      },
-      {
-       "html": "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?",
-       "level": 0,
-       "plain": "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?"
-      },
-      {
-       "html": "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?",
-       "level": 0,
-       "plain": "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?"
-      },
-      {
-       "html": "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?",
-       "level": 0,
-       "plain": "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?"
-      }
+     "t": "activity",
+     "id": "m08-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?",
+      "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?",
+      "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?",
+      "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?"
      ]
     },
     {
@@ -252,7 +238,17 @@
     {
      "t": "p",
      "html": "Hỏi lớp: <em>\"Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?\"</em> Ghi lên bảng các câu chuyện theo kênh (SMS, Zalo, điện thoại, email) – bảng này sẽ dùng lại ở Bài 1. Nhắc lớp: người kể chuyện mình suýt tin là đang giúp cả lớp; không ai bị chê cười.",
-     "plain": "Hỏi lớp: \"Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?\" Ghi lên bảng các câu chuyện theo kênh (SMS, Zalo, điện thoại, email) – bảng này sẽ dùng lại ở Bài 1. Nhắc lớp: người kể chuyện mình suýt tin là đang giúp cả lớp; không ai bị chê cười."
+     "plain": "Hỏi lớp: \"Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?\" Ghi lên bảng các câu chuyện theo kênh (SMS, Zalo, điện thoại, email) – bảng này sẽ dùng lại ở Bài 1. Nhắc lớp: người kể chuyện mình suýt tin là đang giúp cả lớp; không ai bị chê cười.",
+     "teacher": true
+    },
+    {
+     "t": "activity",
+     "id": "m08-warmup",
+     "title": "Khởi động (15 phút)",
+     "inline": true,
+     "questions": [
+      "Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?"
+     ]
     }
    ],
    "id": "s4"
@@ -718,8 +714,8 @@
     },
     {
      "t": "p",
-     "html": "Chiếu email sau (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):",
-     "plain": "Chiếu email sau (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):"
+     "html": "Email mẫu (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):",
+     "plain": "Email mẫu (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):"
     },
     {
      "t": "quote",
@@ -736,7 +732,8 @@
     {
      "t": "p",
      "html": "Cách tổ chức: cho lớp 3 phút tự tìm dấu hiệu, rồi gọi từng người nêu một dấu hiệu.",
-     "plain": "Cách tổ chức: cho lớp 3 phút tự tìm dấu hiệu, rồi gọi từng người nêu một dấu hiệu."
+     "plain": "Cách tổ chức: cho lớp 3 phút tự tìm dấu hiệu, rồi gọi từng người nêu một dấu hiệu.",
+     "teacher": true
     },
     {
      "t": "table",
@@ -2348,13 +2345,19 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m08-th9",
+     "title": "Thực hành 9 – Bốn yêu cầu cần xác minh (55 phút)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
     },
     {
      "t": "h3",
-     "text": "Cách tổ chức"
+     "text": "Cách làm bài"
     },
     {
      "t": "list",
@@ -2364,11 +2367,6 @@
        "html": "Mỗi học viên đọc cả bốn tình huống và điền bảng phân tích trong 15 phút.",
        "level": 0,
        "plain": "Mỗi học viên đọc cả bốn tình huống và điền bảng phân tích trong 15 phút."
-      },
-      {
-       "html": "Giảng viên chọn một vài tình huống để cùng lớp trao đổi. Bạn trình bày cách áp dụng quy trình 4 bước và câu trả lời của mình.",
-       "level": 0,
-       "plain": "Giảng viên chọn một vài tình huống để cùng lớp trao đổi. Bạn trình bày cách áp dụng quy trình 4 bước và câu trả lời của mình."
       },
       {
        "html": "Lớp nhận xét sau mỗi lượt (2–3 phút). Giảng viên tổng kết bằng bảng đáp án.",
@@ -2817,7 +2815,8 @@
     {
      "t": "p",
      "html": "Tờ \"Việc hẹn sửa sau\" không có dòng mới. Nhưng tin nhắn chương 8 rơi đúng vào dòng 4 – MFA chưa đổi sang khớp số và mật khẩu cũ của anh Cường đã lộ ở trang mua sắm:",
-     "plain": "Tờ \"Việc hẹn sửa sau\" không có dòng mới. Nhưng tin nhắn chương 8 rơi đúng vào dòng 4 – MFA chưa đổi sang khớp số và mật khẩu cũ của anh Cường đã lộ ở trang mua sắm:"
+     "plain": "Tờ \"Việc hẹn sửa sau\" không có dòng mới. Nhưng tin nhắn chương 8 rơi đúng vào dòng 4 – MFA chưa đổi sang khớp số và mật khẩu cũ của anh Cường đã lộ ở trang mua sắm:",
+     "teacher": true
     },
     {
      "t": "table",
@@ -3004,6 +3003,24 @@
        "plain": "Lỡ bấm thì báo ngay; giấu đi mới là lỗi lớn. Đơn vị cần hotline, kênh báo cáo và văn hóa không đổ lỗi để quy trình chạy được."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m08-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m08-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m08-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -3689,6 +3706,12 @@
    "activity": "m08-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m08-case-v2",
+     "title": "Bài tập thêm – Viết lời từ chối và báo tin đáng ngờ",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -3742,6 +3765,44 @@
   }
  ],
  "activities": [
+  {
+   "id": "m08-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?"
+    },
+    {
+     "id": "q2",
+     "text": "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?"
+    },
+    {
+     "id": "q3",
+     "text": "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?"
+    },
+    {
+     "id": "q4",
+     "text": "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?"
+    }
+   ]
+  },
+  {
+   "id": "m08-warmup",
+   "type": "open",
+   "scope": "student",
+   "title": "Khởi động (15 phút)",
+   "intro": "Chia sẻ một trường hợp từ công việc của bạn. Không ghi dữ liệu thật của khách hàng.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?"
+    }
+   ]
+  },
   {
    "id": "m08-check-v2",
    "type": "mcq",

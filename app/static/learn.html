@@ -133,11 +133,11 @@
           </div>
           <div class="module-kicker">{{ moduleData.title }}</div>
           <h2 class="section-title">{{ section.title }}</h2>
-          <content-blocks :blocks="section.blocks"></content-blocks>
-          <div v-if="section.activity && activityById(section.activity)" class="card" style="margin-top:20px">
-            <b>{{ activityById(section.activity).title }}</b> – <span class="tag" :class="activityById(section.activity).status">{{ statusLabel[activityById(section.activity).status] }}</span>
-            <div style="margin-top:8px"><button class="btn primary" @click="openActivity(section.activity)">Mở bài làm</button></div>
-          </div>
+          <content-blocks :blocks="section.blocks">
+            <template v-slot:activity="{ b }">
+              <inline-activity :key="viewModule + b.id" :b="b" :info="activityById(b.id)" @open="openActivity" @submitted="markSubmitted"></inline-activity>
+            </template>
+          </content-blocks>
           <div class="row" style="margin-top:32px">
             <button class="btn" :disabled="!prevSection" @click="goSection(prevSection.id)">← {{ prevSection ? prevSection.title : '' }}</button>
             <div class="grow"></div>

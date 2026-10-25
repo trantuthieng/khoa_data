@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -221,29 +221,15 @@
      "text": "Câu hỏi của chương"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Báo cáo lúc 09:10 – khi chưa có log – nên ghi gì, gửi ai, qua kênh nào? Nếu hoá ra không phải sự cố thì sao? (Bài 1)",
-       "level": 0,
-       "plain": "Báo cáo lúc 09:10 – khi chưa có log – nên ghi gì, gửi ai, qua kênh nào? Nếu hoá ra không phải sự cố thì sao? (Bài 1)"
-      },
-      {
-       "html": "Anh Phong nên làm gì trước: xóa file, thu hồi link, khóa tài khoản – hay một việc khác? Ai được quyết? (Bài 2)",
-       "level": 0,
-       "plain": "Anh Phong nên làm gì trước: xóa file, thu hồi link, khóa tài khoản – hay một việc khác? Ai được quyết? (Bài 2)"
-      },
-      {
-       "html": "Đồng hồ 72 giờ tính từ lúc nào, hết lúc nào? Công ty phải báo cho ai, và nói gì với những khách hàng đang gọi đến? (Bài 3)",
-       "level": 0,
-       "plain": "Đồng hồ 72 giờ tính từ lúc nào, hết lúc nào? Công ty phải báo cho ai, và nói gì với những khách hàng đang gọi đến? (Bài 3)"
-      },
-      {
-       "html": "Khi mọi chuyện lắng xuống, làm sao tìm ra nguyên nhân mà không biến anh Cường thành người chịu tội thay cho cả hệ thống? (Bài 4)",
-       "level": 0,
-       "plain": "Khi mọi chuyện lắng xuống, làm sao tìm ra nguyên nhân mà không biến anh Cường thành người chịu tội thay cho cả hệ thống? (Bài 4)"
-      }
+     "t": "activity",
+     "id": "m10-opening",
+     "title": "Câu hỏi của chương",
+     "inline": true,
+     "questions": [
+      "Báo cáo lúc 09:10 – khi chưa có log – nên ghi gì, gửi ai, qua kênh nào? Nếu hoá ra không phải sự cố thì sao? (Bài 1)",
+      "Anh Phong nên làm gì trước: xóa file, thu hồi link, khóa tài khoản – hay một việc khác? Ai được quyết? (Bài 2)",
+      "Đồng hồ 72 giờ tính từ lúc nào, hết lúc nào? Công ty phải báo cho ai, và nói gì với những khách hàng đang gọi đến? (Bài 3)",
+      "Khi mọi chuyện lắng xuống, làm sao tìm ra nguyên nhân mà không biến anh Cường thành người chịu tội thay cho cả hệ thống? (Bài 4)"
      ]
     },
     {
@@ -254,7 +240,8 @@
     {
      "t": "p",
      "html": "<strong>Cho giảng viên:</strong> vẽ đồng hồ 72 giờ ở góc bảng ngay từ đầu buổi và cập nhật \"đã trôi qua bao nhiêu giờ\" sau mỗi đợt diễn tập. Chưa kể chuyện tin nhắn Zalo trước đợt 3. Nếu học viên đoán được, ghi nhận và để ở cột \"giả thuyết\".",
-     "plain": "Cho giảng viên: vẽ đồng hồ 72 giờ ở góc bảng ngay từ đầu buổi và cập nhật \"đã trôi qua bao nhiêu giờ\" sau mỗi đợt diễn tập. Chưa kể chuyện tin nhắn Zalo trước đợt 3. Nếu học viên đoán được, ghi nhận và để ở cột \"giả thuyết\"."
+     "plain": "Cho giảng viên: vẽ đồng hồ 72 giờ ở góc bảng ngay từ đầu buổi và cập nhật \"đã trôi qua bao nhiêu giờ\" sau mỗi đợt diễn tập. Chưa kể chuyện tin nhắn Zalo trước đợt 3. Nếu học viên đoán được, ghi nhận và để ở cột \"giả thuyết\".",
+     "teacher": true
     }
    ],
    "id": "s4"
@@ -3815,6 +3802,12 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m10-th11",
+     "title": "Thực hành 11 – Diễn tập trên bàn: dữ liệu khách hàng xuất hiện bên ngoài",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
@@ -3947,7 +3940,7 @@
     },
     {
      "t": "h3",
-     "text": "Cách tổ chức"
+     "text": "Cách làm bài"
     },
     {
      "t": "list",
@@ -5929,7 +5922,8 @@
     {
      "t": "p",
      "html": "Giảng viên lật tờ \"Việc hẹn sửa sau\" ra cạnh bảng dưới đây. Sự cố không do một lỗi: bảy lỗ hổng trùng nhau cùng một đêm, mỗi lỗ hổng là nội dung của một buổi học. Chỉ cần một lớp hoạt động đúng là chuỗi đã bị cắt – đúng mô hình miếng phô mai Thụy Sĩ của bài 4.",
-     "plain": "Giảng viên lật tờ \"Việc hẹn sửa sau\" ra cạnh bảng dưới đây. Sự cố không do một lỗi: bảy lỗ hổng trùng nhau cùng một đêm, mỗi lỗ hổng là nội dung của một buổi học. Chỉ cần một lớp hoạt động đúng là chuỗi đã bị cắt – đúng mô hình miếng phô mai Thụy Sĩ của bài 4."
+     "plain": "Giảng viên lật tờ \"Việc hẹn sửa sau\" ra cạnh bảng dưới đây. Sự cố không do một lỗi: bảy lỗ hổng trùng nhau cùng một đêm, mỗi lỗ hổng là nội dung của một buổi học. Chỉ cần một lớp hoạt động đúng là chuỗi đã bị cắt – đúng mô hình miếng phô mai Thụy Sĩ của bài 4.",
+     "teacher": true
     },
     {
      "t": "table",
@@ -6552,8 +6546,8 @@
     },
     {
      "t": "p",
-     "html": "Mỗi học viên chọn <strong>một</strong> việc làm được trong một tuần, ghi lên thẻ: việc gì, hạn ngày nào, cần báo ai. Giảng viên thu thẻ và gửi lại cho học viên sau một tuần để họ tự kiểm tra.",
-     "plain": "Mỗi học viên chọn một việc làm được trong một tuần, ghi lên thẻ: việc gì, hạn ngày nào, cần báo ai. Giảng viên thu thẻ và gửi lại cho học viên sau một tuần để họ tự kiểm tra."
+     "html": "Mỗi học viên chọn <strong>một</strong> việc làm được trong một tuần, ghi lên thẻ: việc gì, hạn ngày nào, cần báo ai.",
+     "plain": "Mỗi học viên chọn một việc làm được trong một tuần, ghi lên thẻ: việc gì, hạn ngày nào, cần báo ai."
     },
     {
      "t": "table",
@@ -6971,7 +6965,8 @@
     {
      "t": "p",
      "html": "Giảng viên đọc to để kết thúc khóa:",
-     "plain": "Giảng viên đọc to để kết thúc khóa:"
+     "plain": "Giảng viên đọc to để kết thúc khóa:",
+     "teacher": true
     },
     {
      "t": "list",
@@ -7063,6 +7058,18 @@
        "plain": "\"Hẹn sửa sau\" là một quyết định chấp nhận rủi ro – phải có người có thẩm quyền ký, biện pháp tạm và hạn."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m10-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m10-exam",
+     "title": "Bài kiểm tra cuối khóa (20 câu)",
+     "inline": false
     }
    ],
    "id": "s13"
@@ -8070,6 +8077,12 @@
    "activity": "m10-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m10-case-v2",
+     "title": "Bài tập thêm – Báo cáo sự cố trong 5 phút",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -8123,6 +8136,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m10-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của chương",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Báo cáo lúc 09:10 – khi chưa có log – nên ghi gì, gửi ai, qua kênh nào? Nếu hoá ra không phải sự cố thì sao? (Bài 1)"
+    },
+    {
+     "id": "q2",
+     "text": "Anh Phong nên làm gì trước: xóa file, thu hồi link, khóa tài khoản – hay một việc khác? Ai được quyết? (Bài 2)"
+    },
+    {
+     "id": "q3",
+     "text": "Đồng hồ 72 giờ tính từ lúc nào, hết lúc nào? Công ty phải báo cho ai, và nói gì với những khách hàng đang gọi đến? (Bài 3)"
+    },
+    {
+     "id": "q4",
+     "text": "Khi mọi chuyện lắng xuống, làm sao tìm ra nguyên nhân mà không biến anh Cường thành người chịu tội thay cho cả hệ thống? (Bài 4)"
+    }
+   ]
+  },
   {
    "id": "m10-th11",
    "type": "practice",

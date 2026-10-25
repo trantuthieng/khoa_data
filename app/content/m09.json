@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -211,29 +211,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?",
-       "level": 0,
-       "plain": "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?"
-      },
-      {
-       "html": "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?",
-       "level": 0,
-       "plain": "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?"
-      },
-      {
-       "html": "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?",
-       "level": 0,
-       "plain": "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?"
-      },
-      {
-       "html": "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?",
-       "level": 0,
-       "plain": "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?"
-      }
+     "t": "activity",
+     "id": "m09-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?",
+      "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?",
+      "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?",
+      "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?"
      ]
     },
     {
@@ -244,7 +230,8 @@
     {
      "t": "p",
      "html": "<strong>Cho giảng viên:</strong> không tiết lộ vì sao MFA được chấp nhận. Nhật ký chỉ cho thấy nó được chấp nhận; câu trả lời \"ai bấm, vì sao\" thuộc về buổi 10.",
-     "plain": "Cho giảng viên: không tiết lộ vì sao MFA được chấp nhận. Nhật ký chỉ cho thấy nó được chấp nhận; câu trả lời \"ai bấm, vì sao\" thuộc về buổi 10."
+     "plain": "Cho giảng viên: không tiết lộ vì sao MFA được chấp nhận. Nhật ký chỉ cho thấy nó được chấp nhận; câu trả lời \"ai bấm, vì sao\" thuộc về buổi 10.",
+     "teacher": true
     }
    ],
    "id": "s4"
@@ -2186,13 +2173,19 @@
    "kind": "practice",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m09-th10",
+     "title": "Thực hành 10 – Truy vết truy cập bất thường (65 phút, hai vòng)",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
     },
     {
      "t": "h3",
-     "text": "Cách tổ chức"
+     "text": "Cách làm bài"
     },
     {
      "t": "list",
@@ -2323,7 +2316,8 @@
     {
      "t": "p",
      "html": "<strong>Tùy chọn cho giảng viên – đọc file bằng Python</strong> (cần pip install pandas):",
-     "plain": "Tùy chọn cho giảng viên – đọc file bằng Python (cần pip install pandas):"
+     "plain": "Tùy chọn cho giảng viên – đọc file bằng Python (cần pip install pandas):",
+     "teacher": true
     },
     {
      "t": "code",
@@ -3120,6 +3114,24 @@
        "plain": "Tên tài khoản cho biết tài khoản nào được dùng, không cho biết ai ngồi trước bàn phím. Không đổ lỗi khi chưa có kết luận."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m09-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m09-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m09-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -3805,6 +3817,12 @@
    "activity": "m09-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m09-case-v2",
+     "title": "Bài tập thêm – Log cho biết gì, còn thiếu gì?",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -3858,6 +3876,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m09-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?"
+    },
+    {
+     "id": "q2",
+     "text": "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?"
+    },
+    {
+     "id": "q3",
+     "text": "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?"
+    },
+    {
+     "id": "q4",
+     "text": "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?"
+    }
+   ]
+  },
   {
    "id": "m09-check-v2",
    "type": "mcq",

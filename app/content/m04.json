@@ -99,7 +99,7 @@
   },
   {
    "title": "Buổi này tiếp nối buổi trước như thế nào?",
-   "kind": "content",
+   "kind": "teacher",
    "blocks": [
     {
      "t": "list",
@@ -217,29 +217,15 @@
      "text": "Câu hỏi của buổi"
     },
     {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
-       "html": "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?",
-       "level": 0,
-       "plain": "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?"
-      },
-      {
-       "html": "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?",
-       "level": 0,
-       "plain": "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?"
-      },
-      {
-       "html": "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?",
-       "level": 0,
-       "plain": "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?"
-      },
-      {
-       "html": "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?",
-       "level": 0,
-       "plain": "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?"
-      }
+     "t": "activity",
+     "id": "m04-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?",
+      "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?",
+      "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?",
+      "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?"
      ]
     },
     {
@@ -1223,8 +1209,8 @@
     },
     {
      "t": "p",
-     "html": "<strong>Câu hỏi cho lớp trước khi giảng:</strong> \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\" Ghi lại các lý do để dùng trong Thực hành 5.",
-     "plain": "Câu hỏi cho lớp trước khi giảng: \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\" Ghi lại các lý do để dùng trong Thực hành 5.",
+     "html": "<strong>Câu hỏi suy ngẫm:</strong> \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\"",
+     "plain": "Câu hỏi suy ngẫm: \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\"",
      "callout": "question"
     }
    ],
@@ -1475,6 +1461,12 @@
    "title": "Thực hành 5 – Thay tài khoản dùng chung (50 phút)",
    "kind": "practice",
    "blocks": [
+    {
+     "t": "activity",
+     "id": "m04-th5",
+     "title": "Thực hành 5 – Thay tài khoản dùng chung (50 phút)",
+     "inline": false
+    },
     {
      "t": "p",
      "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
@@ -1882,6 +1874,24 @@
        "plain": "Phiên có giá trị như mật khẩu; nghi lộ tài khoản thì thu hồi phiên và gỡ MFA lạ, không chỉ đổi mật khẩu."
       }
      ]
+    },
+    {
+     "t": "activity",
+     "id": "m04-check-v2",
+     "title": "Kiểm tra nhanh: chọn cách xử lý",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m04-quiz",
+     "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "m04-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
     }
    ],
    "id": "s12"
@@ -2509,6 +2519,12 @@
    "activity": "m04-case-v2",
    "blocks": [
     {
+     "t": "activity",
+     "id": "m04-case-v2",
+     "title": "Bài tập thêm – Bàn giao ca khi có yêu cầu MFA lạ",
+     "inline": false
+    },
+    {
      "t": "p",
      "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
      "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
@@ -2562,6 +2578,31 @@
   }
  ],
  "activities": [
+  {
+   "id": "m04-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Phần \"Quay lại tình huống\" cuối buổi giúp bạn đối chiếu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?"
+    },
+    {
+     "id": "q2",
+     "text": "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?"
+    },
+    {
+     "id": "q3",
+     "text": "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?"
+    },
+    {
+     "id": "q4",
+     "text": "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?"
+    }
+   ]
+  },
   {
    "id": "m04-check-v2",
    "type": "mcq",
