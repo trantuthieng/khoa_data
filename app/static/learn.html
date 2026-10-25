@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học viên | An toàn ứng dụng &amp; Dữ liệu dành cho cán bộ vận hành</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/studio.css">
+<script src="/static/vendor/vue.global.prod.js"></script>
+<script src="/static/common.js"></script>
+</head>
+<body class="learner-page">
+<div id="app" v-cloak>
+  <header class="topbar">
+    <button class="btn sm mobile-only" @click="showSide = !showSide" aria-label="Mục lục">☰</button>
+    <div class="brand"><span v-html="logo" style="display:flex"></span><span>{{ state ? state.cls.name : 'Lớp học' }}</span></div>
+    <select v-if="state && state.modules.length > 1" v-model.number="viewModule" style="width:auto;max-width:280px" @change="onModuleChange">
+      <option v-for="m in state.modules" :key="m.no" :value="m.no">{{ m.no === 0 ? 'Tổng quan khóa học' : 'Buổi ' + m.no + ' – ' + m.short }}</option>
+    </select>
+    <div class="grow"></div>
+    <span v-if="state" class="live-pill"><i></i>{{ following ? 'Theo nhịp giảng viên' : 'Tự xem bài học' }}</span>
+    <button class="btn sm" :class="{on: mode==='activities'}" @click="mode = mode === 'activities' ? 'lesson' : 'activities'">
+      Bài tập <span v-if="openCount" class="tag open">{{ openCount }}</span>
+    </button>
+    <button class="btn sm ghost" @click="showMe = !showMe" :title="'Mã vào lại: ' + (session && session.rejoin)">{{ session && session.name }}</button>
+    <button class="btn sm ghost" @click="themeToggle" title="Đổi giao diện sáng/tối">◐</button>
+  </header>
+
+  <div v-if="showMe" class="card" style="position:fixed;right:16px;top:64px;z-index:40;max-width:340px">
+    <div><b>{{ session.name }}</b></div>
+    <p class="muted" style="font-size:14px">Dùng mã này để vào lại lớp trên thiết bị khác hoặc khi không còn thông tin đăng nhập đã lưu. Giữ mã riêng, không chia sẻ:</p>
+    <div class="rejoin-code">{{ session.rejoin }}</div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn sm" @click="showMe=false">Đóng</button>
+      <button class="btn sm danger" @click="logout">Rời lớp trên máy này</button>
+    </div>
+  </div>
+
+  <div class="layout" v-if="state">
+    <aside class="side" :class="{show: showSide}">
+      <div class="sidebar-heading"><span class="eyebrow">KHÔNG GIAN HỌC TẬP</span><button class="btn sm ghost mobile-only" @click="showSide=false" aria-label="Đóng mục lục">✕</button></div>
+      <div class="sidebar-course"><span class="course-symbol" v-html="logo"></span><b>An toàn ứng dụng &amp; Dữ liệu<br><small style="font-weight:400">dành cho cán bộ vận hành</small></b></div>
+      <div class="sidebar-mode-tabs">
+        <button :class="{active:mode==='lesson'}" @click="mode='lesson';showSide=false">Bài học</button>
+        <button :class="{active:mode!=='lesson'}" @click="mode='activities';showSide=false">Bài tập của tôi</button>
+      </div>
+      <template v-if="mode === 'lesson'">
+        <h4>{{ viewModule === 0 ? 'Tổng quan' : 'Buổi ' + viewModule }}</h4>
+        <ul class="toc">
+          <li v-for="s in sections" :key="s.id">
+            <button :class="{active: s.id === sectionId}" @click="goSection(s.id); showSide=false">
+              <span class="ico">{{ s.id === teacherSection && viewModule === state.view.module ? '▶' : (s.kind === 'practice' ? '✎' : '') }}</span>
+              <span>{{ s.title }}</span>
+            </button>
+          </li>
+        </ul>
+        <p v-if="viewModule !== 0" class="muted" style="font-size:13px;padding:0 8px">Các phần tiếp theo sẽ mở khi giảng viên trình bày.</p>
+      </template>
+      <h4>Bài tập</h4>
+      <div class="act-list">
+        <button v-for="a in state.activities" :key="a.id" class="act-item" :class="{current: activity && activity.id === a.id && mode==='activity'}" @click="openActivity(a.id); showSide=false">
+          <span class="grow" style="font-size:14.5px;line-height:1.35">{{ a.title }}<br>
+            <span class="muted" style="font-size:12px">Buổi {{ a.module }} · {{ typeLabel[a.type] }}</span>
+            <span class="tag" :class="a.status" style="margin-left:4px">{{ a.submitted ? 'Đã nộp · ' : '' }}{{ statusLabel[a.status] }}</span></span>
+        </button>
+        <p v-if="!state.activities.length" class="muted" style="font-size:14px">Chưa có bài tập nào được mở.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="reading">
+        <div class="learning-context"><span>{{ viewModule === 0 ? 'Tổng quan khóa học' : 'Không gian học viên / Buổi ' + viewModule }}</span><span class="context-note">Làm bài cá nhân</span></div>
+        <!-- danh sách bài tập -->
+        <template v-if="mode === 'activities'">
+          <div class="page-intro"><span class="eyebrow">LUYỆN TẬP THEO TỪNG BƯỚC</span><h2 class="section-title">Bài tập của tôi</h2><p class="muted">Chọn bài đã mở, làm theo hướng dẫn và nộp kết quả của bạn.</p></div>
+          <div class="metric-grid learner-metrics">
+            <div class="metric"><span>Bài được giao</span><b>{{ state.activities.length }}</b></div>
+            <div class="metric"><span>Đã nộp</span><b>{{ state.activities.filter(a=>a.submitted).length }}</b></div>
+            <div class="metric accent-metric"><span>Đang mở, chưa nộp</span><b>{{ openCount }}</b></div>
+          </div>
+          <div class="act-list">
+            <button v-for="a in state.activities" :key="a.id" class="act-item" @click="openActivity(a.id)">
+              <span class="grow"><b>{{ a.title }}</b><br><span class="muted" style="font-size:13px">Buổi {{ a.module }} · {{ typeLabel[a.type] }}</span></span>
+              <span class="tag" :class="a.status">{{ a.submitted ? '✓ Đã nộp · ' : '' }}{{ statusLabel[a.status] }}</span>
+            </button>
+          </div>
+          <p v-if="!state.activities.length" class="muted">Chưa có bài tập nào. Giảng viên sẽ mở bài tập trong buổi học.</p>
+        </template>
+
+        <!-- làm bài -->
+        <template v-else-if="mode === 'activity' && activity">
+          <button class="btn sm ghost" @click="mode='lesson'">← Quay lại bài học</button>
+          <div class="module-kicker" style="margin-top:10px">Buổi {{ activity.module }} · {{ typeLabel[activity.type] }} <span class="tag" :class="activity.status">{{ statusLabel[activity.status] }}</span></div>
+          <h2 class="section-title">{{ activity.title }}</h2>
+          <p v-if="activity.intro" class="muted">{{ activity.intro }}</p>
+            <div v-if="activity.instructions" class="card" style="margin-bottom:16px">
+              <content-blocks :blocks="activity.instructions"></content-blocks>
+            </div>
+          <div v-if="activity.type==='practice' && activity.section" class="row" style="margin-bottom:8px">
+            <button class="btn sm" @click="goSection(activity.section, activity.module)">Xem đề bài trong giáo trình</button>
+          </div>
+          <div v-if="activity.status === 'revealed' && activity.response && activity.response.max_score" class="card" style="margin-bottom:12px">
+            Điểm của bạn: <span class="score">{{ activity.response.score }}/{{ activity.response.max_score }}</span>
+              <p v-if="activity.response.feedback" style="white-space:pre-wrap">Nhận xét của giảng viên: {{ activity.response.feedback }}</p>
+            <span v-if="activity.stats" class="muted"> · Cả lớp: {{ activity.stats.n }} bài nộp</span>
+          </div>
+          <p v-if="activity.status === 'revealed' && activity.response && activity.response.score === null" class="muted">Bài nộp của bạn chưa có điểm. Điểm sẽ hiển thị sau khi giảng viên chấm và lưu kết quả.</p>
+          <div v-if="activity.status === 'revealed' && activity.type === 'practice'" class="banner">
+            Giảng viên đã công bố gợi ý chữa bài. Chọn “Xem đề bài trong giáo trình” để đối chiếu.
+          </div>
+          <div class="card">
+            <activity-form :act="activity" :payload="payload" :readonly="activity.status !== 'open'"
+              :show-answers="activity.status === 'revealed'" :stats="activity.stats" @dirty="dirty = true"></activity-form>
+          </div>
+          <div class="savebar" v-if="activity.status === 'open'">
+            <button class="btn primary" @click="save" :disabled="saving">{{ saving ? 'Đang nộp…' : 'Nộp bài' }}</button>
+            <span v-if="dirty" class="muted">Có thay đổi chưa nộp. Chọn “Nộp bài” để cập nhật.</span>
+            <span v-else-if="activity.response" class="muted">Đã nộp lúc {{ fmtTime(activity.response.updated_at) }}. Bạn có thể cập nhật khi bài còn mở.</span>
+            <span v-if="saveErr" class="error">{{ saveErr }}</span>
+          </div>
+          <p v-if="activity.status === 'closed'" class="muted">Bài đã ngừng nhận bài nộp. Điểm và gợi ý chữa bài sẽ hiển thị khi giảng viên công bố.</p>
+        </template>
+
+        <!-- bài học -->
+        <template v-else-if="section">
+          <div v-if="following === false && teacherSectionTitle && viewModule === state.view.module && sectionId !== teacherSection" class="banner">
+            <span class="grow">Giảng viên đang trình bày: <b>{{ teacherSectionTitle }}</b></span>
+            <button class="btn sm primary" @click="goSection(teacherSection)">Đi tới</button>
+          </div>
+          <div class="module-kicker">{{ moduleData.title }}</div>
+          <h2 class="section-title">{{ section.title }}</h2>
+          <content-blocks :blocks="section.blocks"></content-blocks>
+          <div v-if="section.activity && activityById(section.activity)" class="card" style="margin-top:20px">
+            <b>{{ activityById(section.activity).title }}</b> – <span class="tag" :class="activityById(section.activity).status">{{ statusLabel[activityById(section.activity).status] }}</span>
+            <div style="margin-top:8px"><button class="btn primary" @click="openActivity(section.activity)">Mở bài làm</button></div>
+          </div>
+          <div class="row" style="margin-top:32px">
+            <button class="btn" :disabled="!prevSection" @click="goSection(prevSection.id)">← {{ prevSection ? prevSection.title : '' }}</button>
+            <div class="grow"></div>
+            <button class="btn" :disabled="!nextSection" @click="goSection(nextSection.id)">{{ nextSection ? nextSection.title : 'Chờ giảng viên mở phần tiếp' }} →</button>
+          </div>
+        </template>
+        <p v-else class="muted">Đang tải nội dung…</p>
+      </div>
+    </main>
+  </div>
+  <p v-else-if="loadErr" class="error" style="padding:20px">{{ loadErr }}</p>
+
+  <div v-if="toast" class="toast">
+    <div>{{ toast.text }}</div>
+    <div class="row" style="margin-top:10px">
+      <button v-if="toast.activity" class="btn sm primary" @click="openActivity(toast.activity); toast=null">Làm bài</button>
+      <button class="btn sm" @click="toast=null">Đóng</button>
+    </div>
+  </div>
+</div>
+<script src="/static/learn.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+"""Nạp nội dung giáo trình (JSON do tools/build_content.py sinh ra) và lọc theo quyền xem."""
+import copy
+import json
+from pathlib import Path
+
+from .practice import template_for
+
+CONTENT_DIR = Path(__file__).parent / "content"
+STUDENT_KINDS = ("content", "practice")
+
+MODULES = {}
+ACTIVITIES = {}
+for f in sorted(CONTENT_DIR.glob("m*.json")):
+    m = json.loads(f.read_text(encoding="utf-8"))
+    for a in m["activities"]:
+        a["module"] = m["no"]
+        if a["type"] == "practice":
+            a.setdefault("fields", template_for(a["id"]))
+        ACTIVITIES[a["id"]] = a
+    m["has_stages"] = any(b.get("stage") for s in m["sections"] for b in s["blocks"])
+    MODULES[m["no"]] = m
+
+INDEX = [{"no": m["no"], "title": m["title"], "short": m["short"]} for m in MODULES.values()]
+
+
+def section_index(module_no, section_id):
+    for i, s in enumerate(MODULES[module_no]["sections"]):
+        if s["id"] == section_id:
+            return i
+    return 0
+
+
+def student_module(module_no, view, revealed):
+    """Bản nội dung học viên được thấy.
+
+    view: dòng class_modules (unlocked, stage) hoặc None (= mở toàn bộ, dùng cho Tổng quan).
+    revealed: tập activity_id đã được giảng viên công bố đáp án.
+    """
+    m = MODULES[module_no]
+    unlocked = len(m["sections"]) if view is None else view["unlocked"]
+    stage = 99 if view is None else view["stage"]
+    sections = []
+    for i, s in enumerate(m["sections"]):
+        if i > unlocked or s["kind"] not in STUDENT_KINDS:
+            continue
+        blocks = []
+        for b in s["blocks"]:
+            if b.get("teacher"):
+                continue
+            if b.get("reveal") and b["reveal"] not in revealed:
+                continue
+            if b.get("stage") and b["stage"] > stage:
+                continue
+            blocks.append(b)
+        sec = {"id": s["id"], "title": s["title"], "kind": s["kind"], "blocks": blocks}
+        if s.get("activity"):
+            sec["activity"] = s["activity"]
+        sections.append(sec)
+    return {"no": m["no"], "title": m["title"], "short": m["short"], "sections": sections}
+
+
+def public_activity(a, status):
+    """Định nghĩa hoạt động gửi cho học viên: chỉ kèm đáp án khi đã công bố."""
+    out = {k: v for k, v in a.items() if k != "questions"}
+    out["status"] = status
+    if "questions" in a:
+        qs = copy.deepcopy(a["questions"])
+        if status != "revealed":
+            for qq in qs:
+                for k in ("answer", "correct", "explain"):
+                    qq.pop(k, None)
+        out["questions"] = qs
+    return out
+
+
+def score(a, payload):
+    """Chấm điểm câu trắc nghiệm. Trả về (điểm, điểm tối đa) hoặc (None, None)."""
+    if a["type"] not in ("mcq", "multi"):
+        return None, None
+    answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
+    pts = 0
+    for qq in a["questions"]:
+        given = answers.get(qq["id"])
+        if a["type"] == "mcq":
+            pts += 1 if given == qq.get("correct") else 0
+        else:
+            pts += 1 if isinstance(given, list) and sorted(given) == sorted(qq.get("correct", [])) else 0
+    return pts, len(a["questions"])

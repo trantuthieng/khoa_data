@@ -1,0 +1,3877 @@
+{
+ "no": 3,
+ "title": "Buổi 3 – Quyền tối thiểu, RBAC/ABAC và ma trận quyền",
+ "short": "Quyền tối thiểu, RBAC/ABAC và ma trận quyền",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 3 trả lời câu hỏi: <strong>ai được làm gì với dữ liệu, ở phạm vi nào, đến bao giờ?</strong> Cuối buổi, học viên lập được ma trận quyền cho một hệ thống và xử lý đúng quyền khi một nhân viên chuyển đơn vị – tình huống hay sai nhất trong thực tế.",
+     "plain": "Buổi 3 trả lời câu hỏi: ai được làm gì với dữ liệu, ở phạm vi nào, đến bao giờ? Cuối buổi, học viên lập được ma trận quyền cho một hệ thống và xử lý đúng quyền khi một nhân viên chuyển đơn vị – tình huống hay sai nhất trong thực tế."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Thông tin buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Ngày 2, buổi sáng, 08:00–11:30 (3,5 giờ, có 15 phút nghỉ)",
+        "plain": "Ngày 2, buổi sáng, 08:00–11:30 (3,5 giờ, có 15 phút nghỉ)"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu trình chiếu",
+        "plain": "Tài liệu trình chiếu"
+       },
+       {
+        "html": "26–37",
+        "plain": "26–37"
+       }
+      ],
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Giảng, thảo luận, thực hành cá nhân, đóng vai",
+        "plain": "Giảng, thảo luận, thực hành cá nhân, đóng vai"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Bảng phân loại (Thực hành 1) và sơ đồ luồng dữ liệu (Thực hành 2) của ngày 1",
+        "plain": "Bảng phân loại (Thực hành 1) và sơ đồ luồng dữ liệu (Thực hành 2) của ngày 1"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "Ma trận quyền cho 5 vai trò (Thực hành 3); phiếu điều chuyển có ngoại lệ bàn giao (Thực hành 4)",
+        "plain": "Ma trận quyền cho 5 vai trò (Thực hành 3); phiếu điều chuyển có ngoại lệ bàn giao (Thực hành 4)"
+       }
+      ],
+      [
+       {
+        "html": "Vật dụng",
+        "plain": "Vật dụng"
+       },
+       {
+        "html": "Mẫu C3, C4 ở Phụ lục C của tài liệu Tổng quan; tờ A0 \"Việc hẹn sửa sau\"",
+        "plain": "Mẫu C3, C4 ở Phụ lục C của tài liệu Tổng quan; tờ A0 \"Việc hẹn sửa sau\""
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Buổi này tiếp nối buổi trước như thế nào?",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhận từ ngày 1:</strong> danh mục dữ liệu và sơ đồ luồng. Mỗi người, mỗi hệ thống trên sơ đồ của file DS_KhachHang_DLX là một dòng của ma trận quyền hôm nay. Câu hỏi mở đầu: \"Trên sơ đồ hôm qua, ai đang chạm vào file này, và họ có thật sự cần không?\"",
+       "level": 0,
+       "plain": "Nhận từ ngày 1: danh mục dữ liệu và sơ đồ luồng. Mỗi người, mỗi hệ thống trên sơ đồ của file DS_KhachHang_DLX là một dòng của ma trận quyền hôm nay. Câu hỏi mở đầu: \"Trên sơ đồ hôm qua, ai đang chạm vào file này, và họ có thật sự cần không?\""
+      },
+      {
+       "html": "<strong>Tình huống – chương 3:</strong> vai trò \"Giao dịch viên\" có quyền xuất toàn đơn vị vì được \"cấp giống người cũ\"; chị Hà chuyển đi hai tháng vẫn xuất được dữ liệu nơi cũ.",
+       "level": 0,
+       "plain": "Tình huống – chương 3: vai trò \"Giao dịch viên\" có quyền xuất toàn đơn vị vì được \"cấp giống người cũ\"; chị Hà chuyển đi hai tháng vẫn xuất được dữ liệu nơi cũ."
+      },
+      {
+       "html": "<strong>Bắt đầu tờ \"Việc hẹn sửa sau\":</strong> từ buổi này, mỗi điểm yếu lớp phát hiện mà chưa sửa được ngay sẽ được ghi lên một tờ giấy A0 dán tường. Tờ này sẽ được lật lại ở ngày 5.",
+       "level": 0,
+       "plain": "Bắt đầu tờ \"Việc hẹn sửa sau\": từ buổi này, mỗi điểm yếu lớp phát hiện mà chưa sửa được ngay sẽ được ghi lên một tờ giấy A0 dán tường. Tờ này sẽ được lật lại ở ngày 5."
+      },
+      {
+       "html": "<strong>Trao cho buổi chiều:</strong> ma trận quyền. Quyền gắn với tài khoản, nên chỉ có ý nghĩa khi đúng người đăng nhập – đó là câu hỏi của buổi 4. Ma trận này cũng được dùng lại ở buổi 7 khi phân quyền dashboard.",
+       "level": 0,
+       "plain": "Trao cho buổi chiều: ma trận quyền. Quyền gắn với tài khoản, nên chỉ có ý nghĩa khi đúng người đăng nhập – đó là câu hỏi của buổi 4. Ma trận này cũng được dùng lại ở buổi 7 khi phân quyền dashboard."
+      },
+      {
+       "html": "<strong>Sợi chỉ:</strong> CIA – quyền xem bảo vệ bí mật, quyền sửa và phân tách nhiệm vụ bảo vệ toàn vẹn; tối thiểu – quyền tối thiểu, đúng phạm vi, đúng thời hạn.",
+       "level": 0,
+       "plain": "Sợi chỉ: CIA – quyền xem bảo vệ bí mật, quyền sửa và phân tách nhiệm vụ bảo vệ toàn vẹn; tối thiểu – quyền tối thiểu, đúng phạm vi, đúng thời hạn."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Phân biệt định danh, xác thực, phân quyền và ghi vết, và giải thích vì sao \"đăng nhập được\" chưa có nghĩa là \"được xem\".",
+       "level": 0,
+       "plain": "Phân biệt định danh, xác thực, phân quyền và ghi vết, và giải thích vì sao \"đăng nhập được\" chưa có nghĩa là \"được xem\"."
+      },
+      {
+       "html": "Áp dụng quyền tối thiểu theo 4 chiều: chức năng, phạm vi, thời gian, rà soát.",
+       "level": 0,
+       "plain": "Áp dụng quyền tối thiểu theo 4 chiều: chức năng, phạm vi, thời gian, rà soát."
+      },
+      {
+       "html": "Giải thích RBAC và ABAC bằng ví dụ, và cách kết hợp hai mô hình.",
+       "level": 0,
+       "plain": "Giải thích RBAC và ABAC bằng ví dụ, và cách kết hợp hai mô hình."
+      },
+      {
+       "html": "Lập ma trận quyền có phạm vi, người duyệt, thời hạn và trường hợp phải bị từ chối.",
+       "level": 0,
+       "plain": "Lập ma trận quyền có phạm vi, người duyệt, thời hạn và trường hợp phải bị từ chối."
+      },
+      {
+       "html": "Xử lý quyền theo vòng đời Vào – Chuyển – Ra, đặc biệt khi nhân sự chuyển đơn vị, và nhận ra các cặp nhiệm vụ cần tách.",
+       "level": 0,
+       "plain": "Xử lý quyền theo vòng đời Vào – Chuyển – Ra, đặc biệt khi nhân sự chuyển đơn vị, và nhận ra các cặp nhiệm vụ cần tách."
+      }
+     ]
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Mở đầu: quyền xuất rộng hơn nhu cầu (chương 3)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Hôm qua lớp đã vẽ đường đi của file DS_KhachHang_DLX. Câu hỏi tiếp theo là vì sao nó có thể ra đời ngay từ đầu.",
+     "plain": "Hôm qua lớp đã vẽ đường đi của file DS_KhachHang_DLX. Câu hỏi tiếp theo là vì sao nó có thể ra đời ngay từ đầu."
+    },
+    {
+     "t": "h3",
+     "text": "Chuyện gì xảy ra"
+    },
+    {
+     "t": "p",
+     "html": "Xem sơ đồ luồng, anh Tuấn – trưởng phòng Kinh doanh Điện lực X – hỏi: \"Sao giao dịch viên lại xuất được cả 8.500 khách hàng? Việc của Cường chỉ cần gọi các hộ được giao.\" Phòng CNTT kiểm tra và gửi lại ba phát hiện:",
+     "plain": "Xem sơ đồ luồng, anh Tuấn – trưởng phòng Kinh doanh Điện lực X – hỏi: \"Sao giao dịch viên lại xuất được cả 8.500 khách hàng? Việc của Cường chỉ cần gọi các hộ được giao.\" Phòng CNTT kiểm tra và gửi lại ba phát hiện:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>\"Cấp giống người cũ\".</strong> Khi tạo tài khoản nv_c cho anh Cường, CNTT chép quyền của người tiền nhiệm – người này từng làm tổ trưởng nên có quyền \"Xuất danh sách toàn đơn vị\". Về sau, để \"đỡ phải xin lại\", quyền này được thêm luôn vào cả vai trò Giao dịch viên. Hiện 14 giao dịch viên của Điện lực X đều xuất được toàn bộ khách hàng.",
+       "level": 0,
+       "plain": "\"Cấp giống người cũ\". Khi tạo tài khoản nv_c cho anh Cường, CNTT chép quyền của người tiền nhiệm – người này từng làm tổ trưởng nên có quyền \"Xuất danh sách toàn đơn vị\". Về sau, để \"đỡ phải xin lại\", quyền này được thêm luôn vào cả vai trò Giao dịch viên. Hiện 14 giao dịch viên của Điện lực X đều xuất được toàn bộ khách hàng."
+      },
+      {
+       "html": "<strong>Người đã chuyển đi vẫn còn quyền.</strong> Chị Hà chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y đã hai tháng. Tài khoản của chị vẫn nằm trong nhóm quyền CSKH của Điện lực X; tuần trước chị còn xuất danh sách một lần \"để đối chiếu số liệu cũ\". Khi chuyển đi, chị được cộng thêm quyền của phòng Kế hoạch, nhưng không ai gỡ quyền cũ.",
+       "level": 0,
+       "plain": "Người đã chuyển đi vẫn còn quyền. Chị Hà chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y đã hai tháng. Tài khoản của chị vẫn nằm trong nhóm quyền CSKH của Điện lực X; tuần trước chị còn xuất danh sách một lần \"để đối chiếu số liệu cũ\". Khi chuyển đi, chị được cộng thêm quyền của phòng Kế hoạch, nhưng không ai gỡ quyền cũ."
+      },
+      {
+       "html": "<strong>Không có bảng nào để so.</strong> CNTT không trả lời được câu \"giao dịch viên lẽ ra được làm gì\", vì đơn vị chưa có ma trận quyền được duyệt. Quyền được cấp theo lời nhờ và theo \"người cũ\".",
+       "level": 0,
+       "plain": "Không có bảng nào để so. CNTT không trả lời được câu \"giao dịch viên lẽ ra được làm gì\", vì đơn vị chưa có ma trận quyền được duyệt. Quyền được cấp theo lời nhờ và theo \"người cũ\"."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Câu hỏi của buổi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?",
+       "level": 0,
+       "plain": "Anh Cường đã đăng nhập đúng tài khoản của mình. Vậy việc anh xuất được 8.500 khách hàng là lỗi của bước nào: xác thực hay phân quyền?"
+      },
+      {
+       "html": "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?",
+       "level": 0,
+       "plain": "Giao dịch viên thật sự cần quyền gì, trên phạm vi nào?"
+      },
+      {
+       "html": "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?",
+       "level": 0,
+       "plain": "Nếu đơn vị có 30 điện lực, nên cấp quyền theo vai trò hay theo thuộc tính \"đơn vị công tác\"?"
+      },
+      {
+       "html": "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?",
+       "level": 0,
+       "plain": "Khi chị Hà chuyển đi, lẽ ra phải làm gì, theo thứ tự nào, và ai làm?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bốn câu này ứng với bốn bài của buổi.",
+     "plain": "Bốn câu này ứng với bốn bài của buổi."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Bài 1 – Định danh, xác thực, phân quyền, ghi vết",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Quản lý truy cập gồm bốn bước nối tiếp nhau. Mỗi bước trả lời một câu hỏi khác, và làm tốt bước này không bù được cho bước kia.",
+     "plain": "Quản lý truy cập gồm bốn bước nối tiếp nhau. Mỗi bước trả lời một câu hỏi khác, và làm tốt bước này không bù được cho bước kia."
+    },
+    {
+     "t": "h3",
+     "text": "1.1. Bốn bước qua ví dụ cổng cơ quan"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Ở cổng cơ quan",
+        "plain": "Ở cổng cơ quan"
+       },
+       {
+        "html": "Trên hệ thống",
+        "plain": "Trên hệ thống"
+       },
+       {
+        "html": "Nếu thiếu thì sao",
+        "plain": "Nếu thiếu thì sao"
+       }
+      ],
+      [
+       {
+        "html": "Định danh (Identification)",
+        "plain": "Định danh (Identification)"
+       },
+       {
+        "html": "Bạn tự xưng là ai?",
+        "plain": "Bạn tự xưng là ai?"
+       },
+       {
+        "html": "\"Tôi là Nguyễn Văn A, phòng Kinh doanh\"",
+        "plain": "\"Tôi là Nguyễn Văn A, phòng Kinh doanh\""
+       },
+       {
+        "html": "Gõ tên đăng nhập nv_c",
+        "plain": "Gõ tên đăng nhập nv_c"
+       },
+       {
+        "html": "Không biết ai đang thao tác (tài khoản chung)",
+        "plain": "Không biết ai đang thao tác (tài khoản chung)"
+       }
+      ],
+      [
+       {
+        "html": "Xác thực (Authentication)",
+        "plain": "Xác thực (Authentication)"
+       },
+       {
+        "html": "Làm sao chứng minh đúng là bạn?",
+        "plain": "Làm sao chứng minh đúng là bạn?"
+       },
+       {
+        "html": "Bảo vệ so ảnh trên thẻ với mặt",
+        "plain": "Bảo vệ so ảnh trên thẻ với mặt"
+       },
+       {
+        "html": "Mật khẩu + mã MFA",
+        "plain": "Mật khẩu + mã MFA"
+       },
+       {
+        "html": "Kẻ gian biết tên đăng nhập là vào được (buổi 4)",
+        "plain": "Kẻ gian biết tên đăng nhập là vào được (buổi 4)"
+       }
+      ],
+      [
+       {
+        "html": "Phân quyền (Authorization)",
+        "plain": "Phân quyền (Authorization)"
+       },
+       {
+        "html": "Bạn được làm gì?",
+        "plain": "Bạn được làm gì?"
+       },
+       {
+        "html": "Thẻ chỉ mở cửa tầng 3, không vào được phòng máy chủ",
+        "plain": "Thẻ chỉ mở cửa tầng 3, không vào được phòng máy chủ"
+       },
+       {
+        "html": "Chỉ xem khách hàng đơn vị mình, không xuất toàn bộ",
+        "plain": "Chỉ xem khách hàng đơn vị mình, không xuất toàn bộ"
+       },
+       {
+        "html": "Người đã đăng nhập xem được mọi thứ",
+        "plain": "Người đã đăng nhập xem được mọi thứ"
+       }
+      ],
+      [
+       {
+        "html": "Ghi vết (Accounting / Audit)",
+        "plain": "Ghi vết (Accounting / Audit)"
+       },
+       {
+        "html": "Bạn đã làm gì?",
+        "plain": "Bạn đã làm gì?"
+       },
+       {
+        "html": "Sổ ra vào ghi giờ, tên",
+        "plain": "Sổ ra vào ghi giờ, tên"
+       },
+       {
+        "html": "Nhật ký: nv_c xuất 8.500 dòng lúc 09:12",
+        "plain": "Nhật ký: nv_c xuất 8.500 dòng lúc 09:12"
+       },
+       {
+        "html": "Không điều tra được khi có sự cố (buổi 9)",
+        "plain": "Không điều tra được khi có sự cố (buổi 9)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu cần nhớ:</strong> đăng nhập thành công chưa có nghĩa được xem mọi dữ liệu.",
+     "plain": "Câu cần nhớ: đăng nhập thành công chưa có nghĩa được xem mọi dữ liệu."
+    },
+    {
+     "t": "h3",
+     "text": "1.2. Một yêu cầu truy cập được xử lý ra sao"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Người dùng gửi yêu cầu, ví dụ \"xem hồ sơ khách hàng PX0002\".",
+       "level": 0,
+       "plain": "Người dùng gửi yêu cầu, ví dụ \"xem hồ sơ khách hàng PX0002\"."
+      },
+      {
+       "html": "Hệ thống kiểm tra phiên đăng nhập: đã xác thực chưa?",
+       "level": 0,
+       "plain": "Hệ thống kiểm tra phiên đăng nhập: đã xác thực chưa?"
+      },
+      {
+       "html": "Hệ thống đánh giá quyền: người này, với hồ sơ này, thao tác này, có được phép không?",
+       "level": 0,
+       "plain": "Hệ thống đánh giá quyền: người này, với hồ sơ này, thao tác này, có được phép không?"
+      },
+      {
+       "html": "Cho phép hoặc từ chối, và ghi lại vào nhật ký.",
+       "level": 0,
+       "plain": "Cho phép hoặc từ chối, và ghi lại vào nhật ký."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bước 3 phải chạy trên <strong>từng yêu cầu cụ thể</strong>, kể cả khi người dùng đã đăng nhập từ trước.",
+     "plain": "Bước 3 phải chạy trên từng yêu cầu cụ thể, kể cả khi người dùng đã đăng nhập từ trước."
+    },
+    {
+     "t": "h3",
+     "text": "1.3. Lỗi phân quyền: lỗi phổ biến nhất của ứng dụng web"
+    },
+    {
+     "t": "p",
+     "html": "Tổ chức OWASP xếp \"kiểm soát truy cập bị hỏng\" (Broken Access Control) ở vị trí số 1 trong danh sách OWASP Top 10 từ bản 2021. Dạng dễ hiểu nhất:",
+     "plain": "Tổ chức OWASP xếp \"kiểm soát truy cập bị hỏng\" (Broken Access Control) ở vị trí số 1 trong danh sách OWASP Top 10 từ bản 2021. Dạng dễ hiểu nhất:"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ví dụ:</strong> trên thanh địa chỉ có …/baocao?donvi=DV_A. Nếu ai đó sửa thành DV_B mà thấy được số liệu Điện lực Y, nghĩa là hệ thống chỉ kiểm tra \"đã đăng nhập chưa\" mà không kiểm tra \"có quyền với đơn vị B không\". Dạng lỗi này có tên là tham chiếu đối tượng trực tiếp không an toàn (IDOR). Chỉ giải thích bằng lời; không thử trên hệ thống thật.",
+     "plain": "Ví dụ: trên thanh địa chỉ có …/baocao?donvi=DV_A. Nếu ai đó sửa thành DV_B mà thấy được số liệu Điện lực Y, nghĩa là hệ thống chỉ kiểm tra \"đã đăng nhập chưa\" mà không kiểm tra \"có quyền với đơn vị B không\". Dạng lỗi này có tên là tham chiếu đối tượng trực tiếp không an toàn (IDOR). Chỉ giải thích bằng lời; không thử trên hệ thống thật.",
+     "callout": "example"
+    },
+    {
+     "t": "p",
+     "html": "Ba nguyên tắc kiểm tra quyền đúng cách (theo OWASP Authorization Cheat Sheet):",
+     "plain": "Ba nguyên tắc kiểm tra quyền đúng cách (theo OWASP Authorization Cheat Sheet):"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Kiểm tra ở phía máy chủ, trên từng yêu cầu.</strong> Giấu nút, làm mờ menu trên giao diện chỉ là tiện ích, không phải kiểm soát.",
+       "level": 0,
+       "plain": "Kiểm tra ở phía máy chủ, trên từng yêu cầu. Giấu nút, làm mờ menu trên giao diện chỉ là tiện ích, không phải kiểm soát."
+      },
+      {
+       "html": "<strong>Mặc định từ chối.</strong> Chỉ cho phép những gì được khai báo rõ.",
+       "level": 0,
+       "plain": "Mặc định từ chối. Chỉ cho phép những gì được khai báo rõ."
+      },
+      {
+       "html": "<strong>Kiểm tra cả phạm vi dữ liệu, không chỉ chức năng:</strong> \"được xem hồ sơ\" khác \"được xem hồ sơ này\".",
+       "level": 0,
+       "plain": "Kiểm tra cả phạm vi dữ liệu, không chỉ chức năng: \"được xem hồ sơ\" khác \"được xem hồ sơ này\"."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.4. Người dùng nghiệp vụ làm gì"
+    },
+    {
+     "t": "p",
+     "html": "Người dùng không sửa được lỗi phân quyền, nhưng là người hay phát hiện ra nó nhất. Nếu vô tình thấy dữ liệu không thuộc phạm vi của mình:",
+     "plain": "Người dùng không sửa được lỗi phân quyền, nhưng là người hay phát hiện ra nó nhất. Nếu vô tình thấy dữ liệu không thuộc phạm vi của mình:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Không tải về, không thử tiếp \"xem còn thấy gì nữa\".",
+       "level": 0,
+       "plain": "Không tải về, không thử tiếp \"xem còn thấy gì nữa\"."
+      },
+      {
+       "html": "Ghi lại thời điểm, màn hình, đường dẫn (chụp màn hình nếu được).",
+       "level": 0,
+       "plain": "Ghi lại thời điểm, màn hình, đường dẫn (chụp màn hình nếu được)."
+      },
+      {
+       "html": "Báo bộ phận CNTT hoặc đầu mối an toàn thông tin.",
+       "level": 0,
+       "plain": "Báo bộ phận CNTT hoặc đầu mối an toàn thông tin."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.5. Áp vào chương 3"
+    },
+    {
+     "t": "p",
+     "html": "Anh Cường đăng nhập đúng bằng tài khoản của mình: định danh và xác thực đều đúng. Lỗi nằm ở <strong>phân quyền</strong>: vai trò Giao dịch viên được cấp quyền xuất rộng hơn nhu cầu. Ghi vết thì có – nhật ký ghi đủ việc anh xuất file – nhưng không ai đọc. Điều đó sẽ quay lại ở buổi 9.",
+     "plain": "Anh Cường đăng nhập đúng bằng tài khoản của mình: định danh và xác thực đều đúng. Lỗi nằm ở phân quyền: vai trò Giao dịch viên được cấp quyền xuất rộng hơn nhu cầu. Ghi vết thì có – nhật ký ghi đủ việc anh xuất file – nhưng không ai đọc. Điều đó sẽ quay lại ở buổi 9."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Đã đăng nhập được thì được xem.\" → Xác thực không phải phân quyền. \"Giấu menu là đủ.\" → Kiểm tra quyền phải nằm ở phía hệ thống.",
+     "plain": "Hiểu nhầm hay gặp: \"Đã đăng nhập được thì được xem.\" → Xác thực không phải phân quyền. \"Giấu menu là đủ.\" → Kiểm tra quyền phải nằm ở phía hệ thống.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Bài 2 – Quyền tối thiểu và quyền đúng lúc",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Quyền tối thiểu (least privilege) giống chùm chìa của nhân viên bảo trì: chỉ cầm chìa những phòng cần vào hôm nay, không cầm chìa vạn năng \"cho tiện\". Nếu chùm chìa bị mất, thiệt hại nhỏ hơn nhiều. Với tài khoản cũng vậy: tài khoản bị chiếm thì kẻ gian chỉ làm được những gì tài khoản đó được phép.",
+     "plain": "Quyền tối thiểu (least privilege) giống chùm chìa của nhân viên bảo trì: chỉ cầm chìa những phòng cần vào hôm nay, không cầm chìa vạn năng \"cho tiện\". Nếu chùm chìa bị mất, thiệt hại nhỏ hơn nhiều. Với tài khoản cũng vậy: tài khoản bị chiếm thì kẻ gian chỉ làm được những gì tài khoản đó được phép."
+    },
+    {
+     "t": "h3",
+     "text": "2.1. Bốn chiều của quyền tối thiểu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chiều",
+        "plain": "Chiều"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       },
+       {
+        "html": "Ví dụ giả lập",
+        "plain": "Ví dụ giả lập"
+       },
+       {
+        "html": "Vi phạm trong chương 3",
+        "plain": "Vi phạm trong chương 3"
+       }
+      ],
+      [
+       {
+        "html": "Đúng chức năng",
+        "plain": "Đúng chức năng"
+       },
+       {
+        "html": "Chỉ cấp quyền cần cho công việc; tách quyền xem, sửa, xuất, quản trị",
+        "plain": "Chỉ cấp quyền cần cho công việc; tách quyền xem, sửa, xuất, quản trị"
+       },
+       {
+        "html": "Nhân viên CSKH được xem và tạo yêu cầu, không được xuất toàn bộ danh sách",
+        "plain": "Nhân viên CSKH được xem và tạo yêu cầu, không được xuất toàn bộ danh sách"
+       },
+       {
+        "html": "Giao dịch viên có quyền xuất toàn đơn vị",
+        "plain": "Giao dịch viên có quyền xuất toàn đơn vị"
+       }
+      ],
+      [
+       {
+        "html": "Đúng phạm vi",
+        "plain": "Đúng phạm vi"
+       },
+       {
+        "html": "Cùng chức danh nhưng khác đơn vị thì phạm vi dữ liệu khác",
+        "plain": "Cùng chức danh nhưng khác đơn vị thì phạm vi dữ liệu khác"
+       },
+       {
+        "html": "Chuyên viên Điện lực X chỉ thấy khách hàng Điện lực X",
+        "plain": "Chuyên viên Điện lực X chỉ thấy khách hàng Điện lực X"
+       },
+       {
+        "html": "Chị Hà ở Điện lực Y vẫn thấy khách hàng Điện lực X",
+        "plain": "Chị Hà ở Điện lực Y vẫn thấy khách hàng Điện lực X"
+       }
+      ],
+      [
+       {
+        "html": "Đúng thời gian",
+        "plain": "Đúng thời gian"
+       },
+       {
+        "html": "Quyền tạm thời phải có ngày kết thúc và người phê duyệt",
+        "plain": "Quyền tạm thời phải có ngày kết thúc và người phê duyệt"
+       },
+       {
+        "html": "Quyền xuất phục vụ kiểm toán hết hiệu lực sau đợt",
+        "plain": "Quyền xuất phục vụ kiểm toán hết hiệu lực sau đợt"
+       },
+       {
+        "html": "Quyền cũ của chị Hà không có ngày hết hạn",
+        "plain": "Quyền cũ của chị Hà không có ngày hết hạn"
+       }
+      ],
+      [
+       {
+        "html": "Có rà soát",
+        "plain": "Có rà soát"
+       },
+       {
+        "html": "Thay đổi công việc phải kéo theo kiểm tra lại quyền",
+        "plain": "Thay đổi công việc phải kéo theo kiểm tra lại quyền"
+       },
+       {
+        "html": "Sau khi điều chuyển, trưởng phòng mới xác nhận lại danh sách quyền",
+        "plain": "Sau khi điều chuyển, trưởng phòng mới xác nhận lại danh sách quyền"
+       },
+       {
+        "html": "Không ai rà soát nên cả hai lỗi tồn tại nhiều năm",
+        "plain": "Không ai rà soát nên cả hai lỗi tồn tại nhiều năm"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.2. Ba nguyên tắc đi kèm"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Cần biết (need-to-know):</strong> chỉ được tiếp cận thông tin cần cho công việc. Mỗi quyền phải trả lời được \"dùng để làm việc gì?\".",
+       "level": 0,
+       "plain": "Cần biết (need-to-know): chỉ được tiếp cận thông tin cần cho công việc. Mỗi quyền phải trả lời được \"dùng để làm việc gì?\"."
+      },
+      {
+       "html": "<strong>Mặc định từ chối (default deny):</strong> không ghi là được thì là không được.",
+       "level": 0,
+       "plain": "Mặc định từ chối (default deny): không ghi là được thì là không được."
+      },
+      {
+       "html": "<strong>Quy trách nhiệm:</strong> mọi thao tác truy vết được về một người – mỗi người một tài khoản (buổi 4).",
+       "level": 0,
+       "plain": "Quy trách nhiệm: mọi thao tác truy vết được về một người – mỗi người một tài khoản (buổi 4)."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.3. Tích tụ quyền"
+    },
+    {
+     "t": "p",
+     "html": "Quyền cộng dần qua các lần điều chuyển, không ai gỡ, gọi là <strong>tích tụ quyền</strong> (privilege creep). Sau ba lần chuyển vị trí, một người có thể xem được khách hàng của ba đơn vị. Quyền thừa không gây trở ngại gì cho công việc, nên không ai phát hiện – cho đến khi tài khoản bị chiếm và thiệt hại nhân lên theo số quyền thừa.",
+     "plain": "Quyền cộng dần qua các lần điều chuyển, không ai gỡ, gọi là tích tụ quyền (privilege creep). Sau ba lần chuyển vị trí, một người có thể xem được khách hàng của ba đơn vị. Quyền thừa không gây trở ngại gì cho công việc, nên không ai phát hiện – cho đến khi tài khoản bị chiếm và thiệt hại nhân lên theo số quyền thừa."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu hỏi cho lớp:</strong> \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\" Thường sẽ có người trả lời có.",
+     "plain": "Câu hỏi cho lớp: \"Anh/chị có đang giữ quyền nào mà cả năm nay chưa dùng lần nào không?\" Thường sẽ có người trả lời có.",
+     "callout": "question"
+    },
+    {
+     "t": "h3",
+     "text": "2.4. Quyền đúng lúc, quyền khẩn cấp, tài khoản quản trị riêng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cơ chế",
+        "plain": "Cơ chế"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Quyền đúng lúc (just-in-time)",
+        "plain": "Quyền đúng lúc (just-in-time)"
+       },
+       {
+        "html": "Quyền cao chỉ bật trong thời gian ngắn khi có việc, có phê duyệt, rồi tự tắt",
+        "plain": "Quyền cao chỉ bật trong thời gian ngắn khi có việc, có phê duyệt, rồi tự tắt"
+       },
+       {
+        "html": "Chị Dung cần xuất danh sách nợ cuối tháng: bật quyền xuất 1 ngày theo phiếu đã duyệt",
+        "plain": "Chị Dung cần xuất danh sách nợ cuối tháng: bật quyền xuất 1 ngày theo phiếu đã duyệt"
+       }
+      ],
+      [
+       {
+        "html": "Quyền khẩn cấp (break-glass)",
+        "plain": "Quyền khẩn cấp (break-glass)"
+       },
+       {
+        "html": "Tài khoản dự phòng cho sự cố khi người có quyền vắng; mật khẩu niêm phong, mọi lần dùng ghi lý do và rà soát ngay sau đó",
+        "plain": "Tài khoản dự phòng cho sự cố khi người có quyền vắng; mật khẩu niêm phong, mọi lần dùng ghi lý do và rà soát ngay sau đó"
+       },
+       {
+        "html": "Xử lý sự cố hệ thống lúc 2 giờ sáng khi quản trị chính đi vắng",
+        "plain": "Xử lý sự cố hệ thống lúc 2 giờ sáng khi quản trị chính đi vắng"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản quản trị tách riêng",
+        "plain": "Tài khoản quản trị tách riêng"
+       },
+       {
+        "html": "Cán bộ CNTT dùng một tài khoản thường để đọc email, lướt web, và một tài khoản quản trị chỉ dùng khi quản trị",
+        "plain": "Cán bộ CNTT dùng một tài khoản thường để đọc email, lướt web, và một tài khoản quản trị chỉ dùng khi quản trị"
+       },
+       {
+        "html": "Bị lừa mở file độc trên tài khoản thường thì kẻ gian chưa có ngay quyền quản trị",
+        "plain": "Bị lừa mở file độc trên tài khoản thường thì kẻ gian chưa có ngay quyền quản trị"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Chu kỳ rà soát và thời hạn quyền tạm là quyết định của đơn vị (tham khảo NIST SP 800-53, nhóm kiểm soát AC-2 và AC-6). Giáo trình không đưa con số bắt buộc.",
+     "plain": "Chu kỳ rà soát và thời hạn quyền tạm là quyết định của đơn vị (tham khảo NIST SP 800-53, nhóm kiểm soát AC-2 và AC-6). Giáo trình không đưa con số bắt buộc."
+    },
+    {
+     "t": "h3",
+     "text": "2.5. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Khi xin quyền, ghi rõ cần thao tác nào, trên phạm vi nào, đến bao giờ. Không xin \"quyền giống anh X\".",
+       "level": 0,
+       "plain": "Khi xin quyền, ghi rõ cần thao tác nào, trên phạm vi nào, đến bao giờ. Không xin \"quyền giống anh X\"."
+      },
+      {
+       "html": "Khi xong việc cần quyền tạm, chủ động báo CNTT gỡ, không chờ đến đợt rà soát.",
+       "level": 0,
+       "plain": "Khi xong việc cần quyền tạm, chủ động báo CNTT gỡ, không chờ đến đợt rà soát."
+      },
+      {
+       "html": "Quản lý: khi nhận danh sách rà soát quyền, đọc từng dòng, không bấm \"giữ tất cả\".",
+       "level": 0,
+       "plain": "Quản lý: khi nhận danh sách rà soát quyền, đọc từng dòng, không bấm \"giữ tất cả\"."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Cấp rộng cho đỡ mất công xin lại.\" → Mỗi quyền thừa là thêm một phần thiệt hại khi tài khoản bị chiếm. Chương 9 sẽ cho thấy điều này.",
+     "plain": "Hiểu nhầm hay gặp: \"Cấp rộng cho đỡ mất công xin lại.\" → Mỗi quyền thừa là thêm một phần thiệt hại khi tài khoản bị chiếm. Chương 9 sẽ cho thấy điều này.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Bài 3 – RBAC, ABAC và ma trận quyền",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Cấp quyền cho từng người một thì không ai quản lý nổi. Hai mô hình RBAC và ABAC giúp gom quyền thành quy tắc, và ma trận quyền là bảng ghi lại các quy tắc đó để cấp, rà soát và điều tra.",
+     "plain": "Cấp quyền cho từng người một thì không ai quản lý nổi. Hai mô hình RBAC và ABAC giúp gom quyền thành quy tắc, và ma trận quyền là bảng ghi lại các quy tắc đó để cấp, rà soát và điều tra."
+    },
+    {
+     "t": "h3",
+     "text": "3.1. Từ vựng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khái niệm",
+        "plain": "Khái niệm"
+       },
+       {
+        "html": "Định nghĩa",
+        "plain": "Định nghĩa"
+       },
+       {
+        "html": "Ví dụ (giả lập)",
+        "plain": "Ví dụ (giả lập)"
+       }
+      ],
+      [
+       {
+        "html": "Chủ thể",
+        "plain": "Chủ thể"
+       },
+       {
+        "html": "Người hoặc chương trình muốn truy cập",
+        "plain": "Người hoặc chương trình muốn truy cập"
+       },
+       {
+        "html": "Anh Cường; tài khoản dịch vụ của phần mềm hóa đơn",
+        "plain": "Anh Cường; tài khoản dịch vụ của phần mềm hóa đơn"
+       }
+      ],
+      [
+       {
+        "html": "Tài nguyên",
+        "plain": "Tài nguyên"
+       },
+       {
+        "html": "Dữ liệu hoặc chức năng cần bảo vệ",
+        "plain": "Dữ liệu hoặc chức năng cần bảo vệ"
+       },
+       {
+        "html": "Hồ sơ khách hàng, bảng chỉ số công tơ, chức năng \"Xuất danh sách\"",
+        "plain": "Hồ sơ khách hàng, bảng chỉ số công tơ, chức năng \"Xuất danh sách\""
+       }
+      ],
+      [
+       {
+        "html": "Thao tác",
+        "plain": "Thao tác"
+       },
+       {
+        "html": "Việc chủ thể làm với tài nguyên",
+        "plain": "Việc chủ thể làm với tài nguyên"
+       },
+       {
+        "html": "Xem, tạo, sửa, xóa, xuất, duyệt, cấp quyền",
+        "plain": "Xem, tạo, sửa, xóa, xuất, duyệt, cấp quyền"
+       }
+      ],
+      [
+       {
+        "html": "Phạm vi",
+        "plain": "Phạm vi"
+       },
+       {
+        "html": "Giới hạn dữ liệu trong tài nguyên",
+        "plain": "Giới hạn dữ liệu trong tài nguyên"
+       },
+       {
+        "html": "Chỉ khách hàng Điện lực X; chỉ hồ sơ được giao",
+        "plain": "Chỉ khách hàng Điện lực X; chỉ hồ sơ được giao"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Gói quyền gắn với một chức năng công việc",
+        "plain": "Gói quyền gắn với một chức năng công việc"
+       },
+       {
+        "html": "\"CSKH – Giao dịch viên\"",
+        "plain": "\"CSKH – Giao dịch viên\""
+       }
+      ],
+      [
+       {
+        "html": "Quyền",
+        "plain": "Quyền"
+       },
+       {
+        "html": "Tổ hợp thao tác + tài nguyên + phạm vi",
+        "plain": "Tổ hợp thao tác + tài nguyên + phạm vi"
+       },
+       {
+        "html": "\"Xem hồ sơ khách hàng của Điện lực X\"",
+        "plain": "\"Xem hồ sơ khách hàng của Điện lực X\""
+       }
+      ],
+      [
+       {
+        "html": "Chủ sở hữu dữ liệu",
+        "plain": "Chủ sở hữu dữ liệu"
+       },
+       {
+        "html": "Người chịu trách nhiệm nghiệp vụ, quyết định ai được dùng",
+        "plain": "Người chịu trách nhiệm nghiệp vụ, quyết định ai được dùng"
+       },
+       {
+        "html": "Anh Tuấn với dữ liệu khách hàng Điện lực X",
+        "plain": "Anh Tuấn với dữ liệu khách hàng Điện lực X"
+       }
+      ],
+      [
+       {
+        "html": "Người quản trị (custodian)",
+        "plain": "Người quản trị (custodian)"
+       },
+       {
+        "html": "Người cấu hình kỹ thuật theo quyết định của chủ sở hữu",
+        "plain": "Người cấu hình kỹ thuật theo quyết định của chủ sở hữu"
+       },
+       {
+        "html": "Cán bộ CNTT quản trị hệ thống",
+        "plain": "Cán bộ CNTT quản trị hệ thống"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Chủ sở hữu <strong>quyết định</strong>, người quản trị <strong>thực thi</strong>. Trong chương 3, CNTT vừa quyết vừa làm (\"cấp giống người cũ\"), còn chủ sở hữu không được hỏi.",
+     "plain": "Chủ sở hữu quyết định, người quản trị thực thi. Trong chương 3, CNTT vừa quyết vừa làm (\"cấp giống người cũ\"), còn chủ sở hữu không được hỏi."
+    },
+    {
+     "t": "h3",
+     "text": "3.2. RBAC – phân quyền theo vai trò"
+    },
+    {
+     "t": "p",
+     "html": "Gom quyền thành \"gói\" theo vai trò rồi gán người vào vai trò: <strong>Nhân sự → Vai trò → Nhóm quyền → Tài nguyên</strong>. Có nhân viên mới thì chỉ cần gán vào vai trò. Lưu ý: chức danh trên quyết định nhân sự không tự động bằng vai trò kỹ thuật trên hệ thống.",
+     "plain": "Gom quyền thành \"gói\" theo vai trò rồi gán người vào vai trò: Nhân sự → Vai trò → Nhóm quyền → Tài nguyên. Có nhân viên mới thì chỉ cần gán vào vai trò. Lưu ý: chức danh trên quyết định nhân sự không tự động bằng vai trò kỹ thuật trên hệ thống."
+    },
+    {
+     "t": "h3",
+     "text": "3.3. ABAC – phân quyền theo thuộc tính"
+    },
+    {
+     "t": "p",
+     "html": "Hệ thống xét nhiều đặc điểm cùng lúc rồi đối chiếu với chính sách (theo NIST SP 800-162):",
+     "plain": "Hệ thống xét nhiều đặc điểm cùng lúc rồi đối chiếu với chính sách (theo NIST SP 800-162):"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Chủ thể:</strong> chức năng, đơn vị công tác.",
+       "level": 0,
+       "plain": "Chủ thể: chức năng, đơn vị công tác."
+      },
+      {
+       "html": "<strong>Dữ liệu:</strong> nhãn phân loại, đơn vị sở hữu.",
+       "level": 0,
+       "plain": "Dữ liệu: nhãn phân loại, đơn vị sở hữu."
+      },
+      {
+       "html": "<strong>Thao tác:</strong> xem, sửa, xuất.",
+       "level": 0,
+       "plain": "Thao tác: xem, sửa, xuất."
+      },
+      {
+       "html": "<strong>Điều kiện môi trường:</strong> thiết bị công ty hay cá nhân, trong hay ngoài giờ làm việc.",
+       "level": 0,
+       "plain": "Điều kiện môi trường: thiết bị công ty hay cá nhân, trong hay ngoài giờ làm việc."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ví dụ một quy tắc:</strong> \"Cho phép XUẤT khi người dùng thuộc cùng đơn vị với dữ liệu, có vai trò Thu nợ, dữ liệu không mang nhãn Hạn chế cao, và truy cập từ thiết bị công ty trong giờ làm việc.\" Nếu đơn vị có quy tắc này, chị Hà (đơn vị Y) tự động bị chặn xuất dữ liệu Điện lực X ngay khi hồ sơ nhân sự cập nhật đơn vị mới.",
+     "plain": "Ví dụ một quy tắc: \"Cho phép XUẤT khi người dùng thuộc cùng đơn vị với dữ liệu, có vai trò Thu nợ, dữ liệu không mang nhãn Hạn chế cao, và truy cập từ thiết bị công ty trong giờ làm việc.\" Nếu đơn vị có quy tắc này, chị Hà (đơn vị Y) tự động bị chặn xuất dữ liệu Điện lực X ngay khi hồ sơ nhân sự cập nhật đơn vị mới.",
+     "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "3.4. So sánh và cách kết hợp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "RBAC",
+        "plain": "RBAC"
+       },
+       {
+        "html": "ABAC",
+        "plain": "ABAC"
+       }
+      ],
+      [
+       {
+        "html": "Câu hỏi hệ thống đặt ra",
+        "plain": "Câu hỏi hệ thống đặt ra"
+       },
+       {
+        "html": "Người này thuộc vai trò nào?",
+        "plain": "Người này thuộc vai trò nào?"
+       },
+       {
+        "html": "Người này, dữ liệu này, thao tác này, lúc này có thỏa chính sách không?",
+        "plain": "Người này, dữ liệu này, thao tác này, lúc này có thỏa chính sách không?"
+       }
+      ],
+      [
+       {
+        "html": "Khi có nhân viên mới",
+        "plain": "Khi có nhân viên mới"
+       },
+       {
+        "html": "Gán vào vai trò",
+        "plain": "Gán vào vai trò"
+       },
+       {
+        "html": "Cập nhật thuộc tính (đơn vị, chức năng) – quyền tự đúng",
+        "plain": "Cập nhật thuộc tính (đơn vị, chức năng) – quyền tự đúng"
+       }
+      ],
+      [
+       {
+        "html": "Khi có 30 đơn vị",
+        "plain": "Khi có 30 đơn vị"
+       },
+       {
+        "html": "Dễ phình thành 30 × số chức năng vai trò (\"bùng nổ vai trò\")",
+        "plain": "Dễ phình thành 30 × số chức năng vai trò (\"bùng nổ vai trò\")"
+       },
+       {
+        "html": "Một quy tắc \"cùng đơn vị\" dùng chung",
+        "plain": "Một quy tắc \"cùng đơn vị\" dùng chung"
+       }
+      ],
+      [
+       {
+        "html": "Thuận lợi",
+        "plain": "Thuận lợi"
+       },
+       {
+        "html": "Dễ hiểu, dễ tổ chức theo chức năng",
+        "plain": "Dễ hiểu, dễ tổ chức theo chức năng"
+       },
+       {
+        "html": "Linh hoạt theo ngữ cảnh",
+        "plain": "Linh hoạt theo ngữ cảnh"
+       }
+      ],
+      [
+       {
+        "html": "Điểm yếu",
+        "plain": "Điểm yếu"
+       },
+       {
+        "html": "Vai trò chồng chéo, khó rà soát",
+        "plain": "Vai trò chồng chéo, khó rà soát"
+       },
+       {
+        "html": "Thuộc tính sai là quyền sai; quy tắc phức tạp khó kiểm tra",
+        "plain": "Thuộc tính sai là quyền sai; quy tắc phức tạp khó kiểm tra"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không mô hình nào luôn tốt hơn. Thực tế hay <strong>kết hợp</strong>: vai trò quyết định được làm chức năng gì; thuộc tính (đơn vị, khu vực, thiết bị) quyết định trên phạm vi nào, trong điều kiện nào. RLS động trong Power BI ở buổi 7 là một ví dụ ABAC đơn giản. Điều kiện để ABAC chạy đúng: dữ liệu nhân sự phải chính xác và cập nhật kịp thời. Quyết định điều chuyển nhập chậm một tháng thì quyền sai một tháng.",
+     "plain": "Không mô hình nào luôn tốt hơn. Thực tế hay kết hợp: vai trò quyết định được làm chức năng gì; thuộc tính (đơn vị, khu vực, thiết bị) quyết định trên phạm vi nào, trong điều kiện nào. RLS động trong Power BI ở buổi 7 là một ví dụ ABAC đơn giản. Điều kiện để ABAC chạy đúng: dữ liệu nhân sự phải chính xác và cập nhật kịp thời. Quyết định điều chuyển nhập chậm một tháng thì quyền sai một tháng."
+    },
+    {
+     "t": "h3",
+     "text": "3.5. Ma trận quyền dùng được cần những gì"
+    },
+    {
+     "t": "p",
+     "html": "Ma trận quyền (access matrix) là bảng: hàng là vai trò, cột là thao tác trên tài nguyên, mỗi ô ghi được phép hay không, ở phạm vi nào, ai duyệt. Bảng có ba công dụng: <strong>căn cứ cấp quyền</strong> (thay cho \"cấp giống anh B\"), <strong>căn cứ rà soát</strong> (so quyền thực tế với bảng), <strong>căn cứ điều tra</strong> (người này có được phép làm việc đó không).",
+     "plain": "Ma trận quyền (access matrix) là bảng: hàng là vai trò, cột là thao tác trên tài nguyên, mỗi ô ghi được phép hay không, ở phạm vi nào, ai duyệt. Bảng có ba công dụng: căn cứ cấp quyền (thay cho \"cấp giống anh B\"), căn cứ rà soát (so quyền thực tế với bảng), căn cứ điều tra (người này có được phép làm việc đó không)."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thành phần",
+        "plain": "Thành phần"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Hệ thống",
+        "plain": "Hệ thống"
+       },
+       {
+        "html": "Quyền áp dụng trên hệ thống nào",
+        "plain": "Quyền áp dụng trên hệ thống nào"
+       },
+       {
+        "html": "Hệ thống quản lý khách hàng; Power BI; thư mục chia sẻ",
+        "plain": "Hệ thống quản lý khách hàng; Power BI; thư mục chia sẻ"
+       }
+      ],
+      [
+       {
+        "html": "Tài nguyên + nhãn",
+        "plain": "Tài nguyên + nhãn"
+       },
+       {
+        "html": "Dữ liệu nào, nhạy cảm mức nào (từ bảng phân loại buổi 1)",
+        "plain": "Dữ liệu nào, nhạy cảm mức nào (từ bảng phân loại buổi 1)"
+       },
+       {
+        "html": "Hồ sơ khách hàng – Mật",
+        "plain": "Hồ sơ khách hàng – Mật"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Nhóm chức năng",
+        "plain": "Nhóm chức năng"
+       },
+       {
+        "html": "CSKH – Giao dịch viên",
+        "plain": "CSKH – Giao dịch viên"
+       }
+      ],
+      [
+       {
+        "html": "Thao tác",
+        "plain": "Thao tác"
+       },
+       {
+        "html": "Tách riêng từng loại",
+        "plain": "Tách riêng từng loại"
+       },
+       {
+        "html": "Xem / Tạo / Sửa / Xóa / Xuất / Duyệt / Cấp quyền",
+        "plain": "Xem / Tạo / Sửa / Xóa / Xuất / Duyệt / Cấp quyền"
+       }
+      ],
+      [
+       {
+        "html": "Phạm vi",
+        "plain": "Phạm vi"
+       },
+       {
+        "html": "Giới hạn dữ liệu",
+        "plain": "Giới hạn dữ liệu"
+       },
+       {
+        "html": "Đơn vị công tác; hồ sơ được giao",
+        "plain": "Đơn vị công tác; hồ sơ được giao"
+       }
+      ],
+      [
+       {
+        "html": "Điều kiện",
+        "plain": "Điều kiện"
+       },
+       {
+        "html": "Ràng buộc thêm",
+        "plain": "Ràng buộc thêm"
+       },
+       {
+        "html": "Chỉ từ máy công ty; cần MFA",
+        "plain": "Chỉ từ máy công ty; cần MFA"
+       }
+      ],
+      [
+       {
+        "html": "Người phê duyệt",
+        "plain": "Người phê duyệt"
+       },
+       {
+        "html": "Ai ký duyệt khi cấp",
+        "plain": "Ai ký duyệt khi cấp"
+       },
+       {
+        "html": "Trưởng phòng Kinh doanh",
+        "plain": "Trưởng phòng Kinh doanh"
+       }
+      ],
+      [
+       {
+        "html": "Thời hạn",
+        "plain": "Thời hạn"
+       },
+       {
+        "html": "Theo vị trí hay tạm thời",
+        "plain": "Theo vị trí hay tạm thời"
+       },
+       {
+        "html": "Tạm thời đến ngày …",
+        "plain": "Tạm thời đến ngày …"
+       }
+      ],
+      [
+       {
+        "html": "Nhóm kỹ thuật",
+        "plain": "Nhóm kỹ thuật"
+       },
+       {
+        "html": "Tên nhóm trên hệ thống để CNTT thực thi",
+        "plain": "Tên nhóm trên hệ thống để CNTT thực thi"
+       },
+       {
+        "html": "GRP_CSKH_DLX_Read",
+        "plain": "GRP_CSKH_DLX_Read"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.6. Ma trận mẫu cho hệ thống quản lý khách hàng (giả lập)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Xem hồ sơ KH",
+        "plain": "Xem hồ sơ KH"
+       },
+       {
+        "html": "Sửa hồ sơ KH",
+        "plain": "Sửa hồ sơ KH"
+       },
+       {
+        "html": "Nhập chỉ số",
+        "plain": "Nhập chỉ số"
+       },
+       {
+        "html": "Duyệt chỉ số",
+        "plain": "Duyệt chỉ số"
+       },
+       {
+        "html": "Xuất danh sách KH",
+        "plain": "Xuất danh sách KH"
+       },
+       {
+        "html": "Cấp quyền",
+        "plain": "Cấp quyền"
+       },
+       {
+        "html": "Người duyệt cấp",
+        "plain": "Người duyệt cấp"
+       }
+      ],
+      [
+       {
+        "html": "Giao dịch viên CSKH",
+        "plain": "Giao dịch viên CSKH"
+       },
+       {
+        "html": "Đơn vị mình",
+        "plain": "Đơn vị mình"
+       },
+       {
+        "html": "Hồ sơ được giao",
+        "plain": "Hồ sơ được giao"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Trưởng phòng KD",
+        "plain": "Trưởng phòng KD"
+       }
+      ],
+      [
+       {
+        "html": "Chuyên viên thu nợ",
+        "plain": "Chuyên viên thu nợ"
+       },
+       {
+        "html": "Đơn vị mình",
+        "plain": "Đơn vị mình"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Danh sách nợ đơn vị mình, theo mẫu cột, có ghi lý do",
+        "plain": "Danh sách nợ đơn vị mình, theo mẫu cột, có ghi lý do"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Trưởng phòng KD",
+        "plain": "Trưởng phòng KD"
+       }
+      ],
+      [
+       {
+        "html": "Nhân viên ghi chỉ số",
+        "plain": "Nhân viên ghi chỉ số"
+       },
+       {
+        "html": "Tuyến được giao (chỉ mã, địa chỉ)",
+        "plain": "Tuyến được giao (chỉ mã, địa chỉ)"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Tuyến được giao",
+        "plain": "Tuyến được giao"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Trưởng phòng KD",
+        "plain": "Trưởng phòng KD"
+       }
+      ],
+      [
+       {
+        "html": "Tổ trưởng ghi chỉ số",
+        "plain": "Tổ trưởng ghi chỉ số"
+       },
+       {
+        "html": "Đơn vị mình",
+        "plain": "Đơn vị mình"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Đơn vị mình",
+        "plain": "Đơn vị mình"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Trưởng phòng KD",
+        "plain": "Trưởng phòng KD"
+       }
+      ],
+      [
+       {
+        "html": "Trưởng phòng Kinh doanh",
+        "plain": "Trưởng phòng Kinh doanh"
+       },
+       {
+        "html": "Đơn vị mình",
+        "plain": "Đơn vị mình"
+       },
+       {
+        "html": "Theo chức trách",
+        "plain": "Theo chức trách"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Đơn vị mình, có ghi lý do",
+        "plain": "Đơn vị mình, có ghi lý do"
+       },
+       {
+        "html": "Không (chỉ duyệt đề nghị)",
+        "plain": "Không (chỉ duyệt đề nghị)"
+       },
+       {
+        "html": "Giám đốc đơn vị",
+        "plain": "Giám đốc đơn vị"
+       }
+      ],
+      [
+       {
+        "html": "Chuyên viên phân tích (Công ty)",
+        "plain": "Chuyên viên phân tích (Công ty)"
+       },
+       {
+        "html": "Không xem chi tiết",
+        "plain": "Không xem chi tiết"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Chỉ bản tổng hợp hoặc đã che",
+        "plain": "Chỉ bản tổng hợp hoặc đã che"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Chủ sở hữu dữ liệu",
+        "plain": "Chủ sở hữu dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "Cán bộ CNTT hỗ trợ",
+        "plain": "Cán bộ CNTT hỗ trợ"
+       },
+       {
+        "html": "Khi có phiếu hỗ trợ",
+        "plain": "Khi có phiếu hỗ trợ"
+       },
+       {
+        "html": "Khi có phiếu đã duyệt",
+        "plain": "Khi có phiếu đã duyệt"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Trưởng phòng CNTT",
+        "plain": "Trưởng phòng CNTT"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị hệ thống",
+        "plain": "Quản trị hệ thống"
+       },
+       {
+        "html": "Không mặc định",
+        "plain": "Không mặc định"
+       },
+       {
+        "html": "Không mặc định",
+        "plain": "Không mặc định"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Thực thi theo phiếu đã duyệt",
+        "plain": "Thực thi theo phiếu đã duyệt"
+       },
+       {
+        "html": "Trưởng phòng CNTT",
+        "plain": "Trưởng phòng CNTT"
+       }
+      ],
+      [
+       {
+        "html": "Kiểm toán nội bộ",
+        "plain": "Kiểm toán nội bộ"
+       },
+       {
+        "html": "Toàn bộ, chỉ đọc, theo đợt",
+        "plain": "Toàn bộ, chỉ đọc, theo đợt"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Theo quyết định kiểm toán",
+        "plain": "Theo quyết định kiểm toán"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Lãnh đạo có thẩm quyền, có thời hạn",
+        "plain": "Lãnh đạo có thẩm quyền, có thời hạn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Cách đọc: nhân viên ghi chỉ số không cần số điện thoại hay hợp đồng của khách, nên chỉ thấy mã và địa chỉ. Quyền xuất chỉ còn ở vai trò Thu nợ và Trưởng phòng, kèm phạm vi và lý do – đây là cách sửa lỗi của chương 3. Quản trị hệ thống <strong>có khả năng kỹ thuật</strong> mở mọi bảng nhưng <strong>không có quyền nghiệp vụ</strong> xem dữ liệu khách hàng; mọi thao tác của họ được ghi log riêng.",
+     "plain": "Cách đọc: nhân viên ghi chỉ số không cần số điện thoại hay hợp đồng của khách, nên chỉ thấy mã và địa chỉ. Quyền xuất chỉ còn ở vai trò Thu nợ và Trưởng phòng, kèm phạm vi và lý do – đây là cách sửa lỗi của chương 3. Quản trị hệ thống có khả năng kỹ thuật mở mọi bảng nhưng không có quyền nghiệp vụ xem dữ liệu khách hàng; mọi thao tác của họ được ghi log riêng."
+    },
+    {
+     "t": "h3",
+     "text": "3.7. Bảy bước thiết kế ma trận quyền"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Lập danh mục tài nguyên</strong> và gắn nhãn phân loại (lấy từ buổi 1).",
+       "level": 0,
+       "plain": "Lập danh mục tài nguyên và gắn nhãn phân loại (lấy từ buổi 1)."
+      },
+      {
+       "html": "<strong>Xác định chủ sở hữu</strong> cho từng tài nguyên. Không có chủ thì không ai có thẩm quyền duyệt.",
+       "level": 0,
+       "plain": "Xác định chủ sở hữu cho từng tài nguyên. Không có chủ thì không ai có thẩm quyền duyệt."
+      },
+      {
+       "html": "<strong>Lập danh mục vai trò</strong> từ cơ cấu tổ chức và mô tả công việc; gộp vị trí có cùng nhu cầu, tránh mỗi người một vai trò.",
+       "level": 0,
+       "plain": "Lập danh mục vai trò từ cơ cấu tổ chức và mô tả công việc; gộp vị trí có cùng nhu cầu, tránh mỗi người một vai trò."
+      },
+      {
+       "html": "<strong>Phỏng vấn nhu cầu:</strong> hỏi \"công việc hằng ngày cần xem, sửa, xuất gì?\", không hỏi \"muốn có quyền gì?\".",
+       "level": 0,
+       "plain": "Phỏng vấn nhu cầu: hỏi \"công việc hằng ngày cần xem, sửa, xuất gì?\", không hỏi \"muốn có quyền gì?\"."
+      },
+      {
+       "html": "<strong>Điền ma trận theo mặc định từ chối;</strong> ghi phạm vi và người duyệt cho mọi ô \"Được\".",
+       "level": 0,
+       "plain": "Điền ma trận theo mặc định từ chối; ghi phạm vi và người duyệt cho mọi ô \"Được\"."
+      },
+      {
+       "html": "<strong>Kiểm tra xung đột:</strong> vai trò nào vi phạm phân tách nhiệm vụ, vai trò nào gộp quá nhiều quyền nhạy cảm?",
+       "level": 0,
+       "plain": "Kiểm tra xung đột: vai trò nào vi phạm phân tách nhiệm vụ, vai trò nào gộp quá nhiều quyền nhạy cảm?"
+      },
+      {
+       "html": "<strong>Phê duyệt, ánh xạ và kiểm thử:</strong> chủ sở hữu ký; CNTT tạo nhóm quyền tương ứng; với mỗi vai trò viết ít nhất một trường hợp phải được và một trường hợp phải bị từ chối, rồi thử bằng tài khoản thử trên môi trường kiểm thử.",
+       "level": 0,
+       "plain": "Phê duyệt, ánh xạ và kiểm thử: chủ sở hữu ký; CNTT tạo nhóm quyền tương ứng; với mỗi vai trò viết ít nhất một trường hợp phải được và một trường hợp phải bị từ chối, rồi thử bằng tài khoản thử trên môi trường kiểm thử."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Phải được",
+        "plain": "Phải được"
+       },
+       {
+        "html": "Phải bị từ chối",
+        "plain": "Phải bị từ chối"
+       }
+      ],
+      [
+       {
+        "html": "Giao dịch viên CSKH ĐL X",
+        "plain": "Giao dịch viên CSKH ĐL X"
+       },
+       {
+        "html": "Mở hồ sơ khách hàng thuộc ĐL X",
+        "plain": "Mở hồ sơ khách hàng thuộc ĐL X"
+       },
+       {
+        "html": "Mở hồ sơ ĐL Y; xuất danh sách toàn đơn vị",
+        "plain": "Mở hồ sơ ĐL Y; xuất danh sách toàn đơn vị"
+       }
+      ],
+      [
+       {
+        "html": "Nhân viên ghi chỉ số",
+        "plain": "Nhân viên ghi chỉ số"
+       },
+       {
+        "html": "Nhập chỉ số tuyến được giao",
+        "plain": "Nhập chỉ số tuyến được giao"
+       },
+       {
+        "html": "Duyệt chỉ số; nhập chỉ số tuyến khác",
+        "plain": "Duyệt chỉ số; nhập chỉ số tuyến khác"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị hệ thống",
+        "plain": "Quản trị hệ thống"
+       },
+       {
+        "html": "Tạo tài khoản theo phiếu đã duyệt",
+        "plain": "Tạo tài khoản theo phiếu đã duyệt"
+       },
+       {
+        "html": "Tự thêm mình vào nhóm \"Trưởng phòng KD\" mà không bị ghi log, cảnh báo",
+        "plain": "Tự thêm mình vào nhóm \"Trưởng phòng KD\" mà không bị ghi log, cảnh báo"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.8. Phân tách nhiệm vụ"
+    },
+    {
+     "t": "p",
+     "html": "Giống nguyên tắc kế toán: người đề nghị chi không tự duyệt chi. Các cặp nhiệm vụ nên tách trong kinh doanh điện:",
+     "plain": "Giống nguyên tắc kế toán: người đề nghị chi không tự duyệt chi. Các cặp nhiệm vụ nên tách trong kinh doanh điện:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Nhập chỉ số công tơ ↔ duyệt, khóa sổ chỉ số.",
+       "level": 0,
+       "plain": "Nhập chỉ số công tơ ↔ duyệt, khóa sổ chỉ số."
+      },
+      {
+       "html": "Tạo hợp đồng mua bán điện ↔ phê duyệt hợp đồng.",
+       "level": 0,
+       "plain": "Tạo hợp đồng mua bán điện ↔ phê duyệt hợp đồng."
+      },
+      {
+       "html": "Điều chỉnh hóa đơn, thoái thu ↔ phê duyệt điều chỉnh.",
+       "level": 0,
+       "plain": "Điều chỉnh hóa đơn, thoái thu ↔ phê duyệt điều chỉnh."
+      },
+      {
+       "html": "Đề nghị cấp quyền ↔ phê duyệt ↔ thực thi cấp quyền.",
+       "level": 0,
+       "plain": "Đề nghị cấp quyền ↔ phê duyệt ↔ thực thi cấp quyền."
+      },
+      {
+       "html": "Quản trị hệ thống ↔ quản trị, xem nhật ký kiểm toán.",
+       "level": 0,
+       "plain": "Quản trị hệ thống ↔ quản trị, xem nhật ký kiểm toán."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Khi một người buộc phải kiêm hai việc (đơn vị nhỏ, thiếu người), cần <strong>kiểm soát bù</strong>: một người khác hậu kiểm định kỳ.",
+     "plain": "Khi một người buộc phải kiêm hai việc (đơn vị nhỏ, thiếu người), cần kiểm soát bù: một người khác hậu kiểm định kỳ."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Quản trị viên được xem mọi thứ.\" → Có khả năng kỹ thuật khác với có quyền nghiệp vụ.",
+     "plain": "Hiểu nhầm hay gặp: \"Quản trị viên được xem mọi thứ.\" → Có khả năng kỹ thuật khác với có quyền nghiệp vụ.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Bài 4 – Vòng đời tài khoản, điều chuyển và tài khoản đặc quyền",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Ma trận quyền đúng hôm nay sẽ sai dần theo thời gian, vì người vào, người đi, người chuyển vị trí. Bài này dạy cách giữ quyền khớp với thực tế ở ba thời điểm đó, và cách canh chừng những tài khoản có quyền lớn nhất.",
+     "plain": "Ma trận quyền đúng hôm nay sẽ sai dần theo thời gian, vì người vào, người đi, người chuyển vị trí. Bài này dạy cách giữ quyền khớp với thực tế ở ba thời điểm đó, và cách canh chừng những tài khoản có quyền lớn nhất."
+    },
+    {
+     "t": "h3",
+     "text": "4.1. Vào – Chuyển – Ra (Joiner – Mover – Leaver)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giai đoạn",
+        "plain": "Giai đoạn"
+       },
+       {
+        "html": "Sự kiện kích hoạt",
+        "plain": "Sự kiện kích hoạt"
+       },
+       {
+        "html": "Việc cần làm",
+        "plain": "Việc cần làm"
+       },
+       {
+        "html": "Sai sót hay gặp",
+        "plain": "Sai sót hay gặp"
+       }
+      ],
+      [
+       {
+        "html": "Vào",
+        "plain": "Vào"
+       },
+       {
+        "html": "Quyết định tuyển dụng, tiếp nhận",
+        "plain": "Quyết định tuyển dụng, tiếp nhận"
+       },
+       {
+        "html": "Tạo tài khoản cá nhân, bật MFA, gán vai trò theo ma trận",
+        "plain": "Tạo tài khoản cá nhân, bật MFA, gán vai trò theo ma trận"
+       },
+       {
+        "html": "Cấp \"giống người cũ\" → thừa hưởng cả quyền thừa của người cũ (chương 3)",
+        "plain": "Cấp \"giống người cũ\" → thừa hưởng cả quyền thừa của người cũ (chương 3)"
+       }
+      ],
+      [
+       {
+        "html": "Chuyển",
+        "plain": "Chuyển"
+       },
+       {
+        "html": "Điều chuyển, bổ nhiệm, đổi chức danh, kiêm nhiệm",
+        "plain": "Điều chuyển, bổ nhiệm, đổi chức danh, kiêm nhiệm"
+       },
+       {
+        "html": "Rà soát quyền cũ → thu hồi phần không cần → cấp quyền mới → kiểm tra",
+        "plain": "Rà soát quyền cũ → thu hồi phần không cần → cấp quyền mới → kiểm tra"
+       },
+       {
+        "html": "Chỉ cộng quyền mới, không gỡ quyền cũ (chị Hà)",
+        "plain": "Chỉ cộng quyền mới, không gỡ quyền cũ (chị Hà)"
+       }
+      ],
+      [
+       {
+        "html": "Ra",
+        "plain": "Ra"
+       },
+       {
+        "html": "Nghỉ việc, nghỉ hưu, hết hợp đồng, hết thực tập",
+        "plain": "Nghỉ việc, nghỉ hưu, hết hợp đồng, hết thực tập"
+       },
+       {
+        "html": "Vô hiệu hóa tài khoản đúng ngày; thu hồi phiên, thiết bị, thẻ; chuyển giao dữ liệu",
+        "plain": "Vô hiệu hóa tài khoản đúng ngày; thu hồi phiên, thiết bị, thẻ; chuyển giao dữ liệu"
+       },
+       {
+        "html": "Tài khoản còn sống sau khi người đã nghỉ (\"tài khoản mồ côi\")",
+        "plain": "Tài khoản còn sống sau khi người đã nghỉ (\"tài khoản mồ côi\")"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Mỗi thay đổi cần đủ bốn thứ: <strong>yêu cầu – phê duyệt – thực thi – bằng chứng hoàn tất.</strong>",
+     "plain": "Mỗi thay đổi cần đủ bốn thứ: yêu cầu – phê duyệt – thực thi – bằng chứng hoàn tất."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Vì sao giai đoạn Chuyển hay sai nhất?</strong> Khi tuyển mới hoặc nghỉ việc, phòng nhân sự thường có thủ tục rõ. Khi điều chuyển, người dùng chủ động xin quyền mới vì cần làm việc, nhưng không ai chủ động xin gỡ quyền cũ. Quyền cũ còn đó không cản trở gì nên không ai phát hiện.",
+     "plain": "Vì sao giai đoạn Chuyển hay sai nhất? Khi tuyển mới hoặc nghỉ việc, phòng nhân sự thường có thủ tục rõ. Khi điều chuyển, người dùng chủ động xin quyền mới vì cần làm việc, nhưng không ai chủ động xin gỡ quyền cũ. Quyền cũ còn đó không cản trở gì nên không ai phát hiện."
+    },
+    {
+     "t": "h3",
+     "text": "4.2. Tám bước khi một nhân viên chuyển đơn vị"
+    },
+    {
+     "t": "p",
+     "html": "Tình huống: chị Hà, giao dịch viên CSKH Điện lực X, có quyết định chuyển sang phòng Kế hoạch Điện lực Y. Bảng dưới là quy trình lẽ ra phải chạy. Trong câu chuyện, bước 4 và bước 7 bị bỏ qua.",
+     "plain": "Tình huống: chị Hà, giao dịch viên CSKH Điện lực X, có quyết định chuyển sang phòng Kế hoạch Điện lực Y. Bảng dưới là quy trình lẽ ra phải chạy. Trong câu chuyện, bước 4 và bước 7 bị bỏ qua."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Việc cần làm",
+        "plain": "Việc cần làm"
+       },
+       {
+        "html": "Ai làm",
+        "plain": "Ai làm"
+       },
+       {
+        "html": "Bằng chứng",
+        "plain": "Bằng chứng"
+       }
+      ],
+      [
+       {
+        "html": "1. Tiếp nhận thông tin",
+        "plain": "1. Tiếp nhận thông tin"
+       },
+       {
+        "html": "Phòng nhân sự gửi quyết định điều chuyển cho CNTT trước ngày hiệu lực",
+        "plain": "Phòng nhân sự gửi quyết định điều chuyển cho CNTT trước ngày hiệu lực"
+       },
+       {
+        "html": "Nhân sự",
+        "plain": "Nhân sự"
+       },
+       {
+        "html": "Quyết định, phiếu thông báo",
+        "plain": "Quyết định, phiếu thông báo"
+       }
+      ],
+      [
+       {
+        "html": "2. Liệt kê quyền hiện có",
+        "plain": "2. Liệt kê quyền hiện có"
+       },
+       {
+        "html": "Xuất danh sách nhóm quyền, ứng dụng, thư mục, báo cáo Power BI chị Hà đang có",
+        "plain": "Xuất danh sách nhóm quyền, ứng dụng, thư mục, báo cáo Power BI chị Hà đang có"
+       },
+       {
+        "html": "CNTT",
+        "plain": "CNTT"
+       },
+       {
+        "html": "Báo cáo quyền \"trước\"",
+        "plain": "Báo cáo quyền \"trước\""
+       }
+      ],
+      [
+       {
+        "html": "3. Xác định nhu cầu bàn giao",
+        "plain": "3. Xác định nhu cầu bàn giao"
+       },
+       {
+        "html": "Quản lý cũ (ĐL X) nêu cụ thể: bàn giao việc gì, cần quyền gì, đến ngày nào",
+        "plain": "Quản lý cũ (ĐL X) nêu cụ thể: bàn giao việc gì, cần quyền gì, đến ngày nào"
+       },
+       {
+        "html": "Quản lý cũ",
+        "plain": "Quản lý cũ"
+       },
+       {
+        "html": "Biên bản, phiếu bàn giao",
+        "plain": "Biên bản, phiếu bàn giao"
+       }
+      ],
+      [
+       {
+        "html": "4. Thu hồi quyền cũ",
+        "plain": "4. Thu hồi quyền cũ"
+       },
+       {
+        "html": "Gỡ toàn bộ quyền của vị trí cũ vào ngày hiệu lực, trừ ngoại lệ đã duyệt ở bước 5",
+        "plain": "Gỡ toàn bộ quyền của vị trí cũ vào ngày hiệu lực, trừ ngoại lệ đã duyệt ở bước 5"
+       },
+       {
+        "html": "CNTT",
+        "plain": "CNTT"
+       },
+       {
+        "html": "Log thay đổi nhóm quyền",
+        "plain": "Log thay đổi nhóm quyền"
+       }
+      ],
+      [
+       {
+        "html": "5. Ngoại lệ bàn giao (nếu có)",
+        "plain": "5. Ngoại lệ bàn giao (nếu có)"
+       },
+       {
+        "html": "Giữ quyền tối thiểu (thường chỉ Xem), đúng phạm vi hồ sơ bàn giao, có ngày hết hạn, có người duyệt",
+        "plain": "Giữ quyền tối thiểu (thường chỉ Xem), đúng phạm vi hồ sơ bàn giao, có ngày hết hạn, có người duyệt"
+       },
+       {
+        "html": "Quản lý cũ + chủ sở hữu duyệt; CNTT thực thi",
+        "plain": "Quản lý cũ + chủ sở hữu duyệt; CNTT thực thi"
+       },
+       {
+        "html": "Phiếu ngoại lệ có ngày hết hạn",
+        "plain": "Phiếu ngoại lệ có ngày hết hạn"
+       }
+      ],
+      [
+       {
+        "html": "6. Cấp quyền mới",
+        "plain": "6. Cấp quyền mới"
+       },
+       {
+        "html": "Gán vai trò theo ma trận của vị trí mới (Kế hoạch – ĐL Y)",
+        "plain": "Gán vai trò theo ma trận của vị trí mới (Kế hoạch – ĐL Y)"
+       },
+       {
+        "html": "Quản lý mới đề nghị; CNTT thực thi",
+        "plain": "Quản lý mới đề nghị; CNTT thực thi"
+       },
+       {
+        "html": "Phiếu đề nghị đã duyệt",
+        "plain": "Phiếu đề nghị đã duyệt"
+       }
+      ],
+      [
+       {
+        "html": "7. Kiểm tra sau thay đổi",
+        "plain": "7. Kiểm tra sau thay đổi"
+       },
+       {
+        "html": "Xuất lại danh sách quyền, so với ma trận; thử truy cập một hồ sơ ĐL X ngoài phạm vi bàn giao → phải bị từ chối",
+        "plain": "Xuất lại danh sách quyền, so với ma trận; thử truy cập một hồ sơ ĐL X ngoài phạm vi bàn giao → phải bị từ chối"
+       },
+       {
+        "html": "CNTT + người kiểm tra độc lập",
+        "plain": "CNTT + người kiểm tra độc lập"
+       },
+       {
+        "html": "Báo cáo quyền \"sau\"",
+        "plain": "Báo cáo quyền \"sau\""
+       }
+      ],
+      [
+       {
+        "html": "8. Đóng ngoại lệ",
+        "plain": "8. Đóng ngoại lệ"
+       },
+       {
+        "html": "Đến ngày hết hạn, gỡ quyền bàn giao (tự động hoặc thủ công); xác nhận đã gỡ",
+        "plain": "Đến ngày hết hạn, gỡ quyền bàn giao (tự động hoặc thủ công); xác nhận đã gỡ"
+       },
+       {
+        "html": "CNTT",
+        "plain": "CNTT"
+       },
+       {
+        "html": "Log gỡ quyền, xác nhận đóng phiếu",
+        "plain": "Log gỡ quyền, xác nhận đóng phiếu"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Nguyên tắc ghi nhớ: <strong>thu trước, cấp sau, kiểm tra bằng thử từ chối.</strong>",
+     "plain": "Nguyên tắc ghi nhớ: thu trước, cấp sau, kiểm tra bằng thử từ chối."
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Các trường hợp đặc biệt"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Trường hợp",
+        "plain": "Trường hợp"
+       },
+       {
+        "html": "Cách xử lý",
+        "plain": "Cách xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Kiêm nhiệm hai vị trí",
+        "plain": "Kiêm nhiệm hai vị trí"
+       },
+       {
+        "html": "Kiểm tra hai vai trò gộp lại có vi phạm phân tách nhiệm vụ không (ví dụ vừa nhập vừa duyệt chỉ số); nếu có thì cần kiểm soát bù",
+        "plain": "Kiểm tra hai vai trò gộp lại có vi phạm phân tách nhiệm vụ không (ví dụ vừa nhập vừa duyệt chỉ số); nếu có thì cần kiểm soát bù"
+       }
+      ],
+      [
+       {
+        "html": "Biệt phái, điều động tạm thời",
+        "plain": "Biệt phái, điều động tạm thời"
+       },
+       {
+        "html": "Cấp quyền nơi đến có thời hạn; tạm khóa quyền nơi đi nếu không còn làm ở đó",
+        "plain": "Cấp quyền nơi đến có thời hạn; tạm khóa quyền nơi đi nếu không còn làm ở đó"
+       }
+      ],
+      [
+       {
+        "html": "Nghỉ dài ngày (thai sản, đi học)",
+        "plain": "Nghỉ dài ngày (thai sản, đi học)"
+       },
+       {
+        "html": "Tạm vô hiệu hóa tài khoản; kích hoạt lại khi quay về và rà soát lại quyền",
+        "plain": "Tạm vô hiệu hóa tài khoản; kích hoạt lại khi quay về và rà soát lại quyền"
+       }
+      ],
+      [
+       {
+        "html": "Nghỉ việc đột xuất hoặc bị kỷ luật",
+        "plain": "Nghỉ việc đột xuất hoặc bị kỷ luật"
+       },
+       {
+        "html": "Vô hiệu hóa ngay, kể cả phiên đang mở, truy cập từ xa, email trên điện thoại",
+        "plain": "Vô hiệu hóa ngay, kể cả phiên đang mở, truy cập từ xa, email trên điện thoại"
+       }
+      ],
+      [
+       {
+        "html": "Quyền khẩn cấp",
+        "plain": "Quyền khẩn cấp"
+       },
+       {
+        "html": "Quy trình riêng, ghi log đầy đủ, rà soát ngay sau khi dùng",
+        "plain": "Quy trình riêng, ghi log đầy đủ, rà soát ngay sau khi dùng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.4. Rà soát quyền định kỳ"
+    },
+    {
+     "t": "p",
+     "html": "Dù quy trình Vào – Chuyển – Ra làm tốt, vẫn cần rà soát định kỳ để bắt trường hợp lọt lưới. Chu kỳ do đơn vị quy định, thường dày hơn với quyền đặc quyền và dữ liệu nhạy cảm.",
+     "plain": "Dù quy trình Vào – Chuyển – Ra làm tốt, vẫn cần rà soát định kỳ để bắt trường hợp lọt lưới. Chu kỳ do đơn vị quy định, thường dày hơn với quyền đặc quyền và dữ liệu nhạy cảm."
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "CNTT xuất danh sách: người dùng – nhóm quyền – lần đăng nhập cuối.",
+       "level": 0,
+       "plain": "CNTT xuất danh sách: người dùng – nhóm quyền – lần đăng nhập cuối."
+      },
+      {
+       "html": "Gửi quản lý trực tiếp và chủ sở hữu dữ liệu xác nhận từng dòng: Giữ / Thu hồi / Điều chỉnh.",
+       "level": 0,
+       "plain": "Gửi quản lý trực tiếp và chủ sở hữu dữ liệu xác nhận từng dòng: Giữ / Thu hồi / Điều chỉnh."
+      },
+      {
+       "html": "CNTT thu hồi theo kết quả; lưu biên bản rà soát.",
+       "level": 0,
+       "plain": "CNTT thu hồi theo kết quả; lưu biên bản rà soát."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Dấu hiệu cần kiểm tra kỹ: tài khoản không đăng nhập thời gian dài; tài khoản không khớp danh sách nhân sự; người có quyền ở nhiều đơn vị; quyền gán trực tiếp cho cá nhân thay vì qua nhóm; tài khoản dùng chung; thành viên nhóm quản trị và nhóm có quyền xuất. Sai lầm hay gặp: quản lý bấm \"Giữ tất cả\" cho nhanh.",
+     "plain": "Dấu hiệu cần kiểm tra kỹ: tài khoản không đăng nhập thời gian dài; tài khoản không khớp danh sách nhân sự; người có quyền ở nhiều đơn vị; quyền gán trực tiếp cho cá nhân thay vì qua nhóm; tài khoản dùng chung; thành viên nhóm quản trị và nhóm có quyền xuất. Sai lầm hay gặp: quản lý bấm \"Giữ tất cả\" cho nhanh."
+    },
+    {
+     "t": "h3",
+     "text": "4.5. Sáu lỗi phổ biến"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lỗi",
+        "plain": "Lỗi"
+       },
+       {
+        "html": "Biểu hiện",
+        "plain": "Biểu hiện"
+       },
+       {
+        "html": "Hậu quả",
+        "plain": "Hậu quả"
+       },
+       {
+        "html": "Cách phòng",
+        "plain": "Cách phòng"
+       }
+      ],
+      [
+       {
+        "html": "Tích tụ quyền",
+        "plain": "Tích tụ quyền"
+       },
+       {
+        "html": "Sau 3 lần điều chuyển, một người xem được khách hàng 3 đơn vị",
+        "plain": "Sau 3 lần điều chuyển, một người xem được khách hàng 3 đơn vị"
+       },
+       {
+        "html": "Tài khoản bị lộ → lộ dữ liệu cả 3 đơn vị",
+        "plain": "Tài khoản bị lộ → lộ dữ liệu cả 3 đơn vị"
+       },
+       {
+        "html": "\"Thu trước, cấp sau\"; rà soát định kỳ",
+        "plain": "\"Thu trước, cấp sau\"; rà soát định kỳ"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản mồ côi",
+        "plain": "Tài khoản mồ côi"
+       },
+       {
+        "html": "Người nghỉ việc vẫn đăng nhập được email, truy cập từ xa",
+        "plain": "Người nghỉ việc vẫn đăng nhập được email, truy cập từ xa"
+       },
+       {
+        "html": "Tài khoản không ai theo dõi bị dùng",
+        "plain": "Tài khoản không ai theo dõi bị dùng"
+       },
+       {
+        "html": "Nhân sự báo CNTT đúng ngày; đối chiếu danh sách định kỳ",
+        "plain": "Nhân sự báo CNTT đúng ngày; đối chiếu danh sách định kỳ"
+       }
+      ],
+      [
+       {
+        "html": "Cấp \"giống người khác\"",
+        "plain": "Cấp \"giống người khác\""
+       },
+       {
+        "html": "\"Cấp cho bạn mới giống y anh C\"",
+        "plain": "\"Cấp cho bạn mới giống y anh C\""
+       },
+       {
+        "html": "Nhân bản cả quyền thừa",
+        "plain": "Nhân bản cả quyền thừa"
+       },
+       {
+        "html": "Cấp theo vai trò trong ma trận",
+        "plain": "Cấp theo vai trò trong ma trận"
+       }
+      ],
+      [
+       {
+        "html": "Quyền gán trực tiếp",
+        "plain": "Quyền gán trực tiếp"
+       },
+       {
+        "html": "Chia sẻ thư mục cho từng email cá nhân",
+        "plain": "Chia sẻ thư mục cho từng email cá nhân"
+       },
+       {
+        "html": "Không ai biết hết ai đang có quyền",
+        "plain": "Không ai biết hết ai đang có quyền"
+       },
+       {
+        "html": "Cấp qua nhóm",
+        "plain": "Cấp qua nhóm"
+       }
+      ],
+      [
+       {
+        "html": "Quyền tạm không hết hạn",
+        "plain": "Quyền tạm không hết hạn"
+       },
+       {
+        "html": "\"Cho mượn quyền xuất tuần này\" rồi quên",
+        "plain": "\"Cho mượn quyền xuất tuần này\" rồi quên"
+       },
+       {
+        "html": "Quyền tạm thành vĩnh viễn",
+        "plain": "Quyền tạm thành vĩnh viễn"
+       },
+       {
+        "html": "Mọi ngoại lệ có ngày hết hạn",
+        "plain": "Mọi ngoại lệ có ngày hết hạn"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò quá rộng",
+        "plain": "Vai trò quá rộng"
+       },
+       {
+        "html": "Vai trò \"Giao dịch viên\" có cả quyền xuất",
+        "plain": "Vai trò \"Giao dịch viên\" có cả quyền xuất"
+       },
+       {
+        "html": "Ai cũng xuất được danh sách khách hàng",
+        "plain": "Ai cũng xuất được danh sách khách hàng"
+       },
+       {
+        "html": "Tách quyền xuất thành vai trò riêng",
+        "plain": "Tách quyền xuất thành vai trò riêng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.6. Tài khoản đặc quyền"
+    },
+    {
+     "t": "p",
+     "html": "Tài khoản đặc quyền có thể thay đổi cấu hình, quyền của người khác hoặc đọc toàn bộ dữ liệu. Kẻ tấn công luôn nhắm vào loại này vì chiếm một tài khoản là có cả hệ thống.",
+     "plain": "Tài khoản đặc quyền có thể thay đổi cấu hình, quyền của người khác hoặc đọc toàn bộ dữ liệu. Kẻ tấn công luôn nhắm vào loại này vì chiếm một tài khoản là có cả hệ thống."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Kiểm soát cần có",
+        "plain": "Kiểm soát cần có"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị danh tính",
+        "plain": "Quản trị danh tính"
+       },
+       {
+        "html": "Quản trị Active Directory, Microsoft Entra ID",
+        "plain": "Quản trị Active Directory, Microsoft Entra ID"
+       },
+       {
+        "html": "Rất ít người; MFA chống lừa đảo; tài khoản riêng chỉ dùng khi quản trị",
+        "plain": "Rất ít người; MFA chống lừa đảo; tài khoản riêng chỉ dùng khi quản trị"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị máy chủ, cơ sở dữ liệu",
+        "plain": "Quản trị máy chủ, cơ sở dữ liệu"
+       },
+       {
+        "html": "Tài khoản DBA, root",
+        "plain": "Tài khoản DBA, root"
+       },
+       {
+        "html": "Ghi log thao tác; phê duyệt thay đổi; không dùng chung",
+        "plain": "Ghi log thao tác; phê duyệt thay đổi; không dùng chung"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị ứng dụng nghiệp vụ",
+        "plain": "Quản trị ứng dụng nghiệp vụ"
+       },
+       {
+        "html": "Quản trị phần mềm khách hàng, Power BI",
+        "plain": "Quản trị phần mềm khách hàng, Power BI"
+       },
+       {
+        "html": "Không kiêm người dùng nghiệp vụ; rà soát định kỳ",
+        "plain": "Không kiêm người dùng nghiệp vụ; rà soát định kỳ"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị cục bộ trên máy tính",
+        "plain": "Quản trị cục bộ trên máy tính"
+       },
+       {
+        "html": "Admin trên từng máy",
+        "plain": "Admin trên từng máy"
+       },
+       {
+        "html": "Mật khẩu khác nhau giữa các máy; người dùng thường không có quyền admin",
+        "plain": "Mật khẩu khác nhau giữa các máy; người dùng thường không có quyền admin"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản dịch vụ",
+        "plain": "Tài khoản dịch vụ"
+       },
+       {
+        "html": "Tài khoản phần mềm dùng để kết nối cơ sở dữ liệu",
+        "plain": "Tài khoản phần mềm dùng để kết nối cơ sở dữ liệu"
+       },
+       {
+        "html": "Không cho đăng nhập tương tác; quyền đúng mức; có người chịu trách nhiệm",
+        "plain": "Không cho đăng nhập tương tác; quyền đúng mức; có người chịu trách nhiệm"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản mặc định của thiết bị",
+        "plain": "Tài khoản mặc định của thiết bị"
+       },
+       {
+        "html": "admin/admin của camera, bộ định tuyến, thiết bị đo",
+        "plain": "admin/admin của camera, bộ định tuyến, thiết bị đo"
+       },
+       {
+        "html": "Đổi ngay khi lắp đặt; vô hiệu nếu được",
+        "plain": "Đổi ngay khi lắp đặt; vô hiệu nếu được"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Các giải pháp quản lý truy cập đặc quyền (PAM) thường có két mật khẩu tự đổi, cấp quyền đúng lúc, ghi hình phiên quản trị. Đơn vị có thể đạt mục tiêu tương tự bằng quy trình và công cụ sẵn có; không bắt buộc một sản phẩm cụ thể.",
+     "plain": "Các giải pháp quản lý truy cập đặc quyền (PAM) thường có két mật khẩu tự đổi, cấp quyền đúng lúc, ghi hình phiên quản trị. Đơn vị có thể đạt mục tiêu tương tự bằng quy trình và công cụ sẵn có; không bắt buộc một sản phẩm cụ thể."
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Thực hành 3 – Xây ma trận quyền (40 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Dữ liệu để làm bài:</strong> bảng phân loại bạn đã làm ở Thực hành 1 (năm nhóm dữ liệu) và sơ đồ luồng ở Thực hành 2.",
+     "plain": "Dữ liệu để làm bài: bảng phân loại bạn đã làm ở Thực hành 1 (năm nhóm dữ liệu) và sơ đồ luồng ở Thực hành 2."
+    },
+    {
+     "t": "h3",
+     "text": "Nhiệm vụ"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Lập quyền cho 5 vai trò: nhân viên nghiệp vụ, trưởng phòng, chuyên viên thu nợ, cán bộ CNTT hỗ trợ, quản trị hệ thống.",
+       "level": 0,
+       "plain": "Lập quyền cho 5 vai trò: nhân viên nghiệp vụ, trưởng phòng, chuyên viên thu nợ, cán bộ CNTT hỗ trợ, quản trị hệ thống."
+      },
+      {
+       "html": "Tách rõ 4 thao tác: xem, sửa, xuất, cấp quyền.",
+       "level": 0,
+       "plain": "Tách rõ 4 thao tác: xem, sửa, xuất, cấp quyền."
+      },
+      {
+       "html": "Ghi phạm vi đơn vị và người duyệt cho mỗi ô khác \"Không\". Mẫu ô: <em>Xem – KH đơn vị mình – duyệt: Trưởng phòng KD.</em>",
+       "level": 0,
+       "plain": "Ghi phạm vi đơn vị và người duyệt cho mỗi ô khác \"Không\". Mẫu ô: Xem – KH đơn vị mình – duyệt: Trưởng phòng KD."
+      },
+      {
+       "html": "Liệt kê ít nhất 3 trường hợp phải bị từ chối và 2 trường hợp phải xin thêm quyền.",
+       "level": 0,
+       "plain": "Liệt kê ít nhất 3 trường hợp phải bị từ chối và 2 trường hợp phải xin thêm quyền."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án gợi ý cho nhóm dữ liệu \"Khách hàng và hợp đồng\"",
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Xem",
+        "plain": "Xem"
+       },
+       {
+        "html": "Sửa",
+        "plain": "Sửa"
+       },
+       {
+        "html": "Xuất",
+        "plain": "Xuất"
+       },
+       {
+        "html": "Cấp quyền",
+        "plain": "Cấp quyền"
+       }
+      ],
+      [
+       {
+        "html": "Nhân viên nghiệp vụ (giao dịch viên)",
+        "plain": "Nhân viên nghiệp vụ (giao dịch viên)"
+       },
+       {
+        "html": "KH đơn vị mình – duyệt: TP KD",
+        "plain": "KH đơn vị mình – duyệt: TP KD"
+       },
+       {
+        "html": "Hồ sơ được giao – duyệt: TP KD",
+        "plain": "Hồ sơ được giao – duyệt: TP KD"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       }
+      ],
+      [
+       {
+        "html": "Chuyên viên thu nợ",
+        "plain": "Chuyên viên thu nợ"
+       },
+       {
+        "html": "KH đơn vị mình – duyệt: TP KD",
+        "plain": "KH đơn vị mình – duyệt: TP KD"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Danh sách nợ, mẫu cột cố định, ghi lý do – duyệt: TP KD",
+        "plain": "Danh sách nợ, mẫu cột cố định, ghi lý do – duyệt: TP KD"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       }
+      ],
+      [
+       {
+        "html": "Trưởng phòng Kinh doanh",
+        "plain": "Trưởng phòng Kinh doanh"
+       },
+       {
+        "html": "KH đơn vị mình",
+        "plain": "KH đơn vị mình"
+       },
+       {
+        "html": "Theo chức trách",
+        "plain": "Theo chức trách"
+       },
+       {
+        "html": "Đơn vị mình, ghi lý do – duyệt: Giám đốc",
+        "plain": "Đơn vị mình, ghi lý do – duyệt: Giám đốc"
+       },
+       {
+        "html": "Duyệt đề nghị, không tự cấu hình",
+        "plain": "Duyệt đề nghị, không tự cấu hình"
+       }
+      ],
+      [
+       {
+        "html": "Cán bộ CNTT hỗ trợ",
+        "plain": "Cán bộ CNTT hỗ trợ"
+       },
+       {
+        "html": "Khi có phiếu hỗ trợ – duyệt: TP CNTT",
+        "plain": "Khi có phiếu hỗ trợ – duyệt: TP CNTT"
+       },
+       {
+        "html": "Khi có phiếu đã duyệt",
+        "plain": "Khi có phiếu đã duyệt"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       }
+      ],
+      [
+       {
+        "html": "Quản trị hệ thống",
+        "plain": "Quản trị hệ thống"
+       },
+       {
+        "html": "Không mặc định",
+        "plain": "Không mặc định"
+       },
+       {
+        "html": "Không mặc định",
+        "plain": "Không mặc định"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Thực thi theo phiếu đã duyệt; có log riêng",
+        "plain": "Thực thi theo phiếu đã duyệt; có log riêng"
+       }
+      ]
+     ],
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Trường hợp phải bị từ chối:</strong>",
+     "plain": "Trường hợp phải bị từ chối:",
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Nhân viên Điện lực X mở hồ sơ khách hàng Điện lực Y.",
+       "level": 0,
+       "plain": "Nhân viên Điện lực X mở hồ sơ khách hàng Điện lực Y."
+      },
+      {
+       "html": "Giao dịch viên xuất danh sách toàn đơn vị (lỗi của chương 3).",
+       "level": 0,
+       "plain": "Giao dịch viên xuất danh sách toàn đơn vị (lỗi của chương 3)."
+      },
+      {
+       "html": "Cán bộ CNTT xuất danh sách khách hàng khi không có phiếu yêu cầu.",
+       "level": 0,
+       "plain": "Cán bộ CNTT xuất danh sách khách hàng khi không có phiếu yêu cầu."
+      },
+      {
+       "html": "Nhân viên tự cấp thêm quyền xuất cho mình.",
+       "level": 0,
+       "plain": "Nhân viên tự cấp thêm quyền xuất cho mình."
+      },
+      {
+       "html": "Quản trị hệ thống sửa chỉ số công tơ khi không có yêu cầu nghiệp vụ được duyệt.",
+       "level": 0,
+       "plain": "Quản trị hệ thống sửa chỉ số công tơ khi không có yêu cầu nghiệp vụ được duyệt."
+      }
+     ],
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Trường hợp xin thêm quyền:</strong>",
+     "plain": "Trường hợp xin thêm quyền:",
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Trưởng phòng cần xuất sản lượng chi tiết cho đoàn kiểm tra → quyền tạm, có ngày hết hạn, chủ dữ liệu duyệt.",
+       "level": 0,
+       "plain": "Trưởng phòng cần xuất sản lượng chi tiết cho đoàn kiểm tra → quyền tạm, có ngày hết hạn, chủ dữ liệu duyệt."
+      },
+      {
+       "html": "Giao dịch viên được giao gọi nhắc nợ một đợt → không cấp quyền xuất; chuyên viên thu nợ xuất đúng danh sách hộ được giao rồi chia việc, hoặc cấp quyền xem danh sách được giao trong hệ thống.",
+       "level": 0,
+       "plain": "Giao dịch viên được giao gọi nhắc nợ một đợt → không cấp quyền xuất; chuyên viên thu nợ xuất đúng danh sách hộ được giao rồi chia việc, hoặc cấp quyền xem danh sách được giao trong hệ thống."
+      }
+     ],
+     "reveal": "m03-th3"
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chí đánh giá"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Không có ô \"Toàn quyền\" thiếu lý do.",
+       "level": 0,
+       "plain": "Không có ô \"Toàn quyền\" thiếu lý do."
+      },
+      {
+       "html": "Quyền xuất và quyền cấp quyền được tách khỏi quyền xem.",
+       "level": 0,
+       "plain": "Quyền xuất và quyền cấp quyền được tách khỏi quyền xem."
+      },
+      {
+       "html": "Mọi ô \"Được\" có phạm vi và người duyệt.",
+       "level": 0,
+       "plain": "Mọi ô \"Được\" có phạm vi và người duyệt."
+      },
+      {
+       "html": "Có kiểm tra cả truy cập được phép và truy cập phải bị từ chối.",
+       "level": 0,
+       "plain": "Có kiểm tra cả truy cập được phép và truy cập phải bị từ chối."
+      }
+     ]
+    }
+   ],
+   "id": "s9",
+   "activity": "m03-th3"
+  },
+  {
+   "title": "Thực hành 4 – Chuyển đơn vị còn quyền cũ (25 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "h3",
+     "text": "Tình huống"
+    },
+    {
+     "t": "p",
+     "html": "Chị Hà chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y. Một tuần sau, tài khoản của chị vẫn xem và xuất được khách hàng Điện lực X. Quản lý cũ muốn giữ nguyên quyền \"để Hà bàn giao cho xong\" 37 hồ sơ khiếu nại đang xử lý dở.",
+     "plain": "Chị Hà chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y. Một tuần sau, tài khoản của chị vẫn xem và xuất được khách hàng Điện lực X. Quản lý cũ muốn giữ nguyên quyền \"để Hà bàn giao cho xong\" 37 hồ sơ khiếu nại đang xử lý dở."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Đóng vai (mỗi nhóm 4 người):</strong> chị Hà, quản lý Điện lực X (anh Tuấn), quản lý phòng Kế hoạch Điện lực Y, cán bộ CNTT.",
+     "plain": "Bạn hãy xem xét lần lượt góc nhìn của chị Hà, quản lý Điện lực X (anh Tuấn), quản lý phòng Kế hoạch Điện lực Y và cán bộ CNTT. Mỗi học viên nộp một phương án riêng."
+    },
+    {
+     "t": "h3",
+     "text": "Bạn cần trả lời"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nhu cầu bàn giao cụ thể là gì? Cần quyền gì (xem hay sửa), trên dữ liệu nào?",
+       "level": 0,
+       "plain": "Nhu cầu bàn giao cụ thể là gì? Cần quyền gì (xem hay sửa), trên dữ liệu nào?"
+      },
+      {
+       "html": "Ai phê duyệt ngoại lệ, và quyền hết hạn khi nào?",
+       "level": 0,
+       "plain": "Ai phê duyệt ngoại lệ, và quyền hết hạn khi nào?"
+      },
+      {
+       "html": "Thu hồi phần quyền không còn cần, cấp quyền mới ở Điện lực Y, rồi kiểm tra lại bằng cách nào?",
+       "level": 0,
+       "plain": "Thu hồi phần quyền không còn cần, cấp quyền mới ở Điện lực Y, rồi kiểm tra lại bằng cách nào?"
+      },
+      {
+       "html": "Bằng chứng nào cho thấy quyền cũ đã được xử lý?",
+       "level": 0,
+       "plain": "Bằng chứng nào cho thấy quyền cũ đã được xử lý?"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án gợi ý",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Trả lời",
+        "plain": "Trả lời"
+       }
+      ],
+      [
+       {
+        "html": "Nhu cầu bàn giao",
+        "plain": "Nhu cầu bàn giao"
+       },
+       {
+        "html": "Hoàn tất 37 hồ sơ khiếu nại dở dang. Chỉ cần <strong>xem</strong> (và ghi chú bàn giao nếu hệ thống hỗ trợ) đúng 37 hồ sơ đó. Không sửa, không xuất",
+        "plain": "Hoàn tất 37 hồ sơ khiếu nại dở dang. Chỉ cần xem (và ghi chú bàn giao nếu hệ thống hỗ trợ) đúng 37 hồ sơ đó. Không sửa, không xuất"
+       }
+      ],
+      [
+       {
+        "html": "Phê duyệt và thời hạn",
+        "plain": "Phê duyệt và thời hạn"
+       },
+       {
+        "html": "Anh Tuấn (quản lý cũ) và chủ sở hữu dữ liệu duyệt; ngày hết hạn cụ thể, ví dụ 2 tuần. Tốt hơn nữa: chuyển 37 hồ sơ cho người kế nhiệm, chị Hà chỉ hướng dẫn miệng, không cần ngoại lệ",
+        "plain": "Anh Tuấn (quản lý cũ) và chủ sở hữu dữ liệu duyệt; ngày hết hạn cụ thể, ví dụ 2 tuần. Tốt hơn nữa: chuyển 37 hồ sơ cho người kế nhiệm, chị Hà chỉ hướng dẫn miệng, không cần ngoại lệ"
+       }
+      ],
+      [
+       {
+        "html": "Thu hồi, cấp mới, kiểm tra",
+        "plain": "Thu hồi, cấp mới, kiểm tra"
+       },
+       {
+        "html": "CNTT gỡ ngay quyền xuất và quyền xem toàn đơn vị X; cấp vai trò Kế hoạch – ĐL Y theo ma trận; kiểm tra bằng tài khoản của chị Hà: mở một hồ sơ ĐL X ngoài 37 hồ sơ → phải bị từ chối; thử xuất → phải bị từ chối",
+        "plain": "CNTT gỡ ngay quyền xuất và quyền xem toàn đơn vị X; cấp vai trò Kế hoạch – ĐL Y theo ma trận; kiểm tra bằng tài khoản của chị Hà: mở một hồ sơ ĐL X ngoài 37 hồ sơ → phải bị từ chối; thử xuất → phải bị từ chối"
+       }
+      ],
+      [
+       {
+        "html": "Bằng chứng",
+        "plain": "Bằng chứng"
+       },
+       {
+        "html": "Báo cáo quyền \"trước\" và \"sau\"; phiếu ngoại lệ có ngày hết hạn; log gỡ quyền khi đóng ngoại lệ. Email đề nghị không phải bằng chứng hoàn tất",
+        "plain": "Báo cáo quyền \"trước\" và \"sau\"; phiếu ngoại lệ có ngày hết hạn; log gỡ quyền khi đóng ngoại lệ. Email đề nghị không phải bằng chứng hoàn tất"
+       }
+      ]
+     ],
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Điểm chữa bài:</strong> người xem xét từ vai trò quản lý cũ thường nói \"cứ để nguyên cho tiện, Hà là người tin cậy\". Câu trả lời: vấn đề không phải chị Hà có đáng tin không, mà là nếu tài khoản của chị bị chiếm thì kẻ gian có thêm dữ liệu của cả một đơn vị.",
+     "plain": "Điểm chữa bài: người xem xét từ vai trò quản lý cũ thường nói \"cứ để nguyên cho tiện, Hà là người tin cậy\". Câu trả lời: vấn đề không phải chị Hà có đáng tin không, mà là nếu tài khoản của chị bị chiếm thì kẻ gian có thêm dữ liệu của cả một đơn vị.",
+     "callout": "note",
+     "reveal": "m03-th4"
+    }
+   ],
+   "id": "s10",
+   "activity": "m03-th4"
+  },
+  {
+   "title": "Quay lại tình huống: trả lời bốn câu hỏi của chương 3",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Câu trả lời của lớp",
+        "plain": "Câu trả lời của lớp"
+       },
+       {
+        "html": "Bài",
+        "plain": "Bài"
+       }
+      ],
+      [
+       {
+        "html": "Lỗi ở bước nào?",
+        "plain": "Lỗi ở bước nào?"
+       },
+       {
+        "html": "Phân quyền. Anh Cường xác thực đúng, nhưng vai trò của anh được cấp quá rộng",
+        "plain": "Phân quyền. Anh Cường xác thực đúng, nhưng vai trò của anh được cấp quá rộng"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Giao dịch viên cần quyền gì?",
+        "plain": "Giao dịch viên cần quyền gì?"
+       },
+       {
+        "html": "Xem khách hàng đơn vị mình, sửa hồ sơ được giao. Không xuất toàn đơn vị. Quyền xuất tách thành vai trò riêng cho chuyên viên thu nợ, có mẫu cột và phê duyệt",
+        "plain": "Xem khách hàng đơn vị mình, sửa hồ sơ được giao. Không xuất toàn đơn vị. Quyền xuất tách thành vai trò riêng cho chuyên viên thu nợ, có mẫu cột và phê duyệt"
+       },
+       {
+        "html": "2, 3",
+        "plain": "2, 3"
+       }
+      ],
+      [
+       {
+        "html": "RBAC hay ABAC?",
+        "plain": "RBAC hay ABAC?"
+       },
+       {
+        "html": "Kết hợp: vai trò quyết định chức năng, thuộc tính \"đơn vị công tác\" quyết định phạm vi – để tránh 30 đơn vị × n vai trò",
+        "plain": "Kết hợp: vai trò quyết định chức năng, thuộc tính \"đơn vị công tác\" quyết định phạm vi – để tránh 30 đơn vị × n vai trò"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Khi chị Hà chuyển đi thì sao?",
+        "plain": "Khi chị Hà chuyển đi thì sao?"
+       },
+       {
+        "html": "Tám bước, thu trước cấp sau, kiểm tra bằng thử từ chối; ngoại lệ bàn giao chỉ Xem, có hạn",
+        "plain": "Tám bước, thu trước cấp sau, kiểm tra bằng thử từ chối; ngoại lệ bàn giao chỉ Xem, có hạn"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lớp đã sửa được:</strong> quyền cũ của chị Hà được thu hồi (Thực hành 4); đơn vị có bản ma trận quyền đầu tiên (Thực hành 3).",
+     "plain": "Lớp đã sửa được: quyền cũ của chị Hà được thu hồi (Thực hành 4); đơn vị có bản ma trận quyền đầu tiên (Thực hành 3)."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Còn bỏ ngỏ – ghi lên tờ \"Việc hẹn sửa sau\":</strong> việc thu hẹp quyền xuất của 14 giao dịch viên bị hẹn đến \"đợt rà soát quý\" vì \"đang cuối năm, sợ ảnh hưởng công việc\". Tài khoản nv_c của anh Cường vẫn xuất được toàn bộ 8.500 khách hàng. Cùng ghi lên tờ này hai điểm bỏ ngỏ từ ngày 1: các bản sao không ai quản lý, và bản trên OneDrive cá nhân.",
+     "plain": "Còn bỏ ngỏ – ghi lên tờ \"Việc hẹn sửa sau\": việc thu hẹp quyền xuất của 14 giao dịch viên bị hẹn đến \"đợt rà soát quý\" vì \"đang cuối năm, sợ ảnh hưởng công việc\". Tài khoản nv_c của anh Cường vẫn xuất được toàn bộ 8.500 khách hàng. Cùng ghi lên tờ này hai điểm bỏ ngỏ từ ngày 1: các bản sao không ai quản lý, và bản trên OneDrive cá nhân."
+    },
+    {
+     "t": "p",
+     "html": "Buổi chiều sẽ hỏi tiếp: ma trận quyền chỉ có ý nghĩa nếu người đăng nhập bằng nv_c đúng là anh Cường. Nếu không phải thì sao?",
+     "plain": "Buổi chiều sẽ hỏi tiếp: ma trận quyền chỉ có ý nghĩa nếu người đăng nhập bằng nv_c đúng là anh Cường. Nếu không phải thì sao?"
+    }
+   ],
+   "id": "s11"
+  },
+  {
+   "title": "Áp dụng tại đơn vị",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Xem lại quyền của chính mình trên các hệ thống hay dùng; báo CNTT gỡ quyền cả năm không dùng.",
+       "level": 0,
+       "plain": "☐ Xem lại quyền của chính mình trên các hệ thống hay dùng; báo CNTT gỡ quyền cả năm không dùng."
+      },
+      {
+       "html": "☐ Nếu từng chuyển đơn vị: kiểm tra còn vào được dữ liệu nơi cũ không; nếu còn, báo gỡ.",
+       "level": 0,
+       "plain": "☐ Nếu từng chuyển đơn vị: kiểm tra còn vào được dữ liệu nơi cũ không; nếu còn, báo gỡ."
+      },
+      {
+       "html": "☐ Quản lý: yêu cầu CNTT gửi danh sách ai đang có quyền xuất dữ liệu khách hàng của đơn vị mình; rà từng dòng.",
+       "level": 0,
+       "plain": "☐ Quản lý: yêu cầu CNTT gửi danh sách ai đang có quyền xuất dữ liệu khách hàng của đơn vị mình; rà từng dòng."
+      },
+      {
+       "html": "☐ Đề xuất với phòng nhân sự: mọi quyết định điều chuyển được gửi cho CNTT trước ngày hiệu lực.",
+       "level": 0,
+       "plain": "☐ Đề xuất với phòng nhân sự: mọi quyết định điều chuyển được gửi cho CNTT trước ngày hiệu lực."
+      },
+      {
+       "html": "☐ Khi xin quyền: ghi rõ thao tác, phạm vi, thời hạn; không xin \"quyền giống anh X\".",
+       "level": 0,
+       "plain": "☐ Khi xin quyền: ghi rõ thao tác, phạm vi, thời hạn; không xin \"quyền giống anh X\"."
+      }
+     ]
+    }
+   ],
+   "id": "s12"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Định danh (bạn là ai), xác thực (chứng minh đúng là bạn), phân quyền (được làm gì), ghi vết (đã làm gì) là bốn bước khác nhau; đăng nhập được chưa có nghĩa được xem.",
+       "level": 0,
+       "plain": "Định danh (bạn là ai), xác thực (chứng minh đúng là bạn), phân quyền (được làm gì), ghi vết (đã làm gì) là bốn bước khác nhau; đăng nhập được chưa có nghĩa được xem."
+      },
+      {
+       "html": "Kiểm tra quyền phải nằm ở phía hệ thống, trên từng yêu cầu; giấu nút không phải kiểm soát.",
+       "level": 0,
+       "plain": "Kiểm tra quyền phải nằm ở phía hệ thống, trên từng yêu cầu; giấu nút không phải kiểm soát."
+      },
+      {
+       "html": "Quyền tối thiểu có bốn chiều: đúng chức năng, đúng phạm vi, đúng thời gian, có rà soát.",
+       "level": 0,
+       "plain": "Quyền tối thiểu có bốn chiều: đúng chức năng, đúng phạm vi, đúng thời gian, có rà soát."
+      },
+      {
+       "html": "RBAC gán quyền theo vai trò, ABAC theo thuộc tính và chính sách; thực tế hay kết hợp hai mô hình.",
+       "level": 0,
+       "plain": "RBAC gán quyền theo vai trò, ABAC theo thuộc tính và chính sách; thực tế hay kết hợp hai mô hình."
+      },
+      {
+       "html": "Ma trận quyền là căn cứ cấp, rà soát và điều tra; mỗi ô \"Được\" có phạm vi và người duyệt.",
+       "level": 0,
+       "plain": "Ma trận quyền là căn cứ cấp, rà soát và điều tra; mỗi ô \"Được\" có phạm vi và người duyệt."
+      },
+      {
+       "html": "Phân tách nhiệm vụ: người làm không tự duyệt; người đề nghị quyền không tự cấu hình.",
+       "level": 0,
+       "plain": "Phân tách nhiệm vụ: người làm không tự duyệt; người đề nghị quyền không tự cấu hình."
+      },
+      {
+       "html": "Khi điều chuyển: thu trước, cấp sau, kiểm tra bằng thử từ chối; ngoại lệ phải có hạn.",
+       "level": 0,
+       "plain": "Khi điều chuyển: thu trước, cấp sau, kiểm tra bằng thử từ chối; ngoại lệ phải có hạn."
+      },
+      {
+       "html": "Tài khoản đặc quyền cần ít người, MFA mạnh, tài khoản riêng và ghi log riêng.",
+       "level": 0,
+       "plain": "Tài khoản đặc quyền cần ít người, MFA mạnh, tài khoản riêng và ghi log riêng."
+      }
+     ]
+    }
+   ],
+   "id": "s13"
+  },
+  {
+   "title": "Câu hỏi ôn tập",
+   "kind": "review",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Đáp án",
+        "plain": "Đáp án"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Nhập mật khẩu thuộc bước nào: định danh, xác thực hay phân quyền?",
+        "plain": "Nhập mật khẩu thuộc bước nào: định danh, xác thực hay phân quyền?"
+       },
+       {
+        "html": "Xác thực",
+        "plain": "Xác thực"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Sửa donvi=DV_A thành DV_B trên đường dẫn mà xem được số liệu đơn vị khác là lỗi gì?",
+        "plain": "Sửa donvi=DV_A thành DV_B trên đường dẫn mà xem được số liệu đơn vị khác là lỗi gì?"
+       },
+       {
+        "html": "Lỗi phân quyền (IDOR): hệ thống không kiểm tra quyền trên từng yêu cầu",
+        "plain": "Lỗi phân quyền (IDOR): hệ thống không kiểm tra quyền trên từng yêu cầu"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Vô tình thấy dữ liệu đơn vị khác thì làm gì?",
+        "plain": "Vô tình thấy dữ liệu đơn vị khác thì làm gì?"
+       },
+       {
+        "html": "Không tải, không thử tiếp; ghi lại; báo CNTT",
+        "plain": "Không tải, không thử tiếp; ghi lại; báo CNTT"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Kể bốn chiều của quyền tối thiểu",
+        "plain": "Kể bốn chiều của quyền tối thiểu"
+       },
+       {
+        "html": "Chức năng, phạm vi, thời gian, rà soát",
+        "plain": "Chức năng, phạm vi, thời gian, rà soát"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Tích tụ quyền là gì, vì sao nguy hiểm?",
+        "plain": "Tích tụ quyền là gì, vì sao nguy hiểm?"
+       },
+       {
+        "html": "Quyền cộng dần qua điều chuyển, không ai gỡ; tài khoản bị chiếm thì thiệt hại lớn theo số quyền thừa",
+        "plain": "Quyền cộng dần qua điều chuyển, không ai gỡ; tài khoản bị chiếm thì thiệt hại lớn theo số quyền thừa"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "RBAC khác ABAC ở điểm nào?",
+        "plain": "RBAC khác ABAC ở điểm nào?"
+       },
+       {
+        "html": "RBAC theo vai trò được gán; ABAC theo thuộc tính và chính sách",
+        "plain": "RBAC theo vai trò được gán; ABAC theo thuộc tính và chính sách"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Chủ sở hữu dữ liệu và người quản trị khác nhau thế nào?",
+        "plain": "Chủ sở hữu dữ liệu và người quản trị khác nhau thế nào?"
+       },
+       {
+        "html": "Chủ sở hữu quyết định ai được dùng; người quản trị thực thi cấu hình",
+        "plain": "Chủ sở hữu quyết định ai được dùng; người quản trị thực thi cấu hình"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Ô trống trong ma trận quyền nghĩa là gì?",
+        "plain": "Ô trống trong ma trận quyền nghĩa là gì?"
+       },
+       {
+        "html": "Không có quyền (mặc định từ chối)",
+        "plain": "Không có quyền (mặc định từ chối)"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Khi điều chuyển, làm gì trước: cấp quyền mới hay thu hồi quyền cũ?",
+        "plain": "Khi điều chuyển, làm gì trước: cấp quyền mới hay thu hồi quyền cũ?"
+       },
+       {
+        "html": "Thu hồi quyền cũ (trừ ngoại lệ đã duyệt), rồi cấp mới",
+        "plain": "Thu hồi quyền cũ (trừ ngoại lệ đã duyệt), rồi cấp mới"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Ngoại lệ bàn giao cần những gì?",
+        "plain": "Ngoại lệ bàn giao cần những gì?"
+       },
+       {
+        "html": "Quyền tối thiểu (thường chỉ Xem), đúng phạm vi, người duyệt, ngày hết hạn",
+        "plain": "Quyền tối thiểu (thường chỉ Xem), đúng phạm vi, người duyệt, ngày hết hạn"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "Vì sao người đề nghị quyền không nên tự cấu hình quyền?",
+        "plain": "Vì sao người đề nghị quyền không nên tự cấu hình quyền?"
+       },
+       {
+        "html": "Phân tách nhiệm vụ, tránh tự duyệt cho mình",
+        "plain": "Phân tách nhiệm vụ, tránh tự duyệt cho mình"
+       }
+      ],
+      [
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "Tài khoản mồ côi là gì?",
+        "plain": "Tài khoản mồ côi là gì?"
+       },
+       {
+        "html": "Tài khoản còn hoạt động sau khi người dùng đã nghỉ",
+        "plain": "Tài khoản còn hoạt động sau khi người dùng đã nghỉ"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s14"
+  },
+  {
+   "title": "Thuật ngữ của buổi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Nghĩa dễ hiểu",
+        "plain": "Nghĩa dễ hiểu"
+       }
+      ],
+      [
+       {
+        "html": "Định danh / Xác thực / Phân quyền / Ghi vết",
+        "plain": "Định danh / Xác thực / Phân quyền / Ghi vết"
+       },
+       {
+        "html": "Bạn là ai / chứng minh đi / được làm gì / đã làm gì",
+        "plain": "Bạn là ai / chứng minh đi / được làm gì / đã làm gì"
+       }
+      ],
+      [
+       {
+        "html": "IDOR",
+        "plain": "IDOR"
+       },
+       {
+        "html": "Lỗi cho phép xem dữ liệu người khác bằng cách đổi mã trong yêu cầu",
+        "plain": "Lỗi cho phép xem dữ liệu người khác bằng cách đổi mã trong yêu cầu"
+       }
+      ],
+      [
+       {
+        "html": "Quyền tối thiểu",
+        "plain": "Quyền tối thiểu"
+       },
+       {
+        "html": "Chỉ cấp đúng quyền cần, đúng phạm vi, đúng thời gian",
+        "plain": "Chỉ cấp đúng quyền cần, đúng phạm vi, đúng thời gian"
+       }
+      ],
+      [
+       {
+        "html": "Cần biết",
+        "plain": "Cần biết"
+       },
+       {
+        "html": "Chỉ được tiếp cận thông tin cần cho công việc",
+        "plain": "Chỉ được tiếp cận thông tin cần cho công việc"
+       }
+      ],
+      [
+       {
+        "html": "Mặc định từ chối",
+        "plain": "Mặc định từ chối"
+       },
+       {
+        "html": "Không ghi là được thì là không được",
+        "plain": "Không ghi là được thì là không được"
+       }
+      ],
+      [
+       {
+        "html": "Tích tụ quyền",
+        "plain": "Tích tụ quyền"
+       },
+       {
+        "html": "Quyền cộng dần qua các lần điều chuyển",
+        "plain": "Quyền cộng dần qua các lần điều chuyển"
+       }
+      ],
+      [
+       {
+        "html": "Quyền đúng lúc",
+        "plain": "Quyền đúng lúc"
+       },
+       {
+        "html": "Quyền cao chỉ bật khi có việc rồi tự tắt",
+        "plain": "Quyền cao chỉ bật khi có việc rồi tự tắt"
+       }
+      ],
+      [
+       {
+        "html": "Quyền khẩn cấp",
+        "plain": "Quyền khẩn cấp"
+       },
+       {
+        "html": "Tài khoản dự phòng dùng khi sự cố, niêm phong và rà soát sau khi dùng",
+        "plain": "Tài khoản dự phòng dùng khi sự cố, niêm phong và rà soát sau khi dùng"
+       }
+      ],
+      [
+       {
+        "html": "RBAC / ABAC",
+        "plain": "RBAC / ABAC"
+       },
+       {
+        "html": "Phân quyền theo vai trò / theo thuộc tính",
+        "plain": "Phân quyền theo vai trò / theo thuộc tính"
+       }
+      ],
+      [
+       {
+        "html": "Ma trận quyền",
+        "plain": "Ma trận quyền"
+       },
+       {
+        "html": "Bảng vai trò × thao tác, mỗi ô có phạm vi và người duyệt",
+        "plain": "Bảng vai trò × thao tác, mỗi ô có phạm vi và người duyệt"
+       }
+      ],
+      [
+       {
+        "html": "Phân tách nhiệm vụ",
+        "plain": "Phân tách nhiệm vụ"
+       },
+       {
+        "html": "Người đề nghị, duyệt, thực hiện là những người khác nhau",
+        "plain": "Người đề nghị, duyệt, thực hiện là những người khác nhau"
+       }
+      ],
+      [
+       {
+        "html": "Vào – Chuyển – Ra",
+        "plain": "Vào – Chuyển – Ra"
+       },
+       {
+        "html": "Ba thời điểm quyền phải thay đổi theo nhân sự",
+        "plain": "Ba thời điểm quyền phải thay đổi theo nhân sự"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản mồ côi",
+        "plain": "Tài khoản mồ côi"
+       },
+       {
+        "html": "Tài khoản còn sống sau khi người đã nghỉ",
+        "plain": "Tài khoản còn sống sau khi người đã nghỉ"
+       }
+      ],
+      [
+       {
+        "html": "PAM",
+        "plain": "PAM"
+       },
+       {
+        "html": "Giải pháp quản lý truy cập đặc quyền",
+        "plain": "Giải pháp quản lý truy cập đặc quyền"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s15"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "h3",
+     "text": "Lịch trình"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       }
+      ],
+      [
+       {
+        "html": "08:00–08:15",
+        "plain": "08:00–08:15"
+       },
+       {
+        "html": "Ôn ngày 1 bằng 3 câu hỏi nhanh; kể chương 3; dán tờ \"Việc hẹn sửa sau\"",
+        "plain": "Ôn ngày 1 bằng 3 câu hỏi nhanh; kể chương 3; dán tờ \"Việc hẹn sửa sau\""
+       },
+       {
+        "html": "Hỏi đáp, kể chuyện",
+        "plain": "Hỏi đáp, kể chuyện"
+       }
+      ],
+      [
+       {
+        "html": "08:15–08:40",
+        "plain": "08:15–08:40"
+       },
+       {
+        "html": "Bài 1 – Định danh, xác thực, phân quyền",
+        "plain": "Bài 1 – Định danh, xác thực, phân quyền"
+       },
+       {
+        "html": "Giảng, ví dụ cổng cơ quan",
+        "plain": "Giảng, ví dụ cổng cơ quan"
+       }
+      ],
+      [
+       {
+        "html": "08:40–09:05",
+        "plain": "08:40–09:05"
+       },
+       {
+        "html": "Bài 2 – Quyền tối thiểu",
+        "plain": "Bài 2 – Quyền tối thiểu"
+       },
+       {
+        "html": "Giảng, thảo luận",
+        "plain": "Giảng, thảo luận"
+       }
+      ],
+      [
+       {
+        "html": "09:05–09:40",
+        "plain": "09:05–09:40"
+       },
+       {
+        "html": "Bài 3 – RBAC, ABAC, ma trận quyền",
+        "plain": "Bài 3 – RBAC, ABAC, ma trận quyền"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "09:40–09:55",
+        "plain": "09:40–09:55"
+       },
+       {
+        "html": "Nghỉ",
+        "plain": "Nghỉ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "09:55–10:20",
+        "plain": "09:55–10:20"
+       },
+       {
+        "html": "Bài 4 – Vòng đời tài khoản, tài khoản đặc quyền",
+        "plain": "Bài 4 – Vòng đời tài khoản, tài khoản đặc quyền"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "10:20–11:00",
+        "plain": "10:20–11:00"
+       },
+       {
+        "html": "Thực hành 3",
+        "plain": "Thực hành 3"
+       },
+       {
+        "html": "Cá nhân",
+        "plain": "Cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "11:00–11:25",
+        "plain": "11:00–11:25"
+       },
+       {
+        "html": "Thực hành 4",
+        "plain": "Thực hành 4"
+       },
+       {
+        "html": "Cá nhân, xem xét từng vai",
+        "plain": "Cá nhân, xem xét từng vai"
+       }
+      ],
+      [
+       {
+        "html": "11:25–11:30",
+        "plain": "11:25–11:30"
+       },
+       {
+        "html": "Quay lại tình huống; ghi điểm bỏ ngỏ lên tờ A0",
+        "plain": "Quay lại tình huống; ghi điểm bỏ ngỏ lên tờ A0"
+       },
+       {
+        "html": "Cả lớp",
+        "plain": "Cả lớp"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý giảng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Tờ \"Việc hẹn sửa sau\":</strong> giảng viên tự viết lên tờ này, giọng bình thường, không nhấn mạnh. Để học viên tự nhận ra ý nghĩa của nó ở ngày 5.",
+       "level": 0,
+       "plain": "Tờ \"Việc hẹn sửa sau\": giảng viên tự viết lên tờ này, giọng bình thường, không nhấn mạnh. Để học viên tự nhận ra ý nghĩa của nó ở ngày 5."
+      },
+      {
+       "html": "<strong>Ví dụ IDOR:</strong> chỉ nói bằng lời, không trình diễn trên hệ thống thật của đơn vị.",
+       "level": 0,
+       "plain": "Ví dụ IDOR: chỉ nói bằng lời, không trình diễn trên hệ thống thật của đơn vị."
+      },
+      {
+       "html": "<strong>Thực hành 3:</strong> học viên hay ghi \"Xem: được\" mà quên phạm vi. Hỏi lại: \"được xem khách hàng của đơn vị nào?\".",
+       "level": 0,
+       "plain": "Thực hành 3: học viên hay ghi \"Xem: được\" mà quên phạm vi. Hỏi lại: \"được xem khách hàng của đơn vị nào?\"."
+      },
+      {
+       "html": "<strong>Thực hành 4:</strong> người đóng quản lý cũ nên được dặn trước là phản đối thu hồi quyền \"vì bàn giao chưa xong\". Cuộc tranh luận giúp học viên xác định ngoại lệ có phạm vi hẹp.",
+       "level": 0,
+       "plain": "Thực hành 4: người đóng quản lý cũ nên được dặn trước là phản đối thu hồi quyền \"vì bàn giao chưa xong\". Cuộc tranh luận giúp học viên xác định ngoại lệ có phạm vi hẹp."
+      },
+      {
+       "html": "<strong>Giữ ma trận của từng học viên:</strong> buổi 7 sẽ dùng lại để quyết định ai thấy dòng nào trên dashboard.",
+       "level": 0,
+       "plain": "Giữ ma trận của từng học viên: buổi 7 sẽ dùng lại để quyết định ai thấy dòng nào trên dashboard."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu nhầm hay gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Học viên nói",
+        "plain": "Học viên nói"
+       },
+       {
+        "html": "Cách trả lời",
+        "plain": "Cách trả lời"
+       }
+      ],
+      [
+       {
+        "html": "\"Đã đăng nhập được thì được xem.\"",
+        "plain": "\"Đã đăng nhập được thì được xem.\""
+       },
+       {
+        "html": "Xác thực không phải phân quyền",
+        "plain": "Xác thực không phải phân quyền"
+       }
+      ],
+      [
+       {
+        "html": "\"Giấu menu là đủ bảo mật.\"",
+        "plain": "\"Giấu menu là đủ bảo mật.\""
+       },
+       {
+        "html": "Kiểm tra quyền phải nằm ở phía hệ thống",
+        "plain": "Kiểm tra quyền phải nằm ở phía hệ thống"
+       }
+      ],
+      [
+       {
+        "html": "\"Quản trị viên được xem mọi thứ.\"",
+        "plain": "\"Quản trị viên được xem mọi thứ.\""
+       },
+       {
+        "html": "Có khả năng kỹ thuật khác với có quyền nghiệp vụ",
+        "plain": "Có khả năng kỹ thuật khác với có quyền nghiệp vụ"
+       }
+      ],
+      [
+       {
+        "html": "\"Cấp rộng cho đỡ mất công xin lại.\"",
+        "plain": "\"Cấp rộng cho đỡ mất công xin lại.\""
+       },
+       {
+        "html": "Tích tụ quyền làm tăng thiệt hại khi tài khoản bị lộ",
+        "plain": "Tích tụ quyền làm tăng thiệt hại khi tài khoản bị lộ"
+       }
+      ],
+      [
+       {
+        "html": "\"Người đó tin cậy, để nguyên quyền cũ cũng được.\"",
+        "plain": "\"Người đó tin cậy, để nguyên quyền cũ cũng được.\""
+       },
+       {
+        "html": "Vấn đề là tài khoản có thể bị chiếm, không phải người có đáng tin không",
+        "plain": "Vấn đề là tài khoản có thể bị chiếm, không phải người có đáng tin không"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s16"
+  },
+  {
+   "title": "Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "NIST SP 800-53 Rev.5 – kiểm soát truy cập AC-2 (quản lý tài khoản), AC-3, AC-5 (phân tách nhiệm vụ), AC-6 (quyền tối thiểu)",
+       "level": 0,
+       "plain": "NIST SP 800-53 Rev.5 – kiểm soát truy cập AC-2 (quản lý tài khoản), AC-3, AC-5 (phân tách nhiệm vụ), AC-6 (quyền tối thiểu)"
+      },
+      {
+       "html": "NIST SP 800-162 – Guide to Attribute Based Access Control (ABAC)",
+       "level": 0,
+       "plain": "NIST SP 800-162 – Guide to Attribute Based Access Control (ABAC)"
+      },
+      {
+       "html": "<a href=\"https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html\" target=\"_blank\" rel=\"noopener noreferrer\">OWASP Authorization Cheat Sheet</a>",
+       "level": 0,
+       "plain": "OWASP Authorization Cheat Sheet"
+      },
+      {
+       "html": "OWASP Top 10 – A01 Broken Access Control",
+       "level": 0,
+       "plain": "OWASP Top 10 – A01 Broken Access Control"
+      },
+      {
+       "html": "Giáo trình – Tổng quan: Phụ lục C, mẫu C3 và C4",
+       "level": 0,
+       "plain": "Giáo trình – Tổng quan: Phụ lục C, mẫu C3 và C4"
+      }
+     ]
+    }
+   ],
+   "id": "s17"
+  },
+  {
+   "id": "s18",
+   "title": "Bài tập thêm – Cấp quyền đủ để bàn giao",
+   "kind": "practice",
+   "activity": "m03-case-v2",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
+     "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
+    },
+    {
+     "t": "p",
+     "plain": "Chị Hà chuyển sang Điện lực Y nhưng cần hỗ trợ bàn giao 12 hồ sơ ở Điện lực X đến hết ngày 30/10. Hiện tài khoản vẫn xem và xuất toàn bộ khách hàng của X. Quản lý đề nghị giữ nguyên quyền thêm một tháng.",
+     "html": "Chị Hà chuyển sang Điện lực Y nhưng cần hỗ trợ bàn giao 12 hồ sơ ở Điện lực X đến hết ngày 30/10. Hiện tài khoản vẫn xem và xuất toàn bộ khách hàng của X. Quản lý đề nghị giữ nguyên quyền thêm một tháng."
+    },
+    {
+     "t": "h3",
+     "text": "Việc bạn cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Đề xuất quyền cần giữ, quyền cần thu hồi, phạm vi hồ sơ và thời điểm hết hạn.",
+     "html": "1. Đề xuất quyền cần giữ, quyền cần thu hồi, phạm vi hồ sơ và thời điểm hết hạn."
+    },
+    {
+     "t": "p",
+     "plain": "2. Nêu ai phê duyệt, ai cấu hình và bằng chứng cần lưu.",
+     "html": "2. Nêu ai phê duyệt, ai cấu hình và bằng chứng cần lưu."
+    },
+    {
+     "t": "p",
+     "plain": "3. Viết ba phép thử: một trường hợp được phép, một truy cập ngoài phạm vi và một thao tác xuất.",
+     "html": "3. Viết ba phép thử: một trường hợp được phép, một truy cập ngoài phạm vi và một thao tác xuất."
+    },
+    {
+     "t": "p",
+     "plain": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả.",
+     "html": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm.",
+     "html": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m03-case-v2"
+    },
+    {
+     "t": "p",
+     "plain": "Ưu tiên chuyển hồ sơ cho người kế nhiệm. Nếu cần ngoại lệ, chỉ cho xem đúng 12 hồ sơ đến hết 30/10, không giữ quyền xuất hoặc xem toàn X. Chủ dữ liệu và quản lý liên quan duyệt, CNTT thực hiện; lưu phiếu, báo cáo quyền trước/sau và kết quả thử. Thử xem một hồ sơ trong danh sách, xem hồ sơ ngoài danh sách và xuất dữ liệu; hai trường hợp sau phải bị từ chối. Kiểm tra hết hạn ngoại lệ.",
+     "html": "Ưu tiên chuyển hồ sơ cho người kế nhiệm. Nếu cần ngoại lệ, chỉ cho xem đúng 12 hồ sơ đến hết 30/10, không giữ quyền xuất hoặc xem toàn X. Chủ dữ liệu và quản lý liên quan duyệt, CNTT thực hiện; lưu phiếu, báo cáo quyền trước/sau và kết quả thử. Thử xem một hồ sơ trong danh sách, xem hồ sơ ngoài danh sách và xuất dữ liệu; hai trường hợp sau phải bị từ chối. Kiểm tra hết hạn ngoại lệ.",
+     "reveal": "m03-case-v2"
+    }
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "m03-check-v2",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: chọn cách xử lý",
+   "intro": "Chọn một phương án phù hợp nhất cho mỗi tình huống. Khi chữa bài, hãy giải thích vì sao bạn chọn cách đó.",
+   "questions": [
+    {
+     "text": "Người dùng có quyền xem hồ sơ nhưng cần xuất tạm để phục vụ kiểm tra. Nên xử lý thế nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Cấp quyền xuất có phạm vi, phê duyệt, hạn và ghi vết"
+      },
+      {
+       "key": "B",
+       "text": "Cấp luôn quyền quản trị"
+      },
+      {
+       "key": "C",
+       "text": "Cho mượn tài khoản trưởng phòng"
+      }
+     ],
+     "correct": "A",
+     "explain": "Quyền xuất cần được xem xét riêng và giới hạn theo nhu cầu.",
+     "id": "q1"
+    },
+    {
+     "text": "Minh chứng nào cho thấy quyền cũ đã được thu hồi?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Email đề nghị gỡ quyền"
+      },
+      {
+       "key": "B",
+       "text": "Người dùng nói sẽ không truy cập nữa"
+      },
+      {
+       "key": "C",
+       "text": "Cấu hình sau thay đổi, nhật ký xử lý và phép thử truy cập bị từ chối"
+      }
+     ],
+     "correct": "C",
+     "explain": "Cần kiểm tra việc thực hiện, không chỉ có yêu cầu.",
+     "id": "q2"
+    }
+   ]
+  },
+  {
+   "id": "m03-quiz",
+   "type": "mcq",
+   "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+   "scope": "student",
+   "intro": "Mỗi câu chọn một đáp án đúng nhất.",
+   "questions": [
+    {
+     "module": 3,
+     "text": "Khi điều chuyển nhân sự sang đơn vị khác, việc nào làm trước?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Thu hồi quyền cũ không còn cần"
+      },
+      {
+       "key": "B",
+       "text": "Cộng quyền mới"
+      },
+      {
+       "key": "C",
+       "text": "Đổi mật khẩu"
+      },
+      {
+       "key": "D",
+       "text": "Chờ đợt rà soát quý"
+      }
+     ],
+     "id": "q1",
+     "correct": "A"
+    }
+   ]
+  },
+  {
+   "id": "m03-th3",
+   "type": "practice",
+   "title": "Thực hành 3 – Xây ma trận quyền (40 phút)",
+   "scope": "student",
+   "section": "s9"
+  },
+  {
+   "id": "m03-th4",
+   "type": "practice",
+   "title": "Thực hành 4 – Chuyển đơn vị còn quyền cũ (25 phút)",
+   "scope": "student",
+   "section": "s10"
+  },
+  {
+   "id": "m03-review",
+   "type": "open",
+   "title": "Câu hỏi ôn tập",
+   "scope": "student",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Nhập mật khẩu thuộc bước nào: định danh, xác thực hay phân quyền?",
+     "answer": "Xác thực"
+    },
+    {
+     "id": "q2",
+     "text": "Sửa donvi=DV_A thành DV_B trên đường dẫn mà xem được số liệu đơn vị khác là lỗi gì?",
+     "answer": "Lỗi phân quyền (IDOR): hệ thống không kiểm tra quyền trên từng yêu cầu"
+    },
+    {
+     "id": "q3",
+     "text": "Vô tình thấy dữ liệu đơn vị khác thì làm gì?",
+     "answer": "Không tải, không thử tiếp; ghi lại; báo CNTT"
+    },
+    {
+     "id": "q4",
+     "text": "Kể bốn chiều của quyền tối thiểu",
+     "answer": "Chức năng, phạm vi, thời gian, rà soát"
+    },
+    {
+     "id": "q5",
+     "text": "Tích tụ quyền là gì, vì sao nguy hiểm?",
+     "answer": "Quyền cộng dần qua điều chuyển, không ai gỡ; tài khoản bị chiếm thì thiệt hại lớn theo số quyền thừa"
+    },
+    {
+     "id": "q6",
+     "text": "RBAC khác ABAC ở điểm nào?",
+     "answer": "RBAC theo vai trò được gán; ABAC theo thuộc tính và chính sách"
+    },
+    {
+     "id": "q7",
+     "text": "Chủ sở hữu dữ liệu và người quản trị khác nhau thế nào?",
+     "answer": "Chủ sở hữu quyết định ai được dùng; người quản trị thực thi cấu hình"
+    },
+    {
+     "id": "q8",
+     "text": "Ô trống trong ma trận quyền nghĩa là gì?",
+     "answer": "Không có quyền (mặc định từ chối)"
+    },
+    {
+     "id": "q9",
+     "text": "Khi điều chuyển, làm gì trước: cấp quyền mới hay thu hồi quyền cũ?",
+     "answer": "Thu hồi quyền cũ (trừ ngoại lệ đã duyệt), rồi cấp mới"
+    },
+    {
+     "id": "q10",
+     "text": "Ngoại lệ bàn giao cần những gì?",
+     "answer": "Quyền tối thiểu (thường chỉ Xem), đúng phạm vi, người duyệt, ngày hết hạn"
+    },
+    {
+     "id": "q11",
+     "text": "Vì sao người đề nghị quyền không nên tự cấu hình quyền?",
+     "answer": "Phân tách nhiệm vụ, tránh tự duyệt cho mình"
+    },
+    {
+     "id": "q12",
+     "text": "Tài khoản mồ côi là gì?",
+     "answer": "Tài khoản còn hoạt động sau khi người dùng đã nghỉ"
+    }
+   ]
+  },
+  {
+   "id": "m03-case-v2",
+   "type": "practice",
+   "scope": "student",
+   "section": "s18",
+   "title": "Bài tập thêm – Cấp quyền đủ để bàn giao",
+   "intro": "Chị Hà chuyển sang Điện lực Y nhưng cần hỗ trợ bàn giao 12 hồ sơ ở Điện lực X đến hết ngày 30/10. Hiện tài khoản vẫn xem và xuất toàn bộ khách hàng của X. Quản lý đề nghị giữ nguyên quyền thêm một tháng.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "part1",
+     "label": "Đề xuất quyền cần giữ, quyền cần thu hồi, phạm vi hồ sơ và thời điểm hết hạn."
+    },
+    {
+     "type": "textarea",
+     "key": "part2",
+     "label": "Nêu ai phê duyệt, ai cấu hình và bằng chứng cần lưu."
+    },
+    {
+     "type": "textarea",
+     "key": "part3",
+     "label": "Viết ba phép thử: một trường hợp được phép, một truy cập ngoài phạm vi và một thao tác xuất."
+    }
+   ]
+  }
+ ]
+}

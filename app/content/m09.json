@@ -1,0 +1,4079 @@
+{
+ "no": 9,
+ "title": "Buổi 9 – Nhật ký kiểm toán, phát hiện và truy vết",
+ "short": "Nhật ký kiểm toán, phát hiện và truy vết",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 9 trả lời câu hỏi: <strong>nếu có chuyện xảy ra, chúng ta biết bằng cách nào – và làm sao đọc dấu vết để biết điều gì đã xảy ra mà không đoán mò hay đổ lỗi vội?</strong> Bốn ngày qua dựng các lớp bảo vệ; mỗi lớp đều để lại dấu vết trong một loại nhật ký. Hôm nay lớp mở nhật ký của đêm 20–21/10.",
+     "plain": "Buổi 9 trả lời câu hỏi: nếu có chuyện xảy ra, chúng ta biết bằng cách nào – và làm sao đọc dấu vết để biết điều gì đã xảy ra mà không đoán mò hay đổ lỗi vội? Bốn ngày qua dựng các lớp bảo vệ; mỗi lớp đều để lại dấu vết trong một loại nhật ký. Hôm nay lớp mở nhật ký của đêm 20–21/10."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Thông tin buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Ngày 5, buổi sáng, 08:00–11:30 (3,5 giờ, có 15 phút nghỉ)",
+        "plain": "Ngày 5, buổi sáng, 08:00–11:30 (3,5 giờ, có 15 phút nghỉ)"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu trình chiếu",
+        "plain": "Tài liệu trình chiếu"
+       },
+       {
+        "html": "91–101",
+        "plain": "91–101"
+       }
+      ],
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Giảng, phân tích log mẫu cả lớp, thực hành cá nhân với bảng diễn biến và Excel",
+        "plain": "Giảng, phân tích log mẫu cả lớp, thực hành cá nhân với bảng diễn biến và Excel"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Mọi lớp bảo vệ của ngày 1–4; tờ \"Việc hẹn sửa sau\" (sáu dòng); checklist xác minh (buổi 8)",
+        "plain": "Mọi lớp bảo vệ của ngày 1–4; tờ \"Việc hẹn sửa sau\" (sáu dòng); checklist xác minh (buổi 8)"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "Diễn biến theo thời gian có múi giờ của đêm 20–21/10; bảng Đã biết – Chưa biết – Giả thuyết – Bằng chứng cần thêm; danh sách bằng chứng cần giữ (Thực hành 10) – đầu vào của buổi 10",
+        "plain": "Diễn biến theo thời gian có múi giờ của đêm 20–21/10; bảng Đã biết – Chưa biết – Giả thuyết – Bằng chứng cần thêm; danh sách bằng chứng cần giữ (Thực hành 10) – đầu vào của buổi 10"
+       }
+      ],
+      [
+       {
+        "html": "Vật dụng",
+        "plain": "Vật dụng"
+       },
+       {
+        "html": "Giấy A3, bút màu; Excel; hai bảng log giả lập (log mẫu của slide và log đêm 20–21/10, bản CSV theo giờ UTC); tùy chọn: Python với pandas trên máy giảng viên",
+        "plain": "Giấy A3, bút màu; Excel; hai bảng log giả lập (log mẫu của slide và log đêm 20–21/10, bản CSV theo giờ UTC); tùy chọn: Python với pandas trên máy giảng viên"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Buổi này tiếp nối buổi trước như thế nào?",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhận từ ngày 1–4:</strong> mọi lớp bảo vệ đã học. Mỗi lớp để lại dấu vết trong một loại nhật ký: đăng nhập, MFA, xuất dữ liệu, chia sẻ, tải file.",
+       "level": 0,
+       "plain": "Nhận từ ngày 1–4: mọi lớp bảo vệ đã học. Mỗi lớp để lại dấu vết trong một loại nhật ký: đăng nhập, MFA, xuất dữ liệu, chia sẻ, tải file."
+      },
+      {
+       "html": "<strong>Tình huống – chương 9:</strong> sáng 21/10 một khách hàng báo bị gọi lừa đảo bởi người biết đúng mã khách hàng và số nợ; chị Lan trích nhật ký. Thực hành 10 làm hai vòng: log mẫu của slide trước, rồi log đêm 20–21/10.",
+       "level": 0,
+       "plain": "Tình huống – chương 9: sáng 21/10 một khách hàng báo bị gọi lừa đảo bởi người biết đúng mã khách hàng và số nợ; chị Lan trích nhật ký. Thực hành 10 làm hai vòng: log mẫu của slide trước, rồi log đêm 20–21/10."
+      },
+      {
+       "html": "<strong>Khi chữa:</strong> lớp nối từng dòng bất thường với tờ \"Việc hẹn sửa sau\". Cả đêm không có cảnh báo nào – một lỗ hổng mới, thuộc chính buổi này. Lớp <strong>chưa biết vì sao MFA được chấp nhận</strong>, nên ô đó để ở cột \"chưa rõ\".",
+       "level": 0,
+       "plain": "Khi chữa: lớp nối từng dòng bất thường với tờ \"Việc hẹn sửa sau\". Cả đêm không có cảnh báo nào – một lỗ hổng mới, thuộc chính buổi này. Lớp chưa biết vì sao MFA được chấp nhận, nên ô đó để ở cột \"chưa rõ\"."
+      },
+      {
+       "html": "<strong>Trao cho buổi 10:</strong> bảng diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng cần giữ.",
+       "level": 0,
+       "plain": "Trao cho buổi 10: bảng diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng cần giữ."
+      },
+      {
+       "html": "<strong>Sợi chỉ:</strong> CIA – nhật ký cần toàn vẹn mới có giá trị; vòng đời – nhật ký là tấm bản đồ của mọi bản sao; pháp lý – nhật ký cũng là dữ liệu cá nhân của nhân viên; con người – tên tài khoản trong log chưa phải là người có lỗi.",
+       "level": 0,
+       "plain": "Sợi chỉ: CIA – nhật ký cần toàn vẹn mới có giá trị; vòng đời – nhật ký là tấm bản đồ của mọi bản sao; pháp lý – nhật ký cũng là dữ liệu cá nhân của nhân viên; con người – tên tài khoản trong log chưa phải là người có lỗi."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Phân biệt sự kiện, cảnh báo và sự cố; phân biệt nhật ký vận hành và nhật ký kiểm toán.",
+       "level": 0,
+       "plain": "Phân biệt sự kiện, cảnh báo và sự cố; phân biệt nhật ký vận hành và nhật ký kiểm toán."
+      },
+      {
+       "html": "Nêu các thông tin một dòng nhật ký cần có – khi nào, ai, ở đâu, làm gì, kết quả – và đổi đúng giờ UTC sang giờ Việt Nam.",
+       "level": 0,
+       "plain": "Nêu các thông tin một dòng nhật ký cần có – khi nào, ai, ở đâu, làm gì, kết quả – và đổi đúng giờ UTC sang giờ Việt Nam."
+      },
+      {
+       "html": "Giải thích vì sao bản thân nhật ký cũng phải được bảo vệ, và những sự kiện nào cần giám sát, cảnh báo.",
+       "level": 0,
+       "plain": "Giải thích vì sao bản thân nhật ký cũng phải được bảo vệ, và những sự kiện nào cần giám sát, cảnh báo."
+      },
+      {
+       "html": "Nhận ra dấu hiệu bất thường so với mức bình thường, và loại trừ có căn cứ.",
+       "level": 0,
+       "plain": "Nhận ra dấu hiệu bất thường so với mức bình thường, và loại trừ có căn cứ."
+      },
+      {
+       "html": "Lập dòng thời gian từ nhật ký, tách rõ \"đã biết\" với \"giả thuyết\", và đề xuất hành động đúng thẩm quyền.",
+       "level": 0,
+       "plain": "Lập dòng thời gian từ nhật ký, tách rõ \"đã biết\" với \"giả thuyết\", và đề xuất hành động đúng thẩm quyền."
+      }
+     ]
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Mở đầu: đêm 20/10 trong nhật ký (chương 9)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Chuyện gì xảy ra"
+    },
+    {
+     "t": "p",
+     "html": "<strong>08:35 sáng 21/10.</strong> Một khách hàng ở phường An Phú gọi tổng đài Điện lực X. Lúc 08:10, bà nhận cuộc gọi từ một số lạ xưng là \"nhân viên điện lực\", đọc đúng tên, mã khách hàng và số tiền nợ kỳ trước, yêu cầu chuyển khoản vào một tài khoản cá nhân \"để tránh bị ngừng cấp điện chiều nay\". Bà thấy lạ nên gọi lại tổng đài.",
+     "plain": "08:35 sáng 21/10. Một khách hàng ở phường An Phú gọi tổng đài Điện lực X. Lúc 08:10, bà nhận cuộc gọi từ một số lạ xưng là \"nhân viên điện lực\", đọc đúng tên, mã khách hàng và số tiền nợ kỳ trước, yêu cầu chuyển khoản vào một tài khoản cá nhân \"để tránh bị ngừng cấp điện chiều nay\". Bà thấy lạ nên gọi lại tổng đài."
+    },
+    {
+     "t": "p",
+     "html": "Giao dịch viên nghe máy làm đúng bài của buổi 8: trấn an khách, kiểm tra tình trạng nợ thật, nêu kênh thanh toán chính thức – và hỏi \"người gọi biết những gì về cô?\". Nghe câu trả lời, chị ghi phiếu và chuyển ngay cho chị Lan, đầu mối an toàn thông tin của Công ty, lúc 08:50.",
+     "plain": "Giao dịch viên nghe máy làm đúng bài của buổi 8: trấn an khách, kiểm tra tình trạng nợ thật, nêu kênh thanh toán chính thức – và hỏi \"người gọi biết những gì về cô?\". Nghe câu trả lời, chị ghi phiếu và chuyển ngay cho chị Lan, đầu mối an toàn thông tin của Công ty, lúc 08:50."
+    },
+    {
+     "t": "p",
+     "html": "Chị Lan suy luận: tên và địa chỉ có thể lộ từ nhiều nơi, nhưng <strong>mã khách hàng và số nợ kỳ này chỉ có trong hệ thống của điện lực</strong>. Chị đề nghị CNTT trích nhật ký từ 16:00 ngày 20/10 đến 08:00 ngày 21/10 từ ba nguồn: hệ thống đăng nhập một lần (SSO), hệ thống quản lý khách hàng (QLKH), và nhật ký kiểm toán OneDrive của Microsoft 365. 09:30, file CSV 17 dòng được gửi sang. Chị giao cho nhóm phân tích – đó là lớp học hôm nay.",
+     "plain": "Chị Lan suy luận: tên và địa chỉ có thể lộ từ nhiều nơi, nhưng mã khách hàng và số nợ kỳ này chỉ có trong hệ thống của điện lực. Chị đề nghị CNTT trích nhật ký từ 16:00 ngày 20/10 đến 08:00 ngày 21/10 từ ba nguồn: hệ thống đăng nhập một lần (SSO), hệ thống quản lý khách hàng (QLKH), và nhật ký kiểm toán OneDrive của Microsoft 365. 09:30, file CSV 17 dòng được gửi sang. Chị giao cho nhóm phân tích – đó là lớp học hôm nay."
+    },
+    {
+     "t": "p",
+     "html": "Một chi tiết nhỏ ngay khi mở file: cột thời gian ghi 2026-10-20T19:10:03Z. Chữ Z nghĩa là giờ UTC.",
+     "plain": "Một chi tiết nhỏ ngay khi mở file: cột thời gian ghi 2026-10-20T19:10:03Z. Chữ Z nghĩa là giờ UTC."
+    },
+    {
+     "t": "h3",
+     "text": "Câu hỏi của buổi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?",
+       "level": 0,
+       "plain": "Chị Lan cần những loại nhật ký nào? Phản ánh của khách hàng đã là \"sự cố\" chưa?"
+      },
+      {
+       "html": "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?",
+       "level": 0,
+       "plain": "Một dòng nhật ký phải có gì mới dùng được? Vì sao \"19:10\" trong file không phải là 7 giờ tối?"
+      },
+      {
+       "html": "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?",
+       "level": 0,
+       "plain": "Dòng nào bất thường, so với cái gì? Lẽ ra phải có cảnh báo nào?"
+      },
+      {
+       "html": "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?",
+       "level": 0,
+       "plain": "Làm sao đi từ 17 dòng nhật ký đến một kết luận có căn cứ – mà không vội kết luận ai có lỗi?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bốn câu này ứng với bốn bài của buổi. Thực hành 10 vòng hai là việc phân tích file của chị Lan.",
+     "plain": "Bốn câu này ứng với bốn bài của buổi. Thực hành 10 vòng hai là việc phân tích file của chị Lan."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Cho giảng viên:</strong> không tiết lộ vì sao MFA được chấp nhận. Nhật ký chỉ cho thấy nó được chấp nhận; câu trả lời \"ai bấm, vì sao\" thuộc về buổi 10.",
+     "plain": "Cho giảng viên: không tiết lộ vì sao MFA được chấp nhận. Nhật ký chỉ cho thấy nó được chấp nhận; câu trả lời \"ai bấm, vì sao\" thuộc về buổi 10."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Bài 1 – Sự kiện, cảnh báo, sự cố; nhật ký là gì",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 1: chị Lan cần những loại nhật ký nào, và phản ánh của khách hàng đã là sự cố chưa.",
+     "plain": "Bài này trả lời câu hỏi 1: chị Lan cần những loại nhật ký nào, và phản ánh của khách hàng đã là sự cố chưa."
+    },
+    {
+     "t": "h3",
+     "text": "1.1. Sổ trực ban và camera hành lang"
+    },
+    {
+     "t": "p",
+     "html": "Nhật ký (log) giống sổ trực ban ở cổng cơ quan và camera hành lang: không ngăn được ai vào, nhưng giúp trả lời \"ai đã vào lúc nào, làm gì\". Khác với sổ sách do người ghi, log do hệ thống tự động ghi – không quên và không ngại, <strong>nếu được bật và bảo vệ đúng cách</strong>. Không có nhật ký thì khi có sự cố chỉ còn đoán.",
+     "plain": "Nhật ký (log) giống sổ trực ban ở cổng cơ quan và camera hành lang: không ngăn được ai vào, nhưng giúp trả lời \"ai đã vào lúc nào, làm gì\". Khác với sổ sách do người ghi, log do hệ thống tự động ghi – không quên và không ngại, nếu được bật và bảo vệ đúng cách. Không có nhật ký thì khi có sự cố chỉ còn đoán."
+    },
+    {
+     "t": "h3",
+     "text": "1.2. Sự kiện, cảnh báo và sự cố"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Sự kiện (event)",
+        "plain": "Sự kiện (event)"
+       },
+       {
+        "html": "Bất kỳ việc gì quan sát được trong hệ thống",
+        "plain": "Bất kỳ việc gì quan sát được trong hệ thống"
+       },
+       {
+        "html": "Một lần đăng nhập, một lần mở file",
+        "plain": "Một lần đăng nhập, một lần mở file"
+       }
+      ],
+      [
+       {
+        "html": "Cảnh báo (alert)",
+        "plain": "Cảnh báo (alert)"
+       },
+       {
+        "html": "Sự kiện hoặc chuỗi sự kiện được đánh dấu là cần xem xét",
+        "plain": "Sự kiện hoặc chuỗi sự kiện được đánh dấu là cần xem xét"
+       },
+       {
+        "html": "20 lần đăng nhập thất bại trong 5 phút",
+        "plain": "20 lần đăng nhập thất bại trong 5 phút"
+       }
+      ],
+      [
+       {
+        "html": "Sự cố (incident)",
+        "plain": "Sự cố (incident)"
+       },
+       {
+        "html": "Sự việc đã hoặc sắp đe dọa tính bí mật, toàn vẹn, sẵn sàng, hoặc vi phạm chính sách an toàn",
+        "plain": "Sự việc đã hoặc sắp đe dọa tính bí mật, toàn vẹn, sẵn sàng, hoặc vi phạm chính sách an toàn"
+       },
+       {
+        "html": "Tài khoản bị chiếm quyền và xuất dữ liệu khách hàng",
+        "plain": "Tài khoản bị chiếm quyền và xuất dữ liệu khách hàng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Phần lớn sự kiện là bình thường; phần lớn cảnh báo sau khi kiểm tra cũng không phải sự cố. Việc của bước phân tích là lọc ra số ít còn lại – và không bỏ sót.",
+     "plain": "Phần lớn sự kiện là bình thường; phần lớn cảnh báo sau khi kiểm tra cũng không phải sự cố. Việc của bước phân tích là lọc ra số ít còn lại – và không bỏ sót."
+    },
+    {
+     "t": "p",
+     "html": "Cảnh báo không chỉ đến từ máy. <strong>Người báo cáo</strong> – một nhân viên thấy yêu cầu MFA lạ, một khách hàng gọi tổng đài – cũng là một nguồn cảnh báo, và nhiều khi là nguồn duy nhất.",
+     "plain": "Cảnh báo không chỉ đến từ máy. Người báo cáo – một nhân viên thấy yêu cầu MFA lạ, một khách hàng gọi tổng đài – cũng là một nguồn cảnh báo, và nhiều khi là nguồn duy nhất."
+    },
+    {
+     "t": "h3",
+     "text": "1.3. Nhật ký vận hành và nhật ký kiểm toán"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "Nhật ký vận hành",
+        "plain": "Nhật ký vận hành"
+       },
+       {
+        "html": "Nhật ký kiểm toán",
+        "plain": "Nhật ký kiểm toán"
+       }
+      ],
+      [
+       {
+        "html": "Ghi gì",
+        "plain": "Ghi gì"
+       },
+       {
+        "html": "Trạng thái, lỗi, hiệu năng hệ thống",
+        "plain": "Trạng thái, lỗi, hiệu năng hệ thống"
+       },
+       {
+        "html": "Hành động gắn với người thực hiện và đối tượng bị tác động",
+        "plain": "Hành động gắn với người thực hiện và đối tượng bị tác động"
+       }
+      ],
+      [
+       {
+        "html": "Trả lời câu hỏi",
+        "plain": "Trả lời câu hỏi"
+       },
+       {
+        "html": "Dịch vụ gặp vấn đề khi nào?",
+        "plain": "Dịch vụ gặp vấn đề khi nào?"
+       },
+       {
+        "html": "Ai truy cập, ai thay quyền, ai xuất dữ liệu?",
+        "plain": "Ai truy cập, ai thay quyền, ai xuất dữ liệu?"
+       }
+      ],
+      [
+       {
+        "html": "Giới hạn",
+        "plain": "Giới hạn"
+       },
+       {
+        "html": "Thường không đủ thông tin người thao tác",
+        "plain": "Thường không đủ thông tin người thao tác"
+       },
+       {
+        "html": "Cần đủ chi tiết và được bảo vệ tính toàn vẹn",
+        "plain": "Cần đủ chi tiết và được bảo vệ tính toàn vẹn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Một nguồn log có thể phục vụ cả hai mục đích. Không khẳng định log \"luôn đầy đủ\" hay \"không thể sửa\" khi chưa đánh giá cơ chế ghi nhận.",
+     "plain": "Một nguồn log có thể phục vụ cả hai mục đích. Không khẳng định log \"luôn đầy đủ\" hay \"không thể sửa\" khi chưa đánh giá cơ chế ghi nhận."
+    },
+    {
+     "t": "h3",
+     "text": "1.4. Các loại log và nguồn thường gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại log",
+        "plain": "Loại log"
+       },
+       {
+        "html": "Ghi gì",
+        "plain": "Ghi gì"
+       },
+       {
+        "html": "Ví dụ nguồn trong thực tế",
+        "plain": "Ví dụ nguồn trong thực tế"
+       }
+      ],
+      [
+       {
+        "html": "Log hệ thống / vận hành",
+        "plain": "Log hệ thống / vận hành"
+       },
+       {
+        "html": "Khởi động, lỗi, hiệu năng, dịch vụ dừng",
+        "plain": "Khởi động, lỗi, hiệu năng, dịch vụ dừng"
+       },
+       {
+        "html": "Windows System log, log máy chủ ứng dụng",
+        "plain": "Windows System log, log máy chủ ứng dụng"
+       }
+      ],
+      [
+       {
+        "html": "Log bảo mật / xác thực",
+        "plain": "Log bảo mật / xác thực"
+       },
+       {
+        "html": "Đăng nhập thành công/thất bại, khóa tài khoản, thay đổi MFA",
+        "plain": "Đăng nhập thành công/thất bại, khóa tài khoản, thay đổi MFA"
+       },
+       {
+        "html": "Windows Security log, nhật ký đăng nhập Microsoft Entra ID, log VPN",
+        "plain": "Windows Security log, nhật ký đăng nhập Microsoft Entra ID, log VPN"
+       }
+      ],
+      [
+       {
+        "html": "Log kiểm toán (audit log)",
+        "plain": "Log kiểm toán (audit log)"
+       },
+       {
+        "html": "Ai làm gì với dữ liệu/cấu hình nào",
+        "plain": "Ai làm gì với dữ liệu/cấu hình nào"
+       },
+       {
+        "html": "Nhật ký kiểm toán Microsoft 365, Power BI activity log, audit log của phần mềm nghiệp vụ và cơ sở dữ liệu",
+        "plain": "Nhật ký kiểm toán Microsoft 365, Power BI activity log, audit log của phần mềm nghiệp vụ và cơ sở dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "Log mạng",
+        "plain": "Log mạng"
+       },
+       {
+        "html": "Kết nối đi/đến, lưu lượng",
+        "plain": "Kết nối đi/đến, lưu lượng"
+       },
+       {
+        "html": "Tường lửa, proxy, cổng email",
+        "plain": "Tường lửa, proxy, cổng email"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Một số sự kiện hay gặp (để nhận mặt – tên có thể khác theo phiên bản và cấu hình, không phải danh mục đầy đủ):",
+     "plain": "Một số sự kiện hay gặp (để nhận mặt – tên có thể khác theo phiên bản và cấu hình, không phải danh mục đầy đủ):"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nguồn",
+        "plain": "Nguồn"
+       },
+       {
+        "html": "Sự kiện",
+        "plain": "Sự kiện"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       }
+      ],
+      [
+       {
+        "html": "Windows Security",
+        "plain": "Windows Security"
+       },
+       {
+        "html": "Event ID 4624 / 4625",
+        "plain": "Event ID 4624 / 4625"
+       },
+       {
+        "html": "Đăng nhập thành công / thất bại",
+        "plain": "Đăng nhập thành công / thất bại"
+       }
+      ],
+      [
+       {
+        "html": "Windows Security",
+        "plain": "Windows Security"
+       },
+       {
+        "html": "Event ID 4740",
+        "plain": "Event ID 4740"
+       },
+       {
+        "html": "Tài khoản bị khóa do nhập sai nhiều lần",
+        "plain": "Tài khoản bị khóa do nhập sai nhiều lần"
+       }
+      ],
+      [
+       {
+        "html": "Windows Security",
+        "plain": "Windows Security"
+       },
+       {
+        "html": "Event ID 4720; 4728/4732",
+        "plain": "Event ID 4720; 4728/4732"
+       },
+       {
+        "html": "Tạo tài khoản mới; thêm thành viên vào nhóm bảo mật",
+        "plain": "Tạo tài khoản mới; thêm thành viên vào nhóm bảo mật"
+       }
+      ],
+      [
+       {
+        "html": "Windows Security",
+        "plain": "Windows Security"
+       },
+       {
+        "html": "Event ID 1102",
+        "plain": "Event ID 1102"
+       },
+       {
+        "html": "Nhật ký kiểm toán bị xóa – dấu hiệu rất đáng ngờ",
+        "plain": "Nhật ký kiểm toán bị xóa – dấu hiệu rất đáng ngờ"
+       }
+      ],
+      [
+       {
+        "html": "Microsoft 365 (SharePoint/OneDrive)",
+        "plain": "Microsoft 365 (SharePoint/OneDrive)"
+       },
+       {
+        "html": "FileAccessed, FileDownloaded, AnonymousLinkCreated",
+        "plain": "FileAccessed, FileDownloaded, AnonymousLinkCreated"
+       },
+       {
+        "html": "Mở file, tải file, tạo link \"Anyone\"",
+        "plain": "Mở file, tải file, tạo link \"Anyone\""
+       }
+      ],
+      [
+       {
+        "html": "Power BI",
+        "plain": "Power BI"
+       },
+       {
+        "html": "ViewReport, ExportReport (và các hoạt động xuất dữ liệu)",
+        "plain": "ViewReport, ExportReport (và các hoạt động xuất dữ liệu)"
+       },
+       {
+        "html": "Xem báo cáo, xuất báo cáo/dữ liệu (buổi 7)",
+        "plain": "Xem báo cáo, xuất báo cáo/dữ liệu (buổi 7)"
+       }
+      ],
+      [
+       {
+        "html": "Phần mềm nghiệp vụ",
+        "plain": "Phần mềm nghiệp vụ"
+       },
+       {
+        "html": "Xuất danh sách, sửa chỉ số, đổi quyền",
+        "plain": "Xuất danh sách, sửa chỉ số, đổi quyền"
+       },
+       {
+        "html": "Tùy từng phần mềm có ghi hay không (buổi 6: đưa vào yêu cầu khi mua)",
+        "plain": "Tùy từng phần mềm có ghi hay không (buổi 6: đưa vào yêu cầu khi mua)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tập trung log (SIEM).</strong> Ở các đơn vị lớn, log từ nhiều hệ thống được gửi về một hệ thống giám sát tập trung (SIEM) để tìm kiếm, so khớp và cảnh báo tự động. Người dùng nghiệp vụ thường không truy cập SIEM, nhưng cần biết hành động của mình được ghi lại.",
+     "plain": "Tập trung log (SIEM). Ở các đơn vị lớn, log từ nhiều hệ thống được gửi về một hệ thống giám sát tập trung (SIEM) để tìm kiếm, so khớp và cảnh báo tự động. Người dùng nghiệp vụ thường không truy cập SIEM, nhưng cần biết hành động của mình được ghi lại."
+    },
+    {
+     "t": "h3",
+     "text": "1.5. Ba điều hay bị quên về nhật ký"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Log cũng là dữ liệu cá nhân.</strong> Nhật ký ghi ai đăng nhập lúc nào, từ đâu, xem gì – tức là thông tin về nhân viên. Việc xem log phải đúng mục đích (an toàn, kiểm toán, điều tra), đúng người có thẩm quyền, không dùng để \"soi\" cá nhân ngoài mục đích.",
+       "level": 0,
+       "plain": "Log cũng là dữ liệu cá nhân. Nhật ký ghi ai đăng nhập lúc nào, từ đâu, xem gì – tức là thông tin về nhân viên. Việc xem log phải đúng mục đích (an toàn, kiểm toán, điều tra), đúng người có thẩm quyền, không dùng để \"soi\" cá nhân ngoài mục đích."
+      },
+      {
+       "html": "<strong>Log phải được bật từ trước.</strong> Không thể \"bật log\" sau khi sự cố đã xảy ra để biết chuyện đã qua. Nhiều dịch vụ chỉ giữ log trong thời gian giới hạn theo gói bản quyền; cần biết trước và xuất về kho lưu nếu quy định yêu cầu giữ lâu hơn.",
+       "level": 0,
+       "plain": "Log phải được bật từ trước. Không thể \"bật log\" sau khi sự cố đã xảy ra để biết chuyện đã qua. Nhiều dịch vụ chỉ giữ log trong thời gian giới hạn theo gói bản quyền; cần biết trước và xuất về kho lưu nếu quy định yêu cầu giữ lâu hơn."
+      },
+      {
+       "html": "<strong>Thời gian là thước đo.</strong> Hai chỉ số thường dùng: thời gian trung bình để phát hiện (MTTD) và thời gian trung bình để xử lý (MTTR). Người dùng báo sớm trực tiếp làm giảm cả hai. Ở chương 9, từ lúc file bị tải (03:06) đến lúc chị Lan biết (08:50) là gần 6 giờ – và người phát hiện là một khách hàng, không phải hệ thống.",
+       "level": 0,
+       "plain": "Thời gian là thước đo. Hai chỉ số thường dùng: thời gian trung bình để phát hiện (MTTD) và thời gian trung bình để xử lý (MTTR). Người dùng báo sớm trực tiếp làm giảm cả hai. Ở chương 9, từ lúc file bị tải (03:06) đến lúc chị Lan biết (08:50) là gần 6 giờ – và người phát hiện là một khách hàng, không phải hệ thống."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.6. Trả lời câu hỏi 1 của buổi"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Chị Lan cần nhật ký nào?</strong> Đi theo đường dữ liệu có thể đã đi (buổi 2 – sơ đồ luồng):",
+     "plain": "Chị Lan cần nhật ký nào? Đi theo đường dữ liệu có thể đã đi (buổi 2 – sơ đồ luồng):"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Nhật ký trả lời",
+        "plain": "Nhật ký trả lời"
+       }
+      ],
+      [
+       {
+        "html": "Ai đăng nhập, từ đâu, MFA thế nào?",
+        "plain": "Ai đăng nhập, từ đâu, MFA thế nào?"
+       },
+       {
+        "html": "SSO / Microsoft Entra ID",
+        "plain": "SSO / Microsoft Entra ID"
+       }
+      ],
+      [
+       {
+        "html": "Ai xem, ai xuất danh sách khách hàng?",
+        "plain": "Ai xem, ai xuất danh sách khách hàng?"
+       },
+       {
+        "html": "Audit log của hệ thống quản lý khách hàng",
+        "plain": "Audit log của hệ thống quản lý khách hàng"
+       }
+      ],
+      [
+       {
+        "html": "File đi đâu: OneDrive, link, ai tải?",
+        "plain": "File đi đâu: OneDrive, link, ai tải?"
+       },
+       {
+        "html": "Nhật ký kiểm toán Microsoft 365",
+        "plain": "Nhật ký kiểm toán Microsoft 365"
+       }
+      ],
+      [
+       {
+        "html": "Có gửi qua email, VPN, máy trạm không?",
+        "plain": "Có gửi qua email, VPN, máy trạm không?"
+       },
+       {
+        "html": "Log cổng email, VPN, máy trạm – vòng sau nếu cần",
+        "plain": "Log cổng email, VPN, máy trạm – vòng sau nếu cần"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Đã là sự cố chưa?</strong> Phản ánh của khách hàng là một sự kiện được báo cáo. Khi chị Lan nhận ra kẻ gian biết thông tin chỉ có trong hệ thống nội bộ, nó trở thành <strong>sự cố nghi ngờ</strong> – đủ để bắt đầu phân tích và giữ bằng chứng ngay. Nó được xác nhận là sự cố (hoặc bác bỏ) sau khi có bằng chứng từ nhật ký – việc của bài 4 và Thực hành 10.",
+     "plain": "Đã là sự cố chưa? Phản ánh của khách hàng là một sự kiện được báo cáo. Khi chị Lan nhận ra kẻ gian biết thông tin chỉ có trong hệ thống nội bộ, nó trở thành sự cố nghi ngờ – đủ để bắt đầu phân tích và giữ bằng chứng ngay. Nó được xác nhận là sự cố (hoặc bác bỏ) sau khi có bằng chứng từ nhật ký – việc của bài 4 và Thực hành 10."
+    },
+    {
+     "t": "h3",
+     "text": "1.7. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Hỏi CNTT: các hệ thống mình dùng hằng ngày có ghi nhật ký kiểm toán không (đăng nhập, xem, xuất, chia sẻ)? Giữ bao lâu?",
+       "level": 0,
+       "plain": "Hỏi CNTT: các hệ thống mình dùng hằng ngày có ghi nhật ký kiểm toán không (đăng nhập, xem, xuất, chia sẻ)? Giữ bao lâu?"
+      },
+      {
+       "html": "Khi mua hoặc nâng cấp phần mềm nghiệp vụ, đưa \"ghi nhật ký mọi lần xem và xuất dữ liệu khách hàng\" vào yêu cầu.",
+       "level": 0,
+       "plain": "Khi mua hoặc nâng cấp phần mềm nghiệp vụ, đưa \"ghi nhật ký mọi lần xem và xuất dữ liệu khách hàng\" vào yêu cầu."
+      },
+      {
+       "html": "Biết rằng thao tác của mình được ghi lại – và đó là điều bảo vệ mình khi có người dùng tài khoản của mình.",
+       "level": 0,
+       "plain": "Biết rằng thao tác của mình được ghi lại – và đó là điều bảo vệ mình khi có người dùng tài khoản của mình."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Có log là an toàn.\" → Log không chặn được gì. Nó chỉ có ích khi có người (hoặc quy tắc cảnh báo) đọc nó kịp thời. Đêm 20–21/10, mọi thao tác đều được ghi đầy đủ – và không ai biết cho đến sáng.",
+     "plain": "Hiểu nhầm hay gặp: \"Có log là an toàn.\" → Log không chặn được gì. Nó chỉ có ích khi có người (hoặc quy tắc cảnh báo) đọc nó kịp thời. Đêm 20–21/10, mọi thao tác đều được ghi đầy đủ – và không ai biết cho đến sáng.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Bài 2 – Một dòng log tốt và quản lý nhật ký",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 2: một dòng nhật ký phải có gì mới dùng được, vì sao \"19:10\" trong file không phải 7 giờ tối, và nhật ký phải được giữ ra sao.",
+     "plain": "Bài này trả lời câu hỏi 2: một dòng nhật ký phải có gì mới dùng được, vì sao \"19:10\" trong file không phải 7 giờ tối, và nhật ký phải được giữ ra sao."
+    },
+    {
+     "t": "h3",
+     "text": "2.1. Năm câu hỏi của một dòng log"
+    },
+    {
+     "t": "p",
+     "html": "Theo nguyên tắc \"khi nào – ở đâu – ai – làm gì\" của OWASP, thêm kết quả:",
+     "plain": "Theo nguyên tắc \"khi nào – ở đâu – ai – làm gì\" của OWASP, thêm kết quả:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Trường ví dụ",
+        "plain": "Trường ví dụ"
+       },
+       {
+        "html": "Ví dụ từ đêm 20–21/10",
+        "plain": "Ví dụ từ đêm 20–21/10"
+       }
+      ],
+      [
+       {
+        "html": "Khi nào?",
+        "plain": "Khi nào?"
+       },
+       {
+        "html": "Thời điểm + múi giờ (event_time, timezone)",
+        "plain": "Thời điểm + múi giờ (event_time, timezone)"
+       },
+       {
+        "html": "2026-10-21 02:15:02 +07:00",
+        "plain": "2026-10-21 02:15:02 +07:00"
+       }
+      ],
+      [
+       {
+        "html": "Ai?",
+        "plain": "Ai?"
+       },
+       {
+        "html": "Tài khoản, mã phiên đã được bảo vệ (user_id, session_id)",
+        "plain": "Tài khoản, mã phiên đã được bảo vệ (user_id, session_id)"
+       },
+       {
+        "html": "nv_c",
+        "plain": "nv_c"
+       }
+      ],
+      [
+       {
+        "html": "Từ đâu?",
+        "plain": "Từ đâu?"
+       },
+       {
+        "html": "Địa chỉ IP, thiết bị, vị trí, ứng dụng (source_ip, application)",
+        "plain": "Địa chỉ IP, thiết bị, vị trí, ứng dụng (source_ip, application)"
+       },
+       {
+        "html": "203.0.113.45, trình duyệt lạ",
+        "plain": "203.0.113.45, trình duyệt lạ"
+       }
+      ],
+      [
+       {
+        "html": "Làm gì?",
+        "plain": "Làm gì?"
+       },
+       {
+        "html": "Hành động + đối tượng (action, resource)",
+        "plain": "Hành động + đối tượng (action, resource)"
+       },
+       {
+        "html": "Export – danh sách khách hàng ĐL X",
+        "plain": "Export – danh sách khách hàng ĐL X"
+       }
+      ],
+      [
+       {
+        "html": "Kết quả?",
+        "plain": "Kết quả?"
+       },
+       {
+        "html": "Thành công/thất bại, số bản ghi, mã yêu cầu (status, records, request_id)",
+        "plain": "Thành công/thất bại, số bản ghi, mã yêu cầu (status, records, request_id)"
+       },
+       {
+        "html": "Success, 8.500 dòng",
+        "plain": "Success, 8.500 dòng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Tên trường chỉ là ví dụ. <strong>Không ghi mã phiên (session token) thô vào log</strong>: ai đọc được log sẽ chiếm được phiên (buổi 4).",
+     "plain": "Tên trường chỉ là ví dụ. Không ghi mã phiên (session token) thô vào log: ai đọc được log sẽ chiếm được phiên (buổi 4)."
+    },
+    {
+     "t": "p",
+     "html": "Một dòng thiếu một trong năm phần là một dòng khó dùng: thiếu \"ai\" thì không biết tài khoản nào; thiếu \"từ đâu\" thì không phân biệt được anh Cường ở quầy với ai đó ở nơi khác; thiếu \"kết quả\" thì không biết 8.500 dòng đã thật sự được xuất hay chưa.",
+     "plain": "Một dòng thiếu một trong năm phần là một dòng khó dùng: thiếu \"ai\" thì không biết tài khoản nào; thiếu \"từ đâu\" thì không phân biệt được anh Cường ở quầy với ai đó ở nơi khác; thiếu \"kết quả\" thì không biết 8.500 dòng đã thật sự được xuất hay chưa."
+    },
+    {
+     "t": "h3",
+     "text": "2.2. Múi giờ: vì sao \"19:10\" không phải 7 giờ tối"
+    },
+    {
+     "t": "p",
+     "html": "Nhiều dịch vụ đám mây, trong đó có Microsoft 365, xuất log theo <strong>giờ UTC</strong>. Giờ Việt Nam = UTC + 7.",
+     "plain": "Nhiều dịch vụ đám mây, trong đó có Microsoft 365, xuất log theo giờ UTC. Giờ Việt Nam = UTC + 7."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Trong file",
+        "plain": "Trong file"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       },
+       {
+        "html": "Giờ Việt Nam",
+        "plain": "Giờ Việt Nam"
+       }
+      ],
+      [
+       {
+        "html": "2026-10-20T09:40:12Z",
+        "plain": "2026-10-20T09:40:12Z"
+       },
+       {
+        "html": "Chữ Z = UTC",
+        "plain": "Chữ Z = UTC"
+       },
+       {
+        "html": "20/10 16:40:12",
+        "plain": "20/10 16:40:12"
+       }
+      ],
+      [
+       {
+        "html": "2026-10-20T19:10:03Z",
+        "plain": "2026-10-20T19:10:03Z"
+       },
+       {
+        "html": "UTC",
+        "plain": "UTC"
+       },
+       {
+        "html": "<strong>21/10</strong> 02:10:03 – đã sang ngày hôm sau",
+        "plain": "21/10 02:10:03 – đã sang ngày hôm sau"
+       }
+      ],
+      [
+       {
+        "html": "2026-10-21T02:10:03+07:00",
+        "plain": "2026-10-21T02:10:03+07:00"
+       },
+       {
+        "html": "Ghi sẵn múi giờ",
+        "plain": "Ghi sẵn múi giờ"
+       },
+       {
+        "html": "21/10 02:10:03",
+        "plain": "21/10 02:10:03"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Đọc nhầm múi giờ, nhóm phân tích sẽ thấy \"7 lần sai mật khẩu lúc 19:10 – có lẽ anh Cường làm thêm buổi tối\" và bỏ qua dấu hiệu quan trọng nhất của đêm: mọi thứ xảy ra lúc 2 giờ sáng.",
+     "plain": "Đọc nhầm múi giờ, nhóm phân tích sẽ thấy \"7 lần sai mật khẩu lúc 19:10 – có lẽ anh Cường làm thêm buổi tối\" và bỏ qua dấu hiệu quan trọng nhất của đêm: mọi thứ xảy ra lúc 2 giờ sáng."
+    },
+    {
+     "t": "p",
+     "html": "Cách đổi trong Excel (ô A2 chứa chuỗi 2026-10-20T19:10:03Z; dấu phân cách ; hoặc , tùy cài đặt máy):",
+     "plain": "Cách đổi trong Excel (ô A2 chứa chuỗi 2026-10-20T19:10:03Z; dấu phân cách ; hoặc , tùy cài đặt máy):"
+    },
+    {
+     "t": "code",
+     "text": "=DATEVALUE(LEFT(A2;10)) + TIMEVALUE(MID(A2;12;8)) + 7/24"
+    },
+    {
+     "t": "p",
+     "html": "Định dạng ô kết quả là dd/mm/yyyy hh:mm:ss. Nếu cột đã là ngày giờ UTC thật (không phải chuỗi), chỉ cần =A2+7/24.",
+     "plain": "Định dạng ô kết quả là dd/mm/yyyy hh:mm:ss. Nếu cột đã là ngày giờ UTC thật (không phải chuỗi), chỉ cần =A2+7/24."
+    },
+    {
+     "t": "h3",
+     "text": "2.3. Năm điều kiện để nhật ký có giá trị khi điều tra"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Điều kiện",
+        "plain": "Điều kiện"
+       },
+       {
+        "html": "Vì sao",
+        "plain": "Vì sao"
+       },
+       {
+        "html": "Nếu thiếu",
+        "plain": "Nếu thiếu"
+       }
+      ],
+      [
+       {
+        "html": "Đồng hồ đồng bộ giữa các hệ thống (thường qua NTP)",
+        "plain": "Đồng hồ đồng bộ giữa các hệ thống (thường qua NTP)"
+       },
+       {
+        "html": "Ghép đúng thứ tự sự kiện từ nhiều nguồn",
+        "plain": "Ghép đúng thứ tự sự kiện từ nhiều nguồn"
+       },
+       {
+        "html": "Lệch vài phút là đảo lộn thứ tự (Bài 4)",
+        "plain": "Lệch vài phút là đảo lộn thứ tự (Bài 4)"
+       }
+      ],
+      [
+       {
+        "html": "Biết rõ múi giờ",
+        "plain": "Biết rõ múi giờ"
+       },
+       {
+        "html": "So sánh được log UTC với log giờ địa phương",
+        "plain": "So sánh được log UTC với log giờ địa phương"
+       },
+       {
+        "html": "Đọc sai cả ngày lẫn giờ",
+        "plain": "Đọc sai cả ngày lẫn giờ"
+       }
+      ],
+      [
+       {
+        "html": "Đủ thời gian lưu",
+        "plain": "Đủ thời gian lưu"
+       },
+       {
+        "html": "Rò rỉ thường phát hiện muộn",
+        "plain": "Rò rỉ thường phát hiện muộn"
+       },
+       {
+        "html": "Khi cần thì log đã bị xóa. Thời gian lưu do quy định đơn vị",
+        "plain": "Khi cần thì log đã bị xóa. Thời gian lưu do quy định đơn vị"
+       }
+      ],
+      [
+       {
+        "html": "Được bảo vệ",
+        "plain": "Được bảo vệ"
+       },
+       {
+        "html": "Người bị giám sát không xóa được log của mình; việc xóa/tắt log phải tạo cảnh báo",
+        "plain": "Người bị giám sát không xóa được log của mình; việc xóa/tắt log phải tạo cảnh báo"
+       },
+       {
+        "html": "Kẻ gian xóa dấu vết",
+        "plain": "Kẻ gian xóa dấu vết"
+       }
+      ],
+      [
+       {
+        "html": "Không chứa bí mật",
+        "plain": "Không chứa bí mật"
+       },
+       {
+        "html": "Không ghi mật khẩu, token, nội dung dữ liệu khách hàng ngoài nhu cầu",
+        "plain": "Không ghi mật khẩu, token, nội dung dữ liệu khách hàng ngoài nhu cầu"
+       },
+       {
+        "html": "Log thành nơi rò rỉ mới",
+        "plain": "Log thành nơi rò rỉ mới"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.4. Những sự kiện nên giám sát"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nhóm",
+        "plain": "Nhóm"
+       },
+       {
+        "html": "Ví dụ sự kiện",
+        "plain": "Ví dụ sự kiện"
+       },
+       {
+        "html": "Vì sao quan trọng",
+        "plain": "Vì sao quan trọng"
+       }
+      ],
+      [
+       {
+        "html": "Xác thực",
+        "plain": "Xác thực"
+       },
+       {
+        "html": "Đăng nhập thất bại nhiều lần, đăng nhập thành công từ nơi lạ, đổi phương thức MFA",
+        "plain": "Đăng nhập thất bại nhiều lần, đăng nhập thành công từ nơi lạ, đổi phương thức MFA"
+       },
+       {
+        "html": "Dấu hiệu dò mật khẩu hoặc chiếm tài khoản",
+        "plain": "Dấu hiệu dò mật khẩu hoặc chiếm tài khoản"
+       }
+      ],
+      [
+       {
+        "html": "Quyền",
+        "plain": "Quyền"
+       },
+       {
+        "html": "Thêm vai trò, cấp đặc quyền, mở rộng phạm vi",
+        "plain": "Thêm vai trò, cấp đặc quyền, mở rộng phạm vi"
+       },
+       {
+        "html": "Leo thang quyền, tự cấp quyền",
+        "plain": "Leo thang quyền, tự cấp quyền"
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu",
+        "plain": "Dữ liệu"
+       },
+       {
+        "html": "Truy cập, xuất, tải dữ liệu nhạy cảm (nếu hệ thống hỗ trợ ghi)",
+        "plain": "Truy cập, xuất, tải dữ liệu nhạy cảm (nếu hệ thống hỗ trợ ghi)"
+       },
+       {
+        "html": "Rò rỉ dữ liệu",
+        "plain": "Rò rỉ dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "Chia sẻ",
+        "plain": "Chia sẻ"
+       },
+       {
+        "html": "Tạo link \"Anyone\", chia sẻ ra ngoài tổ chức, Publish to web",
+        "plain": "Tạo link \"Anyone\", chia sẻ ra ngoài tổ chức, Publish to web"
+       },
+       {
+        "html": "Dữ liệu rời khỏi tổ chức (buổi 5, 7)",
+        "plain": "Dữ liệu rời khỏi tổ chức (buổi 5, 7)"
+       }
+      ],
+      [
+       {
+        "html": "Cấu hình",
+        "plain": "Cấu hình"
+       },
+       {
+        "html": "Đổi chế độ chia sẻ, tắt nhật ký, đổi thiết lập bảo mật",
+        "plain": "Đổi chế độ chia sẻ, tắt nhật ký, đổi thiết lập bảo mật"
+       },
+       {
+        "html": "Kẻ gian thường tắt log để xóa dấu vết",
+        "plain": "Kẻ gian thường tắt log để xóa dấu vết"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Chọn sự kiện theo rủi ro, mục đích và khả năng kỹ thuật. Ghi mọi thứ một cách thiếu kiểm soát sẽ làm chìm tín hiệu quan trọng và tạo thêm dữ liệu nhạy cảm.",
+     "plain": "Chọn sự kiện theo rủi ro, mục đích và khả năng kỹ thuật. Ghi mọi thứ một cách thiếu kiểm soát sẽ làm chìm tín hiệu quan trọng và tạo thêm dữ liệu nhạy cảm."
+    },
+    {
+     "t": "h3",
+     "text": "2.5. Bảo vệ chính nhật ký – bốn yêu cầu"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Đồng bộ thời gian:</strong> các hệ thống cùng giờ chuẩn, ghi rõ múi giờ.",
+       "level": 0,
+       "plain": "Đồng bộ thời gian: các hệ thống cùng giờ chuẩn, ghi rõ múi giờ."
+      },
+      {
+       "html": "<strong>Quyền truy cập:</strong> giới hạn người đọc, sửa, xóa, quản trị nơi lưu log. Người bị giám sát không nên có quyền xóa log của chính mình – kể cả quản trị viên (tách nhiệm vụ, buổi 3).",
+       "level": 0,
+       "plain": "Quyền truy cập: giới hạn người đọc, sửa, xóa, quản trị nơi lưu log. Người bị giám sát không nên có quyền xóa log của chính mình – kể cả quản trị viên (tách nhiệm vụ, buổi 3)."
+      },
+      {
+       "html": "<strong>Tính toàn vẹn:</strong> phát hiện được việc sửa log, bảo vệ bản gốc, ghi lại cả việc truy cập log. Khi trích log làm bằng chứng, tính giá trị băm của file và ghi vào biên bản (buổi 5, buổi 10).",
+       "level": 0,
+       "plain": "Tính toàn vẹn: phát hiện được việc sửa log, bảo vệ bản gốc, ghi lại cả việc truy cập log. Khi trích log làm bằng chứng, tính giá trị băm của file và ghi vào biên bản (buổi 5, buổi 10)."
+      },
+      {
+       "html": "<strong>Dữ liệu nhạy cảm:</strong> không ghi mật khẩu, khóa, access token hay nội dung khách hàng ngoài nhu cầu.",
+       "level": 0,
+       "plain": "Dữ liệu nhạy cảm: không ghi mật khẩu, khóa, access token hay nội dung khách hàng ngoài nhu cầu."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không nêu số ngày lưu log cố định; thời gian lưu theo quy định, mục đích giám sát và nhu cầu điều tra.",
+     "plain": "Không nêu số ngày lưu log cố định; thời gian lưu theo quy định, mục đích giám sát và nhu cầu điều tra."
+    },
+    {
+     "t": "h3",
+     "text": "2.6. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Khi nhận một file log, việc đầu tiên là xác định múi giờ của từng nguồn, rồi đưa về cùng một múi giờ trước khi ghép.",
+       "level": 0,
+       "plain": "Khi nhận một file log, việc đầu tiên là xác định múi giờ của từng nguồn, rồi đưa về cùng một múi giờ trước khi ghép."
+      },
+      {
+       "html": "Làm trên bản sao; giữ nguyên file gốc cùng giá trị băm.",
+       "level": 0,
+       "plain": "Làm trên bản sao; giữ nguyên file gốc cùng giá trị băm."
+      },
+      {
+       "html": "Khi đặt yêu cầu cho một hệ thống mới, hỏi: có ghi đủ năm phần không? Ai được xóa log? Giữ bao lâu?",
+       "level": 0,
+       "plain": "Khi đặt yêu cầu cho một hệ thống mới, hỏi: có ghi đủ năm phần không? Ai được xóa log? Giữ bao lâu?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Log càng nhiều càng tốt, cứ ghi hết.\" → Ghi cả nội dung dữ liệu khách hàng hoặc token vào log là tạo thêm một kho dữ liệu nhạy cảm; ghi tràn lan làm tín hiệu thật chìm giữa hàng triệu dòng vô nghĩa.",
+     "plain": "Hiểu nhầm hay gặp: \"Log càng nhiều càng tốt, cứ ghi hết.\" → Ghi cả nội dung dữ liệu khách hàng hoặc token vào log là tạo thêm một kho dữ liệu nhạy cảm; ghi tràn lan làm tín hiệu thật chìm giữa hàng triệu dòng vô nghĩa.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Bài 3 – Thế nào là bất thường",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 3: dòng nào bất thường, so với cái gì, và lẽ ra phải có cảnh báo nào.",
+     "plain": "Bài này trả lời câu hỏi 3: dòng nào bất thường, so với cái gì, và lẽ ra phải có cảnh báo nào."
+    },
+    {
+     "t": "h3",
+     "text": "3.1. Bất thường là so với bình thường"
+    },
+    {
+     "t": "p",
+     "html": "Bất thường là khác với mức bình thường (baseline) của <strong>người đó, vai trò đó, hệ thống đó</strong>. Muốn biết bất thường thì phải biết bình thường trông thế nào.",
+     "plain": "Bất thường là khác với mức bình thường (baseline) của người đó, vai trò đó, hệ thống đó. Muốn biết bất thường thì phải biết bình thường trông thế nào."
+    },
+    {
+     "t": "p",
+     "html": "Ví dụ mức bình thường của một giao dịch viên Điện lực X (giả định để học):",
+     "plain": "Ví dụ mức bình thường của một giao dịch viên Điện lực X (giả định để học):"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khía cạnh",
+        "plain": "Khía cạnh"
+       },
+       {
+        "html": "Bình thường",
+        "plain": "Bình thường"
+       }
+      ],
+      [
+       {
+        "html": "Giờ làm việc",
+        "plain": "Giờ làm việc"
+       },
+       {
+        "html": "07:00–17:30, thứ Hai – thứ Bảy",
+        "plain": "07:00–17:30, thứ Hai – thứ Bảy"
+       }
+      ],
+      [
+       {
+        "html": "Nơi đăng nhập",
+        "plain": "Nơi đăng nhập"
+       },
+       {
+        "html": "Máy tại quầy, dải IP nội bộ 10.x.x.x",
+        "plain": "Máy tại quầy, dải IP nội bộ 10.x.x.x"
+       }
+      ],
+      [
+       {
+        "html": "Số hồ sơ mở",
+        "plain": "Số hồ sơ mở"
+       },
+       {
+        "html": "30–50 một ngày, rải theo khách đến quầy",
+        "plain": "30–50 một ngày, rải theo khách đến quầy"
+       }
+      ],
+      [
+       {
+        "html": "Xuất dữ liệu",
+        "plain": "Xuất dữ liệu"
+       },
+       {
+        "html": "Vài lần một tháng, vài chục dòng, có phiếu yêu cầu",
+        "plain": "Vài lần một tháng, vài chục dòng, có phiếu yêu cầu"
+       }
+      ],
+      [
+       {
+        "html": "Đăng nhập sai",
+        "plain": "Đăng nhập sai"
+       },
+       {
+        "html": "Đôi khi 1–2 lần vào sáng thứ Hai",
+        "plain": "Đôi khi 1–2 lần vào sáng thứ Hai"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "So với bảng này, 412 lượt xem trong 20 phút và 8.500 dòng xuất lúc 2 giờ sáng nổi bật ngay, không cần công cụ đặc biệt.",
+     "plain": "So với bảng này, 412 lượt xem trong 20 phút và 8.500 dòng xuất lúc 2 giờ sáng nổi bật ngay, không cần công cụ đặc biệt."
+    },
+    {
+     "t": "h3",
+     "text": "3.2. Tám nhóm dấu hiệu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nhóm dấu hiệu",
+        "plain": "Nhóm dấu hiệu"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Lý do bình thường có thể có (cần loại trừ)",
+        "plain": "Lý do bình thường có thể có (cần loại trừ)"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Đăng nhập 2 giờ sáng, cuối tuần, ngày nghỉ",
+        "plain": "Đăng nhập 2 giờ sáng, cuối tuần, ngày nghỉ"
+       },
+       {
+        "html": "Trực ca, xử lý sự cố, tác vụ tự động ban đêm",
+        "plain": "Trực ca, xử lý sự cố, tác vụ tự động ban đêm"
+       }
+      ],
+      [
+       {
+        "html": "Khối lượng",
+        "plain": "Khối lượng"
+       },
+       {
+        "html": "Xuất 8.500 dòng trong khi bình thường vài chục",
+        "plain": "Xuất 8.500 dòng trong khi bình thường vài chục"
+       },
+       {
+        "html": "Báo cáo định kỳ cuối quý đã được duyệt",
+        "plain": "Báo cáo định kỳ cuối quý đã được duyệt"
+       }
+      ],
+      [
+       {
+        "html": "Vị trí / thiết bị",
+        "plain": "Vị trí / thiết bị"
+       },
+       {
+        "html": "IP nước ngoài, thiết bị chưa từng dùng",
+        "plain": "IP nước ngoài, thiết bị chưa từng dùng"
+       },
+       {
+        "html": "Đi công tác, dùng VPN",
+        "plain": "Đi công tác, dùng VPN"
+       }
+      ],
+      [
+       {
+        "html": "\"Di chuyển không thể\"",
+        "plain": "\"Di chuyển không thể\""
+       },
+       {
+        "html": "9:00 đăng nhập tại Hà Nội, 9:20 từ châu Âu",
+        "plain": "9:00 đăng nhập tại Hà Nội, 9:20 từ châu Âu"
+       },
+       {
+        "html": "VPN, proxy làm sai vị trí",
+        "plain": "VPN, proxy làm sai vị trí"
+       }
+      ],
+      [
+       {
+        "html": "Tần suất thất bại",
+        "plain": "Tần suất thất bại"
+       },
+       {
+        "html": "Nhiều lần sai mật khẩu liên tiếp rồi thành công",
+        "plain": "Nhiều lần sai mật khẩu liên tiếp rồi thành công"
+       },
+       {
+        "html": "Người dùng quên mật khẩu (thường vài lần, từ máy quen)",
+        "plain": "Người dùng quên mật khẩu (thường vài lần, từ máy quen)"
+       }
+      ],
+      [
+       {
+        "html": "Thay đổi quyền / bảo mật",
+        "plain": "Thay đổi quyền / bảo mật"
+       },
+       {
+        "html": "Tự thêm mình vào nhóm quản trị; đổi phương thức MFA ngay sau đăng nhập lạ",
+        "plain": "Tự thêm mình vào nhóm quản trị; đổi phương thức MFA ngay sau đăng nhập lạ"
+       },
+       {
+        "html": "Thay điện thoại mới",
+        "plain": "Thay điện thoại mới"
+       }
+      ],
+      [
+       {
+        "html": "Chuỗi hành vi",
+        "plain": "Chuỗi hành vi"
+       },
+       {
+        "html": "Đăng nhập lạ → xem hàng loạt hồ sơ → xuất → tạo link công khai",
+        "plain": "Đăng nhập lạ → xem hàng loạt hồ sơ → xuất → tạo link công khai"
+       },
+       {
+        "html": "Hiếm khi có lý do hợp lệ cho cả chuỗi",
+        "plain": "Hiếm khi có lý do hợp lệ cho cả chuỗi"
+       }
+      ],
+      [
+       {
+        "html": "Che dấu vết",
+        "plain": "Che dấu vết"
+       },
+       {
+        "html": "Tắt ghi log, xóa log, xóa email đã gửi",
+        "plain": "Tắt ghi log, xóa log, xóa email đã gửi"
+       },
+       {
+        "html": "Gần như luôn cần giải trình",
+        "plain": "Gần như luôn cần giải trình"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Nguyên tắc:</strong> một dấu hiệu riêng lẻ thường chỉ là tín hiệu. Nhiều dấu hiệu nối thành chuỗi hợp lý mới nâng mức nghi ngờ. Cảnh báo sai (false positive) là chuyện bình thường; việc của người phân tích là loại trừ có căn cứ.",
+     "plain": "Nguyên tắc: một dấu hiệu riêng lẻ thường chỉ là tín hiệu. Nhiều dấu hiệu nối thành chuỗi hợp lý mới nâng mức nghi ngờ. Cảnh báo sai (false positive) là chuyện bình thường; việc của người phân tích là loại trừ có căn cứ."
+    },
+    {
+     "t": "h3",
+     "text": "3.3. Hai ví dụ ngược chiều trong cùng một file"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Dòng 1 – trông đáng ngờ nhưng nhiều khả năng bình thường.</strong> 16:40 ngày 20/10, nv_d (chị Dung) xuất 320 dòng khách hàng nợ quá hạn. Đây là \"xuất dữ liệu khách hàng\" – loại sự kiện nghe có vẻ nghiêm trọng. Nhưng: trong giờ làm việc, từ máy công ty, số lượng vừa phải, đúng vai trò. Đối chiếu với phiếu yêu cầu anh Tuấn đã ký (buổi 5) là loại trừ được. Nếu nhóm phân tích nghi chị Dung chỉ vì tên chị xuất hiện trong file, đó là một kết luận vội.",
+     "plain": "Dòng 1 – trông đáng ngờ nhưng nhiều khả năng bình thường. 16:40 ngày 20/10, nv_d (chị Dung) xuất 320 dòng khách hàng nợ quá hạn. Đây là \"xuất dữ liệu khách hàng\" – loại sự kiện nghe có vẻ nghiêm trọng. Nhưng: trong giờ làm việc, từ máy công ty, số lượng vừa phải, đúng vai trò. Đối chiếu với phiếu yêu cầu anh Tuấn đã ký (buổi 5) là loại trừ được. Nếu nhóm phân tích nghi chị Dung chỉ vì tên chị xuất hiện trong file, đó là một kết luận vội."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Dòng 2–16 – từng dòng có thể giải thích, cả chuỗi thì không.</strong> Sai mật khẩu (có thể là quên), đăng nhập ngoài giờ (có thể là làm thêm), IP lạ (có thể là mạng nhà), thêm MFA (có thể là đổi điện thoại), xuất nhiều (có thể có phiếu)… nhưng 7 lần sai → thành công → thêm MFA → 412 lượt xem → xuất 8.500 dòng → link \"Anyone\" → tải từ IP khác, tất cả trong một giờ lúc 2 giờ sáng, thì khó có lý do hợp lệ.",
+     "plain": "Dòng 2–16 – từng dòng có thể giải thích, cả chuỗi thì không. Sai mật khẩu (có thể là quên), đăng nhập ngoài giờ (có thể là làm thêm), IP lạ (có thể là mạng nhà), thêm MFA (có thể là đổi điện thoại), xuất nhiều (có thể có phiếu)… nhưng 7 lần sai → thành công → thêm MFA → 412 lượt xem → xuất 8.500 dòng → link \"Anyone\" → tải từ IP khác, tất cả trong một giờ lúc 2 giờ sáng, thì khó có lý do hợp lệ."
+    },
+    {
+     "t": "h3",
+     "text": "3.4. Trả lời câu hỏi 3: lẽ ra phải có cảnh báo nào"
+    },
+    {
+     "t": "p",
+     "html": "Nhật ký đêm 20–21/10 ghi đầy đủ mọi thao tác. Cái thiếu là <strong>quy tắc cảnh báo</strong> – các câu \"nếu … thì báo ngay\":",
+     "plain": "Nhật ký đêm 20–21/10 ghi đầy đủ mọi thao tác. Cái thiếu là quy tắc cảnh báo – các câu \"nếu … thì báo ngay\":"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cảnh báo lẽ ra có thể có",
+        "plain": "Cảnh báo lẽ ra có thể có"
+       },
+       {
+        "html": "Dòng sẽ kích hoạt",
+        "plain": "Dòng sẽ kích hoạt"
+       },
+       {
+        "html": "Thời điểm sớm nhất",
+        "plain": "Thời điểm sớm nhất"
+       }
+      ],
+      [
+       {
+        "html": "Nhiều lần đăng nhập sai từ một IP lạ rồi thành công",
+        "plain": "Nhiều lần đăng nhập sai từ một IP lạ rồi thành công"
+       },
+       {
+        "html": "2–9",
+        "plain": "2–9"
+       },
+       {
+        "html": "02:15",
+        "plain": "02:15"
+       }
+      ],
+      [
+       {
+        "html": "Thêm phương thức MFA ngay sau đăng nhập từ IP lạ",
+        "plain": "Thêm phương thức MFA ngay sau đăng nhập từ IP lạ"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "02:17",
+        "plain": "02:17"
+       }
+      ],
+      [
+       {
+        "html": "Xuất số lượng lớn ngoài giờ",
+        "plain": "Xuất số lượng lớn ngoài giờ"
+       },
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "02:42",
+        "plain": "02:42"
+       }
+      ],
+      [
+       {
+        "html": "Tạo link \"Anyone\" cho file vừa được xuất từ hệ thống khách hàng",
+        "plain": "Tạo link \"Anyone\" cho file vừa được xuất từ hệ thống khách hàng"
+       },
+       {
+        "html": "14",
+        "plain": "14"
+       },
+       {
+        "html": "02:47",
+        "plain": "02:47"
+       }
+      ],
+      [
+       {
+        "html": "File nội bộ bị tải bởi người dùng ẩn danh từ IP ngoài",
+        "plain": "File nội bộ bị tải bởi người dùng ẩn danh từ IP ngoài"
+       },
+       {
+        "html": "16",
+        "plain": "16"
+       },
+       {
+        "html": "03:06",
+        "plain": "03:06"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Chỉ cần cảnh báo đầu tiên có người nhận và xử lý trong 20 phút, tài khoản đã có thể bị khóa trước lúc xuất dữ liệu (02:42). Thay vào đó, người phát hiện là một khách hàng, hơn 6 giờ sau. Đây là một lỗ hổng mới, không thuộc chương nào trước – nó thuộc chính buổi hôm nay.",
+     "plain": "Chỉ cần cảnh báo đầu tiên có người nhận và xử lý trong 20 phút, tài khoản đã có thể bị khóa trước lúc xuất dữ liệu (02:42). Thay vào đó, người phát hiện là một khách hàng, hơn 6 giờ sau. Đây là một lỗ hổng mới, không thuộc chương nào trước – nó thuộc chính buổi hôm nay."
+    },
+    {
+     "t": "p",
+     "html": "Nhiều nền tảng (Microsoft 365, hệ thống SSO, SIEM) có sẵn một số quy tắc kiểu này; việc bật, tinh chỉnh và phân công người nhận cảnh báo là việc của CNTT/ATTT. Một cảnh báo không ai nhận ngoài giờ cũng giống như không có cảnh báo.",
+     "plain": "Nhiều nền tảng (Microsoft 365, hệ thống SSO, SIEM) có sẵn một số quy tắc kiểu này; việc bật, tinh chỉnh và phân công người nhận cảnh báo là việc của CNTT/ATTT. Một cảnh báo không ai nhận ngoài giờ cũng giống như không có cảnh báo."
+    },
+    {
+     "t": "h3",
+     "text": "3.5. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Biết mức bình thường của vai trò mình; khi thấy tài khoản mình có hoạt động lạ (thông báo đăng nhập, email \"thiết bị mới\"), báo ngay.",
+       "level": 0,
+       "plain": "Biết mức bình thường của vai trò mình; khi thấy tài khoản mình có hoạt động lạ (thông báo đăng nhập, email \"thiết bị mới\"), báo ngay."
+      },
+      {
+       "html": "Đề nghị CNTT/ATTT xác định vài quy tắc cảnh báo ưu tiên cho dữ liệu khách hàng (bảng 3.4) và ai nhận cảnh báo ngoài giờ.",
+       "level": 0,
+       "plain": "Đề nghị CNTT/ATTT xác định vài quy tắc cảnh báo ưu tiên cho dữ liệu khách hàng (bảng 3.4) và ai nhận cảnh báo ngoài giờ."
+      },
+      {
+       "html": "Khi một đồng nghiệp xuất hiện trong log, nhớ dòng 1: đối chiếu ngữ cảnh trước khi nghi.",
+       "level": 0,
+       "plain": "Khi một đồng nghiệp xuất hiện trong log, nhớ dòng 1: đối chiếu ngữ cảnh trước khi nghi."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Ngoài giờ là đáng ngờ.\" → Ngoài giờ là một tín hiệu, không phải kết luận. Trực ca, sự cố lưới điện, tác vụ tự động đều chạy ban đêm. Điều làm nên nghi ngờ là chuỗi nhiều dấu hiệu khớp với nhau.",
+     "plain": "Hiểu nhầm hay gặp: \"Ngoài giờ là đáng ngờ.\" → Ngoài giờ là một tín hiệu, không phải kết luận. Trực ca, sự cố lưới điện, tác vụ tự động đều chạy ban đêm. Điều làm nên nghi ngờ là chuỗi nhiều dấu hiệu khớp với nhau.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Bài 4 – Phương pháp phân tích log 6 bước",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Đọc log giống làm thám tử: một dấu vết chưa phải bằng chứng kết tội. Bài này trả lời câu hỏi 4: làm sao đi từ những dòng nhật ký đến một kết luận có căn cứ, không vội đổ lỗi.",
+     "plain": "Đọc log giống làm thám tử: một dấu vết chưa phải bằng chứng kết tội. Bài này trả lời câu hỏi 4: làm sao đi từ những dòng nhật ký đến một kết luận có căn cứ, không vội đổ lỗi."
+    },
+    {
+     "t": "h3",
+     "text": "4.1. Sáu bước"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Làm gì",
+        "plain": "Làm gì"
+       },
+       {
+        "html": "Ví dụ với chương 9",
+        "plain": "Ví dụ với chương 9"
+       }
+      ],
+      [
+       {
+        "html": "1. Xác định câu hỏi",
+        "plain": "1. Xác định câu hỏi"
+       },
+       {
+        "html": "Đang tìm gì?",
+        "plain": "Đang tìm gì?"
+       },
+       {
+        "html": "\"Mã khách hàng và số nợ lọt ra từ đâu, khi nào, qua tài khoản nào?\"",
+        "plain": "\"Mã khách hàng và số nợ lọt ra từ đâu, khi nào, qua tài khoản nào?\""
+       }
+      ],
+      [
+       {
+        "html": "2. Thu thập và chuẩn hóa",
+        "plain": "2. Thu thập và chuẩn hóa"
+       },
+       {
+        "html": "Lấy log từ các nguồn liên quan, đưa về cùng múi giờ, cùng định dạng. Làm trên bản sao, giữ bản gốc",
+        "plain": "Lấy log từ các nguồn liên quan, đưa về cùng múi giờ, cùng định dạng. Làm trên bản sao, giữ bản gốc"
+       },
+       {
+        "html": "Đổi UTC sang +07:00; tính giá trị băm file gốc",
+        "plain": "Đổi UTC sang +07:00; tính giá trị băm file gốc"
+       }
+      ],
+      [
+       {
+        "html": "3. Lọc và xoay trục (pivot)",
+        "plain": "3. Lọc và xoay trục (pivot)"
+       },
+       {
+        "html": "Lọc theo tài khoản, IP, tài nguyên, khoảng thời gian. Từ một dấu hiệu, \"xoay\" sang trường liên quan",
+        "plain": "Lọc theo tài khoản, IP, tài nguyên, khoảng thời gian. Từ một dấu hiệu, \"xoay\" sang trường liên quan"
+       },
+       {
+        "html": "IP 203.0.113.45 còn đăng nhập tài khoản nào khác? File vừa xuất đi đâu tiếp?",
+        "plain": "IP 203.0.113.45 còn đăng nhập tài khoản nào khác? File vừa xuất đi đâu tiếp?"
+       }
+      ],
+      [
+       {
+        "html": "4. Dựng dòng thời gian",
+        "plain": "4. Dựng dòng thời gian"
+       },
+       {
+        "html": "Xếp sự kiện theo thứ tự, ghi rõ múi giờ và nguồn",
+        "plain": "Xếp sự kiện theo thứ tự, ghi rõ múi giờ và nguồn"
+       },
+       {
+        "html": "Trục thời gian 16:40 → 07:45",
+        "plain": "Trục thời gian 16:40 → 07:45"
+       }
+      ],
+      [
+       {
+        "html": "5. Đặt và kiểm tra giả thuyết",
+        "plain": "5. Đặt và kiểm tra giả thuyết"
+       },
+       {
+        "html": "Mỗi giả thuyết cần bằng chứng gì để khẳng định hoặc bác bỏ? Đối chiếu lịch trực, phiếu yêu cầu; phỏng vấn do người có thẩm quyền làm",
+        "plain": "Mỗi giả thuyết cần bằng chứng gì để khẳng định hoặc bác bỏ? Đối chiếu lịch trực, phiếu yêu cầu; phỏng vấn do người có thẩm quyền làm"
+       },
+       {
+        "html": "\"Tài khoản nv_c bị chiếm\" vs \"anh Cường tự làm\"",
+        "plain": "\"Tài khoản nv_c bị chiếm\" vs \"anh Cường tự làm\""
+       }
+      ],
+      [
+       {
+        "html": "6. Kết luận có mức độ tin cậy",
+        "plain": "6. Kết luận có mức độ tin cậy"
+       },
+       {
+        "html": "Tách đã xác minh / có khả năng / chưa rõ; đề xuất hành động",
+        "plain": "Tách đã xác minh / có khả năng / chưa rõ; đề xuất hành động"
+       },
+       {
+        "html": "Bảng kết luận của Thực hành 10",
+        "plain": "Bảng kết luận của Thực hành 10"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Slide 96–99 tóm lại thành 5 bước ngắn hơn: <strong>sự kiện → đối chiếu ngữ cảnh → ghép dòng thời gian → kiểm chứng từ nguồn khác → quyết định</strong> (đóng vụ việc hay chuyển sang xử lý sự cố). Hai cách diễn đạt, cùng một tinh thần.",
+     "plain": "Slide 96–99 tóm lại thành 5 bước ngắn hơn: sự kiện → đối chiếu ngữ cảnh → ghép dòng thời gian → kiểm chứng từ nguồn khác → quyết định (đóng vụ việc hay chuyển sang xử lý sự cố). Hai cách diễn đạt, cùng một tinh thần."
+    },
+    {
+     "t": "h3",
+     "text": "4.2. Nhật ký mẫu có điểm cần đối chiếu"
+    },
+    {
+     "t": "p",
+     "html": "Nhật ký giả lập (giờ +07:00):",
+     "plain": "Nhật ký giả lập (giờ +07:00):"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giờ",
+        "plain": "Giờ"
+       },
+       {
+        "html": "Tài khoản",
+        "plain": "Tài khoản"
+       },
+       {
+        "html": "Sự kiện",
+        "plain": "Sự kiện"
+       },
+       {
+        "html": "Kết quả",
+        "plain": "Kết quả"
+       }
+      ],
+      [
+       {
+        "html": "21:58",
+        "plain": "21:58"
+       },
+       {
+        "html": "nv_a",
+        "plain": "nv_a"
+       },
+       {
+        "html": "Login",
+        "plain": "Login"
+       },
+       {
+        "html": "Success",
+        "plain": "Success"
+       }
+      ],
+      [
+       {
+        "html": "22:01",
+        "plain": "22:01"
+       },
+       {
+        "html": "nv_a",
+        "plain": "nv_a"
+       },
+       {
+        "html": "Export customers",
+        "plain": "Export customers"
+       },
+       {
+        "html": "12.000 dòng",
+        "plain": "12.000 dòng"
+       }
+      ],
+      [
+       {
+        "html": "22:03",
+        "plain": "22:03"
+       },
+       {
+        "html": "admin_b",
+        "plain": "admin_b"
+       },
+       {
+        "html": "Grant Export to nv_a",
+        "plain": "Grant Export to nv_a"
+       },
+       {
+        "html": "Success",
+        "plain": "Success"
+       }
+      ],
+      [
+       {
+        "html": "22:05",
+        "plain": "22:05"
+       },
+       {
+        "html": "nv_a",
+        "plain": "nv_a"
+       },
+       {
+        "html": "Download export",
+        "plain": "Download export"
+       },
+       {
+        "html": "Success",
+        "plain": "Success"
+       }
+      ],
+      [
+       {
+        "html": "22:08",
+        "plain": "22:08"
+       },
+       {
+        "html": "nv_a",
+        "plain": "nv_a"
+       },
+       {
+        "html": "Logout",
+        "plain": "Logout"
+       },
+       {
+        "html": "Success",
+        "plain": "Success"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu hỏi gài sẵn:</strong> thao tác xuất lúc 22:01 lại xảy ra <strong>trước</strong> khi được cấp quyền xuất lúc 22:03. Vì sao có thể như vậy? Đây là bẫy cố ý để học viên không vội kết luận \"admin_b cấp quyền cho nv_a để lấy dữ liệu\".",
+     "plain": "Câu hỏi gài sẵn: thao tác xuất lúc 22:01 lại xảy ra trước khi được cấp quyền xuất lúc 22:03. Vì sao có thể như vậy? Đây là bẫy cố ý để học viên không vội kết luận \"admin_b cấp quyền cho nv_a để lấy dữ liệu\"."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khả năng",
+        "plain": "Khả năng"
+       },
+       {
+        "html": "Giải thích",
+        "plain": "Giải thích"
+       },
+       {
+        "html": "Cách kiểm tra",
+        "plain": "Cách kiểm tra"
+       }
+      ],
+      [
+       {
+        "html": "nv_a đã có quyền xuất từ trước",
+        "plain": "nv_a đã có quyền xuất từ trước"
+       },
+       {
+        "html": "Qua một vai trò khác hoặc quyền cũ chưa thu hồi (như chị Hà ở buổi 3); lệnh cấp 22:03 có thể cho phạm vi khác",
+        "plain": "Qua một vai trò khác hoặc quyền cũ chưa thu hồi (như chị Hà ở buổi 3); lệnh cấp 22:03 có thể cho phạm vi khác"
+       },
+       {
+        "html": "Xuất danh sách quyền hiệu lực của nv_a tại 22:01; rà soát lịch sử thay đổi quyền",
+        "plain": "Xuất danh sách quyền hiệu lực của nv_a tại 22:01; rà soát lịch sử thay đổi quyền"
+       }
+      ],
+      [
+       {
+        "html": "Đồng hồ hai hệ thống lệch nhau",
+        "plain": "Đồng hồ hai hệ thống lệch nhau"
+       },
+       {
+        "html": "Log ứng dụng và log quản lý quyền ghi giờ theo hai máy chủ khác nhau",
+        "plain": "Log ứng dụng và log quản lý quyền ghi giờ theo hai máy chủ khác nhau"
+       },
+       {
+        "html": "So giờ hai máy với nguồn chuẩn; tìm một sự kiện chung xuất hiện ở cả hai log để đo độ lệch",
+        "plain": "So giờ hai máy với nguồn chuẩn; tìm một sự kiện chung xuất hiện ở cả hai log để đo độ lệch"
+       }
+      ],
+      [
+       {
+        "html": "Log bị trễ hoặc sắp xếp theo giờ tiếp nhận",
+        "plain": "Log bị trễ hoặc sắp xếp theo giờ tiếp nhận"
+       },
+       {
+        "html": "Hệ thống thu log ghi \"giờ nhận\" thay vì \"giờ xảy ra\"",
+        "plain": "Hệ thống thu log ghi \"giờ nhận\" thay vì \"giờ xảy ra\""
+       },
+       {
+        "html": "So trường event_time với trường thời gian tiếp nhận",
+        "plain": "So trường event_time với trường thời gian tiếp nhận"
+       }
+      ],
+      [
+       {
+        "html": "Thao tác do tiến trình khác thực hiện",
+        "plain": "Thao tác do tiến trình khác thực hiện"
+       },
+       {
+        "html": "Tác vụ tự động hoặc tài khoản dịch vụ chạy dưới danh nghĩa nv_a",
+        "plain": "Tác vụ tự động hoặc tài khoản dịch vụ chạy dưới danh nghĩa nv_a"
+       },
+       {
+        "html": "Kiểm tra mã phiên, request_id, ứng dụng nguồn",
+        "plain": "Kiểm tra mã phiên, request_id, ứng dụng nguồn"
+       }
+      ],
+      [
+       {
+        "html": "Quyền được cấp \"hợp thức hóa\" sau khi đã làm",
+        "plain": "Quyền được cấp \"hợp thức hóa\" sau khi đã làm"
+       },
+       {
+        "html": "Ai đó cấp quyền để thao tác trước đó trông hợp lệ",
+        "plain": "Ai đó cấp quyền để thao tác trước đó trông hợp lệ"
+       },
+       {
+        "html": "Hồ sơ phê duyệt cấp quyền; lý do admin_b cấp vào 22:03",
+        "plain": "Hồ sơ phê duyệt cấp quyền; lý do admin_b cấp vào 22:03"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Đọc log theo giả thuyết</strong> – các giả thuyết về cả vụ việc:",
+     "plain": "Đọc log theo giả thuyết – các giả thuyết về cả vụ việc:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giả thuyết",
+        "plain": "Giả thuyết"
+       },
+       {
+        "html": "Cần kiểm tra gì",
+        "plain": "Cần kiểm tra gì"
+       }
+      ],
+      [
+       {
+        "html": "1. Có yêu cầu xuất dữ liệu ngoài giờ được phê duyệt",
+        "plain": "1. Có yêu cầu xuất dữ liệu ngoài giờ được phê duyệt"
+       },
+       {
+        "html": "Lịch trực, phiếu yêu cầu, email phê duyệt",
+        "plain": "Lịch trực, phiếu yêu cầu, email phê duyệt"
+       }
+      ],
+      [
+       {
+        "html": "2. Tài khoản nv_a bị người khác sử dụng",
+        "plain": "2. Tài khoản nv_a bị người khác sử dụng"
+       },
+       {
+        "html": "Phiên, thiết bị, vị trí, sự kiện xác thực/MFA quanh 21:58",
+        "plain": "Phiên, thiết bị, vị trí, sự kiện xác thực/MFA quanh 21:58"
+       }
+      ],
+      [
+       {
+        "html": "3. Log bị trễ hoặc đồng hồ các hệ thống lệch nhau",
+        "plain": "3. Log bị trễ hoặc đồng hồ các hệ thống lệch nhau"
+       },
+       {
+        "html": "So thời điểm sự kiện với thời điểm hệ thống tiếp nhận log",
+        "plain": "So thời điểm sự kiện với thời điểm hệ thống tiếp nhận log"
+       }
+      ],
+      [
+       {
+        "html": "4. nv_a đã có quyền xuất từ trước (qua vai trò khác)",
+        "plain": "4. nv_a đã có quyền xuất từ trước (qua vai trò khác)"
+       },
+       {
+        "html": "Quyền hiệu lực của nv_a tại 22:01",
+        "plain": "Quyền hiệu lực của nv_a tại 22:01"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Ba giới hạn phải nhớ"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Có sự kiện Download không chứng minh dữ liệu đã bị gửi ra ngoài.</strong> File có thể nằm trên máy công ty và bị xóa. Khác với đêm 20–21/10, nơi có thêm link \"Anyone\" và lượt tải từ IP bên ngoài.",
+       "level": 0,
+       "plain": "Có sự kiện Download không chứng minh dữ liệu đã bị gửi ra ngoài. File có thể nằm trên máy công ty và bị xóa. Khác với đêm 20–21/10, nơi có thêm link \"Anyone\" và lượt tải từ IP bên ngoài."
+      },
+      {
+       "html": "<strong>Một địa chỉ IP không đủ để định danh chắc chắn một người</strong> (có thể qua NAT, VPN, mạng dùng chung). Các IP trong giáo trình thuộc dải dành cho tài liệu, không phải IP thật.",
+       "level": 0,
+       "plain": "Một địa chỉ IP không đủ để định danh chắc chắn một người (có thể qua NAT, VPN, mạng dùng chung). Các IP trong giáo trình thuộc dải dành cho tài liệu, không phải IP thật."
+      },
+      {
+       "html": "<strong>Giữ nguyên thứ tự thời gian trong log</strong>, không tự sửa giờ cho khớp câu chuyện mình đã nghĩ sẵn.",
+       "level": 0,
+       "plain": "Giữ nguyên thứ tự thời gian trong log, không tự sửa giờ cho khớp câu chuyện mình đã nghĩ sẵn."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Quy tắc bắt buộc:</strong> không kết luận một người cụ thể làm lộ dữ liệu chỉ từ tên tài khoản hoặc một lần xuất file. Tên tài khoản cho biết <strong>tài khoản nào</strong> được dùng, không cho biết <strong>ai</strong> ngồi trước bàn phím.",
+     "plain": "Quy tắc bắt buộc: không kết luận một người cụ thể làm lộ dữ liệu chỉ từ tên tài khoản hoặc một lần xuất file. Tên tài khoản cho biết tài khoản nào được dùng, không cho biết ai ngồi trước bàn phím."
+    },
+    {
+     "t": "h3",
+     "text": "4.4. Công cụ: Excel là đủ cho lớp học"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Việc",
+        "plain": "Việc"
+       },
+       {
+        "html": "Thao tác Excel",
+        "plain": "Thao tác Excel"
+       }
+      ],
+      [
+       {
+        "html": "Đổi giờ UTC",
+        "plain": "Đổi giờ UTC"
+       },
+       {
+        "html": "Công thức ở mục 2.2",
+        "plain": "Công thức ở mục 2.2"
+       }
+      ],
+      [
+       {
+        "html": "Lọc theo tài khoản, IP",
+        "plain": "Lọc theo tài khoản, IP"
+       },
+       {
+        "html": "Data → Filter",
+        "plain": "Data → Filter"
+       }
+      ],
+      [
+       {
+        "html": "Sắp xếp theo thời gian",
+        "plain": "Sắp xếp theo thời gian"
+       },
+       {
+        "html": "Sort theo cột giờ đã đổi",
+        "plain": "Sort theo cột giờ đã đổi"
+       }
+      ],
+      [
+       {
+        "html": "Đếm sự kiện theo tài khoản/IP",
+        "plain": "Đếm sự kiện theo tài khoản/IP"
+       },
+       {
+        "html": "PivotTable: Rows = tài khoản, IP; Values = Count",
+        "plain": "PivotTable: Rows = tài khoản, IP; Values = Count"
+       }
+      ],
+      [
+       {
+        "html": "Tô màu giờ ngoài 07:00–18:00",
+        "plain": "Tô màu giờ ngoài 07:00–18:00"
+       },
+       {
+        "html": "Conditional Formatting → Use a formula, ví dụ =OR(HOUR($H2)&lt;7;HOUR($H2)&gt;=18)",
+        "plain": "Conditional Formatting → Use a formula, ví dụ =OR(HOUR($H2)<7;HOUR($H2)>=18)"
+       }
+      ],
+      [
+       {
+        "html": "Tô màu IP không phải nội bộ",
+        "plain": "Tô màu IP không phải nội bộ"
+       },
+       {
+        "html": "Conditional Formatting, ví dụ =LEFT($C2;3)&lt;&gt;\"10.\"",
+        "plain": "Conditional Formatting, ví dụ =LEFT($C2;3)<>\"10.\""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.5. Mẫu trình bày kết quả truy vết"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Câu hỏi cần trả lời.",
+       "level": 0,
+       "plain": "Câu hỏi cần trả lời."
+      },
+      {
+       "html": "Nguồn log đã dùng, khoảng thời gian, múi giờ, giá trị băm của file gốc.",
+       "level": 0,
+       "plain": "Nguồn log đã dùng, khoảng thời gian, múi giờ, giá trị băm của file gốc."
+      },
+      {
+       "html": "Diễn biến theo thời gian các sự kiện liên quan.",
+       "level": 0,
+       "plain": "Diễn biến theo thời gian các sự kiện liên quan."
+      },
+      {
+       "html": "Đã xác minh / Có khả năng / Chưa rõ.",
+       "level": 0,
+       "plain": "Đã xác minh / Có khả năng / Chưa rõ."
+      },
+      {
+       "html": "Bằng chứng cần thêm và ai cung cấp.",
+       "level": 0,
+       "plain": "Bằng chứng cần thêm và ai cung cấp."
+      },
+      {
+       "html": "Hành động đề xuất, người có thẩm quyền quyết định.",
+       "level": 0,
+       "plain": "Hành động đề xuất, người có thẩm quyền quyết định."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.6. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Khi được nhờ \"xem log giúp\", hỏi trước: câu hỏi là gì, ai giao, được xem trong phạm vi nào.",
+       "level": 0,
+       "plain": "Khi được nhờ \"xem log giúp\", hỏi trước: câu hỏi là gì, ai giao, được xem trong phạm vi nào."
+      },
+      {
+       "html": "Luôn viết kết luận theo ba cột đã xác minh / có khả năng / chưa rõ.",
+       "level": 0,
+       "plain": "Luôn viết kết luận theo ba cột đã xác minh / có khả năng / chưa rõ."
+      },
+      {
+       "html": "Không chia sẻ tên tài khoản trong log ra ngoài nhóm xử lý khi chưa có kết luận.",
+       "level": 0,
+       "plain": "Không chia sẻ tên tài khoản trong log ra ngoài nhóm xử lý khi chưa có kết luận."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Log ghi nv_c thì anh Cường làm.\" → Log ghi tài khoản nv_c được dùng từ IP 203.0.113.45. Ai điều khiển phiên đó là một câu hỏi khác, cần bằng chứng khác.",
+     "plain": "Hiểu nhầm hay gặp: \"Log ghi nv_c thì anh Cường làm.\" → Log ghi tài khoản nv_c được dùng từ IP 203.0.113.45. Ai điều khiển phiên đó là một câu hỏi khác, cần bằng chứng khác.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Thực hành 10 – Truy vết truy cập bất thường (65 phút, hai vòng)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "h3",
+     "text": "Cách tổ chức"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Mỗi học viên làm một bài riêng. Bạn có thể đọc nhật ký trên web hoặc dùng Excel để sắp xếp.",
+       "level": 0,
+       "plain": "Mỗi học viên làm một bài riêng. Bạn có thể đọc nhật ký trên web hoặc dùng Excel để sắp xếp."
+      },
+      {
+       "html": "Vòng 1 (25 phút): phân tích nhật ký mẫu 5 dòng ở mục 4.2; đối chiếu thứ tự sự kiện trước khi kết luận.",
+       "level": 0,
+       "plain": "Vòng 1 (25 phút): phân tích nhật ký mẫu 5 dòng ở mục 4.2; đối chiếu thứ tự sự kiện trước khi kết luận."
+      },
+      {
+       "html": "<strong>Vòng 2 (40 phút):</strong> log đêm 20–21/10 (17 dòng, giờ UTC) – file chị Lan nhận từ CNTT. Phát bản chỉ có file log, không kèm lời giải.",
+       "level": 0,
+       "plain": "Vòng 2 (40 phút): log đêm 20–21/10 (17 dòng, giờ UTC) – file chị Lan nhận từ CNTT. Phát bản chỉ có file log, không kèm lời giải."
+      },
+      {
+       "html": "Diễn biến theo thời gian của vòng 2 là đầu vào của buổi diễn tập chiều nay.",
+       "level": 0,
+       "plain": "Diễn biến theo thời gian của vòng 2 là đầu vào của buổi diễn tập chiều nay."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Nhiệm vụ (giống nhau ở cả hai vòng)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Xác định tài khoản, tài nguyên và thao tác đáng kiểm tra.",
+       "level": 0,
+       "plain": "Xác định tài khoản, tài nguyên và thao tác đáng kiểm tra."
+      },
+      {
+       "html": "Lập bảng diễn biến theo thời gian trong bài làm; ghi rõ múi giờ và mỗi sự kiện trên một dòng.",
+       "level": 0,
+       "plain": "Lập bảng diễn biến theo thời gian trong bài làm; ghi rõ múi giờ và mỗi sự kiện trên một dòng."
+      },
+      {
+       "html": "Điền bảng 4 cột: <strong>Đã biết – Chưa biết – Giả thuyết – Bằng chứng cần thêm</strong>.",
+       "level": 0,
+       "plain": "Điền bảng 4 cột: Đã biết – Chưa biết – Giả thuyết – Bằng chứng cần thêm."
+      },
+      {
+       "html": "Đề xuất hành động tiếp theo trong phạm vi thẩm quyền được giao.",
+       "level": 0,
+       "plain": "Đề xuất hành động tiếp theo trong phạm vi thẩm quyền được giao."
+      },
+      {
+       "html": "(Chỉ vòng 2) Nối từng dòng bất thường với tờ \"Việc hẹn sửa sau\".",
+       "level": 0,
+       "plain": "(Chỉ vòng 2) Nối từng dòng bất thường với tờ \"Việc hẹn sửa sau\"."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Quy tắc bắt buộc:</strong> không kết luận một người cụ thể làm lộ dữ liệu chỉ từ tên tài khoản hoặc một lần xuất file.",
+     "plain": "Quy tắc bắt buộc: không kết luận một người cụ thể làm lộ dữ liệu chỉ từ tên tài khoản hoặc một lần xuất file."
+    },
+    {
+     "t": "h3",
+     "text": "Vòng 1 – Đáp án gợi ý (log mẫu)",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đã biết",
+        "plain": "Đã biết"
+       },
+       {
+        "html": "Chưa biết",
+        "plain": "Chưa biết"
+       },
+       {
+        "html": "Cần xác minh",
+        "plain": "Cần xác minh"
+       },
+       {
+        "html": "Hành động đề xuất",
+        "plain": "Hành động đề xuất"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản nv_a có đăng nhập, xuất 12.000 dòng và tải file theo log; admin_b cấp quyền Export lúc 22:03",
+        "plain": "Tài khoản nv_a có đăng nhập, xuất 12.000 dòng và tải file theo log; admin_b cấp quyền Export lúc 22:03"
+       },
+       {
+        "html": "Ai thật sự điều khiển phiên; việc xuất có được duyệt không; dữ liệu có rời tổ chức không",
+        "plain": "Ai thật sự điều khiển phiên; việc xuất có được duyệt không; dữ liệu có rời tổ chức không"
+       },
+       {
+        "html": "Quyền hiệu lực lúc 22:01; độ chính xác của đồng hồ; thiết bị đăng nhập; nội dung tập dữ liệu đã xuất",
+        "plain": "Quyền hiệu lực lúc 22:01; độ chính xác của đồng hồ; thiết bị đăng nhập; nội dung tập dữ liệu đã xuất"
+       },
+       {
+        "html": "Bảo vệ bằng chứng (log gốc), báo đầu mối ATTT, cân nhắc tạm giới hạn quyền xuất của nv_a theo đánh giá rủi ro, hỏi admin_b về lý do cấp quyền",
+        "plain": "Bảo vệ bằng chứng (log gốc), báo đầu mối ATTT, cân nhắc tạm giới hạn quyền xuất của nv_a theo đánh giá rủi ro, hỏi admin_b về lý do cấp quyền"
+       }
+      ]
+     ],
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "h3",
+     "text": "Vòng 2 – Dữ liệu: file của chị Lan (giả lập, giờ UTC)"
+    },
+    {
+     "t": "p",
+     "html": "Lưu đoạn dưới đây thành file NhatKy_20-21_10_UTC.csv (UTF-8) rồi mở bằng Excel qua Data → From Text/CSV. Toàn bộ là dữ liệu giả lập; IP thuộc dải dành cho tài liệu.",
+     "plain": "Lưu đoạn dưới đây thành file NhatKy_20-21_10_UTC.csv (UTF-8) rồi mở bằng Excel qua Data → From Text/CSV. Toàn bộ là dữ liệu giả lập; IP thuộc dải dành cho tài liệu."
+    },
+    {
+     "t": "code",
+     "text": "thoi_gian_utc,tai_khoan,ip,ung_dung,su_kien,ket_qua,so_ban_ghi\n2026-10-20T09:40:12Z,nv_d,10.1.2.15,QLKH,Export danh sach KH no qua han - DL X,Success,320\n2026-10-20T19:10:03Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:11:10Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:11:52Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:12:31Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:13:05Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:13:40Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:14:18Z,nv_c,203.0.113.45,SSO,Dang nhap,Failure - sai mat khau,\n2026-10-20T19:15:02Z,nv_c,203.0.113.45,SSO,Dang nhap,Success - MFA chap thuan qua thong bao day,\n2026-10-20T19:17:26Z,nv_c,203.0.113.45,SSO,Them phuong thuc MFA moi,Success,\n2026-10-20T19:20:00Z,nv_c,203.0.113.45,QLKH,Xem ho so khach hang (412 luot trong 20 phut),Success,412\n2026-10-20T19:42:09Z,nv_c,203.0.113.45,QLKH,Export danh sach KH - DL X,Success,8500\n2026-10-20T19:45:33Z,nv_c,203.0.113.45,OneDrive,Tai file len OneDrive,Success,\n2026-10-20T19:47:15Z,nv_c,203.0.113.45,OneDrive,Tao link Anyone cho file,Success,\n2026-10-20T20:05:48Z,(an danh),198.51.100.7,OneDrive,Mo file qua link Anyone,Success,\n2026-10-20T20:06:02Z,(an danh),198.51.100.7,OneDrive,Tai file,Success,\n2026-10-21T00:45:10Z,nv_c,10.1.2.22,SSO,Dang nhap,Success,"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tùy chọn cho giảng viên – đọc file bằng Python</strong> (cần pip install pandas):",
+     "plain": "Tùy chọn cho giảng viên – đọc file bằng Python (cần pip install pandas):"
+    },
+    {
+     "t": "code",
+     "text": "# Thực hành 10 – đọc nhật ký giả lập: đổi giờ UTC sang +07:00, sắp xếp, đánh dấu điểm cần xem\nimport pandas as pd\n\ndf = pd.read_csv(\"NhatKy_20-21_10_UTC.csv\")\ndf[\"gio_vn\"] = (pd.to_datetime(df[\"thoi_gian_utc\"], utc=True)\n                  .dt.tz_convert(\"Asia/Ho_Chi_Minh\"))            # UTC + 7\ndf = df.sort_values(\"gio_vn\")\n\ngio = df[\"gio_vn\"].dt.hour\ndf[\"ngoai_gio\"] = (gio < 7) | (gio >= 18)                         # ngoài 07:00–18:00\ndf[\"ip_ngoai\"] = ~df[\"ip\"].str.startswith(\"10.\")                   # không phải mạng nội bộ\ndf[\"xuat_lon\"] = df[\"so_ban_ghi\"].fillna(0) >= 1000                # ngưỡng ví dụ\n\ndf[\"gio\"] = df[\"gio_vn\"].dt.strftime(\"%d/%m %H:%M\")\ncot = [\"gio\", \"tai_khoan\", \"ip\", \"su_kien\", \"ngoai_gio\", \"ip_ngoai\", \"xuat_lon\"]\nprint(df[cot].to_string(index=False))\n\nprint(\"\\nSố lần đăng nhập thất bại theo tài khoản và IP:\")\nthat_bai = df[df[\"ket_qua\"].str.startswith(\"Failure\")]\nprint(that_bai.groupby([\"tai_khoan\", \"ip\"]).size().to_string())\n\nprint(\"\\nMọi sự kiện từ IP 203.0.113.45 hoặc 198.51.100.7:\")\nprint(df[df[\"ip\"].isin([\"203.0.113.45\", \"198.51.100.7\"])][\"su_kien\"].value_counts().to_string())"
+    },
+    {
+     "t": "p",
+     "html": "Kết quả (rút gọn):",
+     "plain": "Kết quả (rút gọn):",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "code",
+     "text": "        gio tai_khoan           ip                                       su_kien  ngoai_gio  ip_ngoai  xuat_lon\n20/10 16:40      nv_d    10.1.2.15         Export danh sach KH no qua han - DL X      False     False     False\n21/10 02:10      nv_c 203.0.113.45                                     Dang nhap       True      True     False\n...\n21/10 02:15      nv_c 203.0.113.45                                     Dang nhap       True      True     False\n21/10 02:17      nv_c 203.0.113.45                      Them phuong thuc MFA moi       True      True     False\n21/10 02:20      nv_c 203.0.113.45 Xem ho so khach hang (412 luot trong 20 phut)       True      True     False\n21/10 02:42      nv_c 203.0.113.45                    Export danh sach KH - DL X       True      True      True\n21/10 02:45      nv_c 203.0.113.45                         Tai file len OneDrive       True      True     False\n21/10 02:47      nv_c 203.0.113.45                      Tao link Anyone cho file       True      True     False\n21/10 03:05 (an danh) 198.51.100.7                       Mo file qua link Anyone       True      True     False\n21/10 03:06 (an danh) 198.51.100.7                                      Tai file       True      True     False\n21/10 07:45      nv_c    10.1.2.22                                     Dang nhap      False     False     False\n\nSố lần đăng nhập thất bại theo tài khoản và IP:\nnv_c       203.0.113.45    7",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "h3",
+     "text": "Vòng 2 – Đáp án gợi ý",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Diễn biến theo thời gian (giờ +07:00):</strong>",
+     "plain": "Diễn biến theo thời gian (giờ +07:00):",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Giờ",
+        "plain": "Giờ"
+       },
+       {
+        "html": "Tài khoản / IP",
+        "plain": "Tài khoản / IP"
+       },
+       {
+        "html": "Sự kiện",
+        "plain": "Sự kiện"
+       },
+       {
+        "html": "Nhận xét",
+        "plain": "Nhận xét"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "20/10 16:40",
+        "plain": "20/10 16:40"
+       },
+       {
+        "html": "nv_d / 10.1.2.15 (máy công ty)",
+        "plain": "nv_d / 10.1.2.15 (máy công ty)"
+       },
+       {
+        "html": "Xuất 320 dòng nợ quá hạn",
+        "plain": "Xuất 320 dòng nợ quá hạn"
+       },
+       {
+        "html": "Trong giờ, đúng vai trò, có phiếu – nhiều khả năng bình thường (chương 5)",
+        "plain": "Trong giờ, đúng vai trò, có phiếu – nhiều khả năng bình thường (chương 5)"
+       }
+      ],
+      [
+       {
+        "html": "2–8",
+        "plain": "2–8"
+       },
+       {
+        "html": "21/10 02:10–02:14",
+        "plain": "21/10 02:10–02:14"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "7 lần sai mật khẩu",
+        "plain": "7 lần sai mật khẩu"
+       },
+       {
+        "html": "Thử nhiều biến thể – không giống người quên mật khẩu",
+        "plain": "Thử nhiều biến thể – không giống người quên mật khẩu"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "02:15",
+        "plain": "02:15"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "Đăng nhập thành công, MFA được chấp thuận qua thông báo đẩy",
+        "plain": "Đăng nhập thành công, MFA được chấp thuận qua thông báo đẩy"
+       },
+       {
+        "html": "Ai chấp thuận, vì sao – chưa rõ",
+        "plain": "Ai chấp thuận, vì sao – chưa rõ"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "02:17",
+        "plain": "02:17"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "Thêm phương thức MFA mới",
+        "plain": "Thêm phương thức MFA mới"
+       },
+       {
+        "html": "\"Cửa sau\" để quay lại mà không cần điện thoại chủ tài khoản",
+        "plain": "\"Cửa sau\" để quay lại mà không cần điện thoại chủ tài khoản"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "02:20–02:40",
+        "plain": "02:20–02:40"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "412 lượt xem hồ sơ",
+        "plain": "412 lượt xem hồ sơ"
+       },
+       {
+        "html": "Gấp ~10 lần một ngày làm việc, trong 20 phút",
+        "plain": "Gấp ~10 lần một ngày làm việc, trong 20 phút"
+       }
+      ],
+      [
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "02:42",
+        "plain": "02:42"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "Xuất 8.500 dòng đủ cột",
+        "plain": "Xuất 8.500 dòng đủ cột"
+       },
+       {
+        "html": "Toàn bộ khách hàng Điện lực X",
+        "plain": "Toàn bộ khách hàng Điện lực X"
+       }
+      ],
+      [
+       {
+        "html": "13",
+        "plain": "13"
+       },
+       {
+        "html": "02:45",
+        "plain": "02:45"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "Tải file lên OneDrive",
+        "plain": "Tải file lên OneDrive"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "14",
+        "plain": "14"
+       },
+       {
+        "html": "02:47",
+        "plain": "02:47"
+       },
+       {
+        "html": "nv_c / 203.0.113.45",
+        "plain": "nv_c / 203.0.113.45"
+       },
+       {
+        "html": "Tạo link \"Anyone\"",
+        "plain": "Tạo link \"Anyone\""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "15–16",
+        "plain": "15–16"
+       },
+       {
+        "html": "03:05–03:06",
+        "plain": "03:05–03:06"
+       },
+       {
+        "html": "ẩn danh / 198.51.100.7",
+        "plain": "ẩn danh / 198.51.100.7"
+       },
+       {
+        "html": "Mở và tải file qua link",
+        "plain": "Mở và tải file qua link"
+       },
+       {
+        "html": "<strong>Dữ liệu đã rời khỏi tổ chức</strong>",
+        "plain": "Dữ liệu đã rời khỏi tổ chức"
+       }
+      ],
+      [
+       {
+        "html": "17",
+        "plain": "17"
+       },
+       {
+        "html": "07:45",
+        "plain": "07:45"
+       },
+       {
+        "html": "nv_c / 10.1.2.22 (máy công ty)",
+        "plain": "nv_c / 10.1.2.22 (máy công ty)"
+       },
+       {
+        "html": "Đăng nhập bình thường",
+        "plain": "Đăng nhập bình thường"
+       },
+       {
+        "html": "Người dùng thật có thể không biết gì về đêm qua",
+        "plain": "Người dùng thật có thể không biết gì về đêm qua"
+       }
+      ]
+     ],
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Bảng 4 cột:</strong>",
+     "plain": "Bảng 4 cột:",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đã biết (từ log)",
+        "plain": "Đã biết (từ log)"
+       },
+       {
+        "html": "Chưa biết",
+        "plain": "Chưa biết"
+       },
+       {
+        "html": "Giả thuyết",
+        "plain": "Giả thuyết"
+       },
+       {
+        "html": "Bằng chứng cần thêm",
+        "plain": "Bằng chứng cần thêm"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản nv_c đăng nhập từ IP lạ sau 7 lần sai, MFA được chấp thuận; thêm phương thức MFA; xuất 8.500 dòng; file được chia sẻ công khai và tải từ IP ngoài lúc 03:06; cả đêm không có cảnh báo",
+        "plain": "Tài khoản nv_c đăng nhập từ IP lạ sau 7 lần sai, MFA được chấp thuận; thêm phương thức MFA; xuất 8.500 dòng; file được chia sẻ công khai và tải từ IP ngoài lúc 03:06; cả đêm không có cảnh báo"
+       },
+       {
+        "html": "Ai chấp thuận MFA và vì sao; ai điều khiển phiên; mật khẩu lộ từ đâu; file đã được chuyển tiếp cho ai",
+        "plain": "Ai chấp thuận MFA và vì sao; ai điều khiển phiên; mật khẩu lộ từ đâu; file đã được chuyển tiếp cho ai"
+       },
+       {
+        "html": "Tài khoản nv_c bị chiếm quyền (mạnh); mật khẩu lộ do dùng lại ở trang khác (có khả năng); dữ liệu được dùng để gọi lừa khách hàng (có khả năng); nv_c tự làm (chưa có căn cứ)",
+        "plain": "Tài khoản nv_c bị chiếm quyền (mạnh); mật khẩu lộ do dùng lại ở trang khác (có khả năng); dữ liệu được dùng để gọi lừa khách hàng (có khả năng); nv_c tự làm (chưa có căn cứ)"
+       },
+       {
+        "html": "Nhật ký MFA chi tiết (thiết bị nào chấp thuận, thông tin phương thức mới); các đăng nhập khác từ hai IP lạ; lịch sử chia sẻ file; trao đổi với anh Cường (do người có thẩm quyền thực hiện); số phản ánh tương tự từ tổng đài",
+        "plain": "Nhật ký MFA chi tiết (thiết bị nào chấp thuận, thông tin phương thức mới); các đăng nhập khác từ hai IP lạ; lịch sử chia sẻ file; trao đổi với anh Cường (do người có thẩm quyền thực hiện); số phản ánh tương tự từ tổng đài"
+       }
+      ]
+     ],
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Nối với tờ \"Việc hẹn sửa sau\":</strong>",
+     "plain": "Nối với tờ \"Việc hẹn sửa sau\":",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Dòng log",
+        "plain": "Dòng log"
+       },
+       {
+        "html": "Vì sao thành công",
+        "plain": "Vì sao thành công"
+       },
+       {
+        "html": "Dòng trên tờ",
+        "plain": "Dòng trên tờ"
+       }
+      ],
+      [
+       {
+        "html": "2–9 (02:10–02:15)",
+        "plain": "2–9 (02:10–02:15)"
+       },
+       {
+        "html": "Mật khẩu cũ đã lộ, chưa đổi; MFA đẩy không khớp số",
+        "plain": "Mật khẩu cũ đã lộ, chưa đổi; MFA đẩy không khớp số"
+       },
+       {
+        "html": "Chương 4",
+        "plain": "Chương 4"
+       }
+      ],
+      [
+       {
+        "html": "12 (02:42)",
+        "plain": "12 (02:42)"
+       },
+       {
+        "html": "Giao dịch viên có quyền xuất toàn đơn vị; chức năng xuất luôn ra đủ cột",
+        "plain": "Giao dịch viên có quyền xuất toàn đơn vị; chức năng xuất luôn ra đủ cột"
+       },
+       {
+        "html": "Chương 3 và 6",
+        "plain": "Chương 3 và 6"
+       }
+      ],
+      [
+       {
+        "html": "14 (02:47)",
+        "plain": "14 (02:47)"
+       },
+       {
+        "html": "OneDrive công ty vẫn cho tạo link \"Anyone\"",
+        "plain": "OneDrive công ty vẫn cho tạo link \"Anyone\""
+       },
+       {
+        "html": "Chương 5",
+        "plain": "Chương 5"
+       }
+      ],
+      [
+       {
+        "html": "Cả đêm",
+        "plain": "Cả đêm"
+       },
+       {
+        "html": "Không có quy tắc cảnh báo nào được kích hoạt, hoặc không ai nhận",
+        "plain": "Không có quy tắc cảnh báo nào được kích hoạt, hoặc không ai nhận"
+       },
+       {
+        "html": "<strong>Mới – chương 9</strong>",
+        "plain": "Mới – chương 9"
+       }
+      ],
+      [
+       {
+        "html": "9 (02:15) – ai bấm Chấp nhận",
+        "plain": "9 (02:15) – ai bấm Chấp nhận"
+       },
+       {
+        "html": "<strong>Chưa rõ</strong>",
+        "plain": "Chưa rõ"
+       },
+       {
+        "html": "–",
+        "plain": "–"
+       }
+      ]
+     ],
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Danh sách bằng chứng cần giữ ngay</strong> (trao cho buổi 10): file log gốc từ ba nguồn kèm giá trị băm SHA-256 và biên bản trích xuất (ai trích, lúc nào, từ đâu); nhật ký MFA chi tiết của nv_c; thông tin file và link trên OneDrive (không xóa file trước khi lưu thông tin); phiếu phản ánh của tổng đài; số điện thoại kẻ gian đã gọi khách.",
+     "plain": "Danh sách bằng chứng cần giữ ngay (trao cho buổi 10): file log gốc từ ba nguồn kèm giá trị băm SHA-256 và biên bản trích xuất (ai trích, lúc nào, từ đâu); nhật ký MFA chi tiết của nv_c; thông tin file và link trên OneDrive (không xóa file trước khi lưu thông tin); phiếu phản ánh của tổng đài; số điện thoại kẻ gian đã gọi khách.",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hành động đề xuất (đúng thẩm quyền – học viên đề xuất, người có thẩm quyền quyết định):</strong> giữ bản gốc log; vô hiệu link \"Anyone\"; khóa tài khoản nv_c, thu hồi mọi phiên, xóa phương thức MFA lạ, đặt lại mật khẩu; tìm các đăng nhập khác từ hai IP lạ; chuyển sang quy trình ứng phó rò rỉ (buổi 10). Đồng thời <strong>không đổ lỗi cho anh Cường</strong> khi chưa có kết luận.",
+     "plain": "Hành động đề xuất (đúng thẩm quyền – học viên đề xuất, người có thẩm quyền quyết định): giữ bản gốc log; vô hiệu link \"Anyone\"; khóa tài khoản nv_c, thu hồi mọi phiên, xóa phương thức MFA lạ, đặt lại mật khẩu; tìm các đăng nhập khác từ hai IP lạ; chuyển sang quy trình ứng phó rò rỉ (buổi 10). Đồng thời không đổ lỗi cho anh Cường khi chưa có kết luận.",
+     "reveal": "m09-th10"
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chí đánh giá"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Diễn biến theo thời gian đúng thứ tự và có múi giờ; đã đổi UTC sang +07:00 (điểm trừ nặng nếu đọc 19:10 là 7 giờ tối).",
+       "level": 0,
+       "plain": "Diễn biến theo thời gian đúng thứ tự và có múi giờ; đã đổi UTC sang +07:00 (điểm trừ nặng nếu đọc 19:10 là 7 giờ tối)."
+      },
+      {
+       "html": "Tách rõ quan sát với suy đoán; có ít nhất 3 giả thuyết, trong đó có giả thuyết \"tài khoản bị chiếm\".",
+       "level": 0,
+       "plain": "Tách rõ quan sát với suy đoán; có ít nhất 3 giả thuyết, trong đó có giả thuyết \"tài khoản bị chiếm\"."
+      },
+      {
+       "html": "Loại trừ đúng dòng 1 (nv_d) bằng ngữ cảnh.",
+       "level": 0,
+       "plain": "Loại trừ đúng dòng 1 (nv_d) bằng ngữ cảnh."
+      },
+      {
+       "html": "Hành động đề xuất nằm trong thẩm quyền; có bước giữ bằng chứng trước bước xóa, khóa.",
+       "level": 0,
+       "plain": "Hành động đề xuất nằm trong thẩm quyền; có bước giữ bằng chứng trước bước xóa, khóa."
+      },
+      {
+       "html": "Nối được ít nhất ba dòng log với tờ \"Việc hẹn sửa sau\" và nhận ra lỗ hổng mới (không có cảnh báo).",
+       "level": 0,
+       "plain": "Nối được ít nhất ba dòng log với tờ \"Việc hẹn sửa sau\" và nhận ra lỗ hổng mới (không có cảnh báo)."
+      }
+     ]
+    }
+   ],
+   "id": "s9",
+   "activity": "m09-th10"
+  },
+  {
+   "title": "Quay lại tình huống: trả lời bốn câu hỏi của chương 9",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Câu trả lời của lớp",
+        "plain": "Câu trả lời của lớp"
+       },
+       {
+        "html": "Bài",
+        "plain": "Bài"
+       }
+      ],
+      [
+       {
+        "html": "Cần nhật ký nào? Đã là sự cố chưa?",
+        "plain": "Cần nhật ký nào? Đã là sự cố chưa?"
+       },
+       {
+        "html": "SSO, hệ thống quản lý khách hàng, Microsoft 365 – đi theo đường dữ liệu. Phản ánh là sự kiện; khi thấy thông tin chỉ có trong hệ thống, nó là sự cố nghi ngờ; log xác nhận dữ liệu đã rời tổ chức",
+        "plain": "SSO, hệ thống quản lý khách hàng, Microsoft 365 – đi theo đường dữ liệu. Phản ánh là sự kiện; khi thấy thông tin chỉ có trong hệ thống, nó là sự cố nghi ngờ; log xác nhận dữ liệu đã rời tổ chức"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Một dòng log cần gì? Vì sao 19:10 không phải 7 giờ tối?",
+        "plain": "Một dòng log cần gì? Vì sao 19:10 không phải 7 giờ tối?"
+       },
+       {
+        "html": "Khi nào, ai, từ đâu, làm gì, kết quả. File Microsoft 365 ghi giờ UTC; 19:10Z là 02:10 ngày 21/10 giờ Việt Nam",
+        "plain": "Khi nào, ai, từ đâu, làm gì, kết quả. File Microsoft 365 ghi giờ UTC; 19:10Z là 02:10 ngày 21/10 giờ Việt Nam"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Dòng nào bất thường? Lẽ ra cần cảnh báo nào?",
+        "plain": "Dòng nào bất thường? Lẽ ra cần cảnh báo nào?"
+       },
+       {
+        "html": "Chuỗi dòng 2–16 so với mức bình thường của giao dịch viên; dòng 1 bình thường. Năm cảnh báo (sai nhiều lần rồi thành công, thêm MFA, xuất lớn ngoài giờ, link Anyone, tải ẩn danh) – không cái nào có",
+        "plain": "Chuỗi dòng 2–16 so với mức bình thường của giao dịch viên; dòng 1 bình thường. Năm cảnh báo (sai nhiều lần rồi thành công, thêm MFA, xuất lớn ngoài giờ, link Anyone, tải ẩn danh) – không cái nào có"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Đi đến kết luận thế nào?",
+        "plain": "Đi đến kết luận thế nào?"
+       },
+       {
+        "html": "Sáu bước; ba cột đã xác minh / có khả năng / chưa rõ; không kết luận ai có lỗi từ tên tài khoản",
+        "plain": "Sáu bước; ba cột đã xác minh / có khả năng / chưa rõ; không kết luận ai có lỗi từ tên tài khoản"
+       },
+       {
+        "html": "4, Thực hành 10",
+        "plain": "4, Thực hành 10"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lớp đã làm được:</strong> bảng diễn biến theo thời gian có múi giờ của đêm 20–21/10; bảng đã biết – chưa rõ; danh sách bằng chứng cần giữ; danh sách hành động đề xuất gửi chị Lan.",
+     "plain": "Lớp đã làm được: bảng diễn biến theo thời gian có múi giờ của đêm 20–21/10; bảng đã biết – chưa rõ; danh sách bằng chứng cần giữ; danh sách hành động đề xuất gửi chị Lan."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Còn bỏ ngỏ:</strong> vì sao MFA được chấp nhận lúc 02:15. Nhật ký chỉ nói nó được chấp nhận qua thông báo đẩy, không nói ai bấm và vì sao. Lớp có một giả thuyết từ buổi 8, nhưng giả thuyết chưa phải bằng chứng – ô này vẫn nằm ở cột \"chưa rõ\".",
+     "plain": "Còn bỏ ngỏ: vì sao MFA được chấp nhận lúc 02:15. Nhật ký chỉ nói nó được chấp nhận qua thông báo đẩy, không nói ai bấm và vì sao. Lớp có một giả thuyết từ buổi 8, nhưng giả thuyết chưa phải bằng chứng – ô này vẫn nằm ở cột \"chưa rõ\"."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ghi lên tờ \"Việc hẹn sửa sau\" – dòng mới:</strong> không có cảnh báo nào cho chuỗi đăng nhập lạ – xuất lớn – chia sẻ công khai, và không ai trực nhận cảnh báo ngoài giờ.",
+     "plain": "Ghi lên tờ \"Việc hẹn sửa sau\" – dòng mới: không có cảnh báo nào cho chuỗi đăng nhập lạ – xuất lớn – chia sẻ công khai, và không ai trực nhận cảnh báo ngoài giờ."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chương",
+        "plain": "Chương"
+       },
+       {
+        "html": "Việc còn bỏ ngỏ",
+        "plain": "Việc còn bỏ ngỏ"
+       },
+       {
+        "html": "Dòng log liên quan",
+        "plain": "Dòng log liên quan"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Các bản sao file danh sách đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi",
+        "plain": "Các bản sao file danh sách đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi"
+       },
+       {
+        "html": "(không trực tiếp)",
+        "plain": "(không trực tiếp)"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Bản trên OneDrive không ai quản lý",
+        "plain": "Bản trên OneDrive không ai quản lý"
+       },
+       {
+        "html": "(không trực tiếp)",
+        "plain": "(không trực tiếp)"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Thu hẹp quyền xuất của giao dịch viên hẹn đến \"đợt rà soát quý\"",
+        "plain": "Thu hẹp quyền xuất của giao dịch viên hẹn đến \"đợt rà soát quý\""
+       },
+       {
+        "html": "12",
+        "plain": "12"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Cấu hình MFA chưa đổi sang khớp số; anh Cường hẹn đổi mật khẩu \"cuối tuần\"",
+        "plain": "Cấu hình MFA chưa đổi sang khớp số; anh Cường hẹn đổi mật khẩu \"cuối tuần\""
+       },
+       {
+        "html": "2–9",
+        "plain": "2–9"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "OneDrive công ty vẫn cho tạo link \"Anyone\"",
+        "plain": "OneDrive công ty vẫn cho tạo link \"Anyone\""
+       },
+       {
+        "html": "14",
+        "plain": "14"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Chức năng xuất luôn ra đủ mọi cột",
+        "plain": "Chức năng xuất luôn ra đủ mọi cột"
+       },
+       {
+        "html": "12",
+        "plain": "12"
+       }
+      ],
+      [
+       {
+        "html": "<strong>9</strong>",
+        "plain": "9"
+       },
+       {
+        "html": "<strong>Không có cảnh báo cho chuỗi sự kiện bất thường; không ai trực ngoài giờ</strong>",
+        "plain": "Không có cảnh báo cho chuỗi sự kiện bất thường; không ai trực ngoài giờ"
+       },
+       {
+        "html": "<strong>Cả đêm</strong>",
+        "plain": "Cả đêm"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bảy dòng. Riêng lẻ, dòng nào cũng nhỏ và có lý do để chờ. Ghép lại, chúng là con đường của đêm 20–21/10.",
+     "plain": "Bảy dòng. Riêng lẻ, dòng nào cũng nhỏ và có lý do để chờ. Ghép lại, chúng là con đường của đêm 20–21/10."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Buổi 10 nhận tiếp:</strong> bảng diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng. Chiều nay: số phản ánh của khách hàng tăng lên, đồng hồ 72 giờ bắt đầu chạy, và câu hỏi \"ai bấm Chấp nhận\" sẽ có câu trả lời.",
+     "plain": "Buổi 10 nhận tiếp: bảng diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng. Chiều nay: số phản ánh của khách hàng tăng lên, đồng hồ 72 giờ bắt đầu chạy, và câu hỏi \"ai bấm Chấp nhận\" sẽ có câu trả lời."
+    }
+   ],
+   "id": "s10"
+  },
+  {
+   "title": "Áp dụng tại đơn vị",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Hỏi CNTT: hệ thống quản lý khách hàng có ghi nhật ký xem và xuất không? Log giữ bao lâu? Ai được xóa?",
+       "level": 0,
+       "plain": "☐ Hỏi CNTT: hệ thống quản lý khách hàng có ghi nhật ký xem và xuất không? Log giữ bao lâu? Ai được xóa?"
+      },
+      {
+       "html": "☐ Đề nghị CNTT/ATTT bật tối thiểu năm quy tắc cảnh báo ở mục 3.4 và chỉ định người nhận cảnh báo ngoài giờ.",
+       "level": 0,
+       "plain": "☐ Đề nghị CNTT/ATTT bật tối thiểu năm quy tắc cảnh báo ở mục 3.4 và chỉ định người nhận cảnh báo ngoài giờ."
+      },
+      {
+       "html": "☐ Thống nhất múi giờ chuẩn cho mọi báo cáo sự cố (ghi rõ +07:00) và cách đổi giờ UTC.",
+       "level": 0,
+       "plain": "☐ Thống nhất múi giờ chuẩn cho mọi báo cáo sự cố (ghi rõ +07:00) và cách đổi giờ UTC."
+      },
+      {
+       "html": "☐ Đưa \"ghi nhật ký xem/xuất dữ liệu khách hàng\" vào yêu cầu khi nâng cấp phần mềm nghiệp vụ.",
+       "level": 0,
+       "plain": "☐ Đưa \"ghi nhật ký xem/xuất dữ liệu khách hàng\" vào yêu cầu khi nâng cấp phần mềm nghiệp vụ."
+      },
+      {
+       "html": "☐ Phổ biến cho nhân viên: email \"đăng nhập từ thiết bị mới\", yêu cầu MFA lạ là cảnh báo – báo ngay.",
+       "level": 0,
+       "plain": "☐ Phổ biến cho nhân viên: email \"đăng nhập từ thiết bị mới\", yêu cầu MFA lạ là cảnh báo – báo ngay."
+      },
+      {
+       "html": "☐ Quy định rõ ai được xem log, vì mục đích gì, và việc xem log cũng được ghi lại.",
+       "level": 0,
+       "plain": "☐ Quy định rõ ai được xem log, vì mục đích gì, và việc xem log cũng được ghi lại."
+      }
+     ]
+    }
+   ],
+   "id": "s11"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Sự kiện là mọi việc quan sát được; cảnh báo là sự kiện cần xem xét; sự cố là sự việc đe dọa CIA. Người báo cáo cũng là nguồn cảnh báo.",
+       "level": 0,
+       "plain": "Sự kiện là mọi việc quan sát được; cảnh báo là sự kiện cần xem xét; sự cố là sự việc đe dọa CIA. Người báo cáo cũng là nguồn cảnh báo."
+      },
+      {
+       "html": "Nhật ký vận hành trả lời \"hệ thống có vấn đề khi nào\"; nhật ký kiểm toán trả lời \"ai làm gì với dữ liệu nào\".",
+       "level": 0,
+       "plain": "Nhật ký vận hành trả lời \"hệ thống có vấn đề khi nào\"; nhật ký kiểm toán trả lời \"ai làm gì với dữ liệu nào\"."
+      },
+      {
+       "html": "Một dòng log tốt có năm phần: khi nào (kèm múi giờ), ai, từ đâu, làm gì, kết quả. Không ghi mật khẩu, token, nội dung khách hàng.",
+       "level": 0,
+       "plain": "Một dòng log tốt có năm phần: khi nào (kèm múi giờ), ai, từ đâu, làm gì, kết quả. Không ghi mật khẩu, token, nội dung khách hàng."
+      },
+      {
+       "html": "Nhiều dịch vụ đám mây ghi giờ UTC; giờ Việt Nam = UTC + 7. Đổi múi giờ trước khi ghép log.",
+       "level": 0,
+       "plain": "Nhiều dịch vụ đám mây ghi giờ UTC; giờ Việt Nam = UTC + 7. Đổi múi giờ trước khi ghép log."
+      },
+      {
+       "html": "Log phải được bật từ trước, đồng bộ giờ, lưu đủ lâu, được bảo vệ khỏi việc sửa xóa – và bản thân log là dữ liệu cá nhân của nhân viên.",
+       "level": 0,
+       "plain": "Log phải được bật từ trước, đồng bộ giờ, lưu đủ lâu, được bảo vệ khỏi việc sửa xóa – và bản thân log là dữ liệu cá nhân của nhân viên."
+      },
+      {
+       "html": "Bất thường là so với mức bình thường của người, vai trò, hệ thống. Một dấu hiệu là tín hiệu; một chuỗi dấu hiệu mới nâng mức nghi ngờ.",
+       "level": 0,
+       "plain": "Bất thường là so với mức bình thường của người, vai trò, hệ thống. Một dấu hiệu là tín hiệu; một chuỗi dấu hiệu mới nâng mức nghi ngờ."
+      },
+      {
+       "html": "Log chỉ có ích khi có quy tắc cảnh báo và có người nhận kịp thời; đêm 20–21/10 không có cả hai.",
+       "level": 0,
+       "plain": "Log chỉ có ích khi có quy tắc cảnh báo và có người nhận kịp thời; đêm 20–21/10 không có cả hai."
+      },
+      {
+       "html": "Sáu bước phân tích: câu hỏi → thu thập, chuẩn hóa → lọc, xoay trục → bảng diễn biến theo thời gian → giả thuyết → kết luận có mức độ tin cậy.",
+       "level": 0,
+       "plain": "Sáu bước phân tích: câu hỏi → thu thập, chuẩn hóa → lọc, xoay trục → bảng diễn biến theo thời gian → giả thuyết → kết luận có mức độ tin cậy."
+      },
+      {
+       "html": "Download chưa chứng minh dữ liệu ra ngoài; một IP không định danh một người; không sửa giờ cho khớp câu chuyện.",
+       "level": 0,
+       "plain": "Download chưa chứng minh dữ liệu ra ngoài; một IP không định danh một người; không sửa giờ cho khớp câu chuyện."
+      },
+      {
+       "html": "Tên tài khoản cho biết tài khoản nào được dùng, không cho biết ai ngồi trước bàn phím. Không đổ lỗi khi chưa có kết luận.",
+       "level": 0,
+       "plain": "Tên tài khoản cho biết tài khoản nào được dùng, không cho biết ai ngồi trước bàn phím. Không đổ lỗi khi chưa có kết luận."
+      }
+     ]
+    }
+   ],
+   "id": "s12"
+  },
+  {
+   "title": "Câu hỏi ôn tập",
+   "kind": "review",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Gợi ý trả lời",
+        "plain": "Gợi ý trả lời"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Phân biệt sự kiện, cảnh báo, sự cố.",
+        "plain": "Phân biệt sự kiện, cảnh báo, sự cố."
+       },
+       {
+        "html": "Mọi việc quan sát được / sự kiện được đánh dấu cần xem / sự việc đe dọa CIA hoặc vi phạm chính sách",
+        "plain": "Mọi việc quan sát được / sự kiện được đánh dấu cần xem / sự việc đe dọa CIA hoặc vi phạm chính sách"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Nhật ký kiểm toán trả lời câu hỏi gì mà nhật ký vận hành thường không?",
+        "plain": "Nhật ký kiểm toán trả lời câu hỏi gì mà nhật ký vận hành thường không?"
+       },
+       {
+        "html": "Ai làm gì với dữ liệu, cấu hình nào",
+        "plain": "Ai làm gì với dữ liệu, cấu hình nào"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Kể năm phần của một dòng log tốt.",
+        "plain": "Kể năm phần của một dòng log tốt."
+       },
+       {
+        "html": "Khi nào (kèm múi giờ), ai, từ đâu, làm gì, kết quả",
+        "plain": "Khi nào (kèm múi giờ), ai, từ đâu, làm gì, kết quả"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "2026-10-20T19:10:03Z là mấy giờ ở Việt Nam?",
+        "plain": "2026-10-20T19:10:03Z là mấy giờ ở Việt Nam?"
+       },
+       {
+        "html": "02:10:03 ngày 21/10",
+        "plain": "02:10:03 ngày 21/10"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Vì sao không ghi mật khẩu hay token vào log?",
+        "plain": "Vì sao không ghi mật khẩu hay token vào log?"
+       },
+       {
+        "html": "Log thành nơi rò rỉ mới; ai đọc log là chiếm được tài khoản/phiên",
+        "plain": "Log thành nơi rò rỉ mới; ai đọc log là chiếm được tài khoản/phiên"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Vì sao cần đồng bộ thời gian giữa các hệ thống?",
+        "plain": "Vì sao cần đồng bộ thời gian giữa các hệ thống?"
+       },
+       {
+        "html": "Để ghép đúng thứ tự sự kiện từ nhiều nguồn",
+        "plain": "Để ghép đúng thứ tự sự kiện từ nhiều nguồn"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Người bị giám sát có nên có quyền xóa log của chính mình không?",
+        "plain": "Người bị giám sát có nên có quyền xóa log của chính mình không?"
+       },
+       {
+        "html": "Không; việc xóa/tắt log phải tạo cảnh báo",
+        "plain": "Không; việc xóa/tắt log phải tạo cảnh báo"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Vì sao \"log cũng là dữ liệu cá nhân\"?",
+        "plain": "Vì sao \"log cũng là dữ liệu cá nhân\"?"
+       },
+       {
+        "html": "Log ghi ai đăng nhập, lúc nào, từ đâu, xem gì – thông tin về nhân viên; chỉ xem đúng mục đích, đúng người",
+        "plain": "Log ghi ai đăng nhập, lúc nào, từ đâu, xem gì – thông tin về nhân viên; chỉ xem đúng mục đích, đúng người"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Đăng nhập lúc 2 giờ sáng có phải là bằng chứng tấn công không?",
+        "plain": "Đăng nhập lúc 2 giờ sáng có phải là bằng chứng tấn công không?"
+       },
+       {
+        "html": "Không – là tín hiệu; cần loại trừ trực ca, tác vụ tự động; chuỗi dấu hiệu mới nâng mức nghi ngờ",
+        "plain": "Không – là tín hiệu; cần loại trừ trực ca, tác vụ tự động; chuỗi dấu hiệu mới nâng mức nghi ngờ"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Trong log mẫu, xuất lúc 22:01 trước khi được cấp quyền lúc 22:03. Kể ba khả năng.",
+        "plain": "Trong log mẫu, xuất lúc 22:01 trước khi được cấp quyền lúc 22:03. Kể ba khả năng."
+       },
+       {
+        "html": "Đã có quyền từ trước; đồng hồ lệch; log trễ/sắp theo giờ nhận; tiến trình khác; cấp quyền hợp thức hóa",
+        "plain": "Đã có quyền từ trước; đồng hồ lệch; log trễ/sắp theo giờ nhận; tiến trình khác; cấp quyền hợp thức hóa"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "Có sự kiện Download có nghĩa dữ liệu đã lộ ra ngoài không?",
+        "plain": "Có sự kiện Download có nghĩa dữ liệu đã lộ ra ngoài không?"
+       },
+       {
+        "html": "Chưa chắc, cần thêm bằng chứng (ví dụ link công khai và lượt tải từ IP ngoài như đêm 20–21/10)",
+        "plain": "Chưa chắc, cần thêm bằng chứng (ví dụ link công khai và lượt tải từ IP ngoài như đêm 20–21/10)"
+       }
+      ],
+      [
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "Log ghi tài khoản nv_c xuất 8.500 dòng. Có kết luận anh Cường làm lộ dữ liệu được không?",
+        "plain": "Log ghi tài khoản nv_c xuất 8.500 dòng. Có kết luận anh Cường làm lộ dữ liệu được không?"
+       },
+       {
+        "html": "Không – log cho biết tài khoản nào được dùng, không cho biết ai điều khiển phiên",
+        "plain": "Không – log cho biết tài khoản nào được dùng, không cho biết ai điều khiển phiên"
+       }
+      ],
+      [
+       {
+        "html": "13",
+        "plain": "13"
+       },
+       {
+        "html": "Trong đêm 20–21/10, cảnh báo sớm nhất có thể có là gì, lúc nào?",
+        "plain": "Trong đêm 20–21/10, cảnh báo sớm nhất có thể có là gì, lúc nào?"
+       },
+       {
+        "html": "Nhiều lần đăng nhập sai từ IP lạ rồi thành công – 02:15",
+        "plain": "Nhiều lần đăng nhập sai từ IP lạ rồi thành công – 02:15"
+       }
+      ],
+      [
+       {
+        "html": "14",
+        "plain": "14"
+       },
+       {
+        "html": "Kể ba bằng chứng cần giữ ngay trước khi khóa tài khoản, xóa link.",
+        "plain": "Kể ba bằng chứng cần giữ ngay trước khi khóa tài khoản, xóa link."
+       },
+       {
+        "html": "Log gốc ba nguồn kèm giá trị băm và biên bản; nhật ký MFA chi tiết; thông tin file/link OneDrive; phiếu phản ánh tổng đài",
+        "plain": "Log gốc ba nguồn kèm giá trị băm và biên bản; nhật ký MFA chi tiết; thông tin file/link OneDrive; phiếu phản ánh tổng đài"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s13"
+  },
+  {
+   "title": "Thuật ngữ của buổi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Giải thích ngắn",
+        "plain": "Giải thích ngắn"
+       }
+      ],
+      [
+       {
+        "html": "Log / nhật ký",
+        "plain": "Log / nhật ký"
+       },
+       {
+        "html": "Bản ghi tự động của hệ thống về các sự kiện",
+        "plain": "Bản ghi tự động của hệ thống về các sự kiện"
+       }
+      ],
+      [
+       {
+        "html": "Nhật ký vận hành / kiểm toán (audit log)",
+        "plain": "Nhật ký vận hành / kiểm toán (audit log)"
+       },
+       {
+        "html": "Ghi trạng thái, lỗi / ghi ai làm gì với dữ liệu nào",
+        "plain": "Ghi trạng thái, lỗi / ghi ai làm gì với dữ liệu nào"
+       }
+      ],
+      [
+       {
+        "html": "Event, alert, incident",
+        "plain": "Event, alert, incident"
+       },
+       {
+        "html": "Sự kiện, cảnh báo, sự cố",
+        "plain": "Sự kiện, cảnh báo, sự cố"
+       }
+      ],
+      [
+       {
+        "html": "SIEM",
+        "plain": "SIEM"
+       },
+       {
+        "html": "Hệ thống thu thập log tập trung, so khớp, cảnh báo",
+        "plain": "Hệ thống thu thập log tập trung, so khớp, cảnh báo"
+       }
+      ],
+      [
+       {
+        "html": "UTC; +07:00; chữ Z",
+        "plain": "UTC; +07:00; chữ Z"
+       },
+       {
+        "html": "Giờ phối hợp quốc tế; múi giờ Việt Nam; ký hiệu giờ UTC trong chuỗi thời gian",
+        "plain": "Giờ phối hợp quốc tế; múi giờ Việt Nam; ký hiệu giờ UTC trong chuỗi thời gian"
+       }
+      ],
+      [
+       {
+        "html": "NTP",
+        "plain": "NTP"
+       },
+       {
+        "html": "Giao thức đồng bộ đồng hồ giữa các máy",
+        "plain": "Giao thức đồng bộ đồng hồ giữa các máy"
+       }
+      ],
+      [
+       {
+        "html": "Baseline",
+        "plain": "Baseline"
+       },
+       {
+        "html": "Mức bình thường của một người, vai trò, hệ thống",
+        "plain": "Mức bình thường của một người, vai trò, hệ thống"
+       }
+      ],
+      [
+       {
+        "html": "False positive",
+        "plain": "False positive"
+       },
+       {
+        "html": "Cảnh báo sai – tín hiệu hoá ra bình thường",
+        "plain": "Cảnh báo sai – tín hiệu hoá ra bình thường"
+       }
+      ],
+      [
+       {
+        "html": "\"Di chuyển không thể\" (impossible travel)",
+        "plain": "\"Di chuyển không thể\" (impossible travel)"
+       },
+       {
+        "html": "Đăng nhập từ hai nơi quá xa nhau trong thời gian quá ngắn",
+        "plain": "Đăng nhập từ hai nơi quá xa nhau trong thời gian quá ngắn"
+       }
+      ],
+      [
+       {
+        "html": "Xoay trục (pivot)",
+        "plain": "Xoay trục (pivot)"
+       },
+       {
+        "html": "Từ một dấu hiệu, chuyển sang các trường liên quan (cùng IP, cùng tài khoản)",
+        "plain": "Từ một dấu hiệu, chuyển sang các trường liên quan (cùng IP, cùng tài khoản)"
+       }
+      ],
+      [
+       {
+        "html": "Diễn biến theo thời gian",
+        "plain": "Diễn biến theo thời gian"
+       },
+       {
+        "html": "Dòng thời gian các sự kiện, ghi rõ múi giờ và nguồn",
+        "plain": "Dòng thời gian các sự kiện, ghi rõ múi giờ và nguồn"
+       }
+      ],
+      [
+       {
+        "html": "MTTD / MTTR",
+        "plain": "MTTD / MTTR"
+       },
+       {
+        "html": "Thời gian trung bình để phát hiện / để xử lý",
+        "plain": "Thời gian trung bình để phát hiện / để xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Giá trị băm của bằng chứng",
+        "plain": "Giá trị băm của bằng chứng"
+       },
+       {
+        "html": "Dấu vân tay của file log gốc, chứng minh file chưa bị sửa (buổi 5)",
+        "plain": "Dấu vân tay của file log gốc, chứng minh file chưa bị sửa (buổi 5)"
+       }
+      ],
+      [
+       {
+        "html": "Dải IP dành cho tài liệu",
+        "plain": "Dải IP dành cho tài liệu"
+       },
+       {
+        "html": "203.0.113.0/24, 198.51.100.0/24 – không thuộc ai, dùng cho ví dụ (RFC 5737)",
+        "plain": "203.0.113.0/24, 198.51.100.0/24 – không thuộc ai, dùng cho ví dụ (RFC 5737)"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s14"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "h3",
+     "text": "Lịch trình"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       }
+      ],
+      [
+       {
+        "html": "08:00–08:10",
+        "plain": "08:00–08:10"
+       },
+       {
+        "html": "Ôn ngày 4; đọc chương 9",
+        "plain": "Ôn ngày 4; đọc chương 9"
+       },
+       {
+        "html": "Hỏi đáp",
+        "plain": "Hỏi đáp"
+       }
+      ],
+      [
+       {
+        "html": "08:10–08:40",
+        "plain": "08:10–08:40"
+       },
+       {
+        "html": "Bài 1 – Sự kiện, cảnh báo, sự cố; nhật ký là gì",
+        "plain": "Bài 1 – Sự kiện, cảnh báo, sự cố; nhật ký là gì"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "08:40–09:10",
+        "plain": "08:40–09:10"
+       },
+       {
+        "html": "Bài 2 – Một dòng log tốt, múi giờ, sự kiện cần giám sát, bảo vệ log",
+        "plain": "Bài 2 – Một dòng log tốt, múi giờ, sự kiện cần giám sát, bảo vệ log"
+       },
+       {
+        "html": "Giảng + thảo luận",
+        "plain": "Giảng + thảo luận"
+       }
+      ],
+      [
+       {
+        "html": "09:10–09:40",
+        "plain": "09:10–09:40"
+       },
+       {
+        "html": "Bài 3 – Bất thường; Bài 4 – phương pháp 6 bước, log mẫu có bẫy",
+        "plain": "Bài 3 – Bất thường; Bài 4 – phương pháp 6 bước, log mẫu có bẫy"
+       },
+       {
+        "html": "Giảng + phân tích mẫu",
+        "plain": "Giảng + phân tích mẫu"
+       }
+      ],
+      [
+       {
+        "html": "09:40–09:55",
+        "plain": "09:40–09:55"
+       },
+       {
+        "html": "Nghỉ giữa giờ",
+        "plain": "Nghỉ giữa giờ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "09:55–11:00",
+        "plain": "09:55–11:00"
+       },
+       {
+        "html": "Thực hành 10 (vòng 1: 25 phút, vòng 2: 40 phút)",
+        "plain": "Thực hành 10 (vòng 1: 25 phút, vòng 2: 40 phút)"
+       },
+       {
+        "html": "Cá nhân",
+        "plain": "Cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "11:00–11:30",
+        "plain": "11:00–11:30"
+       },
+       {
+        "html": "Chữa bài; nối với tờ \"Việc hẹn sửa sau\"; quay lại tình huống",
+        "plain": "Chữa bài; nối với tờ \"Việc hẹn sửa sau\"; quay lại tình huống"
+       },
+       {
+        "html": "Cả lớp",
+        "plain": "Cả lớp"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý giảng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Giảng viên yêu cầu học viên xác định múi giờ trước khi phân tích nhật ký vòng 2. Khi chữa bài, đối chiếu ảnh hưởng của việc đọc nhầm UTC và giờ địa phương.",
+       "level": 0,
+       "plain": "Giảng viên yêu cầu học viên xác định múi giờ trước khi phân tích nhật ký vòng 2. Khi chữa bài, đối chiếu ảnh hưởng của việc đọc nhầm UTC và giờ địa phương."
+      },
+      {
+       "html": "Khi chữa, dán tờ \"Việc hẹn sửa sau\" cạnh bảng diễn biến theo thời gian trên bảng và nối bằng dây màu từ từng dòng log tới từng dòng trên tờ. Đây là khoảnh khắc quan trọng nhất của ngày 5.",
+       "level": 0,
+       "plain": "Khi chữa, dán tờ \"Việc hẹn sửa sau\" cạnh bảng diễn biến theo thời gian trên bảng và nối bằng dây màu từ từng dòng log tới từng dòng trên tờ. Đây là khoảnh khắc quan trọng nhất của ngày 5."
+      },
+      {
+       "html": "Bảo vệ nhân vật: khi học viên viết \"anh Cường làm lộ\", hỏi lại \"bằng chứng nào cho thấy người ngồi trước máy là anh Cường?\".",
+       "level": 0,
+       "plain": "Bảo vệ nhân vật: khi học viên viết \"anh Cường làm lộ\", hỏi lại \"bằng chứng nào cho thấy người ngồi trước máy là anh Cường?\"."
+      },
+      {
+       "html": "<strong>Không tiết lộ</strong> vì sao MFA được chấp nhận. Nếu lớp nối với tin nhắn chương 8, ghi nhận đó là giả thuyết hợp lý và để ở cột \"giả thuyết\".",
+       "level": 0,
+       "plain": "Không tiết lộ vì sao MFA được chấp nhận. Nếu lớp nối với tin nhắn chương 8, ghi nhận đó là giả thuyết hợp lý và để ở cột \"giả thuyết\"."
+      },
+      {
+       "html": "Python là tùy chọn; Excel đủ cho toàn bộ bài. Toàn bộ log, IP, tài khoản là giả lập; không dùng log thật của đơn vị trên lớp.",
+       "level": 0,
+       "plain": "Python là tùy chọn; Excel đủ cho toàn bộ bài. Toàn bộ log, IP, tài khoản là giả lập; không dùng log thật của đơn vị trên lớp."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu nhầm cần sửa ngay trên lớp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Hiểu nhầm",
+        "plain": "Hiểu nhầm"
+       },
+       {
+        "html": "Cách sửa",
+        "plain": "Cách sửa"
+       }
+      ],
+      [
+       {
+        "html": "\"Có log là an toàn\"",
+        "plain": "\"Có log là an toàn\""
+       },
+       {
+        "html": "Đêm 20–21/10 mọi thứ được ghi – và không ai biết đến sáng",
+        "plain": "Đêm 20–21/10 mọi thứ được ghi – và không ai biết đến sáng"
+       }
+      ],
+      [
+       {
+        "html": "\"Giờ trong file là giờ Việt Nam\"",
+        "plain": "\"Giờ trong file là giờ Việt Nam\""
+       },
+       {
+        "html": "Chỉ chữ Z và đổi thử một dòng",
+        "plain": "Chỉ chữ Z và đổi thử một dòng"
+       }
+      ],
+      [
+       {
+        "html": "\"Ngoài giờ là đáng ngờ\"",
+        "plain": "\"Ngoài giờ là đáng ngờ\""
+       },
+       {
+        "html": "Trực ca, tác vụ tự động; xem chuỗi",
+        "plain": "Trực ca, tác vụ tự động; xem chuỗi"
+       }
+      ],
+      [
+       {
+        "html": "\"Xuất dữ liệu khách hàng là đáng ngờ\"",
+        "plain": "\"Xuất dữ liệu khách hàng là đáng ngờ\""
+       },
+       {
+        "html": "Dòng 1 của chị Dung là bình thường",
+        "plain": "Dòng 1 của chị Dung là bình thường"
+       }
+      ],
+      [
+       {
+        "html": "\"Tên tài khoản là thủ phạm\"",
+        "plain": "\"Tên tài khoản là thủ phạm\""
+       },
+       {
+        "html": "Tài khoản ≠ người",
+        "plain": "Tài khoản ≠ người"
+       }
+      ],
+      [
+       {
+        "html": "\"Khóa tài khoản, xóa link trước rồi tính\"",
+        "plain": "\"Khóa tài khoản, xóa link trước rồi tính\""
+       },
+       {
+        "html": "Giữ bằng chứng trước; khóa, xóa sau (buổi 10)",
+        "plain": "Giữ bằng chứng trước; khóa, xóa sau (buổi 10)"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s15"
+  },
+  {
+   "title": "Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html\" target=\"_blank\" rel=\"noopener noreferrer\">OWASP Logging Cheat Sheet</a>",
+       "level": 0,
+       "plain": "OWASP Logging Cheat Sheet"
+      },
+      {
+       "html": "<a href=\"https://csrc.nist.gov/pubs/sp/800/92/final\" target=\"_blank\" rel=\"noopener noreferrer\">NIST SP 800-92 – Guide to Computer Security Log Management</a>",
+       "level": 0,
+       "plain": "NIST SP 800-92 – Guide to Computer Security Log Management"
+      },
+      {
+       "html": "<a href=\"https://csrc.nist.gov/pubs/sp/800/61/r3/final\" target=\"_blank\" rel=\"noopener noreferrer\">NIST SP 800-61 Rev. 3 – Incident Response Recommendations and Considerations for Cybersecurity Risk Management</a>",
+       "level": 0,
+       "plain": "NIST SP 800-61 Rev. 3 – Incident Response Recommendations and Considerations for Cybersecurity Risk Management"
+      },
+      {
+       "html": "<a href=\"https://www.cisa.gov/resources-tools/resources/best-practices-event-logging-and-threat-detection\" target=\"_blank\" rel=\"noopener noreferrer\">CISA – Best Practices for Event Logging and Threat Detection</a>",
+       "level": 0,
+       "plain": "CISA – Best Practices for Event Logging and Threat Detection"
+      },
+      {
+       "html": "<a href=\"https://learn.microsoft.com/en-us/purview/audit-search\" target=\"_blank\" rel=\"noopener noreferrer\">Microsoft Learn – Search the audit log (Microsoft Purview)</a>",
+       "level": 0,
+       "plain": "Microsoft Learn – Search the audit log (Microsoft Purview)"
+      },
+      {
+       "html": "<a href=\"https://www.rfc-editor.org/rfc/rfc5737\" target=\"_blank\" rel=\"noopener noreferrer\">RFC 5737 – IPv4 Address Blocks Reserved for Documentation</a>",
+       "level": 0,
+       "plain": "RFC 5737 – IPv4 Address Blocks Reserved for Documentation"
+      }
+     ]
+    }
+   ],
+   "id": "s16"
+  },
+  {
+   "id": "s17",
+   "title": "Bài tập thêm – Log cho biết gì, còn thiếu gì?",
+   "kind": "practice",
+   "activity": "m09-case-v2",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
+     "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
+    },
+    {
+     "t": "p",
+     "plain": "Nhật ký giả lập (UTC): 20/10/2026 19:10 nv_a đăng nhập thất bại từ 203.0.113.8; 19:15 đăng nhập thành công sau MFA; 19:18 thêm phương thức MFA; 19:40 xuất 5.000 dòng; 19:45 tạo liên kết công khai. Chưa có nhật ký mở hoặc tải qua liên kết, chưa đối chiếu lịch làm việc.",
+     "html": "Nhật ký giả lập (UTC): 20/10/2026 19:10 nv_a đăng nhập thất bại từ 203.0.113.8; 19:15 đăng nhập thành công sau MFA; 19:18 thêm phương thức MFA; 19:40 xuất 5.000 dòng; 19:45 tạo liên kết công khai. Chưa có nhật ký mở hoặc tải qua liên kết, chưa đối chiếu lịch làm việc."
+    },
+    {
+     "t": "h3",
+     "text": "Việc bạn cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Đổi năm mốc sang giờ +07:00, ghi cả ngày và sắp xếp thành bảng diễn biến.",
+     "html": "1. Đổi năm mốc sang giờ +07:00, ghi cả ngày và sắp xếp thành bảng diễn biến."
+    },
+    {
+     "t": "p",
+     "plain": "2. Tách ba điều đã thấy trong log khỏi hai giả thuyết cần xác minh.",
+     "html": "2. Tách ba điều đã thấy trong log khỏi hai giả thuyết cần xác minh."
+    },
+    {
+     "t": "p",
+     "plain": "3. Đề xuất bằng chứng cần bổ sung và hai hành động trong thẩm quyền của người tiếp nhận cảnh báo.",
+     "html": "3. Đề xuất bằng chứng cần bổ sung và hai hành động trong thẩm quyền của người tiếp nhận cảnh báo."
+    },
+    {
+     "t": "p",
+     "plain": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả.",
+     "html": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm.",
+     "html": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m09-case-v2"
+    },
+    {
+     "t": "p",
+     "plain": "Các mốc đều sang ngày 21/10: 02:10, 02:15, 02:18, 02:40 và 02:45 (+07:00). Log cho thấy thao tác dưới tài khoản nv_a, chưa chứng minh chính chủ thực hiện hoặc đã có người tải dữ liệu. Cần nhật ký phiên, chi tiết MFA, thông tin liên kết, lịch làm việc và log truy cập. Báo đầu mối, bảo toàn nhật ký; đề xuất người có thẩm quyền hạn chế truy cập liên kết và xử lý phiên nghi ngờ. Không xóa file hay kết luận cá nhân gây lộ từ tên tài khoản.",
+     "html": "Các mốc đều sang ngày 21/10: 02:10, 02:15, 02:18, 02:40 và 02:45 (+07:00). Log cho thấy thao tác dưới tài khoản nv_a, chưa chứng minh chính chủ thực hiện hoặc đã có người tải dữ liệu. Cần nhật ký phiên, chi tiết MFA, thông tin liên kết, lịch làm việc và log truy cập. Báo đầu mối, bảo toàn nhật ký; đề xuất người có thẩm quyền hạn chế truy cập liên kết và xử lý phiên nghi ngờ. Không xóa file hay kết luận cá nhân gây lộ từ tên tài khoản.",
+     "reveal": "m09-case-v2"
+    }
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "m09-check-v2",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: chọn cách xử lý",
+   "intro": "Chọn một phương án phù hợp nhất cho mỗi tình huống. Khi chữa bài, hãy giải thích vì sao bạn chọn cách đó.",
+   "questions": [
+    {
+     "text": "20/10/2026 19:30 UTC là mấy giờ tại Việt Nam (+07:00)?",
+     "options": [
+      {
+       "key": "A",
+       "text": "20/10 lúc 12:30"
+      },
+      {
+       "key": "B",
+       "text": "21/10 lúc 02:30"
+      },
+      {
+       "key": "C",
+       "text": "20/10 lúc 19:30"
+      }
+     ],
+     "correct": "B",
+     "explain": "Cộng 7 giờ và đổi sang ngày kế tiếp.",
+     "id": "q1"
+    },
+    {
+     "text": "Log ghi tài khoản nv_a tạo liên kết công khai. Kết luận nào có căn cứ?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Chính chủ chắc chắn đã cố ý làm lộ"
+      },
+      {
+       "key": "B",
+       "text": "Toàn bộ file chắc chắn đã bị tải"
+      },
+      {
+       "key": "C",
+       "text": "Có thao tác tạo liên kết dưới tài khoản nv_a; cần thêm bằng chứng về người điều khiển và truy cập"
+      }
+     ],
+     "correct": "C",
+     "explain": "Phải phân biệt dấu vết tài khoản, danh tính người thực hiện và hậu quả thực tế.",
+     "id": "q2"
+    }
+   ]
+  },
+  {
+   "id": "m09-quiz",
+   "type": "mcq",
+   "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+   "scope": "student",
+   "intro": "Mỗi câu chọn một đáp án đúng nhất.",
+   "questions": [
+    {
+     "module": 9,
+     "text": "Nhật ký ghi 2026-10-20T19:10:03Z. Giờ Việt Nam là:",
+     "options": [
+      {
+       "key": "A",
+       "text": "19:10 ngày 20/10"
+      },
+      {
+       "key": "B",
+       "text": "12:10 ngày 20/10"
+      },
+      {
+       "key": "C",
+       "text": "02:10 ngày 21/10"
+      },
+      {
+       "key": "D",
+       "text": "07:10 ngày 21/10"
+      }
+     ],
+     "id": "q1",
+     "correct": "C"
+    },
+    {
+     "module": 9,
+     "text": "Log cho thấy tài khoản nv_c xuất 8.500 dòng lúc 02:42. Kết luận đúng là:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Anh Cường đã làm lộ dữ liệu"
+      },
+      {
+       "key": "B",
+       "text": "Tài khoản nv_c đã được dùng; ai điều khiển phiên cần thêm bằng chứng"
+      },
+      {
+       "key": "C",
+       "text": "Log bị lỗi"
+      },
+      {
+       "key": "D",
+       "text": "Không có gì bất thường"
+      }
+     ],
+     "id": "q2",
+     "correct": "B"
+    }
+   ]
+  },
+  {
+   "id": "m09-th10",
+   "type": "practice",
+   "title": "Thực hành 10 – Truy vết truy cập bất thường (65 phút, hai vòng)",
+   "scope": "student",
+   "section": "s9"
+  },
+  {
+   "id": "m09-review",
+   "type": "open",
+   "title": "Câu hỏi ôn tập",
+   "scope": "student",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Phân biệt sự kiện, cảnh báo, sự cố.",
+     "answer": "Mọi việc quan sát được / sự kiện được đánh dấu cần xem / sự việc đe dọa CIA hoặc vi phạm chính sách"
+    },
+    {
+     "id": "q2",
+     "text": "Nhật ký kiểm toán trả lời câu hỏi gì mà nhật ký vận hành thường không?",
+     "answer": "Ai làm gì với dữ liệu, cấu hình nào"
+    },
+    {
+     "id": "q3",
+     "text": "Kể năm phần của một dòng log tốt.",
+     "answer": "Khi nào (kèm múi giờ), ai, từ đâu, làm gì, kết quả"
+    },
+    {
+     "id": "q4",
+     "text": "2026-10-20T19:10:03Z là mấy giờ ở Việt Nam?",
+     "answer": "02:10:03 ngày 21/10"
+    },
+    {
+     "id": "q5",
+     "text": "Vì sao không ghi mật khẩu hay token vào log?",
+     "answer": "Log thành nơi rò rỉ mới; ai đọc log là chiếm được tài khoản/phiên"
+    },
+    {
+     "id": "q6",
+     "text": "Vì sao cần đồng bộ thời gian giữa các hệ thống?",
+     "answer": "Để ghép đúng thứ tự sự kiện từ nhiều nguồn"
+    },
+    {
+     "id": "q7",
+     "text": "Người bị giám sát có nên có quyền xóa log của chính mình không?",
+     "answer": "Không; việc xóa/tắt log phải tạo cảnh báo"
+    },
+    {
+     "id": "q8",
+     "text": "Vì sao \"log cũng là dữ liệu cá nhân\"?",
+     "answer": "Log ghi ai đăng nhập, lúc nào, từ đâu, xem gì – thông tin về nhân viên; chỉ xem đúng mục đích, đúng người"
+    },
+    {
+     "id": "q9",
+     "text": "Đăng nhập lúc 2 giờ sáng có phải là bằng chứng tấn công không?",
+     "answer": "Không – là tín hiệu; cần loại trừ trực ca, tác vụ tự động; chuỗi dấu hiệu mới nâng mức nghi ngờ"
+    },
+    {
+     "id": "q10",
+     "text": "Trong log mẫu, xuất lúc 22:01 trước khi được cấp quyền lúc 22:03. Kể ba khả năng.",
+     "answer": "Đã có quyền từ trước; đồng hồ lệch; log trễ/sắp theo giờ nhận; tiến trình khác; cấp quyền hợp thức hóa"
+    },
+    {
+     "id": "q11",
+     "text": "Có sự kiện Download có nghĩa dữ liệu đã lộ ra ngoài không?",
+     "answer": "Chưa chắc, cần thêm bằng chứng (ví dụ link công khai và lượt tải từ IP ngoài như đêm 20–21/10)"
+    },
+    {
+     "id": "q12",
+     "text": "Log ghi tài khoản nv_c xuất 8.500 dòng. Có kết luận anh Cường làm lộ dữ liệu được không?",
+     "answer": "Không – log cho biết tài khoản nào được dùng, không cho biết ai điều khiển phiên"
+    },
+    {
+     "id": "q13",
+     "text": "Trong đêm 20–21/10, cảnh báo sớm nhất có thể có là gì, lúc nào?",
+     "answer": "Nhiều lần đăng nhập sai từ IP lạ rồi thành công – 02:15"
+    },
+    {
+     "id": "q14",
+     "text": "Kể ba bằng chứng cần giữ ngay trước khi khóa tài khoản, xóa link.",
+     "answer": "Log gốc ba nguồn kèm giá trị băm và biên bản; nhật ký MFA chi tiết; thông tin file/link OneDrive; phiếu phản ánh tổng đài"
+    }
+   ]
+  },
+  {
+   "id": "m09-case-v2",
+   "type": "practice",
+   "scope": "student",
+   "section": "s17",
+   "title": "Bài tập thêm – Log cho biết gì, còn thiếu gì?",
+   "intro": "Nhật ký giả lập (UTC): 20/10/2026 19:10 nv_a đăng nhập thất bại từ 203.0.113.8; 19:15 đăng nhập thành công sau MFA; 19:18 thêm phương thức MFA; 19:40 xuất 5.000 dòng; 19:45 tạo liên kết công khai. Chưa có nhật ký mở hoặc tải qua liên kết, chưa đối chiếu lịch làm việc.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "part1",
+     "label": "Đổi năm mốc sang giờ +07:00, ghi cả ngày và sắp xếp thành bảng diễn biến."
+    },
+    {
+     "type": "textarea",
+     "key": "part2",
+     "label": "Tách ba điều đã thấy trong log khỏi hai giả thuyết cần xác minh."
+    },
+    {
+     "type": "textarea",
+     "key": "part3",
+     "label": "Đề xuất bằng chứng cần bổ sung và hai hành động trong thẩm quyền của người tiếp nhận cảnh báo."
+    }
+   ]
+  }
+ ]
+}

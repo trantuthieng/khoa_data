@@ -1,0 +1,57 @@
+[
+ {
+  "no": 0,
+  "title": "Giáo trình An toàn ứng dụng & Dữ liệu – Tổng quan",
+  "short": "Tổng quan"
+ },
+ {
+  "no": 1,
+  "title": "Buổi 1 – Dữ liệu cần bảo vệ: CIA, vòng đời, phân loại và AI",
+  "short": "Dữ liệu cần bảo vệ: CIA, vòng đời, phân loại và AI"
+ },
+ {
+  "no": 2,
+  "title": "Buổi 2 – Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu",
+  "short": "Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu"
+ },
+ {
+  "no": 3,
+  "title": "Buổi 3 – Quyền tối thiểu, RBAC/ABAC và ma trận quyền",
+  "short": "Quyền tối thiểu, RBAC/ABAC và ma trận quyền"
+ },
+ {
+  "no": 4,
+  "title": "Buổi 4 – Xác thực, MFA, SSO, tài khoản chung và phiên làm việc",
+  "short": "Xác thực, MFA, SSO, tài khoản chung và phiên làm việc"
+ },
+ {
+  "no": 5,
+  "title": "Buổi 5 – Mã hóa, HTTPS/TLS, sao lưu và chia sẻ file an toàn",
+  "short": "Mã hóa, HTTPS/TLS, sao lưu và chia sẻ file an toàn"
+ },
+ {
+  "no": 6,
+  "title": "Buổi 6 – An toàn khi thao tác cơ sở dữ liệu: giảm dữ liệu và SQL injection",
+  "short": "An toàn khi thao tác cơ sở dữ liệu: giảm dữ liệu và SQL injection"
+ },
+ {
+  "no": 7,
+  "title": "Buổi 7 – Phân quyền dashboard Power BI và chia sẻ báo cáo",
+  "short": "Phân quyền dashboard Power BI và chia sẻ báo cáo"
+ },
+ {
+  "no": 8,
+  "title": "Buổi 8 – Phòng chống tấn công phi kỹ thuật và lừa đảo",
+  "short": "Phòng chống tấn công phi kỹ thuật và lừa đảo"
+ },
+ {
+  "no": 9,
+  "title": "Buổi 9 – Nhật ký kiểm toán, phát hiện và truy vết",
+  "short": "Nhật ký kiểm toán, phát hiện và truy vết"
+ },
+ {
+  "no": 10,
+  "title": "Buổi 10 – Ứng phó sự cố rò rỉ dữ liệu, diễn tập và tổng kết",
+  "short": "Ứng phó sự cố rò rỉ dữ liệu, diễn tập và tổng kết"
+ }
+]

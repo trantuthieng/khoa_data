@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vào lớp | An toàn ứng dụng &amp; Dữ liệu dành cho cán bộ vận hành</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/studio.css">
+<script src="/static/vendor/vue.global.prod.js"></script>
+<script src="/static/common.js"></script>
+</head>
+<body class="entrance-page">
+<div id="app" class="entrance-shell" v-cloak>
+  <section class="entrance-story" aria-label="Giới thiệu khóa học">
+    <div class="brand story-brand"><span v-html="logo"></span><span>An toàn ứng dụng &amp; Dữ liệu<br><small>dành cho cán bộ vận hành</small></span></div>
+    <div class="story-content">
+      <span class="eyebrow story-eyebrow">LỚP HỌC DÀNH CHO CÁN BỘ ĐIỆN LỰC</span>
+      <h1>Bảo vệ dữ liệu<br>từ từng thao tác.</h1>
+      <p>Khóa học dành cho cán bộ quản lý, CNTT và vận hành điện lực. Học qua tình huống công việc, thực hành cá nhân và nhận xét của giảng viên.</p>
+      <div class="story-topics"><span>SQL</span><span>Python</span><span>Power BI</span></div>
+      <div class="course-path">
+        <div><span class="path-number">01</span><p><b>Hiểu dữ liệu và quyền truy cập</b><small>Phân loại, luồng dữ liệu, tài khoản và xác thực</small></p></div>
+        <div><span class="path-number">02</span><p><b>Thực hành xử lý và chia sẻ</b><small>Mã hóa, giảm dữ liệu, SQL, Python và Power BI</small></p></div>
+        <div><span class="path-number">03</span><p><b>Phát hiện và xử lý sự cố</b><small>Nhận diện lừa đảo, đọc nhật ký và diễn tập</small></p></div>
+      </div>
+    </div>
+    <div class="story-footer"><span><b>5</b> ngày học</span><span><b>10</b> buổi học</span><span class="story-individual">Thực hành cá nhân</span></div>
+  </section>
+  <main class="entrance-form-area">
+  <div class="card join-card">
+    <span class="eyebrow">BẮT ĐẦU BUỔI HỌC</span>
+    <h1>Vào lớp học</h1>
+    <p class="muted" style="margin-top:0">Nhập mã lớp do giảng viên cung cấp.</p>
+
+    <div v-if="hasSession" class="banner">
+      <span class="grow">Thông tin vào lớp đã lưu: <b>{{ saved.cls }}</b> · <b>{{ saved.name }}</b>.</span>
+      <a class="btn primary" href="/learn">Tiếp tục học</a>
+    </div>
+
+    <div class="seg" style="margin:8px 0 4px">
+      <button :class="{on: mode==='new'}" @click="mode='new'">Lần đầu vào lớp</button>
+      <button :class="{on: mode==='rejoin'}" @click="mode='rejoin'">Vào lại bằng mã cá nhân</button>
+    </div>
+
+    <form @submit.prevent="join">
+      <label class="field" for="code">Mã lớp</label>
+      <input id="code" v-model="code" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="Ví dụ: K7M2QX" style="text-transform:uppercase;letter-spacing:.1em;font-weight:700">
+      <template v-if="mode==='new'">
+        <label class="field" for="name">Họ và tên</label>
+        <input id="name" v-model="name" maxlength="60" autocomplete="name">
+      </template>
+      <template v-else>
+        <label class="field" for="rj">Mã vào lại cá nhân <span class="hint">Gồm 6 ký tự, xem bằng cách chọn tên của bạn trong lớp.</span></label>
+        <input id="rj" v-model="rejoin" maxlength="12" autocomplete="off" style="text-transform:uppercase;letter-spacing:.1em">
+      </template>
+      <div v-if="err" class="error">{{ err }}</div>
+      <button class="btn primary join-submit" :disabled="busy">{{ busy ? 'Đang vào lớp…' : 'Vào lớp' }} <span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="muted" style="font-size:14px;margin-bottom:0;margin-top:20px">Các tình huống và dữ liệu thực hành đều giả lập. Không đưa dữ liệu thật của khách hàng, nhân sự hoặc hệ thống vận hành vào bài làm.</p>
+    <div class="join-teacher-link"><span>Bạn phụ trách lớp học?</span><a href="/teacher">Dành cho giảng viên →</a></div>
+  </div>
+  <p class="entrance-footnote">An toàn ứng dụng &amp; Dữ liệu dành cho cán bộ vận hành <span>Học để áp dụng trong công việc</span></p>
+  </main>
+</div>
+<script src="/static/index.js"></script>
+</body>
+</html>

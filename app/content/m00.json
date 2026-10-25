@@ -1,0 +1,4746 @@
+{
+ "no": 0,
+ "title": "Giáo trình An toàn ứng dụng & Dữ liệu – Tổng quan",
+ "short": "Tổng quan",
+ "sections": [
+  {
+   "title": "Lời nói đầu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Khóa học gồm 10 buổi trong 5 ngày, dành cho cán bộ quản lý, nhân sự CNTT và vận hành hệ thống trong đơn vị điện lực. Nội dung tập trung vào bảo vệ dữ liệu, quản lý truy cập, kiểm tra báo cáo và phối hợp xử lý sự cố. Phần Tổng quan giới thiệu lộ trình, tình huống thực hành và các biểu mẫu dùng trong khóa.",
+     "plain": "Khóa học gồm 10 buổi trong 5 ngày, dành cho cán bộ quản lý, nhân sự CNTT và vận hành hệ thống trong đơn vị điện lực. Nội dung tập trung vào bảo vệ dữ liệu, quản lý truy cập, kiểm tra báo cáo và phối hợp xử lý sự cố. Phần Tổng quan giới thiệu lộ trình, tình huống thực hành và các biểu mẫu dùng trong khóa."
+    },
+    {
+     "t": "h3",
+     "text": "Vì sao có khóa học này"
+    },
+    {
+     "t": "p",
+     "html": "Một đơn vị điện lực quản lý hàng chục nghìn đến hàng triệu hồ sơ khách hàng: họ tên, số điện thoại, địa chỉ, mã khách hàng, sản lượng từng tháng, số tiền còn nợ. Những thông tin này có giá trị thật với kẻ gian. Kẻ gian biết đúng tên và số nợ của một hộ thì cuộc gọi giả danh nhân viên điện lực, dọa cắt điện để ép thanh toán hay cài ứng dụng lạ, trở nên rất đáng tin.",
+     "plain": "Một đơn vị điện lực quản lý hàng chục nghìn đến hàng triệu hồ sơ khách hàng: họ tên, số điện thoại, địa chỉ, mã khách hàng, sản lượng từng tháng, số tiền còn nợ. Những thông tin này có giá trị thật với kẻ gian. Kẻ gian biết đúng tên và số nợ của một hộ thì cuộc gọi giả danh nhân viên điện lực, dọa cắt điện để ép thanh toán hay cài ứng dụng lạ, trở nên rất đáng tin."
+    },
+    {
+     "t": "p",
+     "html": "Sự cố dữ liệu có thể bắt đầu từ thao tác hằng ngày: xuất thừa trường, chia sẻ liên kết công khai, dùng lại mật khẩu hoặc chấp thuận yêu cầu MFA ngoài dự kiến. Khóa học sử dụng các tình huống này để xác định điểm cần kiểm soát, người chịu trách nhiệm và bằng chứng kiểm tra.",
+     "plain": "Sự cố dữ liệu có thể bắt đầu từ thao tác hằng ngày: xuất thừa trường, chia sẻ liên kết công khai, dùng lại mật khẩu hoặc chấp thuận yêu cầu MFA ngoài dự kiến. Khóa học sử dụng các tình huống này để xác định điểm cần kiểm soát, người chịu trách nhiệm và bằng chứng kiểm tra."
+    },
+    {
+     "t": "p",
+     "html": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ ngày 01/01/2026. Khi xử lý dữ liệu, đơn vị cần xác định vai trò, trách nhiệm và nghĩa vụ áp dụng cho từng hoạt động. Phần pháp luật trong khóa học phục vụ nhận thức và phối hợp với đầu mối pháp chế; nghĩa vụ thông báo và thời hạn được xem xét theo trường hợp cụ thể.",
+     "plain": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ ngày 01/01/2026. Khi xử lý dữ liệu, đơn vị cần xác định vai trò, trách nhiệm và nghĩa vụ áp dụng cho từng hoạt động. Phần pháp luật trong khóa học phục vụ nhận thức và phối hợp với đầu mối pháp chế; nghĩa vụ thông báo và thời hạn được xem xét theo trường hợp cụ thể."
+    },
+    {
+     "t": "h3",
+     "text": "Đối tượng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Cán bộ quản lý, quản trị cơ sở dữ liệu, phát triển phần mềm, quản trị hệ thống, vận hành CNTT, viễn thông, đo xa và SCADA trong các đơn vị điện lực.",
+       "level": 0,
+       "plain": "Cán bộ quản lý, quản trị cơ sở dữ liệu, phát triển phần mềm, quản trị hệ thống, vận hành CNTT, viễn thông, đo xa và SCADA trong các đơn vị điện lực."
+      },
+      {
+       "html": "Học viên cần quen với tài khoản, tệp dữ liệu và các hệ thống phục vụ công việc. Bài SQL, Python và Power BI có hướng dẫn theo từng bước. Giảng viên lựa chọn bài phù hợp với kinh nghiệm và nhiệm vụ của từng học viên.",
+       "level": 0,
+       "plain": "Học viên cần quen với tài khoản, tệp dữ liệu và các hệ thống phục vụ công việc. Bài SQL, Python và Power BI có hướng dẫn theo từng bước. Giảng viên lựa chọn bài phù hợp với kinh nghiệm và nhiệm vụ của từng học viên."
+      },
+      {
+       "html": "Khóa học giúp thống nhất cách đánh giá rủi ro, đề xuất kiểm soát và phối hợp giữa cán bộ quản lý, kỹ thuật và nghiệp vụ. Mỗi học viên làm bài cá nhân, ghi kết quả kiểm tra và giải thích phương án của mình.",
+       "level": 0,
+       "plain": "Khóa học giúp thống nhất cách đánh giá rủi ro, đề xuất kiểm soát và phối hợp giữa cán bộ quản lý, kỹ thuật và nghiệp vụ. Mỗi học viên làm bài cá nhân, ghi kết quả kiểm tra và giải thích phương án của mình."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Sau khóa học, học viên làm được gì"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Phân loại được một tập dữ liệu và vẽ được đường đi của nó qua các hệ thống, con người, đối tác.",
+       "level": 0,
+       "plain": "Phân loại được một tập dữ liệu và vẽ được đường đi của nó qua các hệ thống, con người, đối tác."
+      },
+      {
+       "html": "Đề xuất được ai cần quyền gì, và xử lý quyền khi có người chuyển đơn vị.",
+       "level": 0,
+       "plain": "Đề xuất được ai cần quyền gì, và xử lý quyền khi có người chuyển đơn vị."
+      },
+      {
+       "html": "Gửi, chia sẻ, xuất dữ liệu theo đúng quy trình: chỉ đưa phần cần thiết, đúng người, có bảo vệ.",
+       "level": 0,
+       "plain": "Gửi, chia sẻ, xuất dữ liệu theo đúng quy trình: chỉ đưa phần cần thiết, đúng người, có bảo vệ."
+      },
+      {
+       "html": "Kiểm tra được một báo cáo Power BI có đến đúng người không, và nhận ra một yêu cầu lừa đảo.",
+       "level": 0,
+       "plain": "Kiểm tra được một báo cáo Power BI có đến đúng người không, và nhận ra một yêu cầu lừa đảo."
+      },
+      {
+       "html": "Đọc được nhật ký ở mức cơ bản, viết được báo cáo ban đầu khi nghi có sự cố và biết mình làm gì, không làm gì trong lúc xử lý.",
+       "level": 0,
+       "plain": "Đọc được nhật ký ở mức cơ bản, viết được báo cáo ban đầu khi nghi có sự cố và biết mình làm gì, không làm gì trong lúc xử lý."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Nguyên tắc của giáo trình"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Mọi dữ liệu, tên người, đơn vị và sự cố đều là giả lập.</strong> \"Điện lực Minh An\", \"Điện lực X\", \"anh Cường\" không mô tả đơn vị hay người thật nào. Không dùng dữ liệu hoặc hệ thống thật trong lớp.",
+       "level": 0,
+       "plain": "Mọi dữ liệu, tên người, đơn vị và sự cố đều là giả lập. \"Điện lực Minh An\", \"Điện lực X\", \"anh Cường\" không mô tả đơn vị hay người thật nào. Không dùng dữ liệu hoặc hệ thống thật trong lớp."
+      },
+      {
+       "html": "<strong>Quy định của đơn vị và văn bản pháp luật đang có hiệu lực được ưu tiên</strong> so với ví dụ trong giáo trình. Phần pháp luật là tóm tắt để hiểu, không thay thế ý kiến pháp chế.",
+       "level": 0,
+       "plain": "Quy định của đơn vị và văn bản pháp luật đang có hiệu lực được ưu tiên so với ví dụ trong giáo trình. Phần pháp luật là tóm tắt để hiểu, không thay thế ý kiến pháp chế."
+      },
+      {
+       "html": "<strong>Người dùng làm trong phạm vi thẩm quyền.</strong> Giáo trình dạy cách nhận ra, hỏi đúng và báo đúng; các biện pháp kỹ thuật (khóa tài khoản, đổi cấu hình, ngắt hệ thống) do bộ phận có thẩm quyền quyết định.",
+       "level": 0,
+       "plain": "Người dùng làm trong phạm vi thẩm quyền. Giáo trình dạy cách nhận ra, hỏi đúng và báo đúng; các biện pháp kỹ thuật (khóa tài khoản, đổi cấu hình, ngắt hệ thống) do bộ phận có thẩm quyền quyết định."
+      },
+      {
+       "html": "<strong>Không tự ngắt hệ thống vận hành điện</strong> trong bất kỳ tình huống nào của khóa học. An toàn vận hành luôn đứng trước.",
+       "level": 0,
+       "plain": "Không tự ngắt hệ thống vận hành điện trong bất kỳ tình huống nào của khóa học. An toàn vận hành luôn đứng trước."
+      }
+     ]
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Cách dùng bộ giáo trình",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Mỗi buổi học là một tài liệu độc lập, có cùng một cấu trúc 9 phần, nên người đọc biết luôn tìm thứ mình cần ở đâu.",
+     "plain": "Mỗi buổi học là một tài liệu độc lập, có cùng một cấu trúc 9 phần, nên người đọc biết luôn tìm thứ mình cần ở đâu."
+    },
+    {
+     "t": "h3",
+     "text": "Cấu trúc một tài liệu buổi học"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Phần",
+        "plain": "Phần"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Ai đọc, khi nào",
+        "plain": "Ai đọc, khi nào"
+       }
+      ],
+      [
+       {
+        "html": "Thông tin buổi học",
+        "plain": "Thông tin buổi học"
+       },
+       {
+        "html": "Lịch học, nội dung cần chuẩn bị, sản phẩm thực hành và mục tiêu của buổi học",
+        "plain": "Lịch học, nội dung cần chuẩn bị, sản phẩm thực hành và mục tiêu của buổi học"
+       },
+       {
+        "html": "Học viên đọc trước buổi học",
+        "plain": "Học viên đọc trước buổi học"
+       }
+      ],
+      [
+       {
+        "html": "Mở đầu",
+        "plain": "Mở đầu"
+       },
+       {
+        "html": "Một chương của tình huống Điện lực Minh An và câu hỏi của buổi",
+        "plain": "Một chương của tình huống Điện lực Minh An và câu hỏi của buổi"
+       },
+       {
+        "html": "Giảng viên kể đầu buổi",
+        "plain": "Giảng viên kể đầu buổi"
+       }
+      ],
+      [
+       {
+        "html": "Bài 1–4",
+        "plain": "Bài 1–4"
+       },
+       {
+        "html": "Kiến thức chi tiết: khái niệm, ví dụ đời thường, ví dụ ngành điện, lỗi hay gặp, cách áp dụng",
+        "plain": "Kiến thức chi tiết: khái niệm, ví dụ đời thường, ví dụ ngành điện, lỗi hay gặp, cách áp dụng"
+       },
+       {
+        "html": "Trong buổi học và đọc lại sau đó",
+        "plain": "Trong buổi học và đọc lại sau đó"
+       }
+      ],
+      [
+       {
+        "html": "Thực hành",
+        "plain": "Thực hành"
+       },
+       {
+        "html": "Đề bài, dữ liệu giả lập, các bước, đáp án gợi ý, tiêu chí đánh giá",
+        "plain": "Đề bài, dữ liệu giả lập, các bước, đáp án gợi ý, tiêu chí đánh giá"
+       },
+       {
+        "html": "Làm cá nhân trong buổi",
+        "plain": "Làm cá nhân trong buổi"
+       }
+      ],
+      [
+       {
+        "html": "Quay lại tình huống",
+        "plain": "Quay lại tình huống"
+       },
+       {
+        "html": "Lớp đã sửa được gì cho Điện lực Minh An, điều gì còn bỏ ngỏ",
+        "plain": "Lớp đã sửa được gì cho Điện lực Minh An, điều gì còn bỏ ngỏ"
+       },
+       {
+        "html": "Cuối buổi",
+        "plain": "Cuối buổi"
+       }
+      ],
+      [
+       {
+        "html": "Áp dụng tại đơn vị",
+        "plain": "Áp dụng tại đơn vị"
+       },
+       {
+        "html": "Checklist việc có thể làm ngay khi quay về công việc",
+        "plain": "Checklist việc có thể làm ngay khi quay về công việc"
+       },
+       {
+        "html": "Học viên mang về",
+        "plain": "Học viên mang về"
+       }
+      ],
+      [
+       {
+        "html": "Tóm tắt",
+        "plain": "Tóm tắt"
+       },
+       {
+        "html": "Những điều cần nhớ",
+        "plain": "Những điều cần nhớ"
+       },
+       {
+        "html": "Ôn tập",
+        "plain": "Ôn tập"
+       }
+      ],
+      [
+       {
+        "html": "Câu hỏi ôn tập",
+        "plain": "Câu hỏi ôn tập"
+       },
+       {
+        "html": "Câu hỏi kèm đáp án",
+        "plain": "Câu hỏi kèm đáp án"
+       },
+       {
+        "html": "Tự kiểm tra sau buổi",
+        "plain": "Tự kiểm tra sau buổi"
+       }
+      ],
+      [
+       {
+        "html": "Thuật ngữ, ghi chú giảng viên, tài liệu tham khảo",
+        "plain": "Thuật ngữ, ghi chú giảng viên, tài liệu tham khảo"
+       },
+       {
+        "html": "Từ mới của buổi; lịch trình theo phút, gợi ý giảng, hiểu nhầm hay gặp; nguồn",
+        "plain": "Từ mới của buổi; lịch trình theo phút, gợi ý giảng, hiểu nhầm hay gặp; nguồn"
+       },
+       {
+        "html": "Giảng viên chuẩn bị; học viên tra cứu",
+        "plain": "Giảng viên chuẩn bị; học viên tra cứu"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Các ô ghi chú trong bài"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Ví dụ</strong> – một tình huống cụ thể, thường là việc quen thuộc ở đơn vị điện lực.",
+       "level": 0,
+       "plain": "Ví dụ – một tình huống cụ thể, thường là việc quen thuộc ở đơn vị điện lực."
+      },
+      {
+       "html": "<strong>Áp dụng</strong> – việc cụ thể người học làm khác đi từ ngày mai.",
+       "level": 0,
+       "plain": "Áp dụng – việc cụ thể người học làm khác đi từ ngày mai."
+      },
+      {
+       "html": "<strong>Lưu ý</strong> – giới hạn của kiến thức, hoặc điều phụ thuộc quy định từng đơn vị.",
+       "level": 0,
+       "plain": "Lưu ý – giới hạn của kiến thức, hoặc điều phụ thuộc quy định từng đơn vị."
+      },
+      {
+       "html": "<strong>Hiểu nhầm hay gặp</strong> – câu nói nghe có lý nhưng sai, kèm cách hiểu đúng.",
+       "level": 0,
+       "plain": "Hiểu nhầm hay gặp – câu nói nghe có lý nhưng sai, kèm cách hiểu đúng."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý cách đọc"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Học viên:</strong> trước buổi đọc Thông tin buổi học và Mở đầu (10 phút). Sau buổi đọc Tóm tắt, làm Câu hỏi ôn tập rồi mới xem đáp án. Khi gặp việc thật, mở lại phần Áp dụng tại đơn vị.",
+       "level": 0,
+       "plain": "Học viên: trước buổi đọc Thông tin buổi học và Mở đầu (10 phút). Sau buổi đọc Tóm tắt, làm Câu hỏi ôn tập rồi mới xem đáp án. Khi gặp việc thật, mở lại phần Áp dụng tại đơn vị."
+      },
+      {
+       "html": "<strong>Giảng viên:</strong> đọc toàn bộ tài liệu buổi và phần Ghi chú giảng viên ít nhất một ngày trước. Mở đầu mỗi buổi bằng đầu ra của buổi trước, kết thúc bằng đầu ra trao cho buổi sau. Đáp án gợi ý không phải đáp án duy nhất; chấp nhận phương án khác nếu học viên nêu rõ lý do và giả định.",
+       "level": 0,
+       "plain": "Giảng viên: đọc toàn bộ tài liệu buổi và phần Ghi chú giảng viên ít nhất một ngày trước. Mở đầu mỗi buổi bằng đầu ra của buổi trước, kết thúc bằng đầu ra trao cho buổi sau. Đáp án gợi ý không phải đáp án duy nhất; chấp nhận phương án khác nếu học viên nêu rõ lý do và giả định."
+      },
+      {
+       "html": "<strong>Quản lý, cán bộ CNTT:</strong> đọc phần Bản đồ khóa học và Tình huống xuyên suốt trong tài liệu này, rồi phần Áp dụng tại đơn vị của từng buổi để biết học viên sẽ đề xuất gì khi quay về.",
+       "level": 0,
+       "plain": "Quản lý, cán bộ CNTT: đọc phần Bản đồ khóa học và Tình huống xuyên suốt trong tài liệu này, rồi phần Áp dụng tại đơn vị của từng buổi để biết học viên sẽ đề xuất gì khi quay về."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Nguyên tắc lớp học (nhắc ở đầu mỗi ngày)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Chỉ dùng dữ liệu giả lập. Không mang dữ liệu khách hàng, nhân sự hay vận hành thật vào lớp, kể cả \"chỉ để thử\".",
+       "level": 0,
+       "plain": "Chỉ dùng dữ liệu giả lập. Không mang dữ liệu khách hàng, nhân sự hay vận hành thật vào lớp, kể cả \"chỉ để thử\"."
+      },
+      {
+       "html": "Không thao tác trên hệ thống sản xuất. Mọi bài thực hành chạy trên máy lớp học hoặc môi trường thử nghiệm.",
+       "level": 0,
+       "plain": "Không thao tác trên hệ thống sản xuất. Mọi bài thực hành chạy trên máy lớp học hoặc môi trường thử nghiệm."
+      },
+      {
+       "html": "Thời hạn lưu giữ, thời gian hết phiên và chu kỳ rà soát quyền phải căn cứ quy định áp dụng của đơn vị. Các con số trong bài là ví dụ để thực hành.",
+       "level": 0,
+       "plain": "Thời hạn lưu giữ, thời gian hết phiên và chu kỳ rà soát quyền phải căn cứ quy định áp dụng của đơn vị. Các con số trong bài là ví dụ để thực hành."
+      },
+      {
+       "html": "Khi chưa rõ, học viên cần hỏi lại và báo sớm dấu hiệu nghi ngờ qua đầu mối phù hợp. Trong lớp, việc chia sẻ tình huống được trao đổi trên tinh thần học hỏi, không quy kết cá nhân.",
+       "level": 0,
+       "plain": "Khi chưa rõ, học viên cần hỏi lại và báo sớm dấu hiệu nghi ngờ qua đầu mối phù hợp. Trong lớp, việc chia sẻ tình huống được trao đổi trên tinh thần học hỏi, không quy kết cá nhân."
+      }
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Danh sách 10 buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Khóa học gồm 10 buổi trong 5 ngày. Khung giờ theo tài liệu trình chiếu: sáng 08:00–11:30, chiều 13:30–16:30. Lịch chi tiết và thời gian nghỉ do giảng viên thông báo. Chọn buổi học trong danh sách để xem nội dung đã được mở.",
+     "plain": "Khóa học gồm 10 buổi trong 5 ngày. Khung giờ theo tài liệu trình chiếu: sáng 08:00–11:30, chiều 13:30–16:30. Lịch chi tiết và thời gian nghỉ do giảng viên thông báo. Chọn buổi học trong danh sách để xem nội dung đã được mở."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       },
+       {
+        "html": "Ngày",
+        "plain": "Ngày"
+       },
+       {
+        "html": "Tài liệu",
+        "plain": "Tài liệu"
+       },
+       {
+        "html": "Câu hỏi của buổi",
+        "plain": "Câu hỏi của buổi"
+       },
+       {
+        "html": "Đầu ra thực hành",
+        "plain": "Đầu ra thực hành"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Ngày 1 sáng",
+        "plain": "Ngày 1 sáng"
+       },
+       {
+        "html": "Dữ liệu cần bảo vệ: CIA, vòng đời, phân loại và AI",
+        "plain": "Dữ liệu cần bảo vệ: CIA, vòng đời, phân loại và AI"
+       },
+       {
+        "html": "Dữ liệu nào cần bảo vệ, bảo vệ khỏi điều gì?",
+        "plain": "Dữ liệu nào cần bảo vệ, bảo vệ khỏi điều gì?"
+       },
+       {
+        "html": "Danh mục phân loại dữ liệu (Thực hành 1)",
+        "plain": "Danh mục phân loại dữ liệu (Thực hành 1)"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Ngày 1 chiều",
+        "plain": "Ngày 1 chiều"
+       },
+       {
+        "html": "Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu",
+        "plain": "Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu"
+       },
+       {
+        "html": "Dữ liệu đang đi qua những đâu, luật nói gì?",
+        "plain": "Dữ liệu đang đi qua những đâu, luật nói gì?"
+       },
+       {
+        "html": "Sơ đồ luồng dữ liệu, danh sách bản sao (Thực hành 2)",
+        "plain": "Sơ đồ luồng dữ liệu, danh sách bản sao (Thực hành 2)"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Ngày 2 sáng",
+        "plain": "Ngày 2 sáng"
+       },
+       {
+        "html": "Quyền tối thiểu, RBAC/ABAC và ma trận quyền",
+        "plain": "Quyền tối thiểu, RBAC/ABAC và ma trận quyền"
+       },
+       {
+        "html": "Ai được làm gì với dữ liệu?",
+        "plain": "Ai được làm gì với dữ liệu?"
+       },
+       {
+        "html": "Ma trận quyền, quy trình điều chuyển (Thực hành 3, 4)",
+        "plain": "Ma trận quyền, quy trình điều chuyển (Thực hành 3, 4)"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Ngày 2 chiều",
+        "plain": "Ngày 2 chiều"
+       },
+       {
+        "html": "Xác thực, MFA, SSO, tài khoản chung và phiên làm việc",
+        "plain": "Xác thực, MFA, SSO, tài khoản chung và phiên làm việc"
+       },
+       {
+        "html": "Làm sao biết đúng là người đó?",
+        "plain": "Làm sao biết đúng là người đó?"
+       },
+       {
+        "html": "Phương án thay tài khoản chung, MFA, phiên (Thực hành 5)",
+        "plain": "Phương án thay tài khoản chung, MFA, phiên (Thực hành 5)"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Ngày 3 sáng",
+        "plain": "Ngày 3 sáng"
+       },
+       {
+        "html": "Mã hóa, HTTPS/TLS, sao lưu và chia sẻ file an toàn",
+        "plain": "Mã hóa, HTTPS/TLS, sao lưu và chia sẻ file an toàn"
+       },
+       {
+        "html": "Dữ liệu rời hệ thống có còn được bảo vệ?",
+        "plain": "Dữ liệu rời hệ thống có còn được bảo vệ?"
+       },
+       {
+        "html": "Phương án chia sẻ có bảo vệ (Thực hành 6)",
+        "plain": "Phương án chia sẻ có bảo vệ (Thực hành 6)"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Ngày 3 chiều",
+        "plain": "Ngày 3 chiều"
+       },
+       {
+        "html": "An toàn khi thao tác cơ sở dữ liệu: giảm dữ liệu và SQL injection",
+        "plain": "An toàn khi thao tác cơ sở dữ liệu: giảm dữ liệu và SQL injection"
+       },
+       {
+        "html": "Làm sao chỉ đưa ra phần cần thiết?",
+        "plain": "Làm sao chỉ đưa ra phần cần thiết?"
+       },
+       {
+        "html": "Bản xuất đã giảm dữ liệu (Thực hành 7)",
+        "plain": "Bản xuất đã giảm dữ liệu (Thực hành 7)"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Ngày 4 sáng",
+        "plain": "Ngày 4 sáng"
+       },
+       {
+        "html": "Phân quyền dashboard Power BI và chia sẻ báo cáo",
+        "plain": "Phân quyền dashboard Power BI và chia sẻ báo cáo"
+       },
+       {
+        "html": "Báo cáo có đến đúng người không?",
+        "plain": "Báo cáo có đến đúng người không?"
+       },
+       {
+        "html": "Ma trận kiểm thử RLS (Thực hành 8)",
+        "plain": "Ma trận kiểm thử RLS (Thực hành 8)"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Ngày 4 chiều",
+        "plain": "Ngày 4 chiều"
+       },
+       {
+        "html": "Phòng chống tấn công phi kỹ thuật và lừa đảo",
+        "plain": "Phòng chống tấn công phi kỹ thuật và lừa đảo"
+       },
+       {
+        "html": "Yêu cầu này có thật không?",
+        "plain": "Yêu cầu này có thật không?"
+       },
+       {
+        "html": "Checklist xác minh (Thực hành 9)",
+        "plain": "Checklist xác minh (Thực hành 9)"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Ngày 5 sáng",
+        "plain": "Ngày 5 sáng"
+       },
+       {
+        "html": "Nhật ký kiểm toán, phát hiện và truy vết",
+        "plain": "Nhật ký kiểm toán, phát hiện và truy vết"
+       },
+       {
+        "html": "Chuyện gì đã xảy ra?",
+        "plain": "Chuyện gì đã xảy ra?"
+       },
+       {
+        "html": "Diễn biến theo thời gian, bảng đã biết – chưa rõ (Thực hành 10)",
+        "plain": "Diễn biến theo thời gian, bảng đã biết – chưa rõ (Thực hành 10)"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Ngày 5 chiều",
+        "plain": "Ngày 5 chiều"
+       },
+       {
+        "html": "Ứng phó sự cố rò rỉ dữ liệu, diễn tập và tổng kết",
+        "plain": "Ứng phó sự cố rò rỉ dữ liệu, diễn tập và tổng kết"
+       },
+       {
+        "html": "Làm gì tiếp và sửa gì để không lặp lại?",
+        "plain": "Làm gì tiếp và sửa gì để không lặp lại?"
+       },
+       {
+        "html": "Báo cáo sự cố, biên bản diễn tập",
+        "plain": "Báo cáo sự cố, biên bản diễn tập"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Bản đồ khóa học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Các buổi không phải những chủ đề rời nhau: mỗi ngày thêm một lớp bảo vệ và dùng đầu ra của ngày trước làm đầu vào.",
+     "plain": "Các buổi không phải những chủ đề rời nhau: mỗi ngày thêm một lớp bảo vệ và dùng đầu ra của ngày trước làm đầu vào."
+    },
+    {
+     "t": "img",
+     "src": "/static/content/m00_1.png"
+    },
+    {
+     "t": "p",
+     "html": "Bản đồ khóa học · 5 ngày, 10 buổi, 5 đầu ra",
+     "plain": "Bản đồ khóa học · 5 ngày, 10 buổi, 5 đầu ra"
+    },
+    {
+     "t": "p",
+     "html": "Đọc sơ đồ từ trên xuống: cột trái là câu hỏi của từng ngày, cột phải là thứ học viên làm ra và mang sang ngày sau. Mũi tên nét đứt cuối cùng cho thấy bài học từ sự cố ngày 5 quay lại cải tiến các đầu ra của ngày 1–4. Các tên chức năng (Nhận diện, Quản trị, Bảo vệ, Phát hiện, Ứng phó, Phục hồi) lấy từ Khung an ninh mạng NIST CSF 2.0.",
+     "plain": "Đọc sơ đồ từ trên xuống: cột trái là câu hỏi của từng ngày, cột phải là thứ học viên làm ra và mang sang ngày sau. Mũi tên nét đứt cuối cùng cho thấy bài học từ sự cố ngày 5 quay lại cải tiến các đầu ra của ngày 1–4. Các tên chức năng (Nhận diện, Quản trị, Bảo vệ, Phát hiện, Ứng phó, Phục hồi) lấy từ Khung an ninh mạng NIST CSF 2.0."
+    },
+    {
+     "t": "h3",
+     "text": "10 buổi nối với nhau thế nào"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       },
+       {
+        "html": "Nhận từ buổi trước",
+        "plain": "Nhận từ buổi trước"
+       },
+       {
+        "html": "Trao cho buổi sau",
+        "plain": "Trao cho buổi sau"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "–",
+        "plain": "–"
+       },
+       {
+        "html": "Nhãn phân loại và mức CIA của từng nhóm dữ liệu",
+        "plain": "Nhãn phân loại và mức CIA của từng nhóm dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Nhãn phân loại → biết luồng nào cần kiểm tra kỹ",
+        "plain": "Nhãn phân loại → biết luồng nào cần kiểm tra kỹ"
+       },
+       {
+        "html": "Sơ đồ luồng, danh sách bản sao và ranh giới tin cậy",
+        "plain": "Sơ đồ luồng, danh sách bản sao và ranh giới tin cậy"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Danh mục dữ liệu và sơ đồ → biết ai đang chạm vào dữ liệu",
+        "plain": "Danh mục dữ liệu và sơ đồ → biết ai đang chạm vào dữ liệu"
+       },
+       {
+        "html": "Ma trận quyền, quy trình điều chuyển",
+        "plain": "Ma trận quyền, quy trình điều chuyển"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Ma trận quyền → quyền chỉ có ý nghĩa khi đúng người đăng nhập",
+        "plain": "Ma trận quyền → quyền chỉ có ý nghĩa khi đúng người đăng nhập"
+       },
+       {
+        "html": "Phương án tài khoản cá nhân, MFA, quản lý phiên",
+        "plain": "Phương án tài khoản cá nhân, MFA, quản lý phiên"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Các ranh giới tin cậy trên sơ đồ luồng",
+        "plain": "Các ranh giới tin cậy trên sơ đồ luồng"
+       },
+       {
+        "html": "Quy trình chia sẻ 5 bước, file mã hóa đúng cách",
+        "plain": "Quy trình chia sẻ 5 bước, file mã hóa đúng cách"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Bước \"giảm dữ liệu\" của quy trình chia sẻ",
+        "plain": "Bước \"giảm dữ liệu\" của quy trình chia sẻ"
+       },
+       {
+        "html": "Bản tổng hợp đã giảm dữ liệu, được chủ dữ liệu duyệt",
+        "plain": "Bản tổng hợp đã giảm dữ liệu, được chủ dữ liệu duyệt"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Bản tổng hợp (nguồn) + ma trận quyền (ai xem gì)",
+        "plain": "Bản tổng hợp (nguồn) + ma trận quyền (ai xem gì)"
+       },
+       {
+        "html": "Ma trận kiểm thử RLS",
+        "plain": "Ma trận kiểm thử RLS"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Hệ thống đã khóa chặt hơn → kẻ gian chuyển sang lừa con người",
+        "plain": "Hệ thống đã khóa chặt hơn → kẻ gian chuyển sang lừa con người"
+       },
+       {
+        "html": "Checklist xác minh, nguyên tắc gọi lại",
+        "plain": "Checklist xác minh, nguyên tắc gọi lại"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Mọi lớp bảo vệ đã học → biết tìm dấu vết ở đâu",
+        "plain": "Mọi lớp bảo vệ đã học → biết tìm dấu vết ở đâu"
+       },
+       {
+        "html": "Diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng",
+        "plain": "Diễn biến theo thời gian, bảng đã biết – chưa rõ, danh sách bằng chứng"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Diễn biến theo thời gian và bằng chứng của buổi 9",
+        "plain": "Diễn biến theo thời gian và bằng chứng của buổi 9"
+       },
+       {
+        "html": "Báo cáo sự cố, biên bản diễn tập, danh sách cải tiến quay về buổi 1–8",
+        "plain": "Báo cáo sự cố, biên bản diễn tập, danh sách cải tiến quay về buổi 1–8"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bốn sợi chỉ chạy qua cả 5 ngày"
+    },
+    {
+     "t": "p",
+     "html": "Bốn ý tưởng dưới đây được giới thiệu ở ngày 1 và quay lại ở mọi ngày sau, mỗi lần ở một dạng mới. Khi học viên nhận ra \"đây lại là nguyên tắc tối thiểu\" hay \"đây lại là một bản sao\", các buổi không còn rời nhau.",
+     "plain": "Bốn ý tưởng dưới đây được giới thiệu ở ngày 1 và quay lại ở mọi ngày sau, mỗi lần ở một dạng mới. Khi học viên nhận ra \"đây lại là nguyên tắc tối thiểu\" hay \"đây lại là một bản sao\", các buổi không còn rời nhau."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Sợi chỉ",
+        "plain": "Sợi chỉ"
+       },
+       {
+        "html": "Ngày 1",
+        "plain": "Ngày 1"
+       },
+       {
+        "html": "Ngày 2",
+        "plain": "Ngày 2"
+       },
+       {
+        "html": "Ngày 3",
+        "plain": "Ngày 3"
+       },
+       {
+        "html": "Ngày 4",
+        "plain": "Ngày 4"
+       },
+       {
+        "html": "Ngày 5",
+        "plain": "Ngày 5"
+       }
+      ],
+      [
+       {
+        "html": "CIA – bí mật, toàn vẹn, sẵn sàng",
+        "plain": "CIA – bí mật, toàn vẹn, sẵn sàng"
+       },
+       {
+        "html": "Định nghĩa; mức tác động của từng loại dữ liệu",
+        "plain": "Định nghĩa; mức tác động của từng loại dữ liệu"
+       },
+       {
+        "html": "Quyền xem bảo vệ bí mật; quyền sửa và phân tách nhiệm vụ bảo vệ toàn vẹn",
+        "plain": "Quyền xem bảo vệ bí mật; quyền sửa và phân tách nhiệm vụ bảo vệ toàn vẹn"
+       },
+       {
+        "html": "Mã hóa (bí mật), băm và chữ ký (toàn vẹn), sao lưu (sẵn sàng)",
+        "plain": "Mã hóa (bí mật), băm và chữ ký (toàn vẹn), sao lưu (sẵn sàng)"
+       },
+       {
+        "html": "RLS (bí mật); lừa đảo có thể phá cả ba",
+        "plain": "RLS (bí mật); lừa đảo có thể phá cả ba"
+       },
+       {
+        "html": "Đánh giá mức độ sự cố theo ba mục tiêu; phục hồi = sẵn sàng",
+        "plain": "Đánh giá mức độ sự cố theo ba mục tiêu; phục hồi = sẵn sàng"
+       }
+      ],
+      [
+       {
+        "html": "Vòng đời và bản sao",
+        "plain": "Vòng đời và bản sao"
+       },
+       {
+        "html": "5 giai đoạn; mỗi bản sao bắt đầu một vòng đời mới",
+        "plain": "5 giai đoạn; mỗi bản sao bắt đầu một vòng đời mới"
+       },
+       {
+        "html": "Kiểm soát giai đoạn Sử dụng: ai được chạm vào",
+        "plain": "Kiểm soát giai đoạn Sử dụng: ai được chạm vào"
+       },
+       {
+        "html": "Giai đoạn Lưu trữ và Chia sẻ; bản xuất là bản sao mới",
+        "plain": "Giai đoạn Lưu trữ và Chia sẻ; bản xuất là bản sao mới"
+       },
+       {
+        "html": "File xuất, ảnh chụp, Publish to web đều là bản sao",
+        "plain": "File xuất, ảnh chụp, Publish to web đều là bản sao"
+       },
+       {
+        "html": "Log là dữ liệu phải lưu giữ; thu hồi bản sao khi rò rỉ",
+        "plain": "Log là dữ liệu phải lưu giữ; thu hồi bản sao khi rò rỉ"
+       }
+      ],
+      [
+       {
+        "html": "Tối thiểu – chỉ đủ dùng",
+        "plain": "Tối thiểu – chỉ đủ dùng"
+       },
+       {
+        "html": "Chỉ thu trường cần; chỉ đưa phần tối thiểu vào AI",
+        "plain": "Chỉ thu trường cần; chỉ đưa phần tối thiểu vào AI"
+       },
+       {
+        "html": "Quyền tối thiểu, đúng phạm vi, đúng thời hạn",
+        "plain": "Quyền tối thiểu, đúng phạm vi, đúng thời hạn"
+       },
+       {
+        "html": "Bỏ cột trước khi gửi; masking, tổng hợp",
+        "plain": "Bỏ cột trước khi gửi; masking, tổng hợp"
+       },
+       {
+        "html": "Mỗi người chỉ thấy dòng của mình; cột không cần thì không nạp",
+        "plain": "Mỗi người chỉ thấy dòng của mình; cột không cần thì không nạp"
+       },
+       {
+        "html": "Log ghi đủ để truy vết, không ghi mật khẩu",
+        "plain": "Log ghi đủ để truy vết, không ghi mật khẩu"
+       }
+      ],
+      [
+       {
+        "html": "Con người và báo sớm",
+        "plain": "Con người và báo sớm"
+       },
+       {
+        "html": "Lỗi thao tác; văn hóa báo lỗi; mốc 72 giờ",
+        "plain": "Lỗi thao tác; văn hóa báo lỗi; mốc 72 giờ"
+       },
+       {
+        "html": "Không chia sẻ tài khoản; không đọc mã OTP; từ chối MFA lạ",
+        "plain": "Không chia sẻ tài khoản; không đọc mã OTP; từ chối MFA lạ"
+       },
+       {
+        "html": "Dừng 5 giây trước khi gửi; không tự thử khi thấy lỗi lạ",
+        "plain": "Dừng 5 giây trước khi gửi; không tự thử khi thấy lỗi lạ"
+       },
+       {
+        "html": "Xác minh qua kênh độc lập; lỡ bấm thì báo",
+        "plain": "Xác minh qua kênh độc lập; lỡ bấm thì báo"
+       },
+       {
+        "html": "Báo cáo ban đầu; giữ bằng chứng; rút kinh nghiệm không đổ lỗi",
+        "plain": "Báo cáo ban đầu; giữ bằng chứng; rút kinh nghiệm không đổ lỗi"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Cách dùng khi học: mỗi khi gặp một kỹ thuật mới, hỏi \"kỹ thuật này thuộc sợi chỉ nào?\". Ví dụ RLS ở ngày 4 vừa bảo vệ bí mật (CIA) vừa là nguyên tắc tối thiểu áp vào báo cáo; Publish to web là một bản sao mới (vòng đời).",
+     "plain": "Cách dùng khi học: mỗi khi gặp một kỹ thuật mới, hỏi \"kỹ thuật này thuộc sợi chỉ nào?\". Ví dụ RLS ở ngày 4 vừa bảo vệ bí mật (CIA) vừa là nguyên tắc tối thiểu áp vào báo cáo; Publish to web là một bản sao mới (vòng đời)."
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Tình huống xuyên suốt: Điện lực Minh An (giả lập)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Một file danh sách khách hàng đi qua cả 10 buổi học. Ở mỗi buổi, lớp phát hiện một điểm yếu; có điểm được sửa ngay, có điểm bị hẹn \"sửa sau\". Đến ngày 5, các điểm chưa sửa nối lại thành một sự cố rò rỉ dữ liệu 8.500 khách hàng. Toàn bộ là giả lập, không mô tả đơn vị hay người thật nào.",
+     "plain": "Một file danh sách khách hàng đi qua cả 10 buổi học. Ở mỗi buổi, lớp phát hiện một điểm yếu; có điểm được sửa ngay, có điểm bị hẹn \"sửa sau\". Đến ngày 5, các điểm chưa sửa nối lại thành một sự cố rò rỉ dữ liệu 8.500 khách hàng. Toàn bộ là giả lập, không mô tả đơn vị hay người thật nào."
+    },
+    {
+     "t": "h3",
+     "text": "Bối cảnh"
+    },
+    {
+     "t": "p",
+     "html": "Công ty Điện lực Minh An có hai đơn vị trực thuộc là Điện lực X và Điện lực Y (trong bài Power BI mang mã DV_A và DV_B). Dữ liệu trung tâm của câu chuyện là file <strong>DS_KhachHang_DLX.xlsx</strong>: 8.500 khách hàng của Điện lực X, gồm mã khách hàng, họ tên, số điện thoại, địa chỉ, sản lượng 12 tháng và số tiền nợ.",
+     "plain": "Công ty Điện lực Minh An có hai đơn vị trực thuộc là Điện lực X và Điện lực Y (trong bài Power BI mang mã DV_A và DV_B). Dữ liệu trung tâm của câu chuyện là file DS_KhachHang_DLX.xlsx: 8.500 khách hàng của Điện lực X, gồm mã khách hàng, họ tên, số điện thoại, địa chỉ, sản lượng 12 tháng và số tiền nợ."
+    },
+    {
+     "t": "h3",
+     "text": "Nhân vật"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nhân vật",
+        "plain": "Nhân vật"
+       },
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Xuất hiện ở buổi",
+        "plain": "Xuất hiện ở buổi"
+       }
+      ],
+      [
+       {
+        "html": "Anh Cường (tài khoản nv_c)",
+        "plain": "Anh Cường (tài khoản nv_c)"
+       },
+       {
+        "html": "Giao dịch viên chăm sóc khách hàng, Điện lực X",
+        "plain": "Giao dịch viên chăm sóc khách hàng, Điện lực X"
+       },
+       {
+        "html": "1, 2, 4, 5, 8, 9, 10",
+        "plain": "1, 2, 4, 5, 8, 9, 10"
+       }
+      ],
+      [
+       {
+        "html": "Chị Dung (tài khoản nv_d)",
+        "plain": "Chị Dung (tài khoản nv_d)"
+       },
+       {
+        "html": "Chuyên viên kinh doanh, phụ trách thu nợ, Điện lực X",
+        "plain": "Chuyên viên kinh doanh, phụ trách thu nợ, Điện lực X"
+       },
+       {
+        "html": "2, 5, 9",
+        "plain": "2, 5, 9"
+       }
+      ],
+      [
+       {
+        "html": "Chị Hà",
+        "plain": "Chị Hà"
+       },
+       {
+        "html": "Vừa chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y",
+        "plain": "Vừa chuyển từ Điện lực X sang phòng Kế hoạch Điện lực Y"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Anh Minh",
+        "plain": "Anh Minh"
+       },
+       {
+        "html": "Phòng Kế hoạch của Công ty, cần dữ liệu để dự báo",
+        "plain": "Phòng Kế hoạch của Công ty, cần dữ liệu để dự báo"
+       },
+       {
+        "html": "2, 6",
+        "plain": "2, 6"
+       }
+      ],
+      [
+       {
+        "html": "Anh Tuấn",
+        "plain": "Anh Tuấn"
+       },
+       {
+        "html": "Trưởng phòng Kinh doanh, Điện lực X",
+        "plain": "Trưởng phòng Kinh doanh, Điện lực X"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Chị Lan",
+        "plain": "Chị Lan"
+       },
+       {
+        "html": "Đầu mối an toàn thông tin của Công ty",
+        "plain": "Đầu mối an toàn thông tin của Công ty"
+       },
+       {
+        "html": "9, 10",
+        "plain": "9, 10"
+       }
+      ],
+      [
+       {
+        "html": "Công ty thu hộ",
+        "plain": "Công ty thu hộ"
+       },
+       {
+        "html": "Đối tác thu nợ – bên xử lý dữ liệu",
+        "plain": "Đối tác thu nợ – bên xử lý dữ liệu"
+       },
+       {
+        "html": "2, 5",
+        "plain": "2, 5"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Mười chương, mỗi buổi một chương"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chương",
+        "plain": "Chương"
+       },
+       {
+        "html": "Chuyện gì xảy ra",
+        "plain": "Chuyện gì xảy ra"
+       },
+       {
+        "html": "Lớp sửa được gì",
+        "plain": "Lớp sửa được gì"
+       },
+       {
+        "html": "Còn bỏ ngỏ",
+        "plain": "Còn bỏ ngỏ"
+       }
+      ],
+      [
+       {
+        "html": "1 – File ra đời",
+        "plain": "1 – File ra đời"
+       },
+       {
+        "html": "Anh Cường xuất toàn bộ danh sách Điện lực X để gọi nhắc nợ, định dán vào chatbot AI cá nhân để \"lọc giúp\"",
+        "plain": "Anh Cường xuất toàn bộ danh sách Điện lực X để gọi nhắc nợ, định dán vào chatbot AI cá nhân để \"lọc giúp\""
+       },
+       {
+        "html": "Gắn nhãn Mật; không đưa vào AI cá nhân, lọc bằng Excel",
+        "plain": "Gắn nhãn Mật; không đưa vào AI cá nhân, lọc bằng Excel"
+       },
+       {
+        "html": "File đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi",
+        "plain": "File đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi"
+       }
+      ],
+      [
+       {
+        "html": "2 – File đi qua 5 nơi",
+        "plain": "2 – File đi qua 5 nơi"
+       },
+       {
+        "html": "File đi từ hệ thống → máy anh Cường → email chị Dung → công ty thu hộ; anh Minh xin bản đầy đủ; anh Cường chép lên OneDrive",
+        "plain": "File đi từ hệ thống → máy anh Cường → email chị Dung → công ty thu hộ; anh Minh xin bản đầy đủ; anh Cường chép lên OneDrive"
+       },
+       {
+        "html": "Vẽ sơ đồ luồng, xác định 4 ranh giới tin cậy và vai trò pháp lý",
+        "plain": "Vẽ sơ đồ luồng, xác định 4 ranh giới tin cậy và vai trò pháp lý"
+       },
+       {
+        "html": "Bản trên OneDrive không ai quản lý",
+        "plain": "Bản trên OneDrive không ai quản lý"
+       }
+      ],
+      [
+       {
+        "html": "3 – Quyền xuất rộng hơn nhu cầu",
+        "plain": "3 – Quyền xuất rộng hơn nhu cầu"
+       },
+       {
+        "html": "Vai trò Giao dịch viên có quyền xuất toàn đơn vị; chị Hà chuyển đi hai tháng vẫn xuất được",
+        "plain": "Vai trò Giao dịch viên có quyền xuất toàn đơn vị; chị Hà chuyển đi hai tháng vẫn xuất được"
+       },
+       {
+        "html": "Thu hồi quyền của chị Hà; đề xuất tách quyền xuất",
+        "plain": "Thu hồi quyền của chị Hà; đề xuất tách quyền xuất"
+       },
+       {
+        "html": "Thu hẹp quyền giao dịch viên hẹn đến \"đợt rà soát quý\"",
+        "plain": "Thu hẹp quyền giao dịch viên hẹn đến \"đợt rà soát quý\""
+       }
+      ],
+      [
+       {
+        "html": "4 – Mật khẩu dùng lại, MFA dễ bấm nhầm",
+        "plain": "4 – Mật khẩu dùng lại, MFA dễ bấm nhầm"
+       },
+       {
+        "html": "Anh Cường dùng mật khẩu kiểu Minhan@2025 ở nhiều nơi; MFA đẩy không khớp số; tổ trực ca dùng chung truc_ca",
+        "plain": "Anh Cường dùng mật khẩu kiểu Minhan@2025 ở nhiều nơi; MFA đẩy không khớp số; tổ trực ca dùng chung truc_ca"
+       },
+       {
+        "html": "Phương án thay tài khoản chung, đề xuất MFA khớp số",
+        "plain": "Phương án thay tài khoản chung, đề xuất MFA khớp số"
+       },
+       {
+        "html": "Cấu hình MFA chưa đổi; mật khẩu cũ đã bị lộ ở trang mua sắm",
+        "plain": "Cấu hình MFA chưa đổi; mật khẩu cũ đã bị lộ ở trang mua sắm"
+       }
+      ],
+      [
+       {
+        "html": "5 – Hai cách gửi một danh sách",
+        "plain": "5 – Hai cách gửi một danh sách"
+       },
+       {
+        "html": "Chị Dung gửi 320 hộ nợ đúng quy trình 5 bước; anh Cường từng gửi bằng link \"Anyone\"",
+        "plain": "Chị Dung gửi 320 hộ nợ đúng quy trình 5 bước; anh Cường từng gửi bằng link \"Anyone\""
+       },
+       {
+        "html": "Cách của chị Dung thành mẫu",
+        "plain": "Cách của chị Dung thành mẫu"
+       },
+       {
+        "html": "OneDrive vẫn cho tạo link \"Anyone\"",
+        "plain": "OneDrive vẫn cho tạo link \"Anyone\""
+       }
+      ],
+      [
+       {
+        "html": "6 – Phòng Kế hoạch xin dữ liệu cho AI",
+        "plain": "6 – Phòng Kế hoạch xin dữ liệu cho AI"
+       },
+       {
+        "html": "Anh Minh xin dữ liệu sản lượng để dự báo bằng AI",
+        "plain": "Anh Minh xin dữ liệu sản lượng để dự báo bằng AI"
+       },
+       {
+        "html": "Làm bản tổng hợp theo phường và tháng",
+        "plain": "Làm bản tổng hợp theo phường và tháng"
+       },
+       {
+        "html": "Chức năng xuất vẫn luôn ra đủ cột",
+        "plain": "Chức năng xuất vẫn luôn ra đủ cột"
+       }
+      ],
+      [
+       {
+        "html": "7 – Dashboard và vai trò Member",
+        "plain": "7 – Dashboard và vai trò Member"
+       },
+       {
+        "html": "Anh Tuấn là Member \"cho tiện\" nên thấy cả số liệu Điện lực Y",
+        "plain": "Anh Tuấn là Member \"cho tiện\" nên thấy cả số liệu Điện lực Y"
+       },
+       {
+        "html": "Chuyển về Viewer, phân phối qua App",
+        "plain": "Chuyển về Viewer, phân phối qua App"
+       },
+       {
+        "html": "Không – được sửa ngay (ví dụ đối chứng)",
+        "plain": "Không – được sửa ngay (ví dụ đối chứng)"
+       }
+      ],
+      [
+       {
+        "html": "8 – Tin nhắn giả CNTT",
+        "plain": "8 – Tin nhắn giả CNTT"
+       },
+       {
+        "html": "21:30 ngày 20/10, Zalo \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo đăng nhập",
+        "plain": "21:30 ngày 20/10, Zalo \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo đăng nhập"
+       },
+       {
+        "html": "Nhận ra dấu hiệu; nguyên tắc gọi lại",
+        "plain": "Nhận ra dấu hiệu; nguyên tắc gọi lại"
+       },
+       {
+        "html": "Anh Cường \"thấy hợp lý\"",
+        "plain": "Anh Cường \"thấy hợp lý\""
+       }
+      ],
+      [
+       {
+        "html": "9 – Đêm 20/10 trong nhật ký",
+        "plain": "9 – Đêm 20/10 trong nhật ký"
+       },
+       {
+        "html": "Log cho thấy nv_c đăng nhập từ IP lạ, xuất 8.500 dòng, tạo link \"Anyone\", file bị tải",
+        "plain": "Log cho thấy nv_c đăng nhập từ IP lạ, xuất 8.500 dòng, tạo link \"Anyone\", file bị tải"
+       },
+       {
+        "html": "Dựng bảng diễn biến theo thời gian, tách đã biết và chưa rõ",
+        "plain": "Dựng bảng diễn biến theo thời gian, tách đã biết và chưa rõ"
+       },
+       {
+        "html": "Vì sao MFA được chấp nhận",
+        "plain": "Vì sao MFA được chấp nhận"
+       }
+      ],
+      [
+       {
+        "html": "10 – Khách hàng gọi tổng đài",
+        "plain": "10 – Khách hàng gọi tổng đài"
+       },
+       {
+        "html": "Sáng 21/10, khách hàng bị gọi giả danh, đối phương biết đúng tên, mã khách hàng, số nợ",
+        "plain": "Sáng 21/10, khách hàng bị gọi giả danh, đối phương biết đúng tên, mã khách hàng, số nợ"
+       },
+       {
+        "html": "Ứng phó, diễn tập, rút kinh nghiệm",
+        "plain": "Ứng phó, diễn tập, rút kinh nghiệm"
+       },
+       {
+        "html": "–",
+        "plain": "–"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Đêm 20–21/10 theo nhật ký"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giờ",
+        "plain": "Giờ"
+       },
+       {
+        "html": "Sự kiện",
+        "plain": "Sự kiện"
+       },
+       {
+        "html": "Nối với",
+        "plain": "Nối với"
+       }
+      ],
+      [
+       {
+        "html": "16:40 (20/10)",
+        "plain": "16:40 (20/10)"
+       },
+       {
+        "html": "Chị Dung xuất 320 dòng nợ quá hạn từ máy công ty – hợp lệ",
+        "plain": "Chị Dung xuất 320 dòng nợ quá hạn từ máy công ty – hợp lệ"
+       },
+       {
+        "html": "Chương 5",
+        "plain": "Chương 5"
+       }
+      ],
+      [
+       {
+        "html": "21:30",
+        "plain": "21:30"
+       },
+       {
+        "html": "Tin Zalo giả \"CNTT Minh An\" gửi anh Cường",
+        "plain": "Tin Zalo giả \"CNTT Minh An\" gửi anh Cường"
+       },
+       {
+        "html": "Chương 8",
+        "plain": "Chương 8"
+       }
+      ],
+      [
+       {
+        "html": "02:10–02:14 (21/10)",
+        "plain": "02:10–02:14 (21/10)"
+       },
+       {
+        "html": "Bảy lần sai mật khẩu từ IP lạ 203.0.113.45",
+        "plain": "Bảy lần sai mật khẩu từ IP lạ 203.0.113.45"
+       },
+       {
+        "html": "Chương 4",
+        "plain": "Chương 4"
+       }
+      ],
+      [
+       {
+        "html": "02:15",
+        "plain": "02:15"
+       },
+       {
+        "html": "Đăng nhập thành công nhờ một lần chấp nhận MFA",
+        "plain": "Đăng nhập thành công nhờ một lần chấp nhận MFA"
+       },
+       {
+        "html": "Chương 4 và 8",
+        "plain": "Chương 4 và 8"
+       }
+      ],
+      [
+       {
+        "html": "02:17",
+        "plain": "02:17"
+       },
+       {
+        "html": "Thêm phương thức MFA mới – kẻ gian tạo cửa sau",
+        "plain": "Thêm phương thức MFA mới – kẻ gian tạo cửa sau"
+       },
+       {
+        "html": "Chương 9",
+        "plain": "Chương 9"
+       }
+      ],
+      [
+       {
+        "html": "02:42",
+        "plain": "02:42"
+       },
+       {
+        "html": "Xuất 8.500 dòng đủ cột",
+        "plain": "Xuất 8.500 dòng đủ cột"
+       },
+       {
+        "html": "Chương 3 và 6",
+        "plain": "Chương 3 và 6"
+       }
+      ],
+      [
+       {
+        "html": "02:47",
+        "plain": "02:47"
+       },
+       {
+        "html": "Tạo link \"Anyone\" cho file",
+        "plain": "Tạo link \"Anyone\" cho file"
+       },
+       {
+        "html": "Chương 5",
+        "plain": "Chương 5"
+       }
+      ],
+      [
+       {
+        "html": "03:06",
+        "plain": "03:06"
+       },
+       {
+        "html": "File bị tải từ IP bên ngoài 198.51.100.7; không có cảnh báo nào",
+        "plain": "File bị tải từ IP bên ngoài 198.51.100.7; không có cảnh báo nào"
+       },
+       {
+        "html": "Chương 9",
+        "plain": "Chương 9"
+       }
+      ],
+      [
+       {
+        "html": "Sáng 21/10",
+        "plain": "Sáng 21/10"
+       },
+       {
+        "html": "Khách hàng gọi tổng đài báo bị lừa",
+        "plain": "Khách hàng gọi tổng đài báo bị lừa"
+       },
+       {
+        "html": "Chương 10",
+        "plain": "Chương 10"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Sự cố không do một lỗi: bảy lỗ hổng thẳng hàng"
+    },
+    {
+     "t": "p",
+     "html": "Sự cố xảy ra vì bảy lỗ hổng trùng nhau cùng lúc, mỗi lỗ hổng là nội dung của một buổi học. Chỉ cần một lớp hoạt động đúng là chuỗi bị cắt. Đây là ý của mô hình \"miếng phô mai Thụy Sĩ\" của James Reason: nhiều lớp bảo vệ xếp chồng, lớp nào cũng có lỗ, sự cố xảy ra khi các lỗ trùng nhau.",
+     "plain": "Sự cố xảy ra vì bảy lỗ hổng trùng nhau cùng lúc, mỗi lỗ hổng là nội dung của một buổi học. Chỉ cần một lớp hoạt động đúng là chuỗi bị cắt. Đây là ý của mô hình \"miếng phô mai Thụy Sĩ\" của James Reason: nhiều lớp bảo vệ xếp chồng, lớp nào cũng có lỗ, sự cố xảy ra khi các lỗ trùng nhau."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Lỗ hổng",
+        "plain": "Lỗ hổng"
+       },
+       {
+        "html": "Vai trò trong sự cố",
+        "plain": "Vai trò trong sự cố"
+       },
+       {
+        "html": "Lớp bảo vệ lẽ ra chặn được",
+        "plain": "Lớp bảo vệ lẽ ra chặn được"
+       },
+       {
+        "html": "Buổi học",
+        "plain": "Buổi học"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Mật khẩu công việc dùng lại ở trang ngoài, chỉ đổi số năm",
+        "plain": "Mật khẩu công việc dùng lại ở trang ngoài, chỉ đổi số năm"
+       },
+       {
+        "html": "Kẻ gian đoán đúng sau 7 lần thử",
+        "plain": "Kẻ gian đoán đúng sau 7 lần thử"
+       },
+       {
+        "html": "Mật khẩu riêng, dài; kiểm tra mật khẩu đã lộ",
+        "plain": "Mật khẩu riêng, dài; kiểm tra mật khẩu đã lộ"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "MFA đẩy không khớp số",
+        "plain": "MFA đẩy không khớp số"
+       },
+       {
+        "html": "Một cú bấm là vào được",
+        "plain": "Một cú bấm là vào được"
+       },
+       {
+        "html": "Khớp số hoặc passkey",
+        "plain": "Khớp số hoặc passkey"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Tin nhắn giả CNTT không được xác minh",
+        "plain": "Tin nhắn giả CNTT không được xác minh"
+       },
+       {
+        "html": "Anh Cường chấp nhận yêu cầu lúc 02:15",
+        "plain": "Anh Cường chấp nhận yêu cầu lúc 02:15"
+       },
+       {
+        "html": "Gọi lại qua số helpdesk trong danh bạ",
+        "plain": "Gọi lại qua số helpdesk trong danh bạ"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Giao dịch viên có quyền xuất toàn đơn vị",
+        "plain": "Giao dịch viên có quyền xuất toàn đơn vị"
+       },
+       {
+        "html": "Xuất được 8.500 dòng",
+        "plain": "Xuất được 8.500 dòng"
+       },
+       {
+        "html": "Quyền tối thiểu, tách quyền xuất",
+        "plain": "Quyền tối thiểu, tách quyền xuất"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Chức năng xuất luôn đủ cột nhạy cảm",
+        "plain": "Chức năng xuất luôn đủ cột nhạy cảm"
+       },
+       {
+        "html": "Kẻ gian có cả số điện thoại và số nợ để lừa",
+        "plain": "Kẻ gian có cả số điện thoại và số nợ để lừa"
+       },
+       {
+        "html": "Tối thiểu hóa dữ liệu khi xuất",
+        "plain": "Tối thiểu hóa dữ liệu khi xuất"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Cho phép link \"Anyone\" ở mức tổ chức",
+        "plain": "Cho phép link \"Anyone\" ở mức tổ chức"
+       },
+       {
+        "html": "Dữ liệu ra Internet trong 20 phút",
+        "plain": "Dữ liệu ra Internet trong 20 phút"
+       },
+       {
+        "html": "Chỉ chia sẻ cho người cụ thể",
+        "plain": "Chỉ chia sẻ cho người cụ thể"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Không có cảnh báo đăng nhập lạ, thêm MFA, xuất lớn ban đêm",
+        "plain": "Không có cảnh báo đăng nhập lạ, thêm MFA, xuất lớn ban đêm"
+       },
+       {
+        "html": "Chỉ biết khi khách hàng gọi, khoảng 5 giờ sau",
+        "plain": "Chỉ biết khi khách hàng gọi, khoảng 5 giờ sau"
+       },
+       {
+        "html": "Giám sát nhật ký có cảnh báo",
+        "plain": "Giám sát nhật ký có cảnh báo"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Điểm chung:</strong> bốn lỗ hổng 2, 4, 5, 6 đã được lớp phát hiện từ trước trong chính câu chuyện nhưng bị hẹn \"sửa sau\". Còn vai trò Member trên dashboard (chương 7) được sửa ngay nên không trở thành một mắt xích. Bài học cuối khóa: mỗi đầu ra thực hành là một lớp bảo vệ, và một lớp chỉ có tác dụng khi được áp dụng thật.",
+     "plain": "Điểm chung: bốn lỗ hổng 2, 4, 5, 6 đã được lớp phát hiện từ trước trong chính câu chuyện nhưng bị hẹn \"sửa sau\". Còn vai trò Member trên dashboard (chương 7) được sửa ngay nên không trở thành một mắt xích. Bài học cuối khóa: mỗi đầu ra thực hành là một lớp bảo vệ, và một lớp chỉ có tác dụng khi được áp dụng thật.",
+     "callout": "note"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tờ \"Việc hẹn sửa sau\":</strong> từ buổi 3, giảng viên dán một tờ giấy A0 lên tường và ghi mọi điểm bỏ ngỏ của câu chuyện. Đến buổi 10, tờ này được lật ra cạnh bảng bảy lỗ hổng để lớp tự thấy các mắt xích.",
+     "plain": "Tờ \"Việc hẹn sửa sau\": từ buổi 3, giảng viên dán một tờ giấy A0 lên tường và ghi mọi điểm bỏ ngỏ của câu chuyện. Đến buổi 10, tờ này được lật ra cạnh bảng bảy lỗ hổng để lớp tự thấy các mắt xích."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Chuẩn bị khóa học",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "p",
+     "html": "Giảng viên chuẩn bị phần mềm, 5 bộ dữ liệu giả lập và vật dụng lớp học ít nhất một tuần trước, và chạy thử mọi bài trên đúng máy lớp học.",
+     "plain": "Giảng viên chuẩn bị phần mềm, 5 bộ dữ liệu giả lập và vật dụng lớp học ít nhất một tuần trước, và chạy thử mọi bài trên đúng máy lớp học."
+    },
+    {
+     "t": "h3",
+     "text": "Phần mềm"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Máy",
+        "plain": "Máy"
+       },
+       {
+        "html": "Phần mềm",
+        "plain": "Phần mềm"
+       },
+       {
+        "html": "Dùng ở buổi",
+        "plain": "Dùng ở buổi"
+       }
+      ],
+      [
+       {
+        "html": "Học viên",
+        "plain": "Học viên"
+       },
+       {
+        "html": "Excel (hoặc tương đương), trình duyệt web",
+        "plain": "Excel (hoặc tương đương), trình duyệt web"
+       },
+       {
+        "html": "Mọi buổi",
+        "plain": "Mọi buổi"
+       }
+      ],
+      [
+       {
+        "html": "Học viên",
+        "plain": "Học viên"
+       },
+       {
+        "html": "Power BI Desktop",
+        "plain": "Power BI Desktop"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Giảng viên",
+        "plain": "Giảng viên"
+       },
+       {
+        "html": "Python 3 (thư viện sqlite3 có sẵn; pandas nếu demo mục 6.2)",
+        "plain": "Python 3 (thư viện sqlite3 có sẵn; pandas nếu demo mục 6.2)"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "Giảng viên",
+        "plain": "Giảng viên"
+       },
+       {
+        "html": "Power BI Desktop; workspace Power BI service thực hành nếu có giấy phép, kèm 3 tài khoản thử: người xem DV_A, người xem DV_B, một tài khoản không được gán vai trò",
+        "plain": "Power BI Desktop; workspace Power BI service thực hành nếu có giấy phép, kèm 3 tài khoản thử: người xem DV_A, người xem DV_B, một tài khoản không được gán vai trò"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Giảng viên",
+        "plain": "Giảng viên"
+       },
+       {
+        "html": "Máy chiếu, bảng viết",
+        "plain": "Máy chiếu, bảng viết"
+       },
+       {
+        "html": "Mọi buổi",
+        "plain": "Mọi buổi"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Tên menu của Excel, Power BI, OneDrive thay đổi theo phiên bản. Giảng viên kiểm tra trên đúng phiên bản cài ở máy lớp trước buổi học.",
+     "plain": "Tên menu của Excel, Power BI, OneDrive thay đổi theo phiên bản. Giảng viên kiểm tra trên đúng phiên bản cài ở máy lớp trước buổi học."
+    },
+    {
+     "t": "h3",
+     "text": "Dữ liệu giả lập"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tệp",
+        "plain": "Tệp"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Dùng ở buổi",
+        "plain": "Dùng ở buổi"
+       }
+      ],
+      [
+       {
+        "html": "DS_KhachHang_DLX_mau.xlsx",
+        "plain": "DS_KhachHang_DLX_mau.xlsx"
+       },
+       {
+        "html": "30 dòng mẫu của file trong câu chuyện: mã KH, họ tên, số điện thoại, địa chỉ, phường, sản lượng 12 tháng, số nợ. Tên và số điện thoại rõ ràng là giả (\"Người dùng mẫu A\", 0900000001)",
+        "plain": "30 dòng mẫu của file trong câu chuyện: mã KH, họ tên, số điện thoại, địa chỉ, phường, sản lượng 12 tháng, số nợ. Tên và số điện thoại rõ ràng là giả (\"Người dùng mẫu A\", 0900000001)"
+       },
+       {
+        "html": "1, 5, 6",
+        "plain": "1, 5, 6"
+       }
+      ],
+      [
+       {
+        "html": "BaoCao_Thang.xlsx",
+        "plain": "BaoCao_Thang.xlsx"
+       },
+       {
+        "html": "3 sheet: TongHop (sản lượng theo vùng), ChiTiet (mã KH, tên, điện thoại, địa chỉ, kWh), VanHanh (đang ẩn)",
+        "plain": "3 sheet: TongHop (sản lượng theo vùng), ChiTiet (mã KH, tên, điện thoại, địa chỉ, kWh), VanHanh (đang ẩn)"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "BaoCao_SanLuong.pbix",
+        "plain": "BaoCao_SanLuong.pbix"
+       },
+       {
+        "html": "3 bảng: DimDonVi, FactSanLuong, PhanQuyen",
+        "plain": "3 bảng: DimDonVi, FactSanLuong, PhanQuyen"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "NhatKy_Mau.xlsx",
+        "plain": "NhatKy_Mau.xlsx"
+       },
+       {
+        "html": "Hai bảng nhật ký: mẫu 5 dòng và nhật ký 17 dòng đêm 20–21/10, giờ UTC; bản dành cho học viên không kèm lời giải",
+        "plain": "Hai bảng nhật ký: mẫu 5 dòng và nhật ký 17 dòng đêm 20–21/10, giờ UTC; bản dành cho học viên không kèm lời giải"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ],
+      [
+       {
+        "html": "Bo_Tin_Nhan.pdf",
+        "plain": "Bo_Tin_Nhan.pdf"
+       },
+       {
+        "html": "4 thông điệp giả lập của Thực hành 9, chuẩn bị một bộ cho mỗi học viên",
+        "plain": "4 thông điệp giả lập của Thực hành 9, chuẩn bị một bộ cho mỗi học viên"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Nguyên tắc khi tạo dữ liệu giả: không chép rồi \"sửa bớt\" từ dữ liệu thật. Tạo mới hoàn toàn, dùng dải số và địa chỉ IP dành cho tài liệu (ví dụ 203.0.113.x, 198.51.100.x).",
+     "plain": "Nguyên tắc khi tạo dữ liệu giả: không chép rồi \"sửa bớt\" từ dữ liệu thật. Tạo mới hoàn toàn, dùng dải số và địa chỉ IP dành cho tài liệu (ví dụ 203.0.113.x, 198.51.100.x)."
+    },
+    {
+     "t": "h3",
+     "text": "Vật dụng lớp học"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Giấy A3, bút màu, giấy nhớ: vẽ sơ đồ luồng (buổi 2) và bảng diễn biến theo thời gian (buổi 9).",
+       "level": 0,
+       "plain": "Giấy A3, bút màu, giấy nhớ: vẽ sơ đồ luồng (buổi 2) và bảng diễn biến theo thời gian (buổi 9)."
+      },
+      {
+       "html": "Thẻ C/I/A ba màu cho trò chơi buổi 1.",
+       "level": 0,
+       "plain": "Thẻ C/I/A ba màu cho trò chơi buổi 1."
+      },
+      {
+       "html": "Một tờ A0 \"Việc hẹn sửa sau\" dán tường từ buổi 3 đến hết khóa.",
+       "level": 0,
+       "plain": "Một tờ A0 \"Việc hẹn sửa sau\" dán tường từ buổi 3 đến hết khóa."
+      },
+      {
+       "html": "Mẫu in sẵn (Phụ lục C): bảng phân loại, ma trận quyền, bảng rủi ro chia sẻ, ma trận kiểm thử RLS, báo cáo sự cố ban đầu.",
+       "level": 0,
+       "plain": "Mẫu in sẵn (Phụ lục C): bảng phân loại, ma trận quyền, bảng rủi ro chia sẻ, ma trận kiểm thử RLS, báo cáo sự cố ban đầu."
+      },
+      {
+       "html": "Danh bạ nội bộ thật của đơn vị (số helpdesk, đầu mối an toàn thông tin) để phát cho học viên ở buổi 8 và 10.",
+       "level": 0,
+       "plain": "Danh bạ nội bộ thật của đơn vị (số helpdesk, đầu mối an toàn thông tin) để phát cho học viên ở buổi 8 và 10."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Lịch 5 ngày"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Ngày",
+        "plain": "Ngày"
+       },
+       {
+        "html": "Sáng (08:00–11:30)",
+        "plain": "Sáng (08:00–11:30)"
+       },
+       {
+        "html": "Chiều (13:30–16:30)",
+        "plain": "Chiều (13:30–16:30)"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Buổi 1 – CIA, vòng đời, phân loại, AI",
+        "plain": "Buổi 1 – CIA, vòng đời, phân loại, AI"
+       },
+       {
+        "html": "Buổi 2 – Tuân thủ, lỗi thao tác, sơ đồ luồng",
+        "plain": "Buổi 2 – Tuân thủ, lỗi thao tác, sơ đồ luồng"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Buổi 3 – Quyền tối thiểu, ma trận quyền",
+        "plain": "Buổi 3 – Quyền tối thiểu, ma trận quyền"
+       },
+       {
+        "html": "Buổi 4 – Xác thực, MFA, phiên",
+        "plain": "Buổi 4 – Xác thực, MFA, phiên"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Buổi 5 – Mã hóa, TLS, chia sẻ file",
+        "plain": "Buổi 5 – Mã hóa, TLS, chia sẻ file"
+       },
+       {
+        "html": "Buổi 6 – Giảm dữ liệu, SQL injection",
+        "plain": "Buổi 6 – Giảm dữ liệu, SQL injection"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Buổi 7 – Power BI, RLS",
+        "plain": "Buổi 7 – Power BI, RLS"
+       },
+       {
+        "html": "Buổi 8 – Lừa đảo phi kỹ thuật",
+        "plain": "Buổi 8 – Lừa đảo phi kỹ thuật"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Buổi 9 – Nhật ký, truy vết",
+        "plain": "Buổi 9 – Nhật ký, truy vết"
+       },
+       {
+        "html": "Buổi 10 – Ứng phó sự cố, diễn tập, tổng kết",
+        "plain": "Buổi 10 – Ứng phó sự cố, diễn tập, tổng kết"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Mỗi buổi có 15 phút nghỉ. Đơn vị có thể co giãn lịch, nhưng nên giữ nguyên thời lượng thực hành: đó là nơi học viên tự làm ra các đầu ra của khóa.",
+     "plain": "Mỗi buổi có 15 phút nghỉ. Đơn vị có thể co giãn lịch, nhưng nên giữ nguyên thời lượng thực hành: đó là nơi học viên tự làm ra các đầu ra của khóa."
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Phụ lục A – Thuật ngữ toàn khóa",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Các thuật ngữ xếp theo buổi học đầu tiên xuất hiện. Mỗi tài liệu buổi có bảng thuật ngữ riêng, giải thích kỹ hơn.",
+     "plain": "Các thuật ngữ xếp theo buổi học đầu tiên xuất hiện. Mỗi tài liệu buổi có bảng thuật ngữ riêng, giải thích kỹ hơn."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Tiếng Anh",
+        "plain": "Tiếng Anh"
+       },
+       {
+        "html": "Nghĩa dễ hiểu",
+        "plain": "Nghĩa dễ hiểu"
+       },
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       }
+      ],
+      [
+       {
+        "html": "CIA",
+        "plain": "CIA"
+       },
+       {
+        "html": "Confidentiality, Integrity, Availability",
+        "plain": "Confidentiality, Integrity, Availability"
+       },
+       {
+        "html": "Ba mục tiêu bảo mật: bí mật, toàn vẹn, sẵn sàng",
+        "plain": "Ba mục tiêu bảo mật: bí mật, toàn vẹn, sẵn sàng"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Vòng đời dữ liệu",
+        "plain": "Vòng đời dữ liệu"
+       },
+       {
+        "html": "Data lifecycle",
+        "plain": "Data lifecycle"
+       },
+       {
+        "html": "Các giai đoạn từ khi dữ liệu được tạo ra đến khi bị xóa",
+        "plain": "Các giai đoạn từ khi dữ liệu được tạo ra đến khi bị xóa"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Bản sao",
+        "plain": "Bản sao"
+       },
+       {
+        "html": "Copy",
+        "plain": "Copy"
+       },
+       {
+        "html": "Mọi file xuất, tệp đính kèm, ảnh chụp màn hình; mỗi bản sao bắt đầu một vòng đời mới",
+        "plain": "Mọi file xuất, tệp đính kèm, ảnh chụp màn hình; mỗi bản sao bắt đầu một vòng đời mới"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu cá nhân",
+        "plain": "Dữ liệu cá nhân"
+       },
+       {
+        "html": "Personal data, PII",
+        "plain": "Personal data, PII"
+       },
+       {
+        "html": "Thông tin xác định hoặc giúp xác định một người cụ thể",
+        "plain": "Thông tin xác định hoặc giúp xác định một người cụ thể"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Phân loại dữ liệu",
+        "plain": "Phân loại dữ liệu"
+       },
+       {
+        "html": "Data classification",
+        "plain": "Data classification"
+       },
+       {
+        "html": "Gắn nhãn mức độ nhạy cảm để biết cách xử lý",
+        "plain": "Gắn nhãn mức độ nhạy cảm để biết cách xử lý"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Chủ sở hữu dữ liệu",
+        "plain": "Chủ sở hữu dữ liệu"
+       },
+       {
+        "html": "Data owner",
+        "plain": "Data owner"
+       },
+       {
+        "html": "Người hoặc đơn vị chịu trách nhiệm về một tập dữ liệu, quyết định ai được dùng",
+        "plain": "Người hoặc đơn vị chịu trách nhiệm về một tập dữ liệu, quyết định ai được dùng"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "LLM, AI tạo sinh",
+        "plain": "LLM, AI tạo sinh"
+       },
+       {
+        "html": "Large language model, generative AI",
+        "plain": "Large language model, generative AI"
+       },
+       {
+        "html": "Mô hình ngôn ngữ lớn, nền tảng của các chatbot AI",
+        "plain": "Mô hình ngôn ngữ lớn, nền tảng của các chatbot AI"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Bên kiểm soát dữ liệu",
+        "plain": "Bên kiểm soát dữ liệu"
+       },
+       {
+        "html": "Controller",
+        "plain": "Controller"
+       },
+       {
+        "html": "Bên quyết định mục đích và cách xử lý dữ liệu cá nhân",
+        "plain": "Bên quyết định mục đích và cách xử lý dữ liệu cá nhân"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Bên xử lý dữ liệu",
+        "plain": "Bên xử lý dữ liệu"
+       },
+       {
+        "html": "Processor",
+        "plain": "Processor"
+       },
+       {
+        "html": "Bên xử lý dữ liệu theo yêu cầu của bên kiểm soát, qua hợp đồng",
+        "plain": "Bên xử lý dữ liệu theo yêu cầu của bên kiểm soát, qua hợp đồng"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Chủ thể dữ liệu",
+        "plain": "Chủ thể dữ liệu"
+       },
+       {
+        "html": "Data subject",
+        "plain": "Data subject"
+       },
+       {
+        "html": "Người mà dữ liệu nói về họ, ví dụ khách hàng",
+        "plain": "Người mà dữ liệu nói về họ, ví dụ khách hàng"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Tối thiểu hóa dữ liệu",
+        "plain": "Tối thiểu hóa dữ liệu"
+       },
+       {
+        "html": "Data minimisation",
+        "plain": "Data minimisation"
+       },
+       {
+        "html": "Chỉ thu, giữ, gửi phần dữ liệu thật sự cần",
+        "plain": "Chỉ thu, giữ, gửi phần dữ liệu thật sự cần"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Sơ đồ luồng dữ liệu",
+        "plain": "Sơ đồ luồng dữ liệu"
+       },
+       {
+        "html": "Data flow diagram (DFD)",
+        "plain": "Data flow diagram (DFD)"
+       },
+       {
+        "html": "Hình vẽ dữ liệu đi từ đâu, qua ai, đến đâu",
+        "plain": "Hình vẽ dữ liệu đi từ đâu, qua ai, đến đâu"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới tin cậy",
+        "plain": "Ranh giới tin cậy"
+       },
+       {
+        "html": "Trust boundary",
+        "plain": "Trust boundary"
+       },
+       {
+        "html": "Điểm dữ liệu rời khỏi nơi được quản lý (ra email, máy cá nhân, cloud, đối tác)",
+        "plain": "Điểm dữ liệu rời khỏi nơi được quản lý (ra email, máy cá nhân, cloud, đối tác)"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Mô hình phô mai Thụy Sĩ",
+        "plain": "Mô hình phô mai Thụy Sĩ"
+       },
+       {
+        "html": "Swiss cheese model",
+        "plain": "Swiss cheese model"
+       },
+       {
+        "html": "Sự cố xảy ra khi lỗ hổng của nhiều lớp bảo vệ trùng nhau",
+        "plain": "Sự cố xảy ra khi lỗ hổng của nhiều lớp bảo vệ trùng nhau"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Định danh",
+        "plain": "Định danh"
+       },
+       {
+        "html": "Identification",
+        "plain": "Identification"
+       },
+       {
+        "html": "Nói mình là ai (tên tài khoản)",
+        "plain": "Nói mình là ai (tên tài khoản)"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Xác thực",
+        "plain": "Xác thực"
+       },
+       {
+        "html": "Authentication",
+        "plain": "Authentication"
+       },
+       {
+        "html": "Chứng minh mình đúng là người đó",
+        "plain": "Chứng minh mình đúng là người đó"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Phân quyền",
+        "plain": "Phân quyền"
+       },
+       {
+        "html": "Authorization",
+        "plain": "Authorization"
+       },
+       {
+        "html": "Quyết định người đó được làm gì",
+        "plain": "Quyết định người đó được làm gì"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Ghi vết",
+        "plain": "Ghi vết"
+       },
+       {
+        "html": "Accounting, audit",
+        "plain": "Accounting, audit"
+       },
+       {
+        "html": "Ghi lại ai đã làm gì, lúc nào",
+        "plain": "Ghi lại ai đã làm gì, lúc nào"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Quyền tối thiểu",
+        "plain": "Quyền tối thiểu"
+       },
+       {
+        "html": "Least privilege",
+        "plain": "Least privilege"
+       },
+       {
+        "html": "Chỉ cấp đúng quyền cần, đúng phạm vi, đúng thời gian",
+        "plain": "Chỉ cấp đúng quyền cần, đúng phạm vi, đúng thời gian"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "RBAC",
+        "plain": "RBAC"
+       },
+       {
+        "html": "Role-based access control",
+        "plain": "Role-based access control"
+       },
+       {
+        "html": "Phân quyền theo vai trò công việc",
+        "plain": "Phân quyền theo vai trò công việc"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "ABAC",
+        "plain": "ABAC"
+       },
+       {
+        "html": "Attribute-based access control",
+        "plain": "Attribute-based access control"
+       },
+       {
+        "html": "Phân quyền theo thuộc tính và điều kiện (đơn vị, giờ, thiết bị)",
+        "plain": "Phân quyền theo thuộc tính và điều kiện (đơn vị, giờ, thiết bị)"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Ma trận quyền",
+        "plain": "Ma trận quyền"
+       },
+       {
+        "html": "Access matrix",
+        "plain": "Access matrix"
+       },
+       {
+        "html": "Bảng vai trò × tài nguyên, mỗi ô ghi quyền và phạm vi",
+        "plain": "Bảng vai trò × tài nguyên, mỗi ô ghi quyền và phạm vi"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Phân tách nhiệm vụ",
+        "plain": "Phân tách nhiệm vụ"
+       },
+       {
+        "html": "Separation of duties",
+        "plain": "Separation of duties"
+       },
+       {
+        "html": "Người đề nghị, duyệt, thực hiện là những người khác nhau",
+        "plain": "Người đề nghị, duyệt, thực hiện là những người khác nhau"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Vào – Chuyển – Ra",
+        "plain": "Vào – Chuyển – Ra"
+       },
+       {
+        "html": "Joiner – Mover – Leaver",
+        "plain": "Joiner – Mover – Leaver"
+       },
+       {
+        "html": "Ba thời điểm quyền phải thay đổi theo nhân sự",
+        "plain": "Ba thời điểm quyền phải thay đổi theo nhân sự"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản đặc quyền",
+        "plain": "Tài khoản đặc quyền"
+       },
+       {
+        "html": "Privileged account",
+        "plain": "Privileged account"
+       },
+       {
+        "html": "Tài khoản quản trị, có quyền thay đổi hệ thống hoặc quyền của người khác",
+        "plain": "Tài khoản quản trị, có quyền thay đổi hệ thống hoặc quyền của người khác"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "MFA",
+        "plain": "MFA"
+       },
+       {
+        "html": "Multi-factor authentication",
+        "plain": "Multi-factor authentication"
+       },
+       {
+        "html": "Xác thực bằng ít nhất hai loại yếu tố khác nhau (biết, có, là)",
+        "plain": "Xác thực bằng ít nhất hai loại yếu tố khác nhau (biết, có, là)"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "Khớp số",
+        "plain": "Khớp số"
+       },
+       {
+        "html": "Number matching",
+        "plain": "Number matching"
+       },
+       {
+        "html": "Người dùng phải nhập con số hiện trên màn hình đăng nhập vào điện thoại",
+        "plain": "Người dùng phải nhập con số hiện trên màn hình đăng nhập vào điện thoại"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "Passkey, FIDO2",
+        "plain": "Passkey, FIDO2"
+       },
+       {
+        "html": "Passkey",
+        "plain": "Passkey"
+       },
+       {
+        "html": "Cách đăng nhập không mật khẩu, chống được trang giả theo thiết kế",
+        "plain": "Cách đăng nhập không mật khẩu, chống được trang giả theo thiết kế"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "Dồn dập MFA",
+        "plain": "Dồn dập MFA"
+       },
+       {
+        "html": "MFA fatigue",
+        "plain": "MFA fatigue"
+       },
+       {
+        "html": "Kẻ gian gửi liên tục yêu cầu MFA để người dùng bấm bừa",
+        "plain": "Kẻ gian gửi liên tục yêu cầu MFA để người dùng bấm bừa"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "SSO",
+        "plain": "SSO"
+       },
+       {
+        "html": "Single sign-on",
+        "plain": "Single sign-on"
+       },
+       {
+        "html": "Đăng nhập một lần, dùng được nhiều ứng dụng",
+        "plain": "Đăng nhập một lần, dùng được nhiều ứng dụng"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "Phiên",
+        "plain": "Phiên"
+       },
+       {
+        "html": "Session",
+        "plain": "Session"
+       },
+       {
+        "html": "\"Vé vào cửa\" hệ thống cấp sau khi đăng nhập",
+        "plain": "\"Vé vào cửa\" hệ thống cấp sau khi đăng nhập"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "Mã hóa",
+        "plain": "Mã hóa"
+       },
+       {
+        "html": "Encryption",
+        "plain": "Encryption"
+       },
+       {
+        "html": "Biến dữ liệu thành dạng không đọc được nếu không có khóa",
+        "plain": "Biến dữ liệu thành dạng không đọc được nếu không có khóa"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "Hàm băm",
+        "plain": "Hàm băm"
+       },
+       {
+        "html": "Hash",
+        "plain": "Hash"
+       },
+       {
+        "html": "\"Vân tay\" của dữ liệu, dùng kiểm tra dữ liệu có bị sửa không",
+        "plain": "\"Vân tay\" của dữ liệu, dùng kiểm tra dữ liệu có bị sửa không"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "Chữ ký số",
+        "plain": "Chữ ký số"
+       },
+       {
+        "html": "Digital signature",
+        "plain": "Digital signature"
+       },
+       {
+        "html": "Chứng minh ai gửi và nội dung không bị sửa",
+        "plain": "Chứng minh ai gửi và nội dung không bị sửa"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "TLS, HTTPS",
+        "plain": "TLS, HTTPS"
+       },
+       {
+        "html": "Transport Layer Security",
+        "plain": "Transport Layer Security"
+       },
+       {
+        "html": "Mã hóa đường truyền giữa máy người dùng và máy chủ",
+        "plain": "Mã hóa đường truyền giữa máy người dùng và máy chủ"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "Sao lưu 3-2-1",
+        "plain": "Sao lưu 3-2-1"
+       },
+       {
+        "html": "3-2-1 backup",
+        "plain": "3-2-1 backup"
+       },
+       {
+        "html": "3 bản, trên 2 loại phương tiện, 1 bản ở nơi khác",
+        "plain": "3 bản, trên 2 loại phương tiện, 1 bản ở nơi khác"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "Che dữ liệu",
+        "plain": "Che dữ liệu"
+       },
+       {
+        "html": "Masking",
+        "plain": "Masking"
+       },
+       {
+        "html": "Che một phần giá trị (090****001)",
+        "plain": "Che một phần giá trị (090****001)"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "Giả danh hóa",
+        "plain": "Giả danh hóa"
+       },
+       {
+        "html": "Pseudonymisation",
+        "plain": "Pseudonymisation"
+       },
+       {
+        "html": "Thay định danh bằng mã, vẫn nối lại được nhờ bảng đối chiếu giữ riêng",
+        "plain": "Thay định danh bằng mã, vẫn nối lại được nhờ bảng đối chiếu giữ riêng"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "Ẩn danh hóa",
+        "plain": "Ẩn danh hóa"
+       },
+       {
+        "html": "Anonymisation",
+        "plain": "Anonymisation"
+       },
+       {
+        "html": "Xử lý để không còn nhận diện được người, phải có đánh giá",
+        "plain": "Xử lý để không còn nhận diện được người, phải có đánh giá"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "SQL injection",
+        "plain": "SQL injection"
+       },
+       {
+        "html": "SQL injection",
+        "plain": "SQL injection"
+       },
+       {
+        "html": "Lỗi ứng dụng khiến dữ liệu người nhập bị hiểu thành câu lệnh",
+        "plain": "Lỗi ứng dụng khiến dữ liệu người nhập bị hiểu thành câu lệnh"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "Truy vấn có tham số",
+        "plain": "Truy vấn có tham số"
+       },
+       {
+        "html": "Parameterized query",
+        "plain": "Parameterized query"
+       },
+       {
+        "html": "Cách viết truy vấn tách riêng câu lệnh và dữ liệu",
+        "plain": "Cách viết truy vấn tách riêng câu lệnh và dữ liệu"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "RLS",
+        "plain": "RLS"
+       },
+       {
+        "html": "Row-level security",
+        "plain": "Row-level security"
+       },
+       {
+        "html": "Bảo mật cấp dòng: mỗi người chỉ thấy dòng dữ liệu của mình",
+        "plain": "Bảo mật cấp dòng: mỗi người chỉ thấy dòng dữ liệu của mình"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Workspace",
+        "plain": "Workspace"
+       },
+       {
+        "html": "Workspace",
+        "plain": "Workspace"
+       },
+       {
+        "html": "Không gian làm việc chung trên Power BI service",
+        "plain": "Không gian làm việc chung trên Power BI service"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Publish to web",
+        "plain": "Publish to web"
+       },
+       {
+        "html": "Publish to web",
+        "plain": "Publish to web"
+       },
+       {
+        "html": "Xuất bản báo cáo công khai trên Internet, ai có link đều xem được",
+        "plain": "Xuất bản báo cáo công khai trên Internet, ai có link đều xem được"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "Lừa đảo trực tuyến",
+        "plain": "Lừa đảo trực tuyến"
+       },
+       {
+        "html": "Phishing",
+        "plain": "Phishing"
+       },
+       {
+        "html": "Lừa qua thông điệp hoặc trang giả để lấy thông tin, tiền",
+        "plain": "Lừa qua thông điệp hoặc trang giả để lấy thông tin, tiền"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ],
+      [
+       {
+        "html": "Tấn công phi kỹ thuật",
+        "plain": "Tấn công phi kỹ thuật"
+       },
+       {
+        "html": "Social engineering",
+        "plain": "Social engineering"
+       },
+       {
+        "html": "Thao túng tâm lý để người khác tự làm theo",
+        "plain": "Thao túng tâm lý để người khác tự làm theo"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ],
+      [
+       {
+        "html": "Xác minh qua kênh độc lập",
+        "plain": "Xác minh qua kênh độc lập"
+       },
+       {
+        "html": "Out-of-band verification",
+        "plain": "Out-of-band verification"
+       },
+       {
+        "html": "Kiểm tra lại qua một kênh mình tự tìm, không qua kênh của thông điệp",
+        "plain": "Kiểm tra lại qua một kênh mình tự tìm, không qua kênh của thông điệp"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ],
+      [
+       {
+        "html": "Nhật ký kiểm toán",
+        "plain": "Nhật ký kiểm toán"
+       },
+       {
+        "html": "Audit log",
+        "plain": "Audit log"
+       },
+       {
+        "html": "Ghi lại ai làm gì, lúc nào, với dữ liệu nào",
+        "plain": "Ghi lại ai làm gì, lúc nào, với dữ liệu nào"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ],
+      [
+       {
+        "html": "Sự kiện, cảnh báo, sự cố",
+        "plain": "Sự kiện, cảnh báo, sự cố"
+       },
+       {
+        "html": "Event, alert, incident",
+        "plain": "Event, alert, incident"
+       },
+       {
+        "html": "Một việc được ghi lại / một dấu hiệu cần xem / một việc đã gây hại",
+        "plain": "Một việc được ghi lại / một dấu hiệu cần xem / một việc đã gây hại"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ],
+      [
+       {
+        "html": "Diễn biến theo thời gian",
+        "plain": "Diễn biến theo thời gian"
+       },
+       {
+        "html": "Diễn biến theo thời gian",
+        "plain": "Diễn biến theo thời gian"
+       },
+       {
+        "html": "Dòng thời gian xếp các sự kiện theo thứ tự",
+        "plain": "Dòng thời gian xếp các sự kiện theo thứ tự"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ],
+      [
+       {
+        "html": "Báo cáo ban đầu",
+        "plain": "Báo cáo ban đầu"
+       },
+       {
+        "html": "Initial report",
+        "plain": "Initial report"
+       },
+       {
+        "html": "Báo cáo đầu tiên khi nghi sự cố, không chờ đủ thông tin",
+        "plain": "Báo cáo đầu tiên khi nghi sự cố, không chờ đủ thông tin"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ],
+      [
+       {
+        "html": "Ngăn chặn",
+        "plain": "Ngăn chặn"
+       },
+       {
+        "html": "Containment",
+        "plain": "Containment"
+       },
+       {
+        "html": "Chặn sự cố lan rộng (thu hồi link, khóa tài khoản)",
+        "plain": "Chặn sự cố lan rộng (thu hồi link, khóa tài khoản)"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ],
+      [
+       {
+        "html": "Chuỗi quản lý bằng chứng",
+        "plain": "Chuỗi quản lý bằng chứng"
+       },
+       {
+        "html": "Chain of custody",
+        "plain": "Chain of custody"
+       },
+       {
+        "html": "Hồ sơ ai giữ, ai chuyển bằng chứng, lúc nào",
+        "plain": "Hồ sơ ai giữ, ai chuyển bằng chứng, lúc nào"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ],
+      [
+       {
+        "html": "Diễn tập trên bàn",
+        "plain": "Diễn tập trên bàn"
+       },
+       {
+        "html": "Tabletop exercise",
+        "plain": "Tabletop exercise"
+       },
+       {
+        "html": "Thảo luận quyết định theo kịch bản, không thao tác hệ thống thật",
+        "plain": "Thảo luận quyết định theo kịch bản, không thao tác hệ thống thật"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ],
+      [
+       {
+        "html": "Rút kinh nghiệm không đổ lỗi",
+        "plain": "Rút kinh nghiệm không đổ lỗi"
+       },
+       {
+        "html": "Blameless review",
+        "plain": "Blameless review"
+       },
+       {
+        "html": "Tìm nguyên nhân trong quy trình, không dừng ở lỗi cá nhân",
+        "plain": "Tìm nguyên nhân trong quy trình, không dừng ở lỗi cá nhân"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Phụ lục B – Bài kiểm tra cuối khóa",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "p",
+     "html": "Bài kiểm tra gồm 20 câu, làm trong 25 phút ở buổi 10; mỗi buổi học có 1–3 câu. Mỗi câu chọn một đáp án đúng nhất. Ngưỡng đạt do đơn vị quy định (gợi ý: 14/20). Khi in đề, giảng viên có thể xáo thứ tự câu và phương án.",
+     "plain": "Bài kiểm tra gồm 20 câu, làm trong 25 phút ở buổi 10; mỗi buổi học có 1–3 câu. Mỗi câu chọn một đáp án đúng nhất. Ngưỡng đạt do đơn vị quy định (gợi ý: 14/20). Khi in đề, giảng viên có thể xáo thứ tự câu và phương án."
+    },
+    {
+     "t": "h3",
+     "text": "Đề bài"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Một chỉ số công tơ bị nhập sai khiến hóa đơn sai. Mục tiêu bảo mật nào bị ảnh hưởng chủ yếu? A. Bí mật · B. Sẵn sàng · C. Toàn vẹn · D. Không mục tiêu nào",
+       "level": 0,
+       "plain": "Một chỉ số công tơ bị nhập sai khiến hóa đơn sai. Mục tiêu bảo mật nào bị ảnh hưởng chủ yếu? A. Bí mật · B. Sẵn sàng · C. Toàn vẹn · D. Không mục tiêu nào"
+      },
+      {
+       "html": "Bảng nào dưới đây có thể là dữ liệu cá nhân dù không có cột họ tên? A. Lịch cắt điện toàn phường · B. Tổng sản lượng toàn tỉnh · C. Biểu mẫu trống · D. Mã khách hàng + địa chỉ + sản lượng theo giờ",
+       "level": 0,
+       "plain": "Bảng nào dưới đây có thể là dữ liệu cá nhân dù không có cột họ tên? A. Lịch cắt điện toàn phường · B. Tổng sản lượng toàn tỉnh · C. Biểu mẫu trống · D. Mã khách hàng + địa chỉ + sản lượng theo giờ"
+      },
+      {
+       "html": "File gắn nhãn \"Mật\" được chia sẻ bằng link \"Anyone\". Nhận định nào đúng? A. Nhãn không thay thế phân quyền; ai có link vẫn mở được · B. File đã an toàn vì có nhãn · C. Chỉ người nội bộ mở được · D. File tự động được mã hóa",
+       "level": 0,
+       "plain": "File gắn nhãn \"Mật\" được chia sẻ bằng link \"Anyone\". Nhận định nào đúng? A. Nhãn không thay thế phân quyền; ai có link vẫn mở được · B. File đã an toàn vì có nhãn · C. Chỉ người nội bộ mở được · D. File tự động được mã hóa"
+      },
+      {
+       "html": "Chưa rõ một công cụ AI có được phép dùng cho công việc không. Nên làm gì? A. Dùng thử với vài dòng dữ liệu thật · B. Dùng tài khoản cá nhân · C. Dừng lại, hỏi đầu mối, chỉ thử với dữ liệu giả lập · D. Dùng xong thì xóa lịch sử chat",
+       "level": 0,
+       "plain": "Chưa rõ một công cụ AI có được phép dùng cho công việc không. Nên làm gì? A. Dùng thử với vài dòng dữ liệu thật · B. Dùng tài khoản cá nhân · C. Dừng lại, hỏi đầu mối, chỉ thử với dữ liệu giả lập · D. Dùng xong thì xóa lịch sử chat"
+      },
+      {
+       "html": "Công ty thu hộ nhận danh sách hộ nợ để gọi nhắc theo yêu cầu của điện lực. Công ty này đóng vai trò gì? A. Bên kiểm soát · B. Bên xử lý · C. Chủ thể dữ liệu · D. Không liên quan đến luật",
+       "level": 0,
+       "plain": "Công ty thu hộ nhận danh sách hộ nợ để gọi nhắc theo yêu cầu của điện lực. Công ty này đóng vai trò gì? A. Bên kiểm soát · B. Bên xử lý · C. Chủ thể dữ liệu · D. Không liên quan đến luật"
+      },
+      {
+       "html": "Theo Luật 91/2025/QH15, bên kiểm soát thông báo vi phạm thuộc diện luật quy định cho cơ quan chuyên trách chậm nhất trong bao lâu? A. 24 giờ · B. 72 giờ kể từ khi phát hiện · C. 7 ngày · D. 30 ngày",
+       "level": 0,
+       "plain": "Theo Luật 91/2025/QH15, bên kiểm soát thông báo vi phạm thuộc diện luật quy định cho cơ quan chuyên trách chậm nhất trong bao lâu? A. 24 giờ · B. 72 giờ kể từ khi phát hiện · C. 7 ngày · D. 30 ngày"
+      },
+      {
+       "html": "Gửi nhầm email vì chương trình thư tự gợi ý sai địa chỉ và mình không để ý. Đây là loại lỗi nào? A. Cố ý vi phạm · B. Lỗi trượt do sơ ý · C. Lỗi do thiếu kiến thức · D. Không phải lỗi",
+       "level": 0,
+       "plain": "Gửi nhầm email vì chương trình thư tự gợi ý sai địa chỉ và mình không để ý. Đây là loại lỗi nào? A. Cố ý vi phạm · B. Lỗi trượt do sơ ý · C. Lỗi do thiếu kiến thức · D. Không phải lỗi"
+      },
+      {
+       "html": "Khi một nhân viên chuyển đơn vị, việc nào phải làm? A. Chỉ cộng thêm quyền mới · B. Chỉ đổi mật khẩu · C. Rà soát và thu hồi quyền cũ không còn cần, rồi mới cấp quyền mới · D. Không cần làm gì",
+       "level": 0,
+       "plain": "Khi một nhân viên chuyển đơn vị, việc nào phải làm? A. Chỉ cộng thêm quyền mới · B. Chỉ đổi mật khẩu · C. Rà soát và thu hồi quyền cũ không còn cần, rồi mới cấp quyền mới · D. Không cần làm gì"
+      },
+      {
+       "html": "Một người vừa nhập chỉ số vừa tự duyệt chỉ số mình nhập. Nguyên tắc nào bị vi phạm? A. Phân tách nhiệm vụ · B. Mã hóa · C. Sao lưu · D. Ẩn danh hóa",
+       "level": 0,
+       "plain": "Một người vừa nhập chỉ số vừa tự duyệt chỉ số mình nhập. Nguyên tắc nào bị vi phạm? A. Phân tách nhiệm vụ · B. Mã hóa · C. Sao lưu · D. Ẩn danh hóa"
+      },
+      {
+       "html": "Mật khẩu cộng câu hỏi bí mật là gì? A. MFA · B. SSO · C. Chỉ một loại yếu tố \"biết\" · D. Passkey",
+       "level": 0,
+       "plain": "Mật khẩu cộng câu hỏi bí mật là gì? A. MFA · B. SSO · C. Chỉ một loại yếu tố \"biết\" · D. Passkey"
+      },
+      {
+       "html": "Nửa đêm, điện thoại liên tục báo yêu cầu đăng nhập mà mình không tạo ra. Nên làm gì? A. Bấm Chấp nhận cho hết làm phiền · B. Tắt điện thoại · C. Bỏ qua · D. Từ chối, báo helpdesk, đổi mật khẩu theo hướng dẫn",
+       "level": 0,
+       "plain": "Nửa đêm, điện thoại liên tục báo yêu cầu đăng nhập mà mình không tạo ra. Nên làm gì? A. Bấm Chấp nhận cho hết làm phiền · B. Tắt điện thoại · C. Bỏ qua · D. Từ chối, báo helpdesk, đổi mật khẩu theo hướng dẫn"
+      },
+      {
+       "html": "Biểu tượng ổ khóa HTTPS trên trình duyệt nghĩa là gì? A. Website chắc chắn chính thống · B. Website không thể có mã độc · C. Đường truyền tới tên miền đang hiển thị được mã hóa · D. Website đã được cơ quan nhà nước xác nhận",
+       "level": 0,
+       "plain": "Biểu tượng ổ khóa HTTPS trên trình duyệt nghĩa là gì? A. Website chắc chắn chính thống · B. Website không thể có mã độc · C. Đường truyền tới tên miền đang hiển thị được mã hóa · D. Website đã được cơ quan nhà nước xác nhận"
+      },
+      {
+       "html": "Tính năng Protect Sheet trong Excel làm được gì? A. Chỉ hạn chế sửa; ai có file vẫn đọc được nội dung · B. Mã hóa nội dung file · C. Ngăn mở file · D. Xóa dữ liệu ẩn",
+       "level": 0,
+       "plain": "Tính năng Protect Sheet trong Excel làm được gì? A. Chỉ hạn chế sửa; ai có file vẫn đọc được nội dung · B. Mã hóa nội dung file · C. Ngăn mở file · D. Xóa dữ liệu ẩn"
+      },
+      {
+       "html": "Gửi file Excel đã mã hóa cho đối tác. Mật khẩu mở file nên gửi thế nào? A. Ghi trong cùng email · B. Qua một kênh khác đã thống nhất, ví dụ gọi điện · C. Đặt vào tên file · D. Không cần mật khẩu",
+       "level": 0,
+       "plain": "Gửi file Excel đã mã hóa cho đối tác. Mật khẩu mở file nên gửi thế nào? A. Ghi trong cùng email · B. Qua một kênh khác đã thống nhất, ví dụ gọi điện · C. Đặt vào tên file · D. Không cần mật khẩu"
+      },
+      {
+       "html": "Thay mã khách hàng bằng một mã khác và giữ riêng bảng đối chiếu để nối lại khi cần là kỹ thuật gì? A. Ẩn danh hóa · B. Mã hóa · C. Xóa dữ liệu · D. Giả danh hóa",
+       "level": 0,
+       "plain": "Thay mã khách hàng bằng một mã khác và giữ riêng bảng đối chiếu để nối lại khi cần là kỹ thuật gì? A. Ẩn danh hóa · B. Mã hóa · C. Xóa dữ liệu · D. Giả danh hóa"
+      },
+      {
+       "html": "Cách phòng SQL injection chính ở phía ứng dụng là gì? A. Giấu ô tìm kiếm · B. Đổi tên bảng · C. Dùng truy vấn có tham số · D. Tắt thông báo lỗi",
+       "level": 0,
+       "plain": "Cách phòng SQL injection chính ở phía ứng dụng là gì? A. Giấu ô tìm kiếm · B. Đổi tên bảng · C. Dùng truy vấn có tham số · D. Tắt thông báo lỗi"
+      },
+      {
+       "html": "Trong Power BI, người có vai trò Member trong workspace thì sao? A. Bị RLS giới hạn như Viewer · B. Không bị RLS giới hạn như Viewer · C. Không xem được báo cáo · D. Chỉ xem được trang đầu",
+       "level": 0,
+       "plain": "Trong Power BI, người có vai trò Member trong workspace thì sao? A. Bị RLS giới hạn như Viewer · B. Không bị RLS giới hạn như Viewer · C. Không xem được báo cáo · D. Chỉ xem được trang đầu"
+      },
+      {
+       "html": "Email tự xưng là lãnh đạo yêu cầu gửi gấp danh sách khách hàng sang một địa chỉ mới. Nên xác minh bằng cách nào? A. Trả lời chính email đó · B. Gọi số điện thoại ghi trong email · C. Gọi số trong danh bạ chính thức của đơn vị · D. Gửi trước một phần",
+       "level": 0,
+       "plain": "Email tự xưng là lãnh đạo yêu cầu gửi gấp danh sách khách hàng sang một địa chỉ mới. Nên xác minh bằng cách nào? A. Trả lời chính email đó · B. Gọi số điện thoại ghi trong email · C. Gọi số trong danh bạ chính thức của đơn vị · D. Gửi trước một phần"
+      },
+      {
+       "html": "Nhật ký có một sự kiện Download file khách hàng. Kết luận nào đúng? A. Chắc chắn dữ liệu đã lộ ra ngoài · B. Chưa đủ để kết luận, cần thêm bằng chứng · C. Không quan trọng · D. Xóa sự kiện đó khỏi log",
+       "level": 0,
+       "plain": "Nhật ký có một sự kiện Download file khách hàng. Kết luận nào đúng? A. Chắc chắn dữ liệu đã lộ ra ngoài · B. Chưa đủ để kết luận, cần thêm bằng chứng · C. Không quan trọng · D. Xóa sự kiện đó khỏi log"
+      },
+      {
+       "html": "Phát hiện file khách hàng trên một link công khai. Việc đầu tiên của người phát hiện là gì? A. Tải về để kiểm tra kỹ · B. Đăng lên nhóm chung để cảnh báo · C. Chờ xác định đủ thông tin rồi mới báo · D. Báo đầu mối, giữ thông tin ban đầu (ảnh chụp, đường dẫn, thời gian)",
+       "level": 0,
+       "plain": "Phát hiện file khách hàng trên một link công khai. Việc đầu tiên của người phát hiện là gì? A. Tải về để kiểm tra kỹ · B. Đăng lên nhóm chung để cảnh báo · C. Chờ xác định đủ thông tin rồi mới báo · D. Báo đầu mối, giữ thông tin ban đầu (ảnh chụp, đường dẫn, thời gian)"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án và giải thích"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu",
+        "plain": "Câu"
+       },
+       {
+        "html": "Đáp án",
+        "plain": "Đáp án"
+       },
+       {
+        "html": "Vì sao",
+        "plain": "Vì sao"
+       },
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Dữ liệu sai là mất tính toàn vẹn, dù không ai xem trộm",
+        "plain": "Dữ liệu sai là mất tính toàn vẹn, dù không ai xem trộm"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "D",
+        "plain": "D"
+       },
+       {
+        "html": "Mã khách hàng và địa chỉ xác định được một hộ; sản lượng theo giờ còn cho biết thói quen sinh hoạt",
+        "plain": "Mã khách hàng và địa chỉ xác định được một hộ; sản lượng theo giờ còn cho biết thói quen sinh hoạt"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "A",
+        "plain": "A"
+       },
+       {
+        "html": "Nhãn chỉ mô tả; quyền truy cập mới là thứ thực thi",
+        "plain": "Nhãn chỉ mô tả; quyền truy cập mới là thứ thực thi"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Chưa được duyệt thì chưa đưa dữ liệu thật, kể cả ít dòng",
+        "plain": "Chưa được duyệt thì chưa đưa dữ liệu thật, kể cả ít dòng"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "Công ty thu hộ xử lý theo yêu cầu và hợp đồng; điện lực là bên kiểm soát",
+        "plain": "Công ty thu hộ xử lý theo yêu cầu và hợp đồng; điện lực là bên kiểm soát"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "Điều 23 Luật 91/2025/QH15",
+        "plain": "Điều 23 Luật 91/2025/QH15"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "Biết việc đúng nhưng trượt tay vì thiếu chú ý; cách phòng là thiết kế lại thao tác, không phải phạt",
+        "plain": "Biết việc đúng nhưng trượt tay vì thiếu chú ý; cách phòng là thiết kế lại thao tác, không phải phạt"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Lỗi hay gặp nhất là cộng quyền mới mà quên gỡ quyền cũ",
+        "plain": "Lỗi hay gặp nhất là cộng quyền mới mà quên gỡ quyền cũ"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "A",
+        "plain": "A"
+       },
+       {
+        "html": "Người làm và người duyệt phải khác nhau",
+        "plain": "Người làm và người duyệt phải khác nhau"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Hai thứ cùng thuộc loại \"biết\", chưa phải hai yếu tố khác loại",
+        "plain": "Hai thứ cùng thuộc loại \"biết\", chưa phải hai yếu tố khác loại"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "D",
+        "plain": "D"
+       },
+       {
+        "html": "Yêu cầu mình không tạo ra cho thấy kẻ khác đã có mật khẩu",
+        "plain": "Yêu cầu mình không tạo ra cho thấy kẻ khác đã có mật khẩu"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ],
+      [
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Trang lừa đảo cũng có ổ khóa; phải đọc tên miền",
+        "plain": "Trang lừa đảo cũng có ổ khóa; phải đọc tên miền"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "13",
+        "plain": "13"
+       },
+       {
+        "html": "A",
+        "plain": "A"
+       },
+       {
+        "html": "Protect Sheet không mã hóa; phải dùng Encrypt with Password",
+        "plain": "Protect Sheet không mã hóa; phải dùng Encrypt with Password"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "14",
+        "plain": "14"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "Mật khẩu đi cùng file thì ai lấy được email là mở được file",
+        "plain": "Mật khẩu đi cùng file thì ai lấy được email là mở được file"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       }
+      ],
+      [
+       {
+        "html": "15",
+        "plain": "15"
+       },
+       {
+        "html": "D",
+        "plain": "D"
+       },
+       {
+        "html": "Còn bảng đối chiếu thì vẫn nối lại được người – vẫn là dữ liệu cá nhân",
+        "plain": "Còn bảng đối chiếu thì vẫn nối lại được người – vẫn là dữ liệu cá nhân"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "16",
+        "plain": "16"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Tham số tách dữ liệu khỏi câu lệnh",
+        "plain": "Tham số tách dữ liệu khỏi câu lệnh"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       }
+      ],
+      [
+       {
+        "html": "17",
+        "plain": "17"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "RLS chỉ giới hạn người có quyền xem (Viewer)",
+        "plain": "RLS chỉ giới hạn người có quyền xem (Viewer)"
+       },
+       {
+        "html": "7",
+        "plain": "7"
+       }
+      ],
+      [
+       {
+        "html": "18",
+        "plain": "18"
+       },
+       {
+        "html": "C",
+        "plain": "C"
+       },
+       {
+        "html": "Xác minh qua kênh mình tự tìm, không qua kênh kẻ gian đưa",
+        "plain": "Xác minh qua kênh mình tự tìm, không qua kênh kẻ gian đưa"
+       },
+       {
+        "html": "8",
+        "plain": "8"
+       }
+      ],
+      [
+       {
+        "html": "19",
+        "plain": "19"
+       },
+       {
+        "html": "B",
+        "plain": "B"
+       },
+       {
+        "html": "Một dòng log là tín hiệu; cần biết ai tải, từ đâu, file đi đâu tiếp",
+        "plain": "Một dòng log là tín hiệu; cần biết ai tải, từ đâu, file đi đâu tiếp"
+       },
+       {
+        "html": "9",
+        "plain": "9"
+       }
+      ],
+      [
+       {
+        "html": "20",
+        "plain": "20"
+       },
+       {
+        "html": "D",
+        "plain": "D"
+       },
+       {
+        "html": "Báo sớm, không tự tải, không lan truyền thêm",
+        "plain": "Báo sớm, không tự tải, không lan truyền thêm"
+       },
+       {
+        "html": "10",
+        "plain": "10"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Phụ lục C – Mẫu biểu dùng trong khóa",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Mười hai mẫu dưới đây là mẫu để ghi bài thực hành. Trên web, mỗi học viên điền mẫu của riêng mình. Ví dụ điền sẵn nằm trong tài liệu của từng buổi.",
+     "plain": "Mười hai mẫu dưới đây là mẫu để ghi bài thực hành. Trên web, mỗi học viên điền mẫu của riêng mình. Ví dụ điền sẵn nằm trong tài liệu của từng buổi."
+    },
+    {
+     "t": "h3",
+     "text": "C1. Bảng phân loại dữ liệu (buổi 1, Thực hành 1)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tập dữ liệu",
+        "plain": "Tập dữ liệu"
+       },
+       {
+        "html": "Các trường chính",
+        "plain": "Các trường chính"
+       },
+       {
+        "html": "Nhãn",
+        "plain": "Nhãn"
+       },
+       {
+        "html": "Bí mật",
+        "plain": "Bí mật"
+       },
+       {
+        "html": "Toàn vẹn",
+        "plain": "Toàn vẹn"
+       },
+       {
+        "html": "Sẵn sàng",
+        "plain": "Sẵn sàng"
+       },
+       {
+        "html": "Chủ sở hữu",
+        "plain": "Chủ sở hữu"
+       },
+       {
+        "html": "Lý do chọn nhãn",
+        "plain": "Lý do chọn nhãn"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C2. Bảng rủi ro luồng dữ liệu (buổi 2, Thực hành 2)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước trên sơ đồ",
+        "plain": "Bước trên sơ đồ"
+       },
+       {
+        "html": "Điểm yếu",
+        "plain": "Điểm yếu"
+       },
+       {
+        "html": "Tác động nếu xảy ra",
+        "plain": "Tác động nếu xảy ra"
+       },
+       {
+        "html": "Kiểm soát đề xuất",
+        "plain": "Kiểm soát đề xuất"
+       },
+       {
+        "html": "Người chịu trách nhiệm",
+        "plain": "Người chịu trách nhiệm"
+       },
+       {
+        "html": "Minh chứng",
+        "plain": "Minh chứng"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C3. Ma trận quyền (buổi 3, Thực hành 3)"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi ô ghi cả quyền và phạm vi, ví dụ \"Xem – KH đơn vị mình\"; ô trống nghĩa là không có quyền.",
+     "plain": "Mỗi ô ghi cả quyền và phạm vi, ví dụ \"Xem – KH đơn vị mình\"; ô trống nghĩa là không có quyền."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Xem",
+        "plain": "Xem"
+       },
+       {
+        "html": "Sửa",
+        "plain": "Sửa"
+       },
+       {
+        "html": "Xuất",
+        "plain": "Xuất"
+       },
+       {
+        "html": "Cấp quyền",
+        "plain": "Cấp quyền"
+       },
+       {
+        "html": "Người duyệt",
+        "plain": "Người duyệt"
+       },
+       {
+        "html": "Rà soát lần cuối",
+        "plain": "Rà soát lần cuối"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C4. Phiếu điều chuyển nhân sự (buổi 3, Thực hành 4)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Việc",
+        "plain": "Việc"
+       },
+       {
+        "html": "Người làm",
+        "plain": "Người làm"
+       },
+       {
+        "html": "Ngày",
+        "plain": "Ngày"
+       },
+       {
+        "html": "Bằng chứng",
+        "plain": "Bằng chứng"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Nhận quyết định điều chuyển",
+        "plain": "Nhận quyết định điều chuyển"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Liệt kê quyền hiện có",
+        "plain": "Liệt kê quyền hiện có"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Xác định nhu cầu bàn giao",
+        "plain": "Xác định nhu cầu bàn giao"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Thu hồi quyền cũ",
+        "plain": "Thu hồi quyền cũ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Ngoại lệ bàn giao có hạn (nếu có)",
+        "plain": "Ngoại lệ bàn giao có hạn (nếu có)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Cấp quyền mới theo ma trận",
+        "plain": "Cấp quyền mới theo ma trận"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Kiểm tra sau thay đổi",
+        "plain": "Kiểm tra sau thay đổi"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Đóng ngoại lệ",
+        "plain": "Đóng ngoại lệ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C5. Phương án thay tài khoản dùng chung (buổi 4, Thực hành 5)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tài khoản chung hiện tại",
+        "plain": "Tài khoản chung hiện tại"
+       },
+       {
+        "html": "Ai đang dùng",
+        "plain": "Ai đang dùng"
+       },
+       {
+        "html": "Vì sao đang dùng chung",
+        "plain": "Vì sao đang dùng chung"
+       },
+       {
+        "html": "Phương án thay",
+        "plain": "Phương án thay"
+       },
+       {
+        "html": "MFA",
+        "plain": "MFA"
+       },
+       {
+        "html": "Xử lý phiên",
+        "plain": "Xử lý phiên"
+       },
+       {
+        "html": "Kiểm soát bù nếu chưa thay được",
+        "plain": "Kiểm soát bù nếu chưa thay được"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C6. Checklist chia sẻ 5 bước (buổi 5, Thực hành 6)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Ai nhận, có đúng người cần nhận không?",
+       "level": 0,
+       "plain": "☐ Ai nhận, có đúng người cần nhận không?"
+      },
+      {
+       "html": "☐ File chỉ còn các cột, dòng cần thiết (không còn sheet ẩn, cột ẩn)?",
+       "level": 0,
+       "plain": "☐ File chỉ còn các cột, dòng cần thiết (không còn sheet ẩn, cột ẩn)?"
+      },
+      {
+       "html": "☐ Đã mã hóa bằng tính năng mã hóa thật?",
+       "level": 0,
+       "plain": "☐ Đã mã hóa bằng tính năng mã hóa thật?"
+      },
+      {
+       "html": "☐ Chia sẻ cho người cụ thể, có hạn, không dùng link \"Anyone\"?",
+       "level": 0,
+       "plain": "☐ Chia sẻ cho người cụ thể, có hạn, không dùng link \"Anyone\"?"
+      },
+      {
+       "html": "☐ Mật khẩu gửi qua kênh khác và có ghi lại việc gửi?",
+       "level": 0,
+       "plain": "☐ Mật khẩu gửi qua kênh khác và có ghi lại việc gửi?"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C7. Phiếu yêu cầu dữ liệu (buổi 6, Thực hành 7)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Người yêu cầu, đơn vị",
+        "plain": "Người yêu cầu, đơn vị"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Mục đích sử dụng",
+        "plain": "Mục đích sử dụng"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Các trường cần và lý do",
+        "plain": "Các trường cần và lý do"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Mức chi tiết (từng khách hàng hay tổng hợp)",
+        "plain": "Mức chi tiết (từng khách hàng hay tổng hợp)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Kỹ thuật giảm dữ liệu áp dụng",
+        "plain": "Kỹ thuật giảm dữ liệu áp dụng"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Công cụ sẽ dùng (có AI không, đã được duyệt chưa)",
+        "plain": "Công cụ sẽ dùng (có AI không, đã được duyệt chưa)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Hạn sử dụng và cách hủy",
+        "plain": "Hạn sử dụng và cách hủy"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Chủ dữ liệu duyệt",
+        "plain": "Chủ dữ liệu duyệt"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C8. Ma trận kiểm thử RLS (buổi 7, Thực hành 8)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tài khoản thử",
+        "plain": "Tài khoản thử"
+       },
+       {
+        "html": "Vai trò RLS",
+        "plain": "Vai trò RLS"
+       },
+       {
+        "html": "Vai trò workspace",
+        "plain": "Vai trò workspace"
+       },
+       {
+        "html": "Kỳ vọng thấy",
+        "plain": "Kỳ vọng thấy"
+       },
+       {
+        "html": "Thực tế thấy",
+        "plain": "Thực tế thấy"
+       },
+       {
+        "html": "Đạt",
+        "plain": "Đạt"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C9. Checklist xác minh thông điệp đáng ngờ (buổi 8, Thực hành 9)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Người gửi thật là ai (địa chỉ đầy đủ, tên miền thật)?",
+       "level": 0,
+       "plain": "☐ Người gửi thật là ai (địa chỉ đầy đủ, tên miền thật)?"
+      },
+      {
+       "html": "☐ Thông điệp có gấp, dọa, bí mật, lạ so với quy trình không?",
+       "level": 0,
+       "plain": "☐ Thông điệp có gấp, dọa, bí mật, lạ so với quy trình không?"
+      },
+      {
+       "html": "☐ Link dẫn về tên miền nào (đọc từ phải sang trái, trước dấu / đầu tiên)?",
+       "level": 0,
+       "plain": "☐ Link dẫn về tên miền nào (đọc từ phải sang trái, trước dấu / đầu tiên)?"
+      },
+      {
+       "html": "☐ Đã xác minh qua kênh độc lập (số trong danh bạ chính thức)?",
+       "level": 0,
+       "plain": "☐ Đã xác minh qua kênh độc lập (số trong danh bạ chính thức)?"
+      },
+      {
+       "html": "☐ Lỡ bấm hoặc lỡ nhập thì đã báo ngay chưa?",
+       "level": 0,
+       "plain": "☐ Lỡ bấm hoặc lỡ nhập thì đã báo ngay chưa?"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C10. Bảng truy vết (buổi 9, Thực hành 10)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đã biết (từ log)",
+        "plain": "Đã biết (từ log)"
+       },
+       {
+        "html": "Chưa biết",
+        "plain": "Chưa biết"
+       },
+       {
+        "html": "Giả thuyết",
+        "plain": "Giả thuyết"
+       },
+       {
+        "html": "Bằng chứng cần thêm, ai cung cấp",
+        "plain": "Bằng chứng cần thêm, ai cung cấp"
+       }
+      ],
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "C11. Báo cáo sự cố ban đầu (buổi 10)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Người báo, đơn vị, số liên hệ",
+        "plain": "Người báo, đơn vị, số liên hệ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Thời điểm phát hiện (ghi múi giờ)",
+        "plain": "Thời điểm phát hiện (ghi múi giờ)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Hệ thống hoặc kênh liên quan",
+        "plain": "Hệ thống hoặc kênh liên quan"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu có thể bị ảnh hưởng",
+        "plain": "Dữ liệu có thể bị ảnh hưởng"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Đã biết",
+        "plain": "Đã biết"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Đang nghi ngờ",
+        "plain": "Đang nghi ngờ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Đã làm gì (kể cả chưa làm gì)",
+        "plain": "Đã làm gì (kể cả chưa làm gì)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Cần hỗ trợ hoặc quyết định khẩn",
+        "plain": "Cần hỗ trợ hoặc quyết định khẩn"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không chờ điền đủ mới báo.",
+     "plain": "Không chờ điền đủ mới báo."
+    },
+    {
+     "t": "h3",
+     "text": "C12. Biên bản rút kinh nghiệm (buổi 10)"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Chuyện gì đã xảy ra (bảng diễn biến theo thời gian đã xác minh)",
+        "plain": "Chuyện gì đã xảy ra (bảng diễn biến theo thời gian đã xác minh)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Vì sao xảy ra (chuỗi \"vì sao\" đến nguyên nhân trong quy trình)",
+        "plain": "Vì sao xảy ra (chuỗi \"vì sao\" đến nguyên nhân trong quy trình)"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Điều gì giúp phát hiện, xử lý",
+        "plain": "Điều gì giúp phát hiện, xử lý"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Điều gì làm chậm",
+        "plain": "Điều gì làm chậm"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "Việc cần làm – người phụ trách – hạn",
+        "plain": "Việc cần làm – người phụ trách – hạn"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Phụ lục D – Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Các nguồn dưới đây là nền của nội dung giáo trình. Phần pháp lý Việt Nam cần bộ phận pháp chế xác nhận trước khi giảng, đặc biệt các văn bản hướng dẫn ban hành sau ngày viết tài liệu này.",
+     "plain": "Các nguồn dưới đây là nền của nội dung giáo trình. Phần pháp lý Việt Nam cần bộ phận pháp chế xác nhận trước khi giảng, đặc biệt các văn bản hướng dẫn ban hành sau ngày viết tài liệu này."
+    },
+    {
+     "t": "h3",
+     "text": "Pháp luật"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://hethongphapluat.com/luat-bao-ve-du-lieu-ca-nhan-2025.html\" target=\"_blank\" rel=\"noopener noreferrer\">Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 – toàn văn</a> – Điều 2 (giải thích từ ngữ), 3 (nguyên tắc), 4 (quyền của chủ thể), 8 (xử phạt), 23 (thông báo vi phạm).",
+       "level": 0,
+       "plain": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 – toàn văn – Điều 2 (giải thích từ ngữ), 3 (nguyên tắc), 4 (quyền của chủ thể), 8 (xử phạt), 23 (thông báo vi phạm)."
+      },
+      {
+       "html": "<a href=\"https://gvlawyers.com.vn/wp-content/uploads/2025/09/VN_Legal-alert-_Law-on-PDP-2025.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">GV Lawyers – Legal alert: Law on Personal Data Protection 2025</a> – ngày thông qua 26/6/2025, hiệu lực 01/01/2026.",
+       "level": 0,
+       "plain": "GV Lawyers – Legal alert: Law on Personal Data Protection 2025 – ngày thông qua 26/6/2025, hiệu lực 01/01/2026."
+      },
+      {
+       "html": "Quy định chung về bảo vệ dữ liệu của Liên minh châu Âu (GDPR, Quy định (EU) 2016/679) – Điều 5, 9, 33, 83; <a href=\"https://www.edpb.europa.eu/sme/learn-the-basics/data-protection-basics_en\" target=\"_blank\" rel=\"noopener noreferrer\">EDPB – Data protection basics</a>.",
+       "level": 0,
+       "plain": "Quy định chung về bảo vệ dữ liệu của Liên minh châu Âu (GDPR, Quy định (EU) 2016/679) – Điều 5, 9, 33, 83; EDPB – Data protection basics."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chuẩn và hướng dẫn kỹ thuật"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST FIPS 199</a> – phân loại theo mức tác động tới bí mật, toàn vẹn, sẵn sàng (buổi 1).",
+       "level": 0,
+       "plain": "NIST FIPS 199 – phân loại theo mức tác động tới bí mật, toàn vẹn, sẵn sàng (buổi 1)."
+      },
+      {
+       "html": "<a href=\"https://csrc.nist.gov/pubs/sp/800/122/final\" target=\"_blank\" rel=\"noopener noreferrer\">NIST SP 800-122</a> – bảo vệ thông tin nhận diện cá nhân (buổi 1).",
+       "level": 0,
+       "plain": "NIST SP 800-122 – bảo vệ thông tin nhận diện cá nhân (buổi 1)."
+      },
+      {
+       "html": "<a href=\"https://csrc.nist.gov/pubs/sp/800/88/r2/final\" target=\"_blank\" rel=\"noopener noreferrer\">NIST SP 800-88 Rev.2</a> – xóa sạch dữ liệu trên phương tiện lưu trữ (buổi 1, 5).",
+       "level": 0,
+       "plain": "NIST SP 800-88 Rev.2 – xóa sạch dữ liệu trên phương tiện lưu trữ (buổi 1, 5)."
+      },
+      {
+       "html": "<a href=\"https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">NIST Cybersecurity Framework 2.0</a> – sáu chức năng Quản trị, Nhận diện, Bảo vệ, Phát hiện, Ứng phó, Phục hồi (toàn khóa).",
+       "level": 0,
+       "plain": "NIST Cybersecurity Framework 2.0 – sáu chức năng Quản trị, Nhận diện, Bảo vệ, Phát hiện, Ứng phó, Phục hồi (toàn khóa)."
+      },
+      {
+       "html": "NIST SP 800-53 Rev.5 – nhóm kiểm soát truy cập AC-2, AC-3, AC-5, AC-6; NIST SP 800-162 – ABAC (buổi 3).",
+       "level": 0,
+       "plain": "NIST SP 800-53 Rev.5 – nhóm kiểm soát truy cập AC-2, AC-3, AC-5, AC-6; NIST SP 800-162 – ABAC (buổi 3)."
+      },
+      {
+       "html": "NIST SP 800-63B Rev.4 – xác thực và mật khẩu (<a href=\"https://www.enzoic.com/blog/nist-sp-800-63b-rev4/\" target=\"_blank\" rel=\"noopener noreferrer\">tóm tắt của Enzoic</a>); <a href=\"https://www.cisa.gov/sites/default/files/2023-01/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA – Implementing Phishing-Resistant MFA</a> (buổi 4).",
+       "level": 0,
+       "plain": "NIST SP 800-63B Rev.4 – xác thực và mật khẩu (tóm tắt của Enzoic); CISA – Implementing Phishing-Resistant MFA (buổi 4)."
+      },
+      {
+       "html": "NIST SP 800-92 – quản lý nhật ký (buổi 9); NIST SP 800-61 Rev.3 – ứng phó sự cố; NIST SP 800-84 – diễn tập (buổi 10). Tra cứu tại csrc.nist.gov.",
+       "level": 0,
+       "plain": "NIST SP 800-92 – quản lý nhật ký (buổi 9); NIST SP 800-61 Rev.3 – ứng phó sự cố; NIST SP 800-84 – diễn tập (buổi 10). Tra cứu tại csrc.nist.gov."
+      },
+      {
+       "html": "<a href=\"https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/\" target=\"_blank\" rel=\"noopener noreferrer\">OWASP Top 10 for LLM Applications 2025 – LLM02 Sensitive Information Disclosure</a> (buổi 1).",
+       "level": 0,
+       "plain": "OWASP Top 10 for LLM Applications 2025 – LLM02 Sensitive Information Disclosure (buổi 1)."
+      },
+      {
+       "html": "OWASP Cheat Sheet Series: <a href=\"https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html\" target=\"_blank\" rel=\"noopener noreferrer\">Authorization</a>, Authentication, Multifactor Authentication, Session Management, Cryptographic Storage, Transport Layer Security, Database Security, SQL Injection Prevention, Logging (buổi 3–6, 9).",
+       "level": 0,
+       "plain": "OWASP Cheat Sheet Series: Authorization, Authentication, Multifactor Authentication, Session Management, Cryptographic Storage, Transport Layer Security, Database Security, SQL Injection Prevention, Logging (buổi 3–6, 9)."
+      },
+      {
+       "html": "Microsoft Learn – Row-level security với Power BI; chia sẻ báo cáo và dashboard; Publish to web; vai trò workspace (buổi 7).",
+       "level": 0,
+       "plain": "Microsoft Learn – Row-level security với Power BI; chia sẻ báo cáo và dashboard; Publish to web; vai trò workspace (buổi 7)."
+      },
+      {
+       "html": "NIST Small Business Cybersecurity Corner – Phishing (buổi 8).",
+       "level": 0,
+       "plain": "NIST Small Business Cybersecurity Corner – Phishing (buổi 8)."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ngành điện"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://tapchicongthuong.vn/canh-bao-gia-mao-nhan-vien-dien-luc-cua-evnhanoi-138782.htm\" target=\"_blank\" rel=\"noopener noreferrer\">Tạp chí Công Thương – Cảnh báo giả mạo nhân viên điện lực của EVNHANOI (27/3/2025)</a> (buổi 8).",
+       "level": 0,
+       "plain": "Tạp chí Công Thương – Cảnh báo giả mạo nhân viên điện lực của EVNHANOI (27/3/2025) (buổi 8)."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Kiến thức phổ biến được dùng"
+    },
+    {
+     "t": "p",
+     "html": "Phân loại lỗi con người và mô hình \"phô mai Thụy Sĩ\" của James Reason, nghiên cứu tái nhận diện của Latanya Sweeney, nguyên tắc sao lưu 3-2-1 là kiến thức phổ biến trong ngành. Nên kiểm tra nguyên văn nếu trích dẫn chính thức.",
+     "plain": "Phân loại lỗi con người và mô hình \"phô mai Thụy Sĩ\" của James Reason, nghiên cứu tái nhận diện của Latanya Sweeney, nguyên tắc sao lưu 3-2-1 là kiến thức phổ biến trong ngành. Nên kiểm tra nguyên văn nếu trích dẫn chính thức."
+    }
+   ],
+   "id": "s9"
+  }
+ ],
+ "activities": []
+}

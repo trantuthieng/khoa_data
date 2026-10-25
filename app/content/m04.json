@@ -1,0 +1,2792 @@
+{
+ "no": 4,
+ "title": "Buổi 4 – Xác thực, MFA, SSO, tài khoản chung và phiên làm việc",
+ "short": "Xác thực, MFA, SSO, tài khoản chung và phiên làm việc",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 4 trả lời câu hỏi: <strong>làm sao biết người đang đăng nhập đúng là chủ tài khoản?</strong> Ma trận quyền buổi sáng chỉ có ý nghĩa khi câu trả lời là \"có\". Cuối buổi, học viên biết mật khẩu thế nào là đủ mạnh, MFA loại nào bị vượt qua được, và thiết kế được phương án bỏ tài khoản dùng chung.",
+     "plain": "Buổi 4 trả lời câu hỏi: làm sao biết người đang đăng nhập đúng là chủ tài khoản? Ma trận quyền buổi sáng chỉ có ý nghĩa khi câu trả lời là \"có\". Cuối buổi, học viên biết mật khẩu thế nào là đủ mạnh, MFA loại nào bị vượt qua được, và thiết kế được phương án bỏ tài khoản dùng chung."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Thông tin buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Ngày 2, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)",
+        "plain": "Ngày 2, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu trình chiếu",
+        "plain": "Tài liệu trình chiếu"
+       },
+       {
+        "html": "38–47",
+        "plain": "38–47"
+       }
+      ],
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Giảng, minh họa trên điện thoại, thảo luận, thực hành cá nhân",
+        "plain": "Giảng, minh họa trên điện thoại, thảo luận, thực hành cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Ma trận quyền (Thực hành 3)",
+        "plain": "Ma trận quyền (Thực hành 3)"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "Phương án thay tài khoản dùng chung, chọn MFA, xử lý phiên; checklist vòng đời tài khoản (Thực hành 5)",
+        "plain": "Phương án thay tài khoản dùng chung, chọn MFA, xử lý phiên; checklist vòng đời tài khoản (Thực hành 5)"
+       }
+      ],
+      [
+       {
+        "html": "Vật dụng",
+        "plain": "Vật dụng"
+       },
+       {
+        "html": "Điện thoại của giảng viên có ứng dụng xác thực (minh họa); mẫu C5 ở Phụ lục C của tài liệu Tổng quan",
+        "plain": "Điện thoại của giảng viên có ứng dụng xác thực (minh họa); mẫu C5 ở Phụ lục C của tài liệu Tổng quan"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Buổi này tiếp nối buổi trước như thế nào?",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhận từ buổi 3:</strong> ma trận quyền. Nếu người khác đăng nhập được bằng tài khoản nv_c thì mọi ô của ma trận đều mất tác dụng – kẻ gian có đúng những quyền của anh Cường, kể cả quyền xuất chưa được thu hẹp.",
+       "level": 0,
+       "plain": "Nhận từ buổi 3: ma trận quyền. Nếu người khác đăng nhập được bằng tài khoản nv_c thì mọi ô của ma trận đều mất tác dụng – kẻ gian có đúng những quyền của anh Cường, kể cả quyền xuất chưa được thu hẹp."
+      },
+      {
+       "html": "<strong>Tình huống – chương 4:</strong> mật khẩu dùng lại, MFA dễ bấm nhầm, tài khoản trực ca dùng chung.",
+       "level": 0,
+       "plain": "Tình huống – chương 4: mật khẩu dùng lại, MFA dễ bấm nhầm, tài khoản trực ca dùng chung."
+      },
+      {
+       "html": "<strong>Trao cho ngày 3:</strong> phương án tài khoản cá nhân, MFA và quản lý phiên. Ngày 2 lo chuyện \"ai được vào\"; ngày 3 hỏi tiếp: khi dữ liệu đã ra khỏi hệ thống thì sao?",
+       "level": 0,
+       "plain": "Trao cho ngày 3: phương án tài khoản cá nhân, MFA và quản lý phiên. Ngày 2 lo chuyện \"ai được vào\"; ngày 3 hỏi tiếp: khi dữ liệu đã ra khỏi hệ thống thì sao?"
+      },
+      {
+       "html": "<strong>Sợi chỉ:</strong> con người và báo sớm – không chia sẻ tài khoản, không đọc mã OTP cho ai, từ chối yêu cầu MFA mình không tạo ra. Chống chối bỏ (buổi 1) xuất hiện lại qua tài khoản dùng chung.",
+       "level": 0,
+       "plain": "Sợi chỉ: con người và báo sớm – không chia sẻ tài khoản, không đọc mã OTP cho ai, từ chối yêu cầu MFA mình không tạo ra. Chống chối bỏ (buổi 1) xuất hiện lại qua tài khoản dùng chung."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nêu khuyến nghị hiện nay về mật khẩu (NIST SP 800-63B Rev.4) và nhận ra các kiểu tấn công vào mật khẩu, đặc biệt là dùng lại mật khẩu bị lộ.",
+       "level": 0,
+       "plain": "Nêu khuyến nghị hiện nay về mật khẩu (NIST SP 800-63B Rev.4) và nhận ra các kiểu tấn công vào mật khẩu, đặc biệt là dùng lại mật khẩu bị lộ."
+      },
+      {
+       "html": "Phân biệt ba loại yếu tố xác thực, nhận ra đâu là MFA thật, và so sánh mức chống lừa đảo của các phương thức MFA.",
+       "level": 0,
+       "plain": "Phân biệt ba loại yếu tố xác thực, nhận ra đâu là MFA thật, và so sánh mức chống lừa đảo của các phương thức MFA."
+      },
+      {
+       "html": "Giải thích SSO làm gì, khác MFA thế nào, và vì sao nên dùng cùng nhau.",
+       "level": 0,
+       "plain": "Giải thích SSO làm gì, khác MFA thế nào, và vì sao nên dùng cùng nhau."
+      },
+      {
+       "html": "Nêu rủi ro của tài khoản dùng chung và thiết kế phương án thay thế không làm gián đoạn ca trực.",
+       "level": 0,
+       "plain": "Nêu rủi ro của tài khoản dùng chung và thiết kế phương án thay thế không làm gián đoạn ca trực."
+      },
+      {
+       "html": "Hiểu phiên làm việc và xử lý đúng khi nghi lộ tài khoản: từ chối, báo, đổi mật khẩu và thu hồi phiên.",
+       "level": 0,
+       "plain": "Hiểu phiên làm việc và xử lý đúng khi nghi lộ tài khoản: từ chối, báo, đổi mật khẩu và thu hồi phiên."
+      }
+     ]
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Mở đầu: mật khẩu dùng lại, MFA dễ bấm nhầm (chương 4)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi sáng, lớp đã quyết định ai được làm gì. Chiều nay, lớp kiểm tra xem cánh cửa kiểm tra danh tính có đủ chắc không.",
+     "plain": "Buổi sáng, lớp đã quyết định ai được làm gì. Chiều nay, lớp kiểm tra xem cánh cửa kiểm tra danh tính có đủ chắc không."
+    },
+    {
+     "t": "h3",
+     "text": "Chuyện gì xảy ra"
+    },
+    {
+     "t": "p",
+     "html": "Trong lúc lớp kiểm tra các tài khoản của Điện lực X, ba điều lộ ra:",
+     "plain": "Trong lúc lớp kiểm tra các tài khoản của Điện lực X, ba điều lộ ra:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Mật khẩu của anh Cường.</strong> Anh dùng một mật khẩu kiểu Minhan@2025 cho cả tài khoản công việc nv_c và một trang mua sắm trực tuyến. Mỗi lần hệ thống bắt đổi, anh chỉ đổi số năm: Minhan@2023, Minhan@2024, Minhan@2025. \"Phải có chữ hoa, số, ký tự đặc biệt đúng quy định mà.\"",
+       "level": 0,
+       "plain": "Mật khẩu của anh Cường. Anh dùng một mật khẩu kiểu Minhan@2025 cho cả tài khoản công việc nv_c và một trang mua sắm trực tuyến. Mỗi lần hệ thống bắt đổi, anh chỉ đổi số năm: Minhan@2023, Minhan@2024, Minhan@2025. \"Phải có chữ hoa, số, ký tự đặc biệt đúng quy định mà.\""
+      },
+      {
+       "html": "<strong>MFA của công ty.</strong> Khi đăng nhập từ máy lạ, điện thoại hiện thông báo \"Chấp nhận / Từ chối\". Không có số để đối chiếu, không có tên thiết bị hay vị trí. Nhiều người kể họ từng bấm Chấp nhận \"theo phản xạ\" khi thông báo hiện lên.",
+       "level": 0,
+       "plain": "MFA của công ty. Khi đăng nhập từ máy lạ, điện thoại hiện thông báo \"Chấp nhận / Từ chối\". Không có số để đối chiếu, không có tên thiết bị hay vị trí. Nhiều người kể họ từng bấm Chấp nhận \"theo phản xạ\" khi thông báo hiện lên."
+      },
+      {
+       "html": "<strong>Tài khoản truc_ca.</strong> Tổ tổng đài có 3 ca, mỗi ca 4 người, cả 12 người dùng chung tài khoản truc_ca. Mật khẩu dán trên viền màn hình. Tháng trước có 20 phiếu yêu cầu bị xóa, nhật ký chỉ ghi \"truc_ca\".",
+       "level": 0,
+       "plain": "Tài khoản truc_ca. Tổ tổng đài có 3 ca, mỗi ca 4 người, cả 12 người dùng chung tài khoản truc_ca. Mật khẩu dán trên viền màn hình. Tháng trước có 20 phiếu yêu cầu bị xóa, nhật ký chỉ ghi \"truc_ca\"."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Câu hỏi của buổi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?",
+       "level": 0,
+       "plain": "Mật khẩu của anh Cường đúng quy định \"đủ loại ký tự\". Vậy nó có mạnh không? Nếu trang mua sắm bị lộ dữ liệu thì sao?"
+      },
+      {
+       "html": "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?",
+       "level": 0,
+       "plain": "Công ty đã có MFA. Vậy kẻ gian có mật khẩu rồi thì còn thiếu gì để vào được?"
+      },
+      {
+       "html": "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?",
+       "level": 0,
+       "plain": "Nếu công ty dùng đăng nhập một lần (SSO), tài khoản nv_c bị chiếm thì kẻ gian vào được bao nhiêu hệ thống?"
+      },
+      {
+       "html": "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?",
+       "level": 0,
+       "plain": "Ai đã xóa 20 phiếu? Làm sao bỏ truc_ca mà ca trực không bị gián đoạn?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bốn câu này ứng với bốn bài của buổi.",
+     "plain": "Bốn câu này ứng với bốn bài của buổi."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Bài 1 – Mật khẩu và các kiểu tấn công",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Mật khẩu vẫn là cách xác thực phổ biến nhất, nhưng khuyến nghị về mật khẩu đã thay đổi nhiều so với thói quen cũ. Điều quan trọng nhất của bài: <strong>mật khẩu công việc không được dùng ở bất kỳ nơi nào khác.</strong>",
+     "plain": "Mật khẩu vẫn là cách xác thực phổ biến nhất, nhưng khuyến nghị về mật khẩu đã thay đổi nhiều so với thói quen cũ. Điều quan trọng nhất của bài: mật khẩu công việc không được dùng ở bất kỳ nơi nào khác."
+    },
+    {
+     "t": "h3",
+     "text": "1.1. Khuyến nghị cũ và khuyến nghị hiện nay"
+    },
+    {
+     "t": "p",
+     "html": "NIST SP 800-63B bản Rev.4 (công bố tháng 8/2025) nêu:",
+     "plain": "NIST SP 800-63B bản Rev.4 (công bố tháng 8/2025) nêu:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khuyến nghị cũ (phổ biến trước đây)",
+        "plain": "Khuyến nghị cũ (phổ biến trước đây)"
+       },
+       {
+        "html": "Khuyến nghị NIST SP 800-63B Rev.4",
+        "plain": "Khuyến nghị NIST SP 800-63B Rev.4"
+       }
+      ],
+      [
+       {
+        "html": "8 ký tự là đủ",
+        "plain": "8 ký tự là đủ"
+       },
+       {
+        "html": "Tối thiểu 15 ký tự khi mật khẩu là yếu tố xác thực duy nhất; hệ thống nên cho phép ít nhất 64 ký tự",
+        "plain": "Tối thiểu 15 ký tự khi mật khẩu là yếu tố xác thực duy nhất; hệ thống nên cho phép ít nhất 64 ký tự"
+       }
+      ],
+      [
+       {
+        "html": "Bắt buộc có chữ hoa, số, ký tự đặc biệt",
+        "plain": "Bắt buộc có chữ hoa, số, ký tự đặc biệt"
+       },
+       {
+        "html": "Không áp quy tắc thành phần; cho phép dấu cách và ký tự Unicode",
+        "plain": "Không áp quy tắc thành phần; cho phép dấu cách và ký tự Unicode"
+       }
+      ],
+      [
+       {
+        "html": "Đổi mật khẩu 60–90 ngày một lần",
+        "plain": "Đổi mật khẩu 60–90 ngày một lần"
+       },
+       {
+        "html": "Không bắt đổi định kỳ; chỉ đổi khi có dấu hiệu bị lộ",
+        "plain": "Không bắt đổi định kỳ; chỉ đổi khi có dấu hiệu bị lộ"
+       }
+      ],
+      [
+       {
+        "html": "–",
+        "plain": "–"
+       },
+       {
+        "html": "Bắt buộc kiểm tra mật khẩu mới với danh sách mật khẩu phổ biến, dễ đoán hoặc đã bị lộ",
+        "plain": "Bắt buộc kiểm tra mật khẩu mới với danh sách mật khẩu phổ biến, dễ đoán hoặc đã bị lộ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Vì sao đổi:</strong> quy tắc phức tạp và đổi định kỳ khiến người dùng tạo mật khẩu có quy luật – đúng như Minhan@2023 → Minhan@2024 → Minhan@2025 của anh Cường – hoặc ghi ra giấy. Kẻ gian biết quy luật này và thử nó đầu tiên. Một cụm từ dài, dễ nhớ như cay xoai truoc san nha ngoai mạnh hơn nhiều so với Ev#2026!.",
+     "plain": "Vì sao đổi: quy tắc phức tạp và đổi định kỳ khiến người dùng tạo mật khẩu có quy luật – đúng như Minhan@2023 → Minhan@2024 → Minhan@2025 của anh Cường – hoặc ghi ra giấy. Kẻ gian biết quy luật này và thử nó đầu tiên. Một cụm từ dài, dễ nhớ như cay xoai truoc san nha ngoai mạnh hơn nhiều so với Ev#2026!."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lưu ý:</strong> nhiều đơn vị vẫn có quy định đổi mật khẩu định kỳ. Học viên làm theo quy định hiện hành của đơn vị. Phần NIST giúp hiểu xu hướng và đề xuất cải tiến, không phải để tự ý bỏ qua quy định.",
+     "plain": "Lưu ý: nhiều đơn vị vẫn có quy định đổi mật khẩu định kỳ. Học viên làm theo quy định hiện hành của đơn vị. Phần NIST giúp hiểu xu hướng và đề xuất cải tiến, không phải để tự ý bỏ qua quy định.",
+     "callout": "note"
+    },
+    {
+     "t": "h3",
+     "text": "1.2. Sáu kiểu tấn công vào mật khẩu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Kiểu tấn công",
+        "plain": "Kiểu tấn công"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       },
+       {
+        "html": "Phòng chống",
+        "plain": "Phòng chống"
+       }
+      ],
+      [
+       {
+        "html": "Đoán, dò vét cạn",
+        "plain": "Đoán, dò vét cạn"
+       },
+       {
+        "html": "Thử liên tục nhiều mật khẩu vào một tài khoản",
+        "plain": "Thử liên tục nhiều mật khẩu vào một tài khoản"
+       },
+       {
+        "html": "Mật khẩu dài; khóa tạm sau nhiều lần sai; MFA",
+        "plain": "Mật khẩu dài; khóa tạm sau nhiều lần sai; MFA"
+       }
+      ],
+      [
+       {
+        "html": "Rải mật khẩu (password spraying)",
+        "plain": "Rải mật khẩu (password spraying)"
+       },
+       {
+        "html": "Thử vài mật khẩu phổ biến (123456, Evn@2026) trên rất nhiều tài khoản để tránh bị khóa",
+        "plain": "Thử vài mật khẩu phổ biến (123456, Evn@2026) trên rất nhiều tài khoản để tránh bị khóa"
+       },
+       {
+        "html": "Cấm mật khẩu phổ biến; MFA; giám sát đăng nhập thất bại trên diện rộng",
+        "plain": "Cấm mật khẩu phổ biến; MFA; giám sát đăng nhập thất bại trên diện rộng"
+       }
+      ],
+      [
+       {
+        "html": "Dùng lại mật khẩu bị lộ (credential stuffing)",
+        "plain": "Dùng lại mật khẩu bị lộ (credential stuffing)"
+       },
+       {
+        "html": "Lấy cặp email – mật khẩu lộ từ trang web khác để thử vào hệ thống công ty, kể cả các biến thể (đổi số năm)",
+        "plain": "Lấy cặp email – mật khẩu lộ từ trang web khác để thử vào hệ thống công ty, kể cả các biến thể (đổi số năm)"
+       },
+       {
+        "html": "Không dùng lại mật khẩu công việc ở bất kỳ đâu; MFA",
+        "plain": "Không dùng lại mật khẩu công việc ở bất kỳ đâu; MFA"
+       }
+      ],
+      [
+       {
+        "html": "Lừa đảo (phishing)",
+        "plain": "Lừa đảo (phishing)"
+       },
+       {
+        "html": "Trang đăng nhập giả",
+        "plain": "Trang đăng nhập giả"
+       },
+       {
+        "html": "Kiểm tra tên miền; MFA chống lừa đảo (buổi 8)",
+        "plain": "Kiểm tra tên miền; MFA chống lừa đảo (buổi 8)"
+       }
+      ],
+      [
+       {
+        "html": "Mã độc đánh cắp thông tin (infostealer)",
+        "plain": "Mã độc đánh cắp thông tin (infostealer)"
+       },
+       {
+        "html": "Phần mềm crack, tiện ích lạ lấy mật khẩu lưu trong trình duyệt",
+        "plain": "Phần mềm crack, tiện ích lạ lấy mật khẩu lưu trong trình duyệt"
+       },
+       {
+        "html": "Không cài phần mềm không rõ nguồn; không dùng máy cá nhân nhiễm bẩn cho công việc",
+        "plain": "Không cài phần mềm không rõ nguồn; không dùng máy cá nhân nhiễm bẩn cho công việc"
+       }
+      ],
+      [
+       {
+        "html": "Nhìn trộm, giấy dán",
+        "plain": "Nhìn trộm, giấy dán"
+       },
+       {
+        "html": "Mật khẩu dán màn hình, đọc to qua điện thoại",
+        "plain": "Mật khẩu dán màn hình, đọc to qua điện thoại"
+       },
+       {
+        "html": "Không ghi ra giấy; dùng trình quản lý mật khẩu được duyệt",
+        "plain": "Không ghi ra giấy; dùng trình quản lý mật khẩu được duyệt"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Áp vào chương 4:</strong> nếu trang mua sắm bị lộ dữ liệu, cặp email – Minhan@2025 sẽ nằm trong một danh sách được rao bán. Kẻ gian chỉ cần thử vài biến thể (đổi số năm, thêm dấu chấm than) là khớp với tài khoản nv_c. Quy tắc \"đủ loại ký tự\" không giúp gì trong trường hợp này.",
+     "plain": "Áp vào chương 4: nếu trang mua sắm bị lộ dữ liệu, cặp email – Minhan@2025 sẽ nằm trong một danh sách được rao bán. Kẻ gian chỉ cần thử vài biến thể (đổi số năm, thêm dấu chấm than) là khớp với tài khoản nv_c. Quy tắc \"đủ loại ký tự\" không giúp gì trong trường hợp này."
+    },
+    {
+     "t": "h3",
+     "text": "1.3. Mật khẩu tốt trông như thế nào"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Dài hơn là phức tạp hơn:</strong> một cụm 4–5 từ không liên quan, dễ nhớ với riêng mình, không phải câu nổi tiếng hay lời bài hát.",
+       "level": 0,
+       "plain": "Dài hơn là phức tạp hơn: một cụm 4–5 từ không liên quan, dễ nhớ với riêng mình, không phải câu nổi tiếng hay lời bài hát."
+      },
+      {
+       "html": "<strong>Riêng cho từng nơi:</strong> mật khẩu công việc chỉ dùng cho công việc.",
+       "level": 0,
+       "plain": "Riêng cho từng nơi: mật khẩu công việc chỉ dùng cho công việc."
+      },
+      {
+       "html": "<strong>Không có quy luật:</strong> không tên đơn vị, tên mình, ngày sinh, số năm.",
+       "level": 0,
+       "plain": "Không có quy luật: không tên đơn vị, tên mình, ngày sinh, số năm."
+      },
+      {
+       "html": "<strong>Không chia sẻ:</strong> không cho đồng nghiệp, không đọc qua điện thoại, kể cả cho người xưng là CNTT.",
+       "level": 0,
+       "plain": "Không chia sẻ: không cho đồng nghiệp, không đọc qua điện thoại, kể cả cho người xưng là CNTT."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Trình quản lý mật khẩu</strong> giúp mỗi hệ thống có một mật khẩu riêng, dài, ngẫu nhiên; người dùng chỉ cần nhớ một mật khẩu chính. Chỉ dùng công cụ đơn vị cho phép.",
+     "plain": "Trình quản lý mật khẩu giúp mỗi hệ thống có một mật khẩu riêng, dài, ngẫu nhiên; người dùng chỉ cần nhớ một mật khẩu chính. Chỉ dùng công cụ đơn vị cho phép."
+    },
+    {
+     "t": "h3",
+     "text": "1.4. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Nếu mật khẩu công việc đang giống hoặc gần giống mật khẩu ở bất kỳ trang nào khác (kể cả chỉ khác số năm), đổi ngay hôm nay.",
+       "level": 0,
+       "plain": "Nếu mật khẩu công việc đang giống hoặc gần giống mật khẩu ở bất kỳ trang nào khác (kể cả chỉ khác số năm), đổi ngay hôm nay."
+      },
+      {
+       "html": "Nhận được thông báo một trang mình từng đăng ký bị lộ dữ liệu: đổi mật khẩu trang đó, và nếu từng dùng lại ở công việc thì báo CNTT.",
+       "level": 0,
+       "plain": "Nhận được thông báo một trang mình từng đăng ký bị lộ dữ liệu: đổi mật khẩu trang đó, và nếu từng dùng lại ở công việc thì báo CNTT."
+      },
+      {
+       "html": "Đề xuất với CNTT bật tính năng chặn mật khẩu phổ biến và mật khẩu đã bị lộ nếu hệ thống hỗ trợ.",
+       "level": 0,
+       "plain": "Đề xuất với CNTT bật tính năng chặn mật khẩu phổ biến và mật khẩu đã bị lộ nếu hệ thống hỗ trợ."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Mật khẩu đủ chữ hoa, số, ký tự đặc biệt là mạnh.\" → Minhan@2025 đủ cả bốn loại nhưng ngắn, có quy luật và đã dùng lại ở nơi khác.",
+     "plain": "Hiểu nhầm hay gặp: \"Mật khẩu đủ chữ hoa, số, ký tự đặc biệt là mạnh.\" → Minhan@2025 đủ cả bốn loại nhưng ngắn, có quy luật và đã dùng lại ở nơi khác.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Bài 2 – MFA, cách kẻ gian vượt qua, và passkey",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "MFA chặn được phần lớn các cuộc tấn công chỉ dựa vào mật khẩu bị lộ. Nhưng MFA có loại mạnh, loại yếu, và loại nào cũng thua nếu người dùng tự tay cho kẻ gian vào.",
+     "plain": "MFA chặn được phần lớn các cuộc tấn công chỉ dựa vào mật khẩu bị lộ. Nhưng MFA có loại mạnh, loại yếu, và loại nào cũng thua nếu người dùng tự tay cho kẻ gian vào."
+    },
+    {
+     "t": "h3",
+     "text": "2.1. Ba loại yếu tố xác thực"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Giải thích",
+        "plain": "Giải thích"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Cái bạn BIẾT",
+        "plain": "Cái bạn BIẾT"
+       },
+       {
+        "html": "Thông tin chỉ bạn nhớ",
+        "plain": "Thông tin chỉ bạn nhớ"
+       },
+       {
+        "html": "Mật khẩu, mã PIN, câu hỏi bí mật",
+        "plain": "Mật khẩu, mã PIN, câu hỏi bí mật"
+       }
+      ],
+      [
+       {
+        "html": "Cái bạn CÓ",
+        "plain": "Cái bạn CÓ"
+       },
+       {
+        "html": "Vật bạn cầm trong tay",
+        "plain": "Vật bạn cầm trong tay"
+       },
+       {
+        "html": "Điện thoại có ứng dụng xác thực, khóa bảo mật USB, thẻ",
+        "plain": "Điện thoại có ứng dụng xác thực, khóa bảo mật USB, thẻ"
+       }
+      ],
+      [
+       {
+        "html": "Cái bạn LÀ",
+        "plain": "Cái bạn LÀ"
+       },
+       {
+        "html": "Đặc điểm cơ thể",
+        "plain": "Đặc điểm cơ thể"
+       },
+       {
+        "html": "Vân tay, khuôn mặt",
+        "plain": "Vân tay, khuôn mặt"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>MFA (xác thực đa yếu tố)</strong> = kết hợp ít nhất hai yếu tố <strong>khác loại</strong>. Ví dụ dễ hiểu: rút tiền ATM cần thẻ (có) + PIN (biết). Nhập mật khẩu rồi trả lời câu hỏi bí mật \"Tên trường tiểu học của bạn?\" không phải MFA – cả hai đều là \"biết\".",
+     "plain": "MFA (xác thực đa yếu tố) = kết hợp ít nhất hai yếu tố khác loại. Ví dụ dễ hiểu: rút tiền ATM cần thẻ (có) + PIN (biết). Nhập mật khẩu rồi trả lời câu hỏi bí mật \"Tên trường tiểu học của bạn?\" không phải MFA – cả hai đều là \"biết\"."
+    },
+    {
+     "t": "h3",
+     "text": "2.2. Các phương thức MFA, từ yếu đến mạnh"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Phương thức",
+        "plain": "Phương thức"
+       },
+       {
+        "html": "Cách hoạt động",
+        "plain": "Cách hoạt động"
+       },
+       {
+        "html": "Điểm yếu",
+        "plain": "Điểm yếu"
+       },
+       {
+        "html": "Lưu ý khi dùng",
+        "plain": "Lưu ý khi dùng"
+       }
+      ],
+      [
+       {
+        "html": "SMS, mã OTP qua tin nhắn",
+        "plain": "SMS, mã OTP qua tin nhắn"
+       },
+       {
+        "html": "Mã gửi qua tin nhắn",
+        "plain": "Mã gửi qua tin nhắn"
+       },
+       {
+        "html": "Bị lừa đọc lại; bị chiếm SIM",
+        "plain": "Bị lừa đọc lại; bị chiếm SIM"
+       },
+       {
+        "html": "Không bao giờ đọc mã cho người khác, kể cả người xưng là CNTT",
+        "plain": "Không bao giờ đọc mã cho người khác, kể cả người xưng là CNTT"
+       }
+      ],
+      [
+       {
+        "html": "Ứng dụng tạo mã",
+        "plain": "Ứng dụng tạo mã"
+       },
+       {
+        "html": "Mã 6 số đổi mỗi 30 giây trên điện thoại",
+        "plain": "Mã 6 số đổi mỗi 30 giây trên điện thoại"
+       },
+       {
+        "html": "Vẫn có thể bị trang giả lừa nhập",
+        "plain": "Vẫn có thể bị trang giả lừa nhập"
+       },
+       {
+        "html": "Bảo vệ điện thoại; có quy trình khi mất máy",
+        "plain": "Bảo vệ điện thoại; có quy trình khi mất máy"
+       }
+      ],
+      [
+       {
+        "html": "Thông báo đẩy (push) thường",
+        "plain": "Thông báo đẩy (push) thường"
+       },
+       {
+        "html": "Bấm \"Chấp nhận\" trên điện thoại",
+        "plain": "Bấm \"Chấp nhận\" trên điện thoại"
+       },
+       {
+        "html": "Kẻ gian gửi dồn dập hoặc lừa để người dùng bấm nhầm",
+        "plain": "Kẻ gian gửi dồn dập hoặc lừa để người dùng bấm nhầm"
+       },
+       {
+        "html": "Chỉ duyệt khi chính mình vừa đăng nhập",
+        "plain": "Chỉ duyệt khi chính mình vừa đăng nhập"
+       }
+      ],
+      [
+       {
+        "html": "Push có khớp số (number matching)",
+        "plain": "Push có khớp số (number matching)"
+       },
+       {
+        "html": "Phải gõ vào điện thoại con số đang hiện trên màn hình đăng nhập",
+        "plain": "Phải gõ vào điện thoại con số đang hiện trên màn hình đăng nhập"
+       },
+       {
+        "html": "Vẫn có thể bị lừa đọc số qua điện thoại",
+        "plain": "Vẫn có thể bị lừa đọc số qua điện thoại"
+       },
+       {
+        "html": "Không gõ số nếu mình không đang đăng nhập",
+        "plain": "Không gõ số nếu mình không đang đăng nhập"
+       }
+      ],
+      [
+       {
+        "html": "FIDO2, passkey",
+        "plain": "FIDO2, passkey"
+       },
+       {
+        "html": "Thiết bị kiểm tra đúng tên miền trước khi xác thực",
+        "plain": "Thiết bị kiểm tra đúng tên miền trước khi xác thực"
+       },
+       {
+        "html": "Chống lừa đảo theo thiết kế",
+        "plain": "Chống lừa đảo theo thiết kế"
+       },
+       {
+        "html": "Kiểm tra cách triển khai và quy trình khôi phục tài khoản",
+        "plain": "Kiểm tra cách triển khai và quy trình khôi phục tài khoản"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "img",
+     "src": "/static/content/m04_1.png"
+    },
+    {
+     "t": "p",
+     "html": "Push thường và push có khớp số · hai luồng, cùng một kẻ gian",
+     "plain": "Push thường và push có khớp số · hai luồng, cùng một kẻ gian"
+    },
+    {
+     "t": "p",
+     "html": "Hàng trên là tình trạng của Điện lực Minh An: kẻ gian có mật khẩu thì chỉ còn thiếu một cú bấm. Hàng dưới là khi bật khớp số: những thông báo \"đột nhiên hiện lên\" không thể được duyệt theo phản xạ nữa.",
+     "plain": "Hàng trên là tình trạng của Điện lực Minh An: kẻ gian có mật khẩu thì chỉ còn thiếu một cú bấm. Hàng dưới là khi bật khớp số: những thông báo \"đột nhiên hiện lên\" không thể được duyệt theo phản xạ nữa."
+    },
+    {
+     "t": "h3",
+     "text": "2.3. Sáu cách kẻ gian vượt MFA"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cách vượt",
+        "plain": "Cách vượt"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       },
+       {
+        "html": "Loại MFA bị ảnh hưởng",
+        "plain": "Loại MFA bị ảnh hưởng"
+       },
+       {
+        "html": "Phòng chống",
+        "plain": "Phòng chống"
+       }
+      ],
+      [
+       {
+        "html": "Lừa đọc mã",
+        "plain": "Lừa đọc mã"
+       },
+       {
+        "html": "Gọi điện giả CNTT, ngân hàng: \"anh đọc giúp em mã vừa nhận\"",
+        "plain": "Gọi điện giả CNTT, ngân hàng: \"anh đọc giúp em mã vừa nhận\""
+       },
+       {
+        "html": "SMS, ứng dụng tạo mã, khớp số",
+        "plain": "SMS, ứng dụng tạo mã, khớp số"
+       },
+       {
+        "html": "Không bao giờ đọc mã cho bất kỳ ai",
+        "plain": "Không bao giờ đọc mã cho bất kỳ ai"
+       }
+      ],
+      [
+       {
+        "html": "Lừa bấm Chấp nhận",
+        "plain": "Lừa bấm Chấp nhận"
+       },
+       {
+        "html": "Dặn trước qua tin nhắn: \"nếu điện thoại báo đăng nhập, anh cứ bấm Chấp nhận\"",
+        "plain": "Dặn trước qua tin nhắn: \"nếu điện thoại báo đăng nhập, anh cứ bấm Chấp nhận\""
+       },
+       {
+        "html": "Push thường",
+        "plain": "Push thường"
+       },
+       {
+        "html": "Khớp số; không duyệt yêu cầu mình không tạo ra (buổi 8)",
+        "plain": "Khớp số; không duyệt yêu cầu mình không tạo ra (buổi 8)"
+       }
+      ],
+      [
+       {
+        "html": "Dồn dập thông báo (MFA fatigue)",
+        "plain": "Dồn dập thông báo (MFA fatigue)"
+       },
+       {
+        "html": "Gửi hàng chục yêu cầu lúc nửa đêm để nạn nhân bấm cho xong",
+        "plain": "Gửi hàng chục yêu cầu lúc nửa đêm để nạn nhân bấm cho xong"
+       },
+       {
+        "html": "Push thường",
+        "plain": "Push thường"
+       },
+       {
+        "html": "Khớp số; từ chối và báo ngay",
+        "plain": "Khớp số; từ chối và báo ngay"
+       }
+      ],
+      [
+       {
+        "html": "Trang giả trung gian (adversary-in-the-middle)",
+        "plain": "Trang giả trung gian (adversary-in-the-middle)"
+       },
+       {
+        "html": "Trang giả chuyển tiếp mật khẩu và mã tới trang thật ngay lập tức, lấy luôn phiên đăng nhập",
+        "plain": "Trang giả chuyển tiếp mật khẩu và mã tới trang thật ngay lập tức, lấy luôn phiên đăng nhập"
+       },
+       {
+        "html": "SMS, ứng dụng tạo mã, push",
+        "plain": "SMS, ứng dụng tạo mã, push"
+       },
+       {
+        "html": "FIDO2, passkey; kiểm tra tên miền",
+        "plain": "FIDO2, passkey; kiểm tra tên miền"
+       }
+      ],
+      [
+       {
+        "html": "Chiếm SIM (SIM swap)",
+        "plain": "Chiếm SIM (SIM swap)"
+       },
+       {
+        "html": "Giả chủ thuê bao để nhà mạng cấp lại SIM, nhận SMS thay nạn nhân",
+        "plain": "Giả chủ thuê bao để nhà mạng cấp lại SIM, nhận SMS thay nạn nhân"
+       },
+       {
+        "html": "SMS",
+        "plain": "SMS"
+       },
+       {
+        "html": "Dùng ứng dụng hoặc khóa bảo mật thay SMS",
+        "plain": "Dùng ứng dụng hoặc khóa bảo mật thay SMS"
+       }
+      ],
+      [
+       {
+        "html": "Lừa bộ phận hỗ trợ",
+        "plain": "Lừa bộ phận hỗ trợ"
+       },
+       {
+        "html": "Gọi helpdesk giả làm nhân viên \"mất điện thoại\", xin đặt lại MFA",
+        "plain": "Gọi helpdesk giả làm nhân viên \"mất điện thoại\", xin đặt lại MFA"
+       },
+       {
+        "html": "Mọi loại",
+        "plain": "Mọi loại"
+       },
+       {
+        "html": "Quy trình xác minh danh tính chặt khi khôi phục",
+        "plain": "Quy trình xác minh danh tính chặt khi khôi phục"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.4. Vì sao passkey chống được trang giả"
+    },
+    {
+     "t": "p",
+     "html": "Passkey dùng mật mã khóa công khai: thiết bị giữ khóa bí mật, website chỉ giữ khóa công khai. Khi đăng nhập, trình duyệt gắn chữ ký với đúng tên miền đang truy cập. Trang giả có tên miền khác nên không nhận được chữ ký dùng được, và người dùng cũng không có gì để \"đọc nhầm\" cho kẻ gian. Vì vậy CISA gọi FIDO là MFA chống lừa đảo và khuyến nghị chuyển dần sang loại này.",
+     "plain": "Passkey dùng mật mã khóa công khai: thiết bị giữ khóa bí mật, website chỉ giữ khóa công khai. Khi đăng nhập, trình duyệt gắn chữ ký với đúng tên miền đang truy cập. Trang giả có tên miền khác nên không nhận được chữ ký dùng được, và người dùng cũng không có gì để \"đọc nhầm\" cho kẻ gian. Vì vậy CISA gọi FIDO là MFA chống lừa đảo và khuyến nghị chuyển dần sang loại này."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Khôi phục tài khoản là mắt xích yếu.</strong> Nếu mất điện thoại mà chỉ cần gọi helpdesk nói tên là được đặt lại MFA, thì MFA mạnh đến đâu cũng vô ích. Cần mã khôi phục cất giữ an toàn, hoặc xác minh trực tiếp có quản lý xác nhận.",
+     "plain": "Khôi phục tài khoản là mắt xích yếu. Nếu mất điện thoại mà chỉ cần gọi helpdesk nói tên là được đặt lại MFA, thì MFA mạnh đến đâu cũng vô ích. Cần mã khôi phục cất giữ an toàn, hoặc xác minh trực tiếp có quản lý xác nhận."
+    },
+    {
+     "t": "h3",
+     "text": "2.5. Tình huống nhanh"
+    },
+    {
+     "t": "p",
+     "html": "<strong>21:00, điện thoại hiện 5 thông báo MFA liên tiếp trong khi mình không đăng nhập gì.</strong> → Bấm Từ chối, không duyệt \"cho nó im\", báo ngay đầu mối hỗ trợ, đổi mật khẩu theo hướng dẫn. Yêu cầu mình không tạo ra nghĩa là kẻ khác đã có mật khẩu.",
+     "plain": "21:00, điện thoại hiện 5 thông báo MFA liên tiếp trong khi mình không đăng nhập gì. → Bấm Từ chối, không duyệt \"cho nó im\", báo ngay đầu mối hỗ trợ, đổi mật khẩu theo hướng dẫn. Yêu cầu mình không tạo ra nghĩa là kẻ khác đã có mật khẩu."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lỡ bấm Chấp nhận rồi.</strong> → Báo ngay, dù là nửa đêm. CNTT cần khóa tài khoản, thu hồi phiên và gỡ mọi phương thức MFA lạ kẻ gian có thể đã thêm vào. Mỗi phút chậm là một phút kẻ gian có trong hệ thống.",
+     "plain": "Lỡ bấm Chấp nhận rồi. → Báo ngay, dù là nửa đêm. CNTT cần khóa tài khoản, thu hồi phiên và gỡ mọi phương thức MFA lạ kẻ gian có thể đã thêm vào. Mỗi phút chậm là một phút kẻ gian có trong hệ thống."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lưu ý:</strong> MFA giảm mạnh rủi ro nhưng không loại bỏ mọi rủi ro; không phương thức nào phù hợp mọi hệ thống.",
+     "plain": "Lưu ý: MFA giảm mạnh rủi ro nhưng không loại bỏ mọi rủi ro; không phương thức nào phù hợp mọi hệ thống.",
+     "callout": "note"
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Bài 3 – SSO và tài khoản dùng chung",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "SSO giúp người dùng đăng nhập ít hơn; tài khoản dùng chung giúp người dùng \"đỡ phải đăng nhập\". Cái thứ nhất nên có, cái thứ hai nên bỏ – và cả hai đều xoay quanh một câu hỏi: mỗi thao tác có truy được về một người cụ thể không.",
+     "plain": "SSO giúp người dùng đăng nhập ít hơn; tài khoản dùng chung giúp người dùng \"đỡ phải đăng nhập\". Cái thứ nhất nên có, cái thứ hai nên bỏ – và cả hai đều xoay quanh một câu hỏi: mỗi thao tác có truy được về một người cụ thể không."
+    },
+    {
+     "t": "h3",
+     "text": "3.1. SSO – đăng nhập một lần"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ví dụ đời thường:</strong> đến khu công nghiệp, bạn trình thẻ ở cổng chính một lần và được đeo vòng tay; các nhà xưởng bên trong tin chiếc vòng tay đó mà không kiểm tra thẻ lại.",
+     "plain": "Ví dụ đời thường: đến khu công nghiệp, bạn trình thẻ ở cổng chính một lần và được đeo vòng tay; các nhà xưởng bên trong tin chiếc vòng tay đó mà không kiểm tra thẻ lại.",
+     "callout": "example"
+    },
+    {
+     "t": "p",
+     "html": "Các thành phần:",
+     "plain": "Các thành phần:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhà cung cấp danh tính (IdP):</strong> nơi thực hiện xác thực, ví dụ Microsoft Entra ID hoặc hệ thống SSO nội bộ.",
+       "level": 0,
+       "plain": "Nhà cung cấp danh tính (IdP): nơi thực hiện xác thực, ví dụ Microsoft Entra ID hoặc hệ thống SSO nội bộ."
+      },
+      {
+       "html": "<strong>Ứng dụng tin cậy:</strong> phần mềm nghiệp vụ, email, Power BI… nhận kết quả xác thực từ IdP.",
+       "level": 0,
+       "plain": "Ứng dụng tin cậy: phần mềm nghiệp vụ, email, Power BI… nhận kết quả xác thực từ IdP."
+      },
+      {
+       "html": "<strong>Vé xác nhận (token):</strong> do IdP ký, gửi cho ứng dụng theo giao thức như SAML 2.0 hoặc OpenID Connect.",
+       "level": 0,
+       "plain": "Vé xác nhận (token): do IdP ký, gửi cho ứng dụng theo giao thức như SAML 2.0 hoặc OpenID Connect."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Luồng đơn giản: mở ứng dụng → ứng dụng chuyển sang trang đăng nhập của IdP → nhập mật khẩu + MFA → IdP cấp vé → ứng dụng kiểm tra chữ ký trên vé và cho vào → mở ứng dụng thứ hai thì không cần đăng nhập lại.",
+     "plain": "Luồng đơn giản: mở ứng dụng → ứng dụng chuyển sang trang đăng nhập của IdP → nhập mật khẩu + MFA → IdP cấp vé → ứng dụng kiểm tra chữ ký trên vé và cho vào → mở ứng dụng thứ hai thì không cần đăng nhập lại."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "SSO",
+        "plain": "SSO"
+       },
+       {
+        "html": "MFA",
+        "plain": "MFA"
+       }
+      ],
+      [
+       {
+        "html": "Giải quyết việc gì",
+        "plain": "Giải quyết việc gì"
+       },
+       {
+        "html": "Giảm số lần đăng nhập, giảm số mật khẩu phải nhớ",
+        "plain": "Giảm số lần đăng nhập, giảm số mật khẩu phải nhớ"
+       },
+       {
+        "html": "Tăng yêu cầu chứng minh danh tính",
+        "plain": "Tăng yêu cầu chứng minh danh tính"
+       }
+      ],
+      [
+       {
+        "html": "Lợi ích quản trị",
+        "plain": "Lợi ích quản trị"
+       },
+       {
+        "html": "Quản lý danh tính và chính sách tập trung; khóa một chỗ là khóa nhiều ứng dụng",
+        "plain": "Quản lý danh tính và chính sách tập trung; khóa một chỗ là khóa nhiều ứng dụng"
+       },
+       {
+        "html": "Giảm rủi ro khi mật khẩu bị lộ",
+        "plain": "Giảm rủi ro khi mật khẩu bị lộ"
+       }
+      ],
+      [
+       {
+        "html": "Điểm cần lưu ý",
+        "plain": "Điểm cần lưu ý"
+       },
+       {
+        "html": "Tài khoản trung tâm bị chiếm thì mất nhiều ứng dụng cùng lúc; IdP gặp sự cố thì nhiều ứng dụng ngừng",
+        "plain": "Tài khoản trung tâm bị chiếm thì mất nhiều ứng dụng cùng lúc; IdP gặp sự cố thì nhiều ứng dụng ngừng"
+       },
+       {
+        "html": "Vẫn cần bảo vệ thiết bị, phiên và quy trình khôi phục",
+        "plain": "Vẫn cần bảo vệ thiết bị, phiên và quy trình khôi phục"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Kết luận:</strong> SSO và MFA nên đi cùng nhau – SSO có MFA mạnh. SSO trả lời \"bạn là ai\", không trả lời \"bạn được làm gì\": phân quyền vẫn nằm ở từng ứng dụng theo ma trận buổi sáng. Khi khóa tài khoản ở IdP, ứng dụng nào còn tài khoản cục bộ riêng vẫn phải khóa riêng, và phiên đã cấp có thể còn hiệu lực một thời gian.",
+     "plain": "Kết luận: SSO và MFA nên đi cùng nhau – SSO có MFA mạnh. SSO trả lời \"bạn là ai\", không trả lời \"bạn được làm gì\": phân quyền vẫn nằm ở từng ứng dụng theo ma trận buổi sáng. Khi khóa tài khoản ở IdP, ứng dụng nào còn tài khoản cục bộ riêng vẫn phải khóa riêng, và phiên đã cấp có thể còn hiệu lực một thời gian."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Áp vào chương 4:</strong> nếu nv_c đăng nhập qua SSO, chiếm được nv_c là chiếm được cả email, OneDrive, hệ thống khách hàng của anh Cường. Điều này không có nghĩa SSO xấu; nó có nghĩa là MFA ở cửa SSO phải mạnh.",
+     "plain": "Áp vào chương 4: nếu nv_c đăng nhập qua SSO, chiếm được nv_c là chiếm được cả email, OneDrive, hệ thống khách hàng của anh Cường. Điều này không có nghĩa SSO xấu; nó có nghĩa là MFA ở cửa SSO phải mạnh."
+    },
+    {
+     "t": "h3",
+     "text": "3.2. Tài khoản dùng chung: bốn rủi ro"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Rủi ro",
+        "plain": "Rủi ro"
+       },
+       {
+        "html": "Giải thích",
+        "plain": "Giải thích"
+       },
+       {
+        "html": "Ví dụ trong chương 4",
+        "plain": "Ví dụ trong chương 4"
+       }
+      ],
+      [
+       {
+        "html": "Khó quy trách nhiệm",
+        "plain": "Khó quy trách nhiệm"
+       },
+       {
+        "html": "Một tên tài khoản không cho biết ai đã thao tác",
+        "plain": "Một tên tài khoản không cho biết ai đã thao tác"
+       },
+       {
+        "html": "Nhật ký ghi \"truc_ca đã xóa 20 phiếu\" – 12 người đều có thể là người xóa",
+        "plain": "Nhật ký ghi \"truc_ca đã xóa 20 phiếu\" – 12 người đều có thể là người xóa"
+       }
+      ],
+      [
+       {
+        "html": "Khó thu hồi từng người",
+        "plain": "Khó thu hồi từng người"
+       },
+       {
+        "html": "Người đã rời đi vẫn biết mật khẩu",
+        "plain": "Người đã rời đi vẫn biết mật khẩu"
+       },
+       {
+        "html": "Nhân viên chuyển công tác 6 tháng vẫn đăng nhập được",
+        "plain": "Nhân viên chuyển công tác 6 tháng vẫn đăng nhập được"
+       }
+      ],
+      [
+       {
+        "html": "Khó áp dụng MFA",
+        "plain": "Khó áp dụng MFA"
+       },
+       {
+        "html": "Mã MFA chỉ về một điện thoại",
+        "plain": "Mã MFA chỉ về một điện thoại"
+       },
+       {
+        "html": "Trưởng ca nghỉ phép, cả ca không đăng nhập được – nên người ta tắt MFA",
+        "plain": "Trưởng ca nghỉ phép, cả ca không đăng nhập được – nên người ta tắt MFA"
+       }
+      ],
+      [
+       {
+        "html": "Khó giới hạn quyền",
+        "plain": "Khó giới hạn quyền"
+       },
+       {
+        "html": "Mọi người cùng mức quyền cao nhất mà một người cần",
+        "plain": "Mọi người cùng mức quyền cao nhất mà một người cần"
+       },
+       {
+        "html": "Nhân viên mới có quyền xóa phiếu như trưởng ca",
+        "plain": "Nhân viên mới có quyền xóa phiếu như trưởng ca"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.3. Các loại tài khoản đặc biệt và cách quản lý đúng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Cách quản lý đúng",
+        "plain": "Cách quản lý đúng"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản người dùng dùng chung",
+        "plain": "Tài khoản người dùng dùng chung"
+       },
+       {
+        "html": "truc_ca, phongkd",
+        "plain": "truc_ca, phongkd"
+       },
+       {
+        "html": "Thay bằng tài khoản cá nhân + nhóm quyền (Thực hành 5)",
+        "plain": "Thay bằng tài khoản cá nhân + nhóm quyền (Thực hành 5)"
+       }
+      ],
+      [
+       {
+        "html": "Hộp thư chung",
+        "plain": "Hộp thư chung"
+       },
+       {
+        "html": "cskh@…, hotro@…",
+        "plain": "cskh@…, hotro@…"
+       },
+       {
+        "html": "Không chia sẻ mật khẩu; cấp quyền truy cập hộp thư chung cho từng tài khoản cá nhân để biết ai đã đọc, gửi",
+        "plain": "Không chia sẻ mật khẩu; cấp quyền truy cập hộp thư chung cho từng tài khoản cá nhân để biết ai đã đọc, gửi"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản dịch vụ",
+        "plain": "Tài khoản dịch vụ"
+       },
+       {
+        "html": "Phần mềm hóa đơn kết nối cơ sở dữ liệu",
+        "plain": "Phần mềm hóa đơn kết nối cơ sở dữ liệu"
+       },
+       {
+        "html": "Có người chịu trách nhiệm; không dùng để đăng nhập tay; quyền tối thiểu",
+        "plain": "Có người chịu trách nhiệm; không dùng để đăng nhập tay; quyền tối thiểu"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản khẩn cấp",
+        "plain": "Tài khoản khẩn cấp"
+       },
+       {
+        "html": "Quản trị dự phòng",
+        "plain": "Quản trị dự phòng"
+       },
+       {
+        "html": "Niêm phong, ghi lại mọi lần dùng",
+        "plain": "Niêm phong, ghi lại mọi lần dùng"
+       }
+      ],
+      [
+       {
+        "html": "Máy dùng chung",
+        "plain": "Máy dùng chung"
+       },
+       {
+        "html": "Quầy giao dịch, máy trực",
+        "plain": "Quầy giao dịch, máy trực"
+       },
+       {
+        "html": "Mỗi người đăng nhập tài khoản riêng; chuyển người dùng nhanh; tự khóa màn hình",
+        "plain": "Mỗi người đăng nhập tài khoản riêng; chuyển người dùng nhanh; tự khóa màn hình"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Vì sao tài khoản chung còn tồn tại, và cách gỡ:</strong>",
+     "plain": "Vì sao tài khoản chung còn tồn tại, và cách gỡ:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<em>Thiếu giấy phép phần mềm</em> → tính lại số giấy phép theo người dùng thật.",
+       "level": 0,
+       "plain": "Thiếu giấy phép phần mềm → tính lại số giấy phép theo người dùng thật."
+      },
+      {
+       "html": "<em>Sợ gián đoạn ca trực</em> → giao việc cho nhóm, không cho cá nhân.",
+       "level": 0,
+       "plain": "Sợ gián đoạn ca trực → giao việc cho nhóm, không cho cá nhân."
+      },
+      {
+       "html": "<em>Phần mềm cũ không hỗ trợ nhiều tài khoản</em> → kiểm soát bù: sổ giao ca ghi tên người dùng theo giờ, đổi mật khẩu khi có người rời đi, lên kế hoạch nâng cấp.",
+       "level": 0,
+       "plain": "Phần mềm cũ không hỗ trợ nhiều tài khoản → kiểm soát bù: sổ giao ca ghi tên người dùng theo giờ, đổi mật khẩu khi có người rời đi, lên kế hoạch nâng cấp."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Phân biệt: tài khoản dịch vụ (do phần mềm dùng để kết nối với nhau) khác với tài khoản con người dùng chung; loại này cần quản trị riêng theo nền tảng, không phải bỏ đi.",
+     "plain": "Phân biệt: tài khoản dịch vụ (do phần mềm dùng để kết nối với nhau) khác với tài khoản con người dùng chung; loại này cần quản trị riêng theo nền tảng, không phải bỏ đi."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu hỏi cho lớp trước khi giảng:</strong> \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\" Ghi lại các lý do để dùng trong Thực hành 5.",
+     "plain": "Câu hỏi cho lớp trước khi giảng: \"Ở đơn vị anh/chị có tài khoản nào nhiều người cùng dùng không? Vì sao lại dùng chung?\" Ghi lại các lý do để dùng trong Thực hành 5.",
+     "callout": "question"
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Bài 4 – Phiên làm việc",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau khi đăng nhập, hệ thống không hỏi lại mật khẩu ở mỗi trang mà dùng một \"vé vào cửa\" gọi là phiên. Ai cầm vé này là đang đăng nhập – không cần mật khẩu, không cần MFA. Vì vậy phiên có giá trị như mật khẩu.",
+     "plain": "Sau khi đăng nhập, hệ thống không hỏi lại mật khẩu ở mỗi trang mà dùng một \"vé vào cửa\" gọi là phiên. Ai cầm vé này là đang đăng nhập – không cần mật khẩu, không cần MFA. Vì vậy phiên có giá trị như mật khẩu."
+    },
+    {
+     "t": "h3",
+     "text": "4.1. Phiên là gì"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ví dụ đời thường:</strong> vé xem phim. Kiểm tra căn cước một lần lúc mua vé; vào rạp chỉ cần vé, ai cầm vé cũng vào được.",
+     "plain": "Ví dụ đời thường: vé xem phim. Kiểm tra căn cước một lần lúc mua vé; vào rạp chỉ cần vé, ai cầm vé cũng vào được.",
+     "callout": "example"
+    },
+    {
+     "t": "p",
+     "html": "Về kỹ thuật, sau khi đăng nhập, máy chủ cấp cho trình duyệt một chuỗi bí mật (mã phiên, thường lưu trong cookie, hoặc token). Mỗi yêu cầu tiếp theo, trình duyệt gửi kèm chuỗi này thay cho mật khẩu.",
+     "plain": "Về kỹ thuật, sau khi đăng nhập, máy chủ cấp cho trình duyệt một chuỗi bí mật (mã phiên, thường lưu trong cookie, hoặc token). Mỗi yêu cầu tiếp theo, trình duyệt gửi kèm chuỗi này thay cho mật khẩu."
+    },
+    {
+     "t": "p",
+     "html": "Vòng đời phiên: <strong>Xác thực → Tạo phiên → Sử dụng → Hết hạn hoặc bị thu hồi.</strong>",
+     "plain": "Vòng đời phiên: Xác thực → Tạo phiên → Sử dụng → Hết hạn hoặc bị thu hồi."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khái niệm",
+        "plain": "Khái niệm"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       }
+      ],
+      [
+       {
+        "html": "Hết hạn khi không hoạt động (idle timeout)",
+        "plain": "Hết hạn khi không hoạt động (idle timeout)"
+       },
+       {
+        "html": "Không thao tác một khoảng thời gian là bị đăng xuất",
+        "plain": "Không thao tác một khoảng thời gian là bị đăng xuất"
+       }
+      ],
+      [
+       {
+        "html": "Hết hạn tuyệt đối (absolute timeout)",
+        "plain": "Hết hạn tuyệt đối (absolute timeout)"
+       },
+       {
+        "html": "Dù đang dùng liên tục, sau một thời gian tối đa vẫn phải đăng nhập lại",
+        "plain": "Dù đang dùng liên tục, sau một thời gian tối đa vẫn phải đăng nhập lại"
+       }
+      ],
+      [
+       {
+        "html": "Thu hồi phiên (revoke)",
+        "plain": "Thu hồi phiên (revoke)"
+       },
+       {
+        "html": "Quản trị viên hoặc người dùng hủy mọi phiên đang mở (\"Đăng xuất khỏi mọi thiết bị\")",
+        "plain": "Quản trị viên hoặc người dùng hủy mọi phiên đang mở (\"Đăng xuất khỏi mọi thiết bị\")"
+       }
+      ],
+      [
+       {
+        "html": "\"Ghi nhớ đăng nhập\"",
+        "plain": "\"Ghi nhớ đăng nhập\""
+       },
+       {
+        "html": "Kéo dài phiên nhiều ngày – không chọn trên máy dùng chung",
+        "plain": "Kéo dài phiên nhiều ngày – không chọn trên máy dùng chung"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Thời gian hết hạn cụ thể tùy hệ thống và quy định đơn vị.",
+     "plain": "Thời gian hết hạn cụ thể tùy hệ thống và quy định đơn vị."
+    },
+    {
+     "t": "h3",
+     "text": "4.2. Những điểm cần phân biệt khi quản lý phiên"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Đóng tab hoặc tắt trình duyệt chưa chắc đã hủy phiên</strong> phía máy chủ.",
+       "level": 0,
+       "plain": "Đóng tab hoặc tắt trình duyệt chưa chắc đã hủy phiên phía máy chủ."
+      },
+      {
+       "html": "<strong>Đổi mật khẩu chưa chắc đăng xuất các phiên đang mở</strong> trên máy khác – kể cả phiên của kẻ gian.",
+       "level": 0,
+       "plain": "Đổi mật khẩu chưa chắc đăng xuất các phiên đang mở trên máy khác – kể cả phiên của kẻ gian."
+      },
+      {
+       "html": "<strong>Kẻ gian đã vào được có thể thêm phương thức MFA của riêng hắn</strong> để quay lại sau. Vì vậy khi nghi lộ tài khoản, CNTT phải kiểm tra và gỡ các phương thức MFA lạ, không chỉ đổi mật khẩu.",
+       "level": 0,
+       "plain": "Kẻ gian đã vào được có thể thêm phương thức MFA của riêng hắn để quay lại sau. Vì vậy khi nghi lộ tài khoản, CNTT phải kiểm tra và gỡ các phương thức MFA lạ, không chỉ đổi mật khẩu."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Đánh cắp phiên"
+    },
+    {
+     "t": "p",
+     "html": "Mã độc đánh cắp thông tin thường lây qua phần mềm crack, tiện ích trình duyệt lạ, file đính kèm. Nó sao chép cookie phiên từ trình duyệt rồi gửi cho kẻ gian, cho phép vào thẳng email, hệ thống mà không cần MFA – vì MFA đã được qua từ trước. Khi nghi máy nhiễm mã độc, đổi mật khẩu là chưa đủ: phải thu hồi mọi phiên và làm sạch máy.",
+     "plain": "Mã độc đánh cắp thông tin thường lây qua phần mềm crack, tiện ích trình duyệt lạ, file đính kèm. Nó sao chép cookie phiên từ trình duyệt rồi gửi cho kẻ gian, cho phép vào thẳng email, hệ thống mà không cần MFA – vì MFA đã được qua từ trước. Khi nghi máy nhiễm mã độc, đổi mật khẩu là chưa đủ: phải thu hồi mọi phiên và làm sạch máy."
+    },
+    {
+     "t": "h3",
+     "text": "4.4. Xử lý tình huống"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình huống",
+        "plain": "Tình huống"
+       },
+       {
+        "html": "Cách xử lý",
+        "plain": "Cách xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Rời máy, dù chỉ vài phút",
+        "plain": "Rời máy, dù chỉ vài phút"
+       },
+       {
+        "html": "Khóa máy (phím Windows + L)",
+        "plain": "Khóa máy (phím Windows + L)"
+       }
+      ],
+      [
+       {
+        "html": "Hết ca trực trên máy dùng chung",
+        "plain": "Hết ca trực trên máy dùng chung"
+       },
+       {
+        "html": "Đăng xuất tài khoản của mình; người ca sau đăng nhập tài khoản của họ",
+        "plain": "Đăng xuất tài khoản của mình; người ca sau đăng nhập tài khoản của họ"
+       }
+      ],
+      [
+       {
+        "html": "Thông báo MFA ngoài dự kiến",
+        "plain": "Thông báo MFA ngoài dự kiến"
+       },
+       {
+        "html": "Từ chối; báo đầu mối hỗ trợ",
+        "plain": "Từ chối; báo đầu mối hỗ trợ"
+       }
+      ],
+      [
+       {
+        "html": "Nghi bị lộ tài khoản",
+        "plain": "Nghi bị lộ tài khoản"
+       },
+       {
+        "html": "Báo ngay; đổi mật khẩu theo hướng dẫn; yêu cầu thu hồi mọi phiên và kiểm tra phương thức MFA lạ",
+        "plain": "Báo ngay; đổi mật khẩu theo hướng dẫn; yêu cầu thu hồi mọi phiên và kiểm tra phương thức MFA lạ"
+       }
+      ],
+      [
+       {
+        "html": "Điều chuyển, nghỉ việc",
+        "plain": "Điều chuyển, nghỉ việc"
+       },
+       {
+        "html": "Thu hồi quyền và phiên ở tất cả ứng dụng liên quan",
+        "plain": "Thu hồi quyền và phiên ở tất cả ứng dụng liên quan"
+       }
+      ],
+      [
+       {
+        "html": "Dùng máy nơi công cộng (khách sạn, quán net)",
+        "plain": "Dùng máy nơi công cộng (khách sạn, quán net)"
+       },
+       {
+        "html": "Hạn chế đăng nhập hệ thống công việc; nếu bắt buộc, không lưu mật khẩu, đăng xuất khi xong",
+        "plain": "Hạn chế đăng nhập hệ thống công việc; nếu bắt buộc, không lưu mật khẩu, đăng xuất khi xong"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.5. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Rèn thói quen Windows + L mỗi khi đứng dậy.",
+       "level": 0,
+       "plain": "Rèn thói quen Windows + L mỗi khi đứng dậy."
+      },
+      {
+       "html": "Không chọn \"Ghi nhớ đăng nhập\" trên máy dùng chung.",
+       "level": 0,
+       "plain": "Không chọn \"Ghi nhớ đăng nhập\" trên máy dùng chung."
+      },
+      {
+       "html": "Thỉnh thoảng mở danh sách thiết bị đang đăng nhập của tài khoản email công việc; thấy thiết bị lạ thì báo.",
+       "level": 0,
+       "plain": "Thỉnh thoảng mở danh sách thiết bị đang đăng nhập của tài khoản email công việc; thấy thiết bị lạ thì báo."
+      },
+      {
+       "html": "Không cài phần mềm crack, tiện ích trình duyệt không rõ nguồn trên máy dùng cho công việc.",
+       "level": 0,
+       "plain": "Không cài phần mềm crack, tiện ích trình duyệt không rõ nguồn trên máy dùng cho công việc."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Đã đổi mật khẩu rồi, yên tâm.\" → Phiên cũ và phương thức MFA kẻ gian đã thêm vẫn còn. Chương 9 sẽ cho thấy kẻ gian làm đúng điều này lúc 02:17.",
+     "plain": "Hiểu nhầm hay gặp: \"Đã đổi mật khẩu rồi, yên tâm.\" → Phiên cũ và phương thức MFA kẻ gian đã thêm vẫn còn. Chương 9 sẽ cho thấy kẻ gian làm đúng điều này lúc 02:17.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Thực hành 5 – Thay tài khoản dùng chung (50 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "h3",
+     "text": "Tình huống (chương 4)"
+    },
+    {
+     "t": "p",
+     "html": "Tổ tổng đài Điện lực X có 3 ca trực, mỗi ca 4 người. Cả 12 người dùng chung tài khoản truc_ca để tiếp nhận và cập nhật yêu cầu khách hàng. Mật khẩu dán trên viền màn hình. MFA của truc_ca đã bị tắt vì \"mã chỉ về điện thoại trưởng ca\". Tài khoản có quyền xóa phiếu vì trưởng ca cần quyền này. Tháng trước, 20 phiếu bị xóa và không ai biết ai xóa.",
+     "plain": "Tổ tổng đài Điện lực X có 3 ca trực, mỗi ca 4 người. Cả 12 người dùng chung tài khoản truc_ca để tiếp nhận và cập nhật yêu cầu khách hàng. Mật khẩu dán trên viền màn hình. MFA của truc_ca đã bị tắt vì \"mã chỉ về điện thoại trưởng ca\". Tài khoản có quyền xóa phiếu vì trưởng ca cần quyền này. Tháng trước, 20 phiếu bị xóa và không ai biết ai xóa."
+    },
+    {
+     "t": "h3",
+     "text": "Nhiệm vụ"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Thiết kế lại bằng tài khoản cá nhân và nhóm quyền.",
+       "level": 0,
+       "plain": "Thiết kế lại bằng tài khoản cá nhân và nhóm quyền."
+      },
+      {
+       "html": "Chọn loại MFA và quyết định có dùng SSO không.",
+       "level": 0,
+       "plain": "Chọn loại MFA và quyết định có dùng SSO không."
+      },
+      {
+       "html": "Giải bài toán ca trực: khi một người vắng, người khác vẫn làm được việc mà không dùng chung tài khoản.",
+       "level": 0,
+       "plain": "Giải bài toán ca trực: khi một người vắng, người khác vẫn làm được việc mà không dùng chung tài khoản."
+      },
+      {
+       "html": "Viết checklist: cấp mới – thay vị trí – thu hồi quyền và phiên.",
+       "level": 0,
+       "plain": "Viết checklist: cấp mới – thay vị trí – thu hồi quyền và phiên."
+      },
+      {
+       "html": "Đề xuất cấu hình MFA cho toàn Điện lực X (không chỉ tổ trực).",
+       "level": 0,
+       "plain": "Đề xuất cấu hình MFA cho toàn Điện lực X (không chỉ tổ trực)."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Bài cần nộp:</strong> (1) sơ đồ tài khoản cá nhân – vai trò – ứng dụng; (2) checklist vòng đời tài khoản; (3) một đoạn đề xuất MFA gửi lãnh đạo. Dùng mẫu C5.",
+     "plain": "Bài cần nộp: (1) sơ đồ tài khoản cá nhân – vai trò – ứng dụng; (2) checklist vòng đời tài khoản; (3) một đoạn đề xuất MFA gửi lãnh đạo. Dùng mẫu C5."
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án gợi ý",
+     "reveal": "m04-th5"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Hạng mục",
+        "plain": "Hạng mục"
+       },
+       {
+        "html": "Phương án",
+        "plain": "Phương án"
+       }
+      ],
+      [
+       {
+        "html": "Tài khoản",
+        "plain": "Tài khoản"
+       },
+       {
+        "html": "Mỗi người một tài khoản cá nhân. Vô hiệu hóa truc_ca, gỡ tờ giấy dán mật khẩu",
+        "plain": "Mỗi người một tài khoản cá nhân. Vô hiệu hóa truc_ca, gỡ tờ giấy dán mật khẩu"
+       }
+      ],
+      [
+       {
+        "html": "Nhóm quyền",
+        "plain": "Nhóm quyền"
+       },
+       {
+        "html": "Nhóm \"Trực ca\": xem, tạo, cập nhật phiếu. Nhóm \"Trưởng ca\": thêm quyền xóa, hủy phiếu, có lưu vết và ghi lý do",
+        "plain": "Nhóm \"Trực ca\": xem, tạo, cập nhật phiếu. Nhóm \"Trưởng ca\": thêm quyền xóa, hủy phiếu, có lưu vết và ghi lý do"
+       }
+      ],
+      [
+       {
+        "html": "Ca trực",
+        "plain": "Ca trực"
+       },
+       {
+        "html": "Phiếu giao cho nhóm, không chỉ cho cá nhân, nên người vắng thì người khác trong nhóm vẫn xử lý được",
+        "plain": "Phiếu giao cho nhóm, không chỉ cho cá nhân, nên người vắng thì người khác trong nhóm vẫn xử lý được"
+       }
+      ],
+      [
+       {
+        "html": "Máy trực dùng chung",
+        "plain": "Máy trực dùng chung"
+       },
+       {
+        "html": "Mỗi người đăng nhập tài khoản của mình khi nhận ca, đăng xuất khi giao ca; khóa màn hình tự động sau vài phút không thao tác",
+        "plain": "Mỗi người đăng nhập tài khoản của mình khi nhận ca, đăng xuất khi giao ca; khóa màn hình tự động sau vài phút không thao tác"
+       }
+      ],
+      [
+       {
+        "html": "MFA",
+        "plain": "MFA"
+       },
+       {
+        "html": "MFA cá nhân trên điện thoại của từng người; bật khớp số; với người không dùng điện thoại thông minh thì dùng khóa bảo mật",
+        "plain": "MFA cá nhân trên điện thoại của từng người; bật khớp số; với người không dùng điện thoại thông minh thì dùng khóa bảo mật"
+       }
+      ],
+      [
+       {
+        "html": "SSO",
+        "plain": "SSO"
+       },
+       {
+        "html": "Sử dụng SSO của đơn vị nếu đã triển khai; khi thu hồi truy cập, kiểm tra quyền và phiên tại các ứng dụng liên quan",
+        "plain": "Sử dụng SSO của đơn vị nếu đã triển khai; khi thu hồi truy cập, kiểm tra quyền và phiên tại các ứng dụng liên quan"
+       }
+      ],
+      [
+       {
+        "html": "Thu hồi",
+        "plain": "Thu hồi"
+       },
+       {
+        "html": "Nghỉ việc, điều chuyển: khóa tài khoản, gỡ khỏi nhóm, thu hồi phiên, kiểm tra lại",
+        "plain": "Nghỉ việc, điều chuyển: khóa tài khoản, gỡ khỏi nhóm, thu hồi phiên, kiểm tra lại"
+       }
+      ],
+      [
+       {
+        "html": "Phần mềm cũ chưa hỗ trợ nhiều tài khoản",
+        "plain": "Phần mềm cũ chưa hỗ trợ nhiều tài khoản"
+       },
+       {
+        "html": "Kiểm soát bù: sổ giao ca ghi ai dùng từ mấy giờ đến mấy giờ; đổi mật khẩu khi có người rời tổ; kế hoạch nâng cấp có hạn",
+        "plain": "Kiểm soát bù: sổ giao ca ghi ai dùng từ mấy giờ đến mấy giờ; đổi mật khẩu khi có người rời tổ; kế hoạch nâng cấp có hạn"
+       }
+      ]
+     ],
+     "reveal": "m04-th5"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Checklist vòng đời tài khoản mẫu:</strong>",
+     "plain": "Checklist vòng đời tài khoản mẫu:",
+     "reveal": "m04-th5"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Cấp mới: có quyết định, tài khoản cá nhân, bật MFA, gán nhóm theo ma trận, người duyệt ký.",
+       "level": 0,
+       "plain": "☐ Cấp mới: có quyết định, tài khoản cá nhân, bật MFA, gán nhóm theo ma trận, người duyệt ký."
+      },
+      {
+       "html": "☐ Thay vị trí: báo cáo quyền trước, thu hồi quyền cũ, cấp quyền mới, báo cáo quyền sau.",
+       "level": 0,
+       "plain": "☐ Thay vị trí: báo cáo quyền trước, thu hồi quyền cũ, cấp quyền mới, báo cáo quyền sau."
+      },
+      {
+       "html": "☐ Thu hồi: khóa tài khoản đúng ngày, thu hồi phiên trên mọi ứng dụng, gỡ phương thức MFA, thu thiết bị, xác nhận đã làm.",
+       "level": 0,
+       "plain": "☐ Thu hồi: khóa tài khoản đúng ngày, thu hồi phiên trên mọi ứng dụng, gỡ phương thức MFA, thu thiết bị, xác nhận đã làm."
+      }
+     ],
+     "reveal": "m04-th5"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Đoạn đề xuất MFA mẫu:</strong> \"Đề nghị bật tính năng khớp số cho toàn bộ tài khoản của Điện lực X trong tháng này, và lên kế hoạch chuyển tài khoản quản trị, tài khoản có quyền xuất dữ liệu khách hàng sang passkey. Lý do: MFA dạng Chấp nhận / Từ chối hiện nay có thể bị vượt chỉ bằng một cú bấm nhầm.\"",
+     "plain": "Đoạn đề xuất MFA mẫu: \"Đề nghị bật tính năng khớp số cho toàn bộ tài khoản của Điện lực X trong tháng này, và lên kế hoạch chuyển tài khoản quản trị, tài khoản có quyền xuất dữ liệu khách hàng sang passkey. Lý do: MFA dạng Chấp nhận / Từ chối hiện nay có thể bị vượt chỉ bằng một cú bấm nhầm.\"",
+     "reveal": "m04-th5"
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chí đánh giá"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Truy vết được từng người.",
+       "level": 0,
+       "plain": "Truy vết được từng người."
+      },
+      {
+       "html": "Công việc không bị gián đoạn khi một người vắng.",
+       "level": 0,
+       "plain": "Công việc không bị gián đoạn khi một người vắng."
+      },
+      {
+       "html": "Quyền cao (xóa phiếu) tách riêng.",
+       "level": 0,
+       "plain": "Quyền cao (xóa phiếu) tách riêng."
+      },
+      {
+       "html": "Có bước thu hồi phiên, không chỉ khóa tài khoản.",
+       "level": 0,
+       "plain": "Có bước thu hồi phiên, không chỉ khóa tài khoản."
+      }
+     ]
+    }
+   ],
+   "id": "s9",
+   "activity": "m04-th5"
+  },
+  {
+   "title": "Quay lại tình huống: trả lời bốn câu hỏi của chương 4",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Câu trả lời của lớp",
+        "plain": "Câu trả lời của lớp"
+       },
+       {
+        "html": "Bài",
+        "plain": "Bài"
+       }
+      ],
+      [
+       {
+        "html": "Mật khẩu của anh Cường có mạnh không?",
+        "plain": "Mật khẩu của anh Cường có mạnh không?"
+       },
+       {
+        "html": "Không: ngắn, có quy luật, dùng lại ở trang mua sắm. Trang đó lộ thì kẻ gian thử vài biến thể là khớp",
+        "plain": "Không: ngắn, có quy luật, dùng lại ở trang mua sắm. Trang đó lộ thì kẻ gian thử vài biến thể là khớp"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Có mật khẩu rồi thì kẻ gian còn thiếu gì?",
+        "plain": "Có mật khẩu rồi thì kẻ gian còn thiếu gì?"
+       },
+       {
+        "html": "Một cú bấm Chấp nhận trên điện thoại của anh Cường. Khớp số hoặc passkey sẽ lấy đi thứ này",
+        "plain": "Một cú bấm Chấp nhận trên điện thoại của anh Cường. Khớp số hoặc passkey sẽ lấy đi thứ này"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Nếu dùng SSO thì sao?",
+        "plain": "Nếu dùng SSO thì sao?"
+       },
+       {
+        "html": "Tài khoản nv_c bị chiếm có thể làm lộ quyền truy cập các ứng dụng liên kết SSO; cần bảo vệ tài khoản trung tâm và kiểm tra phiên tại từng ứng dụng",
+        "plain": "Tài khoản nv_c bị chiếm có thể làm lộ quyền truy cập các ứng dụng liên kết SSO; cần bảo vệ tài khoản trung tâm và kiểm tra phiên tại từng ứng dụng"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Ai xóa 20 phiếu, bỏ truc_ca thế nào?",
+        "plain": "Ai xóa 20 phiếu, bỏ truc_ca thế nào?"
+       },
+       {
+        "html": "Không thể biết – đó là rủi ro của tài khoản chung. Tài khoản cá nhân + nhóm quyền + giao việc theo nhóm (Thực hành 5)",
+        "plain": "Không thể biết – đó là rủi ro của tài khoản chung. Tài khoản cá nhân + nhóm quyền + giao việc theo nhóm (Thực hành 5)"
+       },
+       {
+        "html": "3, 4",
+        "plain": "3, 4"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lớp đã sửa được:</strong> phương án bỏ truc_ca; đề xuất bật khớp số đã được viết.",
+     "plain": "Lớp đã sửa được: phương án bỏ truc_ca; đề xuất bật khớp số đã được viết."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Còn bỏ ngỏ – ghi lên tờ \"Việc hẹn sửa sau\":</strong> đổi cấu hình MFA sang khớp số được hẹn \"sau khi xin ý kiến các đơn vị\". Anh Cường nói sẽ đổi mật khẩu \"cuối tuần\".",
+     "plain": "Còn bỏ ngỏ – ghi lên tờ \"Việc hẹn sửa sau\": đổi cấu hình MFA sang khớp số được hẹn \"sau khi xin ý kiến các đơn vị\". Anh Cường nói sẽ đổi mật khẩu \"cuối tuần\"."
+    },
+    {
+     "t": "p",
+     "html": "Ngày mai lớp chuyển sang câu hỏi khác: nếu dữ liệu đã rời khỏi hệ thống – bằng email, bằng link, bằng file xuất – thì nó còn được bảo vệ không?",
+     "plain": "Ngày mai lớp chuyển sang câu hỏi khác: nếu dữ liệu đã rời khỏi hệ thống – bằng email, bằng link, bằng file xuất – thì nó còn được bảo vệ không?"
+    }
+   ],
+   "id": "s10"
+  },
+  {
+   "title": "Áp dụng tại đơn vị",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Kiểm tra mật khẩu công việc của mình có trùng hoặc gần giống mật khẩu ở nơi khác không; nếu có, đổi ngay sang một cụm từ dài riêng.",
+       "level": 0,
+       "plain": "☐ Kiểm tra mật khẩu công việc của mình có trùng hoặc gần giống mật khẩu ở nơi khác không; nếu có, đổi ngay sang một cụm từ dài riêng."
+      },
+      {
+       "html": "☐ Tập phản xạ: thông báo MFA mà mình không vừa đăng nhập thì luôn bấm Từ chối và báo.",
+       "level": 0,
+       "plain": "☐ Tập phản xạ: thông báo MFA mà mình không vừa đăng nhập thì luôn bấm Từ chối và báo."
+      },
+      {
+       "html": "☐ Liệt kê các tài khoản dùng chung ở phòng mình và gửi danh sách cho CNTT.",
+       "level": 0,
+       "plain": "☐ Liệt kê các tài khoản dùng chung ở phòng mình và gửi danh sách cho CNTT."
+      },
+      {
+       "html": "☐ Hỏi CNTT: MFA của đơn vị đã bật khớp số chưa? Quy trình khi mất điện thoại là gì?",
+       "level": 0,
+       "plain": "☐ Hỏi CNTT: MFA của đơn vị đã bật khớp số chưa? Quy trình khi mất điện thoại là gì?"
+      },
+      {
+       "html": "☐ Lưu số helpdesk chính thức vào danh bạ điện thoại (sẽ dùng ở buổi 8).",
+       "level": 0,
+       "plain": "☐ Lưu số helpdesk chính thức vào danh bạ điện thoại (sẽ dùng ở buổi 8)."
+      }
+     ]
+    }
+   ],
+   "id": "s11"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mật khẩu dài quan trọng hơn phức tạp; mật khẩu có quy luật (đổi số năm) rất dễ đoán.",
+       "level": 0,
+       "plain": "Mật khẩu dài quan trọng hơn phức tạp; mật khẩu có quy luật (đổi số năm) rất dễ đoán."
+      },
+      {
+       "html": "Tuyệt đối không dùng lại mật khẩu công việc ở bất kỳ đâu; trang ngoài bị lộ là tài khoản công việc bị thử.",
+       "level": 0,
+       "plain": "Tuyệt đối không dùng lại mật khẩu công việc ở bất kỳ đâu; trang ngoài bị lộ là tài khoản công việc bị thử."
+      },
+      {
+       "html": "MFA là hai yếu tố khác loại; mật khẩu + câu hỏi bí mật không phải MFA.",
+       "level": 0,
+       "plain": "MFA là hai yếu tố khác loại; mật khẩu + câu hỏi bí mật không phải MFA."
+      },
+      {
+       "html": "MFA có loại mạnh, loại yếu: push thường có thể bị vượt bằng một cú bấm; khớp số mạnh hơn; passkey chống lừa đảo theo thiết kế.",
+       "level": 0,
+       "plain": "MFA có loại mạnh, loại yếu: push thường có thể bị vượt bằng một cú bấm; khớp số mạnh hơn; passkey chống lừa đảo theo thiết kế."
+      },
+      {
+       "html": "Không bao giờ đọc mã OTP cho ai và không duyệt yêu cầu mình không tạo ra; lỡ bấm thì báo ngay.",
+       "level": 0,
+       "plain": "Không bao giờ đọc mã OTP cho ai và không duyệt yêu cầu mình không tạo ra; lỡ bấm thì báo ngay."
+      },
+      {
+       "html": "SSO giảm số lần đăng nhập, MFA tăng mức chứng minh danh tính; hai thứ nên đi cùng nhau.",
+       "level": 0,
+       "plain": "SSO giảm số lần đăng nhập, MFA tăng mức chứng minh danh tính; hai thứ nên đi cùng nhau."
+      },
+      {
+       "html": "Tài khoản dùng chung làm mất khả năng truy vết, thu hồi, MFA và giới hạn quyền; thay bằng tài khoản cá nhân và giao việc theo nhóm.",
+       "level": 0,
+       "plain": "Tài khoản dùng chung làm mất khả năng truy vết, thu hồi, MFA và giới hạn quyền; thay bằng tài khoản cá nhân và giao việc theo nhóm."
+      },
+      {
+       "html": "Phiên có giá trị như mật khẩu; nghi lộ tài khoản thì thu hồi phiên và gỡ MFA lạ, không chỉ đổi mật khẩu.",
+       "level": 0,
+       "plain": "Phiên có giá trị như mật khẩu; nghi lộ tài khoản thì thu hồi phiên và gỡ MFA lạ, không chỉ đổi mật khẩu."
+      }
+     ]
+    }
+   ],
+   "id": "s12"
+  },
+  {
+   "title": "Câu hỏi ôn tập",
+   "kind": "review",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Đáp án",
+        "plain": "Đáp án"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Theo NIST SP 800-63B Rev.4, mật khẩu là yếu tố duy nhất thì tối thiểu bao nhiêu ký tự?",
+        "plain": "Theo NIST SP 800-63B Rev.4, mật khẩu là yếu tố duy nhất thì tối thiểu bao nhiêu ký tự?"
+       },
+       {
+        "html": "15 ký tự",
+        "plain": "15 ký tự"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Vì sao bắt đổi mật khẩu định kỳ lại có thể làm yếu đi?",
+        "plain": "Vì sao bắt đổi mật khẩu định kỳ lại có thể làm yếu đi?"
+       },
+       {
+        "html": "Người dùng tạo mật khẩu có quy luật (đổi số năm) hoặc ghi ra giấy",
+        "plain": "Người dùng tạo mật khẩu có quy luật (đổi số năm) hoặc ghi ra giấy"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Credential stuffing là gì?",
+        "plain": "Credential stuffing là gì?"
+       },
+       {
+        "html": "Dùng cặp email – mật khẩu lộ từ trang khác để thử vào hệ thống công ty",
+        "plain": "Dùng cặp email – mật khẩu lộ từ trang khác để thử vào hệ thống công ty"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Mật khẩu + mã PIN có phải MFA không?",
+        "plain": "Mật khẩu + mã PIN có phải MFA không?"
+       },
+       {
+        "html": "Không, cùng loại \"biết\"",
+        "plain": "Không, cùng loại \"biết\""
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Phương thức MFA nào chống lừa đảo theo thiết kế?",
+        "plain": "Phương thức MFA nào chống lừa đảo theo thiết kế?"
+       },
+       {
+        "html": "FIDO2, passkey",
+        "plain": "FIDO2, passkey"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Khớp số (number matching) chống được kiểu tấn công nào?",
+        "plain": "Khớp số (number matching) chống được kiểu tấn công nào?"
+       },
+       {
+        "html": "Dồn dập thông báo và bấm Chấp nhận theo phản xạ",
+        "plain": "Dồn dập thông báo và bấm Chấp nhận theo phản xạ"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Nhận 5 thông báo MFA lạ lúc nửa đêm thì làm gì?",
+        "plain": "Nhận 5 thông báo MFA lạ lúc nửa đêm thì làm gì?"
+       },
+       {
+        "html": "Từ chối, báo hỗ trợ, đổi mật khẩu và thu hồi phiên theo hướng dẫn",
+        "plain": "Từ chối, báo hỗ trợ, đổi mật khẩu và thu hồi phiên theo hướng dẫn"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "SSO có thay được MFA không?",
+        "plain": "SSO có thay được MFA không?"
+       },
+       {
+        "html": "Không; SSO giảm số lần đăng nhập, MFA tăng mức chứng minh danh tính",
+        "plain": "Không; SSO giảm số lần đăng nhập, MFA tăng mức chứng minh danh tính"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Nêu hai rủi ro của tài khoản dùng chung",
+        "plain": "Nêu hai rủi ro của tài khoản dùng chung"
+       },
+       {
+        "html": "Khó quy trách nhiệm, khó thu hồi, khó MFA, khó giới hạn quyền",
+        "plain": "Khó quy trách nhiệm, khó thu hồi, khó MFA, khó giới hạn quyền"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Vì sao đổi mật khẩu chưa đủ khi nghi tài khoản bị chiếm?",
+        "plain": "Vì sao đổi mật khẩu chưa đủ khi nghi tài khoản bị chiếm?"
+       },
+       {
+        "html": "Phiên đang mở và phương thức MFA kẻ gian thêm vào vẫn còn",
+        "plain": "Phiên đang mở và phương thức MFA kẻ gian thêm vào vẫn còn"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "Mã độc đánh cắp phiên vượt qua MFA bằng cách nào?",
+        "plain": "Mã độc đánh cắp phiên vượt qua MFA bằng cách nào?"
+       },
+       {
+        "html": "Lấy cookie phiên sau khi người dùng đã qua MFA",
+        "plain": "Lấy cookie phiên sau khi người dùng đã qua MFA"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s13"
+  },
+  {
+   "title": "Thuật ngữ của buổi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Nghĩa dễ hiểu",
+        "plain": "Nghĩa dễ hiểu"
+       }
+      ],
+      [
+       {
+        "html": "Credential stuffing",
+        "plain": "Credential stuffing"
+       },
+       {
+        "html": "Thử mật khẩu lộ từ trang khác vào hệ thống công ty",
+        "plain": "Thử mật khẩu lộ từ trang khác vào hệ thống công ty"
+       }
+      ],
+      [
+       {
+        "html": "Password spraying",
+        "plain": "Password spraying"
+       },
+       {
+        "html": "Thử vài mật khẩu phổ biến trên rất nhiều tài khoản",
+        "plain": "Thử vài mật khẩu phổ biến trên rất nhiều tài khoản"
+       }
+      ],
+      [
+       {
+        "html": "Infostealer",
+        "plain": "Infostealer"
+       },
+       {
+        "html": "Mã độc lấy mật khẩu, cookie lưu trong trình duyệt",
+        "plain": "Mã độc lấy mật khẩu, cookie lưu trong trình duyệt"
+       }
+      ],
+      [
+       {
+        "html": "MFA",
+        "plain": "MFA"
+       },
+       {
+        "html": "Xác thực bằng ít nhất hai loại yếu tố khác nhau (biết, có, là)",
+        "plain": "Xác thực bằng ít nhất hai loại yếu tố khác nhau (biết, có, là)"
+       }
+      ],
+      [
+       {
+        "html": "OTP",
+        "plain": "OTP"
+       },
+       {
+        "html": "Mã dùng một lần",
+        "plain": "Mã dùng một lần"
+       }
+      ],
+      [
+       {
+        "html": "Push",
+        "plain": "Push"
+       },
+       {
+        "html": "Thông báo đẩy \"Chấp nhận / Từ chối\" trên điện thoại",
+        "plain": "Thông báo đẩy \"Chấp nhận / Từ chối\" trên điện thoại"
+       }
+      ],
+      [
+       {
+        "html": "Khớp số",
+        "plain": "Khớp số"
+       },
+       {
+        "html": "Phải gõ vào điện thoại con số đang hiện trên màn hình đăng nhập",
+        "plain": "Phải gõ vào điện thoại con số đang hiện trên màn hình đăng nhập"
+       }
+      ],
+      [
+       {
+        "html": "MFA fatigue",
+        "plain": "MFA fatigue"
+       },
+       {
+        "html": "Dồn dập yêu cầu MFA để nạn nhân bấm bừa",
+        "plain": "Dồn dập yêu cầu MFA để nạn nhân bấm bừa"
+       }
+      ],
+      [
+       {
+        "html": "Passkey, FIDO2",
+        "plain": "Passkey, FIDO2"
+       },
+       {
+        "html": "Cách đăng nhập không mật khẩu, gắn với đúng tên miền, chống trang giả",
+        "plain": "Cách đăng nhập không mật khẩu, gắn với đúng tên miền, chống trang giả"
+       }
+      ],
+      [
+       {
+        "html": "SIM swap",
+        "plain": "SIM swap"
+       },
+       {
+        "html": "Chiếm số điện thoại bằng cách lừa nhà mạng cấp lại SIM",
+        "plain": "Chiếm số điện thoại bằng cách lừa nhà mạng cấp lại SIM"
+       }
+      ],
+      [
+       {
+        "html": "SSO, IdP",
+        "plain": "SSO, IdP"
+       },
+       {
+        "html": "Đăng nhập một lần; nhà cung cấp danh tính nơi thực hiện xác thực",
+        "plain": "Đăng nhập một lần; nhà cung cấp danh tính nơi thực hiện xác thực"
+       }
+      ],
+      [
+       {
+        "html": "Phiên",
+        "plain": "Phiên"
+       },
+       {
+        "html": "\"Vé vào cửa\" hệ thống cấp sau khi đăng nhập",
+        "plain": "\"Vé vào cửa\" hệ thống cấp sau khi đăng nhập"
+       }
+      ],
+      [
+       {
+        "html": "Thu hồi phiên",
+        "plain": "Thu hồi phiên"
+       },
+       {
+        "html": "Hủy mọi phiên đang mở của một tài khoản",
+        "plain": "Hủy mọi phiên đang mở của một tài khoản"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s14"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "h3",
+     "text": "Lịch trình"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       }
+      ],
+      [
+       {
+        "html": "13:30–13:40",
+        "plain": "13:30–13:40"
+       },
+       {
+        "html": "Nhắc ma trận quyền buổi sáng; kể chương 4",
+        "plain": "Nhắc ma trận quyền buổi sáng; kể chương 4"
+       },
+       {
+        "html": "Kể chuyện",
+        "plain": "Kể chuyện"
+       }
+      ],
+      [
+       {
+        "html": "13:40–14:05",
+        "plain": "13:40–14:05"
+       },
+       {
+        "html": "Bài 1 – Mật khẩu",
+        "plain": "Bài 1 – Mật khẩu"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "14:05–14:40",
+        "plain": "14:05–14:40"
+       },
+       {
+        "html": "Bài 2 – MFA, minh họa trên điện thoại",
+        "plain": "Bài 2 – MFA, minh họa trên điện thoại"
+       },
+       {
+        "html": "Giảng, minh họa",
+        "plain": "Giảng, minh họa"
+       }
+      ],
+      [
+       {
+        "html": "14:40–14:55",
+        "plain": "14:40–14:55"
+       },
+       {
+        "html": "Nghỉ",
+        "plain": "Nghỉ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "14:55–15:25",
+        "plain": "14:55–15:25"
+       },
+       {
+        "html": "Bài 3 – SSO và tài khoản dùng chung",
+        "plain": "Bài 3 – SSO và tài khoản dùng chung"
+       },
+       {
+        "html": "Giảng, thảo luận",
+        "plain": "Giảng, thảo luận"
+       }
+      ],
+      [
+       {
+        "html": "15:25–15:50",
+        "plain": "15:25–15:50"
+       },
+       {
+        "html": "Bài 4 – Phiên làm việc",
+        "plain": "Bài 4 – Phiên làm việc"
+       },
+       {
+        "html": "Giảng, tình huống",
+        "plain": "Giảng, tình huống"
+       }
+      ],
+      [
+       {
+        "html": "15:50–16:40",
+        "plain": "15:50–16:40"
+       },
+       {
+        "html": "Thực hành 5",
+        "plain": "Thực hành 5"
+       },
+       {
+        "html": "Cá nhân",
+        "plain": "Cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "16:40–17:00",
+        "plain": "16:40–17:00"
+       },
+       {
+        "html": "Quay lại tình huống, ghi tờ A0, tổng kết ngày 2",
+        "plain": "Quay lại tình huống, ghi tờ A0, tổng kết ngày 2"
+       },
+       {
+        "html": "Cả lớp",
+        "plain": "Cả lớp"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý giảng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Giữ bí mật:</strong> giảng viên biết mật khẩu cũ của anh Cường đã nằm trong danh sách bị rao bán, nhưng chưa nói với lớp. Chi tiết này chỉ lộ ra ở buổi 10.",
+       "level": 0,
+       "plain": "Giữ bí mật: giảng viên biết mật khẩu cũ của anh Cường đã nằm trong danh sách bị rao bán, nhưng chưa nói với lớp. Chi tiết này chỉ lộ ra ở buổi 10."
+      },
+      {
+       "html": "<strong>Minh họa MFA:</strong> nếu có thể, cho lớp xem màn hình push thường và push có khớp số trên điện thoại thật của giảng viên (tài khoản thử). Học viên nhớ hình ảnh lâu hơn lời giảng.",
+       "level": 0,
+       "plain": "Minh họa MFA: nếu có thể, cho lớp xem màn hình push thường và push có khớp số trên điện thoại thật của giảng viên (tài khoản thử). Học viên nhớ hình ảnh lâu hơn lời giảng."
+      },
+      {
+       "html": "<strong>Phần mật khẩu:</strong> không yêu cầu học viên nói mật khẩu thật; chỉ hỏi \"mật khẩu của anh/chị có số năm không?\" (giơ tay, không nói).",
+       "level": 0,
+       "plain": "Phần mật khẩu: không yêu cầu học viên nói mật khẩu thật; chỉ hỏi \"mật khẩu của anh/chị có số năm không?\" (giơ tay, không nói)."
+      },
+      {
+       "html": "<strong>Không mâu thuẫn với quy định đơn vị:</strong> nếu đơn vị vẫn bắt đổi mật khẩu định kỳ, nói rõ học viên vẫn tuân thủ; có thể đề xuất cải tiến qua kênh chính thức.",
+       "level": 0,
+       "plain": "Không mâu thuẫn với quy định đơn vị: nếu đơn vị vẫn bắt đổi mật khẩu định kỳ, nói rõ học viên vẫn tuân thủ; có thể đề xuất cải tiến qua kênh chính thức."
+      },
+      {
+       "html": "<strong>Thực hành 5:</strong> dùng các lý do dùng chung tài khoản mà lớp nêu ở Bài 3 làm ràng buộc cho bài cá nhân.",
+       "level": 0,
+       "plain": "Thực hành 5: dùng các lý do dùng chung tài khoản mà lớp nêu ở Bài 3 làm ràng buộc cho bài cá nhân."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu nhầm hay gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Học viên nói",
+        "plain": "Học viên nói"
+       },
+       {
+        "html": "Cách trả lời",
+        "plain": "Cách trả lời"
+       }
+      ],
+      [
+       {
+        "html": "\"Có MFA rồi thì mật khẩu yếu cũng được.\"",
+        "plain": "\"Có MFA rồi thì mật khẩu yếu cũng được.\""
+       },
+       {
+        "html": "MFA yếu bị vượt bằng một cú bấm; mật khẩu là lớp đầu tiên",
+        "plain": "MFA yếu bị vượt bằng một cú bấm; mật khẩu là lớp đầu tiên"
+       }
+      ],
+      [
+       {
+        "html": "\"CNTT gọi xin mã thì đọc cho họ.\"",
+        "plain": "\"CNTT gọi xin mã thì đọc cho họ.\""
+       },
+       {
+        "html": "CNTT thật không bao giờ cần mã của người dùng",
+        "plain": "CNTT thật không bao giờ cần mã của người dùng"
+       }
+      ],
+      [
+       {
+        "html": "\"SSO là MFA.\"",
+        "plain": "\"SSO là MFA.\""
+       },
+       {
+        "html": "SSO là đăng nhập một lần; MFA là nhiều yếu tố",
+        "plain": "SSO là đăng nhập một lần; MFA là nhiều yếu tố"
+       }
+      ],
+      [
+       {
+        "html": "\"Đóng trình duyệt là đăng xuất.\"",
+        "plain": "\"Đóng trình duyệt là đăng xuất.\""
+       },
+       {
+        "html": "Phiên phía máy chủ có thể vẫn còn",
+        "plain": "Phiên phía máy chủ có thể vẫn còn"
+       }
+      ],
+      [
+       {
+        "html": "\"Tài khoản chung tiện cho ca trực.\"",
+        "plain": "\"Tài khoản chung tiện cho ca trực.\""
+       },
+       {
+        "html": "Giao việc theo nhóm giữ được sự tiện mà vẫn truy vết được",
+        "plain": "Giao việc theo nhóm giữ được sự tiện mà vẫn truy vết được"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s15"
+  },
+  {
+   "title": "Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "NIST SP 800-63B Rev.4 – Digital Identity Guidelines: Authentication (<a href=\"https://www.enzoic.com/blog/nist-sp-800-63b-rev4/\" target=\"_blank\" rel=\"noopener noreferrer\">tóm tắt của Enzoic</a>)",
+       "level": 0,
+       "plain": "NIST SP 800-63B Rev.4 – Digital Identity Guidelines: Authentication (tóm tắt của Enzoic)"
+      },
+      {
+       "html": "<a href=\"https://www.cisa.gov/sites/default/files/2023-01/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">CISA – Implementing Phishing-Resistant MFA</a>",
+       "level": 0,
+       "plain": "CISA – Implementing Phishing-Resistant MFA"
+      },
+      {
+       "html": "OWASP Cheat Sheet Series – Authentication, Multifactor Authentication, Session Management",
+       "level": 0,
+       "plain": "OWASP Cheat Sheet Series – Authentication, Multifactor Authentication, Session Management"
+      },
+      {
+       "html": "Giáo trình – Tổng quan: Phụ lục C, mẫu C5",
+       "level": 0,
+       "plain": "Giáo trình – Tổng quan: Phụ lục C, mẫu C5"
+      }
+     ]
+    }
+   ],
+   "id": "s16"
+  },
+  {
+   "id": "s17",
+   "title": "Bài tập thêm – Bàn giao ca khi có yêu cầu MFA lạ",
+   "kind": "practice",
+   "activity": "m04-case-v2",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
+     "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
+    },
+    {
+     "t": "p",
+     "plain": "Bạn đang nhận ca tại máy dùng chung. Màn hình còn mở phiên của người ca trước. Điện thoại của bạn bất ngờ hiện yêu cầu chấp thuận đăng nhập dù bạn chưa đăng nhập. Một tài khoản nhắn tin tự nhận là CNTT bảo bạn bấm đồng ý.",
+     "html": "Bạn đang nhận ca tại máy dùng chung. Màn hình còn mở phiên của người ca trước. Điện thoại của bạn bất ngờ hiện yêu cầu chấp thuận đăng nhập dù bạn chưa đăng nhập. Một tài khoản nhắn tin tự nhận là CNTT bảo bạn bấm đồng ý."
+    },
+    {
+     "t": "h3",
+     "text": "Việc bạn cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Ghi theo thứ tự những việc bạn làm ngay với yêu cầu MFA và tin nhắn.",
+     "html": "1. Ghi theo thứ tự những việc bạn làm ngay với yêu cầu MFA và tin nhắn."
+    },
+    {
+     "t": "p",
+     "plain": "2. Mô tả cách nhận ca để tiếp tục công việc bằng tài khoản của chính bạn.",
+     "html": "2. Mô tả cách nhận ca để tiếp tục công việc bằng tài khoản của chính bạn."
+    },
+    {
+     "t": "p",
+     "plain": "3. Lập danh sách kiểm tra phiên đăng nhập và phương thức xác thực sau khi báo đầu mối hỗ trợ.",
+     "html": "3. Lập danh sách kiểm tra phiên đăng nhập và phương thức xác thực sau khi báo đầu mối hỗ trợ."
+    },
+    {
+     "t": "p",
+     "plain": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả.",
+     "html": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm.",
+     "html": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m04-case-v2"
+    },
+    {
+     "t": "p",
+     "plain": "Không chấp thuận yêu cầu ngoài ý muốn. Ghi thời điểm, giữ thông tin cần thiết và xác minh qua số helpdesk đã biết. Đăng xuất phiên ca trước, đăng nhập bằng tài khoản cá nhân; người có thẩm quyền rà đăng nhập, phương thức MFA mới và thu hồi phiên nghi ngờ. Nếu đã bấm chấp thuận, báo rõ ngay để xử lý. Không dùng tài khoản người khác để tiếp tục công việc.",
+     "html": "Không chấp thuận yêu cầu ngoài ý muốn. Ghi thời điểm, giữ thông tin cần thiết và xác minh qua số helpdesk đã biết. Đăng xuất phiên ca trước, đăng nhập bằng tài khoản cá nhân; người có thẩm quyền rà đăng nhập, phương thức MFA mới và thu hồi phiên nghi ngờ. Nếu đã bấm chấp thuận, báo rõ ngay để xử lý. Không dùng tài khoản người khác để tiếp tục công việc.",
+     "reveal": "m04-case-v2"
+    }
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "m04-check-v2",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: chọn cách xử lý",
+   "intro": "Chọn một phương án phù hợp nhất cho mỗi tình huống. Khi chữa bài, hãy giải thích vì sao bạn chọn cách đó.",
+   "questions": [
+    {
+     "text": "MFA hiện yêu cầu đăng nhập mà bạn không khởi tạo. Bạn làm gì trước?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Chấp thuận để khỏi gián đoạn ca trực"
+      },
+      {
+       "key": "B",
+       "text": "Từ chối và báo qua kênh hỗ trợ chính thức"
+      },
+      {
+       "key": "C",
+       "text": "Gửi mã xác thực cho người nhắn tin"
+      }
+     ],
+     "correct": "B",
+     "explain": "Yêu cầu ngoài ý muốn cần được xác minh, kể cả khi có tin nhắn báo trước.",
+     "id": "q1"
+    },
+    {
+     "text": "Sau khi xử lý tài khoản nghi bị chiếm, vì sao cần rà và thu hồi phiên?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Để giải phóng dung lượng"
+      },
+      {
+       "key": "B",
+       "text": "Để khỏi cần bật MFA"
+      },
+      {
+       "key": "C",
+       "text": "Phiên đã cấp có thể còn hiệu lực tùy ứng dụng dù mật khẩu đã đổi"
+      }
+     ],
+     "correct": "C",
+     "explain": "Cần kiểm tra cơ chế từng ứng dụng; đổi mật khẩu không thay thế việc xử lý phiên.",
+     "id": "q2"
+    }
+   ]
+  },
+  {
+   "id": "m04-quiz",
+   "type": "mcq",
+   "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+   "scope": "student",
+   "intro": "Mỗi câu chọn một đáp án đúng nhất.",
+   "questions": [
+    {
+     "module": 4,
+     "text": "Mật khẩu kèm câu hỏi bí mật là:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Xác thực đa yếu tố"
+      },
+      {
+       "key": "B",
+       "text": "Đăng nhập một lần"
+      },
+      {
+       "key": "C",
+       "text": "Passkey"
+      },
+      {
+       "key": "D",
+       "text": "Hai thứ cùng loại \"điều bạn biết\", chưa phải xác thực đa yếu tố"
+      }
+     ],
+     "id": "q1",
+     "correct": "D"
+    },
+    {
+     "module": 4,
+     "text": "Nửa đêm nhận yêu cầu MFA trong khi mình không đăng nhập, nên:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Bấm Chấp nhận cho hết làm phiền"
+      },
+      {
+       "key": "B",
+       "text": "Tắt điện thoại"
+      },
+      {
+       "key": "C",
+       "text": "Từ chối, báo helpdesk, đổi mật khẩu theo hướng dẫn"
+      },
+      {
+       "key": "D",
+       "text": "Bỏ qua"
+      }
+     ],
+     "id": "q2",
+     "correct": "C"
+    },
+    {
+     "module": 4,
+     "text": "Vì sao MFA khớp số an toàn hơn MFA chỉ có nút Chấp nhận?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Nhanh hơn"
+      },
+      {
+       "key": "B",
+       "text": "Người dùng phải nhập con số đang hiện trên màn hình đăng nhập, nên không thể chấp thuận một lần đăng nhập mình không nhìn thấy"
+      },
+      {
+       "key": "C",
+       "text": "Không cần điện thoại"
+      },
+      {
+       "key": "D",
+       "text": "Thay được mật khẩu"
+      }
+     ],
+     "id": "q3",
+     "correct": "B"
+    }
+   ]
+  },
+  {
+   "id": "m04-th5",
+   "type": "practice",
+   "title": "Thực hành 5 – Thay tài khoản dùng chung (50 phút)",
+   "scope": "student",
+   "section": "s9"
+  },
+  {
+   "id": "m04-review",
+   "type": "open",
+   "title": "Câu hỏi ôn tập",
+   "scope": "student",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Theo NIST SP 800-63B Rev.4, mật khẩu là yếu tố duy nhất thì tối thiểu bao nhiêu ký tự?",
+     "answer": "15 ký tự"
+    },
+    {
+     "id": "q2",
+     "text": "Vì sao bắt đổi mật khẩu định kỳ lại có thể làm yếu đi?",
+     "answer": "Người dùng tạo mật khẩu có quy luật (đổi số năm) hoặc ghi ra giấy"
+    },
+    {
+     "id": "q3",
+     "text": "Credential stuffing là gì?",
+     "answer": "Dùng cặp email – mật khẩu lộ từ trang khác để thử vào hệ thống công ty"
+    },
+    {
+     "id": "q4",
+     "text": "Mật khẩu + mã PIN có phải MFA không?",
+     "answer": "Không, cùng loại \"biết\""
+    },
+    {
+     "id": "q5",
+     "text": "Phương thức MFA nào chống lừa đảo theo thiết kế?",
+     "answer": "FIDO2, passkey"
+    },
+    {
+     "id": "q6",
+     "text": "Khớp số (number matching) chống được kiểu tấn công nào?",
+     "answer": "Dồn dập thông báo và bấm Chấp nhận theo phản xạ"
+    },
+    {
+     "id": "q7",
+     "text": "Nhận 5 thông báo MFA lạ lúc nửa đêm thì làm gì?",
+     "answer": "Từ chối, báo hỗ trợ, đổi mật khẩu và thu hồi phiên theo hướng dẫn"
+    },
+    {
+     "id": "q8",
+     "text": "SSO có thay được MFA không?",
+     "answer": "Không; SSO giảm số lần đăng nhập, MFA tăng mức chứng minh danh tính"
+    },
+    {
+     "id": "q9",
+     "text": "Nêu hai rủi ro của tài khoản dùng chung",
+     "answer": "Khó quy trách nhiệm, khó thu hồi, khó MFA, khó giới hạn quyền"
+    },
+    {
+     "id": "q10",
+     "text": "Vì sao đổi mật khẩu chưa đủ khi nghi tài khoản bị chiếm?",
+     "answer": "Phiên đang mở và phương thức MFA kẻ gian thêm vào vẫn còn"
+    },
+    {
+     "id": "q11",
+     "text": "Mã độc đánh cắp phiên vượt qua MFA bằng cách nào?",
+     "answer": "Lấy cookie phiên sau khi người dùng đã qua MFA"
+    }
+   ]
+  },
+  {
+   "id": "m04-case-v2",
+   "type": "practice",
+   "scope": "student",
+   "section": "s17",
+   "title": "Bài tập thêm – Bàn giao ca khi có yêu cầu MFA lạ",
+   "intro": "Bạn đang nhận ca tại máy dùng chung. Màn hình còn mở phiên của người ca trước. Điện thoại của bạn bất ngờ hiện yêu cầu chấp thuận đăng nhập dù bạn chưa đăng nhập. Một tài khoản nhắn tin tự nhận là CNTT bảo bạn bấm đồng ý.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "part1",
+     "label": "Ghi theo thứ tự những việc bạn làm ngay với yêu cầu MFA và tin nhắn."
+    },
+    {
+     "type": "textarea",
+     "key": "part2",
+     "label": "Mô tả cách nhận ca để tiếp tục công việc bằng tài khoản của chính bạn."
+    },
+    {
+     "type": "textarea",
+     "key": "part3",
+     "label": "Lập danh sách kiểm tra phiên đăng nhập và phương thức xác thực sau khi báo đầu mối hỗ trợ."
+    }
+   ]
+  }
+ ]
+}

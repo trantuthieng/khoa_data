@@ -1,0 +1,99 @@
+{
+ "1": {
+  "title": "Bài tập thêm – Một báo cáo, ba phiên bản",
+  "scenario": "Phòng Kinh doanh có ba bản báo cáo: A gồm tên, điện thoại và số nợ của từng hộ; B chỉ có tổng sản lượng theo 4 vùng, chưa được duyệt công bố; C là số liệu tổng hợp đã được duyệt đăng website. Đồng nghiệp muốn đưa cả ba bản vào chatbot cá nhân để viết nhận xét.",
+  "tasks": ["Chọn nhãn phù hợp cho từng bản và giải thích bằng dữ kiện trong đề.", "Viết lời trả lời đồng nghiệp trong 3–5 câu, nêu cách hoàn thành công việc.", "Với bản B, nêu hai điều cần kiểm tra trước khi đề xuất dùng công cụ AI."],
+  "answer": "A nên được bảo vệ ở mức Mật theo quy ước khóa học; B là Nội bộ; C có thể là Công khai trong đúng phạm vi đã duyệt. Không đưa A vào chatbot cá nhân. Với B, kiểm tra nhóm quá nhỏ hoặc khách hàng chiếm phần lớn tổng; xác nhận công cụ, mục đích và phạm vi dữ liệu đã được duyệt. Có thể dùng dữ liệu giả lập để soạn khung nhận xét. C vẫn cần kiểm tra điều kiện sử dụng công cụ của đơn vị.",
+  "quiz": [
+   {"text": "Báo cáo tổng sản lượng theo vùng chưa được duyệt đăng ngoài đơn vị. Bạn nên làm gì?", "options": [{"key":"A","text":"Xem là công khai vì đã bỏ tên khách hàng"},{"key":"B","text":"Giữ theo nhãn nội bộ và kiểm tra rủi ro nhận diện trước khi chia sẻ"},{"key":"C","text":"Chỉ đổi tên file rồi gửi"}], "correct":"B", "explain":"Bỏ tên không đồng nghĩa với được phép công bố. Cần xét mức chi tiết và thẩm quyền duyệt."},
+   {"text":"Chỉ số công tơ bị sửa làm hóa đơn sai, hệ thống vẫn truy cập được. Mục tiêu nào bị ảnh hưởng trực tiếp?", "options":[{"key":"A","text":"Tính toàn vẹn"},{"key":"B","text":"Tính sẵn sàng"},{"key":"C","text":"Chỉ tính bí mật"}],"correct":"A","explain":"Dữ liệu sai lệch ảnh hưởng trực tiếp tới tính toàn vẹn."}
+  ]
+ },
+ "2": {
+  "title": "Bài tập thêm – Tìm những bản sao bị bỏ quên",
+  "scenario": "Nhân viên xuất 50 phiếu yêu cầu ra máy, gửi email cho tổ hiện trường và chụp 3 phiếu gửi qua tài khoản nhắn tin cá nhân. Cuối tháng, báo cáo chỉ cần số phiếu và thời gian xử lý. Nhân viên xóa file trong thư mục Tải về rồi cho rằng đã hết bản sao.",
+  "tasks": ["Mô tả đường đi của dữ liệu và liệt kê ít nhất bốn nơi có thể còn bản sao.", "Chọn ba điểm cần sửa; ghi cách sửa và người chịu trách nhiệm cho từng điểm.", "Viết một lời nhắc trước khi gửi báo cáo tháng, tối đa 5 câu."],
+  "answer": "Kiểm tra hộp thư đã gửi, hộp thư người nhận, ảnh trong ứng dụng nhắn tin, thư viện ảnh hoặc bản sao lưu điện thoại, thùng rác và ổ đồng bộ. Báo cáo tháng chỉ nên có số liệu cần thiết; giao việc qua hệ thống hoặc kênh được duyệt. Người lập báo cáo xử lý bản xuất, tổ trưởng rà kênh giao việc, chủ dữ liệu xác nhận phạm vi và thời hạn lưu. Không tự xóa hồ sơ phải lưu hoặc bằng chứng liên quan sự cố.",
+  "quiz": [
+   {"text":"Báo cáo tháng chỉ cần số lượng phiếu. Bản xuất mặc định có cả điện thoại khách hàng. Cách phù hợp là gì?","options":[{"key":"A","text":"Ẩn cột điện thoại rồi gửi nguyên file"},{"key":"B","text":"Gửi vì hệ thống đã cho xuất"},{"key":"C","text":"Tạo bản tổng hợp chỉ chứa thông tin cần cho báo cáo"}],"correct":"C","explain":"Mục đích báo cáo quyết định dữ liệu cần dùng; quyền xuất không có nghĩa được chia sẻ mọi cột."},
+   {"text":"Khi vẽ luồng dữ liệu, ảnh chụp phiếu gửi qua điện thoại cá nhân được ghi thế nào?","options":[{"key":"A","text":"Bỏ qua vì không phải file Excel"},{"key":"B","text":"Ghi là một bản sao và đánh dấu nơi dữ liệu ra khỏi kênh được quản lý"},{"key":"C","text":"Chỉ ghi tên phòng ban gửi ảnh"}],"correct":"B","explain":"Ảnh chụp cũng chứa dữ liệu và có thể được đồng bộ hoặc chuyển tiếp."}
+  ]
+ },
+ "3": {
+  "title": "Bài tập thêm – Cấp quyền đủ để bàn giao",
+  "scenario": "Chị Hà chuyển sang Điện lực Y nhưng cần hỗ trợ bàn giao 12 hồ sơ ở Điện lực X đến hết ngày 30/10. Hiện tài khoản vẫn xem và xuất toàn bộ khách hàng của X. Quản lý đề nghị giữ nguyên quyền thêm một tháng.",
+  "tasks": ["Đề xuất quyền cần giữ, quyền cần thu hồi, phạm vi hồ sơ và thời điểm hết hạn.", "Nêu ai phê duyệt, ai cấu hình và bằng chứng cần lưu.", "Viết ba phép thử: một trường hợp được phép, một truy cập ngoài phạm vi và một thao tác xuất."],
+  "answer": "Ưu tiên chuyển hồ sơ cho người kế nhiệm. Nếu cần ngoại lệ, chỉ cho xem đúng 12 hồ sơ đến hết 30/10, không giữ quyền xuất hoặc xem toàn X. Chủ dữ liệu và quản lý liên quan duyệt, CNTT thực hiện; lưu phiếu, báo cáo quyền trước/sau và kết quả thử. Thử xem một hồ sơ trong danh sách, xem hồ sơ ngoài danh sách và xuất dữ liệu; hai trường hợp sau phải bị từ chối. Kiểm tra hết hạn ngoại lệ.",
+  "quiz": [
+   {"text":"Người dùng có quyền xem hồ sơ nhưng cần xuất tạm để phục vụ kiểm tra. Nên xử lý thế nào?","options":[{"key":"A","text":"Cấp quyền xuất có phạm vi, phê duyệt, hạn và ghi vết"},{"key":"B","text":"Cấp luôn quyền quản trị"},{"key":"C","text":"Cho mượn tài khoản trưởng phòng"}],"correct":"A","explain":"Quyền xuất cần được xem xét riêng và giới hạn theo nhu cầu."},
+   {"text":"Minh chứng nào cho thấy quyền cũ đã được thu hồi?","options":[{"key":"A","text":"Email đề nghị gỡ quyền"},{"key":"B","text":"Người dùng nói sẽ không truy cập nữa"},{"key":"C","text":"Cấu hình sau thay đổi, nhật ký xử lý và phép thử truy cập bị từ chối"}],"correct":"C","explain":"Cần kiểm tra việc thực hiện, không chỉ có yêu cầu."}
+  ]
+ },
+ "4": {
+  "title": "Bài tập thêm – Bàn giao ca khi có yêu cầu MFA lạ",
+  "scenario": "Bạn đang nhận ca tại máy dùng chung. Màn hình còn mở phiên của người ca trước. Điện thoại của bạn bất ngờ hiện yêu cầu chấp thuận đăng nhập dù bạn chưa đăng nhập. Một tài khoản nhắn tin tự nhận là CNTT bảo bạn bấm đồng ý.",
+  "tasks": ["Ghi theo thứ tự những việc bạn làm ngay với yêu cầu MFA và tin nhắn.", "Mô tả cách nhận ca để tiếp tục công việc bằng tài khoản của chính bạn.", "Lập danh sách kiểm tra phiên đăng nhập và phương thức xác thực sau khi báo đầu mối hỗ trợ."],
+  "answer": "Không chấp thuận yêu cầu ngoài ý muốn. Ghi thời điểm, giữ thông tin cần thiết và xác minh qua số helpdesk đã biết. Đăng xuất phiên ca trước, đăng nhập bằng tài khoản cá nhân; người có thẩm quyền rà đăng nhập, phương thức MFA mới và thu hồi phiên nghi ngờ. Nếu đã bấm chấp thuận, báo rõ ngay để xử lý. Không dùng tài khoản người khác để tiếp tục công việc.",
+  "quiz": [
+   {"text":"MFA hiện yêu cầu đăng nhập mà bạn không khởi tạo. Bạn làm gì trước?","options":[{"key":"A","text":"Chấp thuận để khỏi gián đoạn ca trực"},{"key":"B","text":"Từ chối và báo qua kênh hỗ trợ chính thức"},{"key":"C","text":"Gửi mã xác thực cho người nhắn tin"}],"correct":"B","explain":"Yêu cầu ngoài ý muốn cần được xác minh, kể cả khi có tin nhắn báo trước."},
+   {"text":"Sau khi xử lý tài khoản nghi bị chiếm, vì sao cần rà và thu hồi phiên?","options":[{"key":"A","text":"Để giải phóng dung lượng"},{"key":"B","text":"Để khỏi cần bật MFA"},{"key":"C","text":"Phiên đã cấp có thể còn hiệu lực tùy ứng dụng dù mật khẩu đã đổi"}],"correct":"C","explain":"Cần kiểm tra cơ chế từng ứng dụng; đổi mật khẩu không thay thế việc xử lý phiên."}
+  ]
+ },
+ "5": {
+  "title": "Bài tập thêm – Kiểm tra một gói báo cáo trước khi gửi",
+  "scenario": "Người nhận chỉ cần bảng tổng hợp 4 vùng. File hiện có sheet TongHop, sheet ChiTiet chứa tên và số nợ, sheet VanHanh đang ẩn. Người lập file đã đặt Protect Sheet và dự định gửi file cùng mật khẩu trong một email.",
+  "tasks": ["Chỉ ra ba vấn đề trong cách chuẩn bị và gửi file.", "Viết quy trình tạo bản gửi mới, bảo vệ và kiểm tra trước khi chia sẻ.", "Mô tả hai phép thử: người không có quyền truy cập và người nhập sai mật khẩu. Ghi kết quả mong đợi."],
+  "answer": "Tạo file mới chỉ có giá trị bảng tổng hợp; rà sheet, cột ẩn, liên kết và thông tin còn sót. Protect Sheet hạn chế sửa ô, không thay thế mã hóa nội dung. Khi bài yêu cầu mã hóa, dùng chức năng Encrypt with Password và thử mở lại. Chọn người nhận cụ thể, tách kênh báo mật khẩu, có thời hạn theo chính sách/cấu hình thực tế. Người ngoài danh sách phải bị từ chối; sai mật khẩu không đọc được file đã mã hóa. Thu hồi liên kết không thu hồi được bản đã tải.",
+  "quiz": [
+   {"text":"File có sheet khách hàng đang ẩn. Người nhận chỉ cần bảng tổng hợp. Nên gửi bản nào?","options":[{"key":"A","text":"File mới chỉ chứa giá trị tổng hợp đã kiểm tra"},{"key":"B","text":"File gốc có Protect Sheet"},{"key":"C","text":"File gốc đổi phần mở rộng"}],"correct":"A","explain":"Ẩn sheet hoặc chặn sửa không loại bỏ dữ liệu khỏi bản gửi."},
+   {"text":"Bạn thu hồi liên kết sau khi đối tác đã tải file. Điều gì vẫn cần tính đến?","options":[{"key":"A","text":"Bản tải tự động biến mất"},{"key":"B","text":"Đối tác có thể vẫn giữ bản tải; cần xử lý theo thỏa thuận và quy trình"},{"key":"C","text":"Không cần theo dõi nữa"}],"correct":"B","explain":"Thu hồi liên kết chặn truy cập tiếp qua liên kết, không xóa bản sao đã nằm ở máy khác."}
+  ]
+ },
+ "6": {
+  "title": "Bài tập thêm – Tổng hợp rồi đã an toàn chưa?",
+  "scenario": "Bảng tháng 9 có An Phú: 120 khách hàng, tổng 30.000 kWh, khách lớn nhất 700 kWh; Cảng Mới: 1 khách hàng, tổng 42.000 kWh; Đông Hòa: 100 khách hàng, tổng 26.000 kWh. Phòng Kế hoạch chỉ cần dự báo nhu cầu theo vùng và đề nghị đưa bảng vào công cụ AI chưa được đơn vị duyệt.",
+  "tasks": ["Chỉ ra nhóm có nguy cơ nhận diện. Nếu gộp Cảng Mới với Đông Hòa, tính tỷ trọng khách lớn nhất trong nhóm mới.", "Đề xuất bản dữ liệu để xem xét giao; giải thích vì sao chỉ bỏ tên hoặc gộp hai vùng vẫn có thể chưa đủ.", "Viết điều kiện cần đáp ứng trước khi dùng AI và cách xử lý bản trung gian."],
+  "answer": "Cảng Mới chỉ có một khách hàng nên tổng chính là số liệu của khách đó. Gộp với Đông Hòa cho tỷ trọng 42.000 / 68.000 ≈ 61,8%, vẫn có rủi ro áp đảo. Có thể tổng hợp rộng hơn hoặc xử lý riêng khách hàng lớn theo mục đích được duyệt, rồi kiểm tra nhóm nhỏ, ngoại lai, áp đảo và phép trừ giữa các bảng. Không mặc định bản tổng hợp đã ẩn danh; công cụ AI và việc giao dữ liệu phải được duyệt. Lưu/xóa bản trung gian theo quy định.",
+  "quiz": [
+   {"text":"Bản tổng hợp có một vùng chỉ gồm một khách hàng. Nhận xét nào đúng?","options":[{"key":"A","text":"An toàn vì không còn cột họ tên"},{"key":"B","text":"Chỉ cần đổi tên vùng"},{"key":"C","text":"Vẫn có thể suy ra số liệu của khách hàng đó"}],"correct":"C","explain":"Nhóm một người làm mất tác dụng bảo vệ của phép tổng hợp."},
+   {"text":"Màn hình tìm kiếm nhận tên khách hàng. Phương án nào giúp tránh ghép đầu vào thành lệnh SQL?","options":[{"key":"A","text":"Dùng truy vấn tham số hóa"},{"key":"B","text":"Nối thẳng chuỗi nhập vào câu SQL"},{"key":"C","text":"Chỉ đổi màu ô nhập"}],"correct":"A","explain":"Truy vấn tham số hóa tách giá trị đầu vào khỏi cấu trúc câu lệnh."}
+  ]
+ },
+ "7": {
+  "title": "Bài tập thêm – Đọc bảng kiểm thử phân quyền báo cáo",
+  "scenario": "Bốn lượt kiểm thử có kết quả: (1) Lan, Viewer, RLS đơn vị X → thấy X; (2) Bình, Member, có khai báo RLS đơn vị Y → thấy X và Y; (3) Mai, Viewer, chưa có trong bảng ánh xạ động → không thấy dữ liệu; (4) Hà đã chuyển sang Y, Viewer, bảng ánh xạ còn ghi X → vẫn thấy X. Đây là dữ kiện giả lập để phân tích, chưa thay thế kiểm thử trên Power BI service.",
+  "tasks": ["Nhận xét từng lượt: đúng kỳ vọng, sai quyền nghiệp vụ hay cần xác minh thêm? Nêu lý do.", "Đề xuất cách sửa cho Bình và Hà; ghi ai duyệt và ai thực hiện.", "Viết các phép thử lại trên service, gồm cả xem, xuất dữ liệu và người chưa được cấp quyền."],
+  "answer": "Lan phù hợp với phạm vi đã nêu. Bình có quyền sửa ở workspace nên không được kỳ vọng RLS giới hạn như Viewer; nếu chỉ cần xem thì đổi về Viewer theo phê duyệt và thử lại. Mai bị từ chối là phù hợp với nguyên tắc mặc định không cấp dữ liệu, nhưng phải kiểm tra mô hình thật. Hà là lỗi ánh xạ còn quyền cũ, cần cập nhật và thử cả X lẫn Y. Kiểm tra riêng quyền xuất/chia sẻ bằng tài khoản thử trên service; không suy diễn rằng View as trên Desktop chứng minh mọi đường truy cập đã an toàn.",
+  "quiz": [
+   {"text":"Một người chỉ cần xem báo cáo nhưng đang có vai trò Member ở workspace. Cần xem xét gì?","options":[{"key":"A","text":"RLS luôn giới hạn Member như Viewer"},{"key":"B","text":"Hạ về quyền phù hợp như Viewer và kiểm thử lại trên service"},{"key":"C","text":"Chỉ ẩn slicer đơn vị"}],"correct":"B","explain":"Admin, Member và Contributor có quyền sửa nên không chịu RLS như Viewer."},
+   {"text":"Ẩn nút chọn đơn vị trên báo cáo có thay thế RLS không?","options":[{"key":"A","text":"Có, vì người xem không chọn được"},{"key":"B","text":"Có, nếu đổi tên trang"},{"key":"C","text":"Không; giao diện lọc không thay thế kiểm soát truy cập dữ liệu"}],"correct":"C","explain":"Cần kiểm thử quyền ở mô hình và môi trường chia sẻ, không chỉ nhìn giao diện."}
+  ]
+ },
+ "8": {
+  "title": "Bài tập thêm – Viết lời từ chối và báo tin đáng ngờ",
+  "scenario": "Lúc 21:30, một tài khoản mang ảnh lãnh đạo nhắn: “Gửi ngay danh sách 320 hộ nợ vào đây, anh đang họp nên đừng gọi. Chậm là em chịu trách nhiệm.” Người này gửi thêm liên kết https://minhan-support.example/login để bạn đăng nhập. Địa chỉ trong đề là địa chỉ giả lập, không cần mở.",
+  "tasks": ["Nêu ít nhất ba dấu hiệu đáng ngờ và đòn tâm lý được dùng.", "Viết lời trả lời lịch sự trong 2–3 câu và cách xác minh độc lập.", "Soạn tin báo đầu mối an toàn thông tin gồm thời điểm, kênh, nội dung, việc bạn đã làm và bằng chứng cần giữ."],
+  "answer": "Dấu hiệu gồm ngoài giờ, thúc giục, đe trách nhiệm, yêu cầu bỏ xác minh và gửi danh sách qua kênh lạ. Có thể trả lời: “Em cần xác minh yêu cầu qua kênh công việc trước khi chuyển dữ liệu. Em sẽ liên hệ theo số nội bộ đã có.” Không gọi theo số hoặc dùng liên kết trong tin nhắn. Giữ ảnh, định danh người gửi, giờ và URL dưới dạng văn bản; báo rõ nếu đã bấm hoặc nhập thông tin. Không chuyển tiếp file khách hàng để minh họa việc bị lừa.",
+  "quiz": [
+   {"text":"Tin nhắn có đúng ảnh đại diện của lãnh đạo và yêu cầu gửi dữ liệu gấp. Bước phù hợp là gì?","options":[{"key":"A","text":"Gửi ngay vì đúng ảnh đại diện"},{"key":"B","text":"Hỏi người gửi xem có thật là lãnh đạo không"},{"key":"C","text":"Xác minh qua số hoặc kênh công việc đã biết từ trước"}],"correct":"C","explain":"Ảnh và tên hiển thị có thể bị giả. Kênh xác minh phải độc lập với yêu cầu đáng ngờ."},
+   {"text":"Bạn lỡ nhập mật khẩu vào trang nghi giả mạo. Nên báo thế nào?","options":[{"key":"A","text":"Báo ngay thời điểm và thao tác đã làm qua kênh hỗ trợ chính thức"},{"key":"B","text":"Chờ xem có mất dữ liệu không"},{"key":"C","text":"Xóa tin nhắn để khỏi bị nhắc"}],"correct":"A","explain":"Thông tin kịp thời giúp xử lý tài khoản, phiên và phạm vi ảnh hưởng."}
+  ]
+ },
+ "9": {
+  "title": "Bài tập thêm – Log cho biết gì, còn thiếu gì?",
+  "scenario": "Nhật ký giả lập (UTC): 20/10/2026 19:10 nv_a đăng nhập thất bại từ 203.0.113.8; 19:15 đăng nhập thành công sau MFA; 19:18 thêm phương thức MFA; 19:40 xuất 5.000 dòng; 19:45 tạo liên kết công khai. Chưa có nhật ký mở hoặc tải qua liên kết, chưa đối chiếu lịch làm việc.",
+  "tasks": ["Đổi năm mốc sang giờ +07:00, ghi cả ngày và sắp xếp thành bảng diễn biến.", "Tách ba điều đã thấy trong log khỏi hai giả thuyết cần xác minh.", "Đề xuất bằng chứng cần bổ sung và hai hành động trong thẩm quyền của người tiếp nhận cảnh báo."],
+  "answer": "Các mốc đều sang ngày 21/10: 02:10, 02:15, 02:18, 02:40 và 02:45 (+07:00). Log cho thấy thao tác dưới tài khoản nv_a, chưa chứng minh chính chủ thực hiện hoặc đã có người tải dữ liệu. Cần nhật ký phiên, chi tiết MFA, thông tin liên kết, lịch làm việc và log truy cập. Báo đầu mối, bảo toàn nhật ký; đề xuất người có thẩm quyền hạn chế truy cập liên kết và xử lý phiên nghi ngờ. Không xóa file hay kết luận cá nhân gây lộ từ tên tài khoản.",
+  "quiz": [
+   {"text":"20/10/2026 19:30 UTC là mấy giờ tại Việt Nam (+07:00)?","options":[{"key":"A","text":"20/10 lúc 12:30"},{"key":"B","text":"21/10 lúc 02:30"},{"key":"C","text":"20/10 lúc 19:30"}],"correct":"B","explain":"Cộng 7 giờ và đổi sang ngày kế tiếp."},
+   {"text":"Log ghi tài khoản nv_a tạo liên kết công khai. Kết luận nào có căn cứ?","options":[{"key":"A","text":"Chính chủ chắc chắn đã cố ý làm lộ"},{"key":"B","text":"Toàn bộ file chắc chắn đã bị tải"},{"key":"C","text":"Có thao tác tạo liên kết dưới tài khoản nv_a; cần thêm bằng chứng về người điều khiển và truy cập"}],"correct":"C","explain":"Phải phân biệt dấu vết tài khoản, danh tính người thực hiện và hậu quả thực tế."}
+  ]
+ },
+ "10": {
+  "title": "Bài tập thêm – Báo cáo sự cố trong 5 phút",
+  "scenario": "08:40 tổng đài nhận phản ánh kẻ gian biết số nợ khách hàng. 08:55 đầu mối an toàn thông tin nhận tin. 09:10 phát hiện liên kết công khai tới file 600 dòng; chưa biết có ai tải. Bạn được giao tiếp nhận và lập báo cáo, không có quyền tự khóa toàn hệ thống. Với phần tính giờ trong bài, giả sử pháp chế đã xác định sự việc thuộc diện thông báo và chốt T0 là 08:40 ngày 21/10/2026 (+07:00). Đây là giả định để luyện tính thời hạn, không phải quy tắc lấy thời điểm đầu mối nhận tin làm T0.",
+  "tasks": ["Viết báo cáo ban đầu trong 5–7 câu: đã biết, chưa rõ, nguy cơ, việc đã làm, việc cần duyệt và người cập nhật tiếp.", "Đề xuất thứ tự bảo toàn bằng chứng, ngăn chặn và duy trì công việc; tách việc bạn làm được khỏi việc cần người có thẩm quyền.", "Tính T0 + 72 giờ theo giả định; nêu hai việc cải tiến có người phụ trách, hạn và cách kiểm chứng."],
+  "answer": "Phân biệt 600 dòng trong file với số người đã xác minh bị ảnh hưởng; chưa có log tải thì không kết luận đã tải hoặc chưa lộ. Ghi thông tin liên kết, nhật ký, thời điểm và nơi lưu bằng chứng; báo người được giao quyền để thu hồi liên kết, rà phiên và tài khoản, duy trì tiếp nhận khách bằng phương án đã duyệt. Không kéo dài phơi lộ chỉ để chờ thu thập hoàn hảo. Theo giả định T0, hạn là 08:40 ngày 24/10/2026 (+07:00), tính theo giờ liên tục. Thực tế phải giữ mọi mốc phát hiện để người có trách nhiệm xác định nghĩa vụ và T0. Ví dụ cải tiến: chủ dữ liệu rà quyền xuất trong 7 ngày, CNTT thử lại bằng tài khoản thường; đầu mối sự cố tổ chức thử cảnh báo trong 14 ngày, lưu thời gian tiếp nhận.",
+  "quiz": []
+ }
+}

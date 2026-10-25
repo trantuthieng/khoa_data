@@ -1,0 +1,3282 @@
+{
+ "no": 2,
+ "title": "Buổi 2 – Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu",
+ "short": "Tuân thủ pháp luật, lỗi thao tác và sơ đồ luồng dữ liệu",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 2 trả lời câu hỏi: <strong>dữ liệu đang đi qua những đâu, và luật nói gì về việc đó?</strong> Cuối buổi, học viên vẽ được bản đồ đường đi của một tập dữ liệu, chỉ ra được chỗ dữ liệu rời khỏi sự quản lý của đơn vị, và biết khi nào phải dừng lại hỏi pháp chế.",
+     "plain": "Buổi 2 trả lời câu hỏi: dữ liệu đang đi qua những đâu, và luật nói gì về việc đó? Cuối buổi, học viên vẽ được bản đồ đường đi của một tập dữ liệu, chỉ ra được chỗ dữ liệu rời khỏi sự quản lý của đơn vị, và biết khi nào phải dừng lại hỏi pháp chế."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Thông tin buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Ngày 1, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)",
+        "plain": "Ngày 1, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu trình chiếu",
+        "plain": "Tài liệu trình chiếu"
+       },
+       {
+        "html": "16–25",
+        "plain": "16–25"
+       }
+      ],
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Giảng, kể chuyện, thảo luận tình huống, tự vẽ và mô tả sơ đồ trong bài làm",
+        "plain": "Giảng, kể chuyện, thảo luận tình huống, tự vẽ và mô tả sơ đồ trong bài làm"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Bảng phân loại của Thực hành 1; danh sách \"file đã gửi trong tuần\" ghi lúc khởi động buổi sáng",
+        "plain": "Bảng phân loại của Thực hành 1; danh sách \"file đã gửi trong tuần\" ghi lúc khởi động buổi sáng"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "Sơ đồ luồng dữ liệu có ranh giới tin cậy, danh sách bản sao, bảng rủi ro ít nhất 3 điểm yếu (Thực hành 2)",
+        "plain": "Sơ đồ luồng dữ liệu có ranh giới tin cậy, danh sách bản sao, bảng rủi ro ít nhất 3 điểm yếu (Thực hành 2)"
+       }
+      ],
+      [
+       {
+        "html": "Vật dụng",
+        "plain": "Vật dụng"
+       },
+       {
+        "html": "Giấy A3, bút màu, giấy nhớ; mẫu C2 ở Phụ lục C của tài liệu Tổng quan",
+        "plain": "Giấy A3, bút màu, giấy nhớ; mẫu C2 ở Phụ lục C của tài liệu Tổng quan"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Buổi này tiếp nối buổi trước như thế nào?",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhận từ buổi 1:</strong> nhãn phân loại. Dữ liệu nhãn Mật trở lên là luồng phải vẽ trước. Ý \"mỗi bản sao bắt đầu một vòng đời mới\" hôm nay được vẽ thành hình.",
+       "level": 0,
+       "plain": "Nhận từ buổi 1: nhãn phân loại. Dữ liệu nhãn Mật trở lên là luồng phải vẽ trước. Ý \"mỗi bản sao bắt đầu một vòng đời mới\" hôm nay được vẽ thành hình."
+      },
+      {
+       "html": "<strong>Tình huống – chương 2:</strong> file DS_KhachHang_DLX đi qua 5 nơi và vượt 4 ranh giới tin cậy; công ty thu hộ xuất hiện với vai trò bên xử lý dữ liệu.",
+       "level": 0,
+       "plain": "Tình huống – chương 2: file DS_KhachHang_DLX đi qua 5 nơi và vượt 4 ranh giới tin cậy; công ty thu hộ xuất hiện với vai trò bên xử lý dữ liệu."
+      },
+      {
+       "html": "<strong>Trao cho ngày 2 và ngày 3:</strong> sơ đồ luồng và danh sách bản sao. Mỗi người, mỗi hệ thống trên sơ đồ sẽ thành một dòng của ma trận quyền ở buổi 3; mỗi ranh giới tin cậy là một điểm cần bảo vệ ở buổi 5.",
+       "level": 0,
+       "plain": "Trao cho ngày 2 và ngày 3: sơ đồ luồng và danh sách bản sao. Mỗi người, mỗi hệ thống trên sơ đồ sẽ thành một dòng của ma trận quyền ở buổi 3; mỗi ranh giới tin cậy là một điểm cần bảo vệ ở buổi 5."
+      },
+      {
+       "html": "<strong>Sợi chỉ:</strong> tối thiểu hóa xuất hiện lần đầu dưới dạng một nguyên tắc pháp lý; con người và báo sớm gắn với mốc 72 giờ và văn hóa báo lỗi.",
+       "level": 0,
+       "plain": "Sợi chỉ: tối thiểu hóa xuất hiện lần đầu dưới dạng một nguyên tắc pháp lý; con người và báo sớm gắn với mốc 72 giờ và văn hóa báo lỗi."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nêu các nội dung chính của Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 liên quan đến công việc hằng ngày: vai trò các bên, nguyên tắc, quyền của khách hàng, mốc 72 giờ, mức phạt.",
+       "level": 0,
+       "plain": "Nêu các nội dung chính của Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 liên quan đến công việc hằng ngày: vai trò các bên, nguyên tắc, quyền của khách hàng, mốc 72 giờ, mức phạt."
+      },
+      {
+       "html": "Dùng 4 câu hỏi tuân thủ (mục đích, phạm vi, người nhận, trách nhiệm) trước khi xử lý hoặc chia sẻ dữ liệu.",
+       "level": 0,
+       "plain": "Dùng 4 câu hỏi tuân thủ (mục đích, phạm vi, người nhận, trách nhiệm) trước khi xử lý hoặc chia sẻ dữ liệu."
+      },
+      {
+       "html": "Nhận ra 4 loại lỗi thao tác của con người và chọn biện pháp phù hợp với từng loại.",
+       "level": 0,
+       "plain": "Nhận ra 4 loại lỗi thao tác của con người và chọn biện pháp phù hợp với từng loại."
+      },
+      {
+       "html": "Vẽ sơ đồ luồng dữ liệu có trường dữ liệu trên mũi tên, ranh giới tin cậy và các bản sao không chính thức.",
+       "level": 0,
+       "plain": "Vẽ sơ đồ luồng dữ liệu có trường dữ liệu trên mũi tên, ranh giới tin cậy và các bản sao không chính thức."
+      },
+      {
+       "html": "Lập bảng rủi ro có người chịu trách nhiệm và minh chứng cho từng điểm yếu.",
+       "level": 0,
+       "plain": "Lập bảng rủi ro có người chịu trách nhiệm và minh chứng cho từng điểm yếu."
+      }
+     ]
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Mở đầu: file đi qua 5 nơi (chương 2)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi sáng, anh Cường đã không dán file vào AI. Nhưng file DS_KhachHang_DLX.xlsx vẫn tiếp tục đi. Chiều nay lớp lần theo dấu nó.",
+     "plain": "Buổi sáng, anh Cường đã không dán file vào AI. Nhưng file DS_KhachHang_DLX.xlsx vẫn tiếp tục đi. Chiều nay lớp lần theo dấu nó."
+    },
+    {
+     "t": "h3",
+     "text": "Chuyện gì xảy ra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "File được xuất từ <strong>hệ thống quản lý khách hàng</strong> về <strong>máy tính của anh Cường</strong> (thư mục Tải về, rồi chép sang ổ D).",
+       "level": 0,
+       "plain": "File được xuất từ hệ thống quản lý khách hàng về máy tính của anh Cường (thư mục Tải về, rồi chép sang ổ D)."
+      },
+      {
+       "html": "Anh Cường <strong>gửi email</strong> đính kèm nguyên file cho <strong>chị Dung</strong> – chuyên viên phụ trách thu nợ.",
+       "level": 0,
+       "plain": "Anh Cường gửi email đính kèm nguyên file cho chị Dung – chuyên viên phụ trách thu nợ."
+      },
+      {
+       "html": "Chị Dung lọc ra 320 hộ nợ quá hạn để gửi cho <strong>công ty thu hộ</strong> – một đối tác bên ngoài được Điện lực X thuê gọi nhắc nợ.",
+       "level": 0,
+       "plain": "Chị Dung lọc ra 320 hộ nợ quá hạn để gửi cho công ty thu hộ – một đối tác bên ngoài được Điện lực X thuê gọi nhắc nợ."
+      },
+      {
+       "html": "<strong>Anh Minh</strong> ở phòng Kế hoạch của Công ty nghe nói có file này, nhắn xin \"bản đầy đủ\" để làm dự báo sản lượng.",
+       "level": 0,
+       "plain": "Anh Minh ở phòng Kế hoạch của Công ty nghe nói có file này, nhắn xin \"bản đầy đủ\" để làm dự báo sản lượng."
+      },
+      {
+       "html": "Tối đó, anh Cường chép thêm một bản lên <strong>OneDrive</strong> \"để làm nốt ở nhà\".",
+       "level": 0,
+       "plain": "Tối đó, anh Cường chép thêm một bản lên OneDrive \"để làm nốt ở nhà\"."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không ai trong câu chuyện có ý xấu. Mỗi bước đều có lý do công việc. Nhưng sau một ngày, dữ liệu của 8.500 khách hàng đã nằm ở năm nơi, hai trong số đó nằm ngoài đơn vị.",
+     "plain": "Không ai trong câu chuyện có ý xấu. Mỗi bước đều có lý do công việc. Nhưng sau một ngày, dữ liệu của 8.500 khách hàng đã nằm ở năm nơi, hai trong số đó nằm ngoài đơn vị."
+    },
+    {
+     "t": "h3",
+     "text": "Câu hỏi của buổi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?",
+       "level": 0,
+       "plain": "Theo luật, ai chịu trách nhiệm về dữ liệu này: Điện lực, anh Cường, hay công ty thu hộ? Công ty thu hộ cần có gì trước khi nhận dữ liệu?"
+      },
+      {
+       "html": "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?",
+       "level": 0,
+       "plain": "Công ty thu hộ cần những cột nào? Anh Minh cần những cột nào?"
+      },
+      {
+       "html": "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?",
+       "level": 0,
+       "plain": "Trong 5 bước trên, bước nào dễ xảy ra lỗi thao tác nhất?"
+      },
+      {
+       "html": "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?",
+       "level": 0,
+       "plain": "Nếu phải vẽ đường đi của file, đâu là những chỗ dữ liệu rời khỏi nơi được quản lý? Bản sao nào khó thu hồi nhất?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bốn câu này ứng với bốn bài của buổi. Danh sách \"file đã gửi trong tuần\" của lớp từ buổi sáng sẽ là nguyên liệu cho Thực hành 2.",
+     "plain": "Bốn câu này ứng với bốn bài của buổi. Danh sách \"file đã gửi trong tuần\" của lớp từ buổi sáng sẽ là nguyên liệu cho Thực hành 2."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Bài 1 – Khung pháp lý bảo vệ dữ liệu cá nhân",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này không biến học viên thành luật sư. Mục tiêu là hiểu tinh thần chung của luật, nhận ra việc mình làm hằng ngày đã là \"xử lý dữ liệu cá nhân\", và biết lúc nào phải hỏi bộ phận pháp chế. Phần pháp lý là tóm tắt để hiểu; khi áp dụng thật, pháp chế xác nhận theo văn bản đang có hiệu lực.",
+     "plain": "Bài này không biến học viên thành luật sư. Mục tiêu là hiểu tinh thần chung của luật, nhận ra việc mình làm hằng ngày đã là \"xử lý dữ liệu cá nhân\", và biết lúc nào phải hỏi bộ phận pháp chế. Phần pháp lý là tóm tắt để hiểu; khi áp dụng thật, pháp chế xác nhận theo văn bản đang có hiệu lực."
+    },
+    {
+     "t": "h3",
+     "text": "1.1. Từ vựng cơ bản"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Nghĩa",
+        "plain": "Nghĩa"
+       },
+       {
+        "html": "Ví dụ trong chương 2",
+        "plain": "Ví dụ trong chương 2"
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu cá nhân",
+        "plain": "Dữ liệu cá nhân"
+       },
+       {
+        "html": "Thông tin giúp xác định một con người cụ thể (buổi 1)",
+        "plain": "Thông tin giúp xác định một con người cụ thể (buổi 1)"
+       },
+       {
+        "html": "Tên, điện thoại, địa chỉ, số nợ của 8.500 hộ",
+        "plain": "Tên, điện thoại, địa chỉ, số nợ của 8.500 hộ"
+       }
+      ],
+      [
+       {
+        "html": "Xử lý dữ liệu",
+        "plain": "Xử lý dữ liệu"
+       },
+       {
+        "html": "Gần như mọi thao tác: thu thập, lưu, xem, sửa, xuất, gửi, xóa",
+        "plain": "Gần như mọi thao tác: thu thập, lưu, xem, sửa, xuất, gửi, xóa"
+       },
+       {
+        "html": "Xuất file, gửi email, lọc 320 hộ, chép lên OneDrive",
+        "plain": "Xuất file, gửi email, lọc 320 hộ, chép lên OneDrive"
+       }
+      ],
+      [
+       {
+        "html": "Chủ thể dữ liệu",
+        "plain": "Chủ thể dữ liệu"
+       },
+       {
+        "html": "Người mà dữ liệu nói về",
+        "plain": "Người mà dữ liệu nói về"
+       },
+       {
+        "html": "8.500 khách hàng của Điện lực X",
+        "plain": "8.500 khách hàng của Điện lực X"
+       }
+      ],
+      [
+       {
+        "html": "Bên kiểm soát",
+        "plain": "Bên kiểm soát"
+       },
+       {
+        "html": "Quyết định mục đích và phương tiện xử lý",
+        "plain": "Quyết định mục đích và phương tiện xử lý"
+       },
+       {
+        "html": "Công ty Điện lực Minh An",
+        "plain": "Công ty Điện lực Minh An"
+       }
+      ],
+      [
+       {
+        "html": "Bên xử lý",
+        "plain": "Bên xử lý"
+       },
+       {
+        "html": "Xử lý theo yêu cầu của bên kiểm soát, thông qua hợp đồng",
+        "plain": "Xử lý theo yêu cầu của bên kiểm soát, thông qua hợp đồng"
+       },
+       {
+        "html": "Công ty thu hộ",
+        "plain": "Công ty thu hộ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Anh Cường, chị Dung, anh Minh không phải là \"bên\" theo luật. Họ là người của bên kiểm soát, xử lý dữ liệu thay mặt Công ty. Vì vậy khi họ làm sai, Công ty chịu trách nhiệm trước khách hàng và cơ quan quản lý.",
+     "plain": "Anh Cường, chị Dung, anh Minh không phải là \"bên\" theo luật. Họ là người của bên kiểm soát, xử lý dữ liệu thay mặt Công ty. Vì vậy khi họ làm sai, Công ty chịu trách nhiệm trước khách hàng và cơ quan quản lý."
+    },
+    {
+     "t": "h3",
+     "text": "1.2. Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15"
+    },
+    {
+     "t": "p",
+     "html": "Luật được Quốc hội thông qua ngày 26/6/2025, có hiệu lực từ 01/01/2026. Trước đó, lĩnh vực này được điều chỉnh chủ yếu bởi Nghị định 13/2023/NĐ-CP.",
+     "plain": "Luật được Quốc hội thông qua ngày 26/6/2025, có hiệu lực từ 01/01/2026. Trước đó, lĩnh vực này được điều chỉnh chủ yếu bởi Nghị định 13/2023/NĐ-CP."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Quy định (tóm tắt)",
+        "plain": "Quy định (tóm tắt)"
+       },
+       {
+        "html": "Ý nghĩa với cán bộ vận hành",
+        "plain": "Ý nghĩa với cán bộ vận hành"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò (Điều 2)",
+        "plain": "Vai trò (Điều 2)"
+       },
+       {
+        "html": "Chủ thể dữ liệu; bên kiểm soát; bên xử lý; bên vừa kiểm soát vừa xử lý",
+        "plain": "Chủ thể dữ liệu; bên kiểm soát; bên xử lý; bên vừa kiểm soát vừa xử lý"
+       },
+       {
+        "html": "Với dữ liệu khách hàng, đơn vị điện lực thường là bên kiểm soát. Đơn vị thu hộ, in và phát hóa đơn, làm phần mềm thuê ngoài thường là bên xử lý",
+        "plain": "Với dữ liệu khách hàng, đơn vị điện lực thường là bên kiểm soát. Đơn vị thu hộ, in và phát hóa đơn, làm phần mềm thuê ngoài thường là bên xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Nguyên tắc (Điều 3)",
+        "plain": "Nguyên tắc (Điều 3)"
+       },
+       {
+        "html": "Xử lý đúng phạm vi, mục đích đã nêu; dữ liệu chính xác, được cập nhật; không lưu quá thời gian cần thiết; kết hợp biện pháp kỹ thuật, tổ chức và con người; chủ động phòng ngừa vi phạm",
+        "plain": "Xử lý đúng phạm vi, mục đích đã nêu; dữ liệu chính xác, được cập nhật; không lưu quá thời gian cần thiết; kết hợp biện pháp kỹ thuật, tổ chức và con người; chủ động phòng ngừa vi phạm"
+       },
+       {
+        "html": "Chỉ dùng dữ liệu cho đúng việc; sửa khi sai; xóa khi hết cần",
+        "plain": "Chỉ dùng dữ liệu cho đúng việc; sửa khi sai; xóa khi hết cần"
+       }
+      ],
+      [
+       {
+        "html": "Quyền của chủ thể (Điều 4)",
+        "plain": "Quyền của chủ thể (Điều 4)"
+       },
+       {
+        "html": "Được biết về hoạt động xử lý; đồng ý, không đồng ý hoặc rút lại đồng ý; xem và chỉnh sửa; yêu cầu cung cấp, xóa, hạn chế xử lý hoặc phản đối; khiếu nại, khởi kiện, đòi bồi thường",
+        "plain": "Được biết về hoạt động xử lý; đồng ý, không đồng ý hoặc rút lại đồng ý; xem và chỉnh sửa; yêu cầu cung cấp, xóa, hạn chế xử lý hoặc phản đối; khiếu nại, khởi kiện, đòi bồi thường"
+       },
+       {
+        "html": "Khi khách hàng yêu cầu xem, sửa hoặc xóa thông tin, tiếp nhận và chuyển theo quy trình – không từ chối, cũng không tự xử lý ngoài quy trình",
+        "plain": "Khi khách hàng yêu cầu xem, sửa hoặc xóa thông tin, tiếp nhận và chuyển theo quy trình – không từ chối, cũng không tự xử lý ngoài quy trình"
+       }
+      ],
+      [
+       {
+        "html": "Xử phạt hành chính (Điều 8)",
+        "plain": "Xử phạt hành chính (Điều 8)"
+       },
+       {
+        "html": "Mua bán dữ liệu cá nhân: tối đa 10 lần khoản thu từ vi phạm. Vi phạm chuyển dữ liệu xuyên biên giới (tổ chức): tối đa 5% doanh thu năm trước liền kề. Vi phạm khác (tổ chức): tối đa 3 tỷ đồng. Cá nhân: tối đa bằng một nửa mức của tổ chức",
+        "plain": "Mua bán dữ liệu cá nhân: tối đa 10 lần khoản thu từ vi phạm. Vi phạm chuyển dữ liệu xuyên biên giới (tổ chức): tối đa 5% doanh thu năm trước liền kề. Vi phạm khác (tổ chức): tối đa 3 tỷ đồng. Cá nhân: tối đa bằng một nửa mức của tổ chức"
+       },
+       {
+        "html": "Đưa dữ liệu khách hàng lên công cụ AI đặt ở nước ngoài có thể là chuyển dữ liệu xuyên biên giới",
+        "plain": "Đưa dữ liệu khách hàng lên công cụ AI đặt ở nước ngoài có thể là chuyển dữ liệu xuyên biên giới"
+       }
+      ],
+      [
+       {
+        "html": "Thông báo vi phạm (Điều 23)",
+        "plain": "Thông báo vi phạm (Điều 23)"
+       },
+       {
+        "html": "Khi phát hiện vi phạm có thể gây tổn hại (đến an ninh, trật tự xã hội hoặc tính mạng, sức khỏe, danh dự, tài sản của chủ thể dữ liệu), bên kiểm soát thông báo cho cơ quan chuyên trách bảo vệ dữ liệu cá nhân chậm nhất 72 giờ kể từ khi phát hiện. Bên xử lý phát hiện thì báo kịp thời cho bên kiểm soát",
+        "plain": "Khi phát hiện vi phạm có thể gây tổn hại (đến an ninh, trật tự xã hội hoặc tính mạng, sức khỏe, danh dự, tài sản của chủ thể dữ liệu), bên kiểm soát thông báo cho cơ quan chuyên trách bảo vệ dữ liệu cá nhân chậm nhất 72 giờ kể từ khi phát hiện. Bên xử lý phát hiện thì báo kịp thời cho bên kiểm soát"
+       },
+       {
+        "html": "72 giờ tính từ khi tổ chức phát hiện. Một nhân viên biết mà giữ im vài ngày có thể khiến cả đơn vị trễ hạn",
+        "plain": "72 giờ tính từ khi tổ chức phát hiện. Một nhân viên biết mà giữ im vài ngày có thể khiến cả đơn vị trễ hạn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Danh mục dữ liệu nhạy cảm và hướng dẫn thi hành nằm trong văn bản dưới luật; bộ phận pháp chế cập nhật khi áp dụng. Ngoài luật này, doanh nghiệp điện còn chịu các quy định về an toàn thông tin mạng, an ninh mạng và quy định nội bộ của ngành.",
+     "plain": "Danh mục dữ liệu nhạy cảm và hướng dẫn thi hành nằm trong văn bản dưới luật; bộ phận pháp chế cập nhật khi áp dụng. Ngoài luật này, doanh nghiệp điện còn chịu các quy định về an toàn thông tin mạng, an ninh mạng và quy định nội bộ của ngành."
+    },
+    {
+     "t": "h3",
+     "text": "1.3. GDPR và \"PDPA\""
+    },
+    {
+     "t": "p",
+     "html": "<strong>GDPR</strong> là Quy định chung về bảo vệ dữ liệu của Liên minh châu Âu (Quy định (EU) 2016/679), áp dụng từ 25/5/2018 cho tổ chức có cơ sở tại EU và tổ chức ngoài EU nếu cung cấp hàng hóa, dịch vụ hoặc theo dõi hành vi của người đang ở EU. Một doanh nghiệp điện phục vụ khách hàng trong nước thường ít thuộc phạm vi trực tiếp, nhưng GDPR là khuôn mẫu mà nhiều luật sau này tham khảo. Việc có thuộc phạm vi hay không do pháp chế đánh giá.",
+     "plain": "GDPR là Quy định chung về bảo vệ dữ liệu của Liên minh châu Âu (Quy định (EU) 2016/679), áp dụng từ 25/5/2018 cho tổ chức có cơ sở tại EU và tổ chức ngoài EU nếu cung cấp hàng hóa, dịch vụ hoặc theo dõi hành vi của người đang ở EU. Một doanh nghiệp điện phục vụ khách hàng trong nước thường ít thuộc phạm vi trực tiếp, nhưng GDPR là khuôn mẫu mà nhiều luật sau này tham khảo. Việc có thuộc phạm vi hay không do pháp chế đánh giá."
+    },
+    {
+     "t": "p",
+     "html": "PDPA là tên viết tắt được sử dụng cho pháp luật bảo vệ dữ liệu cá nhân tại một số quốc gia, chẳng hạn Singapore. Khi tài liệu nhắc PDPA, cần xác định rõ quốc gia và điều kiện áp dụng. Không đồng nhất tên gọi này với Luật Bảo vệ dữ liệu cá nhân của Việt Nam.",
+     "plain": "PDPA là tên viết tắt được sử dụng cho pháp luật bảo vệ dữ liệu cá nhân tại một số quốc gia, chẳng hạn Singapore. Khi tài liệu nhắc PDPA, cần xác định rõ quốc gia và điều kiện áp dụng. Không đồng nhất tên gọi này với Luật Bảo vệ dữ liệu cá nhân của Việt Nam."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Bảy nguyên tắc của GDPR (Điều 5) bằng lời thường</strong> – hầu hết có mặt trong luật Việt Nam:",
+     "plain": "Bảy nguyên tắc của GDPR (Điều 5) bằng lời thường – hầu hết có mặt trong luật Việt Nam:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Hợp pháp, công bằng, minh bạch:</strong> có căn cứ để xử lý và cho người dân biết.",
+       "level": 0,
+       "plain": "Hợp pháp, công bằng, minh bạch: có căn cứ để xử lý và cho người dân biết."
+      },
+      {
+       "html": "<strong>Giới hạn mục đích:</strong> thu để làm việc A thì không tùy tiện dùng cho việc B.",
+       "level": 0,
+       "plain": "Giới hạn mục đích: thu để làm việc A thì không tùy tiện dùng cho việc B."
+      },
+      {
+       "html": "<strong>Tối thiểu hóa:</strong> chỉ lấy đủ dùng.",
+       "level": 0,
+       "plain": "Tối thiểu hóa: chỉ lấy đủ dùng."
+      },
+      {
+       "html": "<strong>Chính xác:</strong> dữ liệu sai phải được sửa.",
+       "level": 0,
+       "plain": "Chính xác: dữ liệu sai phải được sửa."
+      },
+      {
+       "html": "<strong>Giới hạn thời gian lưu:</strong> hết cần thì không giữ mãi.",
+       "level": 0,
+       "plain": "Giới hạn thời gian lưu: hết cần thì không giữ mãi."
+      },
+      {
+       "html": "<strong>Toàn vẹn và bảo mật:</strong> có biện pháp bảo vệ phù hợp.",
+       "level": 0,
+       "plain": "Toàn vẹn và bảo mật: có biện pháp bảo vệ phù hợp."
+      },
+      {
+       "html": "<strong>Trách nhiệm giải trình:</strong> chứng minh được mình đã làm đúng – lại là chuyện \"minh chứng\" của buổi 1.",
+       "level": 0,
+       "plain": "Trách nhiệm giải trình: chứng minh được mình đã làm đúng – lại là chuyện \"minh chứng\" của buổi 1."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khía cạnh",
+        "plain": "Khía cạnh"
+       },
+       {
+        "html": "GDPR",
+        "plain": "GDPR"
+       },
+       {
+        "html": "Luật 91/2025/QH15",
+        "plain": "Luật 91/2025/QH15"
+       }
+      ],
+      [
+       {
+        "html": "Phạm vi",
+        "plain": "Phạm vi"
+       },
+       {
+        "html": "Dữ liệu người ở EU",
+        "plain": "Dữ liệu người ở EU"
+       },
+       {
+        "html": "Hoạt động xử lý dữ liệu cá nhân liên quan đến Việt Nam",
+        "plain": "Hoạt động xử lý dữ liệu cá nhân liên quan đến Việt Nam"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       },
+       {
+        "html": "Controller, processor",
+        "plain": "Controller, processor"
+       },
+       {
+        "html": "Bên kiểm soát, bên xử lý, bên kiểm soát và xử lý",
+        "plain": "Bên kiểm soát, bên xử lý, bên kiểm soát và xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Phân loại dữ liệu",
+        "plain": "Phân loại dữ liệu"
+       },
+       {
+        "html": "Dữ liệu cá nhân; loại đặc biệt (Điều 9)",
+        "plain": "Dữ liệu cá nhân; loại đặc biệt (Điều 9)"
+       },
+       {
+        "html": "Cơ bản và nhạy cảm (danh mục do Chính phủ ban hành)",
+        "plain": "Cơ bản và nhạy cảm (danh mục do Chính phủ ban hành)"
+       }
+      ],
+      [
+       {
+        "html": "Thông báo vi phạm",
+        "plain": "Thông báo vi phạm"
+       },
+       {
+        "html": "72 giờ tới cơ quan giám sát (Điều 33)",
+        "plain": "72 giờ tới cơ quan giám sát (Điều 33)"
+       },
+       {
+        "html": "Chậm nhất 72 giờ tới cơ quan chuyên trách (Điều 23)",
+        "plain": "Chậm nhất 72 giờ tới cơ quan chuyên trách (Điều 23)"
+       }
+      ],
+      [
+       {
+        "html": "Mức phạt tối đa",
+        "plain": "Mức phạt tối đa"
+       },
+       {
+        "html": "20 triệu EUR hoặc 4% doanh thu toàn cầu (Điều 83)",
+        "plain": "20 triệu EUR hoặc 4% doanh thu toàn cầu (Điều 83)"
+       },
+       {
+        "html": "Theo loại vi phạm: đến 5% doanh thu (xuyên biên giới), 10 lần khoản thu (mua bán), 3 tỷ đồng (vi phạm khác)",
+        "plain": "Theo loại vi phạm: đến 5% doanh thu (xuyên biên giới), 10 lần khoản thu (mua bán), 3 tỷ đồng (vi phạm khác)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.4. Áp vào chương 2"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Điện lực Minh An là bên kiểm soát</strong> vì quyết định thu dữ liệu khách hàng để làm gì và bằng cách nào.",
+       "level": 0,
+       "plain": "Điện lực Minh An là bên kiểm soát vì quyết định thu dữ liệu khách hàng để làm gì và bằng cách nào."
+      },
+      {
+       "html": "<strong>Công ty thu hộ là bên xử lý.</strong> Trước khi nhận dữ liệu phải có hợp đồng quy định rõ: chỉ dùng để nhắc nợ, bảo vệ ra sao, ai được xem, xóa khi nào, báo ngay khi có sự cố. Không có hợp đồng thì chị Dung không được gửi, dù lãnh đạo đã đồng ý miệng.",
+       "level": 0,
+       "plain": "Công ty thu hộ là bên xử lý. Trước khi nhận dữ liệu phải có hợp đồng quy định rõ: chỉ dùng để nhắc nợ, bảo vệ ra sao, ai được xem, xóa khi nào, báo ngay khi có sự cố. Không có hợp đồng thì chị Dung không được gửi, dù lãnh đạo đã đồng ý miệng."
+      },
+      {
+       "html": "<strong>Nếu file lộ</strong> và vụ việc thuộc diện luật quy định, Công ty phải thông báo cơ quan chuyên trách chậm nhất 72 giờ kể từ khi phát hiện. Đồng hồ này sẽ quay lại ở buổi 10.",
+       "level": 0,
+       "plain": "Nếu file lộ và vụ việc thuộc diện luật quy định, Công ty phải thông báo cơ quan chuyên trách chậm nhất 72 giờ kể từ khi phát hiện. Đồng hồ này sẽ quay lại ở buổi 10."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.5. Khi nào phải hỏi pháp chế"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Gửi dữ liệu cá nhân cho một bên ngoài đơn vị lần đầu, hoặc chưa chắc đã có hợp đồng.",
+       "level": 0,
+       "plain": "Gửi dữ liệu cá nhân cho một bên ngoài đơn vị lần đầu, hoặc chưa chắc đã có hợp đồng."
+      },
+      {
+       "html": "Dùng dữ liệu cho một mục đích mới, khác với mục đích lúc thu (ví dụ dùng danh sách khách hàng để quảng cáo dịch vụ khác).",
+       "level": 0,
+       "plain": "Dùng dữ liệu cho một mục đích mới, khác với mục đích lúc thu (ví dụ dùng danh sách khách hàng để quảng cáo dịch vụ khác)."
+      },
+      {
+       "html": "Đưa dữ liệu lên dịch vụ đặt ở nước ngoài, kể cả công cụ AI.",
+       "level": 0,
+       "plain": "Đưa dữ liệu lên dịch vụ đặt ở nước ngoài, kể cả công cụ AI."
+      },
+      {
+       "html": "Khách hàng yêu cầu xóa dữ liệu, phản đối xử lý, hoặc đòi bồi thường.",
+       "level": 0,
+       "plain": "Khách hàng yêu cầu xóa dữ liệu, phản đối xử lý, hoặc đòi bồi thường."
+      },
+      {
+       "html": "Nghi có vi phạm: báo ngay đầu mối, để đầu mối và pháp chế đánh giá nghĩa vụ thông báo.",
+       "level": 0,
+       "plain": "Nghi có vi phạm: báo ngay đầu mối, để đầu mối và pháp chế đánh giá nghĩa vụ thông báo."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Luật là việc của pháp chế.\" → Pháp chế giải thích luật, nhưng người xuất file, gửi email mới là người đang \"xử lý dữ liệu\" mỗi ngày.",
+     "plain": "Hiểu nhầm hay gặp: \"Luật là việc của pháp chế.\" → Pháp chế giải thích luật, nhưng người xuất file, gửi email mới là người đang \"xử lý dữ liệu\" mỗi ngày.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Bài 2 – Bốn câu hỏi tuân thủ trong công việc",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Người làm nghiệp vụ không cần nhớ điều luật. Chỉ cần hỏi bốn câu trước khi xử lý hoặc chia sẻ dữ liệu. <strong>Nếu một trong bốn câu chưa có câu trả lời rõ thì dừng lại và hỏi, không tự quyết.</strong>",
+     "plain": "Người làm nghiệp vụ không cần nhớ điều luật. Chỉ cần hỏi bốn câu trước khi xử lý hoặc chia sẻ dữ liệu. Nếu một trong bốn câu chưa có câu trả lời rõ thì dừng lại và hỏi, không tự quyết."
+    },
+    {
+     "t": "h3",
+     "text": "2.1. Bốn câu hỏi và nguyên tắc đằng sau"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Tự hỏi gì",
+        "plain": "Tự hỏi gì"
+       },
+       {
+        "html": "Nguyên tắc luật tương ứng",
+        "plain": "Nguyên tắc luật tương ứng"
+       },
+       {
+        "html": "Dấu hiệu phải dừng lại hỏi",
+        "plain": "Dấu hiệu phải dừng lại hỏi"
+       }
+      ],
+      [
+       {
+        "html": "Mục đích",
+        "plain": "Mục đích"
+       },
+       {
+        "html": "Dữ liệu phục vụ công việc nào? Có đang dùng vượt mục đích được phép không?",
+        "plain": "Dữ liệu phục vụ công việc nào? Có đang dùng vượt mục đích được phép không?"
+       },
+       {
+        "html": "Giới hạn mục đích",
+        "plain": "Giới hạn mục đích"
+       },
+       {
+        "html": "\"Lấy luôn để sau này có dùng\"; dùng dữ liệu thu phí để làm việc khác",
+        "plain": "\"Lấy luôn để sau này có dùng\"; dùng dữ liệu thu phí để làm việc khác"
+       }
+      ],
+      [
+       {
+        "html": "Phạm vi",
+        "plain": "Phạm vi"
+       },
+       {
+        "html": "Có thể bỏ bớt trường, giảm độ chi tiết hoặc dùng số liệu tổng hợp không?",
+        "plain": "Có thể bỏ bớt trường, giảm độ chi tiết hoặc dùng số liệu tổng hợp không?"
+       },
+       {
+        "html": "Tối thiểu hóa",
+        "plain": "Tối thiểu hóa"
+       },
+       {
+        "html": "Xuất cả bảng thay vì vài cột",
+        "plain": "Xuất cả bảng thay vì vài cột"
+       }
+      ],
+      [
+       {
+        "html": "Người nhận",
+        "plain": "Người nhận"
+       },
+       {
+        "html": "Ai thật sự cần? Có bên thứ ba hoặc dịch vụ ngoài tổ chức tham gia không?",
+        "plain": "Ai thật sự cần? Có bên thứ ba hoặc dịch vụ ngoài tổ chức tham gia không?"
+       },
+       {
+        "html": "Chia sẻ có căn cứ; bên xử lý có hợp đồng; chuyển xuyên biên giới",
+        "plain": "Chia sẻ có căn cứ; bên xử lý có hợp đồng; chuyển xuyên biên giới"
+       },
+       {
+        "html": "Người nhận là bên ngoài hoặc dịch vụ đặt ở nước ngoài",
+        "plain": "Người nhận là bên ngoài hoặc dịch vụ đặt ở nước ngoài"
+       }
+      ],
+      [
+       {
+        "html": "Trách nhiệm",
+        "plain": "Trách nhiệm"
+       },
+       {
+        "html": "Ai duyệt? Lưu ở đâu? Khi nghi có sự cố thì báo cho ai?",
+        "plain": "Ai duyệt? Lưu ở đâu? Khi nghi có sự cố thì báo cho ai?"
+       },
+       {
+        "html": "Trách nhiệm giải trình",
+        "plain": "Trách nhiệm giải trình"
+       },
+       {
+        "html": "Không ai ký duyệt; không biết báo sự cố cho ai",
+        "plain": "Không ai ký duyệt; không biết báo sự cố cho ai"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.2. Ví dụ giải: chị Dung gửi danh sách cho công ty thu hộ"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Trả lời",
+        "plain": "Trả lời"
+       },
+       {
+        "html": "Kết luận",
+        "plain": "Kết luận"
+       }
+      ],
+      [
+       {
+        "html": "Mục đích",
+        "plain": "Mục đích"
+       },
+       {
+        "html": "Thu tiền điện còn nợ – nằm trong phạm vi hợp đồng mua bán điện với khách hàng",
+        "plain": "Thu tiền điện còn nợ – nằm trong phạm vi hợp đồng mua bán điện với khách hàng"
+       },
+       {
+        "html": "Rõ",
+        "plain": "Rõ"
+       }
+      ],
+      [
+       {
+        "html": "Phạm vi",
+        "plain": "Phạm vi"
+       },
+       {
+        "html": "Công ty thu hộ cần mã khách hàng, tên, địa chỉ hoặc điện thoại liên hệ, số tiền nợ. Không cần sản lượng 12 tháng, không cần 8.180 hộ không nợ",
+        "plain": "Công ty thu hộ cần mã khách hàng, tên, địa chỉ hoặc điện thoại liên hệ, số tiền nợ. Không cần sản lượng 12 tháng, không cần 8.180 hộ không nợ"
+       },
+       {
+        "html": "Chỉ gửi 320 dòng, 4–5 cột",
+        "plain": "Chỉ gửi 320 dòng, 4–5 cột"
+       }
+      ],
+      [
+       {
+        "html": "Người nhận",
+        "plain": "Người nhận"
+       },
+       {
+        "html": "Công ty thu hộ là bên xử lý bên ngoài",
+        "plain": "Công ty thu hộ là bên xử lý bên ngoài"
+       },
+       {
+        "html": "Phải có hợp đồng bảo vệ dữ liệu trước khi gửi",
+        "plain": "Phải có hợp đồng bảo vệ dữ liệu trước khi gửi"
+       }
+      ],
+      [
+       {
+        "html": "Trách nhiệm",
+        "plain": "Trách nhiệm"
+       },
+       {
+        "html": "Trưởng phòng Kinh doanh duyệt; gửi qua kênh được duyệt; công ty thu hộ xóa sau khi hết đợt thu",
+        "plain": "Trưởng phòng Kinh doanh duyệt; gửi qua kênh được duyệt; công ty thu hộ xóa sau khi hết đợt thu"
+       },
+       {
+        "html": "Ghi lại ai duyệt, gửi lúc nào, hạn xóa",
+        "plain": "Ghi lại ai duyệt, gửi lúc nào, hạn xóa"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Cách gửi cụ thể (mã hóa, chia sẻ có hạn, báo mật khẩu qua kênh khác) sẽ học ở buổi 5.",
+     "plain": "Cách gửi cụ thể (mã hóa, chia sẻ có hạn, báo mật khẩu qua kênh khác) sẽ học ở buổi 5."
+    },
+    {
+     "t": "h3",
+     "text": "2.3. Ví dụ giải: anh Minh xin \"bản đầy đủ\""
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Mục đích:</strong> dự báo sản lượng – hợp lý, nhưng khác mục đích thu nợ của file.",
+       "level": 0,
+       "plain": "Mục đích: dự báo sản lượng – hợp lý, nhưng khác mục đích thu nợ của file."
+      },
+      {
+       "html": "<strong>Phạm vi:</strong> dự báo cần sản lượng theo khu vực và tháng, không cần tên, số điện thoại hay số nợ của từng hộ.",
+       "level": 0,
+       "plain": "Phạm vi: dự báo cần sản lượng theo khu vực và tháng, không cần tên, số điện thoại hay số nợ của từng hộ."
+      },
+      {
+       "html": "<strong>Người nhận:</strong> nội bộ Công ty, nhưng khác đơn vị. Anh Minh còn nói sẽ \"thử một công cụ AI\" – dấu hiệu phải dừng.",
+       "level": 0,
+       "plain": "Người nhận: nội bộ Công ty, nhưng khác đơn vị. Anh Minh còn nói sẽ \"thử một công cụ AI\" – dấu hiệu phải dừng."
+      },
+      {
+       "html": "<strong>Kết luận:</strong> không gửi file đầy đủ. Chủ dữ liệu của Điện lực X duyệt một bản tổng hợp. Cách làm bản tổng hợp là nội dung buổi 6.",
+       "level": 0,
+       "plain": "Kết luận: không gửi file đầy đủ. Chủ dữ liệu của Điện lực X duyệt một bản tổng hợp. Cách làm bản tổng hợp là nội dung buổi 6."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.4. Luyện tập nhanh"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình huống giả lập",
+        "plain": "Tình huống giả lập"
+       },
+       {
+        "html": "Câu hỏi \"vướng\"",
+        "plain": "Câu hỏi \"vướng\""
+       },
+       {
+        "html": "Nên làm gì",
+        "plain": "Nên làm gì"
+       }
+      ],
+      [
+       {
+        "html": "Phòng truyền thông xin danh sách điện thoại khách hàng để nhắn tin chúc mừng năm mới kèm quảng cáo dịch vụ mới",
+        "plain": "Phòng truyền thông xin danh sách điện thoại khách hàng để nhắn tin chúc mừng năm mới kèm quảng cáo dịch vụ mới"
+       },
+       {
+        "html": "Mục đích",
+        "plain": "Mục đích"
+       },
+       {
+        "html": "Hỏi pháp chế: đây là mục đích mới, có thể cần sự đồng ý của khách hàng",
+        "plain": "Hỏi pháp chế: đây là mục đích mới, có thể cần sự đồng ý của khách hàng"
+       }
+      ],
+      [
+       {
+        "html": "Đơn vị làm phần mềm thuê ngoài xin một bản sao dữ liệu thật \"để test lỗi\"",
+        "plain": "Đơn vị làm phần mềm thuê ngoài xin một bản sao dữ liệu thật \"để test lỗi\""
+       },
+       {
+        "html": "Người nhận, phạm vi",
+        "plain": "Người nhận, phạm vi"
+       },
+       {
+        "html": "Kiểm tra hợp đồng; ưu tiên dữ liệu giả lập hoặc đã che (buổi 6)",
+        "plain": "Kiểm tra hợp đồng; ưu tiên dữ liệu giả lập hoặc đã che (buổi 6)"
+       }
+      ],
+      [
+       {
+        "html": "Đồng nghiệp phòng bên nhờ tra số điện thoại của một khách hàng \"quen\"",
+        "plain": "Đồng nghiệp phòng bên nhờ tra số điện thoại của một khách hàng \"quen\""
+       },
+       {
+        "html": "Mục đích, trách nhiệm",
+        "plain": "Mục đích, trách nhiệm"
+       },
+       {
+        "html": "Từ chối nếu không phải việc công; việc công thì đi qua quy trình",
+        "plain": "Từ chối nếu không phải việc công; việc công thì đi qua quy trình"
+       }
+      ],
+      [
+       {
+        "html": "Cơ quan công an gửi công văn yêu cầu cung cấp thông tin một khách hàng",
+        "plain": "Cơ quan công an gửi công văn yêu cầu cung cấp thông tin một khách hàng"
+       },
+       {
+        "html": "Người nhận, trách nhiệm",
+        "plain": "Người nhận, trách nhiệm"
+       },
+       {
+        "html": "Chuyển lãnh đạo và pháp chế xử lý theo quy trình; cá nhân không tự cung cấp qua điện thoại",
+        "plain": "Chuyển lãnh đạo và pháp chế xử lý theo quy trình; cá nhân không tự cung cấp qua điện thoại"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.5. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Dán bốn câu hỏi cạnh màn hình trong tuần đầu. Mỗi lần xuất hoặc gửi file khách hàng, lướt qua bốn câu.",
+       "level": 0,
+       "plain": "Dán bốn câu hỏi cạnh màn hình trong tuần đầu. Mỗi lần xuất hoặc gửi file khách hàng, lướt qua bốn câu."
+      },
+      {
+       "html": "Khi ai đó xin dữ liệu, hỏi lại họ \"anh/chị dùng để làm gì, cần những cột nào?\" trước khi gửi. Phần lớn trường hợp, người xin chỉ cần một phần nhỏ.",
+       "level": 0,
+       "plain": "Khi ai đó xin dữ liệu, hỏi lại họ \"anh/chị dùng để làm gì, cần những cột nào?\" trước khi gửi. Phần lớn trường hợp, người xin chỉ cần một phần nhỏ."
+      }
+     ]
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Bài 3 – Lỗi thao tác và cách phòng",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Nhiều sự cố dữ liệu không đến từ tin tặc mà từ một cú nhấp chuột vội vàng. Hiểu lỗi thuộc loại nào giúp chọn đúng cách phòng: có lỗi cần đào tạo, có lỗi cần thay thiết kế thao tác, và ít khi giải pháp là \"nhắc nhở cẩn thận hơn\".",
+     "plain": "Nhiều sự cố dữ liệu không đến từ tin tặc mà từ một cú nhấp chuột vội vàng. Hiểu lỗi thuộc loại nào giúp chọn đúng cách phòng: có lỗi cần đào tạo, có lỗi cần thay thiết kế thao tác, và ít khi giải pháp là \"nhắc nhở cẩn thận hơn\"."
+    },
+    {
+     "t": "h3",
+     "text": "3.1. Bốn loại lỗi của con người"
+    },
+    {
+     "t": "p",
+     "html": "Nhà tâm lý học James Reason phân biệt các loại lỗi sau:",
+     "plain": "Nhà tâm lý học James Reason phân biệt các loại lỗi sau:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại lỗi",
+        "plain": "Loại lỗi"
+       },
+       {
+        "html": "Bản chất",
+        "plain": "Bản chất"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Biện pháp hiệu quả",
+        "plain": "Biện pháp hiệu quả"
+       }
+      ],
+      [
+       {
+        "html": "Sơ suất (slip)",
+        "plain": "Sơ suất (slip)"
+       },
+       {
+        "html": "Biết đúng nhưng tay làm sai",
+        "plain": "Biết đúng nhưng tay làm sai"
+       },
+       {
+        "html": "Gõ nhầm mã khách hàng; chọn nhầm người nhận từ gợi ý",
+        "plain": "Gõ nhầm mã khách hàng; chọn nhầm người nhận từ gợi ý"
+       },
+       {
+        "html": "Kiểm tra kép; hiển thị tên khách khi nhập mã; cảnh báo khi gửi ra ngoài; hẹn giờ gửi 1–2 phút để kịp hủy",
+        "plain": "Kiểm tra kép; hiển thị tên khách khi nhập mã; cảnh báo khi gửi ra ngoài; hẹn giờ gửi 1–2 phút để kịp hủy"
+       }
+      ],
+      [
+       {
+        "html": "Quên (lapse)",
+        "plain": "Quên (lapse)"
+       },
+       {
+        "html": "Bỏ sót một bước",
+        "plain": "Bỏ sót một bước"
+       },
+       {
+        "html": "Quên thu hồi link chia sẻ; quên xóa file tạm",
+        "plain": "Quên thu hồi link chia sẻ; quên xóa file tạm"
+       },
+       {
+        "html": "Checklist; link có hạn tự động; nhắc việc tự động",
+        "plain": "Checklist; link có hạn tự động; nhắc việc tự động"
+       }
+      ],
+      [
+       {
+        "html": "Hiểu sai (mistake)",
+        "plain": "Hiểu sai (mistake)"
+       },
+       {
+        "html": "Nghĩ là đúng nhưng thực ra sai",
+        "plain": "Nghĩ là đúng nhưng thực ra sai"
+       },
+       {
+        "html": "Nghĩ ẩn cột là đã bảo vệ; nghĩ ổ khóa HTTPS là trang thật",
+        "plain": "Nghĩ ẩn cột là đã bảo vệ; nghĩ ổ khóa HTTPS là trang thật"
+       },
+       {
+        "html": "Đào tạo; hướng dẫn cụ thể có hình ảnh",
+        "plain": "Đào tạo; hướng dẫn cụ thể có hình ảnh"
+       }
+      ],
+      [
+       {
+        "html": "Cố ý làm tắt (violation)",
+        "plain": "Cố ý làm tắt (violation)"
+       },
+       {
+        "html": "Biết quy định nhưng bỏ qua cho nhanh",
+        "plain": "Biết quy định nhưng bỏ qua cho nhanh"
+       },
+       {
+        "html": "Dùng chung tài khoản; gửi qua Zalo cá nhân cho tiện",
+        "plain": "Dùng chung tài khoản; gửi qua Zalo cá nhân cho tiện"
+       },
+       {
+        "html": "Làm cho cách đúng trở nên dễ; giám sát; chế tài rõ",
+        "plain": "Làm cho cách đúng trở nên dễ; giám sát; chế tài rõ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ý quan trọng: nhắc người sơ suất \"cẩn thận hơn\" gần như không có tác dụng, vì họ vốn đã biết. Cái cần sửa là thao tác: thêm bước xác nhận, cảnh báo, giá trị mặc định an toàn.",
+     "plain": "Ý quan trọng: nhắc người sơ suất \"cẩn thận hơn\" gần như không có tác dụng, vì họ vốn đã biết. Cái cần sửa là thao tác: thêm bước xác nhận, cảnh báo, giá trị mặc định an toàn."
+    },
+    {
+     "t": "h3",
+     "text": "3.2. Năm lỗi hay gặp khi làm việc với dữ liệu khách hàng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thao tác",
+        "plain": "Thao tác"
+       },
+       {
+        "html": "Câu chuyện giả lập",
+        "plain": "Câu chuyện giả lập"
+       },
+       {
+        "html": "Loại lỗi",
+        "plain": "Loại lỗi"
+       },
+       {
+        "html": "Nguy cơ",
+        "plain": "Nguy cơ"
+       },
+       {
+        "html": "Kiểm soát gợi ý",
+        "plain": "Kiểm soát gợi ý"
+       }
+      ],
+      [
+       {
+        "html": "Nhập nhầm mã khách hàng",
+        "plain": "Nhập nhầm mã khách hàng"
+       },
+       {
+        "html": "Gõ PX0012 thành PX0021, cập nhật số điện thoại vào hồ sơ người khác",
+        "plain": "Gõ PX0012 thành PX0021, cập nhật số điện thoại vào hồ sơ người khác"
+       },
+       {
+        "html": "Sơ suất",
+        "plain": "Sơ suất"
+       },
+       {
+        "html": "Cập nhật sai hồ sơ, gửi thông báo nhầm người",
+        "plain": "Cập nhật sai hồ sơ, gửi thông báo nhầm người"
+       },
+       {
+        "html": "Đối chiếu tên, địa chỉ trước khi lưu",
+        "plain": "Đối chiếu tên, địa chỉ trước khi lưu"
+       }
+      ],
+      [
+       {
+        "html": "Xuất toàn bộ bảng",
+        "plain": "Xuất toàn bộ bảng"
+       },
+       {
+        "html": "Cần 3 cột nhưng bấm \"Xuất tất cả\" ra 40 cột",
+        "plain": "Cần 3 cột nhưng bấm \"Xuất tất cả\" ra 40 cột"
+       },
+       {
+        "html": "Hiểu sai hoặc làm tắt",
+        "plain": "Hiểu sai hoặc làm tắt"
+       },
+       {
+        "html": "Lộ nhiều trường không cần",
+        "plain": "Lộ nhiều trường không cần"
+       },
+       {
+        "html": "Chọn cột, lọc phạm vi trước khi xuất",
+        "plain": "Chọn cột, lọc phạm vi trước khi xuất"
+       }
+      ],
+      [
+       {
+        "html": "Email tự điền người nhận",
+        "plain": "Email tự điền người nhận"
+       },
+       {
+        "html": "Gõ \"Lan\", chương trình thư gợi ý Lan ở đối tác thay vì Lan ở phòng bên",
+        "plain": "Gõ \"Lan\", chương trình thư gợi ý Lan ở đối tác thay vì Lan ở phòng bên"
+       },
+       {
+        "html": "Sơ suất",
+        "plain": "Sơ suất"
+       },
+       {
+        "html": "Gửi nhầm ra bên ngoài",
+        "plain": "Gửi nhầm ra bên ngoài"
+       },
+       {
+        "html": "Kiểm tra ô To/Cc và file đính kèm; cảnh báo người nhận ngoài tổ chức",
+        "plain": "Kiểm tra ô To/Cc và file đính kèm; cảnh báo người nhận ngoài tổ chức"
+       }
+      ],
+      [
+       {
+        "html": "Liên kết \"Anyone\"",
+        "plain": "Liên kết \"Anyone\""
+       },
+       {
+        "html": "Chia sẻ thư mục bằng link \"ai có link cũng xem được\" cho tiện, link bị chuyển tiếp",
+        "plain": "Chia sẻ thư mục bằng link \"ai có link cũng xem được\" cho tiện, link bị chuyển tiếp"
+       },
+       {
+        "html": "Làm tắt",
+        "plain": "Làm tắt"
+       },
+       {
+        "html": "Người ngoài truy cập được",
+        "plain": "Người ngoài truy cập được"
+       },
+       {
+        "html": "Chia sẻ cho người cụ thể, đặt hạn, thu hồi khi xong",
+        "plain": "Chia sẻ cho người cụ thể, đặt hạn, thu hồi khi xong"
+       }
+      ],
+      [
+       {
+        "html": "Dán dữ liệu vào AI",
+        "plain": "Dán dữ liệu vào AI"
+       },
+       {
+        "html": "Dán bảng khách hàng vào chatbot để \"viết hộ công thức\"",
+        "plain": "Dán bảng khách hàng vào chatbot để \"viết hộ công thức\""
+       },
+       {
+        "html": "Hiểu sai hoặc làm tắt",
+        "plain": "Hiểu sai hoặc làm tắt"
+       },
+       {
+        "html": "Dữ liệu ra ngoài phạm vi được duyệt",
+        "plain": "Dữ liệu ra ngoài phạm vi được duyệt"
+       },
+       {
+        "html": "Công cụ được duyệt; chỉ mô tả cột hoặc dùng dữ liệu giả (buổi 1)",
+        "plain": "Công cụ được duyệt; chỉ mô tả cột hoặc dùng dữ liệu giả (buổi 1)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.3. Bẫy \"dữ liệu ẩn\" trong file văn phòng"
+    },
+    {
+     "t": "p",
+     "html": "Ẩn không phải là xóa. Người nhận chỉ cần bỏ ẩn là thấy.",
+     "plain": "Ẩn không phải là xóa. Người nhận chỉ cần bỏ ẩn là thấy."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại file",
+        "plain": "Loại file"
+       },
+       {
+        "html": "Chỗ dữ liệu còn nằm",
+        "plain": "Chỗ dữ liệu còn nằm"
+       },
+       {
+        "html": "Cách làm đúng",
+        "plain": "Cách làm đúng"
+       }
+      ],
+      [
+       {
+        "html": "Excel",
+        "plain": "Excel"
+       },
+       {
+        "html": "Cột, dòng, sheet ẩn; PivotTable giữ dữ liệu gốc bên trong; ghi chú (comment); liên kết tới file khác; tên người tạo trong thuộc tính",
+        "plain": "Cột, dòng, sheet ẩn; PivotTable giữ dữ liệu gốc bên trong; ghi chú (comment); liên kết tới file khác; tên người tạo trong thuộc tính"
+       },
+       {
+        "html": "Tạo file mới chỉ chứa phần cần gửi (dán giá trị); dùng File → Info → Check for Issues → Inspect Document để rà",
+        "plain": "Tạo file mới chỉ chứa phần cần gửi (dán giá trị); dùng File → Info → Check for Issues → Inspect Document để rà"
+       }
+      ],
+      [
+       {
+        "html": "Word",
+        "plain": "Word"
+       },
+       {
+        "html": "Chế độ theo dõi thay đổi (Track Changes) và bình luận còn trong file dù đang ẩn hiển thị",
+        "plain": "Chế độ theo dõi thay đổi (Track Changes) và bình luận còn trong file dù đang ẩn hiển thị"
+       },
+       {
+        "html": "Chấp nhận hoặc từ chối hết thay đổi, xóa bình luận, rồi Inspect Document",
+        "plain": "Chấp nhận hoặc từ chối hết thay đổi, xóa bình luận, rồi Inspect Document"
+       }
+      ],
+      [
+       {
+        "html": "PDF",
+        "plain": "PDF"
+       },
+       {
+        "html": "Kẻ ô đen đè lên chữ không xóa chữ bên dưới – bôi đen và copy là ra",
+        "plain": "Kẻ ô đen đè lên chữ không xóa chữ bên dưới – bôi đen và copy là ra"
+       },
+       {
+        "html": "Dùng chức năng che thông tin thật (Redact) của phần mềm PDF",
+        "plain": "Dùng chức năng che thông tin thật (Redact) của phần mềm PDF"
+       }
+      ],
+      [
+       {
+        "html": "Ảnh chụp màn hình",
+        "plain": "Ảnh chụp màn hình"
+       },
+       {
+        "html": "Lộ cả tab, thông báo, tên file khác đang mở; cắt ảnh trên một số ứng dụng có thể vẫn giữ phần bị cắt",
+        "plain": "Lộ cả tab, thông báo, tên file khác đang mở; cắt ảnh trên một số ứng dụng có thể vẫn giữ phần bị cắt"
+       },
+       {
+        "html": "Chụp đúng vùng cần, kiểm tra lại trước khi gửi",
+        "plain": "Chụp đúng vùng cần, kiểm tra lại trước khi gửi"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.4. Thói quen \"dừng 5 giây\" trước khi gửi"
+    },
+    {
+     "t": "p",
+     "html": "Trước khi bấm Gửi, hỏi năm câu:",
+     "plain": "Trước khi bấm Gửi, hỏi năm câu:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Ai nhận? Đọc lại địa chỉ đầy đủ, không chỉ tên hiển thị.",
+       "level": 0,
+       "plain": "Ai nhận? Đọc lại địa chỉ đầy đủ, không chỉ tên hiển thị."
+      },
+      {
+       "html": "File nào? Đúng phiên bản chưa?",
+       "level": 0,
+       "plain": "File nào? Đúng phiên bản chưa?"
+      },
+      {
+       "html": "Trong file có gì, kể cả sheet và cột ẩn?",
+       "level": 0,
+       "plain": "Trong file có gì, kể cả sheet và cột ẩn?"
+      },
+      {
+       "html": "Qua kênh nào? Kênh đó được duyệt cho nhãn này chưa?",
+       "level": 0,
+       "plain": "Qua kênh nào? Kênh đó được duyệt cho nhãn này chưa?"
+      },
+      {
+       "html": "Nếu gửi sai, có thu hồi được không?",
+       "level": 0,
+       "plain": "Nếu gửi sai, có thu hồi được không?"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.5. Văn hóa báo lỗi"
+    },
+    {
+     "t": "p",
+     "html": "Nếu người gửi nhầm bị khiển trách nặng, lần sau họ sẽ giấu – và đơn vị mất cơ hội thu hồi trong vài phút đầu, còn đồng hồ 72 giờ của luật vẫn chạy. Các tổ chức làm tốt thường tách bạch: lỗi sơ suất được báo sớm thì xử lý nhẹ nhàng; cố ý vi phạm hoặc che giấu mới bị xử lý nghiêm.",
+     "plain": "Nếu người gửi nhầm bị khiển trách nặng, lần sau họ sẽ giấu – và đơn vị mất cơ hội thu hồi trong vài phút đầu, còn đồng hồ 72 giờ của luật vẫn chạy. Các tổ chức làm tốt thường tách bạch: lỗi sơ suất được báo sớm thì xử lý nhẹ nhàng; cố ý vi phạm hoặc che giấu mới bị xử lý nghiêm."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ví dụ:</strong> chị Dung gửi nhầm file 320 hộ cho một địa chỉ lạ vì gợi ý tự động. Nếu chị báo ngay trong 5 phút, CNTT có thể thu hồi thư (nếu hệ thống hỗ trợ) hoặc liên hệ người nhận xóa. Nếu chị im lặng vì sợ bị phạt, không ai biết cả.",
+     "plain": "Ví dụ: chị Dung gửi nhầm file 320 hộ cho một địa chỉ lạ vì gợi ý tự động. Nếu chị báo ngay trong 5 phút, CNTT có thể thu hồi thư (nếu hệ thống hỗ trợ) hoặc liên hệ người nhận xóa. Nếu chị im lặng vì sợ bị phạt, không ai biết cả.",
+     "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "3.6. Một lỗi hiếm khi đủ gây sự cố"
+    },
+    {
+     "t": "p",
+     "html": "James Reason còn đưa ra mô hình \"miếng phô mai Thụy Sĩ\": mỗi lớp bảo vệ (quyền, mật khẩu, quy trình, cảnh báo…) giống một lát phô mai có lỗ. Sự cố chỉ xảy ra khi lỗ của nhiều lát thẳng hàng. Giữ ý này đến ngày 5: sự cố của Điện lực Minh An xảy ra vì bảy lỗ hổng trùng nhau, mỗi lỗ là nội dung của một buổi học.",
+     "plain": "James Reason còn đưa ra mô hình \"miếng phô mai Thụy Sĩ\": mỗi lớp bảo vệ (quyền, mật khẩu, quy trình, cảnh báo…) giống một lát phô mai có lỗ. Sự cố chỉ xảy ra khi lỗ của nhiều lát thẳng hàng. Giữ ý này đến ngày 5: sự cố của Điện lực Minh An xảy ra vì bảy lỗ hổng trùng nhau, mỗi lỗ là nội dung của một buổi học."
+    },
+    {
+     "t": "h3",
+     "text": "3.7. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Bật cảnh báo \"người nhận bên ngoài\" và hẹn giờ gửi thư nếu chương trình thư của đơn vị hỗ trợ (hỏi CNTT).",
+       "level": 0,
+       "plain": "Bật cảnh báo \"người nhận bên ngoài\" và hẹn giờ gửi thư nếu chương trình thư của đơn vị hỗ trợ (hỏi CNTT)."
+      },
+      {
+       "html": "Trước khi gửi file Excel ra ngoài phòng, tạo file mới chỉ chứa phần cần gửi thay vì ẩn cột.",
+       "level": 0,
+       "plain": "Trước khi gửi file Excel ra ngoài phòng, tạo file mới chỉ chứa phần cần gửi thay vì ẩn cột."
+      },
+      {
+       "html": "Gửi nhầm thì báo ngay đầu mối, kể cả khi nghĩ \"chắc không sao\".",
+       "level": 0,
+       "plain": "Gửi nhầm thì báo ngay đầu mối, kể cả khi nghĩ \"chắc không sao\"."
+      }
+     ]
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Bài 4 – Sơ đồ luồng dữ liệu và bản sao",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sơ đồ luồng dữ liệu là bản đồ đường đi của dữ liệu. Không có bản đồ thì không biết cần \"đặt chốt\" kiểm soát ở đâu. Sơ đồ phải thể hiện dữ liệu thật sự di chuyển, không chỉ nối tên các phòng ban.",
+     "plain": "Sơ đồ luồng dữ liệu là bản đồ đường đi của dữ liệu. Không có bản đồ thì không biết cần \"đặt chốt\" kiểm soát ở đâu. Sơ đồ phải thể hiện dữ liệu thật sự di chuyển, không chỉ nối tên các phòng ban."
+    },
+    {
+     "t": "h3",
+     "text": "4.1. Sơ đồ mẫu: đường đi của file trong chương 2"
+    },
+    {
+     "t": "img",
+     "src": "/static/content/m02_1.png"
+    },
+    {
+     "t": "p",
+     "html": "Đường đi của file DS_KhachHang_DLX · 6 nơi, 4 ranh giới tin cậy",
+     "plain": "Đường đi của file DS_KhachHang_DLX · 6 nơi, 4 ranh giới tin cậy"
+    },
+    {
+     "t": "p",
+     "html": "Bản gốc chỉ có một và nằm trong hệ thống có phân quyền, nhật ký. Mọi nơi còn lại là bản sao, và cả bốn mũi tên có vòng tròn số đều đưa dữ liệu ra khỏi nơi được quản lý. Bản trên OneDrive cá nhân là bản không ai biết đến – nó không nằm trong danh sách quản lý nào.",
+     "plain": "Bản gốc chỉ có một và nằm trong hệ thống có phân quyền, nhật ký. Mọi nơi còn lại là bản sao, và cả bốn mũi tên có vòng tròn số đều đưa dữ liệu ra khỏi nơi được quản lý. Bản trên OneDrive cá nhân là bản không ai biết đến – nó không nằm trong danh sách quản lý nào."
+    },
+    {
+     "t": "h3",
+     "text": "4.2. Năm thành phần của sơ đồ"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thành phần",
+        "plain": "Thành phần"
+       },
+       {
+        "html": "Ký hiệu dùng trong lớp",
+        "plain": "Ký hiệu dùng trong lớp"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Tác nhân bên ngoài",
+        "plain": "Tác nhân bên ngoài"
+       },
+       {
+        "html": "Hình chữ nhật",
+        "plain": "Hình chữ nhật"
+       },
+       {
+        "html": "Khách hàng, công ty thu hộ, cơ quan quản lý",
+        "plain": "Khách hàng, công ty thu hộ, cơ quan quản lý"
+       }
+      ],
+      [
+       {
+        "html": "Quá trình xử lý",
+        "plain": "Quá trình xử lý"
+       },
+       {
+        "html": "Hình chữ nhật bo góc",
+        "plain": "Hình chữ nhật bo góc"
+       },
+       {
+        "html": "Tiếp nhận yêu cầu, xử lý sự cố, lập báo cáo",
+        "plain": "Tiếp nhận yêu cầu, xử lý sự cố, lập báo cáo"
+       }
+      ],
+      [
+       {
+        "html": "Kho dữ liệu",
+        "plain": "Kho dữ liệu"
+       },
+       {
+        "html": "Hai đường kẻ song song (hoặc hộp tô nền)",
+        "plain": "Hai đường kẻ song song (hoặc hộp tô nền)"
+       },
+       {
+        "html": "Hệ thống quản lý khách hàng, thư mục chia sẻ, file Excel cá nhân",
+        "plain": "Hệ thống quản lý khách hàng, thư mục chia sẻ, file Excel cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "Luồng dữ liệu",
+        "plain": "Luồng dữ liệu"
+       },
+       {
+        "html": "Mũi tên có nhãn: dữ liệu gì – đi bằng cách nào",
+        "plain": "Mũi tên có nhãn: dữ liệu gì – đi bằng cách nào"
+       },
+       {
+        "html": "\"Tên, số điện thoại, nội dung yêu cầu – qua tổng đài\"",
+        "plain": "\"Tên, số điện thoại, nội dung yêu cầu – qua tổng đài\""
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới tin cậy",
+        "plain": "Ranh giới tin cậy"
+       },
+       {
+        "html": "Đường nét đứt hoặc dấu đánh số trên mũi tên",
+        "plain": "Đường nét đứt hoặc dấu đánh số trên mũi tên"
+       },
+       {
+        "html": "Chỗ dữ liệu ra máy cá nhân, email, cloud, AI, bên ngoài",
+        "plain": "Chỗ dữ liệu ra máy cá nhân, email, cloud, AI, bên ngoài"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Quy tắc vẽ: mỗi mũi tên phải ghi dữ liệu gì; mọi mũi tên cắt ranh giới tin cậy là điểm cần kiểm soát đặc biệt; đánh dấu sao đỏ những chỗ nghi thiếu kiểm soát.",
+     "plain": "Quy tắc vẽ: mỗi mũi tên phải ghi dữ liệu gì; mọi mũi tên cắt ranh giới tin cậy là điểm cần kiểm soát đặc biệt; đánh dấu sao đỏ những chỗ nghi thiếu kiểm soát."
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Bốn nội dung bắt buộc trên sơ đồ"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       }
+      ],
+      [
+       {
+        "html": "Nguồn và đích",
+        "plain": "Nguồn và đích"
+       },
+       {
+        "html": "Dữ liệu đi từ người, hệ thống nào sang đâu?",
+        "plain": "Dữ liệu đi từ người, hệ thống nào sang đâu?"
+       }
+      ],
+      [
+       {
+        "html": "Trường dữ liệu",
+        "plain": "Trường dữ liệu"
+       },
+       {
+        "html": "Có tên, điện thoại, mã khách hàng, địa chỉ, thông tin vận hành không?",
+        "plain": "Có tên, điện thoại, mã khách hàng, địa chỉ, thông tin vận hành không?"
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới",
+        "plain": "Ranh giới"
+       },
+       {
+        "html": "Bước nào rời hệ thống quản lý, ra máy cá nhân, email, cloud hoặc AI?",
+        "plain": "Bước nào rời hệ thống quản lý, ra máy cá nhân, email, cloud hoặc AI?"
+       }
+      ],
+      [
+       {
+        "html": "Kiểm soát",
+        "plain": "Kiểm soát"
+       },
+       {
+        "html": "Ai duyệt, ai truy cập, có mã hóa, nhật ký và thời hạn liên kết không?",
+        "plain": "Ai duyệt, ai truy cập, có mã hóa, nhật ký và thời hạn liên kết không?"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.4. Sáu bước lập sơ đồ cho một quy trình"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Chọn một quy trình cụ thể có điểm bắt đầu và kết thúc, ví dụ \"từ lúc khách gọi báo sự cố đến lúc đóng phiếu\".",
+       "level": 0,
+       "plain": "Chọn một quy trình cụ thể có điểm bắt đầu và kết thúc, ví dụ \"từ lúc khách gọi báo sự cố đến lúc đóng phiếu\"."
+      },
+      {
+       "html": "Phỏng vấn người làm thật: \"sau bước này anh/chị gửi gì cho ai, bằng cách nào?\". Quy trình trên giấy thường khác thực tế.",
+       "level": 0,
+       "plain": "Phỏng vấn người làm thật: \"sau bước này anh/chị gửi gì cho ai, bằng cách nào?\". Quy trình trên giấy thường khác thực tế."
+      },
+      {
+       "html": "Vẽ các tác nhân, quá trình, kho dữ liệu; nối mũi tên.",
+       "level": 0,
+       "plain": "Vẽ các tác nhân, quá trình, kho dữ liệu; nối mũi tên."
+      },
+      {
+       "html": "Ghi trường dữ liệu và cách truyền trên từng mũi tên.",
+       "level": 0,
+       "plain": "Ghi trường dữ liệu và cách truyền trên từng mũi tên."
+      },
+      {
+       "html": "Vẽ ranh giới tin cậy; đánh dấu mọi bản sao ngoài hệ thống chính.",
+       "level": 0,
+       "plain": "Vẽ ranh giới tin cậy; đánh dấu mọi bản sao ngoài hệ thống chính."
+      },
+      {
+       "html": "Với từng điểm đánh dấu, ghi điểm yếu – tác động – kiểm soát – người chịu trách nhiệm (mẫu C2).",
+       "level": 0,
+       "plain": "Với từng điểm đánh dấu, ghi điểm yếu – tác động – kiểm soát – người chịu trách nhiệm (mẫu C2)."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.5. \"Bản sao bóng tối\" hay bị bỏ sót"
+    },
+    {
+     "t": "p",
+     "html": "File Excel trên máy cá nhân; file đính kèm trong hộp thư đã gửi của người gửi và hộp thư của mọi người nhận; tin nhắn Zalo có ảnh chụp; thư mục Tải về; USB; bản in để trên bàn; ảnh trong điện thoại tự sao lưu lên cloud cá nhân; lịch sử trò chuyện với AI; bộ nhớ máy photocopy.",
+     "plain": "File Excel trên máy cá nhân; file đính kèm trong hộp thư đã gửi của người gửi và hộp thư của mọi người nhận; tin nhắn Zalo có ảnh chụp; thư mục Tải về; USB; bản in để trên bàn; ảnh trong điện thoại tự sao lưu lên cloud cá nhân; lịch sử trò chuyện với AI; bộ nhớ máy photocopy."
+    },
+    {
+     "t": "p",
+     "html": "Mỗi bản sao cần trả lời bốn câu: mục đích gì, ai có quyền, lưu ở đâu, thu hồi được không. Trong sơ đồ trên, bản khó thu hồi nhất là bản đã sang công ty thu hộ (ngoài đơn vị) và bản trên OneDrive cá nhân (không ai biết tồn tại).",
+     "plain": "Mỗi bản sao cần trả lời bốn câu: mục đích gì, ai có quyền, lưu ở đâu, thu hồi được không. Trong sơ đồ trên, bản khó thu hồi nhất là bản đã sang công ty thu hộ (ngoài đơn vị) và bản trên OneDrive cá nhân (không ai biết tồn tại)."
+    },
+    {
+     "t": "h3",
+     "text": "4.6. Sổ ghi chép hoạt động xử lý"
+    },
+    {
+     "t": "p",
+     "html": "Kết quả vẽ sơ đồ có thể ghi lại thành bảng kiểm kê – công cụ nhiều khung pháp lý yêu cầu hoặc khuyến khích để chứng minh trách nhiệm giải trình:",
+     "plain": "Kết quả vẽ sơ đồ có thể ghi lại thành bảng kiểm kê – công cụ nhiều khung pháp lý yêu cầu hoặc khuyến khích để chứng minh trách nhiệm giải trình:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Hoạt động xử lý",
+        "plain": "Hoạt động xử lý"
+       },
+       {
+        "html": "Mục đích",
+        "plain": "Mục đích"
+       },
+       {
+        "html": "Loại dữ liệu",
+        "plain": "Loại dữ liệu"
+       },
+       {
+        "html": "Nguồn",
+        "plain": "Nguồn"
+       },
+       {
+        "html": "Nơi lưu",
+        "plain": "Nơi lưu"
+       },
+       {
+        "html": "Người nhận",
+        "plain": "Người nhận"
+       },
+       {
+        "html": "Thời hạn lưu",
+        "plain": "Thời hạn lưu"
+       },
+       {
+        "html": "Biện pháp bảo vệ",
+        "plain": "Biện pháp bảo vệ"
+       }
+      ],
+      [
+       {
+        "html": "Nhắc nợ qua công ty thu hộ (giả lập)",
+        "plain": "Nhắc nợ qua công ty thu hộ (giả lập)"
+       },
+       {
+        "html": "Thu tiền điện còn nợ",
+        "plain": "Thu tiền điện còn nợ"
+       },
+       {
+        "html": "Mã KH, tên, địa chỉ, số nợ",
+        "plain": "Mã KH, tên, địa chỉ, số nợ"
+       },
+       {
+        "html": "Hệ thống QLKH",
+        "plain": "Hệ thống QLKH"
+       },
+       {
+        "html": "Hệ thống QLKH; bản gửi đi mã hóa",
+        "plain": "Hệ thống QLKH; bản gửi đi mã hóa"
+       },
+       {
+        "html": "Công ty thu hộ (bên xử lý)",
+        "plain": "Công ty thu hộ (bên xử lý)"
+       },
+       {
+        "html": "Theo hợp đồng, xóa sau đợt thu",
+        "plain": "Theo hợp đồng, xóa sau đợt thu"
+       },
+       {
+        "html": "Hợp đồng, mã hóa, chia sẻ có hạn",
+        "plain": "Hợp đồng, mã hóa, chia sẻ có hạn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.7. Đánh giá rủi ro định tính"
+    },
+    {
+     "t": "p",
+     "html": "Khi đơn vị chưa có thang điểm thống nhất, dùng mô tả: khả năng xảy ra (hiếm / thỉnh thoảng / thường xuyên) và mức tác động (Thấp / Trung bình / Cao theo buổi 1). Ưu tiên xử lý điểm vừa thường xuyên vừa tác động cao, ví dụ gửi file khách hàng qua email hằng ngày. Không chấm điểm bằng con số nếu đơn vị chưa có phương pháp.",
+     "plain": "Khi đơn vị chưa có thang điểm thống nhất, dùng mô tả: khả năng xảy ra (hiếm / thỉnh thoảng / thường xuyên) và mức tác động (Thấp / Trung bình / Cao theo buổi 1). Ưu tiên xử lý điểm vừa thường xuyên vừa tác động cao, ví dụ gửi file khách hàng qua email hằng ngày. Không chấm điểm bằng con số nếu đơn vị chưa có phương pháp."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lưu ý:</strong> sơ đồ này là sơ đồ dữ liệu nghiệp vụ, không phải sơ đồ kết nối hệ thống vận hành (OT), và không dùng để thay đổi hệ thống vận hành.",
+     "plain": "Lưu ý: sơ đồ này là sơ đồ dữ liệu nghiệp vụ, không phải sơ đồ kết nối hệ thống vận hành (OT), và không dùng để thay đổi hệ thống vận hành.",
+     "callout": "note"
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Thực hành 2 – Vẽ sơ đồ luồng dữ liệu (60 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "p",
+     "html": "Bạn hãy vẽ sơ đồ cho một quy trình quen thuộc và lập bảng rủi ro – đầu ra sẽ được dùng lại ở buổi 3 (ai đang chạm vào dữ liệu) và buổi 5 (bảo vệ ở từng ranh giới).",
+     "plain": "Bạn hãy vẽ sơ đồ cho một quy trình quen thuộc và lập bảng rủi ro – đầu ra sẽ được dùng lại ở buổi 3 (ai đang chạm vào dữ liệu) và buổi 5 (bảo vệ ở từng ranh giới)."
+    },
+    {
+     "t": "h3",
+     "text": "Đề bài"
+    },
+    {
+     "t": "p",
+     "html": "Chọn một trong hai quy trình:",
+     "plain": "Chọn một trong hai quy trình:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Quy trình A – Tiếp nhận và xử lý yêu cầu khách hàng</strong> (giả lập): khách gọi tổng đài hoặc đến quầy → nhân viên nhập phiếu vào hệ thống → bộ phận nghiệp vụ nhận phiếu, cần địa chỉ để cử người xuống hiện trường → cuối tháng tổng hợp báo cáo số yêu cầu, thời gian xử lý ra Excel → gửi lãnh đạo, lưu lên ổ chia sẻ.",
+       "level": 0,
+       "plain": "Quy trình A – Tiếp nhận và xử lý yêu cầu khách hàng (giả lập): khách gọi tổng đài hoặc đến quầy → nhân viên nhập phiếu vào hệ thống → bộ phận nghiệp vụ nhận phiếu, cần địa chỉ để cử người xuống hiện trường → cuối tháng tổng hợp báo cáo số yêu cầu, thời gian xử lý ra Excel → gửi lãnh đạo, lưu lên ổ chia sẻ."
+      },
+      {
+       "html": "<strong>Quy trình B – Một quy trình bạn đang thực hiện</strong>, lấy từ danh sách \"file đã gửi trong tuần\" ghi lúc khởi động buổi sáng.",
+       "level": 0,
+       "plain": "Quy trình B – Một quy trình bạn đang thực hiện, lấy từ danh sách \"file đã gửi trong tuần\" ghi lúc khởi động buổi sáng."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Nhiệm vụ"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mô tả từng bước trong ô bài làm theo ký hiệu của Bài 4. Bạn có thể vẽ nháp trên giấy trước khi nhập.",
+       "level": 0,
+       "plain": "Mô tả từng bước trong ô bài làm theo ký hiệu của Bài 4. Bạn có thể vẽ nháp trên giấy trước khi nhập."
+      },
+      {
+       "html": "Ghi trường dữ liệu và cách truyền trên từng mũi tên.",
+       "level": 0,
+       "plain": "Ghi trường dữ liệu và cách truyền trên từng mũi tên."
+      },
+      {
+       "html": "Khoanh vùng các bước xuất Excel, gửi email, đưa lên cloud hoặc AI; đánh số các ranh giới tin cậy.",
+       "level": 0,
+       "plain": "Khoanh vùng các bước xuất Excel, gửi email, đưa lên cloud hoặc AI; đánh số các ranh giới tin cậy."
+      },
+      {
+       "html": "Liệt kê mọi bản sao, kể cả bản sao không chính thức.",
+       "level": 0,
+       "plain": "Liệt kê mọi bản sao, kể cả bản sao không chính thức."
+      },
+      {
+       "html": "Lập bảng rủi ro cho ít nhất 3 điểm yếu theo mẫu C2.",
+       "level": 0,
+       "plain": "Lập bảng rủi ro cho ít nhất 3 điểm yếu theo mẫu C2."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Phân bổ thời gian:</strong> 25 phút vẽ sơ đồ → 15 phút lập bảng rủi ro → 20 phút trình bày và chữa bài.",
+     "plain": "Phân bổ thời gian: 25 phút vẽ sơ đồ → 15 phút lập bảng rủi ro → 20 phút trình bày và chữa bài."
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án gợi ý cho quy trình A",
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "p",
+     "html": "Sơ đồ có năm bước và ít nhất ba ranh giới:",
+     "plain": "Sơ đồ có năm bước và ít nhất ba ranh giới:",
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Dữ liệu trên mũi tên",
+        "plain": "Dữ liệu trên mũi tên"
+       },
+       {
+        "html": "Cách truyền",
+        "plain": "Cách truyền"
+       },
+       {
+        "html": "Ranh giới?",
+        "plain": "Ranh giới?"
+       }
+      ],
+      [
+       {
+        "html": "Khách hàng → Tổng đài",
+        "plain": "Khách hàng → Tổng đài"
+       },
+       {
+        "html": "Tên, điện thoại, mã KH, nội dung yêu cầu",
+        "plain": "Tên, điện thoại, mã KH, nội dung yêu cầu"
+       },
+       {
+        "html": "Điện thoại, quầy",
+        "plain": "Điện thoại, quầy"
+       },
+       {
+        "html": "Không (đi vào)",
+        "plain": "Không (đi vào)"
+       }
+      ],
+      [
+       {
+        "html": "Tổng đài → Hệ thống CSKH",
+        "plain": "Tổng đài → Hệ thống CSKH"
+       },
+       {
+        "html": "Phiếu yêu cầu",
+        "plain": "Phiếu yêu cầu"
+       },
+       {
+        "html": "Nhập tay",
+        "plain": "Nhập tay"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       }
+      ],
+      [
+       {
+        "html": "Hệ thống → Bộ phận nghiệp vụ",
+        "plain": "Hệ thống → Bộ phận nghiệp vụ"
+       },
+       {
+        "html": "Phiếu + địa chỉ",
+        "plain": "Phiếu + địa chỉ"
+       },
+       {
+        "html": "Hệ thống; nhưng thực tế hay chụp màn hình gửi Zalo cho tổ hiện trường",
+        "plain": "Hệ thống; nhưng thực tế hay chụp màn hình gửi Zalo cho tổ hiện trường"
+       },
+       {
+        "html": "<strong>Có</strong> – Zalo cá nhân",
+        "plain": "Có – Zalo cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "Hệ thống → Báo cáo tháng",
+        "plain": "Hệ thống → Báo cáo tháng"
+       },
+       {
+        "html": "Danh sách phiếu đủ cột, kể cả tên, điện thoại",
+        "plain": "Danh sách phiếu đủ cột, kể cả tên, điện thoại"
+       },
+       {
+        "html": "Xuất Excel",
+        "plain": "Xuất Excel"
+       },
+       {
+        "html": "<strong>Có</strong> – máy cá nhân",
+        "plain": "Có – máy cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "Báo cáo → Lãnh đạo, ổ chia sẻ",
+        "plain": "Báo cáo → Lãnh đạo, ổ chia sẻ"
+       },
+       {
+        "html": "File Excel",
+        "plain": "File Excel"
+       },
+       {
+        "html": "Email, ổ chia sẻ",
+        "plain": "Email, ổ chia sẻ"
+       },
+       {
+        "html": "<strong>Có</strong> – email",
+        "plain": "Có – email"
+       }
+      ]
+     ],
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "p",
+     "html": "Bảng rủi ro mẫu:",
+     "plain": "Bảng rủi ro mẫu:",
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Điểm yếu",
+        "plain": "Điểm yếu"
+       },
+       {
+        "html": "Tác động",
+        "plain": "Tác động"
+       },
+       {
+        "html": "Kiểm soát đề xuất",
+        "plain": "Kiểm soát đề xuất"
+       },
+       {
+        "html": "Người chịu trách nhiệm",
+        "plain": "Người chịu trách nhiệm"
+       },
+       {
+        "html": "Minh chứng",
+        "plain": "Minh chứng"
+       }
+      ],
+      [
+       {
+        "html": "Giao việc hiện trường",
+        "plain": "Giao việc hiện trường"
+       },
+       {
+        "html": "Chụp màn hình phiếu gửi qua Zalo cá nhân",
+        "plain": "Chụp màn hình phiếu gửi qua Zalo cá nhân"
+       },
+       {
+        "html": "Ảnh có tên, địa chỉ khách nằm trong điện thoại cá nhân, tự sao lưu lên cloud",
+        "plain": "Ảnh có tên, địa chỉ khách nằm trong điện thoại cá nhân, tự sao lưu lên cloud"
+       },
+       {
+        "html": "Dùng chức năng giao việc của hệ thống hoặc ứng dụng nhắn tin được duyệt",
+        "plain": "Dùng chức năng giao việc của hệ thống hoặc ứng dụng nhắn tin được duyệt"
+       },
+       {
+        "html": "Tổ trưởng hiện trường",
+        "plain": "Tổ trưởng hiện trường"
+       },
+       {
+        "html": "Quy định kênh giao việc đã ban hành",
+        "plain": "Quy định kênh giao việc đã ban hành"
+       }
+      ],
+      [
+       {
+        "html": "Lập báo cáo tháng",
+        "plain": "Lập báo cáo tháng"
+       },
+       {
+        "html": "Xuất đủ cột trong khi báo cáo chỉ cần số lượng và thời gian xử lý",
+        "plain": "Xuất đủ cột trong khi báo cáo chỉ cần số lượng và thời gian xử lý"
+       },
+       {
+        "html": "Bản sao thừa dữ liệu cá nhân trên máy và trong email",
+        "plain": "Bản sao thừa dữ liệu cá nhân trên máy và trong email"
+       },
+       {
+        "html": "Xuất theo mẫu chỉ có cột tổng hợp",
+        "plain": "Xuất theo mẫu chỉ có cột tổng hợp"
+       },
+       {
+        "html": "Chuyên viên tổng hợp",
+        "plain": "Chuyên viên tổng hợp"
+       },
+       {
+        "html": "Mẫu xuất đã duyệt",
+        "plain": "Mẫu xuất đã duyệt"
+       }
+      ],
+      [
+       {
+        "html": "Gửi báo cáo",
+        "plain": "Gửi báo cáo"
+       },
+       {
+        "html": "Gửi email đính kèm cho danh sách dài, có người đã chuyển đơn vị",
+        "plain": "Gửi email đính kèm cho danh sách dài, có người đã chuyển đơn vị"
+       },
+       {
+        "html": "Người không còn liên quan vẫn nhận",
+        "plain": "Người không còn liên quan vẫn nhận"
+       },
+       {
+        "html": "Gửi link tới ổ chia sẻ có phân quyền thay vì đính kèm; rà danh sách nhận hàng quý",
+        "plain": "Gửi link tới ổ chia sẻ có phân quyền thay vì đính kèm; rà danh sách nhận hàng quý"
+       },
+       {
+        "html": "Trưởng phòng",
+        "plain": "Trưởng phòng"
+       },
+       {
+        "html": "Danh sách nhận đã rà soát",
+        "plain": "Danh sách nhận đã rà soát"
+       }
+      ],
+      [
+       {
+        "html": "Lưu giữ",
+        "plain": "Lưu giữ"
+       },
+       {
+        "html": "Báo cáo các tháng cũ nằm mãi trên ổ chia sẻ",
+        "plain": "Báo cáo các tháng cũ nằm mãi trên ổ chia sẻ"
+       },
+       {
+        "html": "Mở rộng phạm vi nếu ổ bị lộ",
+        "plain": "Mở rộng phạm vi nếu ổ bị lộ"
+       },
+       {
+        "html": "Đặt thời hạn lưu theo quy định, xóa định kỳ",
+        "plain": "Đặt thời hạn lưu theo quy định, xóa định kỳ"
+       },
+       {
+        "html": "Chuyên viên tổng hợp",
+        "plain": "Chuyên viên tổng hợp"
+       },
+       {
+        "html": "Nhật ký dọn dẹp",
+        "plain": "Nhật ký dọn dẹp"
+       }
+      ]
+     ],
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chí đánh giá"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tiêu chí",
+        "plain": "Tiêu chí"
+       },
+       {
+        "html": "Đạt khi",
+        "plain": "Đạt khi"
+       }
+      ],
+      [
+       {
+        "html": "Nguồn – đích",
+        "plain": "Nguồn – đích"
+       },
+       {
+        "html": "Mọi mũi tên có điểm đầu và điểm cuối rõ ràng",
+        "plain": "Mọi mũi tên có điểm đầu và điểm cuối rõ ràng"
+       }
+      ],
+      [
+       {
+        "html": "Trường dữ liệu",
+        "plain": "Trường dữ liệu"
+       },
+       {
+        "html": "Mọi mũi tên ghi dữ liệu gì và đi bằng cách nào",
+        "plain": "Mọi mũi tên ghi dữ liệu gì và đi bằng cách nào"
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới",
+        "plain": "Ranh giới"
+       },
+       {
+        "html": "Đánh dấu đủ các chỗ ra máy cá nhân, email, cloud, AI, bên ngoài",
+        "plain": "Đánh dấu đủ các chỗ ra máy cá nhân, email, cloud, AI, bên ngoài"
+       }
+      ],
+      [
+       {
+        "html": "Bản sao",
+        "plain": "Bản sao"
+       },
+       {
+        "html": "Có cả bản sao không chính thức (Zalo, ảnh chụp, bản in)",
+        "plain": "Có cả bản sao không chính thức (Zalo, ảnh chụp, bản in)"
+       }
+      ],
+      [
+       {
+        "html": "Bảng rủi ro",
+        "plain": "Bảng rủi ro"
+       },
+       {
+        "html": "Mỗi dòng có người chịu trách nhiệm cụ thể và minh chứng",
+        "plain": "Mỗi dòng có người chịu trách nhiệm cụ thể và minh chứng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không chấm điểm rủi ro bằng con số nếu đơn vị chưa có phương pháp thống nhất.",
+     "plain": "Không chấm điểm rủi ro bằng con số nếu đơn vị chưa có phương pháp thống nhất."
+    },
+    {
+     "t": "h3",
+     "text": "Những lỗi thường gặp khi làm bài",
+     "reveal": "m02-th2"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Chỉ vẽ tên phòng ban nối với nhau mà không ghi dữ liệu gì.",
+       "level": 0,
+       "plain": "Chỉ vẽ tên phòng ban nối với nhau mà không ghi dữ liệu gì."
+      },
+      {
+       "html": "Vẽ quy trình \"trên giấy\" thay vì cách mọi người thực sự làm.",
+       "level": 0,
+       "plain": "Vẽ quy trình \"trên giấy\" thay vì cách mọi người thực sự làm."
+      },
+      {
+       "html": "Quên các bản sao không chính thức và quên bước lưu giữ, hủy.",
+       "level": 0,
+       "plain": "Quên các bản sao không chính thức và quên bước lưu giữ, hủy."
+      },
+      {
+       "html": "Ghi người chịu trách nhiệm là \"phòng CNTT\" cho mọi dòng.",
+       "level": 0,
+       "plain": "Ghi người chịu trách nhiệm là \"phòng CNTT\" cho mọi dòng."
+      }
+     ],
+     "reveal": "m02-th2"
+    }
+   ],
+   "id": "s9",
+   "activity": "m02-th2"
+  },
+  {
+   "title": "Quay lại tình huống: trả lời bốn câu hỏi của chương 2",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Câu trả lời của lớp",
+        "plain": "Câu trả lời của lớp"
+       },
+       {
+        "html": "Bài",
+        "plain": "Bài"
+       }
+      ],
+      [
+       {
+        "html": "Ai chịu trách nhiệm về dữ liệu?",
+        "plain": "Ai chịu trách nhiệm về dữ liệu?"
+       },
+       {
+        "html": "Điện lực Minh An là bên kiểm soát; công ty thu hộ là bên xử lý, phải có hợp đồng bảo vệ dữ liệu trước khi nhận. Nếu file lộ và thuộc diện luật quy định, phải thông báo cơ quan chuyên trách chậm nhất 72 giờ",
+        "plain": "Điện lực Minh An là bên kiểm soát; công ty thu hộ là bên xử lý, phải có hợp đồng bảo vệ dữ liệu trước khi nhận. Nếu file lộ và thuộc diện luật quy định, phải thông báo cơ quan chuyên trách chậm nhất 72 giờ"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Ai cần cột nào?",
+        "plain": "Ai cần cột nào?"
+       },
+       {
+        "html": "Công ty thu hộ: mã KH, tên, địa chỉ hoặc điện thoại, số nợ của 320 hộ. Anh Minh: sản lượng tổng hợp theo khu vực và tháng, không cần thông tin cá nhân",
+        "plain": "Công ty thu hộ: mã KH, tên, địa chỉ hoặc điện thoại, số nợ của 320 hộ. Anh Minh: sản lượng tổng hợp theo khu vực và tháng, không cần thông tin cá nhân"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Bước nào dễ lỗi nhất?",
+        "plain": "Bước nào dễ lỗi nhất?"
+       },
+       {
+        "html": "Gửi email đính kèm nguyên file (sơ suất gợi ý người nhận, gửi thừa cột) và chép lên OneDrive \"cho tiện\" (làm tắt)",
+        "plain": "Gửi email đính kèm nguyên file (sơ suất gợi ý người nhận, gửi thừa cột) và chép lên OneDrive \"cho tiện\" (làm tắt)"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới tin cậy ở đâu?",
+        "plain": "Ranh giới tin cậy ở đâu?"
+       },
+       {
+        "html": "Bốn chỗ: ra máy cá nhân, qua email, lên cloud cá nhân, ra công ty thu hộ. Khó thu hồi nhất: bản ở công ty thu hộ và bản trên OneDrive",
+        "plain": "Bốn chỗ: ra máy cá nhân, qua email, lên cloud cá nhân, ra công ty thu hộ. Khó thu hồi nhất: bản ở công ty thu hộ và bản trên OneDrive"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lớp đã sửa được:</strong> có sơ đồ luồng và danh sách bản sao; biết công ty thu hộ cần hợp đồng; biết anh Minh chỉ cần số liệu tổng hợp.",
+     "plain": "Lớp đã sửa được: có sơ đồ luồng và danh sách bản sao; biết công ty thu hộ cần hợp đồng; biết anh Minh chỉ cần số liệu tổng hợp."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Còn bỏ ngỏ:</strong> bản trên OneDrive cá nhân của anh Cường không nằm trong danh sách quản lý nào. Ngày mai, khi lập ma trận quyền, lớp sẽ hỏi tiếp: vì sao một giao dịch viên lại xuất được toàn bộ 8.500 khách hàng ngay từ đầu?",
+     "plain": "Còn bỏ ngỏ: bản trên OneDrive cá nhân của anh Cường không nằm trong danh sách quản lý nào. Ngày mai, khi lập ma trận quyền, lớp sẽ hỏi tiếp: vì sao một giao dịch viên lại xuất được toàn bộ 8.500 khách hàng ngay từ đầu?"
+    }
+   ],
+   "id": "s10"
+  },
+  {
+   "title": "Áp dụng tại đơn vị",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Vẽ sơ đồ luồng cho một quy trình mình làm hằng tuần có dùng dữ liệu khách hàng (30 phút, giấy A4 là đủ).",
+       "level": 0,
+       "plain": "☐ Vẽ sơ đồ luồng cho một quy trình mình làm hằng tuần có dùng dữ liệu khách hàng (30 phút, giấy A4 là đủ)."
+      },
+      {
+       "html": "☐ Liệt kê các bản sao không chính thức mình đang giữ (Zalo, ảnh chụp, OneDrive cá nhân, USB) và xóa những bản không còn cần.",
+       "level": 0,
+       "plain": "☐ Liệt kê các bản sao không chính thức mình đang giữ (Zalo, ảnh chụp, OneDrive cá nhân, USB) và xóa những bản không còn cần."
+      },
+      {
+       "html": "☐ Kiểm tra các đối tác mình đang gửi dữ liệu khách hàng đã có hợp đồng bảo vệ dữ liệu chưa (hỏi phòng pháp chế hoặc phòng ký hợp đồng).",
+       "level": 0,
+       "plain": "☐ Kiểm tra các đối tác mình đang gửi dữ liệu khách hàng đã có hợp đồng bảo vệ dữ liệu chưa (hỏi phòng pháp chế hoặc phòng ký hợp đồng)."
+      },
+      {
+       "html": "☐ Khi ai đó xin dữ liệu, hỏi \"dùng để làm gì, cần cột nào\" trước khi gửi.",
+       "level": 0,
+       "plain": "☐ Khi ai đó xin dữ liệu, hỏi \"dùng để làm gì, cần cột nào\" trước khi gửi."
+      },
+      {
+       "html": "☐ Tập thói quen \"dừng 5 giây\" trước mỗi lần gửi file ra ngoài phòng.",
+       "level": 0,
+       "plain": "☐ Tập thói quen \"dừng 5 giây\" trước mỗi lần gửi file ra ngoài phòng."
+      }
+     ]
+    }
+   ],
+   "id": "s11"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Gần như mọi thao tác với dữ liệu khách hàng – xem, xuất, gửi, xóa – đều là \"xử lý dữ liệu cá nhân\" theo luật.",
+       "level": 0,
+       "plain": "Gần như mọi thao tác với dữ liệu khách hàng – xem, xuất, gửi, xóa – đều là \"xử lý dữ liệu cá nhân\" theo luật."
+      },
+      {
+       "html": "Đơn vị điện lực thường là bên kiểm soát; đối tác thu hộ, in hóa đơn, phần mềm thuê ngoài là bên xử lý và cần hợp đồng.",
+       "level": 0,
+       "plain": "Đơn vị điện lực thường là bên kiểm soát; đối tác thu hộ, in hóa đơn, phần mềm thuê ngoài là bên xử lý và cần hợp đồng."
+      },
+      {
+       "html": "Luật 91/2025/QH15 có hiệu lực từ 01/01/2026: thông báo vi phạm chậm nhất 72 giờ; phạt tổ chức tới 3 tỷ đồng với vi phạm thông thường, tới 5% doanh thu với chuyển dữ liệu xuyên biên giới sai quy định.",
+       "level": 0,
+       "plain": "Luật 91/2025/QH15 có hiệu lực từ 01/01/2026: thông báo vi phạm chậm nhất 72 giờ; phạt tổ chức tới 3 tỷ đồng với vi phạm thông thường, tới 5% doanh thu với chuyển dữ liệu xuyên biên giới sai quy định."
+      },
+      {
+       "html": "Bốn câu hỏi tuân thủ: mục đích, phạm vi, người nhận, trách nhiệm. Một câu chưa rõ là dừng lại hỏi.",
+       "level": 0,
+       "plain": "Bốn câu hỏi tuân thủ: mục đích, phạm vi, người nhận, trách nhiệm. Một câu chưa rõ là dừng lại hỏi."
+      },
+      {
+       "html": "Lỗi thao tác có bốn loại – sơ suất, quên, hiểu sai, cố ý làm tắt – mỗi loại cần biện pháp khác nhau.",
+       "level": 0,
+       "plain": "Lỗi thao tác có bốn loại – sơ suất, quên, hiểu sai, cố ý làm tắt – mỗi loại cần biện pháp khác nhau."
+      },
+      {
+       "html": "Ẩn cột, ẩn sheet, kẻ ô đen trên PDF không phải là xóa.",
+       "level": 0,
+       "plain": "Ẩn cột, ẩn sheet, kẻ ô đen trên PDF không phải là xóa."
+      },
+      {
+       "html": "Báo lỗi sớm cứu được nhiều hơn giấu lỗi; đơn vị cần văn hóa không phạt người báo sớm.",
+       "level": 0,
+       "plain": "Báo lỗi sớm cứu được nhiều hơn giấu lỗi; đơn vị cần văn hóa không phạt người báo sớm."
+      },
+      {
+       "html": "Sơ đồ luồng dữ liệu cho biết dữ liệu đi đâu, qua ai, vượt ranh giới nào – và vì vậy cần đặt kiểm soát ở đâu.",
+       "level": 0,
+       "plain": "Sơ đồ luồng dữ liệu cho biết dữ liệu đi đâu, qua ai, vượt ranh giới nào – và vì vậy cần đặt kiểm soát ở đâu."
+      }
+     ]
+    }
+   ],
+   "id": "s12"
+  },
+  {
+   "title": "Câu hỏi ôn tập",
+   "kind": "review",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Đáp án",
+        "plain": "Đáp án"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ ngày nào?",
+        "plain": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ ngày nào?"
+       },
+       {
+        "html": "01/01/2026",
+        "plain": "01/01/2026"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Phân biệt bên kiểm soát và bên xử lý bằng một ví dụ ngành điện",
+        "plain": "Phân biệt bên kiểm soát và bên xử lý bằng một ví dụ ngành điện"
+       },
+       {
+        "html": "Điện lực quyết định thu dữ liệu khách hàng để làm gì (bên kiểm soát); công ty thu hộ xử lý theo yêu cầu, qua hợp đồng (bên xử lý)",
+        "plain": "Điện lực quyết định thu dữ liệu khách hàng để làm gì (bên kiểm soát); công ty thu hộ xử lý theo yêu cầu, qua hợp đồng (bên xử lý)"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Mốc 72 giờ tính từ lúc nào, và vì sao liên quan đến từng nhân viên?",
+        "plain": "Mốc 72 giờ tính từ lúc nào, và vì sao liên quan đến từng nhân viên?"
+       },
+       {
+        "html": "Từ khi tổ chức phát hiện; người biết mà giữ im có thể làm cả đơn vị trễ hạn",
+        "plain": "Từ khi tổ chức phát hiện; người biết mà giữ im có thể làm cả đơn vị trễ hạn"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Đưa dữ liệu khách hàng lên công cụ AI đặt ở nước ngoài có thể thuộc hành vi nào theo luật?",
+        "plain": "Đưa dữ liệu khách hàng lên công cụ AI đặt ở nước ngoài có thể thuộc hành vi nào theo luật?"
+       },
+       {
+        "html": "Chuyển dữ liệu cá nhân xuyên biên giới",
+        "plain": "Chuyển dữ liệu cá nhân xuyên biên giới"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Kể bốn câu hỏi tuân thủ",
+        "plain": "Kể bốn câu hỏi tuân thủ"
+       },
+       {
+        "html": "Mục đích, phạm vi, người nhận, trách nhiệm",
+        "plain": "Mục đích, phạm vi, người nhận, trách nhiệm"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Phòng truyền thông muốn dùng danh sách điện thoại khách hàng để quảng cáo dịch vụ mới. Câu hỏi tuân thủ nào \"vướng\"?",
+        "plain": "Phòng truyền thông muốn dùng danh sách điện thoại khách hàng để quảng cáo dịch vụ mới. Câu hỏi tuân thủ nào \"vướng\"?"
+       },
+       {
+        "html": "Mục đích – đây là mục đích mới, cần hỏi pháp chế",
+        "plain": "Mục đích – đây là mục đích mới, cần hỏi pháp chế"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Gõ nhầm mã khách hàng là loại lỗi gì, phòng bằng cách nào?",
+        "plain": "Gõ nhầm mã khách hàng là loại lỗi gì, phòng bằng cách nào?"
+       },
+       {
+        "html": "Sơ suất; hiển thị tên khách để đối chiếu trước khi lưu, kiểm tra kép",
+        "plain": "Sơ suất; hiển thị tên khách để đối chiếu trước khi lưu, kiểm tra kép"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Vì sao kẻ ô đen trên PDF không che được thông tin?",
+        "plain": "Vì sao kẻ ô đen trên PDF không che được thông tin?"
+       },
+       {
+        "html": "Chữ bên dưới vẫn còn, bôi đen và copy là ra; phải dùng Redact",
+        "plain": "Chữ bên dưới vẫn còn, bôi đen và copy là ra; phải dùng Redact"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Bốn nội dung bắt buộc trên sơ đồ luồng dữ liệu?",
+        "plain": "Bốn nội dung bắt buộc trên sơ đồ luồng dữ liệu?"
+       },
+       {
+        "html": "Nguồn và đích, trường dữ liệu, ranh giới tin cậy, kiểm soát",
+        "plain": "Nguồn và đích, trường dữ liệu, ranh giới tin cậy, kiểm soát"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Trong chương 2, bản sao nào không ai biết tồn tại?",
+        "plain": "Trong chương 2, bản sao nào không ai biết tồn tại?"
+       },
+       {
+        "html": "Bản trên OneDrive cá nhân của anh Cường",
+        "plain": "Bản trên OneDrive cá nhân của anh Cường"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s13"
+  },
+  {
+   "title": "Thuật ngữ của buổi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Nghĩa dễ hiểu",
+        "plain": "Nghĩa dễ hiểu"
+       }
+      ],
+      [
+       {
+        "html": "Xử lý dữ liệu",
+        "plain": "Xử lý dữ liệu"
+       },
+       {
+        "html": "Mọi thao tác với dữ liệu: thu, lưu, xem, sửa, gửi, xóa",
+        "plain": "Mọi thao tác với dữ liệu: thu, lưu, xem, sửa, gửi, xóa"
+       }
+      ],
+      [
+       {
+        "html": "Chủ thể dữ liệu",
+        "plain": "Chủ thể dữ liệu"
+       },
+       {
+        "html": "Người mà dữ liệu nói về",
+        "plain": "Người mà dữ liệu nói về"
+       }
+      ],
+      [
+       {
+        "html": "Bên kiểm soát / bên xử lý",
+        "plain": "Bên kiểm soát / bên xử lý"
+       },
+       {
+        "html": "Bên quyết định mục đích / bên làm theo yêu cầu qua hợp đồng",
+        "plain": "Bên quyết định mục đích / bên làm theo yêu cầu qua hợp đồng"
+       }
+      ],
+      [
+       {
+        "html": "Chuyển dữ liệu xuyên biên giới",
+        "plain": "Chuyển dữ liệu xuyên biên giới"
+       },
+       {
+        "html": "Đưa dữ liệu cá nhân ra khỏi Việt Nam, kể cả lên dịch vụ đặt ở nước ngoài",
+        "plain": "Đưa dữ liệu cá nhân ra khỏi Việt Nam, kể cả lên dịch vụ đặt ở nước ngoài"
+       }
+      ],
+      [
+       {
+        "html": "GDPR",
+        "plain": "GDPR"
+       },
+       {
+        "html": "Quy định chung về bảo vệ dữ liệu của EU",
+        "plain": "Quy định chung về bảo vệ dữ liệu của EU"
+       }
+      ],
+      [
+       {
+        "html": "PDPA",
+        "plain": "PDPA"
+       },
+       {
+        "html": "Tên viết tắt luật bảo vệ dữ liệu cá nhân ở một số nước",
+        "plain": "Tên viết tắt luật bảo vệ dữ liệu cá nhân ở một số nước"
+       }
+      ],
+      [
+       {
+        "html": "Giới hạn mục đích",
+        "plain": "Giới hạn mục đích"
+       },
+       {
+        "html": "Thu để làm việc A thì không tùy tiện dùng cho việc B",
+        "plain": "Thu để làm việc A thì không tùy tiện dùng cho việc B"
+       }
+      ],
+      [
+       {
+        "html": "Tối thiểu hóa",
+        "plain": "Tối thiểu hóa"
+       },
+       {
+        "html": "Chỉ thu, giữ, gửi đủ dùng",
+        "plain": "Chỉ thu, giữ, gửi đủ dùng"
+       }
+      ],
+      [
+       {
+        "html": "Trách nhiệm giải trình",
+        "plain": "Trách nhiệm giải trình"
+       },
+       {
+        "html": "Chứng minh được mình đã làm đúng",
+        "plain": "Chứng minh được mình đã làm đúng"
+       }
+      ],
+      [
+       {
+        "html": "Sơ suất / quên / hiểu sai / làm tắt",
+        "plain": "Sơ suất / quên / hiểu sai / làm tắt"
+       },
+       {
+        "html": "Bốn loại lỗi con người theo James Reason",
+        "plain": "Bốn loại lỗi con người theo James Reason"
+       }
+      ],
+      [
+       {
+        "html": "Sơ đồ luồng dữ liệu (DFD)",
+        "plain": "Sơ đồ luồng dữ liệu (DFD)"
+       },
+       {
+        "html": "Hình vẽ dữ liệu đi từ đâu, qua ai, đến đâu",
+        "plain": "Hình vẽ dữ liệu đi từ đâu, qua ai, đến đâu"
+       }
+      ],
+      [
+       {
+        "html": "Ranh giới tin cậy",
+        "plain": "Ranh giới tin cậy"
+       },
+       {
+        "html": "Chỗ dữ liệu rời khỏi nơi được quản lý",
+        "plain": "Chỗ dữ liệu rời khỏi nơi được quản lý"
+       }
+      ],
+      [
+       {
+        "html": "Redact",
+        "plain": "Redact"
+       },
+       {
+        "html": "Chức năng xóa thật thông tin trong PDF",
+        "plain": "Chức năng xóa thật thông tin trong PDF"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s14"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "h3",
+     "text": "Lịch trình"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       }
+      ],
+      [
+       {
+        "html": "13:30–13:40",
+        "plain": "13:30–13:40"
+       },
+       {
+        "html": "Nhắc đầu ra buổi sáng; kể chương 2",
+        "plain": "Nhắc đầu ra buổi sáng; kể chương 2"
+       },
+       {
+        "html": "Kể chuyện",
+        "plain": "Kể chuyện"
+       }
+      ],
+      [
+       {
+        "html": "13:40–14:15",
+        "plain": "13:40–14:15"
+       },
+       {
+        "html": "Bài 1 – Khung pháp lý",
+        "plain": "Bài 1 – Khung pháp lý"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "14:15–14:35",
+        "plain": "14:15–14:35"
+       },
+       {
+        "html": "Bài 2 – Bốn câu hỏi tuân thủ, tình huống công ty thu hộ",
+        "plain": "Bài 2 – Bốn câu hỏi tuân thủ, tình huống công ty thu hộ"
+       },
+       {
+        "html": "Thảo luận",
+        "plain": "Thảo luận"
+       }
+      ],
+      [
+       {
+        "html": "14:35–14:55",
+        "plain": "14:35–14:55"
+       },
+       {
+        "html": "Bài 3 – Lỗi thao tác",
+        "plain": "Bài 3 – Lỗi thao tác"
+       },
+       {
+        "html": "Kể chuyện, thảo luận",
+        "plain": "Kể chuyện, thảo luận"
+       }
+      ],
+      [
+       {
+        "html": "14:55–15:10",
+        "plain": "14:55–15:10"
+       },
+       {
+        "html": "Nghỉ",
+        "plain": "Nghỉ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "15:10–15:35",
+        "plain": "15:10–15:35"
+       },
+       {
+        "html": "Bài 4 – Sơ đồ luồng, vẽ mẫu chương 2 trên bảng",
+        "plain": "Bài 4 – Sơ đồ luồng, vẽ mẫu chương 2 trên bảng"
+       },
+       {
+        "html": "Giảng, vẽ mẫu",
+        "plain": "Giảng, vẽ mẫu"
+       }
+      ],
+      [
+       {
+        "html": "15:35–16:35",
+        "plain": "15:35–16:35"
+       },
+       {
+        "html": "Thực hành 2",
+        "plain": "Thực hành 2"
+       },
+       {
+        "html": "Cá nhân, mô tả trên web",
+        "plain": "Cá nhân, mô tả trên web"
+       }
+      ],
+      [
+       {
+        "html": "16:35–17:00",
+        "plain": "16:35–17:00"
+       },
+       {
+        "html": "Quay lại tình huống, tổng kết ngày 1",
+        "plain": "Quay lại tình huống, tổng kết ngày 1"
+       },
+       {
+        "html": "Cả lớp",
+        "plain": "Cả lớp"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý giảng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Phần luật:</strong> nên mời một cán bộ pháp chế vào 10 phút, hoặc ít nhất nhờ pháp chế rà lại Bài 1 trước khóa học. Không tự trả lời câu hỏi pháp lý cụ thể của đơn vị; ghi lại và chuyển cho pháp chế.",
+       "level": 0,
+       "plain": "Phần luật: nên mời một cán bộ pháp chế vào 10 phút, hoặc ít nhất nhờ pháp chế rà lại Bài 1 trước khóa học. Không tự trả lời câu hỏi pháp lý cụ thể của đơn vị; ghi lại và chuyển cho pháp chế."
+      },
+      {
+       "html": "<strong>Bài 3:</strong> kể từng câu chuyện lỗi rồi hỏi \"nếu là anh/chị thì đã chặn ở bước nào?\". Không nêu tỷ lệ sự cố hay khẳng định \"nguyên nhân phổ biến nhất\" khi không có số liệu nguồn.",
+       "level": 0,
+       "plain": "Bài 3: kể từng câu chuyện lỗi rồi hỏi \"nếu là anh/chị thì đã chặn ở bước nào?\". Không nêu tỷ lệ sự cố hay khẳng định \"nguyên nhân phổ biến nhất\" khi không có số liệu nguồn."
+      },
+      {
+       "html": "<strong>Bài 4:</strong> vẽ sơ đồ chương 2 lên bảng từng bước, để lớp gọi tên ranh giới trước khi giảng viên đánh số. Hỏi: \"bản nào khó thu hồi nhất?\".",
+       "level": 0,
+       "plain": "Bài 4: vẽ sơ đồ chương 2 lên bảng từng bước, để lớp gọi tên ranh giới trước khi giảng viên đánh số. Hỏi: \"bản nào khó thu hồi nhất?\"."
+      },
+      {
+       "html": "<strong>Thực hành 2:</strong> khuyến khích học viên chọn quy trình B (công việc của mình). Kết quả thường lộ ra những bản sao mà chính họ chưa từng nghĩ tới.",
+       "level": 0,
+       "plain": "Thực hành 2: khuyến khích học viên chọn quy trình B (công việc của mình). Kết quả thường lộ ra những bản sao mà chính họ chưa từng nghĩ tới."
+      },
+      {
+       "html": "<strong>Giữ sơ đồ của từng học viên</strong> đến sáng mai: buổi 3 sẽ lấy từ đó danh sách người và hệ thống cho ma trận quyền.",
+       "level": 0,
+       "plain": "Giữ sơ đồ của từng học viên đến sáng mai: buổi 3 sẽ lấy từ đó danh sách người và hệ thống cho ma trận quyền."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu nhầm hay gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Học viên nói",
+        "plain": "Học viên nói"
+       },
+       {
+        "html": "Cách trả lời",
+        "plain": "Cách trả lời"
+       }
+      ],
+      [
+       {
+        "html": "\"Gửi nội bộ thì không sao.\"",
+        "plain": "\"Gửi nội bộ thì không sao.\""
+       },
+       {
+        "html": "Nội bộ vẫn cần đúng mục đích và đúng người cần; email nội bộ vẫn tạo bản sao",
+        "plain": "Nội bộ vẫn cần đúng mục đích và đúng người cần; email nội bộ vẫn tạo bản sao"
+       }
+      ],
+      [
+       {
+        "html": "\"Đối tác làm việc lâu năm rồi, không cần hợp đồng bảo mật.\"",
+        "plain": "\"Đối tác làm việc lâu năm rồi, không cần hợp đồng bảo mật.\""
+       },
+       {
+        "html": "Bên xử lý cần hợp đồng; quen biết không thay được nghĩa vụ pháp lý",
+        "plain": "Bên xử lý cần hợp đồng; quen biết không thay được nghĩa vụ pháp lý"
+       }
+      ],
+      [
+       {
+        "html": "\"Người gửi nhầm phải bị phạt để lần sau cẩn thận.\"",
+        "plain": "\"Người gửi nhầm phải bị phạt để lần sau cẩn thận.\""
+       },
+       {
+        "html": "Phạt làm người ta giấu lỗi; sửa thao tác và khuyến khích báo sớm hiệu quả hơn",
+        "plain": "Phạt làm người ta giấu lỗi; sửa thao tác và khuyến khích báo sớm hiệu quả hơn"
+       }
+      ],
+      [
+       {
+        "html": "\"Sơ đồ luồng là việc của CNTT.\"",
+        "plain": "\"Sơ đồ luồng là việc của CNTT.\""
+       },
+       {
+        "html": "Chỉ người làm nghiệp vụ mới biết dữ liệu thực sự đi đâu",
+        "plain": "Chỉ người làm nghiệp vụ mới biết dữ liệu thực sự đi đâu"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s15"
+  },
+  {
+   "title": "Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://hethongphapluat.com/luat-bao-ve-du-lieu-ca-nhan-2025.html\" target=\"_blank\" rel=\"noopener noreferrer\">Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 – toàn văn</a> – Điều 2, 3, 4, 8, 23",
+       "level": 0,
+       "plain": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 – toàn văn – Điều 2, 3, 4, 8, 23"
+      },
+      {
+       "html": "<a href=\"https://gvlawyers.com.vn/wp-content/uploads/2025/09/VN_Legal-alert-_Law-on-PDP-2025.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">GV Lawyers – Legal alert: Law on Personal Data Protection 2025</a>",
+       "level": 0,
+       "plain": "GV Lawyers – Legal alert: Law on Personal Data Protection 2025"
+      },
+      {
+       "html": "GDPR – Quy định (EU) 2016/679, Điều 5, 9, 33, 83; <a href=\"https://www.edpb.europa.eu/sme/learn-the-basics/data-protection-basics_en\" target=\"_blank\" rel=\"noopener noreferrer\">EDPB – Data protection basics</a>",
+       "level": 0,
+       "plain": "GDPR – Quy định (EU) 2016/679, Điều 5, 9, 33, 83; EDPB – Data protection basics"
+      },
+      {
+       "html": "James Reason – phân loại lỗi con người và mô hình \"phô mai Thụy Sĩ\" (kiến thức phổ biến)",
+       "level": 0,
+       "plain": "James Reason – phân loại lỗi con người và mô hình \"phô mai Thụy Sĩ\" (kiến thức phổ biến)"
+      },
+      {
+       "html": "Giáo trình – Tổng quan: Phụ lục C, mẫu C2",
+       "level": 0,
+       "plain": "Giáo trình – Tổng quan: Phụ lục C, mẫu C2"
+      }
+     ]
+    }
+   ],
+   "id": "s16"
+  },
+  {
+   "id": "s17",
+   "title": "Bài tập thêm – Tìm những bản sao bị bỏ quên",
+   "kind": "practice",
+   "activity": "m02-case-v2",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
+     "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
+    },
+    {
+     "t": "p",
+     "plain": "Nhân viên xuất 50 phiếu yêu cầu ra máy, gửi email cho tổ hiện trường và chụp 3 phiếu gửi qua tài khoản nhắn tin cá nhân. Cuối tháng, báo cáo chỉ cần số phiếu và thời gian xử lý. Nhân viên xóa file trong thư mục Tải về rồi cho rằng đã hết bản sao.",
+     "html": "Nhân viên xuất 50 phiếu yêu cầu ra máy, gửi email cho tổ hiện trường và chụp 3 phiếu gửi qua tài khoản nhắn tin cá nhân. Cuối tháng, báo cáo chỉ cần số phiếu và thời gian xử lý. Nhân viên xóa file trong thư mục Tải về rồi cho rằng đã hết bản sao."
+    },
+    {
+     "t": "h3",
+     "text": "Việc bạn cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Mô tả đường đi của dữ liệu và liệt kê ít nhất bốn nơi có thể còn bản sao.",
+     "html": "1. Mô tả đường đi của dữ liệu và liệt kê ít nhất bốn nơi có thể còn bản sao."
+    },
+    {
+     "t": "p",
+     "plain": "2. Chọn ba điểm cần sửa; ghi cách sửa và người chịu trách nhiệm cho từng điểm.",
+     "html": "2. Chọn ba điểm cần sửa; ghi cách sửa và người chịu trách nhiệm cho từng điểm."
+    },
+    {
+     "t": "p",
+     "plain": "3. Viết một lời nhắc trước khi gửi báo cáo tháng, tối đa 5 câu.",
+     "html": "3. Viết một lời nhắc trước khi gửi báo cáo tháng, tối đa 5 câu."
+    },
+    {
+     "t": "p",
+     "plain": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả.",
+     "html": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm.",
+     "html": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m02-case-v2"
+    },
+    {
+     "t": "p",
+     "plain": "Kiểm tra hộp thư đã gửi, hộp thư người nhận, ảnh trong ứng dụng nhắn tin, thư viện ảnh hoặc bản sao lưu điện thoại, thùng rác và ổ đồng bộ. Báo cáo tháng chỉ nên có số liệu cần thiết; giao việc qua hệ thống hoặc kênh được duyệt. Người lập báo cáo xử lý bản xuất, tổ trưởng rà kênh giao việc, chủ dữ liệu xác nhận phạm vi và thời hạn lưu. Không tự xóa hồ sơ phải lưu hoặc bằng chứng liên quan sự cố.",
+     "html": "Kiểm tra hộp thư đã gửi, hộp thư người nhận, ảnh trong ứng dụng nhắn tin, thư viện ảnh hoặc bản sao lưu điện thoại, thùng rác và ổ đồng bộ. Báo cáo tháng chỉ nên có số liệu cần thiết; giao việc qua hệ thống hoặc kênh được duyệt. Người lập báo cáo xử lý bản xuất, tổ trưởng rà kênh giao việc, chủ dữ liệu xác nhận phạm vi và thời hạn lưu. Không tự xóa hồ sơ phải lưu hoặc bằng chứng liên quan sự cố.",
+     "reveal": "m02-case-v2"
+    }
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "m02-check-v2",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: chọn cách xử lý",
+   "intro": "Chọn một phương án phù hợp nhất cho mỗi tình huống. Khi chữa bài, hãy giải thích vì sao bạn chọn cách đó.",
+   "questions": [
+    {
+     "text": "Báo cáo tháng chỉ cần số lượng phiếu. Bản xuất mặc định có cả điện thoại khách hàng. Cách phù hợp là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Ẩn cột điện thoại rồi gửi nguyên file"
+      },
+      {
+       "key": "B",
+       "text": "Gửi vì hệ thống đã cho xuất"
+      },
+      {
+       "key": "C",
+       "text": "Tạo bản tổng hợp chỉ chứa thông tin cần cho báo cáo"
+      }
+     ],
+     "correct": "C",
+     "explain": "Mục đích báo cáo quyết định dữ liệu cần dùng; quyền xuất không có nghĩa được chia sẻ mọi cột.",
+     "id": "q1"
+    },
+    {
+     "text": "Khi vẽ luồng dữ liệu, ảnh chụp phiếu gửi qua điện thoại cá nhân được ghi thế nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Bỏ qua vì không phải file Excel"
+      },
+      {
+       "key": "B",
+       "text": "Ghi là một bản sao và đánh dấu nơi dữ liệu ra khỏi kênh được quản lý"
+      },
+      {
+       "key": "C",
+       "text": "Chỉ ghi tên phòng ban gửi ảnh"
+      }
+     ],
+     "correct": "B",
+     "explain": "Ảnh chụp cũng chứa dữ liệu và có thể được đồng bộ hoặc chuyển tiếp.",
+     "id": "q2"
+    }
+   ]
+  },
+  {
+   "id": "m02-quiz",
+   "type": "mcq",
+   "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+   "scope": "student",
+   "intro": "Mỗi câu chọn một đáp án đúng nhất.",
+   "questions": [
+    {
+     "module": 2,
+     "text": "Công ty thu hộ nhận danh sách nợ để đi thu theo yêu cầu của Điện lực Minh An. Theo Luật 91/2025, công ty thu hộ là:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Bên kiểm soát"
+      },
+      {
+       "key": "B",
+       "text": "Chủ thể dữ liệu"
+      },
+      {
+       "key": "C",
+       "text": "Bên xử lý"
+      },
+      {
+       "key": "D",
+       "text": "Bên không liên quan"
+      }
+     ],
+     "id": "q1",
+     "correct": "C"
+    },
+    {
+     "module": 2,
+     "text": "Mỗi lần xuất file hoặc gửi email kèm file là:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Không ảnh hưởng nếu người nhận là nội bộ"
+      },
+      {
+       "key": "B",
+       "text": "Một bản sao mới với vòng đời riêng phải quản lý"
+      },
+      {
+       "key": "C",
+       "text": "Một bản ghi nhật ký"
+      },
+      {
+       "key": "D",
+       "text": "Một bản sao lưu"
+      }
+     ],
+     "id": "q2",
+     "correct": "B"
+    }
+   ]
+  },
+  {
+   "id": "m02-th2",
+   "type": "practice",
+   "title": "Thực hành 2 – Vẽ sơ đồ luồng dữ liệu (60 phút)",
+   "scope": "student",
+   "section": "s9"
+  },
+  {
+   "id": "m02-review",
+   "type": "open",
+   "title": "Câu hỏi ôn tập",
+   "scope": "student",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ ngày nào?",
+     "answer": "01/01/2026"
+    },
+    {
+     "id": "q2",
+     "text": "Phân biệt bên kiểm soát và bên xử lý bằng một ví dụ ngành điện",
+     "answer": "Điện lực quyết định thu dữ liệu khách hàng để làm gì (bên kiểm soát); công ty thu hộ xử lý theo yêu cầu, qua hợp đồng (bên xử lý)"
+    },
+    {
+     "id": "q3",
+     "text": "Mốc 72 giờ tính từ lúc nào, và vì sao liên quan đến từng nhân viên?",
+     "answer": "Từ khi tổ chức phát hiện; người biết mà giữ im có thể làm cả đơn vị trễ hạn"
+    },
+    {
+     "id": "q4",
+     "text": "Đưa dữ liệu khách hàng lên công cụ AI đặt ở nước ngoài có thể thuộc hành vi nào theo luật?",
+     "answer": "Chuyển dữ liệu cá nhân xuyên biên giới"
+    },
+    {
+     "id": "q5",
+     "text": "Kể bốn câu hỏi tuân thủ",
+     "answer": "Mục đích, phạm vi, người nhận, trách nhiệm"
+    },
+    {
+     "id": "q6",
+     "text": "Phòng truyền thông muốn dùng danh sách điện thoại khách hàng để quảng cáo dịch vụ mới. Câu hỏi tuân thủ nào \"vướng\"?",
+     "answer": "Mục đích – đây là mục đích mới, cần hỏi pháp chế"
+    },
+    {
+     "id": "q7",
+     "text": "Gõ nhầm mã khách hàng là loại lỗi gì, phòng bằng cách nào?",
+     "answer": "Sơ suất; hiển thị tên khách để đối chiếu trước khi lưu, kiểm tra kép"
+    },
+    {
+     "id": "q8",
+     "text": "Vì sao kẻ ô đen trên PDF không che được thông tin?",
+     "answer": "Chữ bên dưới vẫn còn, bôi đen và copy là ra; phải dùng Redact"
+    },
+    {
+     "id": "q9",
+     "text": "Bốn nội dung bắt buộc trên sơ đồ luồng dữ liệu?",
+     "answer": "Nguồn và đích, trường dữ liệu, ranh giới tin cậy, kiểm soát"
+    },
+    {
+     "id": "q10",
+     "text": "Trong chương 2, bản sao nào không ai biết tồn tại?",
+     "answer": "Bản trên OneDrive cá nhân của anh Cường"
+    }
+   ]
+  },
+  {
+   "id": "m02-case-v2",
+   "type": "practice",
+   "scope": "student",
+   "section": "s17",
+   "title": "Bài tập thêm – Tìm những bản sao bị bỏ quên",
+   "intro": "Nhân viên xuất 50 phiếu yêu cầu ra máy, gửi email cho tổ hiện trường và chụp 3 phiếu gửi qua tài khoản nhắn tin cá nhân. Cuối tháng, báo cáo chỉ cần số phiếu và thời gian xử lý. Nhân viên xóa file trong thư mục Tải về rồi cho rằng đã hết bản sao.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "part1",
+     "label": "Mô tả đường đi của dữ liệu và liệt kê ít nhất bốn nơi có thể còn bản sao."
+    },
+    {
+     "type": "textarea",
+     "key": "part2",
+     "label": "Chọn ba điểm cần sửa; ghi cách sửa và người chịu trách nhiệm cho từng điểm."
+    },
+    {
+     "type": "textarea",
+     "key": "part3",
+     "label": "Viết một lời nhắc trước khi gửi báo cáo tháng, tối đa 5 câu."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3939 @@
+{
+ "no": 8,
+ "title": "Buổi 8 – Phòng chống tấn công phi kỹ thuật và lừa đảo",
+ "short": "Phòng chống tấn công phi kỹ thuật và lừa đảo",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 8 trả lời câu hỏi: <strong>khi hệ thống đã khóa chặt, kẻ gian xin chìa từ chính người dùng bằng cách nào – và mỗi người làm gì để không trao chìa?</strong> Mọi biện pháp kỹ thuật của bốn ngày qua đều có thể bị vượt qua nếu một người tự tay gửi file, đọc mã OTP hay bấm \"Chấp nhận\". Buổi học không dạy đoán thư thật hay giả, mà dạy một quy trình xác minh dùng được cả khi thư giả trông hoàn hảo.",
+     "plain": "Buổi 8 trả lời câu hỏi: khi hệ thống đã khóa chặt, kẻ gian xin chìa từ chính người dùng bằng cách nào – và mỗi người làm gì để không trao chìa? Mọi biện pháp kỹ thuật của bốn ngày qua đều có thể bị vượt qua nếu một người tự tay gửi file, đọc mã OTP hay bấm \"Chấp nhận\". Buổi học không dạy đoán thư thật hay giả, mà dạy một quy trình xác minh dùng được cả khi thư giả trông hoàn hảo."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Thông tin buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Ngày 4, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)",
+        "plain": "Ngày 4, buổi chiều, 13:30–16:30 (3 giờ, có 15 phút nghỉ)"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu trình chiếu",
+        "plain": "Tài liệu trình chiếu"
+       },
+       {
+        "html": "82–90",
+        "plain": "82–90"
+       }
+      ],
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Chia sẻ kinh nghiệm, phân tích thư mẫu cả lớp, giảng và minh họa, phân tích tình huống và tự đề xuất cách xử lý",
+        "plain": "Chia sẻ kinh nghiệm, phân tích thư mẫu cả lớp, giảng và minh họa, phân tích tình huống và tự đề xuất cách xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "MFA và điểm yếu MFA đẩy không khớp số (buổi 4); đọc tên miền và ổ khóa HTTPS (buổi 5); lỗi con người và điều kiện tiềm ẩn (buổi 2)",
+        "plain": "MFA và điểm yếu MFA đẩy không khớp số (buổi 4); đọc tên miền và ổ khóa HTTPS (buổi 5); lỗi con người và điều kiện tiềm ẩn (buổi 2)"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "Bảng phân tích bốn tình huống cần xác minh, phần đóng vai áp dụng quy trình 4 bước, checklist xác minh thông điệp in mang về (Thực hành 9)",
+        "plain": "Bảng phân tích bốn tình huống cần xác minh, phần đóng vai áp dụng quy trình 4 bước, checklist xác minh thông điệp in mang về (Thực hành 9)"
+       }
+      ],
+      [
+       {
+        "html": "Vật dụng",
+        "plain": "Vật dụng"
+       },
+       {
+        "html": "Thư, tin nhắn, poster QR giả lập (chỉ dùng tên miền .example, QR không chứa liên kết hoạt động); checklist in sẵn",
+        "plain": "Thư, tin nhắn, poster QR giả lập (chỉ dùng tên miền .example, QR không chứa liên kết hoạt động); checklist in sẵn"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Buổi này tiếp nối buổi trước như thế nào?",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhận từ ngày 2:</strong> MFA và quyền đã thiết kế. Không vượt được hệ thống thì kẻ gian nhắm vào người bấm nút – nối thẳng với điểm yếu MFA đẩy không khớp số của chương 4.",
+       "level": 0,
+       "plain": "Nhận từ ngày 2: MFA và quyền đã thiết kế. Không vượt được hệ thống thì kẻ gian nhắm vào người bấm nút – nối thẳng với điểm yếu MFA đẩy không khớp số của chương 4."
+      },
+      {
+       "html": "<strong>Tình huống – chương 8:</strong> 21:30 ngày 20/10, anh Cường nhận tin Zalo từ tài khoản \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo yêu cầu đăng nhập. Tin nhắn này là tình huống thứ tư của Thực hành 9. Thủ đoạn giả danh nhân viên điện lực gọi cho khách hàng trong Bài 2 sẽ quay lại ở chương 10.",
+       "level": 0,
+       "plain": "Tình huống – chương 8: 21:30 ngày 20/10, anh Cường nhận tin Zalo từ tài khoản \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo yêu cầu đăng nhập. Tin nhắn này là tình huống thứ tư của Thực hành 9. Thủ đoạn giả danh nhân viên điện lực gọi cho khách hàng trong Bài 2 sẽ quay lại ở chương 10."
+      },
+      {
+       "html": "<strong>Dừng câu chuyện ở đây:</strong> giáo trình chỉ nói anh Cường \"thấy hợp lý\". Lớp chưa biết anh có bấm hay không; câu trả lời nằm trong nhật ký của ngày 5.",
+       "level": 0,
+       "plain": "Dừng câu chuyện ở đây: giáo trình chỉ nói anh Cường \"thấy hợp lý\". Lớp chưa biết anh có bấm hay không; câu trả lời nằm trong nhật ký của ngày 5."
+      },
+      {
+       "html": "<strong>Trao cho ngày 5:</strong> checklist xác minh và nguyên tắc gọi lại. Câu hỏi còn lại – nếu đã lỡ bấm thì tổ chức làm gì – là việc của ngày 5.",
+       "level": 0,
+       "plain": "Trao cho ngày 5: checklist xác minh và nguyên tắc gọi lại. Câu hỏi còn lại – nếu đã lỡ bấm thì tổ chức làm gì – là việc của ngày 5."
+      },
+      {
+       "html": "<strong>Sợi chỉ:</strong> CIA – một cú bấm có thể mất cả ba; vòng đời – dữ liệu khách hàng bị lộ ở đâu đó là nguyên liệu cho lừa đảo ở nơi khác; con người – càng gấp, càng bí mật, càng vượt quy trình thì càng phải dừng lại.",
+       "level": 0,
+       "plain": "Sợi chỉ: CIA – một cú bấm có thể mất cả ba; vòng đời – dữ liệu khách hàng bị lộ ở đâu đó là nguyên liệu cho lừa đảo ở nơi khác; con người – càng gấp, càng bí mật, càng vượt quy trình thì càng phải dừng lại."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Giải thích phishing và social engineering, kể các kênh và hình thức tiếp cận, kể cả qua mã QR và deepfake.",
+       "level": 0,
+       "plain": "Giải thích phishing và social engineering, kể các kênh và hình thức tiếp cận, kể cả qua mã QR và deepfake."
+      },
+      {
+       "html": "Nhận ra bốn đòn tâm lý thường dùng trong yêu cầu giả.",
+       "level": 0,
+       "plain": "Nhận ra bốn đòn tâm lý thường dùng trong yêu cầu giả."
+      },
+      {
+       "html": "Mô tả thủ đoạn giả danh nhân viên điện lực và tư vấn đúng cho khách hàng.",
+       "level": 0,
+       "plain": "Mô tả thủ đoạn giả danh nhân viên điện lực và tư vấn đúng cho khách hàng."
+      },
+      {
+       "html": "Kiểm tra năm thành phần của một thông điệp đáng ngờ: người gửi, yêu cầu, liên kết/QR, file, đăng nhập/OTP.",
+       "level": 0,
+       "plain": "Kiểm tra năm thành phần của một thông điệp đáng ngờ: người gửi, yêu cầu, liên kết/QR, file, đăng nhập/OTP."
+      },
+      {
+       "html": "Áp dụng quy trình 4 bước – tạm dừng, xác minh độc lập, báo đầu mối, thực hiện khi rõ – và biết làm gì ngay nếu đã lỡ bấm.",
+       "level": 0,
+       "plain": "Áp dụng quy trình 4 bước – tạm dừng, xác minh độc lập, báo đầu mối, thực hiện khi rõ – và biết làm gì ngay nếu đã lỡ bấm."
+      }
+     ]
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Mở đầu: tin nhắn lúc 21:30 (chương 8)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Chuyện gì xảy ra"
+    },
+    {
+     "t": "p",
+     "html": "Tối 20/10, anh Cường đang ở nhà. 21:30, Zalo hiện lời mời kết bạn và tin nhắn từ tài khoản <strong>\"CNTT Minh An – Hỗ trợ\"</strong>, ảnh đại diện là logo Công ty:",
+     "plain": "Tối 20/10, anh Cường đang ở nhà. 21:30, Zalo hiện lời mời kết bạn và tin nhắn từ tài khoản \"CNTT Minh An – Hỗ trợ\", ảnh đại diện là logo Công ty:"
+    },
+    {
+     "t": "quote",
+     "html": "\"Chào anh Cường, tối nay bên em nâng cấp hệ thống xác thực cho toàn Công ty. Trong đêm điện thoại anh có thể báo yêu cầu đăng nhập, anh bấm <strong>Chấp nhận</strong> giúp em để tài khoản được đồng bộ, nếu không sáng mai tài khoản sẽ bị khóa. Team đang trực nên không nghe máy được, có gì anh nhắn ở đây ạ.\" <em>(nội dung giả lập)</em>"
+    },
+    {
+     "t": "p",
+     "html": "Anh Cường nhớ CNTT từng thông báo sẽ đổi cấu hình MFA sang khớp số (chương 4). Anh thấy <strong>hợp lý</strong>, nhắn lại \"Ok em\" rồi đặt điện thoại xuống.",
+     "plain": "Anh Cường nhớ CNTT từng thông báo sẽ đổi cấu hình MFA sang khớp số (chương 4). Anh thấy hợp lý, nhắn lại \"Ok em\" rồi đặt điện thoại xuống."
+    },
+    {
+     "t": "p",
+     "html": "Câu chuyện dừng ở đây. Giáo trình không nói anh Cường có bấm hay không.",
+     "plain": "Câu chuyện dừng ở đây. Giáo trình không nói anh Cường có bấm hay không."
+    },
+    {
+     "t": "p",
+     "html": "Bối cảnh chung của ngành: tổng đài chăm sóc khách hàng của các điện lực thường xuyên nhận phản ánh về cuộc gọi giả danh nhân viên điện lực (Bài 2). Hai chuyện này cùng một bản chất: kẻ gian không phá khóa mà xin chìa.",
+     "plain": "Bối cảnh chung của ngành: tổng đài chăm sóc khách hàng của các điện lực thường xuyên nhận phản ánh về cuộc gọi giả danh nhân viên điện lực (Bài 2). Hai chuyện này cùng một bản chất: kẻ gian không phá khóa mà xin chìa."
+    },
+    {
+     "t": "h3",
+     "text": "Câu hỏi của buổi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?",
+       "level": 0,
+       "plain": "Vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công thẳng vào hệ thống? Tin nhắn dùng những đòn tâm lý nào?"
+      },
+      {
+       "html": "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?",
+       "level": 0,
+       "plain": "Khi khách hàng hỏi về một cuộc gọi \"nhân viên điện lực\" đòi chuyển tiền, giao dịch viên tư vấn gì? Vì sao chuyện này liên quan đến dữ liệu chúng ta giữ?"
+      },
+      {
+       "html": "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?",
+       "level": 0,
+       "plain": "Trước khi tin một tin nhắn, email hay mã QR, cần kiểm tra những gì? Tin nhắn của \"CNTT Minh An\" lộ ra ở đâu?"
+      },
+      {
+       "html": "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?",
+       "level": 0,
+       "plain": "Lúc 21:30 anh Cường nên làm gì? Và nếu ai đó đã lỡ bấm Chấp nhận thì sao?"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bốn câu này ứng với bốn bài của buổi. Tin nhắn của chương 8 là tình huống thứ tư của Thực hành 9.",
+     "plain": "Bốn câu này ứng với bốn bài của buổi. Tin nhắn của chương 8 là tình huống thứ tư của Thực hành 9."
+    },
+    {
+     "t": "h3",
+     "text": "Khởi động (15 phút)"
+    },
+    {
+     "t": "p",
+     "html": "Hỏi lớp: <em>\"Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?\"</em> Ghi lên bảng các câu chuyện theo kênh (SMS, Zalo, điện thoại, email) – bảng này sẽ dùng lại ở Bài 1. Nhắc lớp: người kể chuyện mình suýt tin là đang giúp cả lớp; không ai bị chê cười.",
+     "plain": "Hỏi lớp: \"Anh/chị từng nhận tin nhắn, cuộc gọi lừa đảo nào? Điều gì khiến anh/chị suy nghĩ – hoặc suýt tin?\" Ghi lên bảng các câu chuyện theo kênh (SMS, Zalo, điện thoại, email) – bảng này sẽ dùng lại ở Bài 1. Nhắc lớp: người kể chuyện mình suýt tin là đang giúp cả lớp; không ai bị chê cười."
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Bài 1 – Các hình thức tấn công phi kỹ thuật và bốn đòn tâm lý",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 1: vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công hệ thống, và tin nhắn dùng những đòn tâm lý nào.",
+     "plain": "Bài này trả lời câu hỏi 1: vì sao kẻ gian nhắn tin cho anh Cường thay vì tấn công hệ thống, và tin nhắn dùng những đòn tâm lý nào."
+    },
+    {
+     "t": "h3",
+     "text": "1.1. Xin chìa thay vì phá khóa"
+    },
+    {
+     "t": "p",
+     "html": "Kẻ tấn công thường không \"phá khóa\" hệ thống mà \"xin chìa\" từ chính người dùng. Lý do rất thực tế: phá mật mã AES, vượt RLS hay tìm lỗ hổng phần mềm tốn nhiều công sức và hay thất bại; gửi một trăm tin nhắn thì rẻ, và chỉ cần một người làm theo.",
+     "plain": "Kẻ tấn công thường không \"phá khóa\" hệ thống mà \"xin chìa\" từ chính người dùng. Lý do rất thực tế: phá mật mã AES, vượt RLS hay tìm lỗ hổng phần mềm tốn nhiều công sức và hay thất bại; gửi một trăm tin nhắn thì rẻ, và chỉ cần một người làm theo."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Khái niệm",
+        "plain": "Khái niệm"
+       },
+       {
+        "html": "Giải thích",
+        "plain": "Giải thích"
+       },
+       {
+        "html": "Ví dụ đời thường",
+        "plain": "Ví dụ đời thường"
+       }
+      ],
+      [
+       {
+        "html": "Social engineering (thao túng tâm lý)",
+        "plain": "Social engineering (thao túng tâm lý)"
+       },
+       {
+        "html": "Khai thác niềm tin, thói quen, áp lực để khiến người khác làm theo",
+        "plain": "Khai thác niềm tin, thói quen, áp lực để khiến người khác làm theo"
+       },
+       {
+        "html": "Cuộc gọi giả công an yêu cầu chuyển tiền \"để xác minh\"",
+        "plain": "Cuộc gọi giả công an yêu cầu chuyển tiền \"để xác minh\""
+       }
+      ],
+      [
+       {
+        "html": "Phishing (lừa đảo qua thông điệp)",
+        "plain": "Phishing (lừa đảo qua thông điệp)"
+       },
+       {
+        "html": "Một dạng social engineering, dùng thông điệp hoặc trang giả để dụ nhập thông tin, đăng nhập, mở file",
+        "plain": "Một dạng social engineering, dùng thông điệp hoặc trang giả để dụ nhập thông tin, đăng nhập, mở file"
+       },
+       {
+        "html": "Tin nhắn \"Tiền điện quá hạn, bấm link để tránh cắt điện\"",
+        "plain": "Tin nhắn \"Tiền điện quá hạn, bấm link để tránh cắt điện\""
+       }
+      ],
+      [
+       {
+        "html": "Kênh tiếp cận",
+        "plain": "Kênh tiếp cận"
+       },
+       {
+        "html": "Email, SMS, Zalo/Messenger, điện thoại, mạng xã hội, mã QR, gặp trực tiếp",
+        "plain": "Email, SMS, Zalo/Messenger, điện thoại, mạng xã hội, mã QR, gặp trực tiếp"
+       },
+       {
+        "html": "Mã QR dán đè lên poster thanh toán",
+        "plain": "Mã QR dán đè lên poster thanh toán"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Vì sao người giỏi cũng bị lừa.</strong> Buổi 2 đã học: lỗi con người thường là hệ quả của điều kiện làm việc, không phải của sự kém cỏi. Thao túng tâm lý khai thác chính những phẩm chất tốt: muốn giúp đỡ, tôn trọng cấp trên, làm việc nhanh, không muốn làm phiền người khác. Vì vậy cách phòng chống không phải là \"cẩn thận hơn\" chung chung, mà là một quy trình cố định (Bài 4) được đơn vị ủng hộ.",
+     "plain": "Vì sao người giỏi cũng bị lừa. Buổi 2 đã học: lỗi con người thường là hệ quả của điều kiện làm việc, không phải của sự kém cỏi. Thao túng tâm lý khai thác chính những phẩm chất tốt: muốn giúp đỡ, tôn trọng cấp trên, làm việc nhanh, không muốn làm phiền người khác. Vì vậy cách phòng chống không phải là \"cẩn thận hơn\" chung chung, mà là một quy trình cố định (Bài 4) được đơn vị ủng hộ."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lưu ý:</strong> không đánh giá an toàn chỉ dựa vào lỗi chính tả, logo hay văn phong. Thư lừa đảo hiện nay có thể được viết bằng AI, rất trôi chảy và đúng văn phong công sở. Logo lấy từ website công ty trong vài giây.",
+     "plain": "Lưu ý: không đánh giá an toàn chỉ dựa vào lỗi chính tả, logo hay văn phong. Thư lừa đảo hiện nay có thể được viết bằng AI, rất trôi chảy và đúng văn phong công sở. Logo lấy từ website công ty trong vài giây.",
+     "callout": "note"
+    },
+    {
+     "t": "h3",
+     "text": "1.2. Các hình thức thường gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       },
+       {
+        "html": "Kênh",
+        "plain": "Kênh"
+       },
+       {
+        "html": "Đặc điểm",
+        "plain": "Đặc điểm"
+       },
+       {
+        "html": "Ví dụ giả lập",
+        "plain": "Ví dụ giả lập"
+       }
+      ],
+      [
+       {
+        "html": "Phishing đại trà",
+        "plain": "Phishing đại trà"
+       },
+       {
+        "html": "Email",
+        "plain": "Email"
+       },
+       {
+        "html": "Gửi hàng loạt, nội dung chung chung",
+        "plain": "Gửi hàng loạt, nội dung chung chung"
+       },
+       {
+        "html": "\"Hộp thư của bạn sắp đầy, đăng nhập để nâng cấp\"",
+        "plain": "\"Hộp thư của bạn sắp đầy, đăng nhập để nâng cấp\""
+       }
+      ],
+      [
+       {
+        "html": "Spear phishing (nhắm mục tiêu)",
+        "plain": "Spear phishing (nhắm mục tiêu)"
+       },
+       {
+        "html": "Email, tin nhắn",
+        "plain": "Email, tin nhắn"
+       },
+       {
+        "html": "Nhắm đúng người, dùng thông tin công việc thật",
+        "plain": "Nhắm đúng người, dùng thông tin công việc thật"
+       },
+       {
+        "html": "Email nhắc đúng tên dự án, đúng người phụ trách",
+        "plain": "Email nhắc đúng tên dự án, đúng người phụ trách"
+       }
+      ],
+      [
+       {
+        "html": "Whaling",
+        "plain": "Whaling"
+       },
+       {
+        "html": "Email",
+        "plain": "Email"
+       },
+       {
+        "html": "Nhắm lãnh đạo hoặc trợ lý lãnh đạo",
+        "plain": "Nhắm lãnh đạo hoặc trợ lý lãnh đạo"
+       },
+       {
+        "html": "Giả cơ quan cấp trên yêu cầu báo cáo gấp",
+        "plain": "Giả cơ quan cấp trên yêu cầu báo cáo gấp"
+       }
+      ],
+      [
+       {
+        "html": "Giả mạo email doanh nghiệp (BEC)",
+        "plain": "Giả mạo email doanh nghiệp (BEC)"
+       },
+       {
+        "html": "Email",
+        "plain": "Email"
+       },
+       {
+        "html": "Giả lãnh đạo hoặc nhà cung cấp, đề nghị chuyển tiền, đổi số tài khoản, gửi dữ liệu",
+        "plain": "Giả lãnh đạo hoặc nhà cung cấp, đề nghị chuyển tiền, đổi số tài khoản, gửi dữ liệu"
+       },
+       {
+        "html": "\"Từ tháng này vui lòng thanh toán vào tài khoản mới\"",
+        "plain": "\"Từ tháng này vui lòng thanh toán vào tài khoản mới\""
+       }
+      ],
+      [
+       {
+        "html": "Smishing",
+        "plain": "Smishing"
+       },
+       {
+        "html": "SMS",
+        "plain": "SMS"
+       },
+       {
+        "html": "Tin nhắn có link; có thể hiện tên thương hiệu giả",
+        "plain": "Tin nhắn có link; có thể hiện tên thương hiệu giả"
+       },
+       {
+        "html": "\"Tiền điện quá hạn, tra cứu tại…\"",
+        "plain": "\"Tiền điện quá hạn, tra cứu tại…\""
+       }
+      ],
+      [
+       {
+        "html": "Vishing",
+        "plain": "Vishing"
+       },
+       {
+        "html": "Điện thoại",
+        "plain": "Điện thoại"
+       },
+       {
+        "html": "Gọi trực tiếp, tạo áp lực bằng giọng nói",
+        "plain": "Gọi trực tiếp, tạo áp lực bằng giọng nói"
+       },
+       {
+        "html": "Giả CNTT xin mã OTP để \"đồng bộ tài khoản\"",
+        "plain": "Giả CNTT xin mã OTP để \"đồng bộ tài khoản\""
+       }
+      ],
+      [
+       {
+        "html": "Deepfake",
+        "plain": "Deepfake"
+       },
+       {
+        "html": "Gọi video, tin nhắn thoại",
+        "plain": "Gọi video, tin nhắn thoại"
+       },
+       {
+        "html": "Giả giọng nói hoặc khuôn mặt người quen bằng AI",
+        "plain": "Giả giọng nói hoặc khuôn mặt người quen bằng AI"
+       },
+       {
+        "html": "Cuộc gọi video ngắn, hình mờ, \"đang vội\" nhờ chuyển tiền",
+        "plain": "Cuộc gọi video ngắn, hình mờ, \"đang vội\" nhờ chuyển tiền"
+       }
+      ],
+      [
+       {
+        "html": "Quishing",
+        "plain": "Quishing"
+       },
+       {
+        "html": "Mã QR",
+        "plain": "Mã QR"
+       },
+       {
+        "html": "Link ẩn trong QR, né bộ lọc email",
+        "plain": "Link ẩn trong QR, né bộ lọc email"
+       },
+       {
+        "html": "QR dán đè trên poster; QR trong email \"xác thực lại MFA\"",
+        "plain": "QR dán đè trên poster; QR trong email \"xác thực lại MFA\""
+       }
+      ],
+      [
+       {
+        "html": "Chiếm tài khoản mạng xã hội",
+        "plain": "Chiếm tài khoản mạng xã hội"
+       },
+       {
+        "html": "Zalo, Facebook",
+        "plain": "Zalo, Facebook"
+       },
+       {
+        "html": "Dùng tài khoản thật của người quen đã bị chiếm",
+        "plain": "Dùng tài khoản thật của người quen đã bị chiếm"
+       },
+       {
+        "html": "Đồng nghiệp nhắn \"gửi giúp mình file danh sách, máy mình hỏng\"",
+        "plain": "Đồng nghiệp nhắn \"gửi giúp mình file danh sách, máy mình hỏng\""
+       }
+      ],
+      [
+       {
+        "html": "Dựng kịch bản (pretexting)",
+        "plain": "Dựng kịch bản (pretexting)"
+       },
+       {
+        "html": "Mọi kênh",
+        "plain": "Mọi kênh"
+       },
+       {
+        "html": "Bịa ra một vai và câu chuyện hợp lý",
+        "plain": "Bịa ra một vai và câu chuyện hợp lý"
+       },
+       {
+        "html": "Giả đoàn kiểm tra xin danh sách nhân sự",
+        "plain": "Giả đoàn kiểm tra xin danh sách nhân sự"
+       }
+      ],
+      [
+       {
+        "html": "MFA fatigue / gửi dồn yêu cầu MFA",
+        "plain": "MFA fatigue / gửi dồn yêu cầu MFA"
+       },
+       {
+        "html": "Ứng dụng xác thực, kèm tin nhắn hoặc cuộc gọi",
+        "plain": "Ứng dụng xác thực, kèm tin nhắn hoặc cuộc gọi"
+       },
+       {
+        "html": "Đã có mật khẩu, liên tục gửi yêu cầu đăng nhập và \"nhờ\" bấm Chấp nhận",
+        "plain": "Đã có mật khẩu, liên tục gửi yêu cầu đăng nhập và \"nhờ\" bấm Chấp nhận"
+       },
+       {
+        "html": "Tin nhắn chương 8",
+        "plain": "Tin nhắn chương 8"
+       }
+      ],
+      [
+       {
+        "html": "Nhử mồi (baiting)",
+        "plain": "Nhử mồi (baiting)"
+       },
+       {
+        "html": "Vật lý",
+        "plain": "Vật lý"
+       },
+       {
+        "html": "USB \"đánh rơi\" có nhãn hấp dẫn",
+        "plain": "USB \"đánh rơi\" có nhãn hấp dẫn"
+       },
+       {
+        "html": "USB ghi \"Bảng lương 2026\" ở bãi xe",
+        "plain": "USB ghi \"Bảng lương 2026\" ở bãi xe"
+       }
+      ],
+      [
+       {
+        "html": "Đi theo (tailgating)",
+        "plain": "Đi theo (tailgating)"
+       },
+       {
+        "html": "Vật lý",
+        "plain": "Vật lý"
+       },
+       {
+        "html": "Bám theo người có thẻ để vào khu vực hạn chế",
+        "plain": "Bám theo người có thẻ để vào khu vực hạn chế"
+       },
+       {
+        "html": "Người ôm thùng hàng nhờ giữ cửa phòng máy",
+        "plain": "Người ôm thùng hàng nhờ giữ cửa phòng máy"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Dùng lại bảng ghi ở phần khởi động: xếp câu chuyện của lớp vào các dòng trên. Thường lớp sẽ có đủ smishing, vishing và chiếm tài khoản Zalo.",
+     "plain": "Dùng lại bảng ghi ở phần khởi động: xếp câu chuyện của lớp vào các dòng trên. Thường lớp sẽ có đủ smishing, vishing và chiếm tài khoản Zalo."
+    },
+    {
+     "t": "h3",
+     "text": "1.3. Bốn đòn tâm lý thường gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đòn tâm lý",
+        "plain": "Đòn tâm lý"
+       },
+       {
+        "html": "Cách hoạt động",
+        "plain": "Cách hoạt động"
+       },
+       {
+        "html": "Câu nói điển hình",
+        "plain": "Câu nói điển hình"
+       },
+       {
+        "html": "Cách đối phó",
+        "plain": "Cách đối phó"
+       }
+      ],
+      [
+       {
+        "html": "Mượn uy quyền",
+        "plain": "Mượn uy quyền"
+       },
+       {
+        "html": "Giả lãnh đạo, CNTT hoặc cơ quan có thẩm quyền để người nhận ngại phản biện",
+        "plain": "Giả lãnh đạo, CNTT hoặc cơ quan có thẩm quyền để người nhận ngại phản biện"
+       },
+       {
+        "html": "\"Giám đốc chỉ đạo…\"",
+        "plain": "\"Giám đốc chỉ đạo…\""
+       },
+       {
+        "html": "Lãnh đạo thật không ngại được xác minh",
+        "plain": "Lãnh đạo thật không ngại được xác minh"
+       }
+      ],
+      [
+       {
+        "html": "Tạo khẩn cấp",
+        "plain": "Tạo khẩn cấp"
+       },
+       {
+        "html": "Ép làm ngay, không kịp kiểm tra",
+        "plain": "Ép làm ngay, không kịp kiểm tra"
+       },
+       {
+        "html": "\"Trong 15 phút nữa…\", \"sáng mai sẽ bị khóa\"",
+        "plain": "\"Trong 15 phút nữa…\", \"sáng mai sẽ bị khóa\""
+       },
+       {
+        "html": "Càng gấp càng phải dừng lại",
+        "plain": "Càng gấp càng phải dừng lại"
+       }
+      ],
+      [
+       {
+        "html": "Yêu cầu giữ kín / chặn kênh xác minh",
+        "plain": "Yêu cầu giữ kín / chặn kênh xác minh"
+       },
+       {
+        "html": "Ngăn trao đổi với quản lý, đồng nghiệp, hoặc ngăn gọi lại",
+        "plain": "Ngăn trao đổi với quản lý, đồng nghiệp, hoặc ngăn gọi lại"
+       },
+       {
+        "html": "\"Việc này nhạy cảm, đừng nói với ai\", \"đang họp không nghe máy được\"",
+        "plain": "\"Việc này nhạy cảm, đừng nói với ai\", \"đang họp không nghe máy được\""
+       },
+       {
+        "html": "Yêu cầu né quy trình nội bộ là dấu hiệu lớn",
+        "plain": "Yêu cầu né quy trình nội bộ là dấu hiệu lớn"
+       }
+      ],
+      [
+       {
+        "html": "Tạo quen thuộc",
+        "plain": "Tạo quen thuộc"
+       },
+       {
+        "html": "Dùng tên đối tác, số hợp đồng, nội dung công việc thật, logo",
+        "plain": "Dùng tên đối tác, số hợp đồng, nội dung công việc thật, logo"
+       },
+       {
+        "html": "\"Theo hợp đồng số … bên em đã trao đổi\"",
+        "plain": "\"Theo hợp đồng số … bên em đã trao đổi\""
+       },
+       {
+        "html": "Thông tin quen thuộc có thể đã bị lộ từ trước",
+        "plain": "Thông tin quen thuộc có thể đã bị lộ từ trước"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "1.4. Phân tích một email mẫu"
+    },
+    {
+     "t": "p",
+     "html": "Chiếu email sau (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):",
+     "plain": "Chiếu email sau (hoàn toàn giả lập, tên miền .example dành riêng cho ví dụ):"
+    },
+    {
+     "t": "quote",
+     "html": "<strong>Từ:</strong> Ban điều hành (lanhdao@donvi-support.example)"
+    },
+    {
+     "t": "quote",
+     "html": "<strong>Tiêu đề:</strong> KHẨN: gửi file khách hàng trước 16:00"
+    },
+    {
+     "t": "quote",
+     "html": "Em gửi ngay toàn bộ danh sách khách hàng và số điện thoại. Gửi vào địa chỉ mới này, không cần qua trưởng phòng. Chị đang họp nên không tiện nghe máy."
+    },
+    {
+     "t": "p",
+     "html": "Cách tổ chức: cho lớp 3 phút tự tìm dấu hiệu, rồi gọi từng người nêu một dấu hiệu.",
+     "plain": "Cách tổ chức: cho lớp 3 phút tự tìm dấu hiệu, rồi gọi từng người nêu một dấu hiệu."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Dấu hiệu",
+        "plain": "Dấu hiệu"
+       },
+       {
+        "html": "Trong email",
+        "plain": "Trong email"
+       },
+       {
+        "html": "Đòn tâm lý",
+        "plain": "Đòn tâm lý"
+       }
+      ],
+      [
+       {
+        "html": "Tên miền lạ",
+        "plain": "Tên miền lạ"
+       },
+       {
+        "html": "donvi-support.example, không phải tên miền chính thức",
+        "plain": "donvi-support.example, không phải tên miền chính thức"
+       },
+       {
+        "html": "Mượn uy quyền qua tên hiển thị \"Ban điều hành\"",
+        "plain": "Mượn uy quyền qua tên hiển thị \"Ban điều hành\""
+       }
+      ],
+      [
+       {
+        "html": "Yêu cầu vượt quy trình",
+        "plain": "Yêu cầu vượt quy trình"
+       },
+       {
+        "html": "\"không cần qua trưởng phòng\", \"địa chỉ mới này\"",
+        "plain": "\"không cần qua trưởng phòng\", \"địa chỉ mới này\""
+       },
+       {
+        "html": "Giữ kín",
+        "plain": "Giữ kín"
+       }
+      ],
+      [
+       {
+        "html": "Áp lực thời gian",
+        "plain": "Áp lực thời gian"
+       },
+       {
+        "html": "\"KHẨN\", \"trước 16:00\"",
+        "plain": "\"KHẨN\", \"trước 16:00\""
+       },
+       {
+        "html": "Khẩn cấp",
+        "plain": "Khẩn cấp"
+       }
+      ],
+      [
+       {
+        "html": "Chặn kênh xác minh",
+        "plain": "Chặn kênh xác minh"
+       },
+       {
+        "html": "\"không tiện nghe máy\"",
+        "plain": "\"không tiện nghe máy\""
+       },
+       {
+        "html": "Chặn xác minh",
+        "plain": "Chặn xác minh"
+       }
+      ],
+      [
+       {
+        "html": "Xin nhiều dữ liệu hơn bình thường",
+        "plain": "Xin nhiều dữ liệu hơn bình thường"
+       },
+       {
+        "html": "\"toàn bộ danh sách\" kèm số điện thoại",
+        "plain": "\"toàn bộ danh sách\" kèm số điện thoại"
+       },
+       {
+        "html": "Ngược nguyên tắc tối thiểu hóa (buổi 1, 6)",
+        "plain": "Ngược nguyên tắc tối thiểu hóa (buổi 1, 6)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Nhấn mạnh: một dấu hiệu riêng lẻ chưa chứng minh là lừa đảo, nhưng là lý do để xác minh qua số liên hệ có sẵn. Ngược lại, không tìm thấy dấu hiệu nào cũng chưa chứng minh là thật – thư từ tài khoản thật đã bị chiếm sẽ không có dấu hiệu tên miền.",
+     "plain": "Nhấn mạnh: một dấu hiệu riêng lẻ chưa chứng minh là lừa đảo, nhưng là lý do để xác minh qua số liên hệ có sẵn. Ngược lại, không tìm thấy dấu hiệu nào cũng chưa chứng minh là thật – thư từ tài khoản thật đã bị chiếm sẽ không có dấu hiệu tên miền."
+    },
+    {
+     "t": "h3",
+     "text": "1.5. Áp vào chương 8 – trả lời câu hỏi 1"
+    },
+    {
+     "t": "p",
+     "html": "Kẻ gian nhắn cho anh Cường vì hệ thống đòi thêm một thứ mà họ không có: một cú bấm Chấp nhận trên điện thoại của anh (buổi 4). Tin nhắn dùng đủ bốn đòn:",
+     "plain": "Kẻ gian nhắn cho anh Cường vì hệ thống đòi thêm một thứ mà họ không có: một cú bấm Chấp nhận trên điện thoại của anh (buổi 4). Tin nhắn dùng đủ bốn đòn:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đòn",
+        "plain": "Đòn"
+       },
+       {
+        "html": "Trong tin nhắn",
+        "plain": "Trong tin nhắn"
+       }
+      ],
+      [
+       {
+        "html": "Mượn uy quyền",
+        "plain": "Mượn uy quyền"
+       },
+       {
+        "html": "Tên \"CNTT Minh An – Hỗ trợ\", logo Công ty",
+        "plain": "Tên \"CNTT Minh An – Hỗ trợ\", logo Công ty"
+       }
+      ],
+      [
+       {
+        "html": "Tạo khẩn cấp",
+        "plain": "Tạo khẩn cấp"
+       },
+       {
+        "html": "\"Sáng mai tài khoản sẽ bị khóa\"",
+        "plain": "\"Sáng mai tài khoản sẽ bị khóa\""
+       }
+      ],
+      [
+       {
+        "html": "Chặn kênh xác minh",
+        "plain": "Chặn kênh xác minh"
+       },
+       {
+        "html": "\"Team đang trực nên không nghe máy được, có gì anh nhắn ở đây\"",
+        "plain": "\"Team đang trực nên không nghe máy được, có gì anh nhắn ở đây\""
+       }
+      ],
+      [
+       {
+        "html": "Tạo quen thuộc",
+        "plain": "Tạo quen thuộc"
+       },
+       {
+        "html": "\"Nâng cấp hệ thống xác thực\" – trùng với điều anh từng nghe về việc đổi cấu hình MFA",
+        "plain": "\"Nâng cấp hệ thống xác thực\" – trùng với điều anh từng nghe về việc đổi cấu hình MFA"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Và một dấu hiệu quyết định không cần đòn nào: <strong>không CNTT nào cần người dùng bấm Chấp nhận cho một lần đăng nhập mà chính họ không thực hiện.</strong> Có yêu cầu MFA bật lên mà mình không đăng nhập, nghĩa là ai đó đang có mật khẩu của mình.",
+     "plain": "Và một dấu hiệu quyết định không cần đòn nào: không CNTT nào cần người dùng bấm Chấp nhận cho một lần đăng nhập mà chính họ không thực hiện. Có yêu cầu MFA bật lên mà mình không đăng nhập, nghĩa là ai đó đang có mật khẩu của mình."
+    },
+    {
+     "t": "h3",
+     "text": "1.6. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Thuộc bốn đòn tâm lý; thấy đòn nào là dừng lại.",
+       "level": 0,
+       "plain": "Thuộc bốn đòn tâm lý; thấy đòn nào là dừng lại."
+      },
+      {
+       "html": "Khi một yêu cầu khiến mình thấy \"phải làm ngay\", coi cảm giác đó là một dấu hiệu.",
+       "level": 0,
+       "plain": "Khi một yêu cầu khiến mình thấy \"phải làm ngay\", coi cảm giác đó là một dấu hiệu."
+      },
+      {
+       "html": "Không tin vào logo, ảnh đại diện, tên hiển thị, văn phong.",
+       "level": 0,
+       "plain": "Không tin vào logo, ảnh đại diện, tên hiển thị, văn phong."
+      },
+      {
+       "html": "Không nhặt USB lạ cắm vào máy; không giữ cửa khu vực hạn chế cho người không có thẻ.",
+       "level": 0,
+       "plain": "Không nhặt USB lạ cắm vào máy; không giữ cửa khu vực hạn chế cho người không có thẻ."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Tôi chỉ là nhân viên bình thường, ai thèm lừa tôi.\" → Tài khoản của một giao dịch viên ở Điện lực X có quyền xuất danh sách toàn đơn vị (chương 3), với đủ mọi cột (chương 6). Với kẻ gian, đó là một mục tiêu rất đáng giá.",
+     "plain": "Hiểu nhầm hay gặp: \"Tôi chỉ là nhân viên bình thường, ai thèm lừa tôi.\" → Tài khoản của một giao dịch viên ở Điện lực X có quyền xuất danh sách toàn đơn vị (chương 3), với đủ mọi cột (chương 6). Với kẻ gian, đó là một mục tiêu rất đáng giá.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Bài 2 – Thủ đoạn giả danh nhân viên điện lực",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 2: khách hàng hỏi về cuộc gọi \"nhân viên điện lực\" thì tư vấn gì, và vì sao chuyện này liên quan đến dữ liệu chúng ta giữ. Đây là ví dụ thực tế của ngành, không phải giả định.",
+     "plain": "Bài này trả lời câu hỏi 2: khách hàng hỏi về cuộc gọi \"nhân viên điện lực\" thì tư vấn gì, và vì sao chuyện này liên quan đến dữ liệu chúng ta giữ. Đây là ví dụ thực tế của ngành, không phải giả định."
+    },
+    {
+     "t": "h3",
+     "text": "2.1. Thủ đoạn được mô tả thế nào"
+    },
+    {
+     "t": "p",
+     "html": "Tình trạng giả danh nhân viên điện lực để lừa khách hàng được báo chí và các tổng công ty điện lực cảnh báo nhiều lần. Theo Tạp chí Công Thương (27/3/2025), EVNHANOI ghi nhận khoảng 3.300 phản ánh về cuộc gọi đáng ngờ trong năm 2024 và hơn 5.200 phản ánh chỉ trong hai tháng đầu năm 2025. Thủ đoạn được mô tả:",
+     "plain": "Tình trạng giả danh nhân viên điện lực để lừa khách hàng được báo chí và các tổng công ty điện lực cảnh báo nhiều lần. Theo Tạp chí Công Thương (27/3/2025), EVNHANOI ghi nhận khoảng 3.300 phản ánh về cuộc gọi đáng ngờ trong năm 2024 và hơn 5.200 phản ánh chỉ trong hai tháng đầu năm 2025. Thủ đoạn được mô tả:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Gọi điện, nhắn tin từ số lạ, xưng là nhân viên điện lực.",
+       "level": 0,
+       "plain": "Gọi điện, nhắn tin từ số lạ, xưng là nhân viên điện lực."
+      },
+      {
+       "html": "Báo khách còn nợ tiền điện, đe dọa cắt điện nếu không thanh toán ngay; hoặc báo \"đổi hình thức thanh toán\".",
+       "level": 0,
+       "plain": "Báo khách còn nợ tiền điện, đe dọa cắt điện nếu không thanh toán ngay; hoặc báo \"đổi hình thức thanh toán\"."
+      },
+      {
+       "html": "Nhiều cuộc gọi <strong>biết sẵn tên và địa chỉ</strong> khách hàng nên dễ được tin.",
+       "level": 0,
+       "plain": "Nhiều cuộc gọi biết sẵn tên và địa chỉ khách hàng nên dễ được tin."
+      },
+      {
+       "html": "Yêu cầu kết bạn Zalo, cài ứng dụng \"thanh toán\" hoặc bấm link tới website, ứng dụng giả; một số nạn nhân bị chiếm quyền tài khoản ngân hàng.",
+       "level": 0,
+       "plain": "Yêu cầu kết bạn Zalo, cài ứng dụng \"thanh toán\" hoặc bấm link tới website, ứng dụng giả; một số nạn nhân bị chiếm quyền tài khoản ngân hàng."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.2. Vì sao thủ đoạn này hiệu quả"
+    },
+    {
+     "t": "p",
+     "html": "Nó dùng cả bốn đòn tâm lý của Bài 1, áp vào khách hàng:",
+     "plain": "Nó dùng cả bốn đòn tâm lý của Bài 1, áp vào khách hàng:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đòn",
+        "plain": "Đòn"
+       },
+       {
+        "html": "Biểu hiện trong cuộc gọi giả",
+        "plain": "Biểu hiện trong cuộc gọi giả"
+       }
+      ],
+      [
+       {
+        "html": "Mượn uy quyền",
+        "plain": "Mượn uy quyền"
+       },
+       {
+        "html": "Xưng \"điện lực\", có khi còn xưng tên, mã nhân viên",
+        "plain": "Xưng \"điện lực\", có khi còn xưng tên, mã nhân viên"
+       }
+      ],
+      [
+       {
+        "html": "Khẩn cấp",
+        "plain": "Khẩn cấp"
+       },
+       {
+        "html": "\"Nếu không thanh toán trong hôm nay sẽ bị ngắt điện\"",
+        "plain": "\"Nếu không thanh toán trong hôm nay sẽ bị ngắt điện\""
+       }
+      ],
+      [
+       {
+        "html": "Chặn kênh xác minh",
+        "plain": "Chặn kênh xác minh"
+       },
+       {
+        "html": "\"Thanh toán qua Zalo này, không cần ra quầy\"; gọi ngoài giờ hành chính",
+        "plain": "\"Thanh toán qua Zalo này, không cần ra quầy\"; gọi ngoài giờ hành chính"
+       }
+      ],
+      [
+       {
+        "html": "Quen thuộc",
+        "plain": "Quen thuộc"
+       },
+       {
+        "html": "Biết đúng tên, địa chỉ – thậm chí mã khách hàng, số tiền",
+        "plain": "Biết đúng tên, địa chỉ – thậm chí mã khách hàng, số tiền"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Dòng cuối là lý do thực tế của mọi nội dung ngày 1–3: <strong>kẻ gian biết tên và địa chỉ là nhờ dữ liệu rò rỉ từ đâu đó.</strong> Mỗi file danh sách để lại ở thư mục Tải về, mỗi link \"Anyone\", mỗi bản xuất đủ cột đều có thể là nguồn đó.",
+     "plain": "Dòng cuối là lý do thực tế của mọi nội dung ngày 1–3: kẻ gian biết tên và địa chỉ là nhờ dữ liệu rò rỉ từ đâu đó. Mỗi file danh sách để lại ở thư mục Tải về, mỗi link \"Anyone\", mỗi bản xuất đủ cột đều có thể là nguồn đó."
+    },
+    {
+     "t": "h3",
+     "text": "2.3. Khuyến cáo cho khách hàng"
+    },
+    {
+     "t": "p",
+     "html": "EVNHANOI khuyến cáo: không làm theo hướng dẫn của người lạ; không cung cấp thông tin cá nhân; thanh toán qua kênh an toàn (trích nợ tự động, ngân hàng điện tử, ví điện tử, cổng thanh toán uy tín); khi nghi ngờ thì liên hệ tổng đài chăm sóc khách hàng chính thức để xác minh. EVNHANOI cũng nêu rõ không dùng điện thoại hay tài khoản cá nhân để liên hệ hoặc thu tiền khách hàng. Số tổng đài và kênh chính thức khác nhau theo từng tổng công ty; giảng viên thay bằng thông tin của đơn vị mình.",
+     "plain": "EVNHANOI khuyến cáo: không làm theo hướng dẫn của người lạ; không cung cấp thông tin cá nhân; thanh toán qua kênh an toàn (trích nợ tự động, ngân hàng điện tử, ví điện tử, cổng thanh toán uy tín); khi nghi ngờ thì liên hệ tổng đài chăm sóc khách hàng chính thức để xác minh. EVNHANOI cũng nêu rõ không dùng điện thoại hay tài khoản cá nhân để liên hệ hoặc thu tiền khách hàng. Số tổng đài và kênh chính thức khác nhau theo từng tổng công ty; giảng viên thay bằng thông tin của đơn vị mình."
+    },
+    {
+     "t": "p",
+     "html": "Từ đó, bốn câu \"điện lực không bao giờ\" để nhân viên nói với khách:",
+     "plain": "Từ đó, bốn câu \"điện lực không bao giờ\" để nhân viên nói với khách:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Điện lực không yêu cầu chuyển tiền vào tài khoản cá nhân.",
+       "level": 0,
+       "plain": "Điện lực không yêu cầu chuyển tiền vào tài khoản cá nhân."
+      },
+      {
+       "html": "Điện lực không yêu cầu cài ứng dụng lạ hay bấm link trong tin nhắn để thanh toán.",
+       "level": 0,
+       "plain": "Điện lực không yêu cầu cài ứng dụng lạ hay bấm link trong tin nhắn để thanh toán."
+      },
+      {
+       "html": "Điện lực không hỏi mã OTP, mật khẩu ngân hàng.",
+       "level": 0,
+       "plain": "Điện lực không hỏi mã OTP, mật khẩu ngân hàng."
+      },
+      {
+       "html": "Điện lực không thu tiền qua Zalo cá nhân của nhân viên.",
+       "level": 0,
+       "plain": "Điện lực không thu tiền qua Zalo cá nhân của nhân viên."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Việc ngừng cấp điện do chậm trả có quy trình thông báo theo quy định, không bao giờ là \"cắt trong 30 phút nếu không chuyển khoản ngay\".",
+     "plain": "Việc ngừng cấp điện do chậm trả có quy trình thông báo theo quy định, không bao giờ là \"cắt trong 30 phút nếu không chuyển khoản ngay\"."
+    },
+    {
+     "t": "h3",
+     "text": "2.4. Trả lời câu hỏi 2: giao dịch viên tư vấn thế nào"
+    },
+    {
+     "t": "p",
+     "html": "Khi khách hàng gọi tổng đài hoặc ra quầy hỏi về một cuộc gọi đáng ngờ:",
+     "plain": "Khi khách hàng gọi tổng đài hoặc ra quầy hỏi về một cuộc gọi đáng ngờ:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Nói / làm gì",
+        "plain": "Nói / làm gì"
+       },
+       {
+        "html": "Vì sao",
+        "plain": "Vì sao"
+       }
+      ],
+      [
+       {
+        "html": "1. Cảm ơn và trấn an",
+        "plain": "1. Cảm ơn và trấn an"
+       },
+       {
+        "html": "\"Cảm ơn anh/chị đã gọi lại để hỏi. Anh/chị chưa chuyển tiền phải không ạ?\"",
+        "plain": "\"Cảm ơn anh/chị đã gọi lại để hỏi. Anh/chị chưa chuyển tiền phải không ạ?\""
+       },
+       {
+        "html": "Khách hỏi lại là đã làm đúng; khen để họ làm vậy lần sau",
+        "plain": "Khách hỏi lại là đã làm đúng; khen để họ làm vậy lần sau"
+       }
+      ],
+      [
+       {
+        "html": "2. Kiểm tra trên hệ thống chính thức",
+        "plain": "2. Kiểm tra trên hệ thống chính thức"
+       },
+       {
+        "html": "Tra tình trạng nợ thật của khách theo quy trình",
+        "plain": "Tra tình trạng nợ thật của khách theo quy trình"
+       },
+       {
+        "html": "Trả lời bằng số liệu thật, không đoán",
+        "plain": "Trả lời bằng số liệu thật, không đoán"
+       }
+      ],
+      [
+       {
+        "html": "3. Nêu kênh thanh toán chính thức và bốn câu \"điện lực không bao giờ\"",
+        "plain": "3. Nêu kênh thanh toán chính thức và bốn câu \"điện lực không bao giờ\""
+       },
+       {
+        "html": "Mục 2.3",
+        "plain": "Mục 2.3"
+       },
+       {
+        "html": "Khách có cách tự kiểm tra lần sau",
+        "plain": "Khách có cách tự kiểm tra lần sau"
+       }
+      ],
+      [
+       {
+        "html": "4. Nếu đã chuyển tiền hoặc cung cấp OTP",
+        "plain": "4. Nếu đã chuyển tiền hoặc cung cấp OTP"
+       },
+       {
+        "html": "Hướng dẫn liên hệ ngay ngân hàng để khóa tài khoản/giao dịch và trình báo cơ quan công an",
+        "plain": "Hướng dẫn liên hệ ngay ngân hàng để khóa tài khoản/giao dịch và trình báo cơ quan công an"
+       },
+       {
+        "html": "Giờ đầu tiên quyết định khả năng giữ lại tiền",
+        "plain": "Giờ đầu tiên quyết định khả năng giữ lại tiền"
+       }
+      ],
+      [
+       {
+        "html": "5. Ghi nhận phản ánh",
+        "plain": "5. Ghi nhận phản ánh"
+       },
+       {
+        "html": "Số điện thoại/tài khoản Zalo kẻ gian dùng, thời gian, nội dung, <strong>kẻ gian biết những thông tin gì</strong>",
+        "plain": "Số điện thoại/tài khoản Zalo kẻ gian dùng, thời gian, nội dung, kẻ gian biết những thông tin gì"
+       },
+       {
+        "html": "Xem bên dưới",
+        "plain": "Xem bên dưới"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu hỏi quan trọng nhất ở bước 5:</strong> \"Người gọi biết những gì về anh/chị?\" Chỉ tên và địa chỉ thì có thể đến từ nhiều nguồn. Nếu họ biết <strong>đúng mã khách hàng, đúng số tiền nợ kỳ này</strong> – những thông tin chỉ có trong hệ thống của điện lực – thì đó là dấu hiệu dữ liệu nội bộ có thể đã bị lộ. Phản ánh đó phải được chuyển ngay cho đầu mối an toàn thông tin, không chỉ ghi vào sổ tổng đài.",
+     "plain": "Câu hỏi quan trọng nhất ở bước 5: \"Người gọi biết những gì về anh/chị?\" Chỉ tên và địa chỉ thì có thể đến từ nhiều nguồn. Nếu họ biết đúng mã khách hàng, đúng số tiền nợ kỳ này – những thông tin chỉ có trong hệ thống của điện lực – thì đó là dấu hiệu dữ liệu nội bộ có thể đã bị lộ. Phản ánh đó phải được chuyển ngay cho đầu mối an toàn thông tin, không chỉ ghi vào sổ tổng đài."
+    },
+    {
+     "t": "h3",
+     "text": "2.5. Cùng thủ đoạn, nhắm vào nhân viên"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giả danh",
+        "plain": "Giả danh"
+       },
+       {
+        "html": "Yêu cầu thường gặp",
+        "plain": "Yêu cầu thường gặp"
+       },
+       {
+        "html": "Dấu hiệu",
+        "plain": "Dấu hiệu"
+       }
+      ],
+      [
+       {
+        "html": "CNTT, helpdesk",
+        "plain": "CNTT, helpdesk"
+       },
+       {
+        "html": "Bấm Chấp nhận MFA, đọc mã OTP, cài phần mềm \"hỗ trợ từ xa\"",
+        "plain": "Bấm Chấp nhận MFA, đọc mã OTP, cài phần mềm \"hỗ trợ từ xa\""
+       },
+       {
+        "html": "CNTT không bao giờ cần mật khẩu, OTP hay cú bấm Chấp nhận của bạn",
+        "plain": "CNTT không bao giờ cần mật khẩu, OTP hay cú bấm Chấp nhận của bạn"
+       }
+      ],
+      [
+       {
+        "html": "Lãnh đạo",
+        "plain": "Lãnh đạo"
+       },
+       {
+        "html": "Gửi gấp danh sách, chuyển tiền, \"đừng nói với ai\"",
+        "plain": "Gửi gấp danh sách, chuyển tiền, \"đừng nói với ai\""
+       },
+       {
+        "html": "Khẩn cấp + giữ kín + kênh lạ",
+        "plain": "Khẩn cấp + giữ kín + kênh lạ"
+       }
+      ],
+      [
+       {
+        "html": "Đơn vị cấp trên, đoàn kiểm tra",
+        "plain": "Đơn vị cấp trên, đoàn kiểm tra"
+       },
+       {
+        "html": "Xin danh sách nhân sự, khách hàng, sơ đồ lưới",
+        "plain": "Xin danh sách nhân sự, khách hàng, sơ đồ lưới"
+       },
+       {
+        "html": "Không có văn bản, không qua đầu mối",
+        "plain": "Không có văn bản, không qua đầu mối"
+       }
+      ],
+      [
+       {
+        "html": "Đối tác (công ty thu hộ, nhà cung cấp)",
+        "plain": "Đối tác (công ty thu hộ, nhà cung cấp)"
+       },
+       {
+        "html": "Đổi số tài khoản nhận tiền, gửi lại file \"bị lỗi\"",
+        "plain": "Đổi số tài khoản nhận tiền, gửi lại file \"bị lỗi\""
+       },
+       {
+        "html": "Khác với kênh đã thống nhất trong hợp đồng (buổi 5)",
+        "plain": "Khác với kênh đã thống nhất trong hợp đồng (buổi 5)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "2.6. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "In bốn câu \"điện lực không bao giờ\" và số tổng đài chính thức, dán tại quầy giao dịch; đưa vào kịch bản trả lời của tổng đài.",
+       "level": 0,
+       "plain": "In bốn câu \"điện lực không bao giờ\" và số tổng đài chính thức, dán tại quầy giao dịch; đưa vào kịch bản trả lời của tổng đài."
+      },
+      {
+       "html": "Thêm câu hỏi \"người gọi biết những gì\" vào phiếu ghi nhận phản ánh; thống nhất ngưỡng chuyển cho đầu mối ATTT.",
+       "level": 0,
+       "plain": "Thêm câu hỏi \"người gọi biết những gì\" vào phiếu ghi nhận phản ánh; thống nhất ngưỡng chuyển cho đầu mối ATTT."
+      },
+      {
+       "html": "Không bao giờ dùng Zalo cá nhân để nhắc nợ hay thu tiền khách hàng – để khách có một quy tắc đơn giản: \"Zalo cá nhân đòi tiền điện là giả\".",
+       "level": 0,
+       "plain": "Không bao giờ dùng Zalo cá nhân để nhắc nợ hay thu tiền khách hàng – để khách có một quy tắc đơn giản: \"Zalo cá nhân đòi tiền điện là giả\"."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Khách bị lừa là chuyện của khách và công an.\" → Khách hàng là người của chúng ta, và dữ liệu kẻ gian dùng có thể đến từ chúng ta. Theo Luật Bảo vệ dữ liệu cá nhân, nếu dữ liệu bị lộ từ đơn vị, đơn vị có nghĩa vụ xử lý và thông báo (buổi 10).",
+     "plain": "Hiểu nhầm hay gặp: \"Khách bị lừa là chuyện của khách và công an.\" → Khách hàng là người của chúng ta, và dữ liệu kẻ gian dùng có thể đến từ chúng ta. Theo Luật Bảo vệ dữ liệu cá nhân, nếu dữ liệu bị lộ từ đơn vị, đơn vị có nghĩa vụ xử lý và thông báo (buổi 10).",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Bài 3 – Kiểm tra người gửi, liên kết, file và mã QR",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài này trả lời câu hỏi 3: trước khi tin một thông điệp cần kiểm tra những gì. Mục tiêu không phải thành chuyên gia phân tích thư, mà biết năm chỗ cần nhìn và biết giới hạn của việc nhìn.",
+     "plain": "Bài này trả lời câu hỏi 3: trước khi tin một thông điệp cần kiểm tra những gì. Mục tiêu không phải thành chuyên gia phân tích thư, mà biết năm chỗ cần nhìn và biết giới hạn của việc nhìn."
+    },
+    {
+     "t": "h3",
+     "text": "3.1. Năm thành phần cần kiểm tra"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thành phần",
+        "plain": "Thành phần"
+       },
+       {
+        "html": "Cần kiểm tra",
+        "plain": "Cần kiểm tra"
+       },
+       {
+        "html": "Mẹo thao tác",
+        "plain": "Mẹo thao tác"
+       }
+      ],
+      [
+       {
+        "html": "Người gửi",
+        "plain": "Người gửi"
+       },
+       {
+        "html": "Tên hiển thị và địa chỉ thật; địa chỉ trả lời (Reply-To); tài khoản Zalo mới hay cũ",
+        "plain": "Tên hiển thị và địa chỉ thật; địa chỉ trả lời (Reply-To); tài khoản Zalo mới hay cũ"
+       },
+       {
+        "html": "Trên Outlook, bấm vào tên người gửi để xem địa chỉ đầy đủ",
+        "plain": "Trên Outlook, bấm vào tên người gửi để xem địa chỉ đầy đủ"
+       }
+      ],
+      [
+       {
+        "html": "Yêu cầu",
+        "plain": "Yêu cầu"
+       },
+       {
+        "html": "Có đúng công việc, thẩm quyền, quy trình không?",
+        "plain": "Có đúng công việc, thẩm quyền, quy trình không?"
+       },
+       {
+        "html": "Bình thường việc này có được yêu cầu qua kênh này không?",
+        "plain": "Bình thường việc này có được yêu cầu qua kênh này không?"
+       }
+      ],
+      [
+       {
+        "html": "Liên kết, mã QR",
+        "plain": "Liên kết, mã QR"
+       },
+       {
+        "html": "Tên miền đích, ký tự gây nhầm (rn giống m, 0 giống o), chuyển hướng",
+        "plain": "Tên miền đích, ký tự gây nhầm (rn giống m, 0 giống o), chuyển hướng"
+       },
+       {
+        "html": "Trên máy tính, rê chuột (không bấm) để xem địa chỉ thật; đọc tên miền từ phải sang trái trước dấu / đầu tiên",
+        "plain": "Trên máy tính, rê chuột (không bấm) để xem địa chỉ thật; đọc tên miền từ phải sang trái trước dấu / đầu tiên"
+       }
+      ],
+      [
+       {
+        "html": "File đính kèm",
+        "plain": "File đính kèm"
+       },
+       {
+        "html": "Mình có đang chờ file này không? File có yêu cầu \"Enable Content/Enable Macros\" không?",
+        "plain": "Mình có đang chờ file này không? File có yêu cầu \"Enable Content/Enable Macros\" không?"
+       },
+       {
+        "html": "Không bật nội dung chủ động với file không chờ đợi; cẩn thận file nén có mật khẩu",
+        "plain": "Không bật nội dung chủ động với file không chờ đợi; cẩn thận file nén có mật khẩu"
+       }
+      ],
+      [
+       {
+        "html": "Đăng nhập, OTP, MFA",
+        "plain": "Đăng nhập, OTP, MFA"
+       },
+       {
+        "html": "Mình có tự mở đúng ứng dụng và tự khởi tạo đăng nhập không?",
+        "plain": "Mình có tự mở đúng ứng dụng và tự khởi tạo đăng nhập không?"
+       },
+       {
+        "html": "Không đăng nhập qua link trong thư; tự gõ địa chỉ hoặc dùng bookmark. Không chấp nhận yêu cầu MFA mình không tạo ra",
+        "plain": "Không đăng nhập qua link trong thư; tự gõ địa chỉ hoặc dùng bookmark. Không chấp nhận yêu cầu MFA mình không tạo ra"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không mở liên kết đáng ngờ chỉ để \"xem thử\". Công cụ quét không bảo đảm phát hiện hết nội dung nguy hiểm.",
+     "plain": "Không mở liên kết đáng ngờ chỉ để \"xem thử\". Công cụ quét không bảo đảm phát hiện hết nội dung nguy hiểm."
+    },
+    {
+     "t": "h3",
+     "text": "3.2. Người gửi email: những gì có thể giả và những gì hệ thống kiểm tra được"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Tên hiển thị do người gửi tự đặt</strong> – ai cũng đặt được là \"Ban điều hành\". Luôn xem địa chỉ thật sau dấu @.",
+       "level": 0,
+       "plain": "Tên hiển thị do người gửi tự đặt – ai cũng đặt được là \"Ban điều hành\". Luôn xem địa chỉ thật sau dấu @."
+      },
+      {
+       "html": "<strong>Địa chỉ trả lời (Reply-To)</strong> có thể khác địa chỉ gửi: bấm Trả lời là thư đi về kẻ gian.",
+       "level": 0,
+       "plain": "Địa chỉ trả lời (Reply-To) có thể khác địa chỉ gửi: bấm Trả lời là thư đi về kẻ gian."
+      },
+      {
+       "html": "<strong>SPF, DKIM, DMARC</strong> là các cơ chế giúp máy chủ email kiểm tra thư có thật được gửi từ tên miền nó xưng không. Chúng chặn được nhiều thư giả đúng tên miền công ty, nhưng <strong>không chặn thư từ một tên miền na ná</strong> do kẻ gian đăng ký hợp lệ.",
+       "level": 0,
+       "plain": "SPF, DKIM, DMARC là các cơ chế giúp máy chủ email kiểm tra thư có thật được gửi từ tên miền nó xưng không. Chúng chặn được nhiều thư giả đúng tên miền công ty, nhưng không chặn thư từ một tên miền na ná do kẻ gian đăng ký hợp lệ."
+      },
+      {
+       "html": "<strong>Nhãn \"Bên ngoài\" (External):</strong> nhiều hệ thống email gắn nhãn này cho thư từ ngoài tổ chức. Thư xưng là lãnh đạo nội bộ mà có nhãn này là dấu hiệu lớn.",
+       "level": 0,
+       "plain": "Nhãn \"Bên ngoài\" (External): nhiều hệ thống email gắn nhãn này cho thư từ ngoài tổ chức. Thư xưng là lãnh đạo nội bộ mà có nhãn này là dấu hiệu lớn."
+      },
+      {
+       "html": "<strong>Tài khoản thật đã bị chiếm</strong> (của đối tác, đồng nghiệp) qua được mọi kiểm tra kỹ thuật. Chỉ còn cách xem nội dung yêu cầu có bất thường không và xác minh qua kênh khác.",
+       "level": 0,
+       "plain": "Tài khoản thật đã bị chiếm (của đối tác, đồng nghiệp) qua được mọi kiểm tra kỹ thuật. Chỉ còn cách xem nội dung yêu cầu có bất thường không và xác minh qua kênh khác."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Với Zalo, Messenger: tên và ảnh đại diện đặt tùy ý; không có gì tương đương SPF hay nhãn External. Một tài khoản mới tạo, chưa có trong danh bạ, xưng là bộ phận nội bộ – đó là một dấu hiệu ngay từ đầu.",
+     "plain": "Với Zalo, Messenger: tên và ảnh đại diện đặt tùy ý; không có gì tương đương SPF hay nhãn External. Một tài khoản mới tạo, chưa có trong danh bạ, xưng là bộ phận nội bộ – đó là một dấu hiệu ngay từ đầu."
+    },
+    {
+     "t": "h3",
+     "text": "3.3. Đọc một đường dẫn"
+    },
+    {
+     "t": "p",
+     "html": "Ví dụ: https://evn.com.vn.xacminh-tk.example/dang-nhap?id=123",
+     "plain": "Ví dụ: https://evn.com.vn.xacminh-tk.example/dang-nhap?id=123",
+     "callout": "example"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Phần",
+        "plain": "Phần"
+       },
+       {
+        "html": "Giá trị trong ví dụ",
+        "plain": "Giá trị trong ví dụ"
+       },
+       {
+        "html": "Ý nghĩa",
+        "plain": "Ý nghĩa"
+       }
+      ],
+      [
+       {
+        "html": "Giao thức",
+        "plain": "Giao thức"
+       },
+       {
+        "html": "https://",
+        "plain": "https://"
+       },
+       {
+        "html": "Có mã hóa đường truyền, không nói gì về độ tin cậy của trang (buổi 5)",
+        "plain": "Có mã hóa đường truyền, không nói gì về độ tin cậy của trang (buổi 5)"
+       }
+      ],
+      [
+       {
+        "html": "Tên máy chủ",
+        "plain": "Tên máy chủ"
+       },
+       {
+        "html": "evn.com.vn.xacminh-tk.example",
+        "plain": "evn.com.vn.xacminh-tk.example"
+       },
+       {
+        "html": "Phần nằm giữa :// và dấu / đầu tiên",
+        "plain": "Phần nằm giữa :// và dấu / đầu tiên"
+       }
+      ],
+      [
+       {
+        "html": "Tên miền thật (chủ sở hữu)",
+        "plain": "Tên miền thật (chủ sở hữu)"
+       },
+       {
+        "html": "xacminh-tk.example",
+        "plain": "xacminh-tk.example"
+       },
+       {
+        "html": "Hai phần cuối cùng của tên máy chủ (ba phần với đuôi như .com.vn)",
+        "plain": "Hai phần cuối cùng của tên máy chủ (ba phần với đuôi như .com.vn)"
+       }
+      ],
+      [
+       {
+        "html": "Đường dẫn và tham số",
+        "plain": "Đường dẫn và tham số"
+       },
+       {
+        "html": "/dang-nhap?id=123",
+        "plain": "/dang-nhap?id=123"
+       },
+       {
+        "html": "Do chủ trang đặt tùy ý, không dùng để đánh giá",
+        "plain": "Do chủ trang đặt tùy ý, không dùng để đánh giá"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ở ví dụ trên, tên miền là xacminh-tk.example; phần \"evn.com.vn\" phía trước chỉ là tên máy con do kẻ gian tự đặt để làm mồi.",
+     "plain": "Ở ví dụ trên, tên miền là xacminh-tk.example; phần \"evn.com.vn\" phía trước chỉ là tên máy con do kẻ gian tự đặt để làm mồi."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thủ thuật tên miền",
+        "plain": "Thủ thuật tên miền"
+       },
+       {
+        "html": "Ví dụ (giả lập)",
+        "plain": "Ví dụ (giả lập)"
+       }
+      ],
+      [
+       {
+        "html": "Ký tự gần giống",
+        "plain": "Ký tự gần giống"
+       },
+       {
+        "html": "rn thay m, số 0 thay chữ o, chữ l thay số 1",
+        "plain": "rn thay m, số 0 thay chữ o, chữ l thay số 1"
+       }
+      ],
+      [
+       {
+        "html": "Thêm từ",
+        "plain": "Thêm từ"
+       },
+       {
+        "html": "donvi-support.example, donvi-hotro.example",
+        "plain": "donvi-support.example, donvi-hotro.example"
+       }
+      ],
+      [
+       {
+        "html": "Đổi đuôi",
+        "plain": "Đổi đuôi"
+       },
+       {
+        "html": ".com thay .com.vn, .net thay .vn",
+        "plain": ".com thay .com.vn, .net thay .vn"
+       }
+      ],
+      [
+       {
+        "html": "Ký tự ngoại ngữ trông giống chữ Latin",
+        "plain": "Ký tự ngoại ngữ trông giống chữ Latin"
+       },
+       {
+        "html": "Chữ \"а\" Cyrillic thay \"a\"; trình duyệt có thể hiển thị dạng xn--…",
+        "plain": "Chữ \"а\" Cyrillic thay \"a\"; trình duyệt có thể hiển thị dạng xn--…"
+       }
+      ],
+      [
+       {
+        "html": "Rút gọn link, chuyển hướng",
+        "plain": "Rút gọn link, chuyển hướng"
+       },
+       {
+        "html": "Link rút gọn ẩn đích thật; link qua một trang hợp lệ rồi chuyển sang trang giả",
+        "plain": "Link rút gọn ẩn đích thật; link qua một trang hợp lệ rồi chuyển sang trang giả"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.4. File đính kèm nguy hiểm thường gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Vì sao nguy hiểm",
+        "plain": "Vì sao nguy hiểm"
+       }
+      ],
+      [
+       {
+        "html": "File Office yêu cầu Enable Content / Enable Macros",
+        "plain": "File Office yêu cầu Enable Content / Enable Macros"
+       },
+       {
+        "html": "Bật lên là cho chạy mã trong file",
+        "plain": "Bật lên là cho chạy mã trong file"
+       }
+      ],
+      [
+       {
+        "html": "File nén có mật khẩu ghi ngay trong thư",
+        "plain": "File nén có mật khẩu ghi ngay trong thư"
+       },
+       {
+        "html": "Mật khẩu ở đây không để bảo vệ bạn mà để né trình quét mã độc (ngược với buổi 5)",
+        "plain": "Mật khẩu ở đây không để bảo vệ bạn mà để né trình quét mã độc (ngược với buổi 5)"
+       }
+      ],
+      [
+       {
+        "html": "File .html mở ra trang đăng nhập",
+        "plain": "File .html mở ra trang đăng nhập"
+       },
+       {
+        "html": "Trang đăng nhập giả chạy ngay trên máy, không cần link",
+        "plain": "Trang đăng nhập giả chạy ngay trên máy, không cần link"
+       }
+      ],
+      [
+       {
+        "html": "File đuôi kép như baocao.pdf.exe",
+        "plain": "File đuôi kép như baocao.pdf.exe"
+       },
+       {
+        "html": "Windows có thể ẩn đuôi thật, chỉ hiện \"baocao.pdf\"",
+        "plain": "Windows có thể ẩn đuôi thật, chỉ hiện \"baocao.pdf\""
+       }
+      ],
+      [
+       {
+        "html": "File .iso, .lnk, .js giả làm tài liệu",
+        "plain": "File .iso, .lnk, .js giả làm tài liệu"
+       },
+       {
+        "html": "Mở ra là chạy chương trình",
+        "plain": "Mở ra là chạy chương trình"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "3.5. Mã QR và HTTPS vẫn cần xác minh"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mã QR",
+        "plain": "Mã QR"
+       },
+       {
+        "html": "HTTPS",
+        "plain": "HTTPS"
+       }
+      ],
+      [
+       {
+        "html": "Chỉ là một cách \"viết\" đường dẫn hoặc dữ liệu mà mắt người không đọc được",
+        "plain": "Chỉ là một cách \"viết\" đường dẫn hoặc dữ liệu mà mắt người không đọc được"
+       },
+       {
+        "html": "Bảo vệ kết nối tới tên miền đang truy cập",
+        "plain": "Bảo vệ kết nối tới tên miền đang truy cập"
+       }
+      ],
+      [
+       {
+        "html": "Có thể bị dán đè hoặc dẫn tới trang giả",
+        "plain": "Có thể bị dán đè hoặc dẫn tới trang giả"
+       },
+       {
+        "html": "Trang giả vẫn có chứng thư HTTPS hợp lệ",
+        "plain": "Trang giả vẫn có chứng thư HTTPS hợp lệ"
+       }
+      ],
+      [
+       {
+        "html": "Sau khi quét, đọc kỹ địa chỉ hiện ra trước khi mở hoặc đăng nhập",
+        "plain": "Sau khi quét, đọc kỹ địa chỉ hiện ra trước khi mở hoặc đăng nhập"
+       },
+       {
+        "html": "Đối chiếu tên miền qua kênh đã biết",
+        "plain": "Đối chiếu tên miền qua kênh đã biết"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Với <strong>QR thanh toán</strong>, kiểm tra tên người/đơn vị nhận tiền hiện trên ứng dụng ngân hàng trước khi xác nhận. <strong>QR trong email</strong> yêu cầu \"quét để xác thực lại tài khoản\" gần như luôn là lừa đảo: nó chuyển việc đăng nhập sang điện thoại cá nhân, nơi không có bộ lọc của công ty.",
+     "plain": "Với QR thanh toán, kiểm tra tên người/đơn vị nhận tiền hiện trên ứng dụng ngân hàng trước khi xác nhận. QR trong email yêu cầu \"quét để xác thực lại tài khoản\" gần như luôn là lừa đảo: nó chuyển việc đăng nhập sang điện thoại cá nhân, nơi không có bộ lọc của công ty."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Giới hạn lớp học:</strong> không tạo mã QR hoạt động dẫn tới trang giả. Dùng ảnh nhãn QR không chứa liên kết hoặc đường dẫn thuộc tên miền .example.",
+     "plain": "Giới hạn lớp học: không tạo mã QR hoạt động dẫn tới trang giả. Dùng ảnh nhãn QR không chứa liên kết hoặc đường dẫn thuộc tên miền .example."
+    },
+    {
+     "t": "h3",
+     "text": "3.6. Giọng nói và khuôn mặt cũng có thể giả"
+    },
+    {
+     "t": "p",
+     "html": "Công cụ AI có thể giả giọng một người từ vài đoạn ghi âm ngắn, và dựng cuộc gọi video ngắn trông như người quen. Dấu hiệu thường gặp: cuộc gọi rất ngắn, hình mờ hoặc \"mạng chập chờn\", người gọi nói đang vội và cắt ngang, yêu cầu chuyển tiền hoặc gửi dữ liệu. Cách đối phó không phải \"nhìn kỹ hơn\" mà vẫn là gọi lại theo số đã biết (Bài 4), hoặc hỏi một câu chỉ người thật biết.",
+     "plain": "Công cụ AI có thể giả giọng một người từ vài đoạn ghi âm ngắn, và dựng cuộc gọi video ngắn trông như người quen. Dấu hiệu thường gặp: cuộc gọi rất ngắn, hình mờ hoặc \"mạng chập chờn\", người gọi nói đang vội và cắt ngang, yêu cầu chuyển tiền hoặc gửi dữ liệu. Cách đối phó không phải \"nhìn kỹ hơn\" mà vẫn là gọi lại theo số đã biết (Bài 4), hoặc hỏi một câu chỉ người thật biết."
+    },
+    {
+     "t": "h3",
+     "text": "3.7. Trả lời câu hỏi 3: tin nhắn \"CNTT Minh An\" lộ ra ở đâu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thành phần",
+        "plain": "Thành phần"
+       },
+       {
+        "html": "Trong tin nhắn chương 8",
+        "plain": "Trong tin nhắn chương 8"
+       },
+       {
+        "html": "Đánh giá",
+        "plain": "Đánh giá"
+       }
+      ],
+      [
+       {
+        "html": "Người gửi",
+        "plain": "Người gửi"
+       },
+       {
+        "html": "Tài khoản Zalo lạ, vừa gửi lời mời kết bạn, không có trong danh bạ nội bộ",
+        "plain": "Tài khoản Zalo lạ, vừa gửi lời mời kết bạn, không có trong danh bạ nội bộ"
+       },
+       {
+        "html": "Tên và logo tự đặt được",
+        "plain": "Tên và logo tự đặt được"
+       }
+      ],
+      [
+       {
+        "html": "Kênh",
+        "plain": "Kênh"
+       },
+       {
+        "html": "CNTT thông báo thay đổi hệ thống qua email công vụ hoặc cổng nội bộ, không qua Zalo cá nhân lúc 21:30",
+        "plain": "CNTT thông báo thay đổi hệ thống qua email công vụ hoặc cổng nội bộ, không qua Zalo cá nhân lúc 21:30"
+       },
+       {
+        "html": "Bất thường",
+        "plain": "Bất thường"
+       }
+      ],
+      [
+       {
+        "html": "Yêu cầu",
+        "plain": "Yêu cầu"
+       },
+       {
+        "html": "Bấm Chấp nhận cho lần đăng nhập anh không thực hiện",
+        "plain": "Bấm Chấp nhận cho lần đăng nhập anh không thực hiện"
+       },
+       {
+        "html": "Dấu hiệu quyết định",
+        "plain": "Dấu hiệu quyết định"
+       }
+      ],
+      [
+       {
+        "html": "Xác minh",
+        "plain": "Xác minh"
+       },
+       {
+        "html": "\"Không nghe máy được, có gì nhắn ở đây\"",
+        "plain": "\"Không nghe máy được, có gì nhắn ở đây\""
+       },
+       {
+        "html": "Chặn kênh xác minh",
+        "plain": "Chặn kênh xác minh"
+       }
+      ],
+      [
+       {
+        "html": "Liên kết, file",
+        "plain": "Liên kết, file"
+       },
+       {
+        "html": "Không có",
+        "plain": "Không có"
+       },
+       {
+        "html": "Thư không có link vẫn có thể là lừa đảo – bộ lọc không có gì để chặn",
+        "plain": "Thư không có link vẫn có thể là lừa đảo – bộ lọc không có gì để chặn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Tin nhắn ở chương 8 không có liên kết, tệp đính kèm hoặc lỗi chính tả. Việc kiểm tra hình thức thông điệp chưa đủ; cần đối chiếu yêu cầu và xác minh người gửi qua kênh độc lập.",
+     "plain": "Tin nhắn ở chương 8 không có liên kết, tệp đính kèm hoặc lỗi chính tả. Việc kiểm tra hình thức thông điệp chưa đủ; cần đối chiếu yêu cầu và xác minh người gửi qua kênh độc lập."
+    },
+    {
+     "t": "h3",
+     "text": "3.8. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Bấm vào tên người gửi để xem địa chỉ thật trước khi làm theo bất kỳ yêu cầu nào liên quan đến dữ liệu, tiền, mật khẩu.",
+       "level": 0,
+       "plain": "Bấm vào tên người gửi để xem địa chỉ thật trước khi làm theo bất kỳ yêu cầu nào liên quan đến dữ liệu, tiền, mật khẩu."
+      },
+      {
+       "html": "Rê chuột xem link; đọc tên miền từ phải sang trái. Vào hệ thống bằng bookmark.",
+       "level": 0,
+       "plain": "Rê chuột xem link; đọc tên miền từ phải sang trái. Vào hệ thống bằng bookmark."
+      },
+      {
+       "html": "Bật hiển thị đuôi file trong Windows (File Explorer → View → File name extensions).",
+       "level": 0,
+       "plain": "Bật hiển thị đuôi file trong Windows (File Explorer → View → File name extensions)."
+      },
+      {
+       "html": "Không quét QR trong email để \"xác thực lại\"; với QR thanh toán, đọc tên người nhận trước khi xác nhận.",
+       "level": 0,
+       "plain": "Không quét QR trong email để \"xác thực lại\"; với QR thanh toán, đọc tên người nhận trước khi xác nhận."
+      },
+      {
+       "html": "Không chấp nhận yêu cầu MFA mà mình không tạo ra – và báo ngay khi thấy.",
+       "level": 0,
+       "plain": "Không chấp nhận yêu cầu MFA mà mình không tạo ra – và báo ngay khi thấy."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Thư không có link, không có file thì an toàn.\" → Lừa đảo nguy hiểm nhất thường chỉ có lời nói: \"gửi giúp file\", \"bấm Chấp nhận giúp em\", \"đọc giúp em mã vừa nhận\". Không có gì cho bộ lọc chặn, nên chỉ còn con người.",
+     "plain": "Hiểu nhầm hay gặp: \"Thư không có link, không có file thì an toàn.\" → Lừa đảo nguy hiểm nhất thường chỉ có lời nói: \"gửi giúp file\", \"bấm Chấp nhận giúp em\", \"đọc giúp em mã vừa nhận\". Không có gì cho bộ lọc chặn, nên chỉ còn con người.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Bài 4 – Xác minh qua kênh độc lập và xử lý khi lỡ bấm",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Ba bài trước giúp nhận ra dấu hiệu. Nhưng thư giả ngày càng giống thật, và thư từ tài khoản thật bị chiếm thì không có dấu hiệu nào. Vì vậy thứ đáng tin nhất không phải là mắt nhìn mà là một quy trình cố định. Bài này trả lời câu hỏi 4: anh Cường nên làm gì lúc 21:30, và nếu đã lỡ bấm thì sao.",
+     "plain": "Ba bài trước giúp nhận ra dấu hiệu. Nhưng thư giả ngày càng giống thật, và thư từ tài khoản thật bị chiếm thì không có dấu hiệu nào. Vì vậy thứ đáng tin nhất không phải là mắt nhìn mà là một quy trình cố định. Bài này trả lời câu hỏi 4: anh Cường nên làm gì lúc 21:30, và nếu đã lỡ bấm thì sao."
+    },
+    {
+     "t": "h3",
+     "text": "4.1. Quy trình 4 bước"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Làm gì",
+        "plain": "Làm gì"
+       },
+       {
+        "html": "Không làm gì",
+        "plain": "Không làm gì"
+       }
+      ],
+      [
+       {
+        "html": "1. <strong>Tạm dừng</strong>",
+        "plain": "1. Tạm dừng"
+       },
+       {
+        "html": "Dừng tay 5 giây; chụp màn hình tin nhắn/email",
+        "plain": "Dừng tay 5 giây; chụp màn hình tin nhắn/email"
+       },
+       {
+        "html": "Không bấm, không trả lời, không chuyển tiếp",
+        "plain": "Không bấm, không trả lời, không chuyển tiếp"
+       }
+      ],
+      [
+       {
+        "html": "2. <strong>Xác minh độc lập</strong>",
+        "plain": "2. Xác minh độc lập"
+       },
+       {
+        "html": "Gọi theo số trong danh bạ chính thức hoặc gặp trực tiếp",
+        "plain": "Gọi theo số trong danh bạ chính thức hoặc gặp trực tiếp"
+       },
+       {
+        "html": "Không dùng số, link, chữ ký nằm trong chính thông điệp đang nghi ngờ; không nhắn lại kẻ giả mạo để hỏi \"có phải anh không\"",
+        "plain": "Không dùng số, link, chữ ký nằm trong chính thông điệp đang nghi ngờ; không nhắn lại kẻ giả mạo để hỏi \"có phải anh không\""
+       }
+      ],
+      [
+       {
+        "html": "3. <strong>Báo đầu mối</strong>",
+        "plain": "3. Báo đầu mối"
+       },
+       {
+        "html": "Chuyển cho bộ phận ATTT/CNTT theo kênh đơn vị quy định (nút \"Report phishing\" nếu có)",
+        "plain": "Chuyển cho bộ phận ATTT/CNTT theo kênh đơn vị quy định (nút \"Report phishing\" nếu có)"
+       },
+       {
+        "html": "Không chuyển tiếp cho đồng nghiệp \"để cảnh báo\" – người khác có thể bấm nhầm",
+        "plain": "Không chuyển tiếp cho đồng nghiệp \"để cảnh báo\" – người khác có thể bấm nhầm"
+       }
+      ],
+      [
+       {
+        "html": "4. <strong>Thực hiện khi rõ</strong>",
+        "plain": "4. Thực hiện khi rõ"
+       },
+       {
+        "html": "Chỉ làm khi đã xác minh đúng người, đúng yêu cầu, đúng quy trình",
+        "plain": "Chỉ làm khi đã xác minh đúng người, đúng yêu cầu, đúng quy trình"
+       },
+       {
+        "html": "Không làm \"tạm\" một phần trong lúc chờ xác minh",
+        "plain": "Không làm \"tạm\" một phần trong lúc chờ xác minh"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "4.2. Nguyên tắc gọi lại (call-back)"
+    },
+    {
+     "t": "p",
+     "html": "Xác minh bằng thông tin liên hệ <strong>mình đã có từ trước</strong>:",
+     "plain": "Xác minh bằng thông tin liên hệ mình đã có từ trước:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Xác minh bằng",
+        "plain": "Xác minh bằng"
+       },
+       {
+        "html": "Không xác minh bằng",
+        "plain": "Không xác minh bằng"
+       }
+      ],
+      [
+       {
+        "html": "Danh bạ nội bộ, số hotline CNTT in trên thẻ hoặc cổng nội bộ",
+        "plain": "Danh bạ nội bộ, số hotline CNTT in trên thẻ hoặc cổng nội bộ"
+       },
+       {
+        "html": "Số điện thoại trong chữ ký của chính email đó",
+        "plain": "Số điện thoại trong chữ ký của chính email đó"
+       }
+      ],
+      [
+       {
+        "html": "Số đầu mối ghi trong hợp đồng với đối tác (buổi 2, 5)",
+        "plain": "Số đầu mối ghi trong hợp đồng với đối tác (buổi 2, 5)"
+       },
+       {
+        "html": "Số \"mới\" mà người gửi báo \"anh đổi số rồi\"",
+        "plain": "Số \"mới\" mà người gửi báo \"anh đổi số rồi\""
+       }
+      ],
+      [
+       {
+        "html": "Website chính thức tự gõ hoặc bookmark",
+        "plain": "Website chính thức tự gõ hoặc bookmark"
+       },
+       {
+        "html": "Link trong tin nhắn",
+        "plain": "Link trong tin nhắn"
+       }
+      ],
+      [
+       {
+        "html": "Gặp trực tiếp, hoặc gọi qua thư ký, trợ lý",
+        "plain": "Gặp trực tiếp, hoặc gọi qua thư ký, trợ lý"
+       },
+       {
+        "html": "Nhắn lại chính tài khoản Zalo đang nghi ngờ",
+        "plain": "Nhắn lại chính tài khoản Zalo đang nghi ngờ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Thiết lập sẵn <strong>quy tắc cứng</strong>, bất kể ai yêu cầu: mọi yêu cầu đổi số tài khoản nhận tiền, gửi danh sách khách hàng ra ngoài, chấp nhận MFA, đọc mã OTP, cài phần mềm \"hỗ trợ từ xa\" đều phải gọi lại xác minh. Quy tắc cứng giúp nhân viên không phải tự cân nhắc \"có nên kiểm tra lãnh đạo không\" – họ chỉ làm theo quy định.",
+     "plain": "Thiết lập sẵn quy tắc cứng, bất kể ai yêu cầu: mọi yêu cầu đổi số tài khoản nhận tiền, gửi danh sách khách hàng ra ngoài, chấp nhận MFA, đọc mã OTP, cài phần mềm \"hỗ trợ từ xa\" đều phải gọi lại xác minh. Quy tắc cứng giúp nhân viên không phải tự cân nhắc \"có nên kiểm tra lãnh đạo không\" – họ chỉ làm theo quy định."
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Từ chối lịch sự"
+    },
+    {
+     "t": "p",
+     "html": "Cái khó nhất của xác minh không phải kỹ thuật mà là ngại. Một vài câu mẫu cho học viên:",
+     "plain": "Cái khó nhất của xác minh không phải kỹ thuật mà là ngại. Một vài câu mẫu cho học viên:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<em>\"Dạ em sẽ xử lý ngay sau khi xác nhận lại qua số nội bộ theo quy định của đơn vị ạ.\"</em>",
+       "level": 0,
+       "plain": "\"Dạ em sẽ xử lý ngay sau khi xác nhận lại qua số nội bộ theo quy định của đơn vị ạ.\""
+      },
+      {
+       "html": "<em>\"Dạ, theo quy định em cần xác nhận lại qua số nội bộ trước khi gửi ạ. Em sẽ gọi lại ngay.\"</em>",
+       "level": 0,
+       "plain": "\"Dạ, theo quy định em cần xác nhận lại qua số nội bộ trước khi gửi ạ. Em sẽ gọi lại ngay.\""
+      },
+      {
+       "html": "<em>\"Em không được phép chấp nhận đăng nhập mà em không tự thực hiện. Em gọi hotline CNTT để hỏi lại ạ.\"</em>",
+       "level": 0,
+       "plain": "\"Em không được phép chấp nhận đăng nhập mà em không tự thực hiện. Em gọi hotline CNTT để hỏi lại ạ.\""
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Lãnh đạo thật không phạt nhân viên vì xác minh. Đơn vị nên nói rõ điều này thành văn bản – đó là cách gỡ \"đòn mượn uy quyền\" ra khỏi tay kẻ gian.",
+     "plain": "Lãnh đạo thật không phạt nhân viên vì xác minh. Đơn vị nên nói rõ điều này thành văn bản – đó là cách gỡ \"đòn mượn uy quyền\" ra khỏi tay kẻ gian."
+    },
+    {
+     "t": "h3",
+     "text": "4.4. Nếu đã lỡ tương tác với thông điệp lừa đảo"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Đã làm gì",
+        "plain": "Đã làm gì"
+       },
+       {
+        "html": "Việc cần làm ngay",
+        "plain": "Việc cần làm ngay"
+       }
+      ],
+      [
+       {
+        "html": "Bấm link nhưng chưa nhập gì",
+        "plain": "Bấm link nhưng chưa nhập gì"
+       },
+       {
+        "html": "Đóng trang; báo đầu mối để họ kiểm tra và chặn link cho người khác",
+        "plain": "Đóng trang; báo đầu mối để họ kiểm tra và chặn link cho người khác"
+       }
+      ],
+      [
+       {
+        "html": "Nhập mật khẩu vào trang giả",
+        "plain": "Nhập mật khẩu vào trang giả"
+       },
+       {
+        "html": "Đổi mật khẩu từ thiết bị sạch, theo hướng dẫn; báo ngay để CNTT thu hồi phiên và kiểm tra đăng nhập lạ",
+        "plain": "Đổi mật khẩu từ thiết bị sạch, theo hướng dẫn; báo ngay để CNTT thu hồi phiên và kiểm tra đăng nhập lạ"
+       }
+      ],
+      [
+       {
+        "html": "Đọc mã OTP hoặc duyệt thông báo MFA cho người lạ",
+        "plain": "Đọc mã OTP hoặc duyệt thông báo MFA cho người lạ"
+       },
+       {
+        "html": "<strong>Báo ngay – tài khoản coi như đã bị chiếm</strong>",
+        "plain": "Báo ngay – tài khoản coi như đã bị chiếm"
+       }
+      ],
+      [
+       {
+        "html": "Mở file đính kèm, bật nội dung",
+        "plain": "Mở file đính kèm, bật nội dung"
+       },
+       {
+        "html": "Ngắt mạng máy (rút cáp/tắt Wi-Fi) nếu được hướng dẫn; không tắt nguồn, không tự xóa; gọi CNTT",
+        "plain": "Ngắt mạng máy (rút cáp/tắt Wi-Fi) nếu được hướng dẫn; không tắt nguồn, không tự xóa; gọi CNTT"
+       }
+      ],
+      [
+       {
+        "html": "Gửi dữ liệu cho kẻ gian",
+        "plain": "Gửi dữ liệu cho kẻ gian"
+       },
+       {
+        "html": "Báo ngay theo quy trình sự cố rò rỉ (buổi 10)",
+        "plain": "Báo ngay theo quy trình sự cố rò rỉ (buổi 10)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Báo sớm, không giấu.</strong> Giờ đầu tiên quyết định thiệt hại: CNTT có thể thu hồi phiên, xóa phương thức MFA lạ, khóa tài khoản trước khi dữ liệu bị lấy. Người giấu vì sợ bị trách biến một lần bấm nhầm thành một vụ rò rỉ. Vì vậy đơn vị cần một văn hóa báo cáo không đổ lỗi (buổi 2, buổi 10): người báo sớm được cảm ơn.",
+     "plain": "Báo sớm, không giấu. Giờ đầu tiên quyết định thiệt hại: CNTT có thể thu hồi phiên, xóa phương thức MFA lạ, khóa tài khoản trước khi dữ liệu bị lấy. Người giấu vì sợ bị trách biến một lần bấm nhầm thành một vụ rò rỉ. Vì vậy đơn vị cần một văn hóa báo cáo không đổ lỗi (buổi 2, buổi 10): người báo sớm được cảm ơn."
+    },
+    {
+     "t": "p",
+     "html": "Khi điện thoại báo một yêu cầu đăng nhập mà mình không thực hiện: bấm <strong>Từ chối</strong> (nếu ứng dụng có lựa chọn \"Không phải tôi\" thì chọn), rồi báo CNTT và đổi mật khẩu – vì ai đó đã có mật khẩu của mình.",
+     "plain": "Khi điện thoại báo một yêu cầu đăng nhập mà mình không thực hiện: bấm Từ chối (nếu ứng dụng có lựa chọn \"Không phải tôi\" thì chọn), rồi báo CNTT và đổi mật khẩu – vì ai đó đã có mật khẩu của mình."
+    },
+    {
+     "t": "h3",
+     "text": "4.5. Báo cáo thư lừa đảo"
+    },
+    {
+     "t": "p",
+     "html": "Dùng nút \"Báo cáo lừa đảo\" (Report phishing) nếu hệ thống có, hoặc chuyển cho đầu mối theo hướng dẫn. Một báo cáo giúp CNTT chặn thư cùng loại cho cả đơn vị – người báo đầu tiên bảo vệ những người chưa kịp đọc. Với tin nhắn Zalo, chụp màn hình có tên tài khoản, số điện thoại (nếu hiện), thời gian, rồi gửi qua kênh báo cáo của đơn vị.",
+     "plain": "Dùng nút \"Báo cáo lừa đảo\" (Report phishing) nếu hệ thống có, hoặc chuyển cho đầu mối theo hướng dẫn. Một báo cáo giúp CNTT chặn thư cùng loại cho cả đơn vị – người báo đầu tiên bảo vệ những người chưa kịp đọc. Với tin nhắn Zalo, chụp màn hình có tên tài khoản, số điện thoại (nếu hiện), thời gian, rồi gửi qua kênh báo cáo của đơn vị."
+    },
+    {
+     "t": "h3",
+     "text": "4.6. Trả lời câu hỏi 4: anh Cường nên làm gì lúc 21:30"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lúc",
+        "plain": "Lúc"
+       },
+       {
+        "html": "Nên làm",
+        "plain": "Nên làm"
+       },
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       }
+      ],
+      [
+       {
+        "html": "Nhận tin nhắn",
+        "plain": "Nhận tin nhắn"
+       },
+       {
+        "html": "Không trả lời \"Ok em\"; chụp màn hình",
+        "plain": "Không trả lời \"Ok em\"; chụp màn hình"
+       },
+       {
+        "html": "Tạm dừng",
+        "plain": "Tạm dừng"
+       }
+      ],
+      [
+       {
+        "html": "Ngay sau đó",
+        "plain": "Ngay sau đó"
+       },
+       {
+        "html": "Gọi hotline CNTT theo số trong danh bạ nội bộ (không dùng Zalo đó): \"Tối nay có nâng cấp xác thực không?\"",
+        "plain": "Gọi hotline CNTT theo số trong danh bạ nội bộ (không dùng Zalo đó): \"Tối nay có nâng cấp xác thực không?\""
+       },
+       {
+        "html": "Xác minh độc lập",
+        "plain": "Xác minh độc lập"
+       }
+      ],
+      [
+       {
+        "html": "Song song",
+        "plain": "Song song"
+       },
+       {
+        "html": "Gửi ảnh chụp cho đầu mối ATTT",
+        "plain": "Gửi ảnh chụp cho đầu mối ATTT"
+       },
+       {
+        "html": "Báo đầu mối",
+        "plain": "Báo đầu mối"
+       }
+      ],
+      [
+       {
+        "html": "Nếu điện thoại báo yêu cầu đăng nhập",
+        "plain": "Nếu điện thoại báo yêu cầu đăng nhập"
+       },
+       {
+        "html": "Bấm Từ chối; báo ngay; đổi mật khẩu từ thiết bị sạch",
+        "plain": "Bấm Từ chối; báo ngay; đổi mật khẩu từ thiết bị sạch"
+       },
+       {
+        "html": "Thực hiện khi rõ",
+        "plain": "Thực hiện khi rõ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Nếu ai đó đã lỡ bấm Chấp nhận:</strong> báo ngay, dù là nửa đêm – tài khoản coi như đã bị chiếm. Tổ chức sẽ làm gì tiếp theo (thu hồi phiên, xóa phương thức MFA lạ, kiểm tra nhật ký, đánh giá dữ liệu bị lấy) là nội dung của ngày 5.",
+     "plain": "Nếu ai đó đã lỡ bấm Chấp nhận: báo ngay, dù là nửa đêm – tài khoản coi như đã bị chiếm. Tổ chức sẽ làm gì tiếp theo (thu hồi phiên, xóa phương thức MFA lạ, kiểm tra nhật ký, đánh giá dữ liệu bị lấy) là nội dung của ngày 5."
+    },
+    {
+     "t": "h3",
+     "text": "4.7. Đơn vị cần làm gì để quy trình chạy được"
+    },
+    {
+     "t": "p",
+     "html": "Nhân viên chỉ gọi lại được nếu có số để gọi, và chỉ báo sớm nếu biết báo cho ai:",
+     "plain": "Nhân viên chỉ gọi lại được nếu có số để gọi, và chỉ báo sớm nếu biết báo cho ai:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Một số hotline CNTT/ATTT có người trực ngoài giờ, in trên thẻ nhân viên hoặc cổng nội bộ.",
+       "level": 0,
+       "plain": "Một số hotline CNTT/ATTT có người trực ngoài giờ, in trên thẻ nhân viên hoặc cổng nội bộ."
+      },
+      {
+       "html": "Một kênh báo cáo đơn giản (nút Report phishing, địa chỉ email riêng, nhóm trực).",
+       "level": 0,
+       "plain": "Một kênh báo cáo đơn giản (nút Report phishing, địa chỉ email riêng, nhóm trực)."
+      },
+      {
+       "html": "Thông báo kênh hỗ trợ CNTT chính thức. Nhắc người dùng không cung cấp mật khẩu, OTP hoặc chấp thuận yêu cầu đăng nhập ngoài dự kiến qua tin nhắn hỗ trợ.",
+       "level": 0,
+       "plain": "Thông báo kênh hỗ trợ CNTT chính thức. Nhắc người dùng không cung cấp mật khẩu, OTP hoặc chấp thuận yêu cầu đăng nhập ngoài dự kiến qua tin nhắn hỗ trợ."
+      },
+      {
+       "html": "Văn bản khẳng định xác minh là đúng quy định và người báo sớm không bị kỷ luật vì đã lỡ bấm.",
+       "level": 0,
+       "plain": "Văn bản khẳng định xác minh là đúng quy định và người báo sớm không bị kỷ luật vì đã lỡ bấm."
+      },
+      {
+       "html": "Biện pháp kỹ thuật làm giảm giá trị của cú bấm: MFA khớp số hoặc passkey (buổi 4) – với khớp số, kẻ gian phải lừa thêm con số trên màn hình của họ, khó hơn nhiều.",
+       "level": 0,
+       "plain": "Biện pháp kỹ thuật làm giảm giá trị của cú bấm: MFA khớp số hoặc passkey (buổi 4) – với khớp số, kẻ gian phải lừa thêm con số trên màn hình của họ, khó hơn nhiều."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Điểm cuối nằm trên tờ \"Việc hẹn sửa sau\" từ chương 4.",
+     "plain": "Điểm cuối nằm trên tờ \"Việc hẹn sửa sau\" từ chương 4."
+    },
+    {
+     "t": "h3",
+     "text": "4.8. Áp dụng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Lưu sẵn số hotline CNTT và đầu mối ATTT vào danh bạ điện thoại ngay hôm nay.",
+       "level": 0,
+       "plain": "Lưu sẵn số hotline CNTT và đầu mối ATTT vào danh bạ điện thoại ngay hôm nay."
+      },
+      {
+       "html": "Áp quy tắc cứng: tiền, danh sách khách hàng, MFA, OTP, phần mềm hỗ trợ từ xa → luôn gọi lại.",
+       "level": 0,
+       "plain": "Áp quy tắc cứng: tiền, danh sách khách hàng, MFA, OTP, phần mềm hỗ trợ từ xa → luôn gọi lại."
+      },
+      {
+       "html": "Thuộc một câu từ chối lịch sự.",
+       "level": 0,
+       "plain": "Thuộc một câu từ chối lịch sự."
+      },
+      {
+       "html": "Lỡ bấm thì báo ngay, kể cả ngoài giờ.",
+       "level": 0,
+       "plain": "Lỡ bấm thì báo ngay, kể cả ngoài giờ."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Nhắn lại hỏi xem có phải thật không là đã xác minh.\" → Hỏi lại kẻ gian qua chính kênh của họ, họ sẽ xác nhận \"đúng rồi anh\". Xác minh chỉ có giá trị khi đi qua một kênh mà kẻ gian không kiểm soát.",
+     "plain": "Hiểu nhầm hay gặp: \"Nhắn lại hỏi xem có phải thật không là đã xác minh.\" → Hỏi lại kẻ gian qua chính kênh của họ, họ sẽ xác nhận \"đúng rồi anh\". Xác minh chỉ có giá trị khi đi qua một kênh mà kẻ gian không kiểm soát.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Thực hành 9 – Bốn yêu cầu cần xác minh (55 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.",
+     "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
+    },
+    {
+     "t": "h3",
+     "text": "Cách tổ chức"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Mỗi học viên đọc cả bốn tình huống và điền bảng phân tích trong 15 phút.",
+       "level": 0,
+       "plain": "Mỗi học viên đọc cả bốn tình huống và điền bảng phân tích trong 15 phút."
+      },
+      {
+       "html": "Giảng viên chọn một vài tình huống để cùng lớp trao đổi. Bạn trình bày cách áp dụng quy trình 4 bước và câu trả lời của mình.",
+       "level": 0,
+       "plain": "Giảng viên chọn một vài tình huống để cùng lớp trao đổi. Bạn trình bày cách áp dụng quy trình 4 bước và câu trả lời của mình."
+      },
+      {
+       "html": "Lớp nhận xét sau mỗi lượt (2–3 phút). Giảng viên tổng kết bằng bảng đáp án.",
+       "level": 0,
+       "plain": "Lớp nhận xét sau mỗi lượt (2–3 phút). Giảng viên tổng kết bằng bảng đáp án."
+      },
+      {
+       "html": "Toàn bộ thư, tin nhắn, poster là giả lập: tên miền .example, QR không chứa liên kết hoạt động.",
+       "level": 0,
+       "plain": "Toàn bộ thư, tin nhắn, poster là giả lập: tên miền .example, QR không chứa liên kết hoạt động."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bốn tình huống"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tình huống 1 – \"Lãnh đạo\" nhắn Zalo.</strong> Một tài khoản Zalo tên \"Giám đốc Điện lực X\", ảnh đại diện là ảnh thật của giám đốc lấy từ website, nhắn: <em>\"Em gửi gấp anh danh sách khách hàng nợ trên 3 tháng kèm số điện thoại, anh đang họp với Tổng công ty cần ngay. Gửi qua đây luôn nhé.\"</em>",
+     "plain": "Tình huống 1 – \"Lãnh đạo\" nhắn Zalo. Một tài khoản Zalo tên \"Giám đốc Điện lực X\", ảnh đại diện là ảnh thật của giám đốc lấy từ website, nhắn: \"Em gửi gấp anh danh sách khách hàng nợ trên 3 tháng kèm số điện thoại, anh đang họp với Tổng công ty cần ngay. Gửi qua đây luôn nhé.\""
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tình huống 2 – \"Nhà cung cấp\" gửi báo giá.</strong> Email từ banhang@thietbidien-vn.example (nhà cung cấp thật dùng thietbidien.example), đính kèm BaoGia_Q4.xlsm, nội dung: <em>\"File báo giá được bảo vệ, anh chị vui lòng bấm Enable Content để xem giá.\"</em> Bạn không đặt hàng gì gần đây.",
+     "plain": "Tình huống 2 – \"Nhà cung cấp\" gửi báo giá. Email từ banhang@thietbidien-vn.example (nhà cung cấp thật dùng thietbidien.example), đính kèm BaoGia_Q4.xlsm, nội dung: \"File báo giá được bảo vệ, anh chị vui lòng bấm Enable Content để xem giá.\" Bạn không đặt hàng gì gần đây."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tình huống 3 – Poster QR ở nhà ăn.</strong> Một poster in đẹp dán cạnh thang máy: <em>\"Hệ thống email sẽ khóa các tài khoản chưa xác thực lại trước 31/10. Quét mã QR để đăng nhập lại.\"</em> Logo Công ty ở góc, không có tên phòng ban hay số liên hệ.",
+     "plain": "Tình huống 3 – Poster QR ở nhà ăn. Một poster in đẹp dán cạnh thang máy: \"Hệ thống email sẽ khóa các tài khoản chưa xác thực lại trước 31/10. Quét mã QR để đăng nhập lại.\" Logo Công ty ở góc, không có tên phòng ban hay số liên hệ."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Tình huống 4 – Tin nhắn chương 8.</strong> 21:30, Zalo \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo yêu cầu đăng nhập (nguyên văn ở phần Mở đầu). Người đóng vai kẻ giả mạo được phép nhắn thêm: <em>\"Anh ơi hệ thống đang chạy, anh bấm giúp em nhé, không là cả phòng sáng mai không vào được.\"</em>",
+     "plain": "Tình huống 4 – Tin nhắn chương 8. 21:30, Zalo \"CNTT Minh An – Hỗ trợ\" dặn bấm Chấp nhận nếu điện thoại báo yêu cầu đăng nhập (nguyên văn ở phần Mở đầu). Người đóng vai kẻ giả mạo được phép nhắn thêm: \"Anh ơi hệ thống đang chạy, anh bấm giúp em nhé, không là cả phòng sáng mai không vào được.\""
+    },
+    {
+     "t": "h3",
+     "text": "Nhiệm vụ của bạn"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Tìm các dấu hiệu nghi ngờ và gọi tên đòn tâm lý (Bài 1).",
+       "level": 0,
+       "plain": "Tìm các dấu hiệu nghi ngờ và gọi tên đòn tâm lý (Bài 1)."
+      },
+      {
+       "html": "Kiểm tra năm thành phần (Bài 3).",
+       "level": 0,
+       "plain": "Kiểm tra năm thành phần (Bài 3)."
+      },
+      {
+       "html": "Viết hành động cho từng bước của quy trình 4 bước, kể cả kênh xác minh cụ thể và bằng chứng cần giữ.",
+       "level": 0,
+       "plain": "Viết hành động cho từng bước của quy trình 4 bước, kể cả kênh xác minh cụ thể và bằng chứng cần giữ."
+      },
+      {
+       "html": "Viết một câu từ chối lịch sự cho tình huống của mình.",
+       "level": 0,
+       "plain": "Viết một câu từ chối lịch sự cho tình huống của mình."
+      },
+      {
+       "html": "Chuẩn bị phần đóng vai: kẻ giả mạo cố gắng ít nhất hai lần gây áp lực (giận dỗi, dọa báo cáo cấp trên, nài nỉ).",
+       "level": 0,
+       "plain": "Chuẩn bị phần đóng vai: kẻ giả mạo cố gắng ít nhất hai lần gây áp lực (giận dỗi, dọa báo cáo cấp trên, nài nỉ)."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Bài cần nộp:</strong> bảng phân tích cá nhân theo mẫu trên web và câu trả lời cho từng yêu cầu.",
+     "plain": "Bài cần nộp: bảng phân tích cá nhân theo mẫu trên web và câu trả lời cho từng yêu cầu."
+    },
+    {
+     "t": "h3",
+     "text": "Đáp án gợi ý",
+     "reveal": "m08-th9"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình huống",
+        "plain": "Tình huống"
+       },
+       {
+        "html": "Dấu hiệu nghi ngờ",
+        "plain": "Dấu hiệu nghi ngờ"
+       },
+       {
+        "html": "Hành động dừng",
+        "plain": "Hành động dừng"
+       },
+       {
+        "html": "Kênh xác minh",
+        "plain": "Kênh xác minh"
+       },
+       {
+        "html": "Báo ai, giữ bằng chứng gì",
+        "plain": "Báo ai, giữ bằng chứng gì"
+       }
+      ],
+      [
+       {
+        "html": "1. \"Lãnh đạo\" nhắn Zalo xin danh sách",
+        "plain": "1. \"Lãnh đạo\" nhắn Zalo xin danh sách"
+       },
+       {
+        "html": "Tài khoản mới/lạ; vượt quy trình; gấp; xin nhiều dữ liệu (kèm số điện thoại); gửi qua Zalo",
+        "plain": "Tài khoản mới/lạ; vượt quy trình; gấp; xin nhiều dữ liệu (kèm số điện thoại); gửi qua Zalo"
+       },
+       {
+        "html": "Không gửi, không trả lời chi tiết",
+        "plain": "Không gửi, không trả lời chi tiết"
+       },
+       {
+        "html": "Gọi số của lãnh đạo trong danh bạ cơ quan hoặc qua thư ký",
+        "plain": "Gọi số của lãnh đạo trong danh bạ cơ quan hoặc qua thư ký"
+       },
+       {
+        "html": "Đầu mối ATTT; ảnh chụp tin nhắn, tên tài khoản, thời gian",
+        "plain": "Đầu mối ATTT; ảnh chụp tin nhắn, tên tài khoản, thời gian"
+       }
+      ],
+      [
+       {
+        "html": "2. \"Nhà cung cấp\" gửi file yêu cầu Enable Content",
+        "plain": "2. \"Nhà cung cấp\" gửi file yêu cầu Enable Content"
+       },
+       {
+        "html": "Không chờ file; file .xlsm đòi bật nội dung; tên miền thêm \"-vn\"",
+        "plain": "Không chờ file; file .xlsm đòi bật nội dung; tên miền thêm \"-vn\""
+       },
+       {
+        "html": "Không mở, không bật nội dung",
+        "plain": "Không mở, không bật nội dung"
+       },
+       {
+        "html": "Gọi nhân viên kinh doanh của nhà cung cấp theo số trong hợp đồng",
+        "plain": "Gọi nhân viên kinh doanh của nhà cung cấp theo số trong hợp đồng"
+       },
+       {
+        "html": "Chuyển email cho ATTT theo hướng dẫn (Report phishing); không tự xóa trước khi được hướng dẫn",
+        "plain": "Chuyển email cho ATTT theo hướng dẫn (Report phishing); không tự xóa trước khi được hướng dẫn"
+       }
+      ],
+      [
+       {
+        "html": "3. Poster QR \"đăng nhập lại để tránh bị khóa\"",
+        "plain": "3. Poster QR \"đăng nhập lại để tránh bị khóa\""
+       },
+       {
+        "html": "Đe dọa khóa tài khoản; đăng nhập qua QR trên điện thoại cá nhân; không có đầu mối; thông báo CNTT không đi bằng poster",
+        "plain": "Đe dọa khóa tài khoản; đăng nhập qua QR trên điện thoại cá nhân; không có đầu mối; thông báo CNTT không đi bằng poster"
+       },
+       {
+        "html": "Không quét, không đăng nhập qua QR",
+        "plain": "Không quét, không đăng nhập qua QR"
+       },
+       {
+        "html": "Tự mở ứng dụng email như bình thường; hỏi helpdesk qua số nội bộ",
+        "plain": "Tự mở ứng dụng email như bình thường; hỏi helpdesk qua số nội bộ"
+       },
+       {
+        "html": "Helpdesk/ATTT; chụp poster và ghi vị trí; nếu ai đã nhập mật khẩu → báo ngay để đổi mật khẩu và thu hồi phiên; đề nghị gỡ poster",
+        "plain": "Helpdesk/ATTT; chụp poster và ghi vị trí; nếu ai đã nhập mật khẩu → báo ngay để đổi mật khẩu và thu hồi phiên; đề nghị gỡ poster"
+       }
+      ],
+      [
+       {
+        "html": "4. \"CNTT\" nhắn Zalo dặn bấm Chấp nhận MFA",
+        "plain": "4. \"CNTT\" nhắn Zalo dặn bấm Chấp nhận MFA"
+       },
+       {
+        "html": "Kênh lạ (Zalo cá nhân, 21:30); yêu cầu chấp nhận đăng nhập mình không tạo; khẩn cấp; chặn xác minh (\"không nghe máy\")",
+        "plain": "Kênh lạ (Zalo cá nhân, 21:30); yêu cầu chấp nhận đăng nhập mình không tạo; khẩn cấp; chặn xác minh (\"không nghe máy\")"
+       },
+       {
+        "html": "Không trả lời, không bấm; nếu có thông báo MFA → Từ chối",
+        "plain": "Không trả lời, không bấm; nếu có thông báo MFA → Từ chối"
+       },
+       {
+        "html": "Gọi hotline CNTT theo số trong danh bạ nội bộ",
+        "plain": "Gọi hotline CNTT theo số trong danh bạ nội bộ"
+       },
+       {
+        "html": "Đầu mối ATTT ngay trong đêm; ảnh chụp tin nhắn, tài khoản Zalo, giờ nhận, giờ các thông báo MFA; đổi mật khẩu vì ai đó đã có nó",
+        "plain": "Đầu mối ATTT ngay trong đêm; ảnh chụp tin nhắn, tài khoản Zalo, giờ nhận, giờ các thông báo MFA; đổi mật khẩu vì ai đó đã có nó"
+       }
+      ]
+     ],
+     "reveal": "m08-th9"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Điểm chung của bốn tình huống:</strong> không tình huống nào cần đoán chắc là thật hay giả. Cả bốn đều giải quyết được bằng cùng một quy trình. Nếu \"lãnh đạo\" ở tình huống 1 là thật, cuộc gọi xác minh tốn một phút và lãnh đạo sẽ yên tâm hơn về nhân viên của mình.",
+     "plain": "Điểm chung của bốn tình huống: không tình huống nào cần đoán chắc là thật hay giả. Cả bốn đều giải quyết được bằng cùng một quy trình. Nếu \"lãnh đạo\" ở tình huống 1 là thật, cuộc gọi xác minh tốn một phút và lãnh đạo sẽ yên tâm hơn về nhân viên của mình.",
+     "callout": "note",
+     "reveal": "m08-th9"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Câu từ chối mẫu cho từng tình huống:</strong>",
+     "plain": "Câu từ chối mẫu cho từng tình huống:",
+     "reveal": "m08-th9"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình huống",
+        "plain": "Tình huống"
+       },
+       {
+        "html": "Câu mẫu",
+        "plain": "Câu mẫu"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "\"Dạ danh sách khách hàng em chỉ gửi qua kênh công vụ sau khi xác nhận qua số nội bộ ạ. Em gọi anh ngay bây giờ.\"",
+        "plain": "\"Dạ danh sách khách hàng em chỉ gửi qua kênh công vụ sau khi xác nhận qua số nội bộ ạ. Em gọi anh ngay bây giờ.\""
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "\"Cảm ơn anh, em sẽ gọi lại bạn phụ trách bên anh theo số trong hợp đồng để nhận báo giá ạ.\"",
+        "plain": "\"Cảm ơn anh, em sẽ gọi lại bạn phụ trách bên anh theo số trong hợp đồng để nhận báo giá ạ.\""
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "(Không cần trả lời ai – chỉ báo helpdesk.)",
+        "plain": "(Không cần trả lời ai – chỉ báo helpdesk.)"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "\"Em không chấp nhận đăng nhập mà em không tự thực hiện. Em gọi hotline CNTT để hỏi lại.\" (Hoặc không trả lời gì cả.)",
+        "plain": "\"Em không chấp nhận đăng nhập mà em không tự thực hiện. Em gọi hotline CNTT để hỏi lại.\" (Hoặc không trả lời gì cả.)"
+       }
+      ]
+     ],
+     "reveal": "m08-th9"
+    },
+    {
+     "t": "h3",
+     "text": "Tiêu chí đánh giá"
+    },
+    {
+     "t": "p",
+     "html": "Chấm <strong>quy trình xử lý</strong>, không chỉ chấm việc đoán thư thật hay giả:",
+     "plain": "Chấm quy trình xử lý, không chỉ chấm việc đoán thư thật hay giả:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Nhân viên đóng vai có giữ được bình tĩnh khi bị ép hai lần không?",
+       "level": 0,
+       "plain": "Nhân viên đóng vai có giữ được bình tĩnh khi bị ép hai lần không?"
+      },
+      {
+       "html": "Có dùng kênh xác minh độc lập (không phải kênh của kẻ gian) không?",
+       "level": 0,
+       "plain": "Có dùng kênh xác minh độc lập (không phải kênh của kẻ gian) không?"
+      },
+      {
+       "html": "Có báo đầu mối và giữ đúng bằng chứng không?",
+       "level": 0,
+       "plain": "Có báo đầu mối và giữ đúng bằng chứng không?"
+      },
+      {
+       "html": "Câu từ chối có lịch sự và dựa vào quy định (không dựa vào cảm giác \"em thấy nghi\") không?",
+       "level": 0,
+       "plain": "Câu từ chối có lịch sự và dựa vào quy định (không dựa vào cảm giác \"em thấy nghi\") không?"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Checklist xác minh thông điệp (in mang về)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Địa chỉ người gửi thật là gì? Có đúng tên miền chính thức, đúng tài khoản đã biết?",
+       "level": 0,
+       "plain": "☐ Địa chỉ người gửi thật là gì? Có đúng tên miền chính thức, đúng tài khoản đã biết?"
+      },
+      {
+       "html": "☐ Yêu cầu này có đúng công việc, đúng thẩm quyền, đúng quy trình, đúng kênh?",
+       "level": 0,
+       "plain": "☐ Yêu cầu này có đúng công việc, đúng thẩm quyền, đúng quy trình, đúng kênh?"
+      },
+      {
+       "html": "☐ Có áp lực thời gian, đòi giữ kín hoặc chặn kênh xác minh không?",
+       "level": 0,
+       "plain": "☐ Có áp lực thời gian, đòi giữ kín hoặc chặn kênh xác minh không?"
+      },
+      {
+       "html": "☐ Liên kết/QR dẫn tới tên miền nào?",
+       "level": 0,
+       "plain": "☐ Liên kết/QR dẫn tới tên miền nào?"
+      },
+      {
+       "html": "☐ Mình có đang chờ file này không? File có đòi bật nội dung không?",
+       "level": 0,
+       "plain": "☐ Mình có đang chờ file này không? File có đòi bật nội dung không?"
+      },
+      {
+       "html": "☐ Mình có tự khởi tạo lần đăng nhập/mã OTP/yêu cầu MFA này không?",
+       "level": 0,
+       "plain": "☐ Mình có tự khởi tạo lần đăng nhập/mã OTP/yêu cầu MFA này không?"
+      },
+      {
+       "html": "☐ Đã xác minh qua kênh độc lập chưa?",
+       "level": 0,
+       "plain": "☐ Đã xác minh qua kênh độc lập chưa?"
+      },
+      {
+       "html": "☐ Đã báo đầu mối chưa?",
+       "level": 0,
+       "plain": "☐ Đã báo đầu mối chưa?"
+      }
+     ]
+    }
+   ],
+   "id": "s9",
+   "activity": "m08-th9"
+  },
+  {
+   "title": "Quay lại tình huống: trả lời bốn câu hỏi của chương 8",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Câu trả lời của lớp",
+        "plain": "Câu trả lời của lớp"
+       },
+       {
+        "html": "Bài",
+        "plain": "Bài"
+       }
+      ],
+      [
+       {
+        "html": "Vì sao kẻ gian nhắn cho anh Cường? Dùng đòn gì?",
+        "plain": "Vì sao kẻ gian nhắn cho anh Cường? Dùng đòn gì?"
+       },
+       {
+        "html": "Hệ thống còn đòi một cú bấm Chấp nhận mà kẻ gian không có. Tin nhắn dùng đủ bốn đòn: uy quyền, khẩn cấp, chặn xác minh, quen thuộc",
+        "plain": "Hệ thống còn đòi một cú bấm Chấp nhận mà kẻ gian không có. Tin nhắn dùng đủ bốn đòn: uy quyền, khẩn cấp, chặn xác minh, quen thuộc"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       }
+      ],
+      [
+       {
+        "html": "Giao dịch viên tư vấn khách thế nào? Liên quan gì đến dữ liệu của ta?",
+        "plain": "Giao dịch viên tư vấn khách thế nào? Liên quan gì đến dữ liệu của ta?"
+       },
+       {
+        "html": "Bốn câu \"điện lực không bao giờ\", kênh thanh toán chính thức; hỏi \"người gọi biết gì\" – biết đúng mã khách hàng, số nợ là dấu hiệu dữ liệu nội bộ bị lộ",
+        "plain": "Bốn câu \"điện lực không bao giờ\", kênh thanh toán chính thức; hỏi \"người gọi biết gì\" – biết đúng mã khách hàng, số nợ là dấu hiệu dữ liệu nội bộ bị lộ"
+       },
+       {
+        "html": "2",
+        "plain": "2"
+       }
+      ],
+      [
+       {
+        "html": "Kiểm tra gì? Tin nhắn lộ ra ở đâu?",
+        "plain": "Kiểm tra gì? Tin nhắn lộ ra ở đâu?"
+       },
+       {
+        "html": "Năm thành phần. Không có link hay file – lộ ra ở kênh (Zalo lạ lúc 21:30) và yêu cầu (chấp nhận đăng nhập mình không tạo)",
+        "plain": "Năm thành phần. Không có link hay file – lộ ra ở kênh (Zalo lạ lúc 21:30) và yêu cầu (chấp nhận đăng nhập mình không tạo)"
+       },
+       {
+        "html": "3",
+        "plain": "3"
+       }
+      ],
+      [
+       {
+        "html": "Anh Cường nên làm gì? Lỡ bấm thì sao?",
+        "plain": "Anh Cường nên làm gì? Lỡ bấm thì sao?"
+       },
+       {
+        "html": "Tạm dừng – gọi hotline CNTT theo danh bạ – báo ATTT – Từ chối mọi yêu cầu MFA, đổi mật khẩu. Lỡ bấm: báo ngay, tài khoản coi như đã bị chiếm",
+        "plain": "Tạm dừng – gọi hotline CNTT theo danh bạ – báo ATTT – Từ chối mọi yêu cầu MFA, đổi mật khẩu. Lỡ bấm: báo ngay, tài khoản coi như đã bị chiếm"
+       },
+       {
+        "html": "4",
+        "plain": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Lớp đã làm được:</strong> quy trình 4 bước và nguyên tắc gọi lại; checklist xác minh in mang về; mỗi học viên lưu số hotline CNTT và đầu mối ATTT vào điện thoại; đề nghị CNTT ra thông báo \"Không cung cấp mật khẩu, OTP hoặc chấp thuận yêu cầu đăng nhập ngoài dự kiến; xác minh hỗ trợ qua kênh CNTT chính thức\".",
+     "plain": "Lớp đã làm được: quy trình 4 bước và nguyên tắc gọi lại; checklist xác minh in mang về; mỗi học viên lưu số hotline CNTT và đầu mối ATTT vào điện thoại; đề nghị CNTT ra thông báo \"Không cung cấp mật khẩu, OTP hoặc chấp thuận yêu cầu đăng nhập ngoài dự kiến; xác minh hỗ trợ qua kênh CNTT chính thức\"."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Còn bỏ ngỏ:</strong> anh Cường \"thấy hợp lý\". Lớp không biết anh có bấm hay không – và đây là điều cần dừng lại suy nghĩ: trong thực tế, tổ chức cũng thường không biết. Chỉ có hai cách để biết: anh Cường tự báo, hoặc nhật ký hệ thống cho thấy.",
+     "plain": "Còn bỏ ngỏ: anh Cường \"thấy hợp lý\". Lớp không biết anh có bấm hay không – và đây là điều cần dừng lại suy nghĩ: trong thực tế, tổ chức cũng thường không biết. Chỉ có hai cách để biết: anh Cường tự báo, hoặc nhật ký hệ thống cho thấy."
+    },
+    {
+     "t": "p",
+     "html": "Tờ \"Việc hẹn sửa sau\" không có dòng mới. Nhưng tin nhắn chương 8 rơi đúng vào dòng 4 – MFA chưa đổi sang khớp số và mật khẩu cũ của anh Cường đã lộ ở trang mua sắm:",
+     "plain": "Tờ \"Việc hẹn sửa sau\" không có dòng mới. Nhưng tin nhắn chương 8 rơi đúng vào dòng 4 – MFA chưa đổi sang khớp số và mật khẩu cũ của anh Cường đã lộ ở trang mua sắm:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chương",
+        "plain": "Chương"
+       },
+       {
+        "html": "Việc còn bỏ ngỏ",
+        "plain": "Việc còn bỏ ngỏ"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Các bản sao file danh sách đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi",
+        "plain": "Các bản sao file danh sách đã nằm ở thư mục Tải về, ổ D, hộp thư đã gửi"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Bản trên OneDrive không ai quản lý",
+        "plain": "Bản trên OneDrive không ai quản lý"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Thu hẹp quyền xuất của giao dịch viên hẹn đến \"đợt rà soát quý\"",
+        "plain": "Thu hẹp quyền xuất của giao dịch viên hẹn đến \"đợt rà soát quý\""
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Cấu hình MFA chưa đổi sang khớp số; anh Cường hẹn đổi mật khẩu \"cuối tuần\"",
+        "plain": "Cấu hình MFA chưa đổi sang khớp số; anh Cường hẹn đổi mật khẩu \"cuối tuần\""
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "OneDrive công ty vẫn cho tạo link \"Anyone\"",
+        "plain": "OneDrive công ty vẫn cho tạo link \"Anyone\""
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Chức năng xuất luôn ra đủ mọi cột",
+        "plain": "Chức năng xuất luôn ra đủ mọi cột"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Ngày 5 nhận tiếp:</strong> checklist xác minh và nguyên tắc gọi lại. Sáng mai lớp mở nhật ký của đêm 20/10 – câu trả lời về anh Cường nằm ở đó. Câu hỏi còn lại – nếu đã lỡ bấm thì tổ chức làm gì – là việc của buổi 10.",
+     "plain": "Ngày 5 nhận tiếp: checklist xác minh và nguyên tắc gọi lại. Sáng mai lớp mở nhật ký của đêm 20/10 – câu trả lời về anh Cường nằm ở đó. Câu hỏi còn lại – nếu đã lỡ bấm thì tổ chức làm gì – là việc của buổi 10."
+    }
+   ],
+   "id": "s10"
+  },
+  {
+   "title": "Áp dụng tại đơn vị",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "☐ Lưu số hotline CNTT, đầu mối ATTT vào danh bạ điện thoại; kiểm tra hotline có người trực ngoài giờ không.",
+       "level": 0,
+       "plain": "☐ Lưu số hotline CNTT, đầu mối ATTT vào danh bạ điện thoại; kiểm tra hotline có người trực ngoài giờ không."
+      },
+      {
+       "html": "☐ Đề nghị phòng ban ban hành quy tắc cứng: tiền, danh sách khách hàng, MFA, OTP, phần mềm hỗ trợ từ xa → luôn gọi lại xác minh.",
+       "level": 0,
+       "plain": "☐ Đề nghị phòng ban ban hành quy tắc cứng: tiền, danh sách khách hàng, MFA, OTP, phần mềm hỗ trợ từ xa → luôn gọi lại xác minh."
+      },
+      {
+       "html": "☐ Đề nghị lãnh đạo xác nhận bằng văn bản: nhân viên xác minh yêu cầu của lãnh đạo là đúng quy định; người báo sớm khi lỡ bấm được cảm ơn.",
+       "level": 0,
+       "plain": "☐ Đề nghị lãnh đạo xác nhận bằng văn bản: nhân viên xác minh yêu cầu của lãnh đạo là đúng quy định; người báo sớm khi lỡ bấm được cảm ơn."
+      },
+      {
+       "html": "☐ Dán bốn câu \"điện lực không bao giờ\" và số tổng đài chính thức tại quầy giao dịch; thêm câu hỏi \"người gọi biết gì\" vào phiếu ghi nhận phản ánh.",
+       "level": 0,
+       "plain": "☐ Dán bốn câu \"điện lực không bao giờ\" và số tổng đài chính thức tại quầy giao dịch; thêm câu hỏi \"người gọi biết gì\" vào phiếu ghi nhận phản ánh."
+      },
+      {
+       "html": "☐ Bật hiển thị đuôi file trên máy; tìm và dùng nút Report phishing trong email.",
+       "level": 0,
+       "plain": "☐ Bật hiển thị đuôi file trên máy; tìm và dùng nút Report phishing trong email."
+      },
+      {
+       "html": "☐ Đề nghị CNTT ưu tiên đổi MFA sang khớp số (dòng 4 của tờ).",
+       "level": 0,
+       "plain": "☐ Đề nghị CNTT ưu tiên đổi MFA sang khớp số (dòng 4 của tờ)."
+      }
+     ]
+    }
+   ],
+   "id": "s11"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Kẻ gian thường xin chìa thay vì phá khóa: một cú bấm, một mã OTP, một file gửi đi vượt qua mọi lớp kỹ thuật.",
+       "level": 0,
+       "plain": "Kẻ gian thường xin chìa thay vì phá khóa: một cú bấm, một mã OTP, một file gửi đi vượt qua mọi lớp kỹ thuật."
+      },
+      {
+       "html": "Phishing có nhiều kênh: email, SMS, Zalo, điện thoại, QR, deepfake, gặp trực tiếp. Logo, tên hiển thị, văn phong, giọng nói đều giả được.",
+       "level": 0,
+       "plain": "Phishing có nhiều kênh: email, SMS, Zalo, điện thoại, QR, deepfake, gặp trực tiếp. Logo, tên hiển thị, văn phong, giọng nói đều giả được."
+      },
+      {
+       "html": "Bốn đòn tâm lý: mượn uy quyền, tạo khẩn cấp, giữ kín/chặn xác minh, tạo quen thuộc. Thấy đòn nào là dừng lại.",
+       "level": 0,
+       "plain": "Bốn đòn tâm lý: mượn uy quyền, tạo khẩn cấp, giữ kín/chặn xác minh, tạo quen thuộc. Thấy đòn nào là dừng lại."
+      },
+      {
+       "html": "Giả danh nhân viên điện lực là thủ đoạn thực tế của ngành; kẻ gian biết tên, địa chỉ nhờ dữ liệu rò rỉ. Biết đúng mã khách hàng, số nợ là dấu hiệu dữ liệu nội bộ bị lộ.",
+       "level": 0,
+       "plain": "Giả danh nhân viên điện lực là thủ đoạn thực tế của ngành; kẻ gian biết tên, địa chỉ nhờ dữ liệu rò rỉ. Biết đúng mã khách hàng, số nợ là dấu hiệu dữ liệu nội bộ bị lộ."
+      },
+      {
+       "html": "Năm thành phần cần kiểm tra: người gửi, yêu cầu, liên kết/QR, file, đăng nhập/OTP/MFA. Đọc tên miền từ phải sang trái.",
+       "level": 0,
+       "plain": "Năm thành phần cần kiểm tra: người gửi, yêu cầu, liên kết/QR, file, đăng nhập/OTP/MFA. Đọc tên miền từ phải sang trái."
+      },
+      {
+       "html": "SPF/DKIM/DMARC không chặn tên miền na ná hay tài khoản thật bị chiếm; thư không link, không file vẫn có thể là lừa đảo.",
+       "level": 0,
+       "plain": "SPF/DKIM/DMARC không chặn tên miền na ná hay tài khoản thật bị chiếm; thư không link, không file vẫn có thể là lừa đảo."
+      },
+      {
+       "html": "Quy trình 4 bước: tạm dừng – xác minh độc lập – báo đầu mối – thực hiện khi rõ.",
+       "level": 0,
+       "plain": "Quy trình 4 bước: tạm dừng – xác minh độc lập – báo đầu mối – thực hiện khi rõ."
+      },
+      {
+       "html": "Gọi lại theo số mình đã có từ trước; không dùng số, link trong chính thông điệp; không nhắn lại kẻ giả mạo để hỏi.",
+       "level": 0,
+       "plain": "Gọi lại theo số mình đã có từ trước; không dùng số, link trong chính thông điệp; không nhắn lại kẻ giả mạo để hỏi."
+      },
+      {
+       "html": "Không chấp nhận yêu cầu MFA mình không tạo ra; có yêu cầu như vậy nghĩa là ai đó có mật khẩu của mình.",
+       "level": 0,
+       "plain": "Không chấp nhận yêu cầu MFA mình không tạo ra; có yêu cầu như vậy nghĩa là ai đó có mật khẩu của mình."
+      },
+      {
+       "html": "Lỡ bấm thì báo ngay; giấu đi mới là lỗi lớn. Đơn vị cần hotline, kênh báo cáo và văn hóa không đổ lỗi để quy trình chạy được.",
+       "level": 0,
+       "plain": "Lỡ bấm thì báo ngay; giấu đi mới là lỗi lớn. Đơn vị cần hotline, kênh báo cáo và văn hóa không đổ lỗi để quy trình chạy được."
+      }
+     ]
+    }
+   ],
+   "id": "s12"
+  },
+  {
+   "title": "Câu hỏi ôn tập",
+   "kind": "review",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Gợi ý trả lời",
+        "plain": "Gợi ý trả lời"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Social engineering và phishing khác nhau thế nào?",
+        "plain": "Social engineering và phishing khác nhau thế nào?"
+       },
+       {
+        "html": "Social engineering là thao túng tâm lý nói chung; phishing là một dạng dùng thông điệp hoặc trang giả",
+        "plain": "Social engineering là thao túng tâm lý nói chung; phishing là một dạng dùng thông điệp hoặc trang giả"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Kể bốn đòn tâm lý và một câu nói điển hình cho mỗi đòn.",
+        "plain": "Kể bốn đòn tâm lý và một câu nói điển hình cho mỗi đòn."
+       },
+       {
+        "html": "Uy quyền (\"Giám đốc chỉ đạo\"), khẩn cấp (\"trong 15 phút\"), giữ kín/chặn xác minh (\"đang họp không nghe máy\"), quen thuộc (\"theo hợp đồng số…\")",
+        "plain": "Uy quyền (\"Giám đốc chỉ đạo\"), khẩn cấp (\"trong 15 phút\"), giữ kín/chặn xác minh (\"đang họp không nghe máy\"), quen thuộc (\"theo hợp đồng số…\")"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Vì sao không nên đánh giá thư qua lỗi chính tả, logo?",
+        "plain": "Vì sao không nên đánh giá thư qua lỗi chính tả, logo?"
+       },
+       {
+        "html": "Thư lừa đảo có thể viết bằng AI, logo sao chép được; thư từ tài khoản thật bị chiếm không có dấu hiệu nào",
+        "plain": "Thư lừa đảo có thể viết bằng AI, logo sao chép được; thư từ tài khoản thật bị chiếm không có dấu hiệu nào"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Tên miền thật của https://evn.com.vn.xacminh-tk.example/login là gì?",
+        "plain": "Tên miền thật của https://evn.com.vn.xacminh-tk.example/login là gì?"
+       },
+       {
+        "html": "xacminh-tk.example",
+        "plain": "xacminh-tk.example"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "SPF, DKIM, DMARC chặn được gì, không chặn được gì?",
+        "plain": "SPF, DKIM, DMARC chặn được gì, không chặn được gì?"
+       },
+       {
+        "html": "Chặn nhiều thư giả đúng tên miền công ty; không chặn tên miền na ná và tài khoản thật bị chiếm",
+        "plain": "Chặn nhiều thư giả đúng tên miền công ty; không chặn tên miền na ná và tài khoản thật bị chiếm"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Email có file nén và mật khẩu ghi ngay trong thư – vì sao đáng ngờ?",
+        "plain": "Email có file nén và mật khẩu ghi ngay trong thư – vì sao đáng ngờ?"
+       },
+       {
+        "html": "Mật khẩu ở đây để né trình quét mã độc, không để bảo vệ người nhận",
+        "plain": "Mật khẩu ở đây để né trình quét mã độc, không để bảo vệ người nhận"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "QR trong email yêu cầu \"quét để xác thực lại tài khoản\" nguy hiểm ở điểm nào?",
+        "plain": "QR trong email yêu cầu \"quét để xác thực lại tài khoản\" nguy hiểm ở điểm nào?"
+       },
+       {
+        "html": "Chuyển việc đăng nhập sang điện thoại cá nhân, nơi không có bộ lọc của công ty; link ẩn khỏi mắt người",
+        "plain": "Chuyển việc đăng nhập sang điện thoại cá nhân, nơi không có bộ lọc của công ty; link ẩn khỏi mắt người"
+       }
+      ],
+      [
+       {
+        "html": "8",
+        "plain": "8"
+       },
+       {
+        "html": "Khách hàng báo người gọi biết đúng mã khách hàng và số nợ. Giao dịch viên làm gì ngoài tư vấn?",
+        "plain": "Khách hàng báo người gọi biết đúng mã khách hàng và số nợ. Giao dịch viên làm gì ngoài tư vấn?"
+       },
+       {
+        "html": "Ghi nhận và chuyển ngay cho đầu mối ATTT – dấu hiệu dữ liệu nội bộ có thể đã lộ",
+        "plain": "Ghi nhận và chuyển ngay cho đầu mối ATTT – dấu hiệu dữ liệu nội bộ có thể đã lộ"
+       }
+      ],
+      [
+       {
+        "html": "9",
+        "plain": "9"
+       },
+       {
+        "html": "Kể bốn câu \"điện lực không bao giờ\".",
+        "plain": "Kể bốn câu \"điện lực không bao giờ\"."
+       },
+       {
+        "html": "Không yêu cầu chuyển tiền vào tài khoản cá nhân; không yêu cầu cài ứng dụng lạ, bấm link; không hỏi OTP, mật khẩu; không thu tiền qua Zalo cá nhân",
+        "plain": "Không yêu cầu chuyển tiền vào tài khoản cá nhân; không yêu cầu cài ứng dụng lạ, bấm link; không hỏi OTP, mật khẩu; không thu tiền qua Zalo cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "10",
+        "plain": "10"
+       },
+       {
+        "html": "Kể bốn bước xử lý yêu cầu đáng ngờ.",
+        "plain": "Kể bốn bước xử lý yêu cầu đáng ngờ."
+       },
+       {
+        "html": "Tạm dừng – xác minh độc lập – báo đầu mối – thực hiện khi rõ",
+        "plain": "Tạm dừng – xác minh độc lập – báo đầu mối – thực hiện khi rõ"
+       }
+      ],
+      [
+       {
+        "html": "11",
+        "plain": "11"
+       },
+       {
+        "html": "Nhắn lại tài khoản Zalo đó hỏi \"có phải anh không\" có phải là xác minh không?",
+        "plain": "Nhắn lại tài khoản Zalo đó hỏi \"có phải anh không\" có phải là xác minh không?"
+       },
+       {
+        "html": "Không – kẻ gian kiểm soát kênh đó. Phải gọi theo số đã có từ trước",
+        "plain": "Không – kẻ gian kiểm soát kênh đó. Phải gọi theo số đã có từ trước"
+       }
+      ],
+      [
+       {
+        "html": "12",
+        "plain": "12"
+       },
+       {
+        "html": "Điện thoại báo yêu cầu đăng nhập lúc 2 giờ sáng mà bạn không đăng nhập. Làm gì?",
+        "plain": "Điện thoại báo yêu cầu đăng nhập lúc 2 giờ sáng mà bạn không đăng nhập. Làm gì?"
+       },
+       {
+        "html": "Bấm Từ chối; báo CNTT ngay; đổi mật khẩu – ai đó đã có mật khẩu của bạn",
+        "plain": "Bấm Từ chối; báo CNTT ngay; đổi mật khẩu – ai đó đã có mật khẩu của bạn"
+       }
+      ],
+      [
+       {
+        "html": "13",
+        "plain": "13"
+       },
+       {
+        "html": "Đã lỡ duyệt thông báo MFA cho người lạ. Tình trạng tài khoản là gì?",
+        "plain": "Đã lỡ duyệt thông báo MFA cho người lạ. Tình trạng tài khoản là gì?"
+       },
+       {
+        "html": "Coi như đã bị chiếm – báo ngay",
+        "plain": "Coi như đã bị chiếm – báo ngay"
+       }
+      ],
+      [
+       {
+        "html": "14",
+        "plain": "14"
+       },
+       {
+        "html": "Vì sao không chuyển tiếp thư lừa đảo cho đồng nghiệp để cảnh báo?",
+        "plain": "Vì sao không chuyển tiếp thư lừa đảo cho đồng nghiệp để cảnh báo?"
+       },
+       {
+        "html": "Người khác có thể bấm nhầm; báo qua kênh của đầu mối để họ chặn cho cả đơn vị",
+        "plain": "Người khác có thể bấm nhầm; báo qua kênh của đầu mối để họ chặn cho cả đơn vị"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s13"
+  },
+  {
+   "title": "Thuật ngữ của buổi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Giải thích ngắn",
+        "plain": "Giải thích ngắn"
+       }
+      ],
+      [
+       {
+        "html": "Social engineering",
+        "plain": "Social engineering"
+       },
+       {
+        "html": "Thao túng tâm lý để người khác làm theo",
+        "plain": "Thao túng tâm lý để người khác làm theo"
+       }
+      ],
+      [
+       {
+        "html": "Phishing / spear phishing / whaling",
+        "plain": "Phishing / spear phishing / whaling"
+       },
+       {
+        "html": "Lừa đảo qua thông điệp / nhắm đúng người / nhắm lãnh đạo",
+        "plain": "Lừa đảo qua thông điệp / nhắm đúng người / nhắm lãnh đạo"
+       }
+      ],
+      [
+       {
+        "html": "BEC",
+        "plain": "BEC"
+       },
+       {
+        "html": "Giả mạo email doanh nghiệp để đòi chuyển tiền, đổi tài khoản, lấy dữ liệu",
+        "plain": "Giả mạo email doanh nghiệp để đòi chuyển tiền, đổi tài khoản, lấy dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "Smishing / vishing / quishing",
+        "plain": "Smishing / vishing / quishing"
+       },
+       {
+        "html": "Lừa đảo qua SMS / điện thoại / mã QR",
+        "plain": "Lừa đảo qua SMS / điện thoại / mã QR"
+       }
+      ],
+      [
+       {
+        "html": "Deepfake",
+        "plain": "Deepfake"
+       },
+       {
+        "html": "Giọng nói, hình ảnh giả bằng AI",
+        "plain": "Giọng nói, hình ảnh giả bằng AI"
+       }
+      ],
+      [
+       {
+        "html": "Pretexting, baiting, tailgating",
+        "plain": "Pretexting, baiting, tailgating"
+       },
+       {
+        "html": "Dựng kịch bản; nhử mồi (USB); đi theo người có thẻ",
+        "plain": "Dựng kịch bản; nhử mồi (USB); đi theo người có thẻ"
+       }
+      ],
+      [
+       {
+        "html": "MFA fatigue",
+        "plain": "MFA fatigue"
+       },
+       {
+        "html": "Gửi dồn yêu cầu MFA, kèm lời \"nhờ\" bấm Chấp nhận",
+        "plain": "Gửi dồn yêu cầu MFA, kèm lời \"nhờ\" bấm Chấp nhận"
+       }
+      ],
+      [
+       {
+        "html": "Tên hiển thị / Reply-To",
+        "plain": "Tên hiển thị / Reply-To"
+       },
+       {
+        "html": "Tên người gửi tự đặt / địa chỉ nhận thư trả lời, có thể khác địa chỉ gửi",
+        "plain": "Tên người gửi tự đặt / địa chỉ nhận thư trả lời, có thể khác địa chỉ gửi"
+       }
+      ],
+      [
+       {
+        "html": "SPF, DKIM, DMARC",
+        "plain": "SPF, DKIM, DMARC"
+       },
+       {
+        "html": "Cơ chế kiểm tra thư có thật từ tên miền nó xưng",
+        "plain": "Cơ chế kiểm tra thư có thật từ tên miền nó xưng"
+       }
+      ],
+      [
+       {
+        "html": "Nhãn External",
+        "plain": "Nhãn External"
+       },
+       {
+        "html": "Nhãn đánh dấu thư từ ngoài tổ chức",
+        "plain": "Nhãn đánh dấu thư từ ngoài tổ chức"
+       }
+      ],
+      [
+       {
+        "html": "Tên miền / tên máy chủ",
+        "plain": "Tên miền / tên máy chủ"
+       },
+       {
+        "html": "Chủ thật của địa chỉ / toàn bộ phần giữa :// và / đầu tiên",
+        "plain": "Chủ thật của địa chỉ / toàn bộ phần giữa :// và / đầu tiên"
+       }
+      ],
+      [
+       {
+        "html": "Enable Content / macro",
+        "plain": "Enable Content / macro"
+       },
+       {
+        "html": "Bật chạy mã trong file Office",
+        "plain": "Bật chạy mã trong file Office"
+       }
+      ],
+      [
+       {
+        "html": "Nguyên tắc gọi lại (call-back)",
+        "plain": "Nguyên tắc gọi lại (call-back)"
+       },
+       {
+        "html": "Xác minh bằng thông tin liên hệ có từ trước, không dùng thông tin trong thông điệp",
+        "plain": "Xác minh bằng thông tin liên hệ có từ trước, không dùng thông tin trong thông điệp"
+       }
+      ],
+      [
+       {
+        "html": "Report phishing",
+        "plain": "Report phishing"
+       },
+       {
+        "html": "Nút hoặc kênh báo cáo thư lừa đảo cho đầu mối",
+        "plain": "Nút hoặc kênh báo cáo thư lừa đảo cho đầu mối"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s14"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân.",
+     "html": "Giảng viên điều chỉnh phân bổ thời gian theo lịch học chính thức và bài được giao. Các bài thực hành đều nộp cá nhân."
+    },
+    {
+     "t": "h3",
+     "text": "Lịch trình"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời gian",
+        "plain": "Thời gian"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Hình thức",
+        "plain": "Hình thức"
+       }
+      ],
+      [
+       {
+        "html": "13:30–13:45",
+        "plain": "13:30–13:45"
+       },
+       {
+        "html": "Khởi động: \"Anh/chị từng nhận tin nhắn lừa đảo nào?\"; đọc chương 8",
+        "plain": "Khởi động: \"Anh/chị từng nhận tin nhắn lừa đảo nào?\"; đọc chương 8"
+       },
+       {
+        "html": "Chia sẻ",
+        "plain": "Chia sẻ"
+       }
+      ],
+      [
+       {
+        "html": "13:45–14:15",
+        "plain": "13:45–14:15"
+       },
+       {
+        "html": "Bài 1 – Phishing, social engineering, các hình thức",
+        "plain": "Bài 1 – Phishing, social engineering, các hình thức"
+       },
+       {
+        "html": "Giảng",
+        "plain": "Giảng"
+       }
+      ],
+      [
+       {
+        "html": "14:15–14:50",
+        "plain": "14:15–14:50"
+       },
+       {
+        "html": "Bài 1 (đòn tâm lý, email mẫu) và Bài 2 – giả danh nhân viên điện lực",
+        "plain": "Bài 1 (đòn tâm lý, email mẫu) và Bài 2 – giả danh nhân viên điện lực"
+       },
+       {
+        "html": "Phân tích cả lớp",
+        "plain": "Phân tích cả lớp"
+       }
+      ],
+      [
+       {
+        "html": "14:50–15:05",
+        "plain": "14:50–15:05"
+       },
+       {
+        "html": "Nghỉ giữa giờ",
+        "plain": "Nghỉ giữa giờ"
+       },
+       {
+        "html": "",
+        "plain": ""
+       }
+      ],
+      [
+       {
+        "html": "15:05–15:40",
+        "plain": "15:05–15:40"
+       },
+       {
+        "html": "Bài 3 – Kiểm tra thông điệp, liên kết, file, QR; Bài 4 – quy trình 4 bước",
+        "plain": "Bài 3 – Kiểm tra thông điệp, liên kết, file, QR; Bài 4 – quy trình 4 bước"
+       },
+       {
+        "html": "Giảng + minh họa",
+        "plain": "Giảng + minh họa"
+       }
+      ],
+      [
+       {
+        "html": "15:40–16:35",
+        "plain": "15:40–16:35"
+       },
+       {
+        "html": "Thực hành 9",
+        "plain": "Thực hành 9"
+       },
+       {
+        "html": "Cá nhân, xem xét từng vai",
+        "plain": "Cá nhân, xem xét từng vai"
+       }
+      ],
+      [
+       {
+        "html": "16:35–17:00",
+        "plain": "16:35–17:00"
+       },
+       {
+        "html": "Quay lại tình huống; tổng kết ngày 4",
+        "plain": "Quay lại tình huống; tổng kết ngày 4"
+       },
+       {
+        "html": "Cả lớp",
+        "plain": "Cả lớp"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý giảng"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Phần khởi động rất quan trọng: chuyện thật của học viên thuyết phục hơn mọi slide. Tuyệt đối không chê ai đã từng suýt tin.",
+       "level": 0,
+       "plain": "Phần khởi động rất quan trọng: chuyện thật của học viên thuyết phục hơn mọi slide. Tuyệt đối không chê ai đã từng suýt tin."
+      },
+      {
+       "html": "Không biến buổi học thành trò \"đoán thư thật hay giả\"; mỗi lần lớp đoán xong, hỏi lại: \"Vậy quy trình xử lý có khác không?\" – câu trả lời luôn là không.",
+       "level": 0,
+       "plain": "Không biến buổi học thành trò \"đoán thư thật hay giả\"; mỗi lần lớp đoán xong, hỏi lại: \"Vậy quy trình xử lý có khác không?\" – câu trả lời luôn là không."
+      },
+      {
+       "html": "Bài 2: thay số tổng đài, kênh thanh toán chính thức bằng thông tin của đơn vị mình; có thể mời một giao dịch viên kể cách họ đang trả lời khách.",
+       "level": 0,
+       "plain": "Bài 2: thay số tổng đài, kênh thanh toán chính thức bằng thông tin của đơn vị mình; có thể mời một giao dịch viên kể cách họ đang trả lời khách."
+      },
+      {
+       "html": "Giới hạn: không tạo QR hoạt động dẫn tới trang giả, không gửi thư giả lập vào hộp thư thật của học viên nếu chưa có chương trình diễn tập được phê duyệt.",
+       "level": 0,
+       "plain": "Giới hạn: không tạo QR hoạt động dẫn tới trang giả, không gửi thư giả lập vào hộp thư thật của học viên nếu chưa có chương trình diễn tập được phê duyệt."
+      },
+      {
+       "html": "Thực hành 9: người đóng kẻ giả mạo nên thật sự gây áp lực (giận, dọa báo cáo cấp trên) – cảm giác bị ép trên lớp giúp học viên nhận ra nó ngoài đời.",
+       "level": 0,
+       "plain": "Thực hành 9: người đóng kẻ giả mạo nên thật sự gây áp lực (giận, dọa báo cáo cấp trên) – cảm giác bị ép trên lớp giúp học viên nhận ra nó ngoài đời."
+      },
+      {
+       "html": "<strong>Giữ bí mật câu chuyện:</strong> không tiết lộ anh Cường có bấm hay không. Nếu học viên hỏi, trả lời \"sáng mai nhật ký sẽ nói\".",
+       "level": 0,
+       "plain": "Giữ bí mật câu chuyện: không tiết lộ anh Cường có bấm hay không. Nếu học viên hỏi, trả lời \"sáng mai nhật ký sẽ nói\"."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu nhầm cần sửa ngay trên lớp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Hiểu nhầm",
+        "plain": "Hiểu nhầm"
+       },
+       {
+        "html": "Cách sửa",
+        "plain": "Cách sửa"
+       }
+      ],
+      [
+       {
+        "html": "\"Thư lừa đảo luôn sai chính tả\"",
+        "plain": "\"Thư lừa đảo luôn sai chính tả\""
+       },
+       {
+        "html": "Cho xem một thư giả lập viết trôi chảy",
+        "plain": "Cho xem một thư giả lập viết trôi chảy"
+       }
+      ],
+      [
+       {
+        "html": "\"Có ổ khóa HTTPS là trang thật\"",
+        "plain": "\"Có ổ khóa HTTPS là trang thật\""
+       },
+       {
+        "html": "Nhắc buổi 5 – chỉ là đúng tên miền đang hiển thị",
+        "plain": "Nhắc buổi 5 – chỉ là đúng tên miền đang hiển thị"
+       }
+      ],
+      [
+       {
+        "html": "\"Tôi không đủ quan trọng để bị nhắm\"",
+        "plain": "\"Tôi không đủ quan trọng để bị nhắm\""
+       },
+       {
+        "html": "Tài khoản giao dịch viên xuất được toàn đơn vị (chương 3, 6)",
+        "plain": "Tài khoản giao dịch viên xuất được toàn đơn vị (chương 3, 6)"
+       }
+      ],
+      [
+       {
+        "html": "\"Không có link, không có file là an toàn\"",
+        "plain": "\"Không có link, không có file là an toàn\""
+       },
+       {
+        "html": "Tin nhắn chương 8",
+        "plain": "Tin nhắn chương 8"
+       }
+      ],
+      [
+       {
+        "html": "\"Nhắn lại hỏi là đã xác minh\"",
+        "plain": "\"Nhắn lại hỏi là đã xác minh\""
+       },
+       {
+        "html": "Kẻ gian kiểm soát kênh đó",
+        "plain": "Kẻ gian kiểm soát kênh đó"
+       }
+      ],
+      [
+       {
+        "html": "\"Lỡ bấm thì tự xử lý cho đỡ xấu hổ\"",
+        "plain": "\"Lỡ bấm thì tự xử lý cho đỡ xấu hổ\""
+       },
+       {
+        "html": "Giờ đầu tiên quyết định thiệt hại; báo sớm được cảm ơn",
+        "plain": "Giờ đầu tiên quyết định thiệt hại; báo sớm được cảm ơn"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s15"
+  },
+  {
+   "title": "Tài liệu tham khảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"https://www.cisa.gov/resources-tools/resources/phishing-guidance-stopping-attack-cycle-phase-one\" target=\"_blank\" rel=\"noopener noreferrer\">CISA, NSA, FBI, MS-ISAC – Phishing Guidance: Stopping the Attack Cycle at Phase One</a>",
+       "level": 0,
+       "plain": "CISA, NSA, FBI, MS-ISAC – Phishing Guidance: Stopping the Attack Cycle at Phase One"
+      },
+      {
+       "html": "<a href=\"https://www.ncsc.gov.uk/guidance/phishing\" target=\"_blank\" rel=\"noopener noreferrer\">NCSC (UK) – Phishing attacks: defending your organisation</a>",
+       "level": 0,
+       "plain": "NCSC (UK) – Phishing attacks: defending your organisation"
+      },
+      {
+       "html": "<a href=\"https://pages.nist.gov/800-63-4/sp800-63b.html\" target=\"_blank\" rel=\"noopener noreferrer\">NIST SP 800-63B – Digital Identity Guidelines: Authentication (xác thực chống phishing)</a>",
+       "level": 0,
+       "plain": "NIST SP 800-63B – Digital Identity Guidelines: Authentication (xác thực chống phishing)"
+      },
+      {
+       "html": "Tạp chí Công Thương (27/3/2025) – bài về cảnh báo của EVNHANOI về thủ đoạn giả danh nhân viên điện lực.",
+       "level": 0,
+       "plain": "Tạp chí Công Thương (27/3/2025) – bài về cảnh báo của EVNHANOI về thủ đoạn giả danh nhân viên điện lực."
+      },
+      {
+       "html": "Khuyến cáo của tổng công ty điện lực quản lý đơn vị (giảng viên bổ sung đường dẫn chính thức).",
+       "level": 0,
+       "plain": "Khuyến cáo của tổng công ty điện lực quản lý đơn vị (giảng viên bổ sung đường dẫn chính thức)."
+      }
+     ]
+    }
+   ],
+   "id": "s16"
+  },
+  {
+   "id": "s17",
+   "title": "Bài tập thêm – Viết lời từ chối và báo tin đáng ngờ",
+   "kind": "practice",
+   "activity": "m08-case-v2",
+   "blocks": [
+    {
+     "t": "p",
+     "plain": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập.",
+     "html": "Bài làm cá nhân, khoảng 15–20 phút. Toàn bộ thông tin trong tình huống là giả lập."
+    },
+    {
+     "t": "p",
+     "plain": "Lúc 21:30, một tài khoản mang ảnh lãnh đạo nhắn: “Gửi ngay danh sách 320 hộ nợ vào đây, anh đang họp nên đừng gọi. Chậm là em chịu trách nhiệm.” Người này gửi thêm liên kết https://minhan-support.example/login để bạn đăng nhập. Địa chỉ trong đề là địa chỉ giả lập, không cần mở.",
+     "html": "Lúc 21:30, một tài khoản mang ảnh lãnh đạo nhắn: “Gửi ngay danh sách 320 hộ nợ vào đây, anh đang họp nên đừng gọi. Chậm là em chịu trách nhiệm.” Người này gửi thêm liên kết https://minhan-support.example/login để bạn đăng nhập. Địa chỉ trong đề là địa chỉ giả lập, không cần mở."
+    },
+    {
+     "t": "h3",
+     "text": "Việc bạn cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Nêu ít nhất ba dấu hiệu đáng ngờ và đòn tâm lý được dùng.",
+     "html": "1. Nêu ít nhất ba dấu hiệu đáng ngờ và đòn tâm lý được dùng."
+    },
+    {
+     "t": "p",
+     "plain": "2. Viết lời trả lời lịch sự trong 2–3 câu và cách xác minh độc lập.",
+     "html": "2. Viết lời trả lời lịch sự trong 2–3 câu và cách xác minh độc lập."
+    },
+    {
+     "t": "p",
+     "plain": "3. Soạn tin báo đầu mối an toàn thông tin gồm thời điểm, kênh, nội dung, việc bạn đã làm và bằng chứng cần giữ.",
+     "html": "3. Soạn tin báo đầu mối an toàn thông tin gồm thời điểm, kênh, nội dung, việc bạn đã làm và bằng chứng cần giữ."
+    },
+    {
+     "t": "p",
+     "plain": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả.",
+     "html": "Nộp bài cá nhân theo mẫu. Nêu rõ dữ kiện, phương án xử lý và cách kiểm tra kết quả."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm.",
+     "html": "Tiêu chí chữa bài (10 điểm): hiểu đúng tình huống (3); đề xuất phù hợp và có lý do (4); kiểm chứng được kết quả (3). Giảng viên nhận xét, bài này không tự chấm điểm."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m08-case-v2"
+    },
+    {
+     "t": "p",
+     "plain": "Dấu hiệu gồm ngoài giờ, thúc giục, đe trách nhiệm, yêu cầu bỏ xác minh và gửi danh sách qua kênh lạ. Có thể trả lời: “Em cần xác minh yêu cầu qua kênh công việc trước khi chuyển dữ liệu. Em sẽ liên hệ theo số nội bộ đã có.” Không gọi theo số hoặc dùng liên kết trong tin nhắn. Giữ ảnh, định danh người gửi, giờ và URL dưới dạng văn bản; báo rõ nếu đã bấm hoặc nhập thông tin. Không chuyển tiếp file khách hàng để minh họa việc bị lừa.",
+     "html": "Dấu hiệu gồm ngoài giờ, thúc giục, đe trách nhiệm, yêu cầu bỏ xác minh và gửi danh sách qua kênh lạ. Có thể trả lời: “Em cần xác minh yêu cầu qua kênh công việc trước khi chuyển dữ liệu. Em sẽ liên hệ theo số nội bộ đã có.” Không gọi theo số hoặc dùng liên kết trong tin nhắn. Giữ ảnh, định danh người gửi, giờ và URL dưới dạng văn bản; báo rõ nếu đã bấm hoặc nhập thông tin. Không chuyển tiếp file khách hàng để minh họa việc bị lừa.",
+     "reveal": "m08-case-v2"
+    }
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "m08-check-v2",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: chọn cách xử lý",
+   "intro": "Chọn một phương án phù hợp nhất cho mỗi tình huống. Khi chữa bài, hãy giải thích vì sao bạn chọn cách đó.",
+   "questions": [
+    {
+     "text": "Tin nhắn có đúng ảnh đại diện của lãnh đạo và yêu cầu gửi dữ liệu gấp. Bước phù hợp là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Gửi ngay vì đúng ảnh đại diện"
+      },
+      {
+       "key": "B",
+       "text": "Hỏi người gửi xem có thật là lãnh đạo không"
+      },
+      {
+       "key": "C",
+       "text": "Xác minh qua số hoặc kênh công việc đã biết từ trước"
+      }
+     ],
+     "correct": "C",
+     "explain": "Ảnh và tên hiển thị có thể bị giả. Kênh xác minh phải độc lập với yêu cầu đáng ngờ.",
+     "id": "q1"
+    },
+    {
+     "text": "Bạn lỡ nhập mật khẩu vào trang nghi giả mạo. Nên báo thế nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Báo ngay thời điểm và thao tác đã làm qua kênh hỗ trợ chính thức"
+      },
+      {
+       "key": "B",
+       "text": "Chờ xem có mất dữ liệu không"
+      },
+      {
+       "key": "C",
+       "text": "Xóa tin nhắn để khỏi bị nhắc"
+      }
+     ],
+     "correct": "A",
+     "explain": "Thông tin kịp thời giúp xử lý tài khoản, phiên và phạm vi ảnh hưởng.",
+     "id": "q2"
+    }
+   ]
+  },
+  {
+   "id": "m08-quiz",
+   "type": "mcq",
+   "title": "Ôn câu hỏi cuối khóa (tùy chọn)",
+   "scope": "student",
+   "intro": "Mỗi câu chọn một đáp án đúng nhất.",
+   "questions": [
+    {
+     "module": 8,
+     "text": "Email \"lãnh đạo\" đòi gửi gấp danh sách khách hàng sang một địa chỉ mới. Xác minh bằng:",
+     "options": [
+      {
+       "key": "A",
+       "text": "Gọi số trong danh bạ chính thức của đơn vị"
+      },
+      {
+       "key": "B",
+       "text": "Trả lời email đó"
+      },
+      {
+       "key": "C",
+       "text": "Gọi số trong chữ ký email"
+      },
+      {
+       "key": "D",
+       "text": "Gửi một phần trước"
+      }
+     ],
+     "id": "q1",
+     "correct": "A"
+    }
+   ]
+  },
+  {
+   "id": "m08-th9",
+   "type": "practice",
+   "title": "Thực hành 9 – Bốn yêu cầu cần xác minh (55 phút)",
+   "scope": "student",
+   "section": "s9"
+  },
+  {
+   "id": "m08-review",
+   "type": "open",
+   "title": "Câu hỏi ôn tập",
+   "scope": "student",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Social engineering và phishing khác nhau thế nào?",
+     "answer": "Social engineering là thao túng tâm lý nói chung; phishing là một dạng dùng thông điệp hoặc trang giả"
+    },
+    {
+     "id": "q2",
+     "text": "Kể bốn đòn tâm lý và một câu nói điển hình cho mỗi đòn.",
+     "answer": "Uy quyền (\"Giám đốc chỉ đạo\"), khẩn cấp (\"trong 15 phút\"), giữ kín/chặn xác minh (\"đang họp không nghe máy\"), quen thuộc (\"theo hợp đồng số…\")"
+    },
+    {
+     "id": "q3",
+     "text": "Vì sao không nên đánh giá thư qua lỗi chính tả, logo?",
+     "answer": "Thư lừa đảo có thể viết bằng AI, logo sao chép được; thư từ tài khoản thật bị chiếm không có dấu hiệu nào"
+    },
+    {
+     "id": "q4",
+     "text": "Tên miền thật của https://evn.com.vn.xacminh-tk.example/login là gì?",
+     "answer": "xacminh-tk.example"
+    },
+    {
+     "id": "q5",
+     "text": "SPF, DKIM, DMARC chặn được gì, không chặn được gì?",
+     "answer": "Chặn nhiều thư giả đúng tên miền công ty; không chặn tên miền na ná và tài khoản thật bị chiếm"
+    },
+    {
+     "id": "q6",
+     "text": "Email có file nén và mật khẩu ghi ngay trong thư – vì sao đáng ngờ?",
+     "answer": "Mật khẩu ở đây để né trình quét mã độc, không để bảo vệ người nhận"
+    },
+    {
+     "id": "q7",
+     "text": "QR trong email yêu cầu \"quét để xác thực lại tài khoản\" nguy hiểm ở điểm nào?",
+     "answer": "Chuyển việc đăng nhập sang điện thoại cá nhân, nơi không có bộ lọc của công ty; link ẩn khỏi mắt người"
+    },
+    {
+     "id": "q8",
+     "text": "Khách hàng báo người gọi biết đúng mã khách hàng và số nợ. Giao dịch viên làm gì ngoài tư vấn?",
+     "answer": "Ghi nhận và chuyển ngay cho đầu mối ATTT – dấu hiệu dữ liệu nội bộ có thể đã lộ"
+    },
+    {
+     "id": "q9",
+     "text": "Kể bốn câu \"điện lực không bao giờ\".",
+     "answer": "Không yêu cầu chuyển tiền vào tài khoản cá nhân; không yêu cầu cài ứng dụng lạ, bấm link; không hỏi OTP, mật khẩu; không thu tiền qua Zalo cá nhân"
+    },
+    {
+     "id": "q10",
+     "text": "Kể bốn bước xử lý yêu cầu đáng ngờ.",
+     "answer": "Tạm dừng – xác minh độc lập – báo đầu mối – thực hiện khi rõ"
+    },
+    {
+     "id": "q11",
+     "text": "Nhắn lại tài khoản Zalo đó hỏi \"có phải anh không\" có phải là xác minh không?",
+     "answer": "Không – kẻ gian kiểm soát kênh đó. Phải gọi theo số đã có từ trước"
+    },
+    {
+     "id": "q12",
+     "text": "Điện thoại báo yêu cầu đăng nhập lúc 2 giờ sáng mà bạn không đăng nhập. Làm gì?",
+     "answer": "Bấm Từ chối; báo CNTT ngay; đổi mật khẩu – ai đó đã có mật khẩu của bạn"
+    },
+    {
+     "id": "q13",
+     "text": "Đã lỡ duyệt thông báo MFA cho người lạ. Tình trạng tài khoản là gì?",
+     "answer": "Coi như đã bị chiếm – báo ngay"
+    },
+    {
+     "id": "q14",
+     "text": "Vì sao không chuyển tiếp thư lừa đảo cho đồng nghiệp để cảnh báo?",
+     "answer": "Người khác có thể bấm nhầm; báo qua kênh của đầu mối để họ chặn cho cả đơn vị"
+    }
+   ]
+  },
+  {
+   "id": "m08-case-v2",
+   "type": "practice",
+   "scope": "student",
+   "section": "s17",
+   "title": "Bài tập thêm – Viết lời từ chối và báo tin đáng ngờ",
+   "intro": "Lúc 21:30, một tài khoản mang ảnh lãnh đạo nhắn: “Gửi ngay danh sách 320 hộ nợ vào đây, anh đang họp nên đừng gọi. Chậm là em chịu trách nhiệm.” Người này gửi thêm liên kết https://minhan-support.example/login để bạn đăng nhập. Địa chỉ trong đề là địa chỉ giả lập, không cần mở.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "part1",
+     "label": "Nêu ít nhất ba dấu hiệu đáng ngờ và đòn tâm lý được dùng."
+    },
+    {
+     "type": "textarea",
+     "key": "part2",
+     "label": "Viết lời trả lời lịch sự trong 2–3 câu và cách xác minh độc lập."
+    },
+    {
+     "type": "textarea",
+     "key": "part3",
+     "label": "Soạn tin báo đầu mối an toàn thông tin gồm thời điểm, kênh, nội dung, việc bạn đã làm và bằng chứng cần giữ."
+    }
+   ]
+  }
+ ]
+}
