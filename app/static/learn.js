@@ -195,9 +195,19 @@ const app = Vue.createApp({
     },
   },
   mounted() {
-    this.poll();
-    const loop = () => setTimeout(async () => { await this.poll(); loop(); }, document.hidden ? 10000 : 3000);
-    loop();
+    // hỏi nhịp mỗi giây (rất nhẹ); chỉ tải trạng thái đầy đủ khi giảng viên vừa thao tác,
+    // hoặc 10 giây một lần để cập nhật trạng thái trực tuyến
+    let tick = null, last = 0;
+    const step = async () => {
+      let changed = false;
+      try {
+        const t = await sapi('GET', '/api/s/tick');
+        changed = t.v !== tick; tick = t.v;
+      } catch (e) { changed = true; }
+      if (changed || Date.now() - last > 10000) { last = Date.now(); await this.poll(); }
+      setTimeout(step, document.hidden ? 5000 : 1000);
+    };
+    step();
     window.addEventListener('beforeunload', e => { if (this.dirty) { e.preventDefault(); e.returnValue = ''; } });
   },
 });

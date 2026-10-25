@@ -223,6 +223,37 @@ def visible_modules(class_id):
     return sorted({0} | {r["module_no"] for r in rows if r["module_no"] in MODULES})
 
 
+# ---- nhịp đồng bộ: học viên hỏi mỗi giây, trả lời từ bộ nhớ, không truy vấn CSDL.
+# Đúng với một tiến trình server (startCommand chạy một worker uvicorn).
+BOOT = secrets.token_hex(4)
+_tick = defaultdict(int)       # class_id -> số lần giảng viên thay đổi trạng thái lớp
+_tok_cache = {}                # token_hash -> (class_id, hết hạn)
+TOKEN_CACHE_SECONDS = 30
+
+
+def bump(cid):
+    _tick[cid] += 1
+
+
+@app.get("/api/s/tick")
+def student_tick(request: Request):
+    auth = request.headers.get("authorization", "")
+    if not auth.startswith("Bearer "):
+        raise HTTPException(401, "Bạn chưa vào lớp.")
+    h = sha(auth[7:].strip())
+    hit = _tok_cache.get(h)
+    if not hit or hit[1] < now():
+        st = db.q1("""SELECT s.class_id FROM students s JOIN classes c ON c.id = s.class_id
+                      WHERE s.token_hash=:h AND c.archived=0""", h=h)
+        if not st:
+            _tok_cache.pop(h, None)
+            raise HTTPException(401, "Phiên truy cập không còn hiệu lực. Vui lòng vào lại lớp.")
+        if len(_tok_cache) > 5000:
+            _tok_cache.clear()
+        hit = _tok_cache[h] = (st["class_id"], now() + TOKEN_CACHE_SECONDS)
+    return {"v": f"{BOOT}.{_tick[hit[0]]}"}
+
+
 @app.get("/api/s/state")
 @db.batched
 def student_state(st=Depends(current_student)):
@@ -434,6 +465,7 @@ def patch_class(cid: int, body: ClassPatch, _=Depends(teacher)):
         view_row(cid, body.active_module, create=True)
     if body.archived is not None:
         db.x("UPDATE classes SET archived=:a WHERE id=:id", a=1 if body.archived else 0, id=cid)
+    bump(cid)
     return get_class(cid)
 
 
@@ -500,6 +532,7 @@ def set_view(cid: int, body: ViewIn, _=Depends(teacher)):
     db.x("""UPDATE class_modules SET current_section=:s, unlocked=:u, follow=:f, stage=:st, updated_at=:t
             WHERE class_id=:c AND module_no=:m""",
          s=cur, u=unlocked, f=follow, st=stage, t=now(), c=cid, m=body.module)
+    bump(cid)
     return view_row(cid, body.module)
 
 
@@ -517,6 +550,7 @@ def set_activity_status(cid: int, aid: str, body: StatusIn, _=Depends(teacher)):
          c=cid, a=aid, s=body.status, t=now())
     if body.status != "hidden":
         view_row(cid, a["module"], create=True)
+    bump(cid)
     return {"ok": True, "status": body.status}
 
 

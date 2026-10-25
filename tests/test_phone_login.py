@@ -57,6 +57,16 @@ class PhoneLogin(unittest.TestCase):
         students = self.client.get(f'/api/t/classes/{cid}/state', headers=self.headers).json()['students']
         self.assertTrue(all(s['by_phone'] for s in students))
 
+    def test_tick_changes_only_when_teacher_acts(self):
+        room = self.post('/api/t/classes', {'name': 'Lớp nhịp'}).json()
+        st = self.post('/api/join', {'code': room['code'], 'name': 'Người Mẫu C'}).json()
+        h = {'Authorization': 'Bearer ' + st['token']}
+        v1 = self.client.get('/api/s/tick', headers=h).json()['v']
+        self.assertEqual(self.client.get('/api/s/tick', headers=h).json()['v'], v1)
+        self.post(f"/api/t/classes/{room['id']}/view", {'module': 1, 'current_section': 's5'}).raise_for_status()
+        self.assertNotEqual(self.client.get('/api/s/tick', headers=h).json()['v'], v1)
+        self.assertEqual(self.client.get('/api/s/tick', headers={'Authorization': 'Bearer sai'}).status_code, 401)
+
 
 if __name__ == '__main__':
     unittest.main()
