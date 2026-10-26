@@ -1,6 +1,7 @@
 /* Không gian bảng cho bài thực hành (trường "board"): học viên kéo thả module, ghi nội dung
    trong module và kéo chấm nối để nối các module với nhau. Bài nộp lưu dạng
-   {nodes: [{id, kind, x, y, title?, text, tag?, p?}], links: [{id, from, to, <trường ghi trên dây>}]}. */
+   {nodes: [{id, kind, x, y, title?, text, tag?, p?}], links: [{id, from, to, <trường ghi trên dây>}]}.
+   Vùng có "id" là vùng phân loại: thẻ nằm trong vùng nào (theo phần đầu thẻ) thì thuộc vùng đó. */
 const BOARD_NODE_W = 236;
 let boardSeq = 0;
 
@@ -16,6 +17,8 @@ function boardInit(f, v) {
     if (have.has(n.id) || (ok && !n.locked)) continue;
     b.nodes.push({ id: n.id, kind: n.kind, x: n.x, y: n.y, text: '' });
   }
+  // dây nối dựng sẵn chỉ thêm cho bài mới, học viên xóa được
+  if (!ok) for (const l of f.presetLinks || []) b.links.push({ id: boardUid('l'), from: l[0], to: l[1] });
   const kinds = {};
   for (const k of f.kinds) kinds[k.kind] = k;
   for (const n of b.nodes) {
@@ -26,6 +29,7 @@ function boardInit(f, v) {
 }
 
 const filled = v => typeof v === 'string' && v.trim() !== '';
+const listOf = v => (filled(v) ? v.split(', ') : []);
 
 const BoardField = {
   props: { f: Object, value: Object, readonly: Boolean },
@@ -33,7 +37,7 @@ const BoardField = {
   data() {
     return {
       uid: 'bn' + (++boardSeq), zoom: 0.8, panX: 0, panY: 0, sizes: {}, sel: null,
-      op: null, draft: null, full: false, W: BOARD_NODE_W, vpW: 800, vpH: 560,
+      op: null, draft: null, full: false, W: BOARD_NODE_W, vpW: 800, vpH: 560, hoverZone: null,
     };
   },
   computed: {
@@ -42,6 +46,7 @@ const BoardField = {
     nodeMap() { const m = {}; for (const n of this.value.nodes) m[n.id] = n; return m; },
     addable() { return this.f.kinds.filter(k => k.add); },
     size() { return this.f.size || [1600, 1000]; },
+    sortZones() { return (this.f.zones || []).filter(z => z.id); },
     paths() {
       return this.value.links.map(l => {
         const a = this.nodeMap[l.from], b = this.nodeMap[l.to];
@@ -70,39 +75,28 @@ const BoardField = {
         if (w.type === 'maxIn' && n && this.degree(n.id) > w.max) out.push(w.text);
         if (w.type === 'tag' && n && n.tag === w.value) out.push(w.text);
         if (w.type === 'pair' && this.linked(w.node, w.other)) out.push(w.text);
+        if (w.type === 'inzone' && n && (this.zoneOf(n) || {}).id === w.zone) out.push(w.text);
+        if (w.type === 'prop' && n && n.p && n.p[w.key] === w.value) out.push(w.text);
+        if (w.type === 'propAny' && this.value.nodes.some(x => x.kind === w.kind && x.p && listOf(x.p[w.key]).includes(w.value))) out.push(w.text);
+        if (w.type === 'propRe' && this.value.nodes.some(x => x.kind === w.kind && x.p && new RegExp(w.re, 'i').test(x.p[w.key] || ''))) out.push(w.text);
+        if (w.type === 'samefield') {
+          // hai thứ (VD file và mật khẩu) tới cùng một nơi bằng cùng một kênh
+          const v = w.from.map(id => {
+            const l = this.value.links.find(x => (x.from === id && x.to === w.to) || (x.to === id && x.from === w.to));
+            return l && filled(l[w.field]) ? l[w.field].trim().toLowerCase() : null;
+          });
+          if (v.every(Boolean) && new Set(v).size === 1) out.push(w.text);
+        }
       }
       return out;
     },
-    matrix() {
-      const s = this.f.summary;
-      if (!s || s.type !== 'matrix') return null;
-      const rows = this.value.nodes.filter(n => n.kind === s.rows);
-      const cols = this.value.nodes.filter(n => n.kind === s.cols);
-      return {
-        cols: cols.map(c => this.title(c)),
-        rows: rows.map(r => ({
-          label: this.title(r),
-          cells: cols.map(c => {
-            const l = this.value.links.find(x => (x.from === r.id && x.to === c.id) || (x.from === c.id && x.to === r.id));
-            if (!l) return { text: 'Không', none: true };
-            const parts = s.cell.map(k => filled(l[k.key]) ? (k.prefix || '') + l[k.key].trim() : '').filter(Boolean);
-            return { text: parts.length ? parts.join(' – ') : 'Có quyền (chưa ghi phạm vi)', missing: parts.length < s.cell.length };
-          }),
-        })),
-      };
+    summaries() {
+      return [].concat(this.f.summary || []).map(s => (s.type === 'matrix' ? this.matrixOf(s) : this.cardsOf(s)));
     },
     outline() {
       return this.f.kinds.map(k => ({
         k,
-        nodes: this.value.nodes.filter(n => n.kind === k.kind).map(n => ({
-          n, title: this.title(n),
-          links: this.value.links.filter(l => l.from === n.id || l.to === n.id).map(l => {
-            const other = this.nodeMap[l.from === n.id ? l.to : l.from];
-            const def = this.linkDef(l);
-            const extra = def.map(x => filled(l[x.key]) ? (x.prefix || x.label + ': ') + l[x.key].trim() : '').filter(Boolean).join('; ');
-            return other ? (l.from === n.id ? '→ ' : '← ') + this.title(other) + (extra ? ' (' + extra + ')' : '') : '';
-          }).filter(Boolean),
-        })),
+        nodes: this.value.nodes.filter(n => n.kind === k.kind).map(n => ({ n, title: this.title(n), zone: this.zoneOf(n), links: this.linkTexts(n) })),
       })).filter(g => g.nodes.length);
     },
     pop() {
@@ -116,6 +110,64 @@ const BoardField = {
     },
   },
   methods: {
+    matrixOf(s) {
+      const rows = this.value.nodes.filter(n => n.kind === s.rows);
+      const cols = this.value.nodes.filter(n => n.kind === s.cols);
+      return {
+        s,
+        cols: cols.map(c => this.title(c)),
+        rows: rows.map(r => ({
+          label: this.title(r),
+          cells: cols.map(c => {
+            const l = this.value.links.find(x => (x.from === r.id && x.to === c.id) || (x.from === c.id && x.to === r.id));
+            if (!l) return { text: s.none || 'Không', none: true };
+            const parts = s.cell.map(k => filled(l[k.key]) ? (k.prefix || '') + l[k.key].trim() : '').filter(Boolean);
+            return { text: parts.length ? parts.join(' – ') : (s.empty || 'Có quyền (chưa ghi phạm vi)'), missing: parts.length < s.cell.length };
+          }),
+        })),
+      };
+    },
+    /* bảng tổng hợp theo thẻ: mỗi thẻ một dòng; cột thuộc tính đánh dấu table: true sửa ngay trong bảng */
+    cardsOf(s) {
+      const ks = Array.isArray(s.kind) ? s.kind : [s.kind];
+      let ns = this.value.nodes.filter(n => ks.includes(n.kind));
+      if (s.sort === 'x') ns = ns.slice().sort((a, b) => a.x - b.x || a.y - b.y);
+      if (s.sort === 'zone') {
+        const zi = n => { const z = this.zoneOf(n); return z ? this.sortZones.indexOf(z) : 99; };
+        ns = ns.slice().sort((a, b) => zi(a) - zi(b) || a.y - b.y);
+      }
+      return { s, cards: ns };
+    },
+    cell(n, c) {
+      if (c.key === 'title') return this.title(n);
+      if (c.key === 'zone') { const z = this.zoneOf(n); return z ? z.label.replace(/^[①-⑩]\s*/, '') : 'Chưa xếp'; }
+      if (c.key === 'tag') return n.tag || '';
+      if (c.key === 'text') return n.text || '';
+      if (c.key === 'links') return this.linkTexts(n).join('; ');
+      return (n.p && n.p[c.key]) || '';
+    },
+    propDef(n, key) { return (this.kindOf(n).props || []).find(x => x.key === key); },
+    cardProps(n) { return (this.kindOf(n).props || []).filter(pp => !pp.table); },
+    zoneOf(n) {
+      if (!this.sortZones.length) return null;
+      const s = this.box(n), cx = n.x + s.w / 2, cy = n.y + Math.min(s.h, 80) / 2;
+      return this.sortZones.find(z => cx >= z.x && cx <= z.x + z.w && cy >= z.y && cy <= z.y + z.h) || null;
+    },
+    linkTexts(n) {
+      return this.value.links.filter(l => l.from === n.id || l.to === n.id).map(l => {
+        const other = this.nodeMap[l.from === n.id ? l.to : l.from];
+        const def = this.linkDef(l);
+        const extra = def.map(x => filled(l[x.key]) ? (x.prefix || x.label + ': ') + l[x.key].trim() : '').filter(Boolean).join('; ');
+        return other ? (l.from === n.id ? '→ ' : '← ') + this.title(other) + (extra ? ' (' + extra + ')' : '') : '';
+      }).filter(Boolean);
+    },
+    hasMulti(n, pp, o) { return listOf(n.p[pp.key]).includes(o); },
+    toggleMulti(n, pp, o) {
+      if (this.readonly) return;
+      const v = listOf(n.p[pp.key]);
+      n.p[pp.key] = pp.multi.filter(x => (x === o ? !v.includes(x) : v.includes(x))).join(', ');
+      this.touch();
+    },
     touch() { this.$emit('dirty'); },
     kindOf(n) { return this.kinds[n.kind] || { label: n.kind, color: 'slate' }; },
     title(n) { return (filled(n.title) && n.title.trim()) || (this.presets[n.id] && this.presets[n.id].title) || this.kindOf(n).label; },
@@ -130,7 +182,7 @@ const BoardField = {
     linkDef(l) {
       const a = this.nodeMap[l.from], b = this.nodeMap[l.to];
       if (!a || !b) return [];
-      const has = (v, k) => (Array.isArray(v) ? v : [v]).includes(k);
+      const has = (v, k) => v === '*' || (Array.isArray(v) ? v : [v]).includes(k);
       const d = (this.f.links || []).find(x => (has(x.a, a.kind) && has(x.b, b.kind)) || (has(x.a, b.kind) && has(x.b, a.kind)));
       return d ? d.fields : [];
     },
@@ -146,16 +198,29 @@ const BoardField = {
       const ks = v => (Array.isArray(v) ? v : [v]);
       const between = (l, a, b) => {
         const x = this.nodeMap[l.from], y = this.nodeMap[l.to];
+        if (!a) return !!(x && y);
         return x && y && ((ks(a).includes(x.kind) && ks(b).includes(y.kind)) || (ks(a).includes(y.kind) && ks(b).includes(x.kind)));
       };
       let have = 0, need = 1;
       if (g.type === 'filled') {
         const ns = this.pick(g); have = ns.filter(this.nodeFilled).length; need = g.min || ns.length;
       } else if (g.type === 'tagged') {
-        const ns = this.pick(g); have = ns.filter(n => filled(n.tag)).length; need = g.min || ns.length;
+        const ns = this.pick(g); have = ns.filter(n => (g.value ? n.tag === g.value : filled(n.tag))).length; need = g.min || ns.length;
+      } else if (g.type === 'props' && g.min) {
+        // đủ g.min thẻ điền hết các thuộc tính
+        have = this.pick(g).filter(n => g.fields.every(k => n.p && filled(n.p[k]))).length; need = g.min;
       } else if (g.type === 'props') {
         const ns = this.pick(g); need = ns.length * g.fields.length;
         have = ns.reduce((s, n) => s + g.fields.filter(k => n.p && filled(n.p[k])).length, 0);
+      } else if (g.type === 'text') {
+        const ns = this.pick(g); have = ns.filter(n => filled(n.text)).length; need = g.min || ns.length;
+      } else if (g.type === 'coverZones') {
+        // mỗi vùng phân loại có ít nhất một thẻ
+        const ns = this.pick(g); need = this.sortZones.length;
+        have = this.sortZones.filter(z => ns.some(n => this.nodeFilled(n) && this.zoneOf(n) === z)).length;
+      } else if (g.type === 'inzone') {
+        const ns = this.pick(g); need = g.min || ns.length;
+        have = ns.filter(n => { const z = this.zoneOf(n); return z && (!g.zones || g.zones.includes(z.id)); }).length;
       } else if (g.type === 'links') {
         have = this.value.links.filter(l => between(l, g.a, g.b)).length; need = g.min || 1;
       } else if (g.type === 'each') {
@@ -164,7 +229,7 @@ const BoardField = {
           && ks(g.to).includes((this.nodeMap[l.from === n.id ? l.to : l.from] || {}).kind))).length;
       } else if (g.type === 'linkfield') {
         const ls = this.value.links.filter(l => between(l, g.a, g.b));
-        need = Math.max(g.min || 1, ls.length);
+        need = g.atLeast ? g.min : Math.max(g.min || 1, ls.length);
         have = ls.filter(l => g.fields.every(k => filled(l[k]))).length;
       }
       need = Math.max(need, 1);
@@ -224,6 +289,8 @@ const BoardField = {
       o.n.x = Math.round(Math.min(Math.max(0, p.x - o.dx), this.size[0] - s.w));
       o.n.y = Math.round(Math.min(Math.max(0, p.y - o.dy), this.size[1] - s.h));
       o.moved = true;
+      const z = this.zoneOf(o.n);
+      this.hoverZone = z ? z.id : null;
     },
     up(e) {
       window.removeEventListener('pointermove', this.move);
@@ -250,6 +317,7 @@ const BoardField = {
         this.touch();
       }
       this.op = null;
+      this.hoverZone = null;
     },
     wheel(e) {
       if (e.ctrlKey || e.metaKey) {
@@ -401,7 +469,7 @@ const BoardField = {
 
     <div class="bn-vp" ref="vp" @pointerdown="down" @wheel="wheel" :class="{ panning: op && op.type === 'pan', linking: draft }">
       <div class="bn-world" :style="{ width: size[0] + 'px', height: size[1] + 'px', transform: 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoom + ')' }">
-        <div v-for="(z, i) in f.zones || []" :key="'z' + i" class="bn-zone" :class="'tone-' + z.color"
+        <div v-for="(z, i) in f.zones || []" :key="'z' + i" class="bn-zone" :class="['tone-' + z.color, { sort: z.id, drop: z.id && hoverZone === z.id }]"
           :style="{ left: z.x + 'px', top: z.y + 'px', width: z.w + 'px', height: z.h + 'px' }">
           <span>{{ z.label }}</span><small v-if="z.hint">{{ z.hint }}</small>
         </div>
@@ -437,11 +505,20 @@ const BoardField = {
             <option v-for="o in kindOf(n).options" :key="o" :value="o">{{ o }}</option>
           </select>
           <span v-else-if="kindOf(n).options" class="bn-tag" :class="'tag-' + tone(n)">{{ n.tag || 'Chưa chọn' }}</span>
-          <label v-for="pp in kindOf(n).props || []" :key="pp.key" class="bn-prop">
-            <span>{{ pp.label }}</span>
-            <input v-model="n.p[pp.key]" :placeholder="pp.placeholder || ''" :readonly="readonly" maxlength="200" @input="touch">
-          </label>
-          <textarea class="bn-text" v-model="n.text" :placeholder="readonly ? '' : hint(n)" :readonly="readonly" :rows="rows(n.text)" maxlength="1500" @input="touch"></textarea>
+          <div class="bn-props" :class="{ short: kindOf(n).shortProps }">
+            <label v-for="pp in cardProps(n)" :key="pp.key" class="bn-prop">
+              <span>{{ pp.label }}</span>
+              <div v-if="pp.multi" class="bn-chips">
+                <button v-for="o in pp.multi" :key="o" type="button" class="bn-chip" :class="{ on: hasMulti(n, pp, o) }" :disabled="readonly" @click="toggleMulti(n, pp, o)">{{ o }}</button>
+              </div>
+              <select v-else-if="pp.options" v-model="n.p[pp.key]" :disabled="readonly" @change="touch">
+                <option :value="undefined">{{ pp.placeholder || '…' }}</option>
+                <option v-for="o in pp.options" :key="o" :value="o">{{ o }}</option>
+              </select>
+              <input v-else v-model="n.p[pp.key]" :placeholder="pp.placeholder || ''" :readonly="readonly" maxlength="200" @input="touch">
+            </label>
+          </div>
+          <textarea v-if="!kindOf(n).notext" class="bn-text" v-model="n.text" :placeholder="readonly ? '' : hint(n)" :readonly="readonly" :rows="rows(n.text)" maxlength="1500" @input="touch"></textarea>
           <template v-if="!readonly">
             <span class="bn-port bn-port-l" :data-id="n.id" data-side="l" title="Kéo chấm này sang module khác để nối"></span>
             <span class="bn-port" :data-id="n.id" title="Kéo chấm này sang module khác để nối"></span>
@@ -464,12 +541,32 @@ const BoardField = {
       <div class="bn-help" v-if="!readonly">Kéo module để sắp xếp · kéo chấm <i></i> ở mép trái hoặc phải sang module khác để nối · bấm nhãn trên dây để ghi chú · Ctrl + cuộn để phóng to</div>
     </div>
 
-    <div v-if="matrix" class="bn-summary">
-      <b>{{ f.summary.title || 'Bảng tự lập từ các dây nối' }}</b>
-      <div class="tablewrap"><table class="formtable bn-matrix">
-        <thead><tr><th></th><th v-for="c in matrix.cols" :key="c">{{ c }}</th></tr></thead>
-        <tbody><tr v-for="r in matrix.rows" :key="r.label"><td class="rowlabel">{{ r.label }}</td>
+    <div v-for="(m, si) in summaries" :key="'s' + si" class="bn-summary">
+      <b>{{ m.s.title || 'Bảng tự lập từ bảng' }}</b>
+      <p v-if="m.s.hint" class="muted bn-shint">{{ m.s.hint }}</p>
+      <div v-if="m.cols" class="tablewrap"><table class="formtable bn-matrix">
+        <thead><tr><th></th><th v-for="c in m.cols" :key="c">{{ c }}</th></tr></thead>
+        <tbody><tr v-for="r in m.rows" :key="r.label"><td class="rowlabel">{{ r.label }}</td>
           <td v-for="(c, j) in r.cells" :key="j" :class="{ none: c.none, missing: c.missing }">{{ c.text }}</td></tr></tbody>
+      </table></div>
+      <div v-else class="tablewrap"><table class="formtable bn-matrix bn-cards">
+        <thead><tr><th v-for="c in m.s.cols" :key="c.key">{{ c.label }}</th></tr></thead>
+        <tbody>
+          <tr v-if="!m.cards.length"><td :colspan="m.s.cols.length" class="muted">Chưa có thẻ nào trên bảng.</td></tr>
+          <tr v-for="n in m.cards" :key="n.id">
+            <td v-for="c in m.s.cols" :key="c.key" :class="{ rowlabel: c.key === 'title', missing: !cell(n, c) || cell(n, c) === 'Chưa xếp' }">
+              <template v-if="propDef(n, c.key) && propDef(n, c.key).table && !readonly">
+                <select v-if="propDef(n, c.key).options" v-model="n.p[c.key]" @change="touch">
+                  <option :value="undefined">…</option>
+                  <option v-for="o in propDef(n, c.key).options" :key="o" :value="o">{{ o }}</option>
+                </select>
+                <input v-else v-model="n.p[c.key]" :placeholder="propDef(n, c.key).placeholder || ''" maxlength="200" @input="touch">
+              </template>
+              <a v-else-if="c.key === 'title'" href="#" @click.prevent="focusNode(n.id)">{{ cell(n, c) }}</a>
+              <span v-else class="bn-cell">{{ cell(n, c) }}</span>
+            </td>
+          </tr>
+        </tbody>
       </table></div>
     </div>
     <details class="bn-summary bn-outline">
@@ -477,7 +574,7 @@ const BoardField = {
       <div v-for="g in outline" :key="g.k.kind">
         <h4>{{ g.k.icon }} {{ g.k.label }}</h4>
         <ul><li v-for="x in g.nodes" :key="x.n.id">
-          <a href="#" @click.prevent="focusNode(x.n.id)"><b>{{ x.title }}</b></a><span v-if="x.n.tag" class="tag">{{ x.n.tag }}</span>
+          <a href="#" @click.prevent="focusNode(x.n.id)"><b>{{ x.title }}</b></a><span v-if="x.zone" class="tag">{{ x.zone.label }}</span><span v-if="x.n.tag" class="tag">{{ x.n.tag }}</span>
           <template v-for="pp in kindOf(x.n).props || []" :key="pp.key"><span v-if="x.n.p && x.n.p[pp.key]"> · {{ pp.label }}: {{ x.n.p[pp.key] }}</span></template>
           <div v-if="x.n.text" class="bn-otext">{{ x.n.text }}</div>
           <div v-for="(t, i) in x.links" :key="i" class="muted bn-olink">{{ t }}</div>

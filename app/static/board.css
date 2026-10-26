@@ -72,6 +72,9 @@
 }
 .bn-zone span { position: absolute; left: 16px; top: 10px; font-weight: 700; font-size: 15px; letter-spacing: .02em; color: var(--t); text-transform: uppercase; }
 .bn-zone small { position: absolute; left: 16px; top: 32px; right: 16px; font-size: 13px; color: var(--muted); line-height: 1.35; }
+/* vùng phân loại: thả thẻ vào để xếp loại */
+.bn-zone.sort { border-style: solid; background: color-mix(in srgb, var(--t) 8%, transparent); transition: background .15s, box-shadow .15s; }
+.bn-zone.drop { background: color-mix(in srgb, var(--t) 20%, transparent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--t) 30%, transparent); }
 
 .bn-svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
 .bn-link { fill: none; stroke: var(--muted); stroke-width: 2.2; opacity: .75; transition: stroke .15s; }
@@ -121,6 +124,13 @@ input.bn-title:focus { outline: none; border-bottom-color: var(--t); }
 .bn-tag.tag-warn { background: var(--warn-soft); color: var(--accent); border-color: var(--accent); }
 .bn-tag.tag-info, .bn-tag.tag-set { background: var(--brand-soft); color: var(--brand); border-color: var(--brand); }
 .bn-prop { display: flex; flex-direction: column; gap: 1px; margin: 0 0 6px; font-size: 12px; color: var(--muted); }
+.bn-props.short { display: flex; gap: 6px; }
+.bn-props.short .bn-prop { flex: 1; min-width: 0; }
+.bn-prop select { font-size: 13px; padding: 3px 5px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); width: 100%; }
+.bn-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.bn-chip { font: inherit; font-size: 12px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); cursor: pointer; }
+.bn-chip.on { background: var(--t); border-color: var(--t); color: #fff; }
+.bn-chip:disabled { cursor: default; }
 .bn-prop input { font-size: 14px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
 .bn-text { display: block; width: 100%; resize: none; font-size: 14px; line-height: 1.45; padding: 6px 8px; min-height: 0;
   border: 1px solid var(--line); border-radius: 8px; background: var(--bg); cursor: text; }
@@ -158,6 +168,11 @@ body.bn-lock { overflow: hidden; }
 .bn-matrix td { font-size: 13.5px; padding: 6px 8px; }
 .bn-matrix td.none { color: var(--muted); }
 .bn-matrix td.missing { background: var(--warn-soft); }
+.bn-summary + .bn-summary { margin-top: 10px; }
+.bn-shint { margin: -2px 0 6px; font-size: 13px; }
+.bn-cards td { vertical-align: top; }
+.bn-cards td input, .bn-cards td select { width: 100%; min-width: 90px; font-size: 13.5px; padding: 4px 6px; }
+.bn-cell { white-space: pre-wrap; }
 .bn-outline summary { cursor: pointer; font-weight: 600; font-size: 14px; }
 .bn-outline h4 { margin: 12px 0 4px; font-size: 14px; }
 .bn-outline ul { margin: 0; padding-left: 20px; font-size: 14px; }
