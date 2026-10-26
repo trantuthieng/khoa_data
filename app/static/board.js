@@ -56,9 +56,10 @@ const BoardField = {
       if (!this.draft) return '';
       const a = this.nodeMap[this.draft.from];
       const s = this.box(a);
-      const x1 = a.x + s.w, y1 = a.y + s.h / 2, x2 = this.draft.x, y2 = this.draft.y;
+      const k = this.draft.left ? -1 : 1;
+      const x1 = this.draft.left ? a.x : a.x + s.w, y1 = a.y + s.h / 2, x2 = this.draft.x, y2 = this.draft.y;
       const c = Math.max(40, Math.abs(x2 - x1) / 2);
-      return `M${x1},${y1} C${x1 + c},${y1} ${x2 - c},${y2} ${x2},${y2}`;
+      return `M${x1},${y1} C${x1 + k * c},${y1} ${x2 - k * c},${y2} ${x2},${y2}`;
     },
     goals() { return (this.f.goals || []).map(g => ({ text: g.text, ...this.check(g) })); },
     goalsDone() { return this.goals.filter(g => g.done).length; },
@@ -199,7 +200,7 @@ const BoardField = {
       const hit = t.closest('.bn-hit');
       if (hit) { this.sel = { type: 'link', id: hit.dataset.id }; return; }
       if (port && !this.readonly) {
-        this.draft = { from: port.dataset.id, x: p.x, y: p.y };
+        this.draft = { from: port.dataset.id, left: port.dataset.side === 'l', x: p.x, y: p.y };
       } else if (node && !this.readonly) {
         const n = this.nodeMap[node.dataset.id];
         this.sel = { type: 'node', id: n.id };
@@ -420,7 +421,10 @@ const BoardField = {
             <input v-model="n.p[pp.key]" :placeholder="pp.placeholder || ''" :readonly="readonly" maxlength="200" @input="touch">
           </label>
           <textarea class="bn-text" v-model="n.text" :placeholder="readonly ? '' : hint(n)" :readonly="readonly" :rows="rows(n.text)" maxlength="1500" @input="touch"></textarea>
-          <span v-if="!readonly" class="bn-port" :data-id="n.id" title="Kéo chấm này sang module khác để nối"></span>
+          <template v-if="!readonly">
+            <span class="bn-port bn-port-l" :data-id="n.id" data-side="l" title="Kéo chấm này sang module khác để nối"></span>
+            <span class="bn-port" :data-id="n.id" title="Kéo chấm này sang module khác để nối"></span>
+          </template>
         </div>
       </div>
 
@@ -436,7 +440,7 @@ const BoardField = {
           <button v-if="!readonly" class="btn sm ghost danger" @click="removeLink(pop.p.l)">Xóa dây nối</button>
         </div>
       </div>
-      <div class="bn-help" v-if="!readonly">Kéo module để sắp xếp · kéo chấm <i></i> ở mép phải sang module khác để nối · bấm nhãn trên dây để ghi chú · Ctrl + cuộn để phóng to</div>
+      <div class="bn-help" v-if="!readonly">Kéo module để sắp xếp · kéo chấm <i></i> ở mép trái hoặc phải sang module khác để nối · bấm nhãn trên dây để ghi chú · Ctrl + cuộn để phóng to</div>
     </div>
 
     <div v-if="matrix" class="bn-summary">
