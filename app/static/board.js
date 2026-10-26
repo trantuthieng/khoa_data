@@ -351,6 +351,27 @@ const BoardField = {
   },
   template: `
   <div class="board" :class="{ 'bn-full': full, 'bn-ro': readonly }">
+    <details v-if="!readonly" class="bn-guide" open>
+      <summary>Hướng dẫn làm bài</summary>
+      <div class="bn-guide-body">
+        <div>
+          <b>Thao tác trên bảng</b>
+          <ul>
+            <li><b>Viết:</b> bấm vào ô trong module và gõ nội dung.</li>
+            <li><b>Nối:</b> kéo chấm tròn ở mép trái hoặc phải của module, thả lên module khác. Thả nhầm thì chọn dây, nhấn Delete.</li>
+            <li><b>Ghi chú trên dây:</b> bấm nhãn ở giữa dây, điền rồi bấm Xong.</li>
+            <li><b>Sắp xếp:</b> kéo phần đầu module để di chuyển. Kéo nền trống để xem phần khác của bảng.</li>
+            <li><b>Thêm/xóa:</b> dùng nút "Thêm module"; module tự thêm có dấu × để xóa.</li>
+            <li><b>Phóng to:</b> nút + / −, Ctrl + cuộn chuột, hoặc "Toàn màn hình" cho dễ làm.</li>
+          </ul>
+        </div>
+        <div v-if="f.steps && f.steps.length">
+          <b>Các bước làm bài</b>
+          <ol><li v-for="(s, i) in f.steps" :key="i">{{ s }}</li></ol>
+          <p class="muted">Danh sách Nhiệm vụ bên dưới tự đánh dấu ✓ khi bạn làm đủ. Bài được lưu khi bấm "Nộp bài"; nộp lại bao nhiêu lần cũng được khi bài còn mở.</p>
+        </div>
+      </div>
+    </details>
     <div class="bn-goals" v-if="goals.length">
       <div class="bn-goals-head">
         <b>Nhiệm vụ</b>
