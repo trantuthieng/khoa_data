@@ -55,6 +55,9 @@ async def security_headers(request: Request, call_next):
         "img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'")
     if request.url.path.startswith("/api/"):
         resp.headers["Cache-Control"] = "no-store"
+    else:
+        # trang và file tĩnh: luôn hỏi lại server (304 nếu chưa đổi) để bản deploy mới có hiệu lực ngay
+        resp.headers.setdefault("Cache-Control", "no-cache")
     return resp
 
 
