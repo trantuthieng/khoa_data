@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 
-from .practice import template_for
+from .practice import OVERRIDES, template_for
 
 CONTENT_DIR = Path(__file__).parent / "content"
 STUDENT_KINDS = ("content", "practice")
@@ -15,6 +15,8 @@ for f in sorted(CONTENT_DIR.glob("m*.json")):
     for a in m["activities"]:
         a["module"] = m["no"]
         if a["type"] == "practice":
+            if a["id"] in OVERRIDES:
+                a["fields"] = OVERRIDES[a["id"]]
             a.setdefault("fields", template_for(a["id"]))
         ACTIVITIES[a["id"]] = a
     m["has_stages"] = any(b.get("stage") for s in m["sections"] for b in s["blocks"])

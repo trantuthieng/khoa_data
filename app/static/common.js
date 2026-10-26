@@ -52,6 +52,8 @@ function initPayload(act, existing) {
         p.fields[f.key] = rows;
       } else if (f.type === 'checklist') {
         p.fields[f.key] = Array.isArray(v) ? v : f.items.map(() => false);
+      } else if (f.type === 'board') {
+        p.fields[f.key] = boardInit(f, v);
       } else if (typeof v !== 'string') {
         p.fields[f.key] = '';
       }
@@ -119,8 +121,20 @@ const ContentBlocks = {
 
 /* Form làm bài: trắc nghiệm, chọn nhiều, tự luận, thực hành */
 const ActivityForm = {
+  components: typeof BoardField === 'undefined' ? {} : { BoardField },
   props: { act: Object, payload: Object, readonly: Boolean, showAnswers: Boolean, stats: Object },
   emits: ['dirty'],
+  computed: {
+    // bài đã nộp theo mẫu cũ (trước khi đổi sang bảng) vẫn hiện cho giảng viên và học viên đọc lại
+    legacy() {
+      if (this.act.type !== 'practice' || !this.payload.fields) return [];
+      const keys = new Set(this.act.fields.map(f => f.key));
+      const text = v => Array.isArray(v)
+        ? v.map(r => (r && typeof r === 'object') ? Object.values(r).filter(x => typeof x === 'string' && x.trim()).join(' | ') : String(r)).filter(Boolean).join('\n')
+        : (typeof v === 'string' ? v : '');
+      return Object.entries(this.payload.fields).filter(([k]) => !keys.has(k)).map(([k, v]) => ({ k, text: text(v) })).filter(x => x.text.trim());
+    },
+  },
   methods: {
     pick(q, o, ev) {
       if (this.readonly) return;
@@ -178,7 +192,8 @@ const ActivityForm = {
     <template v-else-if="act.type === 'practice'">
       <div v-for="f in act.fields" :key="f.key" class="pfield">
         <label class="field">{{ f.label }} <div v-if="f.hint" class="hint">{{ f.hint }}</div></label>
-        <input v-if="f.type === 'text'" v-model="payload.fields[f.key]" :readonly="readonly" @input="touch">
+        <board-field v-if="f.type === 'board'" :f="f" :value="payload.fields[f.key]" :readonly="readonly" @dirty="touch"></board-field>
+        <input v-else-if="f.type === 'text'" v-model="payload.fields[f.key]" :readonly="readonly" @input="touch">
         <textarea v-else-if="f.type === 'textarea'" v-model="payload.fields[f.key]" :readonly="readonly" rows="4" @input="touch"></textarea>
         <div v-else-if="f.type === 'checklist'" class="checklist">
           <label v-for="(it, i) in f.items" :key="i"><input type="checkbox" v-model="payload.fields[f.key][i]" :disabled="readonly" @change="touch"> <span>{{ it }}</span></label>
@@ -203,6 +218,10 @@ const ActivityForm = {
           <div v-if="!f.rows && !readonly" style="padding:6px"><button class="btn sm" @click="addRow(f)">+ Thêm dòng</button></div>
         </div>
       </div>
+      <details v-if="legacy.length" class="pfield" open>
+        <summary class="field">Bài đã nộp theo mẫu cũ</summary>
+        <p v-for="x in legacy" :key="x.k" style="white-space:pre-wrap;font-size:14px">{{ x.text }}</p>
+      </details>
     </template>
   </div>`,
 };

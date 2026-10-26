@@ -74,6 +74,23 @@ class TeachingFlow(unittest.TestCase):
         self.assertEqual(self.post(grade, payload).status_code, 401)
         self.post('/api/t/login', {'password': 'test-teacher-only'}).raise_for_status()
 
+    def test_board_submission(self):
+        room = self.post('/api/t/classes', {'name': 'Test board'}).json()
+        alice = self.post('/api/join', {'code': room['code'], 'name': 'Alice'}).json()
+        ah = {'Authorization': 'Bearer ' + alice['token']}
+        aid = 'm03-th3'
+        self.post(f'/api/t/classes/{room["id"]}/activities/{aid}', {'status': 'open'}).raise_for_status()
+        act = self.client.get('/api/s/activity/' + aid, headers=ah).json()
+        self.assertEqual(act['fields'][0]['type'], 'board')
+        # chỉ kéo module, nối dây mà chưa ghi chữ: chưa tính là bài làm
+        moved = {'nodes': [{'id': 'r_nv', 'kind': 'role', 'x': 60, 'y': 90, 'text': ''}],
+                 'links': [{'id': 'l1', 'from': 'r_nv', 'to': 'p_xem'}]}
+        self.assertEqual(self.post('/api/s/activity/' + aid, {'payload': {'fields': {'ma_tran_bang': moved}}}, ah).status_code, 400)
+        moved['links'][0]['pham_vi'] = 'KH đơn vị mình'
+        self.post('/api/s/activity/' + aid, {'payload': {'fields': {'ma_tran_bang': moved}}}, ah).raise_for_status()
+        saved = self.client.get('/api/s/activity/' + aid, headers=ah).json()['response']['payload']
+        self.assertEqual(saved['fields']['ma_tran_bang']['links'][0]['pham_vi'], 'KH đơn vị mình')
+
     def test_supplemental_content_and_answer_gates(self):
         from app.content import MODULES, ACTIVITIES, public_activity, student_module, score
         exam = {q['text'] for q in ACTIVITIES['m10-exam']['questions']}
@@ -81,7 +98,11 @@ class TeachingFlow(unittest.TestCase):
         for no in range(1, 11):
             aid = f'm{no:02d}-case-v2'
             a = ACTIVITIES[aid]
-            self.assertEqual(len(a['fields']), 3)
+            if no == 3:
+                # buổi 3 làm trên không gian bảng
+                self.assertEqual(a['fields'][0]['type'], 'board')
+            else:
+                self.assertEqual(len(a['fields']), 3)
             for status in ('open', 'closed'):
                 m = student_module(no, None, set())
                 section = next(s for s in m['sections'] if s.get('activity') == aid)

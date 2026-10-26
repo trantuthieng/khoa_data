@@ -336,11 +336,15 @@ class SubmitIn(BaseModel):
     payload: dict
 
 
+# Khóa cấu trúc của bài dạng bảng (vị trí module, đầu dây nối): không phải nội dung bài làm
+BOARD_KEYS = {"id", "kind", "x", "y", "from", "to"}
+
+
 def has_work(value):
     if isinstance(value, str):
         return bool(value.strip())
     if isinstance(value, dict):
-        return any(has_work(v) for v in value.values())
+        return any(has_work(v) for k, v in value.items() if k not in BOARD_KEYS)
     if isinstance(value, list):
         return any(has_work(v) for v in value)
     return value is True or isinstance(value, (int, float)) and not isinstance(value, bool)
