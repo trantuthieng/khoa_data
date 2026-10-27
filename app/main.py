@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
 from . import db
+from .answer_keys import ANSWER_KEYS
 from .content import ACTIVITIES, INDEX, MODULES, public_activity, score, section_index, student_module
 
 BASE = Path(__file__).parent
@@ -503,6 +504,18 @@ def teacher_module(no: int, _=Depends(teacher)):
         raise HTTPException(404)
     m = MODULES[no]
     return {**m, "activities": [ACTIVITIES[a["id"]] for a in m["activities"]]}
+
+
+@app.get("/api/t/answers")
+def answer_index(_=Depends(teacher)):
+    return [{"id": aid, "title": ACTIVITIES[aid]["title"], "module": ACTIVITIES[aid]["module"]} for aid in ANSWER_KEYS]
+
+
+@app.get("/api/t/answers/{aid}")
+def answer_key(aid: str, _=Depends(teacher)):
+    if aid not in ANSWER_KEYS:
+        raise HTTPException(404, "Bài này chưa có đáp án cho giảng viên.")
+    return {**ANSWER_KEYS[aid], "activity": ACTIVITIES[aid]}
 
 
 @app.get("/api/t/classes/{cid}/state")

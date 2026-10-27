@@ -1,5 +1,32 @@
-const app = Vue.createApp({
+/* Đáp án giảng viên: bài làm mẫu (bảng chỉ đọc) và phần giải thích; mục "private" ẩn khi trình chiếu */
+const AnswerKey = {
   components: { ContentBlocks, ActivityForm },
+  props: { data: Object },
+  emits: ['close'],
+  computed: { payload() { return initPayload(this.data.activity, { fields: this.data.fields }); } },
+  methods: { print() { window.print(); } },
+  template: `
+  <div class="answer-key">
+    <div class="row noprint">
+      <button class="btn sm ghost" @click="$emit('close')">← Đóng đáp án</button>
+      <div class="grow"></div>
+      <button class="btn sm" @click="print">In đáp án</button>
+    </div>
+    <div class="module-kicker" style="margin-top:10px">Buổi {{ data.activity.module }} · Đáp án giảng viên</div>
+    <h2 class="section-title">{{ data.activity.title }}</h2>
+    <div class="banner noprint">👁 Chỉ giảng viên thấy. Học viên chỉ xem “Đáp án gợi ý” trong giáo trình khi bài được công bố.</div>
+    <p v-if="data.summary" class="callout">{{ data.summary }}</p>
+    <h3>Bài làm mẫu</h3>
+    <activity-form :act="data.activity" :payload="payload" readonly></activity-form>
+    <div v-for="(s, i) in data.sections" :key="i" :class="{ 'gv-private': s.private }">
+      <h3>{{ s.title }} <span v-if="s.private" class="tag">Không chiếu cho lớp</span></h3>
+      <content-blocks :blocks="s.blocks"></content-blocks>
+    </div>
+  </div>`,
+};
+
+const app = Vue.createApp({
+  components: { ContentBlocks, ActivityForm, AnswerKey },
   data() {
     return {
       logo: LOGO, authed: null, password: '', err: '', toast: '',
@@ -8,7 +35,7 @@ const app = Vue.createApp({
       index: [], classes: [], newName: '', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
       tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null, rev: 0, polling: false,
-      gradeDrafts: {}, grading: {},
+      gradeDrafts: {}, grading: {}, answerIndex: [], answer: null,
       showOutline: false, showActivities: false,
     };
   },
@@ -52,6 +79,13 @@ const app = Vue.createApp({
     async loadClasses() {
       this.index = await this.call('GET', '/api/modules');
       this.classes = await this.call('GET', '/api/t/classes');
+      this.answerIndex = await this.call('GET', '/api/t/answers');
+    },
+    hasAnswer(id) { return this.answerIndex.some(x => x.id === id); },
+    async openAnswer(id) {
+      this.answer = await this.call('GET', '/api/t/answers/' + id);
+      this.showActivities = false;
+      this.scrollTop();
     },
     async createClass() {
       const c = await this.call('POST', '/api/t/classes', { name: this.newName.trim() });
@@ -79,13 +113,13 @@ const app = Vue.createApp({
 
     // ---------- phòng học ----------
     async enterClass(c) {
-      this.cls = c; this.viewModule = c.active_module; this.results = null;
+      this.cls = c; this.viewModule = c.active_module; this.results = null; this.answer = null;
       store.set('teacher_class', String(c.id));
       await this.loadMod(this.viewModule);
       await this.refresh(true);
       this.start();
     },
-    leaveClass() { this.cls = null; this.room = null; this.stop(); store.del('teacher_class'); this.loadClasses(); },
+    leaveClass() { this.cls = null; this.room = null; this.answer = null; this.stop(); store.del('teacher_class'); this.loadClasses(); },
     async restore() {
       const id = Number(store.get('teacher_class'));
       const c = this.classes.find(x => x.id === id);
@@ -107,7 +141,7 @@ const app = Vue.createApp({
       if (this.results) await this.loadResults(this.results.activity.id, true);
     },
     async changeViewModule() {
-      this.results = null;
+      this.results = null; this.answer = null;
       await this.loadMod(this.viewModule);
       await this.refresh(true);
       if (!this.room.view) this.localSection = 's0';
@@ -157,7 +191,7 @@ const app = Vue.createApp({
       } catch (e) { if (a) a.status = before; throw e; } finally { this.rev++; }
       if (this.results && this.results.activity.id === id) this.results.status = status;
     },
-    async openResults(id) { this.focusGroup = null; this.showKey = false; this.showActivities = false; await this.loadResults(id, false); this.scrollTop(); },
+    async openResults(id) { this.answer = null; this.focusGroup = null; this.showKey = false; this.showActivities = false; await this.loadResults(id, false); this.scrollTop(); },
     async loadResults(id, silent) {
       try {
         const data = await this.call('GET', `/api/t/classes/${this.cls.id}/activities/${id}/results`);
@@ -189,7 +223,7 @@ const app = Vue.createApp({
       finally { this.grading[r.id] = false; }
     },
     reloadGrade(r) { delete this.gradeDrafts[r.id]; },
-    goSectionOf(a) { this.localSection = a.section; this.results = null; this.scrollTop(); },
+    goSectionOf(a) { this.localSection = a.section; this.results = null; this.answer = null; this.scrollTop(); },
     practicePayload(r) { return initPayload(this.results.activity, r.payload); },
     isCorrect(q, o) { return Array.isArray(q.correct) ? q.correct.includes(o.key) : q.correct === o.key; },
     qStat(q) { return this.results.stats && this.results.stats.questions[q.id]; },

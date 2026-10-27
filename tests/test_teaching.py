@@ -91,6 +91,42 @@ class TeachingFlow(unittest.TestCase):
         saved = self.client.get('/api/s/activity/' + aid, headers=ah).json()['response']['payload']
         self.assertEqual(saved['fields']['ma_tran_bang']['links'][0]['pham_vi'], 'KH đơn vị mình')
 
+    def test_teacher_answer_keys(self):
+        from app.answer_keys import ANSWER_KEYS
+        from app.content import ACTIVITIES
+        for aid, key in ANSWER_KEYS.items():
+            fields = {f['key']: f for f in ACTIVITIES[aid]['fields']}
+            self.assertEqual(set(key['fields']), set(fields), aid)
+            for fk, v in key['fields'].items():
+                f = fields[fk]
+                if f['type'] != 'board':
+                    continue
+                # bài mẫu chỉ dùng module có trong bảng, đủ module dựng sẵn, dây nối tới module có thật
+                kinds = {k['kind']: k for k in f['kinds']}
+                ids = {n['id'] for n in v['nodes']}
+                self.assertTrue({n['id'] for n in f['nodes']} <= ids, aid)
+                for n in v['nodes']:
+                    self.assertIn(n['kind'], kinds, n['id'])
+                    if 'tag' in n:
+                        self.assertIn(n['tag'], kinds[n['kind']]['options'], n['id'])
+                    w, h = f['size']
+                    self.assertTrue(0 <= n['x'] <= w - 236 and 0 <= n['y'] < h, n['id'])
+                for l in v['links']:
+                    self.assertTrue(l['from'] in ids and l['to'] in ids, l['id'])
+        aid = next(iter(ANSWER_KEYS))
+        self.assertEqual(self.client.get('/api/t/answers').json()[0]['id'], aid)
+        self.assertIn('fields', self.client.get('/api/t/answers/' + aid).json())
+        self.assertEqual(self.client.get('/api/t/answers/m01-nope').status_code, 404)
+        # học viên không nhận được đáp án giảng viên
+        room = self.post('/api/t/classes', {'name': 'Test answer key'}).json()
+        alice = self.post('/api/join', {'code': room['code'], 'name': 'Alice'}).json()
+        self.post(f'/api/t/classes/{room["id"]}/activities/{aid}', {'status': 'revealed'}).raise_for_status()
+        act = self.client.get('/api/s/activity/' + aid, headers={'Authorization': 'Bearer ' + alice['token']}).text
+        self.assertNotIn(ANSWER_KEYS[aid]['summary'][:40], act)
+        self.client.cookies.clear()
+        self.assertEqual(self.client.get('/api/t/answers/' + aid).status_code, 401)
+        self.post('/api/t/login', {'password': 'test-teacher-only'}).raise_for_status()
+
     def test_supplemental_content_and_answer_gates(self):
         from app.content import MODULES, ACTIVITIES, public_activity, student_module, score
         exam = {q['text'] for q in ACTIVITIES['m10-exam']['questions']}

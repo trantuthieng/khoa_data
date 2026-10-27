@@ -198,6 +198,8 @@ label.check { display: flex; gap: 8px; align-items: center; font-size: 14px; cur
 .present .flagged { border-left: 0; padding-left: 0; margin-left: 0; }
 .present .flagged .flag { display: none; }
 .present .flagged.teacher-only, .present .flagged.unrevealed { display: none; }
+.present .gv-private { display: none; }
+.answer-key .pfield > textarea { field-sizing: content; min-height: 6em; }
 .class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 
 @media (max-width: 1100px) {

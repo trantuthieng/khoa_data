@@ -15,6 +15,7 @@ Webapp dạy khóa học 10 buổi. Mỗi buổi là một module; giảng viên
 | Dẫn bài | Bấm **Phần sau / Phần trước** (hoặc phím ←/→, PageUp/PageDown của bút trình chiếu). Học viên chỉ thấy các phần đã trình bày và tự chuyển theo nếu bật “Học viên tự chuyển theo giảng viên” |
 | Trình chiếu | **⛶ Trình chiếu**: ẩn bảng điều khiển, chữ lớn, ghi mã lớp ở góc. Phần chỉ dành cho giảng viên và đáp án chưa công bố tự ẩn |
 | Bài tập | Cột phải: mỗi bài có 4 trạng thái **Ẩn → Mở → Đóng → Công bố**. Khi công bố: học viên thấy đáp án, điểm, tỉ lệ cả lớp; với bài thực hành thì phần “Đáp án gợi ý” trong giáo trình hiện ra |
+| Đáp án giảng viên | Nút **📘 Đáp án** (trang danh sách lớp, cột Hoạt động, phần thực hành, trang kết quả): bài làm mẫu dựng trên bảng thật (module, dây nối, nội dung), giải thích từng module và từng dây, thang điểm, lỗi hay gặp. Chỉ gửi qua API giảng viên. Dữ liệu ở `app/answer_keys.py` (hiện có Thực hành 5) |
 | Xem kết quả | **Xem kết quả**: biểu đồ đáp án theo câu, bảng điểm, câu trả lời tự luận, bài thực hành của từng học viên |
 | Diễn tập (buổi 10) | Nút **Đợt diễn tập học viên thấy: − / +** mở dần từng đợt tình tiết |
 | Học viên | Tab **Học viên**: ai đang online, xóa người vào nhầm |
