@@ -32,6 +32,13 @@ def ta(key, label, hint=None):
     return f
 
 
+def pr(key, label, placeholder=None, **extra):
+    d = {"key": key, "label": label, **extra}
+    if placeholder:
+        d["placeholder"] = placeholder
+    return d
+
+
 def kind(k, label, color, icon, hint=None, add=False, **extra):
     d = {"kind": k, "label": label, "color": color, "icon": icon, "add": add, **extra}
     if hint:
@@ -66,29 +73,31 @@ def lf(key, label, placeholder, prefix=None):
 NHOM_TH1 = ["Khách hàng và hợp đồng mua bán điện", "Chỉ số công tơ và báo cáo sản lượng",
             "Vận hành và tài liệu kỹ thuật (sơ đồ lưới, cấu hình thiết bị)", "Thông tin nhân sự",
             "File DS_KhachHang_DLX.xlsx của anh Cường"]
+NHOM_TH1_NGAN = ["Khách hàng & hợp đồng", "Chỉ số công tơ & sản lượng", "Vận hành & tài liệu kỹ thuật",
+                 "Nhân sự", "File DS_KhachHang_DLX.xlsx"]
 GHI_CHU = kind("note", "Ghi chú", "slate", "📝", "Ý tưởng, câu hỏi, điều cần kiểm tra thêm…", add=True)
 QUYEN_HIEN_TAI = dict(options=["Giữ nguyên", "Thu hẹp", "Thu hồi"], optionLabel="Quyết định…",
                       tones={"Giữ nguyên": "warn", "Thu hẹp": "info", "Thu hồi": "bad"})
 
 BOARD_TH3 = {
-    "type": "board", "key": "ma_tran_bang", "size": [1580, 800],
+    "type": "board", "key": "ma_tran_bang", "size": [1580, 1000],
     "label": "Không gian ma trận quyền – nối vai trò với thao tác được phép, ghi phạm vi và người duyệt trên từng dây",
     "hint": "Có dây nối nghĩa là có quyền; không nối nghĩa là không có quyền. Bảng ma trận bên dưới tự lập từ các dây nối.",
     "steps": [
-        "Ở module 📂 (đầu cột Thao tác), chọn một trong năm nhóm dữ liệu của Thực hành 1 và ghi nhãn bạn đã chọn cho nhóm đó.",
+        "Ở module 📂 (đầu cột Thao tác), bấm chọn một hay nhiều nhóm trong năm nhóm dữ liệu của Thực hành 1 và ghi nhãn bạn đã chọn.",
         "Với từng vai trò ở cột ① (giữa bảng), ghi ngắn công việc chính cần dữ liệu gì.",
         "Nối vai trò sang thao tác ở cột ② (bên phải) mà vai trò đó thật sự cần. Không cần thì không nối.",
         "Bấm nhãn trên mỗi dây, ghi phạm vi (dữ liệu nào) và người duyệt.",
         "Ở cột ③ (bên trái), viết 3 trường hợp phải bị từ chối và 2 trường hợp phải xin thêm quyền, rồi nối mỗi ô với vai trò liên quan.",
         "Đọc ma trận C3 bên dưới: ô tô vàng là còn thiếu thông tin. Xem lại các gợi ý ⚠ rồi nộp bài.",
     ],
-    "zones": [zone(20, 20, 600, 760, "③ Kiểm thử quyền", "red", "Trường hợp phải bị từ chối (trái) và phải xin thêm quyền (phải), nối với vai trò"),
-              zone(720, 20, 280, 760, "① Vai trò", "blue", "Năm vai trò trong đề"),
-              zone(1280, 20, 280, 760, "② Thao tác", "teal", "Trên nhóm dữ liệu bạn chọn")],
+    "zones": [zone(20, 20, 600, 960, "③ Kiểm thử quyền", "red", "Trường hợp phải bị từ chối (trái) và phải xin thêm quyền (phải), nối với vai trò"),
+              zone(720, 20, 280, 960, "① Vai trò", "blue", "Năm vai trò trong đề"),
+              zone(1280, 20, 280, 960, "② Thao tác", "teal", "Trên nhóm dữ liệu bạn chọn")],
     "kinds": [
         kind("role", "Vai trò", "blue", "👤", "Công việc chính cần dữ liệu gì?", add=True),
-        kind("data", "Nhóm dữ liệu", "slate", "📂", "Nhãn bạn đã chọn ở Thực hành 1 và lý do",
-             options=NHOM_TH1, optionLabel="Chọn nhóm dữ liệu…"),
+        kind("data", "Nhóm dữ liệu", "slate", "📂", "Nhãn đã chọn ở Thực hành 1 và lý do",
+             props=[pr("nhom", "Bấm chọn một hay nhiều nhóm", multi=NHOM_TH1_NGAN)]),
         kind("perm", "Thao tác", "teal", "🔑", "Điều kiện chung cho thao tác này (nếu có)"),
         kind("deny", "Phải bị từ chối", "red", "🚫", "Ai – làm gì – vì sao phải chặn", add=True),
         kind("req", "Phải xin thêm quyền", "amber", "✋", "Ai – cần gì – ai duyệt – đến khi nào", add=True),
@@ -96,15 +105,15 @@ BOARD_TH3 = {
     ],
     "nodes": [
         node("r_nv", "role", 742, 80, "Nhân viên nghiệp vụ"),
-        node("r_tp", "role", 742, 220, "Trưởng phòng"),
-        node("r_tn", "role", 742, 360, "Chuyên viên thu nợ"),
-        node("r_cntt", "role", 742, 500, "Cán bộ CNTT hỗ trợ"),
-        node("r_qt", "role", 742, 640, "Quản trị hệ thống"),
+        node("r_tp", "role", 742, 260, "Trưởng phòng"),
+        node("r_tn", "role", 742, 440, "Chuyên viên thu nợ"),
+        node("r_cntt", "role", 742, 620, "Cán bộ CNTT hỗ trợ"),
+        node("r_qt", "role", 742, 800, "Quản trị hệ thống"),
         node("d_nhom", "data", 1302, 80, "Nhóm dữ liệu đang xét"),
-        node("p_xem", "perm", 1302, 245, "Xem"),
-        node("p_sua", "perm", 1302, 380, "Sửa"),
-        node("p_xuat", "perm", 1302, 515, "Xuất"),
-        node("p_cap", "perm", 1302, 650, "Cấp quyền"),
+        node("p_xem", "perm", 1302, 410, "Xem"),
+        node("p_sua", "perm", 1302, 560, "Sửa"),
+        node("p_xuat", "perm", 1302, 710, "Xuất"),
+        node("p_cap", "perm", 1302, 860, "Cấp quyền"),
         node("t_1", "deny", 42, 100, "Từ chối 1", locked=False),
         node("t_2", "deny", 42, 300, "Từ chối 2", locked=False),
         node("t_3", "deny", 42, 510, "Từ chối 3", locked=False),
@@ -114,7 +123,7 @@ BOARD_TH3 = {
     "links": [{"a": "role", "b": "perm", "fields": [lf("pham_vi", "Phạm vi", "VD: KH đơn vị mình"),
                                                       lf("duyet", "Người duyệt", "VD: TP Kinh doanh", "duyệt: ")]}],
     "goals": [
-        {"type": "tagged", "ids": ["d_nhom"], "text": "Chọn nhóm dữ liệu đang xét"},
+        {"type": "props", "ids": ["d_nhom"], "fields": ["nhom"], "text": "Chọn nhóm dữ liệu đang xét (một hay nhiều nhóm)"},
         {"type": "each", "kind": "role", "to": ["perm"], "text": "Nối mỗi vai trò tới thao tác được phép"},
         {"type": "linkfield", "a": "role", "b": "perm", "fields": ["pham_vi", "duyet"], "text": "Mỗi dây quyền có phạm vi và người duyệt"},
         {"type": "filled", "kind": "deny", "min": 3, "text": "Ít nhất 3 trường hợp phải bị từ chối"},
@@ -250,13 +259,6 @@ BOARD_CASE_M03 = {
         {"type": "tag", "node": "q_xem", "value": "Giữ nguyên", "text": "Chỉ cần 12 hồ sơ nhưng vẫn giữ quyền xem toàn bộ Điện lực X?"},
     ],
 }
-
-def pr(key, label, placeholder=None, **extra):
-    d = {"key": key, "label": label, **extra}
-    if placeholder:
-        d["placeholder"] = placeholder
-    return d
-
 
 def sz(id, x, y, w, h, label, color, hint=None):
     """Vùng phân loại: thả thẻ vào vùng nào thì thẻ thuộc vùng đó."""
