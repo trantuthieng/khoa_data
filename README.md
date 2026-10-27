@@ -15,7 +15,7 @@ Webapp dạy khóa học 10 buổi. Mỗi buổi là một module; giảng viên
 | Dẫn bài | Bấm **Phần sau / Phần trước** (hoặc phím ←/→, PageUp/PageDown của bút trình chiếu). Học viên chỉ thấy các phần đã trình bày và tự chuyển theo nếu bật “Học viên tự chuyển theo giảng viên” |
 | Trình chiếu | **⛶ Trình chiếu**: ẩn bảng điều khiển, chữ lớn, ghi mã lớp ở góc. Phần chỉ dành cho giảng viên và đáp án chưa công bố tự ẩn |
 | Bài tập | Cột phải: mỗi bài có 4 trạng thái **Ẩn → Mở → Đóng → Công bố**. Khi công bố: học viên thấy đáp án, điểm, tỉ lệ cả lớp; với bài thực hành thì phần “Đáp án gợi ý” trong giáo trình hiện ra |
-| Đáp án giảng viên | Nút **📘 Đáp án** (trang danh sách lớp, cột Hoạt động, phần thực hành, trang kết quả): bài làm mẫu dựng trên bảng thật (module, dây nối, nội dung), giải thích từng module và từng dây, thang điểm, lỗi hay gặp. Chỉ gửi qua API giảng viên. Dữ liệu ở `app/answer_keys.py` (hiện có Thực hành 5) |
+| Đáp án giảng viên | Nút **📘 Đáp án** (trang danh sách lớp, cột Hoạt động, phần thực hành, trang kết quả): bài làm mẫu dựng trên bảng thật (module, dây nối, nội dung), giải thích từng module và từng dây, thang điểm, lỗi hay gặp. Chỉ gửi qua API giảng viên. Có cho cả 47 bài thực hành (11 bài bảng, 10 bài tình huống, 26 bài ngắn). Dữ liệu ở `app/answer_keys/` (mỗi buổi một tệp; bài ngắn lấy lời giải từ `tools/beginner_labs.py`) |
 | Xem kết quả | **Xem kết quả**: biểu đồ đáp án theo câu, bảng điểm, câu trả lời tự luận, bài thực hành của từng học viên |
 | Diễn tập (buổi 10) | Nút **Đợt diễn tập học viên thấy: − / +** mở dần từng đợt tình tiết |
 | Học viên | Tab **Học viên**: ai đang online, xóa người vào nhầm |
@@ -100,6 +100,8 @@ Render tự deploy lại khi có commit mới. Script chỉ dùng thư viện ch
 Sau khi đọc Word, script áp dụng phần biên tập trong `tools/course_revision.py` và bài bổ sung trong `tools/supplemental_exercises.json`. Chỉnh hai tệp này nếu muốn sửa bản dạy trên web; chạy lại lệnh build sẽ giữ các thay đổi đó. Các tài liệu Word nguồn được giữ nguyên để đối chiếu.
 
 Cuối bước dựng nội dung, `tools/production_copy.py` áp dụng phần biên tập cho bản phát hành: giới thiệu đối tượng học, câu chữ hướng dẫn, tham chiếu bài tập và lịch học. Xem `BIEN_TAP_NOI_DUNG.md` để biết phạm vi thay đổi. Mã hoạt động, trường bài nộp và đáp án chấm điểm được giữ nguyên.
+
+Buổi 5 và 6 dùng bản gọn trong `tools/compact_lessons.py`: bốn bài lý thuyết được viết lại ngắn hơn, có 20 sơ đồ SVG (block `figure`, màu theo giao diện sáng/tối) và bỏ các đoạn mã dài. Chạy `python tools/compact_lessons.py` để áp bản gọn vào JSON hiện có mà không cần dựng lại từ Word. File luyện tập của Thực hành 6, 7 (`BaoCao_Thang.xlsx`, `DLX_SanLuong_Q3.csv` trong `app/static/labs/`) do `python tools/practice_files.py` tạo (cần openpyxl); học viên tải từ bài, giảng viên có bảng số liệu đối chiếu.
 
 Bài ngắn nằm trong `tools/beginner_labs.py`, được thêm khi build. Script cũng dựng gói học viên `app/static/labs/bai_tap_SQL_Python_BI.zip` chỉ có dữ liệu, file khung và hướng dẫn. Lời giải ở phần nội dung có cờ công bố, không nằm trong ZIP. Xem `DOI_CHIEU_SLIDE.md` để biết kết quả so sánh với 111 slide và cách chọn bài theo thời lượng. Dùng file BI mới cho bộ bài nhỏ theo ngày; bài lớn theo tháng giữ mô hình và công thức riêng.
 

@@ -251,727 +251,349 @@
    "blocks": [
     {
      "t": "p",
-     "html": "Bài này trả lời câu hỏi 1: anh Minh cần gì, không cần gì, và \"bỏ tên rồi\" đã là ẩn danh chưa. Trả lời được câu này cần ba việc: biết mỗi cột thuộc loại nào, biết các kỹ thuật giảm dữ liệu, và biết cách kiểm tra xem kết quả còn nhận ra người không.",
-     "plain": "Bài này trả lời câu hỏi 1: anh Minh cần gì, không cần gì, và \"bỏ tên rồi\" đã là ẩn danh chưa. Trả lời được câu này cần ba việc: biết mỗi cột thuộc loại nào, biết các kỹ thuật giảm dữ liệu, và biết cách kiểm tra xem kết quả còn nhận ra người không."
+     "plain": "Bài này trả lời câu hỏi 1: anh Minh cần gì, không cần gì, và “bỏ tên rồi” đã là ẩn danh chưa. Cần ba việc: biết mỗi cột thuộc loại nào, biết các kỹ thuật giảm dữ liệu, và kiểm tra kết quả còn nhận ra người không.",
+     "html": "Bài này trả lời câu hỏi 1: anh Minh cần gì, không cần gì, và “bỏ tên rồi” đã là ẩn danh chưa. Cần ba việc: biết mỗi cột thuộc loại nào, biết các kỹ thuật giảm dữ liệu, và kiểm tra kết quả còn nhận ra người không."
     },
     {
      "t": "h3",
      "text": "1.1. Mỗi mục đích chỉ cần một phần"
     },
     {
-     "t": "p",
-     "html": "Dữ liệu khách hàng được thu để cấp điện, lập hóa đơn, thu tiền. Khi dùng lại cho mục đích khác, mỗi mục đích chỉ cần một phần:",
-     "plain": "Dữ liệu khách hàng được thu để cấp điện, lập hóa đơn, thu tiền. Khi dùng lại cho mục đích khác, mỗi mục đích chỉ cần một phần:"
-    },
-    {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Mục đích dùng lại",
-        "plain": "Mục đích dùng lại"
+        "plain": "Mục đích dùng lại",
+        "html": "Mục đích dùng lại"
        },
        {
-        "html": "Cần gì",
-        "plain": "Cần gì"
+        "plain": "Cần",
+        "html": "Cần"
        },
        {
-        "html": "Không cần gì",
-        "plain": "Không cần gì"
+        "plain": "Không cần",
+        "html": "Không cần"
        }
       ],
       [
        {
-        "html": "Dự báo nhu cầu điện theo khu vực",
-        "plain": "Dự báo nhu cầu điện theo khu vực"
+        "plain": "Dự báo nhu cầu điện theo khu vực",
+        "html": "Dự báo nhu cầu điện theo khu vực"
        },
        {
-        "html": "Vùng/phường, tháng, sản lượng, loại khách hàng",
-        "plain": "Vùng/phường, tháng, sản lượng, loại khách hàng"
+        "plain": "Phường, tháng, sản lượng, loại khách hàng",
+        "html": "Phường, tháng, sản lượng, loại khách hàng"
        },
        {
-        "html": "Tên, điện thoại, địa chỉ chi tiết, số nợ",
-        "plain": "Tên, điện thoại, địa chỉ chi tiết, số nợ"
+        "plain": "Tên, điện thoại, địa chỉ chi tiết, số nợ",
+        "html": "Tên, điện thoại, địa chỉ chi tiết, số nợ"
        }
       ],
       [
        {
-        "html": "Phân tích tổn thất theo trạm",
-        "plain": "Phân tích tổn thất theo trạm"
+        "plain": "Thử nghiệm phần mềm mới",
+        "html": "Thử nghiệm phần mềm mới"
        },
        {
-        "html": "Mã trạm, sản lượng đầu nguồn, sản lượng thương phẩm",
-        "plain": "Mã trạm, sản lượng đầu nguồn, sản lượng thương phẩm"
+        "plain": "Dữ liệu đúng định dạng, đủ nhiều",
+        "html": "Dữ liệu đúng định dạng, đủ nhiều"
        },
        {
-        "html": "Thông tin cá nhân của từng hộ",
-        "plain": "Thông tin cá nhân của từng hộ"
+        "plain": "Dữ liệu thật của bất kỳ ai",
+        "html": "Dữ liệu thật của bất kỳ ai"
        }
       ],
       [
        {
-        "html": "Thử nghiệm phần mềm mới",
-        "plain": "Thử nghiệm phần mềm mới"
+        "plain": "Đưa vào công cụ AI phân tích khiếu nại",
+        "html": "Đưa vào công cụ AI phân tích khiếu nại"
        },
        {
-        "html": "Dữ liệu đúng định dạng, đủ nhiều",
-        "plain": "Dữ liệu đúng định dạng, đủ nhiều"
+        "plain": "Nội dung, loại vấn đề, thời gian xử lý",
+        "html": "Nội dung, loại vấn đề, thời gian xử lý"
        },
        {
-        "html": "Dữ liệu thật của bất kỳ ai",
-        "plain": "Dữ liệu thật của bất kỳ ai"
-       }
-      ],
-      [
-       {
-        "html": "Gửi đơn vị tư vấn khảo sát hành vi dùng điện",
-        "plain": "Gửi đơn vị tư vấn khảo sát hành vi dùng điện"
-       },
-       {
-        "html": "Biểu đồ phụ tải, loại hộ",
-        "plain": "Biểu đồ phụ tải, loại hộ"
-       },
-       {
-        "html": "Tên, địa chỉ, mã khách hàng thật",
-        "plain": "Tên, địa chỉ, mã khách hàng thật"
-       }
-      ],
-      [
-       {
-        "html": "Đưa vào công cụ AI để phân tích khiếu nại",
-        "plain": "Đưa vào công cụ AI để phân tích khiếu nại"
-       },
-       {
-        "html": "Nội dung khiếu nại, loại vấn đề, thời gian xử lý",
-        "plain": "Nội dung khiếu nại, loại vấn đề, thời gian xử lý"
-       },
-       {
-        "html": "Tên, số điện thoại, địa chỉ lẫn trong nội dung",
-        "plain": "Tên, số điện thoại, địa chỉ lẫn trong nội dung"
+        "plain": "Tên, số điện thoại, địa chỉ lẫn trong nội dung",
+        "html": "Tên, số điện thoại, địa chỉ lẫn trong nội dung"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "Nguyên tắc gốc là <strong>tối thiểu hóa dữ liệu</strong> (buổi 1): chỉ đưa ra phần đủ cho mục đích, không hơn. Câu \"cứ để đủ cột, AI tự lọc\" của anh Minh đi ngược nguyên tắc này: khi AI \"tự lọc\", toàn bộ dữ liệu đã nằm trên công cụ AI rồi.",
-     "plain": "Nguyên tắc gốc là tối thiểu hóa dữ liệu (buổi 1): chỉ đưa ra phần đủ cho mục đích, không hơn. Câu \"cứ để đủ cột, AI tự lọc\" của anh Minh đi ngược nguyên tắc này: khi AI \"tự lọc\", toàn bộ dữ liệu đã nằm trên công cụ AI rồi."
+     "plain": "Nguyên tắc gốc là tối thiểu hóa (buổi 1): chỉ đưa ra phần đủ cho mục đích. Câu “cứ để đủ cột, AI tự lọc” của anh Minh đi ngược nguyên tắc này: lúc AI “tự lọc”, toàn bộ dữ liệu đã nằm trên công cụ AI rồi.",
+     "html": "Nguyên tắc gốc là tối thiểu hóa (buổi 1): chỉ đưa ra phần đủ cho mục đích. Câu “cứ để đủ cột, AI tự lọc” của anh Minh đi ngược nguyên tắc này: lúc AI “tự lọc”, toàn bộ dữ liệu đã nằm trên công cụ AI rồi."
     },
     {
      "t": "h3",
      "text": "1.2. Bốn loại trường dữ liệu"
     },
     {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 250\" role=\"img\" aria-label=\"Chín cột của file sản lượng xếp vào bốn loại trường\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-lt-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-lt-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-lt-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-lt-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-lt-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"4\" y=\"6\" width=\"170\" height=\"52\" rx=\"8\" class=\"r-bad\"/><text x=\"89.0\" y=\"28.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Định danh trực tiếp</text><text x=\"89.0\" y=\"45.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">một mình chỉ ra người</text><rect x=\"29\" y=\"72\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"89.0\" y=\"89.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">ho_ten</text><rect x=\"29\" y=\"106\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"89.0\" y=\"123.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">dien_thoai</text><line x1=\"89\" y1=\"176\" x2=\"89\" y2=\"192\" class=\"l-mut\" marker-end=\"url(#m6-lt-mut)\"/><rect x=\"4\" y=\"194\" width=\"170\" height=\"50\" rx=\"8\" class=\"box\"/><text x=\"89.0\" y=\"215.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">→ Bỏ</text><text x=\"89.0\" y=\"231.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">không cần cho dự báo</text><rect x=\"183\" y=\"6\" width=\"170\" height=\"52\" rx=\"8\" class=\"r-warn\"/><text x=\"268.0\" y=\"28.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Định danh gián tiếp</text><text x=\"268.0\" y=\"45.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">ghép lại thì ra người</text><rect x=\"208\" y=\"72\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"268.0\" y=\"89.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">ma_kh</text><rect x=\"208\" y=\"106\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"268.0\" y=\"123.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">dia_chi</text><rect x=\"208\" y=\"140\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"268.0\" y=\"157.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">phuong</text><line x1=\"268\" y1=\"176\" x2=\"268\" y2=\"192\" class=\"l-mut\" marker-end=\"url(#m6-lt-mut)\"/><rect x=\"183\" y=\"194\" width=\"170\" height=\"50\" rx=\"8\" class=\"box\"/><text x=\"268.0\" y=\"215.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">→ Bỏ / gộp lên phường</text><text x=\"268.0\" y=\"231.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">giữ phuong, xét nhóm nhỏ</text><rect x=\"362\" y=\"6\" width=\"170\" height=\"52\" rx=\"8\" class=\"r-bad\"/><text x=\"447.0\" y=\"28.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Thuộc tính nhạy cảm</text><text x=\"447.0\" y=\"45.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">nói điều riêng tư</text><rect x=\"387\" y=\"72\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"447.0\" y=\"89.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">so_tien_no</text><line x1=\"447\" y1=\"176\" x2=\"447\" y2=\"192\" class=\"l-mut\" marker-end=\"url(#m6-lt-mut)\"/><rect x=\"362\" y=\"194\" width=\"170\" height=\"50\" rx=\"8\" class=\"box\"/><text x=\"447.0\" y=\"215.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">→ Bỏ</text><text x=\"447.0\" y=\"231.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">ngoài mục đích</text><rect x=\"541\" y=\"6\" width=\"170\" height=\"52\" rx=\"8\" class=\"r-ok\"/><text x=\"626.0\" y=\"28.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Dữ liệu phân tích</text><text x=\"626.0\" y=\"45.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">nội dung cần dùng</text><rect x=\"566\" y=\"72\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"626.0\" y=\"89.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">loai_kh</text><rect x=\"566\" y=\"106\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"626.0\" y=\"123.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">thang</text><rect x=\"566\" y=\"140\" width=\"120\" height=\"26\" rx=\"13\" class=\"box\"/><text x=\"626.0\" y=\"157.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono\">kwh</text><line x1=\"626\" y1=\"176\" x2=\"626\" y2=\"192\" class=\"l-mut\" marker-end=\"url(#m6-lt-mut)\"/><rect x=\"541\" y=\"194\" width=\"170\" height=\"50\" rx=\"8\" class=\"box\"/><text x=\"626.0\" y=\"215.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">→ Giữ, tổng hợp</text><text x=\"626.0\" y=\"231.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">theo phường – tháng</text></svg>",
+     "caption": "Chín cột của file sản lượng quý III xếp vào bốn loại trường, kèm cách xử lý cho mục đích dự báo theo phường.",
+     "plain": "Chín cột của file sản lượng quý III xếp vào bốn loại trường, kèm cách xử lý cho mục đích dự báo theo phường."
+    },
+    {
      "t": "p",
-     "html": "Bước đầu tiên của mọi việc giảm dữ liệu là biết mỗi cột thuộc loại nào:",
-     "plain": "Bước đầu tiên của mọi việc giảm dữ liệu là biết mỗi cột thuộc loại nào:"
+     "plain": "Thuộc tính nhạy cảm còn gồm: bị cắt điện, hộ nghèo được hỗ trợ tiền điện, chuỗi sản lượng theo giờ (lộ giờ đi về). Áp vào chương 6 – các cột của file sản lượng quý III:",
+     "html": "Thuộc tính nhạy cảm còn gồm: bị cắt điện, hộ nghèo được hỗ trợ tiền điện, chuỗi sản lượng theo giờ (lộ giờ đi về). Áp vào chương 6 – các cột của file sản lượng quý III:"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Loại trường",
-        "plain": "Loại trường"
+        "plain": "Cột",
+        "html": "Cột"
        },
        {
-        "html": "Định nghĩa",
-        "plain": "Định nghĩa"
+        "plain": "Loại",
+        "html": "Loại"
        },
        {
-        "html": "Ví dụ trong dữ liệu điện",
-        "plain": "Ví dụ trong dữ liệu điện"
-       },
-       {
-        "html": "Xử lý thường dùng",
-        "plain": "Xử lý thường dùng"
+        "plain": "Xử lý",
+        "html": "Xử lý"
        }
       ],
       [
        {
-        "html": "Định danh trực tiếp",
-        "plain": "Định danh trực tiếp"
+        "plain": "ma_kh",
+        "html": "ma_kh"
        },
        {
-        "html": "Một mình nó chỉ ra được người",
-        "plain": "Một mình nó chỉ ra được người"
+        "plain": "Định danh gián tiếp (tra ngược được trên hóa đơn)",
+        "html": "Định danh gián tiếp (tra ngược được trên hóa đơn)"
        },
        {
-        "html": "Họ tên, số điện thoại, email, số CCCD, số tài khoản ngân hàng",
-        "plain": "Họ tên, số điện thoại, email, số CCCD, số tài khoản ngân hàng"
-       },
-       {
-        "html": "Loại bỏ; nếu bắt buộc giữ thì che hoặc thay thế",
-        "plain": "Loại bỏ; nếu bắt buộc giữ thì che hoặc thay thế"
+        "plain": "Bỏ nếu chỉ dự báo theo phường; giả danh hóa nếu cần theo dõi từng hộ qua tháng",
+        "html": "Bỏ nếu chỉ dự báo theo phường; giả danh hóa nếu cần theo dõi từng hộ qua tháng"
        }
       ],
       [
        {
-        "html": "Định danh gián tiếp (quasi-identifier)",
-        "plain": "Định danh gián tiếp (quasi-identifier)"
+        "plain": "ho_ten, dien_thoai",
+        "html": "ho_ten, dien_thoai"
        },
        {
-        "html": "Ghép với dữ liệu khác thì ra người",
-        "plain": "Ghép với dữ liệu khác thì ra người"
+        "plain": "Định danh trực tiếp",
+        "html": "Định danh trực tiếp"
        },
        {
-        "html": "Mã khách hàng, số công tơ, địa chỉ, tọa độ, mã trạm (nếu trạm ít hộ)",
-        "plain": "Mã khách hàng, số công tơ, địa chỉ, tọa độ, mã trạm (nếu trạm ít hộ)"
-       },
-       {
-        "html": "Giả danh hóa; tổng quát hóa (địa chỉ → phường)",
-        "plain": "Giả danh hóa; tổng quát hóa (địa chỉ → phường)"
+        "plain": "Bỏ",
+        "html": "Bỏ"
        }
       ],
       [
        {
-        "html": "Thuộc tính nhạy cảm",
-        "plain": "Thuộc tính nhạy cảm"
+        "plain": "dia_chi",
+        "html": "dia_chi"
        },
        {
-        "html": "Không chỉ ra người nhưng nói điều riêng tư về họ",
-        "plain": "Không chỉ ra người nhưng nói điều riêng tư về họ"
+        "plain": "Định danh gián tiếp",
+        "html": "Định danh gián tiếp"
        },
        {
-        "html": "Nợ tiền điện, bị cắt điện, hộ nghèo được hỗ trợ, chuỗi sản lượng theo giờ (lộ giờ đi về)",
-        "plain": "Nợ tiền điện, bị cắt điện, hộ nghèo được hỗ trợ, chuỗi sản lượng theo giờ (lộ giờ đi về)"
-       },
-       {
-        "html": "Chỉ giữ khi đúng mục đích; tổng hợp hoặc chia khoảng",
-        "plain": "Chỉ giữ khi đúng mục đích; tổng hợp hoặc chia khoảng"
+        "plain": "Bỏ – đã có cột phuong",
+        "html": "Bỏ – đã có cột phuong"
        }
       ],
       [
        {
-        "html": "Dữ liệu phân tích",
-        "plain": "Dữ liệu phân tích"
+        "plain": "phuong",
+        "html": "phuong"
        },
        {
-        "html": "Nội dung cần cho mục đích",
-        "plain": "Nội dung cần cho mục đích"
+        "plain": "Định danh gián tiếp yếu",
+        "html": "Định danh gián tiếp yếu"
        },
        {
-        "html": "kWh, tháng, loại biểu giá, vùng",
-        "plain": "kWh, tháng, loại biểu giá, vùng"
-       },
-       {
-        "html": "Giữ; cân nhắc tổng hợp",
-        "plain": "Giữ; cân nhắc tổng hợp"
-       }
-      ]
-     ]
-    },
-    {
-     "t": "p",
-     "html": "<strong>Áp vào chương 6</strong> – các cột của file sản lượng quý III:",
-     "plain": "Áp vào chương 6 – các cột của file sản lượng quý III:"
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Cột",
-        "plain": "Cột"
-       },
-       {
-        "html": "Loại",
-        "plain": "Loại"
-       },
-       {
-        "html": "Anh Minh cần không?",
-        "plain": "Anh Minh cần không?"
-       },
-       {
-        "html": "Xử lý",
-        "plain": "Xử lý"
+        "plain": "Giữ, kiểm tra nhóm nhỏ",
+        "html": "Giữ, kiểm tra nhóm nhỏ"
        }
       ],
       [
        {
-        "html": "ma_kh",
-        "plain": "ma_kh"
+        "plain": "loai_kh",
+        "html": "loai_kh"
        },
        {
-        "html": "Định danh gián tiếp (tra ngược được trên hóa đơn)",
-        "plain": "Định danh gián tiếp (tra ngược được trên hóa đơn)"
+        "plain": "Dữ liệu phân tích",
+        "html": "Dữ liệu phân tích"
        },
        {
-        "html": "Không, nếu chỉ dự báo theo phường",
-        "plain": "Không, nếu chỉ dự báo theo phường"
-       },
-       {
-        "html": "Loại bỏ (hoặc giả danh hóa nếu cần theo dõi từng hộ qua tháng)",
-        "plain": "Loại bỏ (hoặc giả danh hóa nếu cần theo dõi từng hộ qua tháng)"
+        "plain": "Giữ nếu dự báo theo loại; cẩn thận vì tách nhóm nhỏ hơn",
+        "html": "Giữ nếu dự báo theo loại; cẩn thận vì tách nhóm nhỏ hơn"
        }
       ],
       [
        {
-        "html": "ho_ten",
-        "plain": "ho_ten"
+        "plain": "thang, kwh",
+        "html": "thang, kwh"
        },
        {
-        "html": "Định danh trực tiếp",
-        "plain": "Định danh trực tiếp"
+        "plain": "Dữ liệu phân tích",
+        "html": "Dữ liệu phân tích"
        },
        {
-        "html": "Không",
-        "plain": "Không"
-       },
-       {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Tổng hợp theo phường – tháng",
+        "html": "Tổng hợp theo phường – tháng"
        }
       ],
       [
        {
-        "html": "dien_thoai",
-        "plain": "dien_thoai"
+        "plain": "so_tien_no",
+        "html": "so_tien_no"
        },
        {
-        "html": "Định danh trực tiếp",
-        "plain": "Định danh trực tiếp"
+        "plain": "Thuộc tính nhạy cảm",
+        "html": "Thuộc tính nhạy cảm"
        },
        {
-        "html": "Không",
-        "plain": "Không"
-       },
-       {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
-       }
-      ],
-      [
-       {
-        "html": "dia_chi",
-        "plain": "dia_chi"
-       },
-       {
-        "html": "Định danh gián tiếp",
-        "plain": "Định danh gián tiếp"
-       },
-       {
-        "html": "Chỉ cần đến phường",
-        "plain": "Chỉ cần đến phường"
-       },
-       {
-        "html": "Tổng quát hóa thành phường (đã có cột phuong)",
-        "plain": "Tổng quát hóa thành phường (đã có cột phuong)"
-       }
-      ],
-      [
-       {
-        "html": "phuong",
-        "plain": "phuong"
-       },
-       {
-        "html": "Định danh gián tiếp yếu",
-        "plain": "Định danh gián tiếp yếu"
-       },
-       {
-        "html": "Có",
-        "plain": "Có"
-       },
-       {
-        "html": "Giữ, kiểm tra nhóm nhỏ",
-        "plain": "Giữ, kiểm tra nhóm nhỏ"
-       }
-      ],
-      [
-       {
-        "html": "loai_kh",
-        "plain": "loai_kh"
-       },
-       {
-        "html": "Dữ liệu phân tích",
-        "plain": "Dữ liệu phân tích"
-       },
-       {
-        "html": "Có thể",
-        "plain": "Có thể"
-       },
-       {
-        "html": "Giữ nếu dự báo theo loại; cẩn thận vì tách nhóm nhỏ hơn",
-        "plain": "Giữ nếu dự báo theo loại; cẩn thận vì tách nhóm nhỏ hơn"
-       }
-      ],
-      [
-       {
-        "html": "thang, kwh",
-        "plain": "thang, kwh"
-       },
-       {
-        "html": "Dữ liệu phân tích",
-        "plain": "Dữ liệu phân tích"
-       },
-       {
-        "html": "Có",
-        "plain": "Có"
-       },
-       {
-        "html": "Tổng hợp theo phường – tháng",
-        "plain": "Tổng hợp theo phường – tháng"
-       }
-      ],
-      [
-       {
-        "html": "so_tien_no",
-        "plain": "so_tien_no"
-       },
-       {
-        "html": "Thuộc tính nhạy cảm",
-        "plain": "Thuộc tính nhạy cảm"
-       },
-       {
-        "html": "Không",
-        "plain": "Không"
-       },
-       {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Bỏ",
+        "html": "Bỏ"
        }
       ]
      ]
     },
     {
      "t": "h3",
-     "text": "1.3. Ba khái niệm dễ nhầm – và một cách an toàn hơn"
+     "text": "1.3. Che, giả danh hóa, ẩn danh hóa và tổng hợp"
     },
     {
      "t": "p",
-     "html": "<strong>Ví dụ bài thi:</strong>",
-     "plain": "Ví dụ bài thi:",
+     "plain": "Ví dụ bài thi: che một phần tên bằng băng dính – người quen vẫn đoán ra; giả danh hóa – thay tên bằng số phách, hội đồng giữ bảng đối chiếu nên vẫn nối lại được; ẩn danh hóa – chỉ công bố “điểm trung bình cả tỉnh là 6,8”, không còn cách nào biết điểm từng em.",
+     "html": "Ví dụ bài thi: <strong>che</strong> một phần tên bằng băng dính – người quen vẫn đoán ra; <strong>giả danh hóa</strong> – thay tên bằng số phách, hội đồng giữ bảng đối chiếu nên vẫn nối lại được; <strong>ẩn danh hóa</strong> – chỉ công bố “điểm trung bình cả tỉnh là 6,8”, không còn cách nào biết điểm từng em.",
      "callout": "example"
     },
     {
-     "t": "list",
-     "ordered": false,
-     "items": [
-      {
-       "html": "<strong>Che giấu (masking):</strong> che một phần tên thí sinh bằng băng dính, vẫn đọc được vài chữ. Người quen có thể đoán ra.",
-       "level": 0,
-       "plain": "Che giấu (masking): che một phần tên thí sinh bằng băng dính, vẫn đọc được vài chữ. Người quen có thể đoán ra."
-      },
-      {
-       "html": "<strong>Giả danh hóa (pseudonymisation):</strong> thay tên bằng số phách. Giám khảo không biết bài của ai, nhưng hội đồng giữ bảng đối chiếu phách – tên nên vẫn nối lại được.",
-       "level": 0,
-       "plain": "Giả danh hóa (pseudonymisation): thay tên bằng số phách. Giám khảo không biết bài của ai, nhưng hội đồng giữ bảng đối chiếu phách – tên nên vẫn nối lại được."
-      },
-      {
-       "html": "<strong>Ẩn danh hóa (anonymisation):</strong> chỉ công bố \"điểm trung bình của cả tỉnh là 6,8\" – không còn cách nào biết điểm của từng em.",
-       "level": 0,
-       "plain": "Ẩn danh hóa (anonymisation): chỉ công bố \"điểm trung bình của cả tỉnh là 6,8\" – không còn cách nào biết điểm của từng em."
-      }
-     ]
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Khái niệm",
-        "plain": "Khái niệm"
-       },
-       {
-        "html": "Cách hiểu",
-        "plain": "Cách hiểu"
-       },
-       {
-        "html": "Còn là dữ liệu cá nhân?",
-        "plain": "Còn là dữ liệu cá nhân?"
-       },
-       {
-        "html": "Giới hạn",
-        "plain": "Giới hạn"
-       }
-      ],
-      [
-       {
-        "html": "Masking / che giấu",
-        "plain": "Masking / che giấu"
-       },
-       {
-        "html": "Ẩn hoặc thay một phần giá trị",
-        "plain": "Ẩn hoặc thay một phần giá trị"
-       },
-       {
-        "html": "Có",
-        "plain": "Có"
-       },
-       {
-        "html": "Có thể vẫn nhận diện được người",
-        "plain": "Có thể vẫn nhận diện được người"
-       }
-      ],
-      [
-       {
-        "html": "Pseudonymisation / giả danh hóa",
-        "plain": "Pseudonymisation / giả danh hóa"
-       },
-       {
-        "html": "Thay định danh, giữ khả năng nối lại có kiểm soát",
-        "plain": "Thay định danh, giữ khả năng nối lại có kiểm soát"
-       },
-       {
-        "html": "Có",
-        "plain": "Có"
-       },
-       {
-        "html": "Lộ bảng đối chiếu hoặc khóa là mất tác dụng",
-        "plain": "Lộ bảng đối chiếu hoặc khóa là mất tác dụng"
-       }
-      ],
-      [
-       {
-        "html": "Anonymisation / ẩn danh hóa (luật Việt Nam gọi là khử nhận dạng)",
-        "plain": "Anonymisation / ẩn danh hóa (luật Việt Nam gọi là khử nhận dạng)"
-       },
-       {
-        "html": "Xử lý để không còn xác định được cá nhân",
-        "plain": "Xử lý để không còn xác định được cá nhân"
-       },
-       {
-        "html": "Không – nếu đúng là không còn xác định được",
-        "plain": "Không – nếu đúng là không còn xác định được"
-       },
-       {
-        "html": "Phải đánh giá khả năng tái nhận diện, không tự tuyên bố",
-        "plain": "Phải đánh giá khả năng tái nhận diện, không tự tuyên bố"
-       }
-      ],
-      [
-       {
-        "html": "Tổng hợp (aggregation)",
-        "plain": "Tổng hợp (aggregation)"
-       },
-       {
-        "html": "Gộp nhiều dòng thành số liệu nhóm",
-        "plain": "Gộp nhiều dòng thành số liệu nhóm"
-       },
-       {
-        "html": "Thường không, khi nhóm đủ lớn và không ai áp đảo",
-        "plain": "Thường không, khi nhóm đủ lớn và không ai áp đảo"
-       },
-       {
-        "html": "Nhóm quá nhỏ hoặc có một giá trị áp đảo vẫn lộ người",
-        "plain": "Nhóm quá nhỏ hoặc có một giá trị áp đảo vẫn lộ người"
-       }
-      ]
-     ]
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 222\" role=\"img\" aria-label=\"Các mức giảm dữ liệu từ dữ liệu gốc đến khử nhận dạng\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-pho-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-pho-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-pho-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-pho-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-pho-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><path d=\"M8,34 V26 H432 V34\" class=\"ln l-bad\"/><text x=\"220\" y=\"18\" font-size=\"12.5\" text-anchor=\"middle\" class=\"f-bad\" font-weight=\"600\">Vẫn là dữ liệu cá nhân</text><path d=\"M437,34 V26 H712 V34\" class=\"ln l-ok\"/><text x=\"574\" y=\"18\" font-size=\"12.5\" text-anchor=\"middle\" class=\"f-ok\" font-weight=\"600\">Có thể không còn – chỉ khi đã kiểm tra</text><rect x=\"8\" y=\"40\" width=\"132\" height=\"96\" rx=\"8\" class=\"r-bad\"/><text x=\"74.0\" y=\"75.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Dữ liệu gốc</text><text x=\"74.0\" y=\"92.5\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">Nguyễn Văn A</text><text x=\"74.0\" y=\"109.7\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">0912345678</text><rect x=\"151\" y=\"40\" width=\"132\" height=\"96\" rx=\"8\" class=\"r-bad\"/><text x=\"217.0\" y=\"75.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Che (masking)</text><text x=\"217.0\" y=\"92.5\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">091****678</text><text x=\"217.0\" y=\"109.7\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">vẫn đoán, nối được</text><rect x=\"294\" y=\"40\" width=\"132\" height=\"96\" rx=\"8\" class=\"r-bad\"/><text x=\"360.0\" y=\"75.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Giả danh hóa</text><text x=\"360.0\" y=\"92.5\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">P-7F3A9C</text><text x=\"360.0\" y=\"109.7\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">ai giữ khóa nối lại</text><rect x=\"437\" y=\"40\" width=\"132\" height=\"96\" rx=\"8\" class=\"r-ok\"/><text x=\"503.0\" y=\"75.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tổng hợp</text><text x=\"503.0\" y=\"92.5\" font-size=\"11.5\" text-anchor=\"middle\">An Phú, tháng 9:</text><text x=\"503.0\" y=\"109.7\" font-size=\"11.5\" text-anchor=\"middle\">174 KH, 64.263 kWh</text><rect x=\"580\" y=\"40\" width=\"132\" height=\"96\" rx=\"8\" class=\"r-ok\"/><text x=\"646.0\" y=\"75.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Khử nhận dạng</text><text x=\"646.0\" y=\"92.5\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">không còn nhận ra</text><text x=\"646.0\" y=\"109.7\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">người – có đánh giá</text><line x1=\"8\" y1=\"158\" x2=\"712\" y2=\"158\" class=\"l-mut\" marker-end=\"url(#m6-pho-mut)\"/><text x=\"360\" y=\"178\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">Mức chi tiết giảm dần · khả năng nhận ra người giảm dần</text><text x=\"360\" y=\"208\" font-size=\"12.5\" text-anchor=\"middle\">Che số điện thoại là giảm lộ, chưa phải ẩn danh. Dự báo theo phường: tổng hợp thường là đủ và an toàn nhất.</text></svg>",
+     "caption": "Từ dữ liệu gốc đến khử nhận dạng: chỉ hai mức cuối có thể không còn là dữ liệu cá nhân – và chỉ khi đã kiểm tra.",
+     "plain": "Từ dữ liệu gốc đến khử nhận dạng: chỉ hai mức cuối có thể không còn là dữ liệu cá nhân – và chỉ khi đã kiểm tra."
     },
     {
      "t": "p",
-     "html": "<strong>Căn cứ pháp lý.</strong> Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Điều 2, định nghĩa dữ liệu cá nhân là dữ liệu xác định hoặc <strong>giúp xác định</strong> một con người cụ thể, và nêu rõ dữ liệu cá nhân sau khi khử nhận dạng thì không còn là dữ liệu cá nhân. Khử nhận dạng là quá trình thay đổi hoặc xóa thông tin để tạo ra dữ liệu mới không còn xác định được người. Điều kiện \"không còn xác định được\" là chỗ khó: che số điện thoại hay thay mã khách hàng chưa đạt. Châu Âu cùng cách hiểu: theo GDPR và hướng dẫn của EDPB, dữ liệu giả danh hóa vẫn là dữ liệu cá nhân.",
-     "plain": "Căn cứ pháp lý. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Điều 2, định nghĩa dữ liệu cá nhân là dữ liệu xác định hoặc giúp xác định một con người cụ thể, và nêu rõ dữ liệu cá nhân sau khi khử nhận dạng thì không còn là dữ liệu cá nhân. Khử nhận dạng là quá trình thay đổi hoặc xóa thông tin để tạo ra dữ liệu mới không còn xác định được người. Điều kiện \"không còn xác định được\" là chỗ khó: che số điện thoại hay thay mã khách hàng chưa đạt. Châu Âu cùng cách hiểu: theo GDPR và hướng dẫn của EDPB, dữ liệu giả danh hóa vẫn là dữ liệu cá nhân."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Câu cần nhớ:</strong> che số điện thoại là một biện pháp giảm lộ, chưa chứng minh đã ẩn danh. Với nhu cầu dự báo theo phường, <strong>tổng hợp</strong> thường là cách an toàn và đủ dùng nhất – nhưng vẫn phải kiểm tra (mục 1.6).",
-     "plain": "Câu cần nhớ: che số điện thoại là một biện pháp giảm lộ, chưa chứng minh đã ẩn danh. Với nhu cầu dự báo theo phường, tổng hợp thường là cách an toàn và đủ dùng nhất – nhưng vẫn phải kiểm tra (mục 1.6)."
+     "plain": "Căn cứ pháp lý. Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Điều 2: dữ liệu cá nhân sau khi khử nhận dạng thì không còn là dữ liệu cá nhân – với điều kiện không còn xác định được người. Che số điện thoại hay thay mã khách hàng chưa đạt điều kiện đó. Theo GDPR và hướng dẫn của EDPB, dữ liệu giả danh hóa cũng vẫn là dữ liệu cá nhân.",
+     "html": "<strong>Căn cứ pháp lý.</strong> Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Điều 2: dữ liệu cá nhân sau khi <strong>khử nhận dạng</strong> thì không còn là dữ liệu cá nhân – với điều kiện không còn xác định được người. Che số điện thoại hay thay mã khách hàng chưa đạt điều kiện đó. Theo GDPR và hướng dẫn của EDPB, dữ liệu giả danh hóa cũng vẫn là dữ liệu cá nhân."
     },
     {
      "t": "h3",
-     "text": "1.4. Tám kỹ thuật giảm dữ liệu"
+     "text": "1.4. Kỹ thuật giảm dữ liệu"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Kỹ thuật",
-        "plain": "Kỹ thuật"
+        "plain": "Kỹ thuật",
+        "html": "Kỹ thuật"
        },
        {
-        "html": "Cách làm",
-        "plain": "Cách làm"
+        "plain": "Trước → sau",
+        "html": "Trước → sau"
        },
        {
-        "html": "Ví dụ trước → sau",
-        "plain": "Ví dụ trước → sau"
-       },
-       {
-        "html": "Ưu điểm",
-        "plain": "Ưu điểm"
-       },
-       {
-        "html": "Hạn chế",
-        "plain": "Hạn chế"
+        "plain": "Lưu ý",
+        "html": "Lưu ý"
        }
       ],
       [
        {
-        "html": "Loại bỏ (suppression)",
-        "plain": "Loại bỏ (suppression)"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Xóa hẳn cột hoặc dòng",
-        "plain": "Xóa hẳn cột hoặc dòng"
+        "plain": "Cột Họ tên → (không còn)",
+        "html": "Cột Họ tên → (không còn)"
        },
        {
-        "html": "Cột Họ tên → (không còn)",
-        "plain": "Cột Họ tên → (không còn)"
-       },
-       {
-        "html": "An toàn nhất, đơn giản",
-        "plain": "An toàn nhất, đơn giản"
-       },
-       {
-        "html": "Mất thông tin nếu thật sự cần",
-        "plain": "Mất thông tin nếu thật sự cần"
+        "plain": "An toàn nhất; mặc định cho cột không cần",
+        "html": "An toàn nhất; mặc định cho cột không cần"
        }
       ],
       [
        {
-        "html": "Che một phần (partial masking)",
-        "plain": "Che một phần (partial masking)"
+        "plain": "Che một phần",
+        "html": "Che một phần"
        },
        {
-        "html": "Thay một đoạn ký tự bằng *",
-        "plain": "Thay một đoạn ký tự bằng *"
+        "plain": "0912345678 → 091678",
+        "html": "0912345678 → 091****678"
        },
        {
-        "html": "0912345678 → 091****678",
-        "plain": "0912345678 → 091****678"
-       },
-       {
-        "html": "Người nghiệp vụ vẫn đối chiếu được với khách",
-        "plain": "Người nghiệp vụ vẫn đối chiếu được với khách"
-       },
-       {
-        "html": "Vẫn còn khả năng liên kết, đoán ra",
-        "plain": "Vẫn còn khả năng liên kết, đoán ra"
+        "plain": "Vẫn liên kết, đoán được",
+        "html": "Vẫn liên kết, đoán được"
        }
       ],
       [
        {
-        "html": "Thay thế (substitution)",
-        "plain": "Thay thế (substitution)"
+        "plain": "Thay thế",
+        "html": "Thay thế"
        },
        {
-        "html": "Thay bằng giá trị giả nhưng hợp lệ",
-        "plain": "Thay bằng giá trị giả nhưng hợp lệ"
+        "plain": "Nguyễn Văn A → Khách hàng 0001",
+        "html": "Nguyễn Văn A → Khách hàng 0001"
        },
        {
-        "html": "Nguyễn Văn A → Khách hàng 0001",
-        "plain": "Nguyễn Văn A → Khách hàng 0001"
-       },
-       {
-        "html": "Hợp cho môi trường thử nghiệm",
-        "plain": "Hợp cho môi trường thử nghiệm"
-       },
-       {
-        "html": "Cần công cụ sinh dữ liệu giả",
-        "plain": "Cần công cụ sinh dữ liệu giả"
+        "plain": "Hợp cho môi trường thử nghiệm",
+        "html": "Hợp cho môi trường thử nghiệm"
        }
       ],
       [
        {
-        "html": "Giả danh hóa (pseudonymisation)",
-        "plain": "Giả danh hóa (pseudonymisation)"
+        "plain": "Giả danh hóa",
+        "html": "Giả danh hóa"
        },
        {
-        "html": "Thay mã thật bằng mã khác; bảng đối chiếu hoặc khóa giữ riêng",
-        "plain": "Thay mã thật bằng mã khác; bảng đối chiếu hoặc khóa giữ riêng"
+        "plain": "PE0100123456 → P-7F3A9C",
+        "html": "PE0100123456 → P-7F3A9C"
        },
        {
-        "html": "PE0100123456 → P-7F3A9C",
-        "plain": "PE0100123456 → P-7F3A9C"
-       },
-       {
-        "html": "Vẫn nối được nhiều bảng, nhiều tháng với nhau",
-        "plain": "Vẫn nối được nhiều bảng, nhiều tháng với nhau"
-       },
-       {
-        "html": "Vẫn là dữ liệu cá nhân; lộ bảng đối chiếu là mất tác dụng",
-        "plain": "Vẫn là dữ liệu cá nhân; lộ bảng đối chiếu là mất tác dụng"
+        "plain": "Nối được nhiều bảng, nhiều tháng; vẫn là dữ liệu cá nhân",
+        "html": "Nối được nhiều bảng, nhiều tháng; vẫn là dữ liệu cá nhân"
        }
       ],
       [
        {
-        "html": "Tổng quát hóa (generalization)",
-        "plain": "Tổng quát hóa (generalization)"
+        "plain": "Tổng quát hóa",
+        "html": "Tổng quát hóa"
        },
        {
-        "html": "Giảm độ chi tiết",
-        "plain": "Giảm độ chi tiết"
+        "plain": "Số nhà → phường; 245 kWh → “201–300 kWh”",
+        "html": "Số nhà → phường; 245 kWh → “201–300 kWh”"
        },
        {
-        "html": "\"Số 12 ngõ 5 phố X\" → \"Phường Y\"; 245 kWh → \"201–300 kWh\"; ngày giờ → tháng",
-        "plain": "\"Số 12 ngõ 5 phố X\" → \"Phường Y\"; 245 kWh → \"201–300 kWh\"; ngày giờ → tháng"
-       },
-       {
-        "html": "Giữ được xu hướng",
-        "plain": "Giữ được xu hướng"
-       },
-       {
-        "html": "Giảm độ chính xác phân tích",
-        "plain": "Giảm độ chính xác phân tích"
+        "plain": "Giữ xu hướng, giảm độ chính xác",
+        "html": "Giữ xu hướng, giảm độ chính xác"
        }
       ],
       [
        {
-        "html": "Tổng hợp (aggregation)",
-        "plain": "Tổng hợp (aggregation)"
+        "plain": "Tổng hợp",
+        "html": "Tổng hợp"
        },
        {
-        "html": "Gộp nhiều dòng thành số liệu nhóm",
-        "plain": "Gộp nhiều dòng thành số liệu nhóm"
+        "plain": "174 hộ → “An Phú, tháng 9: 174 khách hàng, 64.263 kWh”",
+        "html": "174 hộ → “An Phú, tháng 9: 174 khách hàng, 64.263 kWh”"
        },
        {
-        "html": "174 hộ → \"An Phú, tháng 9: 174 khách hàng, 64.263 kWh\"",
-        "plain": "174 hộ → \"An Phú, tháng 9: 174 khách hàng, 64.263 kWh\""
-       },
-       {
-        "html": "Rất hiệu quả cho báo cáo, dự báo",
-        "plain": "Rất hiệu quả cho báo cáo, dự báo"
-       },
-       {
-        "html": "Nhóm quá nhỏ vẫn lộ người",
-        "plain": "Nhóm quá nhỏ vẫn lộ người"
+        "plain": "Rất hợp cho báo cáo, dự báo; nhóm nhỏ vẫn lộ người",
+        "html": "Rất hợp cho báo cáo, dự báo; nhóm nhỏ vẫn lộ người"
        }
       ],
       [
        {
-        "html": "Làm nhiễu (noise)",
-        "plain": "Làm nhiễu (noise)"
+        "plain": "Làm nhiễu, xáo trộn",
+        "html": "Làm nhiễu, xáo trộn"
        },
        {
-        "html": "Cộng/trừ một sai số ngẫu nhiên nhỏ",
-        "plain": "Cộng/trừ một sai số ngẫu nhiên nhỏ"
+        "plain": "245 → 248; đổi giá trị giữa các dòng",
+        "html": "245 → 248; đổi giá trị giữa các dòng"
        },
        {
-        "html": "245 → 248",
-        "plain": "245 → 248"
-       },
-       {
-        "html": "Khó truy ngược giá trị thật",
-        "plain": "Khó truy ngược giá trị thật"
-       },
-       {
-        "html": "Chỉ hợp phân tích thống kê; cần chuyên môn",
-        "plain": "Chỉ hợp phân tích thống kê; cần chuyên môn"
-       }
-      ],
-      [
-       {
-        "html": "Xáo trộn (shuffling)",
-        "plain": "Xáo trộn (shuffling)"
-       },
-       {
-        "html": "Đổi chỗ giá trị giữa các dòng",
-        "plain": "Đổi chỗ giá trị giữa các dòng"
-       },
-       {
-        "html": "Sản lượng hộ A ↔ hộ B",
-        "plain": "Sản lượng hộ A ↔ hộ B"
-       },
-       {
-        "html": "Giữ phân bố chung",
-        "plain": "Giữ phân bố chung"
-       },
-       {
-        "html": "Phá quan hệ giữa các cột",
-        "plain": "Phá quan hệ giữa các cột"
+        "plain": "Chỉ hợp phân tích thống kê; cần chuyên môn",
+        "html": "Chỉ hợp phân tích thống kê; cần chuyên môn"
        }
       ]
      ]
@@ -985,342 +607,151 @@
      "ordered": false,
      "items": [
       {
-       "html": "<strong>Masking tĩnh (static):</strong> tạo ra một bản dữ liệu mới đã xử lý, rồi giao bản đó. Dùng khi gửi file, chuẩn bị dữ liệu thử nghiệm, đưa vào AI. Đây là cách học viên thực hành hôm nay.",
-       "level": 0,
-       "plain": "Masking tĩnh (static): tạo ra một bản dữ liệu mới đã xử lý, rồi giao bản đó. Dùng khi gửi file, chuẩn bị dữ liệu thử nghiệm, đưa vào AI. Đây là cách học viên thực hành hôm nay."
+       "plain": "Tĩnh: tạo một bản mới đã xử lý rồi giao bản đó – dùng khi gửi file, làm dữ liệu thử nghiệm, đưa vào AI. Đây là cách thực hành hôm nay.",
+       "html": "<strong>Tĩnh:</strong> tạo một bản mới đã xử lý rồi giao bản đó – dùng khi gửi file, làm dữ liệu thử nghiệm, đưa vào AI. Đây là cách thực hành hôm nay.",
+       "level": 0
       },
       {
-       "html": "<strong>Masking động (dynamic):</strong> dữ liệu gốc giữ nguyên; hệ thống che khi hiển thị tùy quyền người xem. Ví dụ giao dịch viên chỉ thấy 091****678, trưởng phòng thấy đủ. Một số hệ quản trị CSDL có sẵn tính năng này (ví dụ Dynamic Data Masking của SQL Server).",
-       "level": 0,
-       "plain": "Masking động (dynamic): dữ liệu gốc giữ nguyên; hệ thống che khi hiển thị tùy quyền người xem. Ví dụ giao dịch viên chỉ thấy 091****678, trưởng phòng thấy đủ. Một số hệ quản trị CSDL có sẵn tính năng này (ví dụ Dynamic Data Masking của SQL Server)."
+       "plain": "Động: dữ liệu gốc giữ nguyên, hệ thống che khi hiển thị theo quyền người xem (giao dịch viên thấy 091678, trưởng phòng thấy đủ).",
+       "html": "<strong>Động:</strong> dữ liệu gốc giữ nguyên, hệ thống che khi hiển thị theo quyền người xem (giao dịch viên thấy 091****678, trưởng phòng thấy đủ).",
+       "level": 0
       }
      ]
     },
     {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Masking động trong hệ thống",
-        "plain": "Masking động trong hệ thống"
-       },
-       {
-        "html": "Xử lý bản xuất (masking tĩnh)",
-        "plain": "Xử lý bản xuất (masking tĩnh)"
-       }
-      ],
-      [
-       {
-        "html": "Thay đổi cách hiển thị kết quả theo quyền người xem",
-        "plain": "Thay đổi cách hiển thị kết quả theo quyền người xem"
-       },
-       {
-        "html": "Tạo một tập dữ liệu mới đã bỏ hoặc biến đổi trường",
-        "plain": "Tạo một tập dữ liệu mới đã bỏ hoặc biến đổi trường"
-       }
-      ],
-      [
-       {
-        "html": "Dữ liệu gốc vẫn nguyên trong cơ sở dữ liệu",
-        "plain": "Dữ liệu gốc vẫn nguyên trong cơ sở dữ liệu"
-       },
-       {
-        "html": "Phải kiểm tra file thực tế được chia sẻ",
-        "plain": "Phải kiểm tra file thực tế được chia sẻ"
-       }
-      ],
-      [
-       {
-        "html": "Tài khoản có quyền cao vẫn thấy bản gốc",
-        "plain": "Tài khoản có quyền cao vẫn thấy bản gốc"
-       },
-       {
-        "html": "Kiểm soát cả bản gốc và nơi lưu bản đã xử lý",
-        "plain": "Kiểm soát cả bản gốc và nơi lưu bản đã xử lý"
-       }
-      ]
-     ]
-    },
-    {
      "t": "p",
-     "html": "Masking động không thay thế phân quyền hay mã hóa. Nếu chức năng \"Xuất danh sách\" xuất từ dữ liệu gốc, nó có thể ra đủ cột rõ dù màn hình đang che – điều cần hỏi CNTT.",
-     "plain": "Masking động không thay thế phân quyền hay mã hóa. Nếu chức năng \"Xuất danh sách\" xuất từ dữ liệu gốc, nó có thể ra đủ cột rõ dù màn hình đang che – điều cần hỏi CNTT."
+     "plain": "Masking động không thay phân quyền hay mã hóa: nếu chức năng “Xuất danh sách” lấy từ dữ liệu gốc, file xuất vẫn đủ cột rõ dù màn hình đang che – điều cần hỏi CNTT.",
+     "html": "Masking động không thay phân quyền hay mã hóa: nếu chức năng “Xuất danh sách” lấy từ dữ liệu gốc, file xuất vẫn đủ cột rõ dù màn hình đang che – điều cần hỏi CNTT."
     },
     {
      "t": "h3",
-     "text": "1.6. Tái nhận diện: vì sao \"đã bỏ tên\" chưa đủ"
+     "text": "1.6. Tái nhận diện: vì sao “đã bỏ tên” chưa đủ"
     },
     {
      "t": "p",
-     "html": "<strong>Liên kết (linkage).</strong> Một file đã bỏ tên và điện thoại, chỉ còn phường – loại nhà – sản lượng tháng. Trong phường chỉ có một biệt thự dùng 3.000 kWh/tháng: ai biết khu đó nhận ra ngay. Hoặc ghép file với danh bạ công khai của một khu chung cư là nối được hộ.",
-     "plain": "Liên kết (linkage). Một file đã bỏ tên và điện thoại, chỉ còn phường – loại nhà – sản lượng tháng. Trong phường chỉ có một biệt thự dùng 3.000 kWh/tháng: ai biết khu đó nhận ra ngay. Hoặc ghép file với danh bạ công khai của một khu chung cư là nối được hộ."
+     "plain": "File đã bỏ tên và điện thoại, chỉ còn phường – loại nhà – sản lượng: nếu trong phường chỉ có một biệt thự dùng 3.000 kWh/tháng, ai biết khu đó nhận ra ngay. Bốn phép kiểm tra dùng trước khi giao bất kỳ bản nào:",
+     "html": "File đã bỏ tên và điện thoại, chỉ còn phường – loại nhà – sản lượng: nếu trong phường chỉ có một biệt thự dùng 3.000 kWh/tháng, ai biết khu đó nhận ra ngay. Bốn phép kiểm tra dùng trước khi giao bất kỳ bản nào:"
     },
     {
-     "t": "p",
-     "html": "Bốn phép kiểm tra đơn giản, dùng trước khi giao bất kỳ bản nào:",
-     "plain": "Bốn phép kiểm tra đơn giản, dùng trước khi giao bất kỳ bản nào:"
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 246\" role=\"img\" aria-label=\"Bốn phép kiểm tra tái nhận diện với số liệu chương 6\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-4p-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-4p-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-4p-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-4p-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-4p-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"4\" y=\"4\" width=\"170\" height=\"236\" rx=\"8\" class=\"box\"/><text x=\"89\" y=\"26\" font-size=\"13.5\" text-anchor=\"middle\" font-weight=\"600\">1. Nhóm nhỏ</text><text x=\"89\" y=\"228\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-ok\" font-weight=\"600\">→ Gộp, không hiện riêng</text><rect x=\"183\" y=\"4\" width=\"170\" height=\"236\" rx=\"8\" class=\"box\"/><text x=\"268\" y=\"26\" font-size=\"13.5\" text-anchor=\"middle\" font-weight=\"600\">2. Ngoại lai</text><text x=\"268\" y=\"228\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-ok\" font-weight=\"600\">→ Không giao từng hộ</text><rect x=\"362\" y=\"4\" width=\"170\" height=\"236\" rx=\"8\" class=\"box\"/><text x=\"447\" y=\"26\" font-size=\"13.5\" text-anchor=\"middle\" font-weight=\"600\">3. Áp đảo</text><text x=\"447\" y=\"228\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-ok\" font-weight=\"600\">→ Tách khách hàng lớn</text><rect x=\"541\" y=\"4\" width=\"170\" height=\"236\" rx=\"8\" class=\"box\"/><text x=\"626\" y=\"26\" font-size=\"13.5\" text-anchor=\"middle\" font-weight=\"600\">4. Phép trừ</text><text x=\"626\" y=\"228\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-ok\" font-weight=\"600\">→ Mọi bảng cùng cách gộp</text><text x=\"12\" y=\"54\" font-size=\"11\" text-anchor=\"start\">An Phú</text><rect x=\"78\" y=\"45\" width=\"64\" height=\"12\" rx=\"2\" class=\"r-brand\"/><text x=\"146\" y=\"55\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-mut\">174</text><text x=\"12\" y=\"74\" font-size=\"11\" text-anchor=\"start\">Tân Lập</text><rect x=\"78\" y=\"65\" width=\"60\" height=\"12\" rx=\"2\" class=\"r-brand\"/><text x=\"142\" y=\"75\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-mut\">163</text><text x=\"12\" y=\"94\" font-size=\"11\" text-anchor=\"start\">Bình Minh</text><rect x=\"78\" y=\"85\" width=\"54\" height=\"12\" rx=\"2\" class=\"r-brand\"/><text x=\"136\" y=\"95\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-mut\">148</text><text x=\"12\" y=\"114\" font-size=\"11\" text-anchor=\"start\">Đông Hòa</text><rect x=\"78\" y=\"105\" width=\"48\" height=\"12\" rx=\"2\" class=\"r-brand\"/><text x=\"130\" y=\"115\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-mut\">130</text><text x=\"12\" y=\"134\" font-size=\"11\" text-anchor=\"start\">Phú Thượng</text><rect x=\"78\" y=\"125\" width=\"45\" height=\"12\" rx=\"2\" class=\"r-brand\"/><text x=\"127\" y=\"135\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-mut\">121</text><text x=\"12\" y=\"154\" font-size=\"11\" text-anchor=\"start\" class=\"f-bad\">Cảng Mới</text><rect x=\"78\" y=\"145\" width=\"2\" height=\"12\" rx=\"2\" class=\"r-bad\"/><text x=\"84\" y=\"155\" font-size=\"10.5\" text-anchor=\"start\" class=\"f-bad\">1</text><text x=\"89\" y=\"184\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-bad\">1 khách hàng:</text><text x=\"89\" y=\"200\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-bad\">tổng chính là của xưởng</text><rect x=\"195\" y=\"160\" width=\"12\" height=\"10\" rx=\"2\" class=\"r-brand\"/><rect x=\"214\" y=\"158\" width=\"12\" height=\"12\" rx=\"2\" class=\"r-brand\"/><rect x=\"233\" y=\"161\" width=\"12\" height=\"9\" rx=\"2\" class=\"r-brand\"/><rect x=\"252\" y=\"159\" width=\"12\" height=\"11\" rx=\"2\" class=\"r-brand\"/><rect x=\"271\" y=\"157\" width=\"12\" height=\"13\" rx=\"2\" class=\"r-brand\"/><rect x=\"290\" y=\"160\" width=\"12\" height=\"10\" rx=\"2\" class=\"r-brand\"/><rect x=\"309\" y=\"161\" width=\"12\" height=\"9\" rx=\"2\" class=\"r-brand\"/><rect x=\"328\" y=\"60\" width=\"12\" height=\"110\" rx=\"2\" class=\"r-bad\"/><text x=\"334\" y=\"54\" font-size=\"11\" text-anchor=\"middle\" class=\"f-bad\" font-weight=\"600\">3.370</text><line x1=\"191\" y1=\"170\" x2=\"345\" y2=\"170\" class=\"l-mut\"/><text x=\"268\" y=\"188\" font-size=\"11\" text-anchor=\"middle\" class=\"f-mut\">hộ sinh hoạt An Phú;</text><text x=\"268\" y=\"203\" font-size=\"11\" text-anchor=\"middle\" class=\"f-mut\">trung bình phường ≈ 300 kWh</text><text x=\"447\" y=\"70\" font-size=\"11.5\" text-anchor=\"middle\">Đông Hòa + Cảng Mới</text><rect x=\"372\" y=\"80\" width=\"70\" height=\"30\" rx=\"3\" class=\"r-bad\"/><rect x=\"442\" y=\"80\" width=\"80\" height=\"30\" rx=\"3\" class=\"r-brand\"/><text x=\"372\" y=\"130\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-bad\" font-weight=\"600\">Xưởng: 46%</text><text x=\"372\" y=\"148\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">130 hộ còn lại: 54%</text><text x=\"447\" y=\"184\" font-size=\"11.5\" text-anchor=\"middle\">Qua ngưỡng 10 khách hàng</text><text x=\"447\" y=\"200\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-bad\">nhưng vẫn ước được xưởng</text><text x=\"553\" y=\"48\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">Bảng A – gộp:</text><text x=\"553\" y=\"64\" font-size=\"11.5\" text-anchor=\"start\">Đông Hòa + Cảng Mới</text><text x=\"553\" y=\"104\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">Bảng B – riêng:</text><text x=\"553\" y=\"120\" font-size=\"11.5\" text-anchor=\"start\">Đông Hòa</text><text x=\"699\" y=\"82\" font-size=\"12\" text-anchor=\"end\" class=\"mono\">91.587 kWh</text><text x=\"699\" y=\"138\" font-size=\"12\" text-anchor=\"end\" class=\"mono\">− 49.228 kWh</text><line x1=\"553\" y1=\"148\" x2=\"699\" y2=\"148\" class=\"l-mut\"/><text x=\"699\" y=\"166\" font-size=\"12\" text-anchor=\"end\" class=\"mono f-bad\" font-weight=\"600\">= 42.359 kWh</text><text x=\"626\" y=\"184\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-bad\">đúng bằng sản lượng</text><text x=\"626\" y=\"200\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-bad\">của xưởng</text></svg>",
+     "caption": "Bốn phép kiểm tra với số liệu chương 6 (tháng 9/2026).",
+     "plain": "Bốn phép kiểm tra với số liệu chương 6 (tháng 9/2026)."
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Phép kiểm tra",
-        "plain": "Phép kiểm tra"
+        "plain": "Phép kiểm tra",
+        "html": "Phép kiểm tra"
        },
        {
-        "html": "Câu hỏi",
-        "plain": "Câu hỏi"
+        "plain": "Câu hỏi",
+        "html": "Câu hỏi"
        },
        {
-        "html": "Ví dụ chương 6",
-        "plain": "Ví dụ chương 6"
-       },
-       {
-        "html": "Xử lý",
-        "plain": "Xử lý"
+        "plain": "Xử lý",
+        "html": "Xử lý"
        }
       ],
       [
        {
-        "html": "Ngưỡng nhóm tối thiểu",
-        "plain": "Ngưỡng nhóm tối thiểu"
+        "plain": "Nhóm nhỏ",
+        "html": "Nhóm nhỏ"
        },
        {
-        "html": "Còn nhóm nào có quá ít người?",
-        "plain": "Còn nhóm nào có quá ít người?"
+        "plain": "Còn nhóm nào có quá ít người?",
+        "html": "Còn nhóm nào có quá ít người?"
        },
        {
-        "html": "Cảng Mới: 1 khách hàng",
-        "plain": "Cảng Mới: 1 khách hàng"
-       },
-       {
-        "html": "Gộp với nhóm lân cận hoặc không hiển thị riêng",
-        "plain": "Gộp với nhóm lân cận hoặc không hiển thị riêng"
+        "plain": "Gộp với nhóm lân cận hoặc không hiển thị riêng",
+        "html": "Gộp với nhóm lân cận hoặc không hiển thị riêng"
        }
       ],
       [
        {
-        "html": "Giá trị ngoại lai",
-        "plain": "Giá trị ngoại lai"
+        "plain": "Ngoại lai",
+        "html": "Ngoại lai"
        },
        {
-        "html": "Có dòng nào khác hẳn phần còn lại?",
-        "plain": "Có dòng nào khác hẳn phần còn lại?"
+        "plain": "Có dòng nào khác hẳn phần còn lại?",
+        "html": "Có dòng nào khác hẳn phần còn lại?"
        },
        {
-        "html": "Một hộ sinh hoạt ở An Phú dùng 3.370 kWh, trung bình phường ~300 kWh",
-        "plain": "Một hộ sinh hoạt ở An Phú dùng 3.370 kWh, trung bình phường ~300 kWh"
-       },
-       {
-        "html": "Không giao dữ liệu từng hộ; trong bản tổng hợp thì hộ này \"chìm\" trong 174 hộ",
-        "plain": "Không giao dữ liệu từng hộ; trong bản tổng hợp thì hộ này \"chìm\" trong 174 hộ"
+        "plain": "Không giao dữ liệu từng hộ; trong bản tổng hợp hộ này “chìm” trong 174 hộ",
+        "html": "Không giao dữ liệu từng hộ; trong bản tổng hợp hộ này “chìm” trong 174 hộ"
        }
       ],
       [
        {
-        "html": "Giá trị áp đảo",
-        "plain": "Giá trị áp đảo"
+        "plain": "Áp đảo",
+        "html": "Áp đảo"
        },
        {
-        "html": "Một khách hàng có chiếm phần lớn tổng của nhóm không?",
-        "plain": "Một khách hàng có chiếm phần lớn tổng của nhóm không?"
+        "plain": "Một khách hàng có chiếm phần lớn tổng của nhóm?",
+        "html": "Một khách hàng có chiếm phần lớn tổng của nhóm?"
        },
        {
-        "html": "Gộp Cảng Mới vào Đông Hòa: xưởng vẫn chiếm ~46% tổng",
-        "plain": "Gộp Cảng Mới vào Đông Hòa: xưởng vẫn chiếm ~46% tổng"
-       },
-       {
-        "html": "Tách khách hàng lớn ra xử lý riêng (Thực hành 7)",
-        "plain": "Tách khách hàng lớn ra xử lý riêng (Thực hành 7)"
+        "plain": "Tách khách hàng lớn ra xử lý riêng (Thực hành 7)",
+        "html": "Tách khách hàng lớn ra xử lý riêng (Thực hành 7)"
        }
       ],
       [
        {
-        "html": "Phép trừ giữa các bảng",
-        "plain": "Phép trừ giữa các bảng"
+        "plain": "Phép trừ",
+        "html": "Phép trừ"
        },
        {
-        "html": "Hai bảng giao đi có cho phép trừ ra một người không?",
-        "plain": "Hai bảng giao đi có cho phép trừ ra một người không?"
+        "plain": "Hai bảng giao đi trừ nhau có ra một người?",
+        "html": "Hai bảng giao đi trừ nhau có ra một người?"
        },
        {
-        "html": "Bảng A có \"Đông Hòa và Cảng Mới\", bảng B có \"Đông Hòa\" riêng → trừ ra xưởng",
-        "plain": "Bảng A có \"Đông Hòa và Cảng Mới\", bảng B có \"Đông Hòa\" riêng → trừ ra xưởng"
-       },
-       {
-        "html": "Các bảng giao cùng một người dùng cùng một cách gộp",
-        "plain": "Các bảng giao cùng một người dùng cùng một cách gộp"
+        "plain": "Mọi bảng giao cho cùng người nhận dùng cùng một cách gộp",
+        "html": "Mọi bảng giao cho cùng người nhận dùng cùng một cách gộp"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "Ngưỡng nhóm tối thiểu gần với khái niệm k-anonymity: mỗi tổ hợp đặc điểm phải có ít nhất k người giống nhau. Giá trị k và ngưỡng tỷ trọng áp đảo do đơn vị quy định; con số 10 dùng trong giáo trình chỉ là ví dụ.",
-     "plain": "Ngưỡng nhóm tối thiểu gần với khái niệm k-anonymity: mỗi tổ hợp đặc điểm phải có ít nhất k người giống nhau. Giá trị k và ngưỡng tỷ trọng áp đảo do đơn vị quy định; con số 10 dùng trong giáo trình chỉ là ví dụ."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Về xưởng đông lạnh:</strong> nếu xưởng thuộc một hộ kinh doanh cá thể, sản lượng của xưởng gắn với một con người cụ thể; nếu là doanh nghiệp, đó vẫn là thông tin kinh doanh cần giữ bí mật theo hợp đồng mua bán điện. Cả hai trường hợp đều không nên lộ qua một dòng tổng hợp.",
-     "plain": "Về xưởng đông lạnh: nếu xưởng thuộc một hộ kinh doanh cá thể, sản lượng của xưởng gắn với một con người cụ thể; nếu là doanh nghiệp, đó vẫn là thông tin kinh doanh cần giữ bí mật theo hợp đồng mua bán điện. Cả hai trường hợp đều không nên lộ qua một dòng tổng hợp."
+     "plain": "Ngưỡng nhóm gần với khái niệm k-anonymity: mỗi tổ hợp đặc điểm phải có ít nhất k người giống nhau. Giá trị k và ngưỡng áp đảo do đơn vị quy định; con số 10 trong giáo trình chỉ là ví dụ. Xưởng Cảng Mới dù là hộ kinh doanh hay doanh nghiệp thì sản lượng cũng không nên lộ qua một dòng tổng hợp.",
+     "html": "Ngưỡng nhóm gần với khái niệm k-anonymity: mỗi tổ hợp đặc điểm phải có ít nhất k người giống nhau. Giá trị k và ngưỡng áp đảo do đơn vị quy định; con số 10 trong giáo trình chỉ là ví dụ. Xưởng Cảng Mới dù là hộ kinh doanh hay doanh nghiệp thì sản lượng cũng không nên lộ qua một dòng tổng hợp."
     },
     {
      "t": "h3",
-     "text": "1.7. Bộ dữ liệu trước và sau xử lý (giả lập)"
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Trường",
-        "plain": "Trường"
-       },
-       {
-        "html": "Dữ liệu gốc",
-        "plain": "Dữ liệu gốc"
-       },
-       {
-        "html": "Bản dùng phân tích",
-        "plain": "Bản dùng phân tích"
-       },
-       {
-        "html": "Lý do",
-        "plain": "Lý do"
-       }
-      ],
-      [
-       {
-        "html": "Tên",
-        "plain": "Tên"
-       },
-       {
-        "html": "Người dùng mẫu A",
-        "plain": "Người dùng mẫu A"
-       },
-       {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
-       },
-       {
-        "html": "Phân tích sản lượng không cần tên",
-        "plain": "Phân tích sản lượng không cần tên"
-       }
-      ],
-      [
-       {
-        "html": "Điện thoại",
-        "plain": "Điện thoại"
-       },
-       {
-        "html": "0900000001",
-        "plain": "0900000001"
-       },
-       {
-        "html": "Không xuất, hoặc 090****001",
-        "plain": "Không xuất, hoặc 090****001"
-       },
-       {
-        "html": "Che vẫn còn rủi ro liên kết; tốt nhất là bỏ",
-        "plain": "Che vẫn còn rủi ro liên kết; tốt nhất là bỏ"
-       }
-      ],
-      [
-       {
-        "html": "Địa chỉ",
-        "plain": "Địa chỉ"
-       },
-       {
-        "html": "Số nhà mẫu, khu vực A",
-        "plain": "Số nhà mẫu, khu vực A"
-       },
-       {
-        "html": "Chỉ giữ vùng đủ rộng",
-        "plain": "Chỉ giữ vùng đủ rộng"
-       },
-       {
-        "html": "Giảm độ chi tiết vị trí",
-        "plain": "Giảm độ chi tiết vị trí"
-       }
-      ],
-      [
-       {
-        "html": "Mã khách hàng",
-        "plain": "Mã khách hàng"
-       },
-       {
-        "html": "KH001",
-        "plain": "KH001"
-       },
-       {
-        "html": "Mã thay thế (ví dụ P-4EE2E067) nếu cần nối dữ liệu",
-        "plain": "Mã thay thế (ví dụ P-4EE2E067) nếu cần nối dữ liệu"
-       },
-       {
-        "html": "Giả danh hóa; khóa hoặc bảng đối chiếu giữ riêng",
-        "plain": "Giả danh hóa; khóa hoặc bảng đối chiếu giữ riêng"
-       }
-      ],
-      [
-       {
-        "html": "Mức tiêu thụ",
-        "plain": "Mức tiêu thụ"
-       },
-       {
-        "html": "245 kWh",
-        "plain": "245 kWh"
-       },
-       {
-        "html": "Giữ hoặc tổng hợp theo mục đích",
-        "plain": "Giữ hoặc tổng hợp theo mục đích"
-       },
-       {
-        "html": "Là nội dung cần phân tích",
-        "plain": "Là nội dung cần phân tích"
-       }
-      ]
-     ]
-    },
-    {
-     "t": "p",
-     "html": "Bản \"sau\" vẫn có thể là dữ liệu cá nhân nếu còn khả năng liên kết – không gọi nó là \"bộ dữ liệu ẩn danh\".",
-     "plain": "Bản \"sau\" vẫn có thể là dữ liệu cá nhân nếu còn khả năng liên kết – không gọi nó là \"bộ dữ liệu ẩn danh\"."
-    },
-    {
-     "t": "h3",
-     "text": "1.8. Áp dụng"
+     "text": "1.7. Áp dụng"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "Trước mỗi yêu cầu dữ liệu, hỏi lại: để làm gì, cần những cột nào, ở mức chi tiết nào (từng hộ hay theo nhóm)?",
-       "level": 0,
-       "plain": "Trước mỗi yêu cầu dữ liệu, hỏi lại: để làm gì, cần những cột nào, ở mức chi tiết nào (từng hộ hay theo nhóm)?"
+       "plain": "Trước mỗi yêu cầu dữ liệu, hỏi lại: để làm gì, cần cột nào, chi tiết từng hộ hay theo nhóm?",
+       "html": "Trước mỗi yêu cầu dữ liệu, hỏi lại: để làm gì, cần cột nào, chi tiết từng hộ hay theo nhóm?",
+       "level": 0
       },
       {
+       "plain": "Mặc định là tổng hợp; chỉ giao dữ liệu từng dòng khi mục đích thật sự cần và có phê duyệt.",
        "html": "Mặc định là tổng hợp; chỉ giao dữ liệu từng dòng khi mục đích thật sự cần và có phê duyệt.",
-       "level": 0,
-       "plain": "Mặc định là tổng hợp; chỉ giao dữ liệu từng dòng khi mục đích thật sự cần và có phê duyệt."
+       "level": 0
       },
       {
-       "html": "Không dùng chữ \"ẩn danh\" cho một file mới chỉ bỏ tên hoặc che số; ghi đúng là \"đã che\" hoặc \"đã giả danh hóa\" và vẫn bảo vệ như dữ liệu cá nhân.",
-       "level": 0,
-       "plain": "Không dùng chữ \"ẩn danh\" cho một file mới chỉ bỏ tên hoặc che số; ghi đúng là \"đã che\" hoặc \"đã giả danh hóa\" và vẫn bảo vệ như dữ liệu cá nhân."
+       "plain": "Không gọi “ẩn danh” cho file mới bỏ tên hay che số; ghi đúng “đã che”, “đã giả danh hóa” và vẫn bảo vệ như dữ liệu cá nhân.",
+       "html": "Không gọi “ẩn danh” cho file mới bỏ tên hay che số; ghi đúng “đã che”, “đã giả danh hóa” và vẫn bảo vệ như dữ liệu cá nhân.",
+       "level": 0
       },
       {
-       "html": "Trước khi giao bản tổng hợp, chạy bốn phép kiểm tra ở mục 1.6.",
-       "level": 0,
-       "plain": "Trước khi giao bản tổng hợp, chạy bốn phép kiểm tra ở mục 1.6."
+       "plain": "Chạy bốn phép kiểm tra ở mục 1.6 trước khi giao bản tổng hợp.",
+       "html": "Chạy bốn phép kiểm tra ở mục 1.6 trước khi giao bản tổng hợp.",
+       "level": 0
       }
      ]
     },
     {
      "t": "p",
-     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"AI tự lọc được, cứ đưa hết vào.\" → Lúc AI lọc, dữ liệu đã nằm trên công cụ đó – một bản sao mới, ở nơi mới, với điều khoản xử lý dữ liệu của nhà cung cấp (buổi 1, 2). Giảm dữ liệu phải làm <strong>trước</strong> khi dữ liệu rời khỏi tay mình.",
-     "plain": "Hiểu nhầm hay gặp: \"AI tự lọc được, cứ đưa hết vào.\" → Lúc AI lọc, dữ liệu đã nằm trên công cụ đó – một bản sao mới, ở nơi mới, với điều khoản xử lý dữ liệu của nhà cung cấp (buổi 1, 2). Giảm dữ liệu phải làm trước khi dữ liệu rời khỏi tay mình.",
+     "plain": "Hiểu nhầm hay gặp: “AI tự lọc được, cứ đưa hết vào.” → Lúc AI lọc, dữ liệu đã nằm trên công cụ đó – một bản sao mới, ở nơi mới, theo điều khoản của nhà cung cấp (buổi 1, 2). Giảm dữ liệu phải làm trước khi dữ liệu rời khỏi tay mình.",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> “AI tự lọc được, cứ đưa hết vào.” → Lúc AI lọc, dữ liệu đã nằm trên công cụ đó – một bản sao mới, ở nơi mới, theo điều khoản của nhà cung cấp (buổi 1, 2). Giảm dữ liệu phải làm trước khi dữ liệu rời khỏi tay mình.",
      "callout": "misconception"
     }
    ],
@@ -1332,705 +763,570 @@
    "blocks": [
     {
      "t": "p",
-     "html": "Bài này hướng dẫn chọn và giảm dữ liệu bằng SQL, Python hoặc Excel. Học viên đối chiếu mã, kết quả và phạm vi bản xuất; giảng viên lựa chọn mức thực hành phù hợp với nhiệm vụ và kinh nghiệm của từng người.",
-     "plain": "Bài này hướng dẫn chọn và giảm dữ liệu bằng SQL, Python hoặc Excel. Học viên đối chiếu mã, kết quả và phạm vi bản xuất; giảng viên lựa chọn mức thực hành phù hợp với nhiệm vụ và kinh nghiệm của từng người."
+     "plain": "Bài này đưa các kỹ thuật của Bài 1 vào một quy trình, rồi chỉ cách làm bằng Excel, SQL hoặc Python. Không cần biết lập trình: Excel làm được mọi việc của bài. Các bài ngắn SQL và Python cuối buổi dành cho ai muốn luyện thêm.",
+     "html": "Bài này đưa các kỹ thuật của Bài 1 vào một quy trình, rồi chỉ cách làm bằng Excel, SQL hoặc Python. Không cần biết lập trình: Excel làm được mọi việc của bài. Các bài ngắn SQL và Python cuối buổi dành cho ai muốn luyện thêm."
     },
     {
      "t": "h3",
      "text": "2.1. Quy trình 7 bước"
     },
     {
-     "t": "p",
-     "html": "Slide 61 nêu 5 bước chuẩn bị dữ liệu cho phân tích hoặc AI (chọn dữ liệu – bỏ định danh – giảm chi tiết – đánh giá nhận diện – duyệt bản xuất). Giáo trình mở rộng thành 7 bước để có cả đầu và cuối:",
-     "plain": "Slide 61 nêu 5 bước chuẩn bị dữ liệu cho phân tích hoặc AI (chọn dữ liệu – bỏ định danh – giảm chi tiết – đánh giá nhận diện – duyệt bản xuất). Giáo trình mở rộng thành 7 bước để có cả đầu và cuối:"
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 84\" role=\"img\" aria-label=\"Quy trình giảm dữ liệu 7 bước\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-7b-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-7b-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-7b-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-7b-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-7b-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><polygon points=\"2,8 94,8 106,40.0 94,72 2,72\" class=\"r-brand\"/><text x=\"48.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">1. Mục đích,</text><text x=\"48.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">người nhận</text><polygon points=\"104,8 196,8 208,40.0 196,72 104,72 116,40.0\" class=\"r-brand\"/><text x=\"156.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">2. Phân loại</text><text x=\"156.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">cột</text><polygon points=\"206,8 298,8 310,40.0 298,72 206,72 218,40.0\" class=\"r-brand\"/><text x=\"258.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">3. Chọn</text><text x=\"258.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">kỹ thuật</text><polygon points=\"308,8 400,8 412,40.0 400,72 308,72 320,40.0\" class=\"r-brand\"/><text x=\"360.0\" y=\"44.0\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">4. Thực hiện</text><polygon points=\"410,8 502,8 514,40.0 502,72 410,72 422,40.0\" class=\"r-warn\"/><text x=\"462.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">5. Kiểm tra</text><text x=\"462.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">nhận diện</text><polygon points=\"512,8 604,8 616,40.0 604,72 512,72 524,40.0\" class=\"r-brand\"/><text x=\"564.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">6. Chủ dữ liệu</text><text x=\"564.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">duyệt</text><polygon points=\"614,8 706,8 718,40.0 706,72 614,72 626,40.0\" class=\"r-warn\"/><text x=\"666.0\" y=\"36.5\" font-size=\"11.5\" text-anchor=\"middle\" font-weight=\"600\">7. Ghi nhận,</text><text x=\"666.0\" y=\"51.5\" font-size=\"11.5\" text-anchor=\"middle\">xóa bản tạm</text></svg>",
+     "caption": "Bảy bước từ yêu cầu đến bản giao. Bước 2–6 ứng với năm bước của slide 61; bước 5 và 7 hay bị bỏ qua.",
+     "plain": "Bảy bước từ yêu cầu đến bản giao. Bước 2–6 ứng với năm bước của slide 61; bước 5 và 7 hay bị bỏ qua."
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Bước",
-        "plain": "Bước"
+        "plain": "Bước",
+        "html": "Bước"
        },
        {
-        "html": "Việc cần làm",
-        "plain": "Việc cần làm"
-       },
-       {
-        "html": "Câu hỏi kiểm tra",
-        "plain": "Câu hỏi kiểm tra"
-       },
-       {
-        "html": "Ứng với slide 61",
-        "plain": "Ứng với slide 61"
+        "plain": "Câu hỏi kiểm tra",
+        "html": "Câu hỏi kiểm tra"
        }
       ],
       [
        {
-        "html": "1. Xác định mục đích và người nhận",
-        "plain": "1. Xác định mục đích và người nhận"
+        "plain": "1. Mục đích, người nhận",
+        "html": "1. Mục đích, người nhận"
        },
        {
-        "html": "Ai dùng, để làm gì, dùng ở đâu (nội bộ, đối tác, công cụ AI)",
-        "plain": "Ai dùng, để làm gì, dùng ở đâu (nội bộ, đối tác, công cụ AI)"
-       },
-       {
-        "html": "Công cụ AI đó đã được đơn vị cho phép chưa?",
-        "plain": "Công cụ AI đó đã được đơn vị cho phép chưa?"
-       },
-       {
-        "html": "–",
-        "plain": "–"
+        "plain": "Dùng ở đâu (nội bộ, đối tác, công cụ AI)? Công cụ AI đó đã được đơn vị cho phép chưa?",
+        "html": "Dùng ở đâu (nội bộ, đối tác, công cụ AI)? Công cụ AI đó đã được đơn vị cho phép chưa?"
        }
       ],
       [
        {
-        "html": "2. Liệt kê và phân loại các cột",
-        "plain": "2. Liệt kê và phân loại các cột"
+        "plain": "2. Phân loại cột",
+        "html": "2. Phân loại cột"
        },
        {
-        "html": "Xếp mỗi cột vào 4 loại (mục 1.2)",
-        "plain": "Xếp mỗi cột vào 4 loại (mục 1.2)"
-       },
-       {
-        "html": "Có cột văn bản tự do nào (ghi chú, nội dung khiếu nại) không?",
-        "plain": "Có cột văn bản tự do nào (ghi chú, nội dung khiếu nại) không?"
-       },
-       {
-        "html": "Chọn dữ liệu",
-        "plain": "Chọn dữ liệu"
+        "plain": "Có cột văn bản tự do (ghi chú, nội dung khiếu nại) không?",
+        "html": "Có cột văn bản tự do (ghi chú, nội dung khiếu nại) không?"
        }
       ],
       [
        {
-        "html": "3. Chọn kỹ thuật cho từng cột",
-        "plain": "3. Chọn kỹ thuật cho từng cột"
+        "plain": "3. Chọn kỹ thuật",
+        "html": "3. Chọn kỹ thuật"
        },
        {
-        "html": "Mặc định là loại bỏ; chỉ giữ hoặc biến đổi khi có lý do",
-        "plain": "Mặc định là loại bỏ; chỉ giữ hoặc biến đổi khi có lý do"
-       },
-       {
-        "html": "Mỗi cột giữ lại có lý do viết ra được không?",
-        "plain": "Mỗi cột giữ lại có lý do viết ra được không?"
-       },
-       {
-        "html": "Bỏ định danh; giảm chi tiết",
-        "plain": "Bỏ định danh; giảm chi tiết"
+        "plain": "Mặc định là loại bỏ. Mỗi cột giữ lại có lý do viết ra được không?",
+        "html": "Mặc định là loại bỏ. Mỗi cột giữ lại có lý do viết ra được không?"
        }
       ],
       [
        {
-        "html": "4. Thực hiện",
-        "plain": "4. Thực hiện"
+        "plain": "4. Thực hiện",
+        "html": "4. Thực hiện"
        },
        {
-        "html": "Bằng SQL, Python hoặc Excel, trên môi trường được phép",
-        "plain": "Bằng SQL, Python hoặc Excel, trên môi trường được phép"
-       },
-       {
-        "html": "File gốc có bị sửa nhầm không? File trung gian nằm đâu?",
-        "plain": "File gốc có bị sửa nhầm không? File trung gian nằm đâu?"
-       },
-       {
-        "html": "–",
-        "plain": "–"
+        "plain": "Làm trên môi trường được phép? File gốc có bị sửa nhầm? File trung gian nằm đâu?",
+        "html": "Làm trên môi trường được phép? File gốc có bị sửa nhầm? File trung gian nằm đâu?"
        }
       ],
       [
        {
-        "html": "5. Kiểm tra kết quả",
-        "plain": "5. Kiểm tra kết quả"
+        "plain": "5. Kiểm tra",
+        "html": "5. Kiểm tra"
        },
        {
-        "html": "Mở file đầu ra: cột ẩn, sheet ẩn, ghi chú, tên file; nhóm nhỏ, ngoại lai, áp đảo, phép trừ",
-        "plain": "Mở file đầu ra: cột ẩn, sheet ẩn, ghi chú, tên file; nhóm nhỏ, ngoại lai, áp đảo, phép trừ"
-       },
-       {
-        "html": "Người biết khu vực có nhận ra ai không?",
-        "plain": "Người biết khu vực có nhận ra ai không?"
-       },
-       {
-        "html": "Đánh giá nhận diện",
-        "plain": "Đánh giá nhận diện"
+        "plain": "Cột, sheet ẩn, ghi chú? Bốn phép kiểm tra ở mục 1.6 đạt chưa?",
+        "html": "Cột, sheet ẩn, ghi chú? Bốn phép kiểm tra ở mục 1.6 đạt chưa?"
        }
       ],
       [
        {
-        "html": "6. Phê duyệt",
-        "plain": "6. Phê duyệt"
+        "plain": "6. Phê duyệt",
+        "html": "6. Phê duyệt"
        },
        {
-        "html": "Chủ dữ liệu xác nhận trước khi giao",
-        "plain": "Chủ dữ liệu xác nhận trước khi giao"
-       },
-       {
-        "html": "Người duyệt đã xem file thật, không chỉ xem mô tả?",
-        "plain": "Người duyệt đã xem file thật, không chỉ xem mô tả?"
-       },
-       {
-        "html": "Duyệt bản xuất",
-        "plain": "Duyệt bản xuất"
+        "plain": "Chủ dữ liệu đã xem file thật, không chỉ xem mô tả?",
+        "html": "Chủ dữ liệu đã xem file thật, không chỉ xem mô tả?"
        }
       ],
       [
        {
-        "html": "7. Ghi nhận và quản lý bản xuất",
-        "plain": "7. Ghi nhận và quản lý bản xuất"
+        "plain": "7. Ghi nhận, xóa bản tạm",
+        "html": "7. Ghi nhận, xóa bản tạm"
        },
        {
-        "html": "Ghi đã giao gì, cho ai, ngày nào, bao giờ xóa; khóa hoặc bảng đối chiếu lưu riêng",
-        "plain": "Ghi đã giao gì, cho ai, ngày nào, bao giờ xóa; khóa hoặc bảng đối chiếu lưu riêng"
-       },
-       {
-        "html": "Xóa bản đủ cột trung gian chưa?",
-        "plain": "Xóa bản đủ cột trung gian chưa?"
-       },
-       {
-        "html": "–",
-        "plain": "–"
+        "plain": "Đã ghi giao gì, cho ai, bao giờ xóa? Đã xóa bản đủ cột trung gian? Khóa, bảng đối chiếu lưu riêng?",
+        "html": "Đã ghi giao gì, cho ai, bao giờ xóa? Đã xóa bản đủ cột trung gian? Khóa, bảng đối chiếu lưu riêng?"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "Bước 7 đặc biệt quan trọng ở Điện lực X: vì chức năng xuất luôn ra đủ cột, mỗi lần làm bản giao là mỗi lần có một file đủ cột nằm trên máy người làm (buổi 1: đếm bản sao).",
-     "plain": "Bước 7 đặc biệt quan trọng ở Điện lực X: vì chức năng xuất luôn ra đủ cột, mỗi lần làm bản giao là mỗi lần có một file đủ cột nằm trên máy người làm (buổi 1: đếm bản sao)."
+     "plain": "Bước 7 đặc biệt quan trọng ở Điện lực X: chức năng xuất luôn ra đủ cột, nên mỗi lần làm bản giao là có thêm một file đủ cột trên máy người làm (buổi 1: đếm bản sao).",
+     "html": "Bước 7 đặc biệt quan trọng ở Điện lực X: chức năng xuất luôn ra đủ cột, nên mỗi lần làm bản giao là có thêm một file đủ cột trên máy người làm (buổi 1: đếm bản sao)."
     },
     {
      "t": "p",
-     "html": "<strong>Ma trận xử lý mẫu theo mục đích:</strong>",
-     "plain": "Ma trận xử lý mẫu theo mục đích:"
+     "plain": "Cùng một cột, mục đích khác thì xử lý khác:",
+     "html": "Cùng một cột, mục đích khác thì xử lý khác:"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Trường",
-        "plain": "Trường"
+        "plain": "Trường",
+        "html": "Trường"
        },
        {
-        "html": "Dự báo nội bộ",
-        "plain": "Dự báo nội bộ"
+        "plain": "Dự báo nội bộ",
+        "html": "Dự báo nội bộ"
        },
        {
-        "html": "Gửi đơn vị tư vấn",
-        "plain": "Gửi đơn vị tư vấn"
+        "plain": "Gửi đơn vị tư vấn",
+        "html": "Gửi đơn vị tư vấn"
        },
        {
-        "html": "Môi trường thử nghiệm",
-        "plain": "Môi trường thử nghiệm"
+        "plain": "Môi trường thử nghiệm",
+        "html": "Môi trường thử nghiệm"
        },
        {
-        "html": "Đưa vào công cụ AI",
-        "plain": "Đưa vào công cụ AI"
+        "plain": "Đưa vào công cụ AI",
+        "html": "Đưa vào công cụ AI"
        }
       ],
       [
        {
-        "html": "Họ tên",
-        "plain": "Họ tên"
+        "plain": "Họ tên",
+        "html": "Họ tên"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Thay bằng tên giả",
-        "plain": "Thay bằng tên giả"
+        "plain": "Thay bằng tên giả",
+        "html": "Thay bằng tên giả"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        }
       ],
       [
        {
-        "html": "Số điện thoại",
-        "plain": "Số điện thoại"
+        "plain": "Số điện thoại",
+        "html": "Số điện thoại"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Thay bằng số giả",
-        "plain": "Thay bằng số giả"
+        "plain": "Thay bằng số giả",
+        "html": "Thay bằng số giả"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        }
       ],
       [
        {
-        "html": "Mã khách hàng",
-        "plain": "Mã khách hàng"
+        "plain": "Mã khách hàng",
+        "html": "Mã khách hàng"
        },
        {
-        "html": "Giả danh hóa nếu cần nối bảng",
-        "plain": "Giả danh hóa nếu cần nối bảng"
+        "plain": "Giả danh hóa nếu cần nối bảng",
+        "html": "Giả danh hóa nếu cần nối bảng"
        },
        {
-        "html": "Giả danh hóa",
-        "plain": "Giả danh hóa"
+        "plain": "Giả danh hóa",
+        "html": "Giả danh hóa"
        },
        {
-        "html": "Thay bằng mã giả",
-        "plain": "Thay bằng mã giả"
+        "plain": "Thay bằng mã giả",
+        "html": "Thay bằng mã giả"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        }
       ],
       [
        {
-        "html": "Địa chỉ",
-        "plain": "Địa chỉ"
+        "plain": "Địa chỉ",
+        "html": "Địa chỉ"
        },
        {
-        "html": "Phường/xã",
-        "plain": "Phường/xã"
+        "plain": "Phường/xã",
+        "html": "Phường/xã"
        },
        {
-        "html": "Quận/huyện",
-        "plain": "Quận/huyện"
+        "plain": "Quận/huyện",
+        "html": "Quận/huyện"
        },
        {
-        "html": "Địa chỉ giả",
-        "plain": "Địa chỉ giả"
+        "plain": "Địa chỉ giả",
+        "html": "Địa chỉ giả"
        },
        {
-        "html": "Loại bỏ hoặc quận/huyện",
-        "plain": "Loại bỏ hoặc quận/huyện"
+        "plain": "Loại bỏ hoặc quận/huyện",
+        "html": "Loại bỏ hoặc quận/huyện"
        }
       ],
       [
        {
-        "html": "Sản lượng tháng",
-        "plain": "Sản lượng tháng"
+        "plain": "Sản lượng tháng",
+        "html": "Sản lượng tháng"
        },
        {
-        "html": "Giữ",
-        "plain": "Giữ"
+        "plain": "Giữ",
+        "html": "Giữ"
        },
        {
-        "html": "Chia khoảng hoặc tổng hợp",
-        "plain": "Chia khoảng hoặc tổng hợp"
+        "plain": "Chia khoảng hoặc tổng hợp",
+        "html": "Chia khoảng hoặc tổng hợp"
        },
        {
-        "html": "Giữ phân bố, xáo trộn",
-        "plain": "Giữ phân bố, xáo trộn"
+        "plain": "Giữ phân bố, xáo trộn",
+        "html": "Giữ phân bố, xáo trộn"
        },
        {
-        "html": "Tổng hợp",
-        "plain": "Tổng hợp"
+        "plain": "Tổng hợp",
+        "html": "Tổng hợp"
        }
       ],
       [
        {
-        "html": "Tình trạng nợ",
-        "plain": "Tình trạng nợ"
+        "plain": "Tình trạng nợ",
+        "html": "Tình trạng nợ"
        },
        {
-        "html": "Chỉ khi đúng mục đích",
-        "plain": "Chỉ khi đúng mục đích"
+        "plain": "Chỉ khi đúng mục đích",
+        "html": "Chỉ khi đúng mục đích"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        },
        {
-        "html": "Giá trị giả",
-        "plain": "Giá trị giả"
+        "plain": "Giá trị giả",
+        "html": "Giá trị giả"
        },
        {
-        "html": "Loại bỏ",
-        "plain": "Loại bỏ"
+        "plain": "Loại bỏ",
+        "html": "Loại bỏ"
        }
       ]
      ]
     },
     {
      "t": "h3",
-     "text": "2.2. SQL – lấy đúng phần cần từ cơ sở dữ liệu"
-    },
-    {
-     "t": "p",
-     "html": "SQL được dùng để truy vấn dữ liệu. Bốn từ khóa dưới đây giúp chọn trường, lọc phạm vi và tổng hợp kết quả:",
-     "plain": "SQL được dùng để truy vấn dữ liệu. Bốn từ khóa dưới đây giúp chọn trường, lọc phạm vi và tổng hợp kết quả:"
+     "text": "2.2. SQL – lấy đúng phần cần"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Từ khóa",
-        "plain": "Từ khóa"
+        "plain": "Từ khóa",
+        "html": "Từ khóa"
        },
        {
-        "html": "Ý nghĩa",
-        "plain": "Ý nghĩa"
+        "plain": "Ý nghĩa",
+        "html": "Ý nghĩa"
        },
        {
-        "html": "Vai trò trong giảm dữ liệu",
-        "plain": "Vai trò trong giảm dữ liệu"
+        "plain": "Vai trò trong giảm dữ liệu",
+        "html": "Vai trò trong giảm dữ liệu"
        }
       ],
       [
        {
-        "html": "SELECT",
-        "plain": "SELECT"
+        "plain": "SELECT",
+        "html": "SELECT"
        },
        {
-        "html": "Chọn cột nào",
-        "plain": "Chọn cột nào"
+        "plain": "Chọn cột nào",
+        "html": "Chọn cột nào"
        },
        {
-        "html": "Chỉ liệt kê cột cần – cột không ghi là không ra",
-        "plain": "Chỉ liệt kê cột cần – cột không ghi là không ra"
+        "plain": "Chỉ liệt kê cột cần – cột không ghi là không ra",
+        "html": "Chỉ liệt kê cột cần – cột không ghi là không ra"
        }
       ],
       [
        {
-        "html": "WHERE",
-        "plain": "WHERE"
+        "plain": "WHERE",
+        "html": "WHERE"
        },
        {
-        "html": "Lọc dòng nào",
-        "plain": "Lọc dòng nào"
+        "plain": "Lọc dòng nào",
+        "html": "Lọc dòng nào"
        },
        {
-        "html": "Chỉ lấy đơn vị, thời gian cần",
-        "plain": "Chỉ lấy đơn vị, thời gian cần"
+        "plain": "Chỉ lấy đơn vị, thời gian cần",
+        "html": "Chỉ lấy đơn vị, thời gian cần"
        }
       ],
       [
        {
-        "html": "GROUP BY",
-        "plain": "GROUP BY"
+        "plain": "GROUP BY",
+        "html": "GROUP BY"
        },
        {
-        "html": "Gộp theo nhóm",
-        "plain": "Gộp theo nhóm"
+        "plain": "Gộp theo nhóm",
+        "html": "Gộp theo nhóm"
        },
        {
-        "html": "Tổng hợp thay vì chi tiết từng hộ",
-        "plain": "Tổng hợp thay vì chi tiết từng hộ"
+        "plain": "Tổng hợp thay vì chi tiết từng hộ",
+        "html": "Tổng hợp thay vì chi tiết từng hộ"
        }
       ],
       [
        {
-        "html": "HAVING",
-        "plain": "HAVING"
+        "plain": "HAVING",
+        "html": "HAVING"
        },
        {
-        "html": "Lọc nhóm sau khi gộp",
-        "plain": "Lọc nhóm sau khi gộp"
+        "plain": "Lọc nhóm sau khi gộp",
+        "html": "Lọc nhóm sau khi gộp"
        },
        {
-        "html": "Loại nhóm quá ít người",
-        "plain": "Loại nhóm quá ít người"
+        "plain": "Loại nhóm quá ít người",
+        "html": "Loại nhóm quá ít người"
        }
       ]
      ]
     },
     {
+     "t": "code",
+     "text": "SELECT phuong, thang, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\nFROM   san_luong\nWHERE  nam = 2026\nGROUP  BY phuong, thang\nHAVING COUNT(*) >= 10;"
+    },
+    {
      "t": "p",
-     "html": "Ví dụ đọc hiểu:",
-     "plain": "Ví dụ đọc hiểu:",
+     "plain": "Đọc bằng lời: “Lấy số khách hàng và tổng kWh theo phường, tháng năm 2026; chỉ giữ nhóm từ 10 khách hàng trở lên.” Kết quả không có tên, điện thoại, mã khách hàng.",
+     "html": "Đọc bằng lời: “Lấy số khách hàng và tổng kWh theo phường, tháng năm 2026; chỉ giữ nhóm từ 10 khách hàng trở lên.” Kết quả không có tên, điện thoại, mã khách hàng."
+    },
+    {
+     "t": "p",
+     "plain": "HAVING bỏ nhóm nhỏ nhưng cũng làm mất sản lượng của nhóm đó – mất cả phường Cảng Mới là sai số lớn cho dự báo. Cách thường dùng là gộp nhóm nhỏ vào phường lân cận; Thực hành 7 sẽ cho thấy gộp vẫn chưa đủ khi một khách hàng chiếm gần nửa tổng.",
+     "html": "HAVING bỏ nhóm nhỏ nhưng cũng làm mất sản lượng của nhóm đó – mất cả phường Cảng Mới là sai số lớn cho dự báo. Cách thường dùng là gộp nhóm nhỏ vào phường lân cận; Thực hành 7 sẽ cho thấy gộp vẫn chưa đủ khi một khách hàng chiếm gần nửa tổng."
+    },
+    {
+     "t": "p",
+     "plain": "Mẫu yêu cầu gửi bộ phận dữ liệu, thay vì xin “file đủ cột”: “Đề nghị xuất số khách hàng và tổng kWh theo phường và tháng, quý III/2026, Điện lực X; không kèm cột định danh; nhóm dưới [ngưỡng đơn vị] khách hàng gộp với phường lân cận; mục đích: dự báo nhu cầu, người nhận: phòng Kế hoạch.”",
+     "html": "Mẫu yêu cầu gửi bộ phận dữ liệu, thay vì xin “file đủ cột”: “Đề nghị xuất số khách hàng và tổng kWh theo phường và tháng, quý III/2026, Điện lực X; không kèm cột định danh; nhóm dưới [ngưỡng đơn vị] khách hàng gộp với phường lân cận; mục đích: dự báo nhu cầu, người nhận: phòng Kế hoạch.”",
      "callout": "example"
     },
     {
-     "t": "code",
-     "text": "SELECT phuong, thang,\n       COUNT(*)  AS so_khach_hang,\n       SUM(kwh)  AS tong_kwh\nFROM   khach_hang_san_luong\nWHERE  nam = 2026\nGROUP  BY phuong, thang\nHAVING COUNT(*) >= 10;"
+     "t": "h3",
+     "text": "2.3. Python – che và giả danh hóa việc lặp lại hằng tháng"
     },
     {
      "t": "p",
-     "html": "Đọc bằng lời: <em>\"Lấy phường, tháng, số khách hàng và tổng kWh từ bảng sản lượng năm 2026, gộp theo phường và tháng, chỉ giữ nhóm có từ 10 khách hàng trở lên.\"</em> Kết quả không có tên, điện thoại, mã khách hàng. Con số 10 chỉ là ví dụ.",
-     "plain": "Đọc bằng lời: \"Lấy phường, tháng, số khách hàng và tổng kWh từ bảng sản lượng năm 2026, gộp theo phường và tháng, chỉ giữ nhóm có từ 10 khách hàng trở lên.\" Kết quả không có tên, điện thoại, mã khách hàng. Con số 10 chỉ là ví dụ."
-    },
-    {
-     "t": "p",
-     "html": "Một điều cần thấy: HAVING loại nhóm nhỏ ra khỏi kết quả, nhưng cũng làm mất sản lượng của nhóm đó. Với dự báo, mất cả phường Cảng Mới là sai số lớn. Cách thường dùng là <strong>gộp</strong> nhóm nhỏ vào nhóm lân cận bằng CASE:",
-     "plain": "Một điều cần thấy: HAVING loại nhóm nhỏ ra khỏi kết quả, nhưng cũng làm mất sản lượng của nhóm đó. Với dự báo, mất cả phường Cảng Mới là sai số lớn. Cách thường dùng là gộp nhóm nhỏ vào nhóm lân cận bằng CASE:"
+     "plain": "Python hợp với file lớn hoặc việc lặp lại mỗi tháng. Hai thao tác cốt lõi chỉ cần hai dòng:",
+     "html": "Python hợp với file lớn hoặc việc lặp lại mỗi tháng. Hai thao tác cốt lõi chỉ cần hai dòng:"
     },
     {
      "t": "code",
-     "text": "SELECT CASE WHEN phuong IN ('Cảng Mới', 'Đông Hòa') THEN 'Đông Hòa và Cảng Mới'\n            ELSE phuong END  AS khu_vuc,\n       thang, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\nFROM   san_luong\nGROUP  BY khu_vuc, thang\nHAVING COUNT(*) >= 10;"
+     "text": "sdt_che = sdt[:3] + \"****\" + sdt[-3:]          # 0900000001 → 090****001\nma_moi  = hmac.new(KHOA, ma_kh.encode(), hashlib.sha256).hexdigest()[:8]   # KH001 → 4ee2e067"
+    },
+    {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 222\" role=\"img\" aria-label=\"Giả danh hóa mã khách hàng bằng HMAC và khóa bí mật\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-gd-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-gd-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-gd-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-gd-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-gd-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><path d=\"M625,52 V22 H75 V52\" class=\"ln l-mut dash\" marker-end=\"url(#m6-gd-mut)\"/><text x=\"350\" y=\"14\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">Ai giữ khóa (hoặc bảng đối chiếu) nối ngược lại được → vẫn là dữ liệu cá nhân</text><rect x=\"10\" y=\"52\" width=\"130\" height=\"50\" rx=\"8\" class=\"box\"/><text x=\"75.0\" y=\"81.9\" font-size=\"14\" text-anchor=\"middle\" class=\"mono\">KH001</text><rect x=\"230\" y=\"42\" width=\"220\" height=\"70\" rx=\"8\" class=\"r-brand\"/><text x=\"340.0\" y=\"72.8\" font-size=\"13.5\" text-anchor=\"middle\" font-weight=\"600\">HMAC-SHA256</text><text x=\"340.0\" y=\"90.6\" font-size=\"12.0\" text-anchor=\"middle\" class=\"f-mut\">mã + khóa bí mật</text><rect x=\"540\" y=\"52\" width=\"170\" height=\"50\" rx=\"8\" class=\"r-ok\"/><text x=\"625.0\" y=\"81.9\" font-size=\"14\" text-anchor=\"middle\" class=\"mono\">P-4EE2E067</text><line x1=\"140\" y1=\"77\" x2=\"230\" y2=\"77\" class=\"l-mut\" marker-end=\"url(#m6-gd-mut)\"/><line x1=\"450\" y1=\"77\" x2=\"540\" y2=\"77\" class=\"l-mut\" marker-end=\"url(#m6-gd-mut)\"/><rect x=\"250\" y=\"158\" width=\"180\" height=\"50\" rx=\"8\" class=\"r-warn\"/><text x=\"340.0\" y=\"179.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Khóa bí mật</text><text x=\"340.0\" y=\"196.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">cất riêng, ít người giữ</text><line x1=\"340\" y1=\"158\" x2=\"340\" y2=\"112\" class=\"l-acc\" marker-end=\"url(#m6-gd-acc)\"/><text x=\"10\" y=\"176\" font-size=\"12\" text-anchor=\"start\" class=\"f-bad\">Băm thường, không có khóa:</text><text x=\"10\" y=\"194\" font-size=\"12\" text-anchor=\"start\" class=\"f-bad\">thử hết các mã là dò ra.</text><text x=\"460\" y=\"176\" font-size=\"12\" text-anchor=\"start\">Cùng khóa → cùng mã thay thế:</text><text x=\"460\" y=\"194\" font-size=\"12\" text-anchor=\"start\">nối được dữ liệu nhiều tháng.</text></svg>",
+     "caption": "Giả danh hóa bằng HMAC: cùng khóa cho cùng mã thay thế nên nối được dữ liệu nhiều tháng; ai giữ khóa nối ngược lại được.",
+     "plain": "Giả danh hóa bằng HMAC: cùng khóa cho cùng mã thay thế nên nối được dữ liệu nhiều tháng; ai giữ khóa nối ngược lại được."
     },
     {
      "t": "p",
-     "html": "Đọc bằng lời: <em>\"Coi Cảng Mới và Đông Hòa là một khu vực, rồi tổng hợp như trên.\"</em> Thực hành 7 sẽ cho thấy gộp như vậy vẫn chưa đủ khi xưởng chiếm gần nửa tổng.",
-     "plain": "Đọc bằng lời: \"Coi Cảng Mới và Đông Hòa là một khu vực, rồi tổng hợp như trên.\" Thực hành 7 sẽ cho thấy gộp như vậy vẫn chưa đủ khi xưởng chiếm gần nửa tổng."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Cách đặt yêu cầu cho bộ phận dữ liệu</strong> (thay vì xin \"file đủ cột\"): \"Đề nghị xuất số khách hàng và tổng kWh theo phường và tháng, quý III/2026, Điện lực X; không kèm cột định danh; nhóm dưới [ngưỡng đơn vị] khách hàng gộp với phường lân cận; mục đích: dự báo nhu cầu, người nhận: phòng Kế hoạch.\"",
-     "plain": "Cách đặt yêu cầu cho bộ phận dữ liệu (thay vì xin \"file đủ cột\"): \"Đề nghị xuất số khách hàng và tổng kWh theo phường và tháng, quý III/2026, Điện lực X; không kèm cột định danh; nhóm dưới [ngưỡng đơn vị] khách hàng gộp với phường lân cận; mục đích: dự báo nhu cầu, người nhận: phòng Kế hoạch.\""
+     "plain": "Vì sao cần khóa bí mật? Mã khách hàng, số điện thoại có số giá trị hữu hạn: băm thường thì kẻ gian băm thử mọi giá trị rồi so lại (buổi 5). Khóa phải được bảo vệ như dữ liệu Hạn chế cao, đọc từ kho khóa hoặc biến môi trường, không ghi trong file code. Muốn luyện tay: Python 02 (che số điện thoại) và SQL 01–07 ở cuối buổi.",
+     "html": "Vì sao cần khóa bí mật? Mã khách hàng, số điện thoại có số giá trị hữu hạn: băm thường thì kẻ gian băm thử mọi giá trị rồi so lại (buổi 5). Khóa phải được bảo vệ như dữ liệu Hạn chế cao, đọc từ kho khóa hoặc biến môi trường, không ghi trong file code. Muốn luyện tay: Python 02 (che số điện thoại) và SQL 01–07 ở cuối buổi."
     },
     {
      "t": "h3",
-     "text": "2.3. Python – tự động hóa việc che và giả danh hóa"
-    },
-    {
-     "t": "p",
-     "html": "Python (thường dùng thư viện pandas) hợp với file lớn hoặc việc lặp lại hằng tháng. Đoạn mã mẫu:",
-     "plain": "Python (thường dùng thư viện pandas) hợp với file lớn hoặc việc lặp lại hằng tháng. Đoạn mã mẫu:"
-    },
-    {
-     "t": "code",
-     "text": "import pandas as pd, hmac, hashlib\n\ndf = pd.read_csv(\"khach_hang.csv\", dtype=str)          # đọc file, giữ số 0 đầu\nout = df.drop(columns=[\"ho_ten\", \"dia_chi\"])           # 1. loại bỏ cột\nout[\"dien_thoai\"] = out[\"dien_thoai\"].str[:3] + \"****\" + out[\"dien_thoai\"].str[-3:]  # 2. che\nKHOA = b\"khoa-bi-mat-luu-rieng\"                         # khóa giả danh hóa, lưu riêng\nout[\"ma_kh\"] = out[\"ma_kh\"].apply(\n    lambda x: hmac.new(KHOA, x.encode(), hashlib.sha256).hexdigest()[:12])  # 3. giả danh hóa\nout.to_csv(\"khach_hang_da_xu_ly.csv\", index=False)"
-    },
-    {
-     "t": "p",
-     "html": "Đọc bằng lời: <em>đọc file, bỏ cột tên và địa chỉ, che giữa số điện thoại, thay mã khách hàng bằng một mã mới tính từ khóa bí mật, rồi lưu ra file mới. File gốc giữ nguyên.</em>",
-     "plain": "Đọc bằng lời: đọc file, bỏ cột tên và địa chỉ, che giữa số điện thoại, thay mã khách hàng bằng một mã mới tính từ khóa bí mật, rồi lưu ra file mới. File gốc giữ nguyên."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Vì sao dùng khóa bí mật (HMAC) thay vì băm thông thường?</strong> Buổi 5 đã thấy: số điện thoại hoặc mã khách hàng có số lượng giá trị hữu hạn. Nếu chỉ băm bình thường, kẻ gian băm thử mọi giá trị có thể rồi so lại là tìm ra mã gốc. Có khóa bí mật lưu riêng thì không dò ngược được. Khóa này phải được bảo vệ như dữ liệu Hạn chế cao; không ghi cứng trong file code như ví dụ minh họa (Thực hành 7 có cách đọc khóa từ biến môi trường). Cùng một khóa cho cùng một mã thay thế, nên dữ liệu các tháng vẫn nối được với nhau – đó là lý do chọn giả danh hóa thay vì loại bỏ.",
-     "plain": "Vì sao dùng khóa bí mật (HMAC) thay vì băm thông thường? Buổi 5 đã thấy: số điện thoại hoặc mã khách hàng có số lượng giá trị hữu hạn. Nếu chỉ băm bình thường, kẻ gian băm thử mọi giá trị có thể rồi so lại là tìm ra mã gốc. Có khóa bí mật lưu riêng thì không dò ngược được. Khóa này phải được bảo vệ như dữ liệu Hạn chế cao; không ghi cứng trong file code như ví dụ minh họa (Thực hành 7 có cách đọc khóa từ biến môi trường). Cùng một khóa cho cùng một mã thay thế, nên dữ liệu các tháng vẫn nối được với nhau – đó là lý do chọn giả danh hóa thay vì loại bỏ."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Demo cho giảng viên</strong> – một script chạy được với Python 3, không cần cài thêm gì, dữ liệu hoàn toàn giả lập:",
-     "plain": "Minh họa – một script chạy được với Python 3, không cần cài thêm gì, dữ liệu hoàn toàn giả lập:"
-    },
-    {
-     "t": "code",
-     "text": "# Demo buổi 6: tổng hợp bằng SQL, che và giả danh hóa bằng Python (dữ liệu giả lập)\nimport sqlite3, hmac, hashlib\n\nconn = sqlite3.connect(\":memory:\")            # cơ sở dữ liệu tạm trong bộ nhớ\nconn.row_factory = sqlite3.Row\nconn.execute(\"\"\"CREATE TABLE khach_hang (\n    ma_kh TEXT, ho_ten TEXT, dien_thoai TEXT, dia_chi TEXT, vung TEXT, kwh INTEGER)\"\"\")\nconn.executemany(\"INSERT INTO khach_hang VALUES (?,?,?,?,?,?)\", [\n    (\"KH001\", \"Người dùng mẫu A\", \"0900000001\", \"Số nhà mẫu 1, khu vực A\", \"Vùng 1\", 245),\n    (\"KH002\", \"Người dùng mẫu B\", \"0900000002\", \"Số nhà mẫu 2, khu vực A\", \"Vùng 1\", 310),\n    (\"KH003\", \"Người dùng mẫu C\", \"0900000003\", \"Số nhà mẫu 3, khu vực B\", \"Vùng 2\", 180),\n    (\"KH004\", \"Người dùng mẫu D\", \"0900000004\", \"Số nhà mẫu 4, khu vực B\", \"Vùng 2\", 1200),\n    (\"KH005\", \"Người dùng mẫu E\", \"0900000005\", \"Số nhà mẫu 5, khu vực C\", \"Vùng 3\", 95),\n])\n\nprint(\"(1) Tổng hợp theo vùng:\")\nfor r in conn.execute(\"\"\"SELECT vung, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\n                         FROM khach_hang GROUP BY vung\"\"\"):\n    print(\"   \", dict(r))\n\ndef che_sdt(sdt):                              # giả định số 10 ký tự\n    sdt = str(sdt)\n    return sdt[:3] + \"****\" + sdt[-3:]\n\nprint(\"(2) Bản che số điện thoại:\")\nfor r in conn.execute(\"SELECT vung, dien_thoai, kwh FROM khach_hang\"):\n    print(\"   \", {\"vung\": r[\"vung\"], \"sdt_che\": che_sdt(r[\"dien_thoai\"]), \"kwh\": r[\"kwh\"]})\n\nKHOA = b\"khoa-bi-mat-luu-rieng\"                # minh họa; khóa thật không ghi trong code\ndef ma_thay_the(ma_kh):\n    return \"P-\" + hmac.new(KHOA, ma_kh.encode(), hashlib.sha256).hexdigest()[:8].upper()\n\nprint(\"(3) Giả danh hóa mã khách hàng:\")\nfor r in conn.execute(\"SELECT ma_kh, vung, kwh FROM khach_hang\"):\n    print(\"   \", {\"ma_thay_the\": ma_thay_the(r[\"ma_kh\"]), \"vung\": r[\"vung\"], \"kwh\": r[\"kwh\"]})\n\nprint(\"(4) Truy vấn có tham số:\")\nma_can_tim = \"KH001\"                           # giá trị người dùng nhập\nprint(\"   \", [dict(r) for r in conn.execute(\n    \"SELECT vung, kwh FROM khach_hang WHERE ma_kh = ?\", (ma_can_tim,))])"
-    },
-    {
-     "t": "p",
-     "html": "Kết quả:",
-     "plain": "Kết quả:"
-    },
-    {
-     "t": "code",
-     "text": "(1) Tổng hợp theo vùng:\n    {'vung': 'Vùng 1', 'so_kh': 2, 'tong_kwh': 555}\n    {'vung': 'Vùng 2', 'so_kh': 2, 'tong_kwh': 1380}\n    {'vung': 'Vùng 3', 'so_kh': 1, 'tong_kwh': 95}\n(2) Bản che số điện thoại:\n    {'vung': 'Vùng 1', 'sdt_che': '090****001', 'kwh': 245}\n    {'vung': 'Vùng 1', 'sdt_che': '090****002', 'kwh': 310}\n    {'vung': 'Vùng 2', 'sdt_che': '090****003', 'kwh': 180}\n    {'vung': 'Vùng 2', 'sdt_che': '090****004', 'kwh': 1200}\n    {'vung': 'Vùng 3', 'sdt_che': '090****005', 'kwh': 95}\n(3) Giả danh hóa mã khách hàng:\n    {'ma_thay_the': 'P-4EE2E067', 'vung': 'Vùng 1', 'kwh': 245}\n    {'ma_thay_the': 'P-80537600', 'vung': 'Vùng 1', 'kwh': 310}\n    {'ma_thay_the': 'P-F496A749', 'vung': 'Vùng 2', 'kwh': 180}\n    {'ma_thay_the': 'P-93ADE00D', 'vung': 'Vùng 2', 'kwh': 1200}\n    {'ma_thay_the': 'P-12F1AD71', 'vung': 'Vùng 3', 'kwh': 95}\n(4) Truy vấn có tham số:\n    [{'vung': 'Vùng 1', 'kwh': 245}]"
-    },
-    {
-     "t": "p",
-     "html": "Điểm giảng khi chạy demo:",
-     "plain": "Điểm giảng khi chạy demo:"
-    },
-    {
-     "t": "list",
-     "ordered": false,
-     "items": [
-      {
-       "html": "<strong>Kết quả (1):</strong> Vùng 3 chỉ có 1 khách hàng → tổng 95 kWh chính là sản lượng của một hộ – cùng bản chất với phường Cảng Mới. Vùng 2 có hai hộ nhưng một hộ dùng 1.200 kWh: hộ này chiếm 87% tổng, là ví dụ \"áp đảo\".",
-       "level": 0,
-       "plain": "Kết quả (1): Vùng 3 chỉ có 1 khách hàng → tổng 95 kWh chính là sản lượng của một hộ – cùng bản chất với phường Cảng Mới. Vùng 2 có hai hộ nhưng một hộ dùng 1.200 kWh: hộ này chiếm 87% tổng, là ví dụ \"áp đảo\"."
-      },
-      {
-       "html": "<strong>Kết quả (2):</strong> không còn tên, địa chỉ, mã khách hàng, nhưng 090****001 vẫn giúp liên kết, và dòng 1.200 kWh vẫn nổi bật. Phân tích không cần điện thoại thì bỏ hẳn. Đây là masking, không phải ẩn danh.",
-       "level": 0,
-       "plain": "Kết quả (2): không còn tên, địa chỉ, mã khách hàng, nhưng 090****001 vẫn giúp liên kết, và dòng 1.200 kWh vẫn nổi bật. Phân tích không cần điện thoại thì bỏ hẳn. Đây là masking, không phải ẩn danh."
-      },
-      {
-       "html": "<strong>Kết quả (3):</strong> mã thay thế không đoán ngược được nếu không có khóa, nhưng người giữ khóa nối lại được – vẫn là dữ liệu cá nhân.",
-       "level": 0,
-       "plain": "Kết quả (3): mã thay thế không đoán ngược được nếu không có khóa, nhưng người giữ khóa nối lại được – vẫn là dữ liệu cá nhân."
-      },
-      {
-       "html": "<strong>Kết quả (4):</strong> dùng ở Bài 4 – câu lệnh và dữ liệu được gửi riêng.",
-       "level": 0,
-       "plain": "Kết quả (4): dùng ở Bài 4 – câu lệnh và dữ liệu được gửi riêng."
-      },
-      {
-       "html": "Bản gốc vẫn phải được giữ riêng theo quyền và mục đích hợp lệ.",
-       "level": 0,
-       "plain": "Bản gốc vẫn phải được giữ riêng theo quyền và mục đích hợp lệ."
-      }
-     ]
-    },
-    {
-     "t": "h3",
-     "text": "2.4. Excel – cách làm tương đương cho người không lập trình"
+     "text": "2.4. Excel – cách làm cho người không lập trình"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Việc cần làm",
-        "plain": "Việc cần làm"
+        "plain": "Việc cần làm",
+        "html": "Việc cần làm"
        },
        {
-        "html": "Cách làm trong Excel",
-        "plain": "Cách làm trong Excel"
+        "plain": "Cách làm trong Excel",
+        "html": "Cách làm trong Excel"
        }
       ],
       [
        {
-        "html": "Loại bỏ cột",
-        "plain": "Loại bỏ cột"
+        "plain": "Loại bỏ cột",
+        "html": "Loại bỏ cột"
        },
        {
-        "html": "Xóa cột (không chỉ ẩn cột); hoặc chép riêng các cột cần sang file mới bằng Paste Values",
-        "plain": "Xóa cột (không chỉ ẩn cột); hoặc chép riêng các cột cần sang file mới bằng Paste Values"
+        "plain": "Xóa cột (không chỉ ẩn); hoặc chép riêng các cột cần sang file mới bằng Paste Values",
+        "html": "Xóa cột (không chỉ ẩn); hoặc chép riêng các cột cần sang file mới bằng Paste Values"
        }
       ],
       [
        {
-        "html": "Che số điện thoại",
-        "plain": "Che số điện thoại"
+        "plain": "Che số điện thoại",
+        "html": "Che số điện thoại"
        },
        {
-        "html": "Công thức =LEFT(C2;3)&amp;\"****\"&amp;RIGHT(C2;3) (dấu phân cách ; hoặc , tùy cài đặt máy); định dạng cột gốc là Text để không mất số 0 đầu. Sau đó Paste Values và xóa cột gốc",
-        "plain": "Công thức =LEFT(C2;3)&\"****\"&RIGHT(C2;3) (dấu phân cách ; hoặc , tùy cài đặt máy); định dạng cột gốc là Text để không mất số 0 đầu. Sau đó Paste Values và xóa cột gốc"
+        "plain": "=LEFT(C2;3)&\"\"&RIGHT(C2;3) (dấu ; hoặc , tùy máy); định dạng cột gốc là Text để giữ số 0 đầu. Sau đó Paste Values và xóa cột gốc",
+        "html": "=LEFT(C2;3)&amp;\"****\"&amp;RIGHT(C2;3) (dấu ; hoặc , tùy máy); định dạng cột gốc là Text để giữ số 0 đầu. Sau đó Paste Values và xóa cột gốc"
        }
       ],
       [
        {
-        "html": "Thay mã khách hàng",
-        "plain": "Thay mã khách hàng"
+        "plain": "Thay mã khách hàng",
+        "html": "Thay mã khách hàng"
        },
        {
-        "html": "Tạo cột mã thay thế (P0001, P0002…); lưu bảng đối chiếu mã thật – mã thay thế ở file riêng có mã hóa; xóa cột mã thật khỏi file giao đi",
-        "plain": "Tạo cột mã thay thế (P0001, P0002…); lưu bảng đối chiếu mã thật – mã thay thế ở file riêng có mã hóa; xóa cột mã thật khỏi file giao đi"
+        "plain": "Tạo cột mã thay thế (P0001, P0002…); bảng đối chiếu mã thật – mã thay thế lưu ở file riêng có mã hóa; xóa cột mã thật khỏi file giao",
+        "html": "Tạo cột mã thay thế (P0001, P0002…); bảng đối chiếu mã thật – mã thay thế lưu ở file riêng có mã hóa; xóa cột mã thật khỏi file giao"
        }
       ],
       [
        {
-        "html": "Tổng quát hóa sản lượng",
-        "plain": "Tổng quát hóa sản lượng"
+        "plain": "Tổng quát hóa sản lượng",
+        "html": "Tổng quát hóa sản lượng"
        },
        {
-        "html": "Công thức chia khoảng, ví dụ =FLOOR(F2;100)&amp;\"–\"&amp;FLOOR(F2;100)+99 cho ra \"200–299\"",
-        "plain": "Công thức chia khoảng, ví dụ =FLOOR(F2;100)&\"–\"&FLOOR(F2;100)+99 cho ra \"200–299\""
+        "plain": "=FLOOR(F2;100)&\"–\"&FLOOR(F2;100)+99 cho ra “200–299”",
+        "html": "=FLOOR(F2;100)&amp;\"–\"&amp;FLOOR(F2;100)+99 cho ra “200–299”"
        }
       ],
       [
        {
-        "html": "Tổng hợp",
-        "plain": "Tổng hợp"
+        "plain": "Tổng hợp",
+        "html": "Tổng hợp"
        },
        {
-        "html": "Insert → PivotTable; hàng = phường, cột = tháng, giá trị = Count của mã KH và Sum của kWh. Sau đó chép kết quả → Paste Values sang file mới (PivotTable giữ dữ liệu gốc bên trong)",
-        "plain": "Insert → PivotTable; hàng = phường, cột = tháng, giá trị = Count của mã KH và Sum của kWh. Sau đó chép kết quả → Paste Values sang file mới (PivotTable giữ dữ liệu gốc bên trong)"
+        "plain": "Insert → PivotTable: hàng = phường, cột = tháng, giá trị = Count của mã KH và Sum của kWh. Chép kết quả → Paste Values sang file mới (PivotTable giữ dữ liệu gốc bên trong)",
+        "html": "Insert → PivotTable: hàng = phường, cột = tháng, giá trị = Count của mã KH và Sum của kWh. Chép kết quả → Paste Values sang file mới (PivotTable giữ dữ liệu gốc bên trong)"
        }
       ],
       [
        {
-        "html": "Kiểm tra nhóm nhỏ",
-        "plain": "Kiểm tra nhóm nhỏ"
+        "plain": "Kiểm tra nhóm nhỏ",
+        "html": "Kiểm tra nhóm nhỏ"
        },
        {
-        "html": "Trong bảng kết quả, dùng Conditional Formatting tô màu ô đếm dưới ngưỡng",
-        "plain": "Trong bảng kết quả, dùng Conditional Formatting tô màu ô đếm dưới ngưỡng"
+        "plain": "Conditional Formatting tô màu ô đếm dưới ngưỡng",
+        "html": "Conditional Formatting tô màu ô đếm dưới ngưỡng"
        }
       ],
       [
        {
-        "html": "Kiểm tra cuối",
-        "plain": "Kiểm tra cuối"
+        "plain": "Kiểm tra cuối",
+        "html": "Kiểm tra cuối"
        },
        {
-        "html": "Chuột phải tên sheet → Unhide; kiểm tra cột ẩn; File → Info → Check for Issues → Inspect Document để tìm dữ liệu ẩn, ghi chú, thông tin tác giả",
-        "plain": "Chuột phải tên sheet → Unhide; kiểm tra cột ẩn; File → Info → Check for Issues → Inspect Document để tìm dữ liệu ẩn, ghi chú, thông tin tác giả"
+        "plain": "Unhide sheet, cột; File → Info → Check for Issues → Inspect Document",
+        "html": "Unhide sheet, cột; File → Info → Check for Issues → Inspect Document"
        }
       ]
      ]
     },
     {
      "t": "h3",
-     "text": "2.5. Lỗi thường gặp khi giảm dữ liệu"
+     "text": "2.5. Lỗi thường gặp"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Lỗi",
-        "plain": "Lỗi"
+        "plain": "Lỗi",
+        "html": "Lỗi"
        },
        {
-        "html": "Vì sao nguy hiểm",
-        "plain": "Vì sao nguy hiểm"
+        "plain": "Vì sao nguy hiểm",
+        "html": "Vì sao nguy hiểm"
        }
       ],
       [
        {
-        "html": "Ẩn cột thay vì xóa",
-        "plain": "Ẩn cột thay vì xóa"
+        "plain": "Ẩn cột thay vì xóa",
+        "html": "Ẩn cột thay vì xóa"
        },
        {
-        "html": "Người nhận chỉ cần Unhide",
-        "plain": "Người nhận chỉ cần Unhide"
+        "plain": "Người nhận chỉ cần Unhide",
+        "html": "Người nhận chỉ cần Unhide"
        }
       ],
       [
        {
-        "html": "Gửi nguyên PivotTable",
-        "plain": "Gửi nguyên PivotTable"
+        "plain": "Gửi nguyên PivotTable",
+        "html": "Gửi nguyên PivotTable"
        },
        {
-        "html": "Bấm đúp vào ô tổng là hiện lại toàn bộ dòng chi tiết",
-        "plain": "Bấm đúp vào ô tổng là hiện lại toàn bộ dòng chi tiết"
+        "plain": "Bấm đúp vào ô tổng là hiện lại toàn bộ dòng chi tiết",
+        "html": "Bấm đúp vào ô tổng là hiện lại toàn bộ dòng chi tiết"
        }
       ],
       [
        {
-        "html": "Chỉ che tên, giữ mã khách hàng thật",
-        "plain": "Chỉ che tên, giữ mã khách hàng thật"
+        "plain": "Chỉ che tên, giữ mã khách hàng thật",
+        "html": "Chỉ che tên, giữ mã khách hàng thật"
        },
        {
-        "html": "Mã khách hàng tra ngược được trên hệ thống hoặc hóa đơn",
-        "plain": "Mã khách hàng tra ngược được trên hệ thống hoặc hóa đơn"
+        "plain": "Mã khách hàng tra ngược được trên hệ thống hoặc hóa đơn",
+        "html": "Mã khách hàng tra ngược được trên hệ thống hoặc hóa đơn"
        }
       ],
       [
        {
-        "html": "Quên dữ liệu nằm trong văn bản tự do",
-        "plain": "Quên dữ liệu nằm trong văn bản tự do"
+        "plain": "Quên dữ liệu trong văn bản tự do",
+        "html": "Quên dữ liệu trong văn bản tự do"
        },
        {
-        "html": "Cột \"Ghi chú\" hoặc \"Nội dung khiếu nại\" có ghi \"chị Lan, số nhà 12, SĐT 09…\"",
-        "plain": "Cột \"Ghi chú\" hoặc \"Nội dung khiếu nại\" có ghi \"chị Lan, số nhà 12, SĐT 09…\""
+        "plain": "Cột “Ghi chú” có ghi “chị Lan, số nhà 12, SĐT 09…”",
+        "html": "Cột “Ghi chú” có ghi “chị Lan, số nhà 12, SĐT 09…”"
        }
       ],
       [
        {
-        "html": "Gửi bảng đối chiếu (hoặc khóa) cùng file",
-        "plain": "Gửi bảng đối chiếu (hoặc khóa) cùng file"
+        "plain": "Gửi bảng đối chiếu (hoặc khóa) cùng file",
+        "html": "Gửi bảng đối chiếu (hoặc khóa) cùng file"
        },
        {
-        "html": "Giả danh hóa mất tác dụng",
-        "plain": "Giả danh hóa mất tác dụng"
+        "plain": "Giả danh hóa mất tác dụng",
+        "html": "Giả danh hóa mất tác dụng"
        }
       ],
       [
        {
-        "html": "Dùng HAVING loại nhóm nhỏ nhưng giao một bảng khác có tổng toàn đơn vị",
-        "plain": "Dùng HAVING loại nhóm nhỏ nhưng giao một bảng khác có tổng toàn đơn vị"
+        "plain": "Dùng HAVING bỏ nhóm nhỏ nhưng giao thêm bảng tổng toàn đơn vị",
+        "html": "Dùng HAVING bỏ nhóm nhỏ nhưng giao thêm bảng tổng toàn đơn vị"
        },
        {
-        "html": "Lấy tổng trừ các nhóm còn lại là ra nhóm bị ẩn",
-        "plain": "Lấy tổng trừ các nhóm còn lại là ra nhóm bị ẩn"
+        "plain": "Lấy tổng trừ các nhóm còn lại là ra nhóm bị ẩn",
+        "html": "Lấy tổng trừ các nhóm còn lại là ra nhóm bị ẩn"
        }
       ],
       [
        {
-        "html": "Gọi là \"đã ẩn danh\" khi mới chỉ bỏ tên",
-        "plain": "Gọi là \"đã ẩn danh\" khi mới chỉ bỏ tên"
+        "plain": "Gọi là “đã ẩn danh” khi mới bỏ tên",
+        "html": "Gọi là “đã ẩn danh” khi mới bỏ tên"
        },
        {
-        "html": "Người nhận hạ mức bảo vệ vì tưởng không còn là dữ liệu cá nhân",
-        "plain": "Người nhận hạ mức bảo vệ vì tưởng không còn là dữ liệu cá nhân"
+        "plain": "Người nhận hạ mức bảo vệ vì tưởng không còn là dữ liệu cá nhân",
+        "html": "Người nhận hạ mức bảo vệ vì tưởng không còn là dữ liệu cá nhân"
        }
       ]
      ]
@@ -2044,24 +1340,24 @@
      "ordered": false,
      "items": [
       {
+       "plain": "Khi nhận yêu cầu dữ liệu, trả lời bằng một phiếu: mục đích, người nhận, cột giữ, cột bỏ, mức tổng hợp, ngưỡng nhóm, người duyệt, ngày xóa.",
        "html": "Khi nhận yêu cầu dữ liệu, trả lời bằng một phiếu: mục đích, người nhận, cột giữ, cột bỏ, mức tổng hợp, ngưỡng nhóm, người duyệt, ngày xóa.",
-       "level": 0,
-       "plain": "Khi nhận yêu cầu dữ liệu, trả lời bằng một phiếu: mục đích, người nhận, cột giữ, cột bỏ, mức tổng hợp, ngưỡng nhóm, người duyệt, ngày xóa."
+       "level": 0
       },
       {
+       "plain": "Xóa bản đủ cột trung gian ngay sau khi tạo xong bản giao.",
        "html": "Xóa bản đủ cột trung gian ngay sau khi tạo xong bản giao.",
-       "level": 0,
-       "plain": "Xóa bản đủ cột trung gian ngay sau khi tạo xong bản giao."
+       "level": 0
       },
       {
-       "html": "Khóa giả danh hóa và bảng đối chiếu lưu ở nơi riêng, ít người có quyền, không bao giờ đi cùng file.",
-       "level": 0,
-       "plain": "Khóa giả danh hóa và bảng đối chiếu lưu ở nơi riêng, ít người có quyền, không bao giờ đi cùng file."
+       "plain": "Khóa giả danh hóa và bảng đối chiếu lưu riêng, ít người có quyền, không bao giờ đi cùng file.",
+       "html": "Khóa giả danh hóa và bảng đối chiếu lưu riêng, ít người có quyền, không bao giờ đi cùng file.",
+       "level": 0
       },
       {
+       "plain": "Bản tổng hợp làm từ Excel: luôn Paste Values sang file mới, không gửi PivotTable.",
        "html": "Bản tổng hợp làm từ Excel: luôn Paste Values sang file mới, không gửi PivotTable.",
-       "level": 0,
-       "plain": "Bản tổng hợp làm từ Excel: luôn Paste Values sang file mới, không gửi PivotTable."
+       "level": 0
       }
      ]
     }
@@ -2074,210 +1370,176 @@
    "blocks": [
     {
      "t": "p",
-     "html": "Người dùng nghiệp vụ ngày càng kết nối trực tiếp vào dữ liệu: Excel (Power Query), Power BI, công cụ truy vấn. Bài này trả lời câu hỏi 3: có nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không, và nếu có thì với điều kiện gì.",
-     "plain": "Người dùng nghiệp vụ ngày càng kết nối trực tiếp vào dữ liệu: Excel (Power Query), Power BI, công cụ truy vấn. Bài này trả lời câu hỏi 3: có nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không, và nếu có thì với điều kiện gì."
+     "plain": "Người dùng nghiệp vụ ngày càng kết nối thẳng vào dữ liệu: Excel (Power Query), Power BI, công cụ truy vấn. Bài này trả lời câu hỏi 3: có nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không, và với điều kiện gì.",
+     "html": "Người dùng nghiệp vụ ngày càng kết nối thẳng vào dữ liệu: Excel (Power Query), Power BI, công cụ truy vấn. Bài này trả lời câu hỏi 3: có nên cho anh Minh kết nối thẳng vào cơ sở dữ liệu không, và với điều kiện gì."
     },
     {
      "t": "h3",
-     "text": "3.1. Người dùng \"chạm\" vào cơ sở dữ liệu ở đâu"
+     "text": "3.1. Người dùng “chạm” vào cơ sở dữ liệu ở đâu"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Điểm chạm",
-        "plain": "Điểm chạm"
+        "plain": "Điểm chạm",
+        "html": "Điểm chạm"
        },
        {
-        "html": "Ví dụ",
-        "plain": "Ví dụ"
-       },
-       {
-        "html": "Ai kiểm soát điều người dùng thấy",
-        "plain": "Ai kiểm soát điều người dùng thấy"
+        "plain": "Ai kiểm soát điều bạn thấy",
+        "html": "Ai kiểm soát điều bạn thấy"
        }
       ],
       [
        {
-        "html": "Màn hình ứng dụng",
-        "plain": "Màn hình ứng dụng"
+        "plain": "Màn hình ứng dụng (tra cứu, nhập phiếu)",
+        "html": "Màn hình ứng dụng (tra cứu, nhập phiếu)"
        },
        {
-        "html": "Tra cứu khách hàng, nhập phiếu",
-        "plain": "Tra cứu khách hàng, nhập phiếu"
-       },
-       {
-        "html": "Ứng dụng (phân quyền, masking động)",
-        "plain": "Ứng dụng (phân quyền, masking động)"
+        "plain": "Ứng dụng: phân quyền, masking động",
+        "html": "Ứng dụng: phân quyền, masking động"
        }
       ],
       [
        {
-        "html": "Chức năng xuất",
-        "plain": "Chức năng xuất"
+        "plain": "Chức năng xuất ra Excel/CSV",
+        "html": "Chức năng xuất ra Excel/CSV"
        },
        {
-        "html": "\"Xuất danh sách\" ra Excel/CSV",
-        "plain": "\"Xuất danh sách\" ra Excel/CSV"
-       },
-       {
-        "html": "Ứng dụng – nhưng sau khi xuất thì không ai kiểm soát nữa",
-        "plain": "Ứng dụng – nhưng sau khi xuất thì không ai kiểm soát nữa"
+        "plain": "Ứng dụng – nhưng xuất xong thì không ai kiểm soát nữa",
+        "html": "Ứng dụng – nhưng xuất xong thì không ai kiểm soát nữa"
        }
       ],
       [
        {
-        "html": "Kết nối trực tiếp",
-        "plain": "Kết nối trực tiếp"
+        "plain": "Kết nối trực tiếp (Power Query, Power BI, công cụ SQL)",
+        "html": "Kết nối trực tiếp (Power Query, Power BI, công cụ SQL)"
        },
        {
-        "html": "Excel Power Query, Power BI, công cụ truy vấn SQL",
-        "plain": "Excel Power Query, Power BI, công cụ truy vấn SQL"
-       },
-       {
-        "html": "Quyền của tài khoản kết nối trên cơ sở dữ liệu",
-        "plain": "Quyền của tài khoản kết nối trên cơ sở dữ liệu"
+        "plain": "Quyền của tài khoản kết nối trên cơ sở dữ liệu",
+        "html": "Quyền của tài khoản kết nối trên cơ sở dữ liệu"
        }
       ],
       [
        {
-        "html": "File nhận từ người khác",
-        "plain": "File nhận từ người khác"
+        "plain": "File nhận từ người khác (CSV từ cổng góp ý…)",
+        "html": "File nhận từ người khác (CSV từ cổng góp ý…)"
        },
        {
-        "html": "CSV từ cổng góp ý, file báo cáo đơn vị khác",
-        "plain": "CSV từ cổng góp ý, file báo cáo đơn vị khác"
-       },
-       {
-        "html": "Không ai – người mở file tự chịu",
-        "plain": "Không ai – người mở file tự chịu"
+        "plain": "Không ai – người mở tự chịu",
+        "html": "Không ai – người mở tự chịu"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "Càng xuống dưới bảng, lớp kiểm soát của hệ thống càng mỏng và trách nhiệm của người dùng càng lớn.",
-     "plain": "Càng xuống dưới bảng, lớp kiểm soát của hệ thống càng mỏng và trách nhiệm của người dùng càng lớn."
+     "plain": "Càng xuống dưới bảng, kiểm soát của hệ thống càng mỏng và trách nhiệm của người dùng càng lớn.",
+     "html": "Càng xuống dưới bảng, kiểm soát của hệ thống càng mỏng và trách nhiệm của người dùng càng lớn."
     },
     {
      "t": "h3",
-     "text": "3.2. Bảy tình huống hay gặp"
+     "text": "3.2. Tình huống hay gặp"
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Tình huống",
-        "plain": "Tình huống"
+        "plain": "Tình huống",
+        "html": "Tình huống"
        },
        {
-        "html": "Rủi ro",
-        "plain": "Rủi ro"
+        "plain": "Rủi ro",
+        "html": "Rủi ro"
        },
        {
-        "html": "Cách làm đúng",
-        "plain": "Cách làm đúng"
+        "plain": "Cách làm đúng",
+        "html": "Cách làm đúng"
        }
       ],
       [
        {
-        "html": "Kết nối bằng tài khoản có quyền ghi/xóa để làm báo cáo",
-        "plain": "Kết nối bằng tài khoản có quyền ghi/xóa để làm báo cáo"
+        "plain": "Kết nối bằng tài khoản có quyền ghi/xóa để làm báo cáo",
+        "html": "Kết nối bằng tài khoản có quyền ghi/xóa để làm báo cáo"
        },
        {
-        "html": "Một truy vấn sai có thể sửa hoặc xóa dữ liệu thật; tài khoản bị chiếm thì thiệt hại lớn",
-        "plain": "Một truy vấn sai có thể sửa hoặc xóa dữ liệu thật; tài khoản bị chiếm thì thiệt hại lớn"
+        "plain": "Truy vấn sai có thể sửa, xóa dữ liệu thật",
+        "html": "Truy vấn sai có thể sửa, xóa dữ liệu thật"
        },
        {
-        "html": "Xin tài khoản chỉ đọc, chỉ trên bảng/khung nhìn (view) cần thiết",
-        "plain": "Xin tài khoản chỉ đọc, chỉ trên bảng/khung nhìn (view) cần thiết"
+        "plain": "Tài khoản chỉ đọc, chỉ trên khung nhìn cần thiết",
+        "html": "Tài khoản chỉ đọc, chỉ trên khung nhìn cần thiết"
        }
       ],
       [
        {
-        "html": "Dùng chung một tài khoản kết nối cho cả phòng",
-        "plain": "Dùng chung một tài khoản kết nối cho cả phòng"
+        "plain": "Cả phòng dùng chung một tài khoản kết nối",
+        "html": "Cả phòng dùng chung một tài khoản kết nối"
        },
        {
-        "html": "Không biết ai đã lấy gì (như truc_ca ở buổi 4)",
-        "plain": "Không biết ai đã lấy gì (như truc_ca ở buổi 4)"
+        "plain": "Không biết ai đã lấy gì (như truc_ca ở buổi 4)",
+        "html": "Không biết ai đã lấy gì (như truc_ca ở buổi 4)"
        },
        {
-        "html": "Mỗi người một tài khoản, xác thực theo tài khoản cá nhân",
-        "plain": "Mỗi người một tài khoản, xác thực theo tài khoản cá nhân"
+        "plain": "Mỗi người một tài khoản",
+        "html": "Mỗi người một tài khoản"
        }
       ],
       [
        {
-        "html": "Lưu mật khẩu kết nối trong file Excel/Power BI rồi gửi file đi",
-        "plain": "Lưu mật khẩu kết nối trong file Excel/Power BI rồi gửi file đi"
+        "plain": "Lưu mật khẩu kết nối trong file rồi gửi đi",
+        "html": "Lưu mật khẩu kết nối trong file rồi gửi đi"
        },
        {
-        "html": "Người nhận có luôn quyền truy cập cơ sở dữ liệu",
-        "plain": "Người nhận có luôn quyền truy cập cơ sở dữ liệu"
+        "plain": "Người nhận có luôn quyền vào cơ sở dữ liệu",
+        "html": "Người nhận có luôn quyền vào cơ sở dữ liệu"
        },
        {
-        "html": "Không lưu mật khẩu trong file chia sẻ",
-        "plain": "Không lưu mật khẩu trong file chia sẻ"
+        "plain": "Không lưu mật khẩu trong file chia sẻ",
+        "html": "Không lưu mật khẩu trong file chia sẻ"
        }
       ],
       [
        {
-        "html": "Gửi file Excel/Power BI có kết nối dữ liệu",
-        "plain": "Gửi file Excel/Power BI có kết nối dữ liệu"
+        "plain": "Gửi file Excel/Power BI có kết nối dữ liệu",
+        "html": "Gửi file Excel/Power BI có kết nối dữ liệu"
        },
        {
-        "html": "File đã làm mới chứa sẵn bản sao dữ liệu bên trong, kể cả bảng không hiển thị",
-        "plain": "File đã làm mới chứa sẵn bản sao dữ liệu bên trong, kể cả bảng không hiển thị"
+        "plain": "File đã làm mới chứa sẵn bản sao dữ liệu, kể cả bảng không hiển thị",
+        "html": "File đã làm mới chứa sẵn bản sao dữ liệu, kể cả bảng không hiển thị"
        },
        {
-        "html": "Coi file đó là một bản xuất; chia sẻ báo cáo qua dịch vụ có phân quyền (buổi 7) thay vì gửi file",
-        "plain": "Coi file đó là một bản xuất; chia sẻ báo cáo qua dịch vụ có phân quyền (buổi 7) thay vì gửi file"
+        "plain": "Coi đó là một bản xuất; chia sẻ báo cáo qua dịch vụ có phân quyền (buổi 7)",
+        "html": "Coi đó là một bản xuất; chia sẻ báo cáo qua dịch vụ có phân quyền (buổi 7)"
        }
       ],
       [
        {
-        "html": "Truy vấn trực tiếp vào cơ sở dữ liệu đang vận hành giờ cao điểm",
-        "plain": "Truy vấn trực tiếp vào cơ sở dữ liệu đang vận hành giờ cao điểm"
+        "plain": "Truy vấn hệ thống vận hành giờ cao điểm",
+        "html": "Truy vấn hệ thống vận hành giờ cao điểm"
        },
        {
-        "html": "Làm chậm hệ thống (ảnh hưởng sẵn sàng)",
-        "plain": "Làm chậm hệ thống (ảnh hưởng sẵn sàng)"
+        "plain": "Làm chậm hệ thống (sẵn sàng)",
+        "html": "Làm chậm hệ thống (sẵn sàng)"
        },
        {
-        "html": "Dùng bản sao báo cáo hoặc kho dữ liệu theo hướng dẫn CNTT",
-        "plain": "Dùng bản sao báo cáo hoặc kho dữ liệu theo hướng dẫn CNTT"
+        "plain": "Dùng bản sao báo cáo hoặc kho dữ liệu",
+        "html": "Dùng bản sao báo cáo hoặc kho dữ liệu"
        }
       ],
       [
        {
-        "html": "Kết nối từ máy cá nhân hoặc ngoài mạng đơn vị",
-        "plain": "Kết nối từ máy cá nhân hoặc ngoài mạng đơn vị"
+        "plain": "Kết nối từ máy cá nhân, ngoài mạng đơn vị",
+        "html": "Kết nối từ máy cá nhân, ngoài mạng đơn vị"
        },
        {
-        "html": "Dữ liệu rơi vào thiết bị không quản lý",
-        "plain": "Dữ liệu rơi vào thiết bị không quản lý"
+        "plain": "Dữ liệu rơi vào thiết bị không quản lý",
+        "html": "Dữ liệu rơi vào thiết bị không quản lý"
        },
        {
-        "html": "Chỉ từ máy công ty, qua VPN nếu ở xa",
-        "plain": "Chỉ từ máy công ty, qua VPN nếu ở xa"
-       }
-      ],
-      [
-       {
-        "html": "Xuất dữ liệu ra CSV rồi mở bằng Excel",
-        "plain": "Xuất dữ liệu ra CSV rồi mở bằng Excel"
-       },
-       {
-        "html": "Ô bắt đầu bằng =, +, -, @ có thể bị Excel hiểu là công thức (CSV injection, Bài 4)",
-        "plain": "Ô bắt đầu bằng =, +, -, @ có thể bị Excel hiểu là công thức (CSV injection, Bài 4)"
-       },
-       {
-        "html": "Để ý cảnh báo bảo mật của Excel; không bật nội dung lạ; báo CNTT",
-        "plain": "Để ý cảnh báo bảo mật của Excel; không bật nội dung lạ; báo CNTT"
+        "plain": "Chỉ từ máy công ty, qua VPN nếu ở xa",
+        "html": "Chỉ từ máy công ty, qua VPN nếu ở xa"
        }
       ]
      ]
@@ -2287,23 +1549,15 @@
      "text": "3.3. Khung nhìn (view) và quyền tối thiểu"
     },
     {
-     "t": "p",
-     "html": "<strong>Khung nhìn (view)</strong> là một \"cửa sổ\" được CNTT dựng sẵn trên cơ sở dữ liệu: người dùng chỉ nhìn qua cửa sổ đó, thấy đúng những cột và dòng đã chọn, không chạm được bảng gốc. Kết hợp với quyền chỉ đọc, đây là cách áp dụng \"quyền tối thiểu\" của buổi 3 vào cơ sở dữ liệu.",
-     "plain": "Khung nhìn (view) là một \"cửa sổ\" được CNTT dựng sẵn trên cơ sở dữ liệu: người dùng chỉ nhìn qua cửa sổ đó, thấy đúng những cột và dòng đã chọn, không chạm được bảng gốc. Kết hợp với quyền chỉ đọc, đây là cách áp dụng \"quyền tối thiểu\" của buổi 3 vào cơ sở dữ liệu."
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 196\" role=\"img\" aria-label=\"Khung nhìn (view) chỉ cho đọc đúng phần đã tổng hợp\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-view-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-view-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-view-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-view-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-view-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><path d=\"M95,62 V32 H630 V44\" class=\"ln l-bad dash\" marker-end=\"url(#m6-view-bad)\"/><text x=\"362\" y=\"18\" font-size=\"12\" text-anchor=\"middle\" class=\"f-bad\" font-weight=\"600\">Không được đọc thẳng bảng gốc</text><text x=\"362\" y=\"37\" font-size=\"15\" text-anchor=\"middle\" class=\"f-bad\" font-weight=\"600\">✕</text><rect x=\"10\" y=\"62\" width=\"170\" height=\"76\" rx=\"8\" class=\"r-brand\"/><text x=\"95.0\" y=\"87.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Anh Minh</text><text x=\"95.0\" y=\"104.5\" font-size=\"12\" text-anchor=\"middle\">Power BI</text><text x=\"95.0\" y=\"121.7\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">tài khoản riêng, chỉ đọc</text><rect x=\"270\" y=\"52\" width=\"190\" height=\"96\" rx=\"8\" class=\"r-ok\"/><text x=\"365.0\" y=\"78.8\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Khung nhìn (view)</text><text x=\"365.0\" y=\"96.0\" font-size=\"12\" text-anchor=\"middle\">phường · tháng ·</text><text x=\"365.0\" y=\"113.1\" font-size=\"12\" text-anchor=\"middle\">số KH · tổng kWh</text><text x=\"365.0\" y=\"130.3\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">chỉ nhóm ≥ 10 KH</text><rect x=\"550\" y=\"44\" width=\"160\" height=\"112\" rx=\"8\" class=\"box\"/><text x=\"630.0\" y=\"78.8\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Bảng gốc</text><text x=\"630.0\" y=\"96.0\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">ho_ten, dien_thoai</text><text x=\"630.0\" y=\"113.1\" font-size=\"11.5\" text-anchor=\"middle\" class=\"mono\">dia_chi, so_tien_no</text><text x=\"630.0\" y=\"130.3\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">… 8.500 dòng</text><line x1=\"180\" y1=\"100\" x2=\"270\" y2=\"100\" class=\"l-ok\" marker-end=\"url(#m6-view-ok)\"/><text x=\"225.0\" y=\"92\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">chỉ đọc</text><line x1=\"460\" y1=\"100\" x2=\"550\" y2=\"100\" class=\"l-mut\" marker-end=\"url(#m6-view-mut)\"/><text x=\"505.0\" y=\"92\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">CNTT dựng sẵn</text><text x=\"360\" y=\"184\" font-size=\"12.5\" text-anchor=\"middle\" class=\"f-mut\">Quyền tối thiểu trên cơ sở dữ liệu: đúng cửa sổ, chỉ đọc, có người duyệt và có ngày rà soát.</text></svg>",
+     "caption": "Khung nhìn là “cửa sổ” CNTT dựng sẵn: anh Minh chỉ thấy đúng cột và nhóm đã chọn, không chạm được bảng gốc.",
+     "plain": "Khung nhìn là “cửa sổ” CNTT dựng sẵn: anh Minh chỉ thấy đúng cột và nhóm đã chọn, không chạm được bảng gốc."
     },
     {
      "t": "p",
-     "html": "Ví dụ (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):",
-     "plain": "Ví dụ (cú pháp GRANT khác nhau theo hệ quản trị cơ sở dữ liệu):"
-    },
-    {
-     "t": "code",
-     "text": "-- CNTT tạo khung nhìn đã tổng hợp sẵn, không có cột định danh\nCREATE VIEW v_san_luong_phuong_thang AS\nSELECT phuong, thang, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\nFROM   san_luong\nGROUP  BY phuong, thang\nHAVING COUNT(*) >= 10;\n\n-- Nhóm Kế hoạch chỉ được đọc khung nhìn này, không được đọc bảng san_luong\nGRANT SELECT ON v_san_luong_phuong_thang TO nhom_ke_hoach;"
-    },
-    {
-     "t": "p",
-     "html": "Đọc bằng lời: <em>\"Tạo một cửa sổ tên </em><em>v_san_luong_phuong_thang</em><em> chỉ cho thấy số khách hàng và tổng kWh theo phường – tháng; cho nhóm Kế hoạch quyền đọc cửa sổ đó và không gì khác.\"</em>",
-     "plain": "Đọc bằng lời: \"Tạo một cửa sổ tên v_san_luong_phuong_thang chỉ cho thấy số khách hàng và tổng kWh theo phường – tháng; cho nhóm Kế hoạch quyền đọc cửa sổ đó và không gì khác.\""
+     "plain": "Kết hợp khung nhìn với quyền chỉ đọc là cách áp dụng “quyền tối thiểu” của buổi 3 vào cơ sở dữ liệu. Việc dựng khung nhìn và cấp quyền do CNTT làm; người dùng cần hiểu để đề nghị đúng: “cho tôi đọc khung nhìn tổng hợp theo phường – tháng”, thay vì “cho tôi vào bảng khách hàng”.",
+     "html": "Kết hợp khung nhìn với quyền chỉ đọc là cách áp dụng “quyền tối thiểu” của buổi 3 vào cơ sở dữ liệu. Việc dựng khung nhìn và cấp quyền do CNTT làm; người dùng cần hiểu để đề nghị đúng: “cho tôi đọc khung nhìn tổng hợp theo phường – tháng”, thay vì “cho tôi vào bảng khách hàng”."
     },
     {
      "t": "h3",
@@ -2311,122 +1565,122 @@
     },
     {
      "t": "p",
-     "html": "Có thể – nếu đủ các điều kiện dưới đây. Không đủ thì tiếp tục giao bản tổng hợp hằng tháng.",
-     "plain": "Có thể – nếu đủ các điều kiện dưới đây. Không đủ thì tiếp tục giao bản tổng hợp hằng tháng."
+     "plain": "Có thể – nếu đủ các điều kiện dưới đây. Không đủ thì tiếp tục giao bản tổng hợp hằng tháng.",
+     "html": "Có thể – nếu đủ các điều kiện dưới đây. Không đủ thì tiếp tục giao bản tổng hợp hằng tháng."
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Điều kiện",
-        "plain": "Điều kiện"
+        "plain": "Điều kiện",
+        "html": "Điều kiện"
        },
        {
-        "html": "Vì sao",
-        "plain": "Vì sao"
+        "plain": "Vì sao",
+        "html": "Vì sao"
        },
        {
-        "html": "Nối với",
-        "plain": "Nối với"
+        "plain": "Nối với",
+        "html": "Nối với"
        }
       ],
       [
        {
-        "html": "Tài khoản cá nhân của anh Minh, không dùng chung",
-        "plain": "Tài khoản cá nhân của anh Minh, không dùng chung"
+        "plain": "Tài khoản cá nhân của anh Minh, không dùng chung",
+        "html": "Tài khoản cá nhân của anh Minh, không dùng chung"
        },
        {
-        "html": "Biết ai lấy gì",
-        "plain": "Biết ai lấy gì"
+        "plain": "Biết ai lấy gì",
+        "html": "Biết ai lấy gì"
        },
        {
-        "html": "Buổi 4",
-        "plain": "Buổi 4"
+        "plain": "Buổi 4",
+        "html": "Buổi 4"
        }
       ],
       [
        {
-        "html": "Chỉ đọc, chỉ trên khung nhìn tổng hợp, không trên bảng gốc",
-        "plain": "Chỉ đọc, chỉ trên khung nhìn tổng hợp, không trên bảng gốc"
+        "plain": "Chỉ đọc, chỉ trên khung nhìn tổng hợp, không trên bảng gốc",
+        "html": "Chỉ đọc, chỉ trên khung nhìn tổng hợp, không trên bảng gốc"
        },
        {
-        "html": "Tối thiểu hóa, quyền tối thiểu",
-        "plain": "Tối thiểu hóa, quyền tối thiểu"
+        "plain": "Tối thiểu hóa, quyền tối thiểu",
+        "html": "Tối thiểu hóa, quyền tối thiểu"
        },
        {
-        "html": "Buổi 1, 3",
-        "plain": "Buổi 1, 3"
+        "plain": "Buổi 1, 3",
+        "html": "Buổi 1, 3"
        }
       ],
       [
        {
-        "html": "Kết nối vào bản sao báo cáo hoặc kho dữ liệu, không vào hệ thống vận hành",
-        "plain": "Kết nối vào bản sao báo cáo hoặc kho dữ liệu, không vào hệ thống vận hành"
+        "plain": "Kết nối vào bản sao báo cáo hoặc kho dữ liệu, không vào hệ thống vận hành",
+        "html": "Kết nối vào bản sao báo cáo hoặc kho dữ liệu, không vào hệ thống vận hành"
        },
        {
-        "html": "Không ảnh hưởng sẵn sàng",
-        "plain": "Không ảnh hưởng sẵn sàng"
+        "plain": "Không ảnh hưởng sẵn sàng",
+        "html": "Không ảnh hưởng sẵn sàng"
        },
        {
-        "html": "Mục 3.2",
-        "plain": "Mục 3.2"
+        "plain": "Mục 3.2",
+        "html": "Mục 3.2"
        }
       ],
       [
        {
-        "html": "Chủ dữ liệu duyệt; ghi vào Access Matrix; có ngày rà soát",
-        "plain": "Chủ dữ liệu duyệt; ghi vào Access Matrix; có ngày rà soát"
+        "plain": "Chủ dữ liệu duyệt; ghi vào Access Matrix; có ngày rà soát",
+        "html": "Chủ dữ liệu duyệt; ghi vào Access Matrix; có ngày rà soát"
        },
        {
-        "html": "Quyền có người chịu trách nhiệm và có hạn",
-        "plain": "Quyền có người chịu trách nhiệm và có hạn"
+        "plain": "Quyền có người chịu trách nhiệm và có hạn",
+        "html": "Quyền có người chịu trách nhiệm và có hạn"
        },
        {
-        "html": "Buổi 3",
-        "plain": "Buổi 3"
+        "plain": "Buổi 3",
+        "html": "Buổi 3"
        }
       ],
       [
        {
-        "html": "Không lưu mật khẩu trong file; file kết nối được coi là một bản xuất",
-        "plain": "Không lưu mật khẩu trong file; file kết nối được coi là một bản xuất"
+        "plain": "Không lưu mật khẩu trong file; file kết nối được coi là một bản xuất",
+        "html": "Không lưu mật khẩu trong file; file kết nối được coi là một bản xuất"
        },
        {
-        "html": "File chứa dữ liệu đã làm mới",
-        "plain": "File chứa dữ liệu đã làm mới"
+        "plain": "File chứa dữ liệu đã làm mới",
+        "html": "File chứa dữ liệu đã làm mới"
        },
        {
-        "html": "Buổi 5",
-        "plain": "Buổi 5"
+        "plain": "Buổi 5",
+        "html": "Buổi 5"
        }
       ],
       [
        {
-        "html": "Công cụ AI nhận dữ liệu đã được đơn vị cho phép",
-        "plain": "Công cụ AI nhận dữ liệu đã được đơn vị cho phép"
+        "plain": "Công cụ AI nhận dữ liệu đã được đơn vị cho phép",
+        "html": "Công cụ AI nhận dữ liệu đã được đơn vị cho phép"
        },
        {
-        "html": "Dữ liệu không đi tiếp ra ngoài phạm vi",
-        "plain": "Dữ liệu không đi tiếp ra ngoài phạm vi"
+        "plain": "Dữ liệu không đi tiếp ra ngoài phạm vi",
+        "html": "Dữ liệu không đi tiếp ra ngoài phạm vi"
        },
        {
-        "html": "Buổi 1, 2",
-        "plain": "Buổi 1, 2"
+        "plain": "Buổi 1, 2",
+        "html": "Buổi 1, 2"
        }
       ],
       [
        {
-        "html": "Có nhật ký truy cập",
-        "plain": "Có nhật ký truy cập"
+        "plain": "Có nhật ký truy cập",
+        "html": "Có nhật ký truy cập"
        },
        {
-        "html": "Phát hiện truy vấn bất thường",
-        "plain": "Phát hiện truy vấn bất thường"
+        "plain": "Phát hiện truy vấn bất thường",
+        "html": "Phát hiện truy vấn bất thường"
        },
        {
-        "html": "Buổi 9",
-        "plain": "Buổi 9"
+        "plain": "Buổi 9",
+        "html": "Buổi 9"
        }
       ]
      ]
@@ -2437,64 +1691,34 @@
     },
     {
      "t": "p",
-     "html": "<strong>Khi xuất:</strong> đối chiếu trường, số bản ghi, nơi lưu trước khi chuyển tiếp. Nếu chức năng xuất chỉ có một kiểu \"đủ cột\" như ở Điện lực X, mỗi lần xuất là một lần tạo bản sao đủ cột – và mỗi người có quyền xuất (kể cả kẻ gian chiếm được tài khoản của họ) đều lấy được đủ cột.",
-     "plain": "Khi xuất: đối chiếu trường, số bản ghi, nơi lưu trước khi chuyển tiếp. Nếu chức năng xuất chỉ có một kiểu \"đủ cột\" như ở Điện lực X, mỗi lần xuất là một lần tạo bản sao đủ cột – và mỗi người có quyền xuất (kể cả kẻ gian chiếm được tài khoản của họ) đều lấy được đủ cột."
-    },
-    {
-     "t": "p",
-     "html": "<strong>Khi mua hoặc thuê phần mềm:</strong> bộ phận nghiệp vụ, với tư cách người đặt yêu cầu, có thể đề nghị đưa vào yêu cầu hoặc hợp đồng:",
-     "plain": "Khi mua hoặc thuê phần mềm: bộ phận nghiệp vụ, với tư cách người đặt yêu cầu, có thể đề nghị đưa vào yêu cầu hoặc hợp đồng:"
+     "plain": "Nếu chức năng xuất chỉ có một kiểu “đủ cột” như ở Điện lực X, mỗi lần xuất là một bản sao đủ cột – và ai có quyền xuất (kể cả kẻ gian chiếm được tài khoản) đều lấy được đủ cột. Khi mua hoặc thuê phần mềm, bộ phận nghiệp vụ có thể đề nghị đưa vào yêu cầu:",
+     "html": "Nếu chức năng xuất chỉ có một kiểu “đủ cột” như ở Điện lực X, mỗi lần xuất là một bản sao đủ cột – và ai có quyền xuất (kể cả kẻ gian chiếm được tài khoản) đều lấy được đủ cột. Khi mua hoặc thuê phần mềm, bộ phận nghiệp vụ có thể đề nghị đưa vào yêu cầu:"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "Xuất theo mẫu cột được duyệt; quyền xuất tách riêng khỏi quyền xem; giới hạn số dòng mỗi lần xuất; ghi nhật ký mọi lần xuất.",
-       "level": 0,
-       "plain": "Xuất theo mẫu cột được duyệt; quyền xuất tách riêng khỏi quyền xem; giới hạn số dòng mỗi lần xuất; ghi nhật ký mọi lần xuất."
+       "plain": "Xuất theo mẫu cột được duyệt; quyền xuất tách khỏi quyền xem; giới hạn số dòng mỗi lần xuất; ghi nhật ký mọi lần xuất.",
+       "html": "Xuất theo mẫu cột được duyệt; quyền xuất tách khỏi quyền xem; giới hạn số dòng mỗi lần xuất; ghi nhật ký mọi lần xuất.",
+       "level": 0
       },
       {
+       "plain": "Masking động cho các trường định danh trực tiếp theo vai trò.",
        "html": "Masking động cho các trường định danh trực tiếp theo vai trò.",
-       "level": 0,
-       "plain": "Masking động cho các trường định danh trực tiếp theo vai trò."
+       "level": 0
       },
       {
-       "html": "Nhà cung cấp cam kết tuân thủ hướng dẫn lập trình an toàn, có kết quả kiểm thử bảo mật trước nghiệm thu, và vá lỗi trong thời hạn thỏa thuận.",
-       "level": 0,
-       "plain": "Nhà cung cấp cam kết tuân thủ hướng dẫn lập trình an toàn, có kết quả kiểm thử bảo mật trước nghiệm thu, và vá lỗi trong thời hạn thỏa thuận."
-      }
-     ]
-    },
-    {
-     "t": "h3",
-     "text": "3.6. Áp dụng"
-    },
-    {
-     "t": "list",
-     "ordered": false,
-     "items": [
-      {
-       "html": "Kiểm tra tài khoản mình dùng để kết nối Excel/Power BI: có quyền ghi/xóa không? Nếu có, đề nghị chuyển sang chỉ đọc.",
-       "level": 0,
-       "plain": "Kiểm tra tài khoản mình dùng để kết nối Excel/Power BI: có quyền ghi/xóa không? Nếu có, đề nghị chuyển sang chỉ đọc."
-      },
-      {
-       "html": "Trước khi gửi một file có kết nối dữ liệu: xóa thông tin đăng nhập, kiểm tra các bảng đã nạp bên trong; tốt hơn là chia sẻ báo cáo qua dịch vụ có phân quyền.",
-       "level": 0,
-       "plain": "Trước khi gửi một file có kết nối dữ liệu: xóa thông tin đăng nhập, kiểm tra các bảng đã nạp bên trong; tốt hơn là chia sẻ báo cáo qua dịch vụ có phân quyền."
-      },
-      {
-       "html": "Khi một yêu cầu dữ liệu lặp lại hằng tháng, đề nghị CNTT dựng khung nhìn tổng hợp thay vì xuất tay mỗi tháng.",
-       "level": 0,
-       "plain": "Khi một yêu cầu dữ liệu lặp lại hằng tháng, đề nghị CNTT dựng khung nhìn tổng hợp thay vì xuất tay mỗi tháng."
+       "plain": "Nhà cung cấp lập trình an toàn, có kết quả kiểm thử bảo mật trước nghiệm thu, vá lỗi trong thời hạn thỏa thuận.",
+       "html": "Nhà cung cấp lập trình an toàn, có kết quả kiểm thử bảo mật trước nghiệm thu, vá lỗi trong thời hạn thỏa thuận.",
+       "level": 0
       }
      ]
     },
     {
      "t": "p",
-     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Chỉ đọc thì vô hại.\" → Chỉ đọc chặn được sửa và xóa, không chặn được đọc và mang đi. Quyền đọc toàn bảng khách hàng vẫn là quyền lấy được 8.500 dòng.",
-     "plain": "Hiểu nhầm hay gặp: \"Chỉ đọc thì vô hại.\" → Chỉ đọc chặn được sửa và xóa, không chặn được đọc và mang đi. Quyền đọc toàn bảng khách hàng vẫn là quyền lấy được 8.500 dòng.",
+     "plain": "Hiểu nhầm hay gặp: “Chỉ đọc thì vô hại.” → Chỉ đọc chặn được sửa và xóa, không chặn được đọc và mang đi. Quyền đọc toàn bảng khách hàng vẫn là quyền lấy được 8.500 dòng.",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> “Chỉ đọc thì vô hại.” → Chỉ đọc chặn được sửa và xóa, không chặn được đọc và mang đi. Quyền đọc toàn bảng khách hàng vẫn là quyền lấy được 8.500 dòng.",
      "callout": "misconception"
     }
    ],
@@ -2506,465 +1730,192 @@
    "blocks": [
     {
      "t": "p",
-     "html": "Bài này trả lời câu hỏi 4: lỗi lạ khi gõ dấu nháy đơn nói lên điều gì, và chị Dung nên làm gì. <strong>Giới hạn của lớp học:</strong> chỉ giải thích nguyên lý và cách phòng ngừa. Giáo trình không cung cấp chuỗi tấn công mẫu; học viên không quét hoặc thử trên bất kỳ hệ thống nào. Đây không phải khóa kiểm thử xâm nhập.",
-     "plain": "Bài này trả lời câu hỏi 4: lỗi lạ khi gõ dấu nháy đơn nói lên điều gì, và chị Dung nên làm gì. Giới hạn của lớp học: chỉ giải thích nguyên lý và cách phòng ngừa. Giáo trình không cung cấp chuỗi tấn công mẫu; học viên không quét hoặc thử trên bất kỳ hệ thống nào. Đây không phải khóa kiểm thử xâm nhập."
+     "plain": "Bài này trả lời câu hỏi 4: lỗi lạ khi gõ dấu nháy đơn nói lên điều gì, và chị Dung nên làm gì. Lớp học chỉ giải thích nguyên lý và cách phòng ngừa: không có chuỗi tấn công mẫu, học viên không quét hay thử trên bất kỳ hệ thống nào.",
+     "html": "Bài này trả lời câu hỏi 4: lỗi lạ khi gõ dấu nháy đơn nói lên điều gì, và chị Dung nên làm gì. Lớp học chỉ giải thích nguyên lý và cách phòng ngừa: không có chuỗi tấn công mẫu, học viên không quét hay thử trên bất kỳ hệ thống nào."
     },
     {
      "t": "h3",
-     "text": "4.1. Ví dụ đời thường: phiếu yêu cầu có chỗ trống"
+     "text": "4.1. Ví dụ đời thường: phiếu có chỗ trống"
     },
     {
      "t": "p",
-     "html": "Một phiếu in sẵn: <em>\"Thủ kho hãy xuất hồ sơ của khách hàng: ______\"</em>. Người điền đáng lẽ chỉ ghi mã khách hàng. Nếu ai đó ghi vào chỗ trống một câu có dạng mệnh lệnh (\"KH001, và xuất luôn toàn bộ hồ sơ còn lại\"), mà thủ kho làm theo nguyên văn, thì phần dữ liệu đã biến thành mệnh lệnh. Đó là bản chất của SQL injection.",
-     "plain": "Một phiếu in sẵn: \"Thủ kho hãy xuất hồ sơ của khách hàng: ______\". Người điền đáng lẽ chỉ ghi mã khách hàng. Nếu ai đó ghi vào chỗ trống một câu có dạng mệnh lệnh (\"KH001, và xuất luôn toàn bộ hồ sơ còn lại\"), mà thủ kho làm theo nguyên văn, thì phần dữ liệu đã biến thành mệnh lệnh. Đó là bản chất của SQL injection."
-    },
-    {
-     "t": "p",
-     "html": "Thủ kho cẩn thận sẽ làm khác: chỉ coi nội dung trong chỗ trống là <strong>một mã cần tìm</strong>, dù nó viết gì. Đó là bản chất của truy vấn có tham số.",
-     "plain": "Thủ kho cẩn thận sẽ làm khác: chỉ coi nội dung trong chỗ trống là một mã cần tìm, dù nó viết gì. Đó là bản chất của truy vấn có tham số."
+     "plain": "Phiếu in sẵn: “Thủ kho hãy xuất hồ sơ của khách hàng: ______”. Nếu ai đó ghi vào chỗ trống một câu dạng mệnh lệnh (“KH001, và xuất luôn toàn bộ hồ sơ còn lại”) mà thủ kho làm theo nguyên văn, dữ liệu đã thành mệnh lệnh – đó là bản chất của SQL injection. Thủ kho cẩn thận chỉ coi nội dung chỗ trống là một mã cần tìm, dù nó viết gì – đó là truy vấn có tham số.",
+     "html": "Phiếu in sẵn: “Thủ kho hãy xuất hồ sơ của khách hàng: ______”. Nếu ai đó ghi vào chỗ trống một câu dạng mệnh lệnh (“KH001, và xuất luôn toàn bộ hồ sơ còn lại”) mà thủ kho làm theo nguyên văn, dữ liệu đã thành mệnh lệnh – đó là bản chất của <strong>SQL injection</strong>. Thủ kho cẩn thận chỉ coi nội dung chỗ trống là một mã cần tìm, dù nó viết gì – đó là <strong>truy vấn có tham số</strong>."
     },
     {
      "t": "h3",
-     "text": "4.2. Nguyên nhân kỹ thuật"
+     "text": "4.2. Nguyên nhân: ghép chuỗi"
+    },
+    {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 252\" role=\"img\" aria-label=\"Ghép chuỗi so với truy vấn có tham số\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-sqli-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-sqli-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-sqli-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-sqli-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-sqli-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><text x=\"10\" y=\"18\" font-size=\"13\" text-anchor=\"start\" class=\"f-bad\" font-weight=\"600\">Ghép chuỗi – dữ liệu lẫn vào câu lệnh</text><rect x=\"10\" y=\"32\" width=\"160\" height=\"44\" rx=\"8\" class=\"r-warn\"/><text x=\"90.0\" y=\"58.5\" font-size=\"13\" text-anchor=\"middle\" class=\"mono\">Hai Lúa's Shop</text><text x=\"90\" y=\"92\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">khách gõ vào ô tìm kiếm</text><line x1=\"170\" y1=\"54\" x2=\"220\" y2=\"54\" class=\"l-mut\" marker-end=\"url(#m6-sqli-mut)\"/><rect x=\"220\" y=\"30\" width=\"490\" height=\"48\" rx=\"8\" class=\"r-bad\"/><text x=\"465\" y=\"59\" font-size=\"13\" text-anchor=\"middle\"><tspan class=\"mono\">…WHERE dia_chi LIKE '%Hai Lúa'</tspan><tspan class=\"mono f-bad b\">s Shop%'</tspan></text><text x=\"465\" y=\"96\" font-size=\"12\" text-anchor=\"middle\" class=\"f-bad\">Dấu nháy trong tên đóng chuỗi sớm → phần tô đỏ rơi ra ngoài chuỗi, thành lệnh sai → báo lỗi</text><line x1=\"10\" y1=\"114\" x2=\"710\" y2=\"114\" class=\"l-mut dash\"/><text x=\"10\" y=\"138\" font-size=\"13\" text-anchor=\"start\" class=\"f-ok\" font-weight=\"600\">Truy vấn có tham số – câu lệnh và dữ liệu gửi riêng</text><rect x=\"10\" y=\"152\" width=\"280\" height=\"38\" rx=\"8\" class=\"box\"/><text x=\"150\" y=\"176\" font-size=\"13\" text-anchor=\"middle\"><tspan class=\"f-mut\">câu lệnh: </tspan><tspan class=\"mono\">…LIKE ?</tspan></text><rect x=\"10\" y=\"204\" width=\"280\" height=\"38\" rx=\"8\" class=\"box\"/><text x=\"150\" y=\"228\" font-size=\"13\" text-anchor=\"middle\"><tspan class=\"f-mut\">dữ liệu: </tspan><tspan class=\"mono\">%Hai Lúa's Shop%</tspan></text><rect x=\"380\" y=\"172\" width=\"130\" height=\"52\" rx=\"8\" class=\"r-brand\"/><text x=\"445.0\" y=\"202.6\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Cơ sở dữ liệu</text><rect x=\"570\" y=\"172\" width=\"140\" height=\"52\" rx=\"8\" class=\"r-ok\"/><text x=\"640.0\" y=\"194.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tìm đúng</text><text x=\"640.0\" y=\"211.1\" font-size=\"13\" text-anchor=\"middle\" class=\"mono\">KH101</text><line x1=\"290\" y1=\"171\" x2=\"380\" y2=\"188\" class=\"l-mut\" marker-end=\"url(#m6-sqli-mut)\"/><line x1=\"290\" y1=\"223\" x2=\"380\" y2=\"208\" class=\"l-mut\" marker-end=\"url(#m6-sqli-mut)\"/><line x1=\"510\" y1=\"198\" x2=\"570\" y2=\"198\" class=\"l-ok\" marker-end=\"url(#m6-sqli-ok)\"/></svg>",
+     "caption": "Cùng một tên cửa hàng hợp lệ: ghép chuỗi thì câu lệnh vỡ, dùng tham số thì tìm đúng.",
+     "plain": "Cùng một tên cửa hàng hợp lệ: ghép chuỗi thì câu lệnh vỡ, dùng tham số thì tìm đúng."
     },
     {
      "t": "p",
-     "html": "Ứng dụng <strong>ghép chuỗi</strong> đầu vào của người dùng thẳng vào câu SQL. Luồng: <strong>Đầu vào người dùng → ứng dụng ghép chuỗi SQL → cơ sở dữ liệu thực thi câu lệnh đã bị thay đổi ý nghĩa.</strong>",
-     "plain": "Ứng dụng ghép chuỗi đầu vào của người dùng thẳng vào câu SQL. Luồng: Đầu vào người dùng → ứng dụng ghép chuỗi SQL → cơ sở dữ liệu thực thi câu lệnh đã bị thay đổi ý nghĩa."
+     "plain": "Giải thích lỗi ở chương 6. Trong SQL, dấu nháy đơn ' mở và đóng một chuỗi chữ. Ghép “Hai Lúa's Shop” vào câu lệnh thì dấu nháy trong tên đóng chuỗi sớm, câu lệnh sai cú pháp và cơ sở dữ liệu báo lỗi. Màn hình hiện nguyên lỗi kèm đoạn SQL là hai dấu hiệu cùng lúc: ứng dụng đang ghép chuỗi, và đang để lộ lỗi chi tiết ra ngoài.",
+     "html": "<strong>Giải thích lỗi ở chương 6.</strong> Trong SQL, dấu nháy đơn ' mở và đóng một chuỗi chữ. Ghép “Hai Lúa's Shop” vào câu lệnh thì dấu nháy trong tên đóng chuỗi sớm, câu lệnh sai cú pháp và cơ sở dữ liệu báo lỗi. Màn hình hiện nguyên lỗi kèm đoạn SQL là hai dấu hiệu cùng lúc: ứng dụng đang ghép chuỗi, và đang để lộ lỗi chi tiết ra ngoài."
+    },
+    {
+     "t": "p",
+     "plain": "Truy vấn có tham số không chỉ chặn kẻ gian mà còn sửa lỗi cho khách hàng bình thường có dấu nháy trong tên, địa chỉ. Tham số không dùng được cho tên bảng, tên cột – khi đó dùng danh sách cho phép (allow-list).",
+     "html": "Truy vấn có tham số không chỉ chặn kẻ gian mà còn sửa lỗi cho khách hàng bình thường có dấu nháy trong tên, địa chỉ. Tham số không dùng được cho tên bảng, tên cột – khi đó dùng danh sách cho phép (allow-list)."
+    },
+    {
+     "t": "h3",
+     "text": "4.3. Hậu quả và phòng thủ nhiều lớp"
+    },
+    {
+     "t": "p",
+     "plain": "Khai thác được SQL injection có thể đọc trộm toàn bộ bảng, kể cả bảng không liên quan (bí mật); sửa hoặc xóa dữ liệu (toàn vẹn, sẵn sàng); vượt qua màn hình đăng nhập; trong một số cấu hình còn chạy lệnh trên máy chủ. Nhóm lỗi Injection luôn nằm trong nhóm rủi ro hàng đầu của OWASP Top 10.",
+     "html": "Khai thác được SQL injection có thể đọc trộm toàn bộ bảng, kể cả bảng không liên quan (bí mật); sửa hoặc xóa dữ liệu (toàn vẹn, sẵn sàng); vượt qua màn hình đăng nhập; trong một số cấu hình còn chạy lệnh trên máy chủ. Nhóm lỗi Injection luôn nằm trong nhóm rủi ro hàng đầu của OWASP Top 10."
     },
     {
      "t": "table",
      "rows": [
       [
        {
-        "html": "Cách viết",
-        "plain": "Cách viết"
+        "plain": "Lớp phòng thủ (OWASP)",
+        "html": "Lớp phòng thủ (OWASP)"
        },
        {
-        "html": "Ví dụ (Python sqlite3)",
-        "plain": "Ví dụ (Python sqlite3)"
-       },
-       {
-        "html": "Đánh giá",
-        "plain": "Đánh giá"
+        "plain": "Ai làm",
+        "html": "Ai làm"
        }
       ],
       [
        {
-        "html": "Ghép chuỗi",
-        "plain": "Ghép chuỗi"
+        "plain": "1. Truy vấn có tham số – biện pháp chính",
+        "html": "1. Truy vấn có tham số – biện pháp chính"
        },
        {
-        "html": "\"... WHERE id = '\" + customer_id + \"'\"",
-        "plain": "\"... WHERE id = '\" + customer_id + \"'\""
-       },
-       {
-        "html": "Không an toàn: nội dung đầu vào trở thành một phần câu lệnh",
-        "plain": "Không an toàn: nội dung đầu vào trở thành một phần câu lệnh"
+        "plain": "Lập trình viên",
+        "html": "Lập trình viên"
        }
       ],
       [
        {
-        "html": "Truy vấn có tham số",
-        "plain": "Truy vấn có tham số"
+        "plain": "2. Danh sách cho phép cho tên bảng, tên cột, chiều sắp xếp",
+        "html": "2. Danh sách cho phép cho tên bảng, tên cột, chiều sắp xếp"
        },
        {
-        "html": "\"... WHERE id = ?\", (customer_id,)",
-        "plain": "\"... WHERE id = ?\", (customer_id,)"
+        "plain": "Lập trình viên",
+        "html": "Lập trình viên"
+       }
+      ],
+      [
+       {
+        "plain": "3. Quyền tối thiểu cho tài khoản ứng dụng – quyết định thiệt hại lớn đến đâu",
+        "html": "3. Quyền tối thiểu cho tài khoản ứng dụng – quyết định thiệt hại lớn đến đâu"
        },
        {
-        "html": "An toàn hơn: câu lệnh và dữ liệu được gửi riêng, dữ liệu luôn chỉ là dữ liệu",
-        "plain": "An toàn hơn: câu lệnh và dữ liệu được gửi riêng, dữ liệu luôn chỉ là dữ liệu"
+        "plain": "Quản trị CSDL, quản trị hệ thống",
+        "html": "Quản trị CSDL, quản trị hệ thống"
+       }
+      ],
+      [
+       {
+        "plain": "4. Không hiển thị lỗi chi tiết ra màn hình",
+        "html": "4. Không hiển thị lỗi chi tiết ra màn hình"
+       },
+       {
+        "plain": "Lập trình viên",
+        "html": "Lập trình viên"
+       }
+      ],
+      [
+       {
+        "plain": "5. Tường lửa ứng dụng web (WAF), giám sát – lớp bổ sung, không thay lớp 1",
+        "html": "5. Tường lửa ứng dụng web (WAF), giám sát – lớp bổ sung, không thay lớp 1"
+       },
+       {
+        "plain": "An ninh mạng",
+        "html": "An ninh mạng"
+       }
+      ],
+      [
+       {
+        "plain": "6. Rà soát mã, kiểm thử bảo mật có phép trước khi đưa vào dùng",
+        "html": "6. Rà soát mã, kiểm thử bảo mật có phép trước khi đưa vào dùng"
+       },
+       {
+        "plain": "ATTT, nhà cung cấp",
+        "html": "ATTT, nhà cung cấp"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "<strong>Giải thích lỗi ở chương 6.</strong> Trong SQL, dấu nháy đơn ' dùng để mở và đóng một chuỗi chữ. Khi ứng dụng ghép \"Hai Lúa's Shop\" vào câu lệnh, dấu nháy trong tên cửa hàng đóng chuỗi sớm, phần còn lại thành câu lệnh sai cú pháp, và cơ sở dữ liệu báo lỗi. Màn hình hiện nguyên thông báo lỗi kèm đoạn SQL. Đó là <strong>hai dấu hiệu</strong> cùng lúc: ứng dụng đang ghép chuỗi, và ứng dụng hiển thị lỗi chi tiết ra ngoài. Một ứng dụng dùng truy vấn có tham số sẽ tìm đúng cửa hàng đó mà không báo gì.",
-     "plain": "Giải thích lỗi ở chương 6. Trong SQL, dấu nháy đơn ' dùng để mở và đóng một chuỗi chữ. Khi ứng dụng ghép \"Hai Lúa's Shop\" vào câu lệnh, dấu nháy trong tên cửa hàng đóng chuỗi sớm, phần còn lại thành câu lệnh sai cú pháp, và cơ sở dữ liệu báo lỗi. Màn hình hiện nguyên thông báo lỗi kèm đoạn SQL. Đó là hai dấu hiệu cùng lúc: ứng dụng đang ghép chuỗi, và ứng dụng hiển thị lỗi chi tiết ra ngoài. Một ứng dụng dùng truy vấn có tham số sẽ tìm đúng cửa hàng đó mà không báo gì."
-    },
-    {
-     "t": "p",
-     "html": "Minh họa – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:",
-     "plain": "Minh họa – chỉ dùng dữ liệu hợp lệ (một địa chỉ có dấu nháy), không có chuỗi tấn công:"
-    },
-    {
-     "t": "code",
-     "text": "# Bài 4 – vì sao dấu nháy đơn làm hỏng câu lệnh ghép chuỗi (dữ liệu giả lập, dữ liệu hợp lệ)\nimport sqlite3\n\nconn = sqlite3.connect(\":memory:\")\nconn.execute(\"CREATE TABLE khach_hang (ma_kh TEXT, dia_chi TEXT)\")\nconn.executemany(\"INSERT INTO khach_hang VALUES (?, ?)\", [\n    (\"KH101\", \"Hai Lúa's Shop, Phường An Phú\"),\n    (\"KH102\", \"Số 8, Phường Bình Minh\"),\n])\n\ntu_khoa = \"Hai Lúa's Shop\"                       # người dùng gõ vào ô tìm kiếm\n\n# Cách SAI – ghép chuỗi: nội dung người dùng gõ trở thành một phần câu lệnh\nsql_ghep = \"SELECT ma_kh FROM khach_hang WHERE dia_chi LIKE '%\" + tu_khoa + \"%'\"\nprint(\"Câu lệnh sau khi ghép:\", sql_ghep)\ntry:\n    print(conn.execute(sql_ghep).fetchall())\nexcept sqlite3.Error as loi:\n    print(\"Lỗi:\", loi)                             # dấu nháy trong tên làm câu lệnh sai cấu trúc\n\n# Cách ĐÚNG – truy vấn có tham số: câu lệnh và dữ liệu gửi riêng\nsql_tham_so = \"SELECT ma_kh FROM khach_hang WHERE dia_chi LIKE ?\"\nprint(\"Kết quả:\", conn.execute(sql_tham_so, (\"%\" + tu_khoa + \"%\",)).fetchall())"
-    },
-    {
-     "t": "p",
-     "html": "Kết quả:",
-     "plain": "Kết quả:"
-    },
-    {
-     "t": "code",
-     "text": "Câu lệnh sau khi ghép: SELECT ma_kh FROM khach_hang WHERE dia_chi LIKE '%Hai Lúa's Shop%'\nLỗi: near \"s\": syntax error\nKết quả: [('KH101',)]"
-    },
-    {
-     "t": "p",
-     "html": "Bài học từ ví dụ: truy vấn có tham số không chỉ chặn kẻ gian mà còn sửa lỗi cho khách hàng bình thường có dấu nháy trong tên, địa chỉ.",
-     "plain": "Bài học từ ví dụ: truy vấn có tham số không chỉ chặn kẻ gian mà còn sửa lỗi cho khách hàng bình thường có dấu nháy trong tên, địa chỉ."
-    },
-    {
-     "t": "p",
-     "html": "Ba lưu ý kỹ thuật (theo OWASP): vẫn cần kiểm tra đầu vào và phân quyền tài khoản cơ sở dữ liệu; cú pháp tham số khác nhau theo thư viện (?, %s, :ten…); tham số không dùng được cho tên bảng, tên cột – trường hợp này dùng danh sách cho phép (allow-list).",
-     "plain": "Ba lưu ý kỹ thuật (theo OWASP): vẫn cần kiểm tra đầu vào và phân quyền tài khoản cơ sở dữ liệu; cú pháp tham số khác nhau theo thư viện (?, %s, :ten…); tham số không dùng được cho tên bảng, tên cột – trường hợp này dùng danh sách cho phép (allow-list)."
+     "plain": "Lỗi ở chương 6 cho thấy lớp 1 và lớp 4 đều có vấn đề.",
+     "html": "Lỗi ở chương 6 cho thấy lớp 1 và lớp 4 đều có vấn đề."
     },
     {
      "t": "h3",
-     "text": "4.3. Hậu quả: cả ba góc CIA"
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Hậu quả có thể có",
-        "plain": "Hậu quả có thể có"
-       },
-       {
-        "html": "Tính chất bị ảnh hưởng",
-        "plain": "Tính chất bị ảnh hưởng"
-       }
-      ],
-      [
-       {
-        "html": "Đọc trộm toàn bộ bảng, kể cả bảng không liên quan đến màn hình đang dùng",
-        "plain": "Đọc trộm toàn bộ bảng, kể cả bảng không liên quan đến màn hình đang dùng"
-       },
-       {
-        "html": "Bí mật",
-        "plain": "Bí mật"
-       }
-      ],
-      [
-       {
-        "html": "Sửa hoặc xóa dữ liệu",
-        "plain": "Sửa hoặc xóa dữ liệu"
-       },
-       {
-        "html": "Toàn vẹn, sẵn sàng",
-        "plain": "Toàn vẹn, sẵn sàng"
-       }
-      ],
-      [
-       {
-        "html": "Vượt qua màn hình đăng nhập",
-        "plain": "Vượt qua màn hình đăng nhập"
-       },
-       {
-        "html": "Bí mật (và mọi thứ sau đó)",
-        "plain": "Bí mật (và mọi thứ sau đó)"
-       }
-      ],
-      [
-       {
-        "html": "Trong một số cấu hình, chạy lệnh trên máy chủ",
-        "plain": "Trong một số cấu hình, chạy lệnh trên máy chủ"
-       },
-       {
-        "html": "Cả ba",
-        "plain": "Cả ba"
-       }
-      ]
-     ]
+     "text": "4.4. CSV injection: họ hàng trong Excel"
     },
     {
      "t": "p",
-     "html": "SQL injection là một trong những nguyên nhân rò rỉ dữ liệu lớn được biết đến rộng rãi, và nhóm lỗi \"Injection\" luôn nằm trong nhóm rủi ro hàng đầu của OWASP Top 10.",
-     "plain": "SQL injection là một trong những nguyên nhân rò rỉ dữ liệu lớn được biết đến rộng rãi, và nhóm lỗi \"Injection\" luôn nằm trong nhóm rủi ro hàng đầu của OWASP Top 10."
+     "plain": "Cùng nguyên lý “dữ liệu bị hiểu thành lệnh” còn có chèn lệnh hệ điều hành, chèn công thức vào CSV và chèn lệnh vào AI (prompt injection, buổi 1). CSV injection là loại người dùng nghiệp vụ gặp trực tiếp nhất:",
+     "html": "Cùng nguyên lý “dữ liệu bị hiểu thành lệnh” còn có chèn lệnh hệ điều hành, chèn công thức vào CSV và chèn lệnh vào AI (prompt injection, buổi 1). CSV injection là loại người dùng nghiệp vụ gặp trực tiếp nhất:"
+    },
+    {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 212\" role=\"img\" aria-label=\"CSV injection: nội dung từ bên ngoài bị Excel hiểu thành công thức\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"m6-csv-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"m6-csv-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"m6-csv-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"m6-csv-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"m6-csv-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><text x=\"10\" y=\"20\" font-size=\"13\" text-anchor=\"start\" font-weight=\"600\">Dữ liệu bị hiểu thành lệnh – lần này trong Excel</text><rect x=\"10\" y=\"36\" width=\"150\" height=\"60\" rx=\"8\" class=\"box\"/><text x=\"85.0\" y=\"62.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Cổng góp ý</text><text x=\"85.0\" y=\"79.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">người ngoài gõ</text><rect x=\"200\" y=\"36\" width=\"150\" height=\"60\" rx=\"8\" class=\"box\"/><text x=\"275.0\" y=\"62.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">CNTT xuất</text><text x=\"275.0\" y=\"79.1\" font-size=\"12\" text-anchor=\"middle\">ra file CSV</text><rect x=\"390\" y=\"36\" width=\"150\" height=\"60\" rx=\"8\" class=\"box\"/><text x=\"465.0\" y=\"62.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Mở bằng Excel</text><text x=\"465.0\" y=\"79.1\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">(bấm đúp)</text><rect x=\"580\" y=\"30\" width=\"130\" height=\"72\" rx=\"8\" class=\"r-bad\"/><text x=\"645.0\" y=\"53.9\" font-size=\"12.5\" text-anchor=\"middle\">Ô bắt đầu bằng</text><text x=\"645.0\" y=\"70.4\" font-size=\"12.5\" text-anchor=\"middle\" class=\"mono f-bad b\">= + − @</text><text x=\"645.0\" y=\"86.9\" font-size=\"12.5\" text-anchor=\"middle\">thành công thức</text><line x1=\"160\" y1=\"66\" x2=\"200\" y2=\"66\" class=\"l-mut\" marker-end=\"url(#m6-csv-mut)\"/><line x1=\"350\" y1=\"66\" x2=\"390\" y2=\"66\" class=\"l-mut\" marker-end=\"url(#m6-csv-mut)\"/><line x1=\"540\" y1=\"66\" x2=\"580\" y2=\"66\" class=\"l-bad\" marker-end=\"url(#m6-csv-bad)\"/><text x=\"10\" y=\"130\" font-size=\"12.5\" text-anchor=\"start\" class=\"f-ok\" font-weight=\"600\">Chặn ở đâu:</text><rect x=\"200\" y=\"140\" width=\"150\" height=\"64\" rx=\"8\" class=\"r-ok\"/><text x=\"275.0\" y=\"159.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Hệ thống</text><text x=\"275.0\" y=\"176.4\" font-size=\"12.0\" text-anchor=\"middle\">thêm dấu ' trước</text><text x=\"275.0\" y=\"192.9\" font-size=\"12.0\" text-anchor=\"middle\">ô ký tự đặc biệt</text><rect x=\"390\" y=\"140\" width=\"150\" height=\"64\" rx=\"8\" class=\"r-ok\"/><text x=\"465.0\" y=\"159.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Người dùng</text><text x=\"465.0\" y=\"176.4\" font-size=\"12.0\" text-anchor=\"middle\">Data → From Text/CSV;</text><text x=\"465.0\" y=\"192.9\" font-size=\"12.0\" text-anchor=\"middle\">không bấm cho phép</text><line x1=\"275\" y1=\"140\" x2=\"275\" y2=\"96\" class=\"l-ok dash\"/><line x1=\"465\" y1=\"140\" x2=\"465\" y2=\"96\" class=\"l-ok dash\"/></svg>",
+     "caption": "Nội dung người ngoài gõ vào cổng góp ý có thể thành công thức khi mở CSV bằng Excel.",
+     "plain": "Nội dung người ngoài gõ vào cổng góp ý có thể thành công thức khi mở CSV bằng Excel."
+    },
+    {
+     "t": "p",
+     "plain": "Công thức do người ngoài soạn có thể tạo liên kết tới trang lừa đảo, hoặc cố gửi nội dung các ô khác ra ngoài khi người mở bấm cho phép. Vì vậy với file từ nguồn bên ngoài: không bấm cho phép các cảnh báo bảo mật của Excel (bật nội dung, kết nối dữ liệu ngoài, cập nhật liên kết); thấy ô có công thức lạ thì báo CNTT.",
+     "html": "Công thức do người ngoài soạn có thể tạo liên kết tới trang lừa đảo, hoặc cố gửi nội dung các ô khác ra ngoài khi người mở bấm cho phép. Vì vậy với file từ nguồn bên ngoài: không bấm cho phép các cảnh báo bảo mật của Excel (bật nội dung, kết nối dữ liệu ngoài, cập nhật liên kết); thấy ô có công thức lạ thì báo CNTT."
     },
     {
      "t": "h3",
-     "text": "4.4. Phòng thủ nhiều lớp"
+     "text": "4.5. Trả lời câu hỏi 4 và vai trò của người dùng"
     },
     {
      "t": "p",
-     "html": "Theo OWASP SQL Injection Prevention Cheat Sheet:",
-     "plain": "Theo OWASP SQL Injection Prevention Cheat Sheet:"
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Lớp",
-        "plain": "Lớp"
-       },
-       {
-        "html": "Nội dung",
-        "plain": "Nội dung"
-       },
-       {
-        "html": "Ai chịu trách nhiệm",
-        "plain": "Ai chịu trách nhiệm"
-       }
-      ],
-      [
-       {
-        "html": "1. Truy vấn có tham số",
-        "plain": "1. Truy vấn có tham số"
-       },
-       {
-        "html": "Tách câu lệnh và dữ liệu – biện pháp chính",
-        "plain": "Tách câu lệnh và dữ liệu – biện pháp chính"
-       },
-       {
-        "html": "Lập trình viên",
-        "plain": "Lập trình viên"
-       }
-      ],
-      [
-       {
-        "html": "2. Thủ tục lưu trữ viết đúng cách",
-        "plain": "2. Thủ tục lưu trữ viết đúng cách"
-       },
-       {
-        "html": "Không tự ghép chuỗi bên trong thủ tục",
-        "plain": "Không tự ghép chuỗi bên trong thủ tục"
-       },
-       {
-        "html": "Lập trình viên, quản trị CSDL",
-        "plain": "Lập trình viên, quản trị CSDL"
-       }
-      ],
-      [
-       {
-        "html": "3. Danh sách cho phép (allow-list)",
-        "plain": "3. Danh sách cho phép (allow-list)"
-       },
-       {
-        "html": "Với tên bảng, tên cột, chiều sắp xếp: chỉ nhận giá trị trong danh sách định sẵn",
-        "plain": "Với tên bảng, tên cột, chiều sắp xếp: chỉ nhận giá trị trong danh sách định sẵn"
-       },
-       {
-        "html": "Lập trình viên",
-        "plain": "Lập trình viên"
-       }
-      ],
-      [
-       {
-        "html": "4. Quyền tối thiểu cho tài khoản ứng dụng",
-        "plain": "4. Quyền tối thiểu cho tài khoản ứng dụng"
-       },
-       {
-        "html": "Ứng dụng tra cứu không cần quyền xóa bảng",
-        "plain": "Ứng dụng tra cứu không cần quyền xóa bảng"
-       },
-       {
-        "html": "Quản trị CSDL, quản trị hệ thống",
-        "plain": "Quản trị CSDL, quản trị hệ thống"
-       }
-      ],
-      [
-       {
-        "html": "5. Không hiển thị lỗi chi tiết",
-        "plain": "5. Không hiển thị lỗi chi tiết"
-       },
-       {
-        "html": "Thông báo lỗi lộ cấu trúc bảng giúp kẻ gian",
-        "plain": "Thông báo lỗi lộ cấu trúc bảng giúp kẻ gian"
-       },
-       {
-        "html": "Lập trình viên",
-        "plain": "Lập trình viên"
-       }
-      ],
-      [
-       {
-        "html": "6. Tường lửa ứng dụng web (WAF), giám sát",
-        "plain": "6. Tường lửa ứng dụng web (WAF), giám sát"
-       },
-       {
-        "html": "Lớp bổ sung, không thay cho lớp 1",
-        "plain": "Lớp bổ sung, không thay cho lớp 1"
-       },
-       {
-        "html": "An ninh mạng",
-        "plain": "An ninh mạng"
-       }
-      ],
-      [
-       {
-        "html": "7. Kiểm thử",
-        "plain": "7. Kiểm thử"
-       },
-       {
-        "html": "Rà soát mã nguồn, kiểm thử bảo mật có phép trước khi đưa vào dùng",
-        "plain": "Rà soát mã nguồn, kiểm thử bảo mật có phép trước khi đưa vào dùng"
-       },
-       {
-        "html": "ATTT, nhà cung cấp",
-        "plain": "ATTT, nhà cung cấp"
-       }
-      ]
-     ]
-    },
-    {
-     "t": "p",
-     "html": "Lỗi ở chương 6 cho thấy lớp 1 và lớp 5 đều có vấn đề. Lớp 4 quyết định thiệt hại lớn đến đâu nếu lỗi bị khai thác.",
-     "plain": "Lỗi ở chương 6 cho thấy lớp 1 và lớp 5 đều có vấn đề. Lớp 4 quyết định thiệt hại lớn đến đâu nếu lỗi bị khai thác."
-    },
-    {
-     "t": "h3",
-     "text": "4.5. Họ hàng của SQL injection: CSV injection"
-    },
-    {
-     "t": "p",
-     "html": "SQL injection là một dạng của nhóm lỗi \"chèn\" (injection) – cùng nguyên lý \"dữ liệu bị hiểu thành lệnh\". Các họ hàng: chèn lệnh hệ điều hành, chèn công thức vào CSV, và chèn lệnh vào AI (prompt injection, buổi 1). Hiểu một là hiểu cả nhóm.",
-     "plain": "SQL injection là một dạng của nhóm lỗi \"chèn\" (injection) – cùng nguyên lý \"dữ liệu bị hiểu thành lệnh\". Các họ hàng: chèn lệnh hệ điều hành, chèn công thức vào CSV, và chèn lệnh vào AI (prompt injection, buổi 1). Hiểu một là hiểu cả nhóm."
-    },
-    {
-     "t": "p",
-     "html": "<strong>CSV injection (formula injection)</strong> là loại người dùng nghiệp vụ gặp trực tiếp nhất:",
-     "plain": "CSV injection (formula injection) là loại người dùng nghiệp vụ gặp trực tiếp nhất:"
+     "plain": "Lỗi khi gõ “Hai Lúa's Shop” là dấu hiệu màn hình tra cứu đang ghép chuỗi và hiển thị lỗi chi tiết – một lỗ hổng tiềm ẩn. Chị Dung nên:",
+     "html": "Lỗi khi gõ “Hai Lúa's Shop” là dấu hiệu màn hình tra cứu đang ghép chuỗi và hiển thị lỗi chi tiết – một lỗ hổng tiềm ẩn. Chị Dung nên:"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "<strong>Tình huống:</strong> Công ty có cổng góp ý trực tuyến; người ngoài gõ nội dung vào ô \"Góp ý\". CNTT xuất các góp ý ra CSV để phòng Kinh doanh tổng hợp. Chị Dung mở file bằng Excel.",
-       "level": 0,
-       "plain": "Tình huống: Công ty có cổng góp ý trực tuyến; người ngoài gõ nội dung vào ô \"Góp ý\". CNTT xuất các góp ý ra CSV để phòng Kinh doanh tổng hợp. Chị Dung mở file bằng Excel."
-      },
-      {
-       "html": "<strong>Vấn đề:</strong> nếu một ô bắt đầu bằng =, +, - hoặc @, Excel có thể hiểu ô đó là công thức chứ không phải chữ. Một công thức do người ngoài soạn có thể tạo liên kết dẫn tới trang lừa đảo, hoặc cố gửi nội dung các ô khác ra ngoài khi người mở bấm cho phép.",
-       "level": 0,
-       "plain": "Vấn đề: nếu một ô bắt đầu bằng =, +, - hoặc @, Excel có thể hiểu ô đó là công thức chứ không phải chữ. Một công thức do người ngoài soạn có thể tạo liên kết dẫn tới trang lừa đảo, hoặc cố gửi nội dung các ô khác ra ngoài khi người mở bấm cho phép."
-      },
-      {
-       "html": "<strong>Người dùng làm gì:</strong> đọc kỹ và không bấm cho phép các cảnh báo bảo mật của Excel (bật nội dung, kết nối dữ liệu ngoài, cập nhật liên kết) với file nhận từ nguồn bên ngoài; nhập CSV qua Data → From Text/CSV thay vì bấm đúp để mở; thấy ô có công thức lạ thì báo CNTT.",
-       "level": 0,
-       "plain": "Người dùng làm gì: đọc kỹ và không bấm cho phép các cảnh báo bảo mật của Excel (bật nội dung, kết nối dữ liệu ngoài, cập nhật liên kết) với file nhận từ nguồn bên ngoài; nhập CSV qua Data → From Text/CSV thay vì bấm đúp để mở; thấy ô có công thức lạ thì báo CNTT."
-      },
-      {
-       "html": "<strong>Hệ thống làm gì:</strong> khi xuất CSV chứa nội dung do người ngoài nhập, thêm dấu nháy đơn trước các ô bắt đầu bằng ký tự đặc biệt để Excel coi đó là chữ (khuyến nghị của OWASP).",
-       "level": 0,
-       "plain": "Hệ thống làm gì: khi xuất CSV chứa nội dung do người ngoài nhập, thêm dấu nháy đơn trước các ô bắt đầu bằng ký tự đặc biệt để Excel coi đó là chữ (khuyến nghị của OWASP)."
-      }
-     ]
-    },
-    {
-     "t": "h3",
-     "text": "4.6. Vai trò của người dùng nghiệp vụ"
-    },
-    {
-     "t": "table",
-     "rows": [
-      [
-       {
-        "html": "Tình huống",
-        "plain": "Tình huống"
-       },
-       {
-        "html": "Việc cần làm",
-        "plain": "Việc cần làm"
-       }
-      ],
-      [
-       {
-        "html": "Khi phân tích dữ liệu",
-        "plain": "Khi phân tích dữ liệu"
-       },
-       {
-        "html": "Dùng tài khoản chỉ đọc, đúng phạm vi. Không xin quyền quản trị chỉ để thuận tiện",
-        "plain": "Dùng tài khoản chỉ đọc, đúng phạm vi. Không xin quyền quản trị chỉ để thuận tiện"
-       }
-      ],
-      [
-       {
-        "html": "Khi ứng dụng báo lỗi lạ, hiện dữ liệu không liên quan",
-        "plain": "Khi ứng dụng báo lỗi lạ, hiện dữ liệu không liên quan"
-       },
-       {
-        "html": "Ghi thời gian, thao tác, chụp thông báo lỗi; báo bộ phận kỹ thuật; không tự thử nhập ký tự lạ để \"kiểm tra\"",
-        "plain": "Ghi thời gian, thao tác, chụp thông báo lỗi; báo bộ phận kỹ thuật; không tự thử nhập ký tự lạ để \"kiểm tra\""
-       }
-      ],
-      [
-       {
-        "html": "Khi xuất dữ liệu",
-        "plain": "Khi xuất dữ liệu"
-       },
-       {
-        "html": "Đối chiếu trường, số bản ghi, nơi lưu trước khi chuyển tiếp",
-        "plain": "Đối chiếu trường, số bản ghi, nơi lưu trước khi chuyển tiếp"
-       }
-      ],
-      [
-       {
-        "html": "Khi mở file từ nguồn bên ngoài",
-        "plain": "Khi mở file từ nguồn bên ngoài"
-       },
-       {
-        "html": "Không bấm cho phép nội dung, kết nối, liên kết lạ",
-        "plain": "Không bấm cho phép nội dung, kết nối, liên kết lạ"
-       }
-      ],
-      [
-       {
-        "html": "Khi mua hoặc thuê phần mềm",
-        "plain": "Khi mua hoặc thuê phần mềm"
-       },
-       {
-        "html": "Đưa yêu cầu lập trình an toàn và kiểm thử bảo mật vào hợp đồng (mục 3.5)",
-        "plain": "Đưa yêu cầu lập trình an toàn và kiểm thử bảo mật vào hợp đồng (mục 3.5)"
-       }
-      ],
-      [
-       {
-        "html": "Trách nhiệm kỹ thuật",
-        "plain": "Trách nhiệm kỹ thuật"
-       },
-       {
-        "html": "Đội phát triển và quản trị triển khai truy vấn an toàn, cấu hình quyền, giám sát",
-        "plain": "Đội phát triển và quản trị triển khai truy vấn an toàn, cấu hình quyền, giám sát"
-       }
-      ]
-     ]
-    },
-    {
-     "t": "h3",
-     "text": "4.7. Trả lời câu hỏi 4 của buổi"
-    },
-    {
-     "t": "p",
-     "html": "Lỗi khi gõ \"Hai Lúa's Shop\" là dấu hiệu màn hình tra cứu đang ghép chuỗi và hiển thị lỗi chi tiết – một lỗ hổng tiềm ẩn. Chị Dung nên:",
-     "plain": "Lỗi khi gõ \"Hai Lúa's Shop\" là dấu hiệu màn hình tra cứu đang ghép chuỗi và hiển thị lỗi chi tiết – một lỗ hổng tiềm ẩn. Chị Dung nên:"
-    },
-    {
-     "t": "list",
-     "ordered": true,
-     "items": [
-      {
+       "plain": "Ghi lại thời gian, màn hình nào, đã gõ gì; chụp thông báo lỗi.",
        "html": "Ghi lại thời gian, màn hình nào, đã gõ gì; chụp thông báo lỗi.",
-       "level": 0,
-       "plain": "Ghi lại thời gian, màn hình nào, đã gõ gì; chụp thông báo lỗi."
+       "level": 0
       },
       {
+       "plain": "Báo ngay bộ phận kỹ thuật và đầu mối an toàn thông tin của Công ty (chị Lan).",
        "html": "Báo ngay bộ phận kỹ thuật và đầu mối an toàn thông tin của Công ty (chị Lan).",
-       "level": 0,
-       "plain": "Báo ngay bộ phận kỹ thuật và đầu mối an toàn thông tin của Công ty (chị Lan)."
+       "level": 0
       },
       {
-       "html": "Tiếp tục công việc bình thường; nếu cần tra địa chỉ đó, tra theo mã khách hàng.",
-       "level": 0,
-       "plain": "Tiếp tục công việc bình thường; nếu cần tra địa chỉ đó, tra theo mã khách hàng."
+       "plain": "Tiếp tục công việc bình thường; cần tra địa chỉ đó thì tra theo mã khách hàng.",
+       "html": "Tiếp tục công việc bình thường; cần tra địa chỉ đó thì tra theo mã khách hàng.",
+       "level": 0
       }
      ]
     },
     {
      "t": "p",
-     "html": "Và <strong>không</strong> nên: tự gõ thêm ký tự khác để \"xem nó còn lỗi gì\", rủ đồng nghiệp thử, hay đăng ảnh chụp lỗi lên nhóm chat. Tự ý thử tấn công một hệ thống, kể cả của đơn vị mình, có thể vi phạm quy định nội bộ và pháp luật; ảnh chụp lỗi có cấu trúc bảng là thông tin hữu ích cho kẻ gian.",
-     "plain": "Và không nên: tự gõ thêm ký tự khác để \"xem nó còn lỗi gì\", rủ đồng nghiệp thử, hay đăng ảnh chụp lỗi lên nhóm chat. Tự ý thử tấn công một hệ thống, kể cả của đơn vị mình, có thể vi phạm quy định nội bộ và pháp luật; ảnh chụp lỗi có cấu trúc bảng là thông tin hữu ích cho kẻ gian."
+     "plain": "Không nên: tự gõ thêm ký tự để “xem nó còn lỗi gì”, rủ đồng nghiệp thử, hay đăng ảnh lỗi lên nhóm chat. Tự ý thử tấn công một hệ thống, kể cả của đơn vị mình, có thể vi phạm quy định nội bộ và pháp luật; ảnh lỗi có cấu trúc bảng là thông tin hữu ích cho kẻ gian.",
+     "html": "Không nên: tự gõ thêm ký tự để “xem nó còn lỗi gì”, rủ đồng nghiệp thử, hay đăng ảnh lỗi lên nhóm chat. Tự ý thử tấn công một hệ thống, kể cả của đơn vị mình, có thể vi phạm quy định nội bộ và pháp luật; ảnh lỗi có cấu trúc bảng là thông tin hữu ích cho kẻ gian.",
+     "callout": "note"
     },
     {
      "t": "p",
-     "html": "<strong>Hiểu nhầm hay gặp:</strong> \"Đó là việc của lập trình viên, người dùng không liên quan.\" → Người dùng thường là người đầu tiên thấy dấu hiệu (lỗi lạ, dữ liệu không liên quan hiện ra), là người quyết định tài khoản kết nối của mình có bao nhiêu quyền, và là người đặt yêu cầu khi mua phần mềm.",
-     "plain": "Hiểu nhầm hay gặp: \"Đó là việc của lập trình viên, người dùng không liên quan.\" → Người dùng thường là người đầu tiên thấy dấu hiệu (lỗi lạ, dữ liệu không liên quan hiện ra), là người quyết định tài khoản kết nối của mình có bao nhiêu quyền, và là người đặt yêu cầu khi mua phần mềm.",
+     "plain": "Ngoài ra, người dùng còn là người quyết định tài khoản kết nối của mình có bao nhiêu quyền (chỉ đọc, đúng phạm vi), người đối chiếu trường và số dòng trước khi chuyển tiếp bản xuất, và người đưa yêu cầu lập trình an toàn vào hợp đồng khi mua phần mềm (mục 3.5).",
+     "html": "Ngoài ra, người dùng còn là người quyết định tài khoản kết nối của mình có bao nhiêu quyền (chỉ đọc, đúng phạm vi), người đối chiếu trường và số dòng trước khi chuyển tiếp bản xuất, và người đưa yêu cầu lập trình an toàn vào hợp đồng khi mua phần mềm (mục 3.5)."
+    },
+    {
+     "t": "p",
+     "plain": "Hiểu nhầm hay gặp: “Đó là việc của lập trình viên, người dùng không liên quan.” → Người dùng thường là người đầu tiên thấy dấu hiệu (lỗi lạ, dữ liệu không liên quan hiện ra) – báo sớm là cách góp phần chặn lỗi trước khi bị khai thác.",
+     "html": "<strong>Hiểu nhầm hay gặp:</strong> “Đó là việc của lập trình viên, người dùng không liên quan.” → Người dùng thường là người đầu tiên thấy dấu hiệu (lỗi lạ, dữ liệu không liên quan hiện ra) – báo sớm là cách góp phần chặn lỗi trước khi bị khai thác.",
      "callout": "misconception"
     }
    ],
@@ -3000,69 +1951,137 @@
      "plain": "Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.csv – 737 khách hàng × 3 tháng = 2.211 dòng, các cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. File này đóng vai kết quả của chức năng \"Xuất danh sách\" – đủ mọi cột."
     },
     {
+     "t": "p",
+     "plain": "Tải file luyện tập DLX_SanLuong_Q3.csv (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV).",
+     "html": "<a href=\"/static/labs/DLX_SanLuong_Q3.csv\" download>Tải file luyện tập DLX_SanLuong_Q3.csv</a> (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV)."
+    },
+    {
      "t": "h3",
      "text": "Chuẩn bị của giảng viên",
      "teacher": true
     },
     {
      "t": "p",
-     "html": "Ba script Python, chạy theo thứ tự trong cùng một thư mục. Script 1 cần Python 3; script 3 cần thêm pip install pandas.",
-     "plain": "Ba script Python, chạy theo thứ tự trong cùng một thư mục. Script 1 cần Python 3; script 3 cần thêm pip install pandas.",
+     "plain": "File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
+     "html": "File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
      "teacher": true
     },
     {
-     "t": "p",
-     "html": "<strong>Script 1 – tạo dữ liệu giả lập.</strong> Cố ý cài hai \"bẫy\": phường Cảng Mới chỉ có một xưởng sản xuất, và một hộ sinh hoạt ở An Phú dùng điện rất lớn.",
-     "plain": "Script 1 – tạo dữ liệu giả lập. Cố ý cài hai \"bẫy\": phường Cảng Mới chỉ có một xưởng sản xuất, và một hộ sinh hoạt ở An Phú dùng điện rất lớn.",
-     "teacher": true
-    },
-    {
-     "t": "code",
-     "text": "# Thực hành 7 – tạo dữ liệu giả lập DLX_SanLuong_Q3.csv (không phải dữ liệu thật)\nimport csv, random\n\nrandom.seed(7)\nPHUONG = {\"An Phú\": 160, \"Bình Minh\": 140, \"Đông Hòa\": 120,\n          \"Tân Lập\": 150, \"Phú Thượng\": 110, \"Cảng Mới\": 0}   # số hộ sinh hoạt\nHO = [\"Nguyễn\", \"Trần\", \"Lê\", \"Phạm\", \"Hoàng\", \"Võ\", \"Đặng\", \"Bùi\"]\nTEN = [\"An\", \"Bình\", \"Chi\", \"Dũng\", \"Hà\", \"Khoa\", \"Lan\", \"Nam\", \"Phúc\", \"Trang\"]\n\nkhach = []\ndef them(phuong, loai, kwh_tb):\n    i = len(khach) + 1\n    khach.append({\"ma_kh\": f\"PE{i:06d}\",\n                  \"ho_ten\": f\"{random.choice(HO)} Văn {random.choice(TEN)}\",\n                  \"dien_thoai\": f\"0900{i:06d}\",\n                  \"dia_chi\": f\"Số {random.randint(1, 300)}, {phuong}\",\n                  \"phuong\": phuong, \"loai_kh\": loai, \"kwh_tb\": kwh_tb})\n\nfor p, n in PHUONG.items():\n    for _ in range(n):\n        them(p, \"Sinh hoạt\", random.randint(120, 450))\n    for _ in range(random.randint(8, 15) if n else 0):\n        them(p, \"Kinh doanh\", random.randint(600, 2500))\nthem(\"An Phú\", \"Sinh hoạt\", 3200)                 # một hộ dùng điện rất lớn (ngoại lai)\nthem(\"Cảng Mới\", \"Sản xuất\", 42000)               # khách hàng duy nhất của phường Cảng Mới\n\nwith open(\"DLX_SanLuong_Q3.csv\", \"w\", newline=\"\", encoding=\"utf-8-sig\") as f:\n    w = csv.writer(f)\n    w.writerow([\"ma_kh\", \"ho_ten\", \"dien_thoai\", \"dia_chi\", \"phuong\", \"loai_kh\",\n                \"thang\", \"kwh\", \"so_tien_no\"])\n    for k in khach:\n        for thang in (\"2026-07\", \"2026-08\", \"2026-09\"):\n            kwh = round(k[\"kwh_tb\"] * random.uniform(0.85, 1.15))\n            no = random.choice([0, 0, 0, 0, round(kwh * 2.5) * 1000])\n            w.writerow([k[\"ma_kh\"], k[\"ho_ten\"], k[\"dien_thoai\"], k[\"dia_chi\"],\n                        k[\"phuong\"], k[\"loai_kh\"], thang, kwh, no])\nprint(\"Số khách hàng:\", len(khach), \"– số dòng:\", len(khach) * 3)",
-     "teacher": true
-    },
-    {
-     "t": "p",
-     "html": "<strong>Script 2 – tổng hợp và kiểm tra bằng SQL</strong> (nạp CSV vào SQLite trong bộ nhớ):",
-     "plain": "Script 2 – tổng hợp và kiểm tra bằng SQL (nạp CSV vào SQLite trong bộ nhớ):",
-     "teacher": true
-    },
-    {
-     "t": "code",
-     "text": "# Thực hành 7 – nạp CSV vào SQLite rồi tổng hợp bằng SQL\nimport csv, sqlite3\n\nconn = sqlite3.connect(\":memory:\")\nconn.execute(\"\"\"CREATE TABLE san_luong (ma_kh TEXT, ho_ten TEXT, dien_thoai TEXT,\n    dia_chi TEXT, phuong TEXT, loai_kh TEXT, thang TEXT, kwh INTEGER, so_tien_no INTEGER)\"\"\")\nwith open(\"DLX_SanLuong_Q3.csv\", encoding=\"utf-8-sig\") as f:\n    conn.executemany(\"INSERT INTO san_luong VALUES (?,?,?,?,?,?,?,?,?)\",\n                     [tuple(r.values()) for r in csv.DictReader(f)])\n\ndef in_ket_qua(tieu_de, sql):\n    print(tieu_de)\n    for dong in conn.execute(sql):\n        print(\"   \", dong)\n\n# Bước A – tổng hợp thô theo phường và tháng\nin_ket_qua(\"A. Tổng hợp thô (tháng 2026-09):\", \"\"\"\n    SELECT phuong, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\n    FROM   san_luong\n    WHERE  thang = '2026-09'\n    GROUP  BY phuong\n    ORDER  BY so_kh\"\"\")\n\n# Bước B – kiểm tra nhóm nhỏ bằng HAVING\nin_ket_qua(\"B. Nhóm có ít hơn 10 khách hàng:\", \"\"\"\n    SELECT phuong, thang, COUNT(*) AS so_kh\n    FROM   san_luong\n    GROUP  BY phuong, thang\n    HAVING COUNT(*) < 10\"\"\")\n\n# Bước C – kiểm tra giá trị ngoại lai trong nhóm Sinh hoạt\nin_ket_qua(\"C. Hộ sinh hoạt lớn nhất mỗi phường so với trung bình (2026-09):\", \"\"\"\n    SELECT phuong, MAX(kwh) AS lon_nhat, ROUND(AVG(kwh)) AS trung_binh\n    FROM   san_luong\n    WHERE  thang = '2026-09' AND loai_kh = 'Sinh hoạt'\n    GROUP  BY phuong\"\"\")\n\n# Bước D – bản giao cho phòng Kế hoạch: gộp Cảng Mới vào Đông Hòa, giữ ngưỡng nhóm\nin_ket_qua(\"D. Bản đề xuất giao (phường × tháng):\", \"\"\"\n    SELECT CASE WHEN phuong IN ('Cảng Mới', 'Đông Hòa') THEN 'Đông Hòa và Cảng Mới'\n                ELSE phuong END              AS khu_vuc,\n           thang,\n           COUNT(*)                          AS so_kh,\n           SUM(kwh)                          AS tong_kwh\n    FROM   san_luong\n    GROUP  BY khu_vuc, thang\n    HAVING COUNT(*) >= 10\n    ORDER  BY khu_vuc, thang\"\"\")\n\n# Bước E – kiểm tra \"một khách hàng chiếm phần lớn tổng\" trong bản đề xuất\nin_ket_qua(\"E. Tỷ trọng của khách hàng lớn nhất trong mỗi nhóm (2026-09):\", \"\"\"\n    SELECT CASE WHEN phuong IN ('Cảng Mới', 'Đông Hòa') THEN 'Đông Hòa và Cảng Mới'\n                ELSE phuong END                       AS khu_vuc,\n           ROUND(MAX(kwh) * 100.0 / SUM(kwh), 1)      AS ty_trong_lon_nhat_pct\n    FROM   san_luong\n    WHERE  thang = '2026-09'\n    GROUP  BY khu_vuc\n    ORDER  BY ty_trong_lon_nhat_pct DESC\"\"\")\n\n# Phương án 2 – tách khách hàng sản xuất lớn khỏi bản giao (dự báo riêng theo hợp đồng)\nin_ket_qua(\"F. Phương án 2 – chỉ Sinh hoạt và Kinh doanh, theo phường (2026-09):\", \"\"\"\n    SELECT phuong, COUNT(*) AS so_kh, SUM(kwh) AS tong_kwh\n    FROM   san_luong\n    WHERE  thang = '2026-09' AND loai_kh IN ('Sinh hoạt', 'Kinh doanh')\n    GROUP  BY phuong\n    HAVING COUNT(*) >= 10\n    ORDER  BY phuong\"\"\")",
-     "teacher": true
-    },
-    {
-     "t": "p",
-     "html": "Kết quả (rút gọn phần D):",
-     "plain": "Kết quả (rút gọn phần D):",
-     "teacher": true
-    },
-    {
-     "t": "code",
-     "text": "A. Tổng hợp thô (tháng 2026-09):\n    ('Cảng Mới', 1, 42359)\n    ('Phú Thượng', 121, 50321)\n    ('Đông Hòa', 130, 49228)\n    ('Bình Minh', 148, 50969)\n    ('Tân Lập', 163, 62234)\n    ('An Phú', 174, 64263)\nB. Nhóm có ít hơn 10 khách hàng:\n    ('Cảng Mới', '2026-07', 1)\n    ('Cảng Mới', '2026-08', 1)\n    ('Cảng Mới', '2026-09', 1)\nC. Hộ sinh hoạt lớn nhất mỗi phường so với trung bình (2026-09):\n    ('An Phú', 3370, 303.0)\n    ('Bình Minh', 470, 276.0)\n    ('Phú Thượng', 490, 293.0)\n    ('Tân Lập', 505, 282.0)\n    ('Đông Hòa', 517, 295.0)\nD. Bản đề xuất giao (phường × tháng):\n    ('An Phú', '2026-07', 174, 64880)\n    ...\n    ('Đông Hòa và Cảng Mới', '2026-09', 131, 91587)\nE. Tỷ trọng của khách hàng lớn nhất trong mỗi nhóm (2026-09):\n    ('Đông Hòa và Cảng Mới', 46.3)\n    ('An Phú', 5.2)\n    ('Phú Thượng', 4.7)\n    ('Bình Minh', 4.0)\n    ('Tân Lập', 3.6)\nF. Phương án 2 – chỉ Sinh hoạt và Kinh doanh, theo phường (2026-09):\n    ('An Phú', 174, 64263)\n    ('Bình Minh', 148, 50969)\n    ('Phú Thượng', 121, 50321)\n    ('Tân Lập', 163, 62234)\n    ('Đông Hòa', 130, 49228)",
-     "teacher": true
-    },
-    {
-     "t": "p",
-     "html": "<strong>Script 3 – bản che từng dòng bằng pandas</strong> (để so sánh, không phải bản giao). Khóa giả danh hóa được đọc từ biến môi trường KHOA_GIA_DANH, không ghi trong code; giá trị mặc định chỉ để chạy thử trên lớp.",
-     "plain": "Script 3 – bản che từng dòng bằng pandas (để so sánh, không phải bản giao). Khóa giả danh hóa được đọc từ biến môi trường KHOA_GIA_DANH, không ghi trong code; giá trị mặc định chỉ để chạy thử trên lớp.",
-     "teacher": true
-    },
-    {
-     "t": "code",
-     "text": "# Thực hành 7 – bản che từng dòng bằng pandas (để so sánh, KHÔNG phải bản giao)\nimport hmac, hashlib, os\nimport pandas as pd\n\ndf = pd.read_csv(\"DLX_SanLuong_Q3.csv\", dtype=str, encoding=\"utf-8-sig\")  # giữ số 0 đầu\ndf[\"kwh\"] = df[\"kwh\"].astype(int)\n\nout = df.drop(columns=[\"ho_ten\", \"dia_chi\", \"so_tien_no\"])          # 1. loại bỏ\nout[\"dien_thoai\"] = out[\"dien_thoai\"].str[:3] + \"****\" + out[\"dien_thoai\"].str[-3:]  # 2. che\nKHOA = os.environ.get(\"KHOA_GIA_DANH\", \"chi-de-minh-hoa\").encode()  # 3. khóa lưu riêng\nout[\"ma_kh\"] = out[\"ma_kh\"].apply(\n    lambda x: \"P-\" + hmac.new(KHOA, x.encode(), hashlib.sha256).hexdigest()[:10].upper())\nout.to_csv(\"DLX_SanLuong_Q3_ban_che.csv\", index=False, encoding=\"utf-8-sig\")\n\nprint(\"Cột còn lại:\", list(out.columns))\nprint(out.head(3).to_string(index=False))\n\n# Kiểm tra nhận diện: dòng nào vẫn \"nổi bật\"?\nt9 = out[out[\"thang\"] == \"2026-09\"]\nprint(\"\\nNhóm phường × loại có dưới 10 khách hàng (2026-09):\")\nprint(t9.groupby([\"phuong\", \"loai_kh\"]).size().loc[lambda s: s < 10].to_string())\nprint(\"\\n3 dòng sản lượng cao nhất (2026-09):\")\nprint(t9.nlargest(3, \"kwh\")[[\"ma_kh\", \"phuong\", \"loai_kh\", \"kwh\"]].to_string(index=False))",
-     "teacher": true
-    },
-    {
-     "t": "p",
-     "html": "Kết quả:",
-     "plain": "Kết quả:",
-     "teacher": true
-    },
-    {
-     "t": "code",
-     "text": "Cột còn lại: ['ma_kh', 'dien_thoai', 'phuong', 'loai_kh', 'thang', 'kwh']\n       ma_kh dien_thoai phuong   loai_kh   thang  kwh\nP-CE9B98C2CC 090****001 An Phú Sinh hoạt 2026-07  251\nP-CE9B98C2CC 090****001 An Phú Sinh hoạt 2026-08  306\nP-CE9B98C2CC 090****001 An Phú Sinh hoạt 2026-09  275\n\nNhóm phường × loại có dưới 10 khách hàng (2026-09):\nphuong     loai_kh   \nBình Minh  Kinh doanh    8\nCảng Mới   Sản xuất      1\n\n3 dòng sản lượng cao nhất (2026-09):\n       ma_kh     phuong    loai_kh   kwh\nP-9AF445AFDB   Cảng Mới   Sản xuất 42359\nP-27D5EEC72E     An Phú  Sinh hoạt  3370\nP-8DB136654E Phú Thượng Kinh doanh  2361",
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Bước",
+        "html": "Bước"
+       },
+       {
+        "plain": "Kiểm tra",
+        "html": "Kiểm tra"
+       },
+       {
+        "plain": "Kết quả chính",
+        "html": "Kết quả chính"
+       }
+      ],
+      [
+       {
+        "plain": "A",
+        "html": "A"
+       },
+       {
+        "plain": "Tổng hợp thô theo phường",
+        "html": "Tổng hợp thô theo phường"
+       },
+       {
+        "plain": "Cảng Mới 1 KH / 42.359 kWh; Phú Thượng 121 / 50.321; Đông Hòa 130 / 49.228; Bình Minh 148 / 50.969; Tân Lập 163 / 62.234; An Phú 174 / 64.263",
+        "html": "Cảng Mới 1 KH / 42.359 kWh; Phú Thượng 121 / 50.321; Đông Hòa 130 / 49.228; Bình Minh 148 / 50.969; Tân Lập 163 / 62.234; An Phú 174 / 64.263"
+       }
+      ],
+      [
+       {
+        "plain": "B",
+        "html": "B"
+       },
+       {
+        "plain": "Nhóm dưới 10 khách hàng",
+        "html": "Nhóm dưới 10 khách hàng"
+       },
+       {
+        "plain": "Cảng Mới, cả 3 tháng (1 khách hàng)",
+        "html": "Cảng Mới, cả 3 tháng (1 khách hàng)"
+       }
+      ],
+      [
+       {
+        "plain": "C",
+        "html": "C"
+       },
+       {
+        "plain": "Hộ sinh hoạt lớn nhất so với trung bình",
+        "html": "Hộ sinh hoạt lớn nhất so với trung bình"
+       },
+       {
+        "plain": "An Phú 3.370 kWh, trung bình 303; các phường khác 470–517",
+        "html": "An Phú 3.370 kWh, trung bình 303; các phường khác 470–517"
+       }
+      ],
+      [
+       {
+        "plain": "D",
+        "html": "D"
+       },
+       {
+        "plain": "Gộp Cảng Mới vào Đông Hòa",
+        "html": "Gộp Cảng Mới vào Đông Hòa"
+       },
+       {
+        "plain": "Đông Hòa và Cảng Mới: 131 KH / 91.587 kWh – qua ngưỡng nhóm",
+        "html": "Đông Hòa và Cảng Mới: 131 KH / 91.587 kWh – qua ngưỡng nhóm"
+       }
+      ],
+      [
+       {
+        "plain": "E",
+        "html": "E"
+       },
+       {
+        "plain": "Tỷ trọng khách hàng lớn nhất trong nhóm",
+        "html": "Tỷ trọng khách hàng lớn nhất trong nhóm"
+       },
+       {
+        "plain": "Đông Hòa và Cảng Mới 46,3%; các phường khác 3,6–5,2%",
+        "html": "Đông Hòa và Cảng Mới 46,3%; các phường khác 3,6–5,2%"
+       }
+      ],
+      [
+       {
+        "plain": "F",
+        "html": "F"
+       },
+       {
+        "plain": "Phương án 2: chỉ Sinh hoạt và Kinh doanh",
+        "html": "Phương án 2: chỉ Sinh hoạt và Kinh doanh"
+       },
+       {
+        "plain": "Mọi phường từ 121 KH, không ai quá 5,2% – đạt",
+        "html": "Mọi phường từ 121 KH, không ai quá 5,2% – đạt"
+       }
+      ],
+      [
+       {
+        "plain": "Bản che",
+        "html": "Bản che"
+       },
+       {
+        "plain": "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế HMAC",
+        "html": "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế HMAC"
+       },
+       {
+        "plain": "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng",
+        "html": "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng"
+       }
+      ]
+     ],
      "teacher": true
     },
     {
@@ -3085,14 +2104,14 @@
        "plain": "Phân loại cột: xếp 9 cột của file vào 4 loại; ghi anh Minh cần hay không."
       },
       {
-       "html": "<strong>Tạo bản tổng hợp</strong> theo phường × tháng (SQL do giảng viên chạy, hoặc PivotTable).",
+       "html": "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4).",
        "level": 0,
-       "plain": "Tạo bản tổng hợp theo phường × tháng (SQL do giảng viên chạy, hoặc PivotTable)."
+       "plain": "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4)."
       },
       {
-       "html": "<strong>Tạo bản che từng dòng</strong> (Python do giảng viên chạy, hoặc công thức Excel).",
+       "html": "Tạo bản che từng dòng bằng công thức Excel (mục 2.4).",
        "level": 0,
-       "plain": "Tạo bản che từng dòng (Python do giảng viên chạy, hoặc công thức Excel)."
+       "plain": "Tạo bản che từng dòng bằng công thức Excel (mục 2.4)."
       },
       {
        "html": "<strong>Kiểm tra nhận diện</strong> cả hai bản bằng bốn phép ở mục 1.6: nhóm nhỏ, ngoại lai, áp đảo, phép trừ giữa các bảng.",
@@ -4372,8 +3391,8 @@
         "plain": "Bài 2 – SQL, Python, Excel; masking động; Bài 3"
        },
        {
-        "html": "Giảng viên chạy demo",
-        "plain": "Giảng viên chạy demo"
+        "html": "Giảng viên chiếu sơ đồ",
+        "plain": "Giảng viên chiếu sơ đồ"
        }
       ],
       [

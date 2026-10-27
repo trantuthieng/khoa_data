@@ -106,6 +106,7 @@ const ContentBlocks = {
       <pre v-else-if="b.t === 'code'"><code>{{ b.text }}</code></pre>
       <blockquote v-else-if="b.t === 'quote'" v-html="b.html"></blockquote>
       <img v-else-if="b.t === 'img'" :src="b.src" alt="Hình minh họa trong giáo trình" loading="lazy">
+      <figure v-else-if="b.t === 'figure'" class="figure"><div class="figbody" v-html="b.html"></div><figcaption v-if="b.caption">{{ b.caption }}</figcaption></figure>
       <div v-else-if="b.t === 'activity'" class="act-slot">
         <slot name="activity" :b="b">
           <div class="card act-embed">

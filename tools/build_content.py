@@ -18,6 +18,7 @@ from course_revision import revise
 from beginner_labs import build_pack
 from production_copy import polish
 from student_view import apply as student_view
+from compact_lessons import apply as compact
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
@@ -438,7 +439,7 @@ def main(src_dir: Path):
                                    "intro": "Mỗi câu chọn một đáp án đúng nhất. Mỗi câu ghi buổi liên quan để biết cần ôn phần nào.", "questions": exam})
         short = re.sub(r"^(Buổi \d+|Giáo trình[^–]*)\s*–\s*", "", title)
         doc = {"no": no, "title": title, "short": short, "sections": sections, "activities": activities}
-        doc = student_view(polish(revise(doc)))
+        doc = compact(student_view(polish(revise(doc))))
         (OUT / f"m{no:02d}.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
         index.append({"no": no, "title": title, "short": short})
         print(f"m{no:02d}: {len(doc['sections'])} phần, {len(doc['activities'])} hoạt động – {title}")
