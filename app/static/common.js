@@ -124,6 +124,14 @@ const ActivityForm = {
   components: typeof BoardField === 'undefined' ? {} : { BoardField },
   props: { act: Object, payload: Object, readonly: Boolean, showAnswers: Boolean, stats: Object },
   emits: ['dirty'],
+  data() { return { broken: {} }; },
+  // bảng lỗi khi hiển thị: báo lỗi và hiện bài dạng chữ thay vì để trống
+  errorCaptured(err, vm) {
+    const key = vm && vm.$props && vm.$props.f && vm.$props.f.key;
+    if (!key) return true;
+    this.broken = { ...this.broken, [key]: String((err && err.message) || err) };
+    return false;
+  },
   computed: {
     // bài đã nộp theo mẫu cũ (trước khi đổi sang bảng) vẫn hiện cho giảng viên và học viên đọc lại
     legacy() {
@@ -168,6 +176,23 @@ const ActivityForm = {
     addRow(f) { this.payload.fields[f.key].push({}); this.$emit('dirty'); },
     delRow(f, i) { this.payload.fields[f.key].splice(i, 1); this.$emit('dirty'); },
     touch() { this.$emit('dirty'); },
+    boardText(f, v) {
+      const ok = x => typeof x === 'string' && x.trim();
+      const obj = x => x && typeof x === 'object';
+      const nodes = (v && Array.isArray(v.nodes)) ? v.nodes.filter(obj) : [];
+      const preset = {}; for (const n of f.nodes || []) preset[n.id] = n;
+      const name = n => (n && (ok(n.title) || (preset[n.id] && preset[n.id].title) || n.kind)) || '?';
+      const byId = {}; for (const n of nodes) byId[n.id] = n;
+      const out = nodes.map(n => {
+        const p = n.p && typeof n.p === 'object' ? Object.values(n.p).filter(ok).join('; ') : '';
+        return [name(n), ok(n.tag), ok(n.text), p].filter(Boolean).join(' – ');
+      });
+      for (const l of (v && Array.isArray(v.links)) ? v.links.filter(obj) : []) {
+        const extra = Object.entries(l).filter(([k, x]) => !['id', 'from', 'to'].includes(k) && ok(x)).map(([, x]) => x).join('; ');
+        out.push(name(byId[l.from]) + ' → ' + name(byId[l.to]) + (extra ? ' (' + extra + ')' : ''));
+      }
+      return out.join('\n');
+    },
   },
   template: `
   <div class="activity-form">
@@ -192,7 +217,11 @@ const ActivityForm = {
     <template v-else-if="act.type === 'practice'">
       <div v-for="f in act.fields" :key="f.key" class="pfield">
         <label class="field">{{ f.label }} <div v-if="f.hint" class="hint">{{ f.hint }}</div></label>
-        <board-field v-if="f.type === 'board'" :f="f" :value="payload.fields[f.key]" :readonly="readonly" @dirty="touch"></board-field>
+        <template v-if="f.type === 'board' && broken[f.key]">
+          <div class="banner">Không hiển thị được bảng ({{ broken[f.key] }}). Nội dung bài làm dạng chữ:</div>
+          <p style="white-space:pre-wrap;font-size:14px">{{ boardText(f, payload.fields[f.key]) }}</p>
+        </template>
+        <board-field v-else-if="f.type === 'board'" :f="f" :value="payload.fields[f.key]" :readonly="readonly" @dirty="touch"></board-field>
         <input v-else-if="f.type === 'text'" v-model="payload.fields[f.key]" :readonly="readonly" @input="touch">
         <textarea v-else-if="f.type === 'textarea'" v-model="payload.fields[f.key]" :readonly="readonly" rows="4" @input="touch"></textarea>
         <div v-else-if="f.type === 'checklist'" class="checklist">

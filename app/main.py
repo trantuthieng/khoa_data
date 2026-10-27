@@ -4,6 +4,7 @@ import hmac
 import io
 import json
 import os
+import re
 import secrets
 import time
 from collections import defaultdict
@@ -12,7 +13,7 @@ from pathlib import Path
 from typing import Literal, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, JSONResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
@@ -71,19 +72,31 @@ def sha(s: str) -> str:
 
 # ---------------------------------------------------------------- trang
 
+def asset_url(m):
+    # gắn mã nội dung vào đường dẫn JS/CSS: bản deploy mới đổi URL, trình duyệt không dùng lại bản cũ trong bộ nhớ đệm
+    f = BASE / "static" / m.group(2)
+    v = hashlib.md5(f.read_bytes()).hexdigest()[:10] if f.is_file() else "0"
+    return f'{m.group(1)}"/static/{m.group(2)}?v={v}"'
+
+
+def page(name):
+    html = (BASE / "static" / name).read_text(encoding="utf-8")
+    return HTMLResponse(re.sub(r'((?:src|href)=)"/static/([\w./-]+\.(?:js|css))"', asset_url, html))
+
+
 @app.get("/")
 def page_home():
-    return FileResponse(BASE / "static" / "index.html")
+    return page("index.html")
 
 
 @app.get("/learn")
 def page_learn():
-    return FileResponse(BASE / "static" / "learn.html")
+    return page("learn.html")
 
 
 @app.get("/teacher")
 def page_teacher():
-    return FileResponse(BASE / "static" / "teacher.html")
+    return page("teacher.html")
 
 
 @app.get("/healthz")
