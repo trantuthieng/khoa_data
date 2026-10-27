@@ -89,7 +89,8 @@ def page_teacher():
 @app.get("/healthz")
 def health():
     db.q("SELECT 1 AS ok")
-    return {"ok": True}
+    # RENDER_GIT_COMMIT do Render đặt: biết bản deploy nào đang chạy
+    return {"ok": True, "rev": os.environ.get("RENDER_GIT_COMMIT", "")[:7]}
 
 
 @app.get("/api/modules")
