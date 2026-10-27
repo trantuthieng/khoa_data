@@ -62,6 +62,10 @@ def lf(key, label, placeholder, prefix=None):
     return d
 
 
+# Năm nhóm dữ liệu của Thực hành 1, dùng lại ở Thực hành 3
+NHOM_TH1 = ["Khách hàng và hợp đồng mua bán điện", "Chỉ số công tơ và báo cáo sản lượng",
+            "Vận hành và tài liệu kỹ thuật (sơ đồ lưới, cấu hình thiết bị)", "Thông tin nhân sự",
+            "File DS_KhachHang_DLX.xlsx của anh Cường"]
 GHI_CHU = kind("note", "Ghi chú", "slate", "📝", "Ý tưởng, câu hỏi, điều cần kiểm tra thêm…", add=True)
 QUYEN_HIEN_TAI = dict(options=["Giữ nguyên", "Thu hẹp", "Thu hồi"], optionLabel="Quyết định…",
                       tones={"Giữ nguyên": "warn", "Thu hẹp": "info", "Thu hồi": "bad"})
@@ -71,7 +75,7 @@ BOARD_TH3 = {
     "label": "Không gian ma trận quyền – nối vai trò với thao tác được phép, ghi phạm vi và người duyệt trên từng dây",
     "hint": "Có dây nối nghĩa là có quyền; không nối nghĩa là không có quyền. Bảng ma trận bên dưới tự lập từ các dây nối.",
     "steps": [
-        "Ghi nhóm dữ liệu đang xét vào module 📂 (lấy từ Thực hành 1).",
+        "Ở module 📂 (đầu cột Thao tác), chọn một trong năm nhóm dữ liệu của Thực hành 1 và ghi nhãn bạn đã chọn cho nhóm đó.",
         "Với từng vai trò ở cột ① (giữa bảng), ghi ngắn công việc chính cần dữ liệu gì.",
         "Nối vai trò sang thao tác ở cột ② (bên phải) mà vai trò đó thật sự cần. Không cần thì không nối.",
         "Bấm nhãn trên mỗi dây, ghi phạm vi (dữ liệu nào) và người duyệt.",
@@ -83,7 +87,8 @@ BOARD_TH3 = {
               zone(1280, 20, 280, 760, "② Thao tác", "teal", "Trên nhóm dữ liệu bạn chọn")],
     "kinds": [
         kind("role", "Vai trò", "blue", "👤", "Công việc chính cần dữ liệu gì?", add=True),
-        kind("data", "Nhóm dữ liệu", "slate", "📂", "VD: Khách hàng và hợp đồng (lấy từ Thực hành 1)"),
+        kind("data", "Nhóm dữ liệu", "slate", "📂", "Nhãn bạn đã chọn ở Thực hành 1 và lý do",
+             options=NHOM_TH1, optionLabel="Chọn nhóm dữ liệu…"),
         kind("perm", "Thao tác", "teal", "🔑", "Điều kiện chung cho thao tác này (nếu có)"),
         kind("deny", "Phải bị từ chối", "red", "🚫", "Ai – làm gì – vì sao phải chặn", add=True),
         kind("req", "Phải xin thêm quyền", "amber", "✋", "Ai – cần gì – ai duyệt – đến khi nào", add=True),
@@ -96,10 +101,10 @@ BOARD_TH3 = {
         node("r_cntt", "role", 742, 500, "Cán bộ CNTT hỗ trợ"),
         node("r_qt", "role", 742, 640, "Quản trị hệ thống"),
         node("d_nhom", "data", 1302, 80, "Nhóm dữ liệu đang xét"),
-        node("p_xem", "perm", 1302, 225, "Xem"),
-        node("p_sua", "perm", 1302, 365, "Sửa"),
-        node("p_xuat", "perm", 1302, 505, "Xuất"),
-        node("p_cap", "perm", 1302, 645, "Cấp quyền"),
+        node("p_xem", "perm", 1302, 245, "Xem"),
+        node("p_sua", "perm", 1302, 380, "Sửa"),
+        node("p_xuat", "perm", 1302, 515, "Xuất"),
+        node("p_cap", "perm", 1302, 650, "Cấp quyền"),
         node("t_1", "deny", 42, 100, "Từ chối 1", locked=False),
         node("t_2", "deny", 42, 300, "Từ chối 2", locked=False),
         node("t_3", "deny", 42, 510, "Từ chối 3", locked=False),
@@ -109,7 +114,7 @@ BOARD_TH3 = {
     "links": [{"a": "role", "b": "perm", "fields": [lf("pham_vi", "Phạm vi", "VD: KH đơn vị mình"),
                                                       lf("duyet", "Người duyệt", "VD: TP Kinh doanh", "duyệt: ")]}],
     "goals": [
-        {"type": "filled", "ids": ["d_nhom"], "text": "Ghi nhóm dữ liệu đang xét"},
+        {"type": "tagged", "ids": ["d_nhom"], "text": "Chọn nhóm dữ liệu đang xét"},
         {"type": "each", "kind": "role", "to": ["perm"], "text": "Nối mỗi vai trò tới thao tác được phép"},
         {"type": "linkfield", "a": "role", "b": "perm", "fields": ["pham_vi", "duyet"], "text": "Mỗi dây quyền có phạm vi và người duyệt"},
         {"type": "filled", "kind": "deny", "min": 3, "text": "Ít nhất 3 trường hợp phải bị từ chối"},
@@ -286,11 +291,11 @@ BOARD_TH1 = {
         GHI_CHU,
     ],
     "nodes": [
-        node("d_kh", "data", 40, 70, "Khách hàng và hợp đồng mua bán điện"),
-        node("d_cto", "data", 380, 70, "Chỉ số công tơ và báo cáo sản lượng"),
-        node("d_vh", "data", 720, 70, "Vận hành và tài liệu kỹ thuật (sơ đồ lưới, cấu hình thiết bị)"),
-        node("d_ns", "data", 1060, 70, "Thông tin nhân sự"),
-        node("d_file", "data", 1400, 70, "File DS_KhachHang_DLX.xlsx của anh Cường"),
+        node("d_kh", "data", 40, 70, NHOM_TH1[0]),
+        node("d_cto", "data", 380, 70, NHOM_TH1[1]),
+        node("d_vh", "data", 720, 70, NHOM_TH1[2]),
+        node("d_ns", "data", 1060, 70, NHOM_TH1[3]),
+        node("d_file", "data", 1400, 70, NHOM_TH1[4]),
     ],
     "goals": [
         {"type": "inzone", "kind": "data", "text": "Kéo cả 5 nhóm dữ liệu vào cột nhãn"},
