@@ -508,7 +508,7 @@ def teacher_module(no: int, _=Depends(teacher)):
 
 @app.get("/api/t/answers")
 def answer_index(_=Depends(teacher)):
-    return [{"id": aid, "title": ACTIVITIES[aid]["title"], "module": ACTIVITIES[aid]["module"]} for aid in ANSWER_KEYS]
+    return [{"id": aid, "title": a["title"], "module": a["module"]} for aid, a in ACTIVITIES.items() if aid in ANSWER_KEYS]
 
 
 @app.get("/api/t/answers/{aid}")

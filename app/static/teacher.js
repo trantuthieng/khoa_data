@@ -35,7 +35,7 @@ const app = Vue.createApp({
       index: [], classes: [], newName: '', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
       tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null, rev: 0, polling: false,
-      gradeDrafts: {}, grading: {}, answerIndex: [], answer: null,
+      gradeDrafts: {}, grading: {}, answerIndex: [], answer: null, answerPick: '',
       showOutline: false, showActivities: false,
     };
   },
@@ -54,6 +54,14 @@ const app = Vue.createApp({
       return (r.reduce((s, x) => s + (x.score || 0), 0) / r.length).toFixed(1);
     },
     sortedResponses() { return [...this.results.responses].sort((a, b) => (b.score || 0) - (a.score || 0)); },
+    answerGroups() {
+      const g = [];
+      for (const k of this.answerIndex) {
+        if (!g.length || g[g.length - 1].no !== k.module) g.push({ no: k.module, items: [] });
+        g[g.length - 1].items.push(k);
+      }
+      return g;
+    },
   },
   methods: {
     fmtTime, themeToggle,

@@ -1,49 +1,5 @@
-"""Đáp án dành cho giảng viên, theo mã hoạt động.
-
-Chỉ gửi qua API giảng viên (/api/t/answers), không gắn vào ACTIVITIES nên không bao giờ tới trình duyệt học viên.
-
-Mỗi đáp án:
-  "fields": bài làm mẫu, cùng định dạng bài nộp của học viên (trường "board" là
-            {nodes: [{id, kind, x, y, title?, text, tag?, p?}], links: [{id, from, to, <trường trên dây>}]}).
-            Giao diện giảng viên hiển thị bằng chính bảng của học viên ở chế độ chỉ đọc.
-  "sections": phần giải thích, dạng khối nội dung như giáo trình (h3, p, list, table).
-            Mục có "private": True (thang điểm, lỗi hay gặp) tự ẩn khi trình chiếu.
-"""
-
-
-def P(html):
-    return {"t": "p", "html": html}
-
-
-def UL(*items):
-    return {"t": "list", "ordered": False, "items": [{"html": x, "level": 0} for x in items]}
-
-
-def OL(*items):
-    return {"t": "list", "ordered": True, "items": [{"html": x, "level": 0} for x in items]}
-
-
-def TABLE(head, *rows):
-    return {"t": "table", "rows": [[{"html": c} for c in r] for r in (head, *rows)]}
-
-
-def H(text):
-    return {"t": "h3", "text": text}
-
-
-def N(id, kind, x, y, text, title=None, tag=None, p=None):
-    n = {"id": id, "kind": kind, "x": x, "y": y, "text": text}
-    if title:
-        n["title"] = title
-    if tag:
-        n["tag"] = tag
-    if p:
-        n["p"] = p
-    return n
-
-
-def L(a, b, **fields):
-    return {"id": "k_" + a + "_" + b, "from": a, "to": b, **fields}
+"""Đáp án giảng viên – buổi 4."""
+from .kit import L, N, OL, P, TABLE, UL, case_key
 
 
 # ---------- Buổi 4 – Thực hành 5: thay tài khoản dùng chung ----------
@@ -249,6 +205,33 @@ KEY_TH5 = {
     ],
 }
 
-ANSWER_KEYS = {
-    "m04-th5": KEY_TH5,
-}
+# ---------- Bài tập thêm: bàn giao ca khi có yêu cầu MFA lạ ----------
+KEY_CASE4 = case_key(
+    "Không chấp thuận yêu cầu MFA mình không tạo, kể cả khi có tin nhắn “CNTT” báo trước. Xác minh qua số helpdesk đã biết, "
+    "đăng xuất phiên ca trước, làm việc bằng tài khoản của mình; người có thẩm quyền rà đăng nhập, phương thức MFA mới và thu hồi phiên.",
+    ["1) Bấm Từ chối yêu cầu chấp thuận đăng nhập; không trả lời, không gửi mã cho tài khoản tự nhận là CNTT.\n"
+     "2) Ghi giờ nhận yêu cầu MFA và tin nhắn; chụp màn hình tin nhắn, tên tài khoản gửi.\n"
+     "3) Gọi helpdesk theo số nội bộ đã biết (không dùng số hay liên kết trong tin nhắn) để xác minh và báo sự việc.\n"
+     "4) Nếu lỡ bấm chấp thuận thì nói rõ ngay khi báo để xử lý kịp.",
+     "Tại máy dùng chung: lưu lại việc dở của ca trước vào sổ giao ca rồi đăng xuất phiên của người ca trước (không làm tiếp trên phiên đó). "
+     "Đăng nhập bằng tài khoản cá nhân, MFA trên điện thoại của mình. Phiếu đang dở nằm ở hàng đợi của nhóm nên mình mở và làm tiếp được. "
+     "Không mượn tài khoản người khác dù chỉ một lúc.",
+     "☐ Danh sách lần đăng nhập gần đây của tài khoản bị nhắm (giờ, IP, thiết bị)\n"
+     "☐ Có phương thức MFA mới nào được thêm không; gỡ nếu lạ\n"
+     "☐ Thu hồi phiên nghi ngờ trên SSO và từng ứng dụng\n"
+     "☐ Đổi mật khẩu nếu có dấu hiệu mật khẩu đã lộ\n"
+     "☐ Kiểm tra máy dùng chung không còn phiên nào đang mở của người khác\n"
+     "☐ Ghi lại người kiểm tra, giờ kiểm tra, kết quả"],
+    [("1. Việc làm ngay", "Từ chối; không gửi mã; ghi giờ, giữ ảnh; xác minh qua số helpdesk đã biết.", "Nói rõ nếu đã lỡ bấm."),
+     ("2. Nhận ca", "Đăng xuất phiên ca trước; đăng nhập tài khoản mình; không mượn tài khoản.", "Sổ giao ca, hàng đợi nhóm."),
+     ("3. Danh sách kiểm tra", "Đăng nhập gần đây, MFA mới, thu hồi phiên.", "Đổi mật khẩu, kiểm tra máy dùng chung.")],
+    ["Nhận ra yêu cầu MFA không do mình tạo và tin nhắn “CNTT” là hai dấu hiệu của cùng một cuộc tấn công.",
+     "Thứ tự đúng: từ chối → giữ thông tin → xác minh độc lập; nhận ca bằng tài khoản của mình.",
+     "Danh sách kiểm tra có thu hồi phiên và phương thức MFA mới, có người và giờ kiểm tra."],
+    [("Bấm chấp thuận cho khỏi gián đoạn", "“Bấm đồng ý rồi báo sau”", "“Bạn có đang đăng nhập không? Vậy ai đang đăng nhập?”"),
+     ("Gọi lại số trong tin nhắn", "Kênh xác minh là số người nhắn đưa", "“Số đó do ai cung cấp?”"),
+     ("Làm tiếp trên phiên ca trước", "“Dùng tạm phiên đang mở”", "“Nhật ký sẽ ghi việc của bạn dưới tên ai?”"),
+     ("Chỉ đổi mật khẩu", "Không nhắc phiên, MFA mới", "“Phiên đang mở và phương thức MFA kẻ gian thêm vào còn dùng được không?”")],
+)
+
+KEYS = {"m04-th5": KEY_TH5, "m04-case-v2": KEY_CASE4}

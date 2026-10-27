@@ -74,7 +74,13 @@
           <h3 style="margin-top:36px">Đáp án bài thực hành <span class="tag">Chỉ giảng viên</span></h3>
           <p class="muted" style="font-size:14px">Bài làm mẫu trên bảng (module, dây nối, nội dung), giải thích, thang điểm và lỗi hay gặp.</p>
           <div class="row">
-            <button v-for="k in answerIndex" :key="k.id" class="btn sm" @click="openAnswer(k.id)">📘 {{ k.title }}</button>
+            <select v-model="answerPick" class="grow" style="flex:1;min-width:220px" aria-label="Chọn bài để xem đáp án">
+              <option value="">Chọn bài…</option>
+              <optgroup v-for="g in answerGroups" :key="g.no" :label="'Buổi ' + g.no">
+                <option v-for="k in g.items" :key="k.id" :value="k.id">{{ k.title }}</option>
+              </optgroup>
+            </select>
+            <button class="btn sm primary" :disabled="!answerPick" @click="openAnswer(answerPick)">📘 Xem đáp án</button>
           </div>
           <div v-if="answer" class="card" style="margin-top:16px"><answer-key :data="answer" @close="answer = null"></answer-key></div>
         </template>
