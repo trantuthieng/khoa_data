@@ -102,6 +102,58 @@ def paragraph(text, **flags):
     return {'t': 'p', 'plain': text, 'html': html.escape(text), **flags}
 
 
+def cell(text):
+    return {'plain': text, 'html': html.escape(text)}
+
+
+def table(rows, **flags):
+    return {'t': 'table', 'rows': [[cell(c) for c in row] for row in rows], **flags}
+
+
+def steps(items, **flags):
+    return {'t': 'list', 'ordered': True, **flags,
+            'items': [{'plain': t, 'html': html.escape(t), 'level': lv} for lv, t in items]}
+
+
+# Bài làm mẫu Thực hành 4 theo đúng các module trên bảng; chỉ hiện khi giảng viên công bố.
+TH4_BAI_MAU = [
+    ('h3', 'Bài làm mẫu đầy đủ theo không gian bảng'),
+    ('p', 'Bài mẫu dưới đây điền đủ các module trên bảng. Phương án khác vẫn đạt nếu quyền được thu hẹp đúng phạm vi, có người duyệt, có hạn và kiểm tra lại được.'),
+    ('p', '① Người liên quan – mỗi người muốn gì, lo ngại gì'),
+    ('table', [['Người liên quan', 'Muốn gì', 'Lo ngại gì'],
+               ['Chị Hà', 'Bàn giao xong 37 hồ sơ; bắt đầu ngay việc mới ở phòng Kế hoạch Điện lực Y', 'Mất quyền đột ngột khi người kế nhiệm chưa nắm hồ sơ'],
+               ['Anh Tuấn – quản lý Điện lực X', '37 khiếu nại được xử lý đúng hạn', 'Người kế nhiệm chưa nắm lịch sử từng hồ sơ'],
+               ['Quản lý phòng Kế hoạch – Điện lực Y', 'Chị Hà có đúng quyền cho việc mới và tập trung cho phòng', 'Chị Hà bị kéo về việc cũ lâu dài; tài khoản người của phòng giữ dữ liệu của đơn vị khác'],
+               ['Cán bộ CNTT', 'Có phiếu duyệt rõ: gỡ quyền gì, cấp quyền gì, hạn đến khi nào', 'Ngoại lệ không có hạn, không ai nhớ gỡ']]),
+    ('p', '② Quyết định cho từng quyền của chị Hà'),
+    ('table', [['Quyền', 'Quyết định', 'Lý do'],
+               ['Xem toàn bộ khách hàng Điện lực X', 'Thu hẹp', 'Chỉ xem đúng 37 hồ sơ khiếu nại đang dở, không sửa, hết hạn sau 2 tuần. Tốt hơn nữa: giao 37 hồ sơ cho người kế nhiệm, chị Hà hướng dẫn trực tiếp, khi đó chọn Thu hồi và không cần ngoại lệ'],
+               ['Xuất dữ liệu khách hàng Điện lực X', 'Thu hồi', 'Gỡ ngay. Bàn giao hồ sơ không cần mang dữ liệu ra khỏi hệ thống'],
+               ['Vai trò Kế hoạch – Điện lực Y', 'Cấp mới', 'Theo ma trận quyền của phòng Kế hoạch Điện lực Y; không sao chép quyền cũ sang']]),
+    ('p', '③ Năm bước xử lý, nối theo thứ tự 1 → 2 → 3 → 4 → 5'),
+    ('list', [(0, 'Xác định nhu cầu bàn giao: anh Tuấn và chị Hà lập danh sách mã 37 hồ sơ và việc còn lại của từng hồ sơ. Chỉ cần xem (và ghi chú bàn giao nếu hệ thống hỗ trợ), không sửa, không xuất. Làm xong trong ngày đầu. Phụ trách: Anh Tuấn: thực hiện. Chị Hà: xác nhận.'),
+              (0, 'Phê duyệt ngoại lệ và đặt hạn: anh Tuấn và chủ sở hữu dữ liệu ký phiếu ngoại lệ ghi phạm vi 37 hồ sơ, chỉ xem, ngày giờ hết hạn cụ thể (2 tuần kể từ ngày duyệt). Nếu đã giao hồ sơ cho người kế nhiệm thì ghi “không cần ngoại lệ”. Phụ trách: Anh Tuấn: duyệt. Quản lý phòng Kế hoạch – Điện lực Y: đồng ý cho chị Hà dành thời gian bàn giao.'),
+              (0, 'Thu hồi quyền không còn cần: gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu có ngoại lệ thì cấu hình quyền xem 37 hồ sơ, tự hết hạn đúng ngày; đăng xuất các phiên đang mở. Phụ trách: Cán bộ CNTT: thực hiện theo phiếu đã duyệt.'),
+              (0, 'Cấp quyền mới ở Điện lực Y: gán vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Phụ trách: Quản lý phòng Kế hoạch – Điện lực Y: duyệt. Cán bộ CNTT: thực hiện.'),
+              (0, 'Kiểm tra lại bằng tài khoản chị Hà: mở một hồ sơ Điện lực X ngoài 37 hồ sơ → phải bị từ chối; xuất danh sách khách hàng Điện lực X → phải bị từ chối; mở chức năng của phòng Kế hoạch Điện lực Y → được phép. Ngày ngoại lệ hết hạn: mở một trong 37 hồ sơ → phải bị từ chối. Phụ trách: Cán bộ CNTT: thực hiện. Chị Hà: xác nhận.')]),
+    ('p', '④ Bằng chứng'),
+    ('table', [['Bằng chứng', 'Chứng minh điều gì', 'Nối với'],
+               ['Báo cáo quyền của tài khoản chị Hà trước và sau khi xử lý', 'Quyền xem toàn bộ và quyền xuất Điện lực X đã gỡ; chỉ còn vai trò Điện lực Y (và ngoại lệ 37 hồ sơ nếu có)', 'Quyền xem, quyền xuất, quyền mới'],
+               ['Phiếu ngoại lệ có phạm vi, người duyệt, ngày giờ hết hạn', 'Ngoại lệ hẹp, có người chịu trách nhiệm, có hạn', 'Bước 2'],
+               ['Log gỡ quyền (ngày giờ, người thực hiện) và log đóng ngoại lệ khi hết hạn', 'Việc thu hồi đã làm thật, không chỉ đề nghị', 'Bước 3'],
+               ['Kết quả các phép thử, kèm ảnh màn hình bị từ chối', 'Quyền cũ không còn dùng được', 'Bước 5']]),
+    ('p', 'Email đề nghị gỡ quyền không phải bằng chứng hoàn tất: nó chỉ cho thấy đã có người yêu cầu.'),
+    ('p', '⑤ Tóm tắt phương án mẫu'),
+    ('p', 'Chị Hà chỉ cần xem 37 hồ sơ khiếu nại đang dở để bàn giao, không cần sửa hay xuất. Cán bộ CNTT gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu chưa giao được hồ sơ cho người kế nhiệm, anh Tuấn và chủ sở hữu dữ liệu duyệt ngoại lệ chỉ xem đúng 37 hồ sơ, hết hạn sau 2 tuần. Chị Hà được cấp vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Kiểm tra bằng tài khoản chị Hà: hồ sơ ngoài 37 hồ sơ và thao tác xuất đều phải bị từ chối. Lưu báo cáo quyền trước – sau, phiếu ngoại lệ và log gỡ quyền làm bằng chứng.'),
+]
+
+
+def th4_bai_mau(aid):
+    make = {'h3': lambda v: {'t': 'h3', 'text': v, 'reveal': aid}, 'p': lambda v: paragraph(v, reveal=aid),
+            'table': lambda v: table(v, reveal=aid), 'list': lambda v: steps(v, reveal=aid)}
+    return [make[k](v) for k, v in TH4_BAI_MAU]
+
+
 def revise(module):
     module = edit_tree(module)
     no = module['no']
@@ -154,6 +206,11 @@ def revise(module):
                     b['reveal'] = 'm09-th10'
                     if i + 1 < len(section['blocks']):
                         section['blocks'][i + 1]['reveal'] = 'm09-th10'
+        # Bài làm mẫu đặt ngay sau bảng đáp án gợi ý, trước điểm chữa bài.
+        if section.get('activity') == 'm03-th4':
+            blocks = section['blocks']
+            at = next(i for i, b in enumerate(blocks) if b['t'] == 'table' and b.get('reveal') == 'm03-th4') + 1
+            blocks[at:at] = th4_bai_mau('m03-th4')
         if section['kind'] == 'practice' and section.get('activity', '').endswith(tuple(f'-th{i}' for i in range(1, 12))):
             section['blocks'].insert(0, paragraph('Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu.'))
     return add_labs(module)

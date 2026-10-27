@@ -2764,6 +2764,305 @@
      "reveal": "m03-th4"
     },
     {
+     "t": "h3",
+     "text": "Bài làm mẫu đầy đủ theo không gian bảng",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "Bài mẫu dưới đây điền đủ các module trên bảng. Phương án khác vẫn đạt nếu quyền được thu hẹp đúng phạm vi, có người duyệt, có hạn và kiểm tra lại được.",
+     "html": "Bài mẫu dưới đây điền đủ các module trên bảng. Phương án khác vẫn đạt nếu quyền được thu hẹp đúng phạm vi, có người duyệt, có hạn và kiểm tra lại được.",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "① Người liên quan – mỗi người muốn gì, lo ngại gì",
+     "html": "① Người liên quan – mỗi người muốn gì, lo ngại gì",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Người liên quan",
+        "html": "Người liên quan"
+       },
+       {
+        "plain": "Muốn gì",
+        "html": "Muốn gì"
+       },
+       {
+        "plain": "Lo ngại gì",
+        "html": "Lo ngại gì"
+       }
+      ],
+      [
+       {
+        "plain": "Chị Hà",
+        "html": "Chị Hà"
+       },
+       {
+        "plain": "Bàn giao xong 37 hồ sơ; bắt đầu ngay việc mới ở phòng Kế hoạch Điện lực Y",
+        "html": "Bàn giao xong 37 hồ sơ; bắt đầu ngay việc mới ở phòng Kế hoạch Điện lực Y"
+       },
+       {
+        "plain": "Mất quyền đột ngột khi người kế nhiệm chưa nắm hồ sơ",
+        "html": "Mất quyền đột ngột khi người kế nhiệm chưa nắm hồ sơ"
+       }
+      ],
+      [
+       {
+        "plain": "Anh Tuấn – quản lý Điện lực X",
+        "html": "Anh Tuấn – quản lý Điện lực X"
+       },
+       {
+        "plain": "37 khiếu nại được xử lý đúng hạn",
+        "html": "37 khiếu nại được xử lý đúng hạn"
+       },
+       {
+        "plain": "Người kế nhiệm chưa nắm lịch sử từng hồ sơ",
+        "html": "Người kế nhiệm chưa nắm lịch sử từng hồ sơ"
+       }
+      ],
+      [
+       {
+        "plain": "Quản lý phòng Kế hoạch – Điện lực Y",
+        "html": "Quản lý phòng Kế hoạch – Điện lực Y"
+       },
+       {
+        "plain": "Chị Hà có đúng quyền cho việc mới và tập trung cho phòng",
+        "html": "Chị Hà có đúng quyền cho việc mới và tập trung cho phòng"
+       },
+       {
+        "plain": "Chị Hà bị kéo về việc cũ lâu dài; tài khoản người của phòng giữ dữ liệu của đơn vị khác",
+        "html": "Chị Hà bị kéo về việc cũ lâu dài; tài khoản người của phòng giữ dữ liệu của đơn vị khác"
+       }
+      ],
+      [
+       {
+        "plain": "Cán bộ CNTT",
+        "html": "Cán bộ CNTT"
+       },
+       {
+        "plain": "Có phiếu duyệt rõ: gỡ quyền gì, cấp quyền gì, hạn đến khi nào",
+        "html": "Có phiếu duyệt rõ: gỡ quyền gì, cấp quyền gì, hạn đến khi nào"
+       },
+       {
+        "plain": "Ngoại lệ không có hạn, không ai nhớ gỡ",
+        "html": "Ngoại lệ không có hạn, không ai nhớ gỡ"
+       }
+      ]
+     ],
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "② Quyết định cho từng quyền của chị Hà",
+     "html": "② Quyết định cho từng quyền của chị Hà",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Quyền",
+        "html": "Quyền"
+       },
+       {
+        "plain": "Quyết định",
+        "html": "Quyết định"
+       },
+       {
+        "plain": "Lý do",
+        "html": "Lý do"
+       }
+      ],
+      [
+       {
+        "plain": "Xem toàn bộ khách hàng Điện lực X",
+        "html": "Xem toàn bộ khách hàng Điện lực X"
+       },
+       {
+        "plain": "Thu hẹp",
+        "html": "Thu hẹp"
+       },
+       {
+        "plain": "Chỉ xem đúng 37 hồ sơ khiếu nại đang dở, không sửa, hết hạn sau 2 tuần. Tốt hơn nữa: giao 37 hồ sơ cho người kế nhiệm, chị Hà hướng dẫn trực tiếp, khi đó chọn Thu hồi và không cần ngoại lệ",
+        "html": "Chỉ xem đúng 37 hồ sơ khiếu nại đang dở, không sửa, hết hạn sau 2 tuần. Tốt hơn nữa: giao 37 hồ sơ cho người kế nhiệm, chị Hà hướng dẫn trực tiếp, khi đó chọn Thu hồi và không cần ngoại lệ"
+       }
+      ],
+      [
+       {
+        "plain": "Xuất dữ liệu khách hàng Điện lực X",
+        "html": "Xuất dữ liệu khách hàng Điện lực X"
+       },
+       {
+        "plain": "Thu hồi",
+        "html": "Thu hồi"
+       },
+       {
+        "plain": "Gỡ ngay. Bàn giao hồ sơ không cần mang dữ liệu ra khỏi hệ thống",
+        "html": "Gỡ ngay. Bàn giao hồ sơ không cần mang dữ liệu ra khỏi hệ thống"
+       }
+      ],
+      [
+       {
+        "plain": "Vai trò Kế hoạch – Điện lực Y",
+        "html": "Vai trò Kế hoạch – Điện lực Y"
+       },
+       {
+        "plain": "Cấp mới",
+        "html": "Cấp mới"
+       },
+       {
+        "plain": "Theo ma trận quyền của phòng Kế hoạch Điện lực Y; không sao chép quyền cũ sang",
+        "html": "Theo ma trận quyền của phòng Kế hoạch Điện lực Y; không sao chép quyền cũ sang"
+       }
+      ]
+     ],
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "③ Năm bước xử lý, nối theo thứ tự 1 → 2 → 3 → 4 → 5",
+     "html": "③ Năm bước xử lý, nối theo thứ tự 1 → 2 → 3 → 4 → 5",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "reveal": "m03-th4",
+     "items": [
+      {
+       "plain": "Xác định nhu cầu bàn giao: anh Tuấn và chị Hà lập danh sách mã 37 hồ sơ và việc còn lại của từng hồ sơ. Chỉ cần xem (và ghi chú bàn giao nếu hệ thống hỗ trợ), không sửa, không xuất. Làm xong trong ngày đầu. Phụ trách: Anh Tuấn: thực hiện. Chị Hà: xác nhận.",
+       "html": "Xác định nhu cầu bàn giao: anh Tuấn và chị Hà lập danh sách mã 37 hồ sơ và việc còn lại của từng hồ sơ. Chỉ cần xem (và ghi chú bàn giao nếu hệ thống hỗ trợ), không sửa, không xuất. Làm xong trong ngày đầu. Phụ trách: Anh Tuấn: thực hiện. Chị Hà: xác nhận.",
+       "level": 0
+      },
+      {
+       "plain": "Phê duyệt ngoại lệ và đặt hạn: anh Tuấn và chủ sở hữu dữ liệu ký phiếu ngoại lệ ghi phạm vi 37 hồ sơ, chỉ xem, ngày giờ hết hạn cụ thể (2 tuần kể từ ngày duyệt). Nếu đã giao hồ sơ cho người kế nhiệm thì ghi “không cần ngoại lệ”. Phụ trách: Anh Tuấn: duyệt. Quản lý phòng Kế hoạch – Điện lực Y: đồng ý cho chị Hà dành thời gian bàn giao.",
+       "html": "Phê duyệt ngoại lệ và đặt hạn: anh Tuấn và chủ sở hữu dữ liệu ký phiếu ngoại lệ ghi phạm vi 37 hồ sơ, chỉ xem, ngày giờ hết hạn cụ thể (2 tuần kể từ ngày duyệt). Nếu đã giao hồ sơ cho người kế nhiệm thì ghi “không cần ngoại lệ”. Phụ trách: Anh Tuấn: duyệt. Quản lý phòng Kế hoạch – Điện lực Y: đồng ý cho chị Hà dành thời gian bàn giao.",
+       "level": 0
+      },
+      {
+       "plain": "Thu hồi quyền không còn cần: gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu có ngoại lệ thì cấu hình quyền xem 37 hồ sơ, tự hết hạn đúng ngày; đăng xuất các phiên đang mở. Phụ trách: Cán bộ CNTT: thực hiện theo phiếu đã duyệt.",
+       "html": "Thu hồi quyền không còn cần: gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu có ngoại lệ thì cấu hình quyền xem 37 hồ sơ, tự hết hạn đúng ngày; đăng xuất các phiên đang mở. Phụ trách: Cán bộ CNTT: thực hiện theo phiếu đã duyệt.",
+       "level": 0
+      },
+      {
+       "plain": "Cấp quyền mới ở Điện lực Y: gán vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Phụ trách: Quản lý phòng Kế hoạch – Điện lực Y: duyệt. Cán bộ CNTT: thực hiện.",
+       "html": "Cấp quyền mới ở Điện lực Y: gán vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Phụ trách: Quản lý phòng Kế hoạch – Điện lực Y: duyệt. Cán bộ CNTT: thực hiện.",
+       "level": 0
+      },
+      {
+       "plain": "Kiểm tra lại bằng tài khoản chị Hà: mở một hồ sơ Điện lực X ngoài 37 hồ sơ → phải bị từ chối; xuất danh sách khách hàng Điện lực X → phải bị từ chối; mở chức năng của phòng Kế hoạch Điện lực Y → được phép. Ngày ngoại lệ hết hạn: mở một trong 37 hồ sơ → phải bị từ chối. Phụ trách: Cán bộ CNTT: thực hiện. Chị Hà: xác nhận.",
+       "html": "Kiểm tra lại bằng tài khoản chị Hà: mở một hồ sơ Điện lực X ngoài 37 hồ sơ → phải bị từ chối; xuất danh sách khách hàng Điện lực X → phải bị từ chối; mở chức năng của phòng Kế hoạch Điện lực Y → được phép. Ngày ngoại lệ hết hạn: mở một trong 37 hồ sơ → phải bị từ chối. Phụ trách: Cán bộ CNTT: thực hiện. Chị Hà: xác nhận.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "④ Bằng chứng",
+     "html": "④ Bằng chứng",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Bằng chứng",
+        "html": "Bằng chứng"
+       },
+       {
+        "plain": "Chứng minh điều gì",
+        "html": "Chứng minh điều gì"
+       },
+       {
+        "plain": "Nối với",
+        "html": "Nối với"
+       }
+      ],
+      [
+       {
+        "plain": "Báo cáo quyền của tài khoản chị Hà trước và sau khi xử lý",
+        "html": "Báo cáo quyền của tài khoản chị Hà trước và sau khi xử lý"
+       },
+       {
+        "plain": "Quyền xem toàn bộ và quyền xuất Điện lực X đã gỡ; chỉ còn vai trò Điện lực Y (và ngoại lệ 37 hồ sơ nếu có)",
+        "html": "Quyền xem toàn bộ và quyền xuất Điện lực X đã gỡ; chỉ còn vai trò Điện lực Y (và ngoại lệ 37 hồ sơ nếu có)"
+       },
+       {
+        "plain": "Quyền xem, quyền xuất, quyền mới",
+        "html": "Quyền xem, quyền xuất, quyền mới"
+       }
+      ],
+      [
+       {
+        "plain": "Phiếu ngoại lệ có phạm vi, người duyệt, ngày giờ hết hạn",
+        "html": "Phiếu ngoại lệ có phạm vi, người duyệt, ngày giờ hết hạn"
+       },
+       {
+        "plain": "Ngoại lệ hẹp, có người chịu trách nhiệm, có hạn",
+        "html": "Ngoại lệ hẹp, có người chịu trách nhiệm, có hạn"
+       },
+       {
+        "plain": "Bước 2",
+        "html": "Bước 2"
+       }
+      ],
+      [
+       {
+        "plain": "Log gỡ quyền (ngày giờ, người thực hiện) và log đóng ngoại lệ khi hết hạn",
+        "html": "Log gỡ quyền (ngày giờ, người thực hiện) và log đóng ngoại lệ khi hết hạn"
+       },
+       {
+        "plain": "Việc thu hồi đã làm thật, không chỉ đề nghị",
+        "html": "Việc thu hồi đã làm thật, không chỉ đề nghị"
+       },
+       {
+        "plain": "Bước 3",
+        "html": "Bước 3"
+       }
+      ],
+      [
+       {
+        "plain": "Kết quả các phép thử, kèm ảnh màn hình bị từ chối",
+        "html": "Kết quả các phép thử, kèm ảnh màn hình bị từ chối"
+       },
+       {
+        "plain": "Quyền cũ không còn dùng được",
+        "html": "Quyền cũ không còn dùng được"
+       },
+       {
+        "plain": "Bước 5",
+        "html": "Bước 5"
+       }
+      ]
+     ],
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "Email đề nghị gỡ quyền không phải bằng chứng hoàn tất: nó chỉ cho thấy đã có người yêu cầu.",
+     "html": "Email đề nghị gỡ quyền không phải bằng chứng hoàn tất: nó chỉ cho thấy đã có người yêu cầu.",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "⑤ Tóm tắt phương án mẫu",
+     "html": "⑤ Tóm tắt phương án mẫu",
+     "reveal": "m03-th4"
+    },
+    {
+     "t": "p",
+     "plain": "Chị Hà chỉ cần xem 37 hồ sơ khiếu nại đang dở để bàn giao, không cần sửa hay xuất. Cán bộ CNTT gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu chưa giao được hồ sơ cho người kế nhiệm, anh Tuấn và chủ sở hữu dữ liệu duyệt ngoại lệ chỉ xem đúng 37 hồ sơ, hết hạn sau 2 tuần. Chị Hà được cấp vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Kiểm tra bằng tài khoản chị Hà: hồ sơ ngoài 37 hồ sơ và thao tác xuất đều phải bị từ chối. Lưu báo cáo quyền trước – sau, phiếu ngoại lệ và log gỡ quyền làm bằng chứng.",
+     "html": "Chị Hà chỉ cần xem 37 hồ sơ khiếu nại đang dở để bàn giao, không cần sửa hay xuất. Cán bộ CNTT gỡ ngay quyền xuất và quyền xem toàn bộ khách hàng Điện lực X; nếu chưa giao được hồ sơ cho người kế nhiệm, anh Tuấn và chủ sở hữu dữ liệu duyệt ngoại lệ chỉ xem đúng 37 hồ sơ, hết hạn sau 2 tuần. Chị Hà được cấp vai trò Kế hoạch – Điện lực Y theo ma trận quyền. Kiểm tra bằng tài khoản chị Hà: hồ sơ ngoài 37 hồ sơ và thao tác xuất đều phải bị từ chối. Lưu báo cáo quyền trước – sau, phiếu ngoại lệ và log gỡ quyền làm bằng chứng.",
+     "reveal": "m03-th4"
+    },
+    {
      "t": "p",
      "html": "<strong>Điểm chữa bài:</strong> người xem xét từ vai trò quản lý cũ thường nói \"cứ để nguyên cho tiện, Hà là người tin cậy\". Câu trả lời: vấn đề không phải chị Hà có đáng tin không, mà là nếu tài khoản của chị bị chiếm thì kẻ gian có thêm dữ liệu của cả một đơn vị.",
      "plain": "Điểm chữa bài: người xem xét từ vai trò quản lý cũ thường nói \"cứ để nguyên cho tiện, Hà là người tin cậy\". Câu trả lời: vấn đề không phải chị Hà có đáng tin không, mà là nếu tài khoản của chị bị chiếm thì kẻ gian có thêm dữ liệu của cả một đơn vị.",
