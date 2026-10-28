@@ -196,6 +196,7 @@ svg.mv { display: block; font: 12px var(--font); }
 .label { border-radius: 3px; padding: 1px 8px; font-size: 12px; background: #edebe9; }
 .label.lb0 { background: #dff6dd; } .label.lb1 { background: #e8f1fb; } .label.lb2 { background: #fff4ce; } .label.lb3 { background: #fde7e9; }
 .sim-info { background: #f0f6ff; border-bottom: 1px solid #c7dcf5; padding: 5px 12px; font-size: 12px; }
+.sim-hint { color: #8a4b00; }
 .svc-report { flex: 1; display: flex; min-height: 0; }
 .svc-report .canvas { min-height: 300px; }
 .filters-read { width: 200px; background: #fff; border-left: 1px solid var(--line); }

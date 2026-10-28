@@ -1148,7 +1148,9 @@
               <template v-else-if="s.open.test"> Test as role chỉ mô phỏng bộ lọc, không kiểm tra người đó có quyền mở báo cáo hay không.</template>
               <template v-else> {{ s.open.as }} · {{ sv.acc.paths.join(' · ') }} ·
                 <b>{{ sv.acc.bypass ? 'RLS KHÔNG áp dụng (' + sv.acc.ws + ')' : (sv.acc.roles.length ? 'RLS: ' + sv.acc.roles.join(' + ') : 'chưa thuộc role nào') }}</b>
-                · Build: {{ sv.acc.build || sv.acc.bypass ? 'có' : 'không' }}</template>
+                · Build: {{ sv.acc.build || sv.acc.bypass ? 'có' : 'không' }}
+                <span v-if="!sv.acc.bypass && !sv.acc.roles.length && sv.item.model.roles.length" class="sim-hint">
+                  — Mở được báo cáo nhưng không thấy dữ liệu vì chưa là thành viên role nào (Test as role không thêm thành viên). Nếu người này cần xem: đăng nhập lại tài khoản của bạn → Security (RLS) → thêm họ hoặc nhóm của họ vào role.</span></template>
             </div>
             <div class="svc-report">
               <rc-canvas :model="sv.item.model" :page="sv.page" :sec="sv.sec" :slicers="s.slicers" :editable="false" :selected-id="null" :service="true"
