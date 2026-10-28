@@ -26,9 +26,17 @@ PHIEU = ["Anh Minh, phòng Kế hoạch Công ty",
          "Dùng trong dự án dự báo quý IV; hết dự án thì xóa, báo lại chủ dữ liệu. Bản trung gian xóa ngay sau khi giao",
          "Anh Tuấn – chủ dữ liệu Điện lực X"]
 
+PHUONG_AN = [("1", "100", "100", "Không chọn", "Dòng Cảng Mới là sản lượng của đúng một xưởng"),
+             ("121", "5,2", "86,6", "Không chọn", "Số đạt nhưng mất xưởng Cảng Mới mà không ai biết"),
+             ("121", "49,5", "100", "Không chọn", "Xưởng chiếm gần nửa tổng nhóm gộp – vẫn ước được"),
+             ("121", "5,2", "86,6", "Chọn", "Đạt hai phép; phần tách ra (khách hàng sản xuất) ghi trong đề xuất")]
+PHAN_TACH = ("Phần không có trong bản giao là khách hàng sản xuất ở Cảng Mới: 128.185 kWh, 13,4% sản lượng quý III. "
+             "Ghi rõ trong đề xuất và báo anh Minh: bản tổng hợp chỉ gồm Sinh hoạt + Kinh doanh, phần sản xuất dự báo riêng "
+             "theo hợp đồng cung cấp điện, không đưa vào AI thử nghiệm.")
+
 # ---------- Thực hành 7: chuẩn bị dữ liệu cho phân tích và AI ----------
 KEY_TH7 = key(
-    "Bốn cột định danh và số nợ bị bỏ; giao bản tổng hợp phường × tháng của nhóm Sinh hoạt + Kinh doanh (phương án 2), tách riêng "
+    "Bốn cột định danh và số nợ bị bỏ; so sánh 4 phương án A, B, D, F rồi giao bản tổng hợp phường × tháng của nhóm Sinh hoạt + Kinh doanh (phương án 2), tách riêng "
     "khách hàng sản xuất Cảng Mới. Bản gộp Cảng Mới vào Đông Hòa vẫn bị áp đảo (46,3%); bản che từng dòng không đưa vào AI. "
     "Anh Tuấn duyệt file thật, CNTT xác nhận công cụ.",
     {"chuan_bi_du_lieu": board([
@@ -56,6 +64,8 @@ KEY_TH7 = key(
         L("a_cntt", "v_th", viec="duyệt công cụ"),
         L("a_tuan", "v_che", viec="không giao"),
     ]),
+     "phuong_an": [dict(zip(("nhom_nho", "ty_trong", "giu_sl", "chon", "ly_do"), r)) for r in PHUONG_AN],
+     "phan_tach": PHAN_TACH,
      "phieu": [{"noi_dung": x} for x in PHIEU],
      "de_xuat": DE_XUAT},
     modules=[
@@ -69,17 +79,21 @@ KEY_TH7 = key(
          "Chọn “Chưa – cần xử lý thêm” cho bản tổng hợp cũng đạt nếu lý do là chờ duyệt công cụ."),
         ("👤 <b>Người duyệt, xác nhận</b>", "Anh Tuấn duyệt file; CNTT, chị Lan xác nhận công cụ.", "Ít nhất 2 người, ghi rõ duyệt gì."),
     ],
-    more=[("Ba bản tổng hợp cần so sánh", [
-        TABLE(["Bản", "Nhóm nhỏ", "Áp đảo", "Quyết định"],
-              ["A – tổng hợp thô", "Cảng Mới: 1 khách hàng", "100%", "Không"],
-              ["D – gộp Cảng Mới vào Đông Hòa", "Đạt", "Xưởng 46,3% – không đạt", "Chưa"],
-              ["F – phương án 2 (Sinh hoạt + Kinh doanh)", "Đạt", "Cao nhất 5,2% – đạt", "Có, sau khi duyệt"],
-              ["Bản che từng dòng", "Cảng Mới – SX 1; Bình Minh – KD 8", "–", "Không"]),
+    more=[("Bảng chọn phương án xử lý (bước 9)", [
+        TABLE(["Phương án", "Nhóm nhỏ nhất", "Tỷ trọng lớn nhất", "Giữ sản lượng", "Quyết định"],
+              ["A – tổng hợp thô", "1 KH (Cảng Mới)", "100%", "100%", "Không"],
+              ["B – bỏ nhóm dưới 10 (HAVING)", "121 KH", "5,2%", "86,6%", "Không – mất xưởng mà không báo ai"],
+              ["D – gộp Cảng Mới vào Đông Hòa", "121 KH", "49,5% (tháng 8; tháng 9: 46,3%)", "100%", "Không – áp đảo"],
+              ["F – phương án 2 (Sinh hoạt + Kinh doanh)", "121 KH", "5,2%", "86,6%", "Có, sau khi duyệt"],
+              ["Bản che từng dòng", "Cảng Mới – SX 1; Bình Minh – KD 8", "–", "–", "Không"]),
+        P("B và F ra cùng số vì Cảng Mới chỉ có khách hàng sản xuất. Khác biệt là cách làm: B lọc theo kết quả nên lặng lẽ bỏ cả phường; "
+          "F tách theo loại khách hàng có lý do, báo anh Minh phần sản xuất 128.185 kWh (13,4%) để dự báo riêng. Học viên chọn B "
+          "nhưng ghi rõ phần bị bỏ và báo anh Minh thì chấp nhận được."),
         P("Chỉ ghi “đã khử nhận dạng” khi có căn cứ đánh giá như trên, không dựa vào việc bỏ cột tên. Phiếu C7 và đoạn đề xuất mẫu ở dưới bảng."),
     ])],
     rubric=[
         ("Phân loại cột", "2", "Đủ 9 cột, 4 cột định danh trực tiếp bị bỏ, số nợ bỏ; có lý do."),
-        ("Bản tổng hợp", "2", "Không còn nhóm dưới ngưỡng; xử lý Cảng Mới có báo lại cho anh Minh."),
+        ("Bản tổng hợp và chọn phương án", "2", "Bảng chọn phương án đủ 4 dòng có số; chọn F (hoặc B có báo phần bị bỏ); xử lý Cảng Mới có báo lại cho anh Minh."),
         ("Kiểm tra nhận diện", "2", "Đủ 4 phép cho 2 bản; phát hiện áp đảo sau khi gộp."),
         ("Quyết định và người duyệt", "2", "Không giao bản che từng dòng; 2 người duyệt, điều kiện công cụ AI."),
         ("Phiếu C7 và đề xuất", "2", "Phiếu đủ 8 dòng; đoạn đề xuất đủ ý để anh Tuấn ký ngay; nhắc xóa bản trung gian."),
@@ -87,6 +101,7 @@ KEY_TH7 = key(
     mistakes=[
         ("Dừng ở HAVING, mất Cảng Mới", "Không nhắc khách hàng sản xuất", "“Dự báo của anh Minh có thiếu phường nào không? Báo anh ấy thế nào?”"),
         ("Gộp rồi dừng", "Không có kết quả áp đảo", "“Trong nhóm gộp, xưởng chiếm bao nhiêu phần trăm?”"),
+        ("Chọn phương án theo một con số", "Chọn D vì giữ 100% sản lượng, hoặc B vì số giống F", "“Ba con số của phương án này đều đạt chưa? Phần bị bỏ là của ai?”"),
         ("Xuất thêm loai_kh", "loai_kh xử lý Giữ", "“Mỗi cột thêm chia nhóm nhỏ hơn: Bình Minh – Kinh doanh còn mấy khách?”"),
         ("Gọi bản che là ẩn danh", "Bản che chọn Đưa vào AI, có ⚠", "“Mã thay thế cố định theo dõi được từng hộ qua 3 tháng không?”"),
         ("Khóa HMAC ghi trong script", "Ghi khóa trong bài", "Khóa lưu riêng, đọc từ biến môi trường hoặc kho khóa."),
@@ -94,6 +109,7 @@ KEY_TH7 = key(
     ],
     flow=["Mở bảng kết quả kiểm tra A–F (phần Chuẩn bị của giảng viên, Thực hành 7) đến bước B: lớp thấy Cảng Mới chỉ 1 khách hàng.",
           "Sang bước E: bản gộp 46,3% – hỏi “gộp xong đã an toàn chưa?”.",
+          "Chiếu bảng chọn phương án (bước 9): hỏi “B và F cùng số, chọn cái nào, vì sao?”.",
           "Mở bảng mẫu: đọc bảng phân loại cột, rồi bảng 4 phép kiểm tra.",
           "Đọc đoạn đề xuất mẫu; hỏi anh Tuấn còn cần gì để ký."],
 )

@@ -812,6 +812,13 @@ TEMPLATES = {
     ],
     7: [
         BOARD_TH7,
+        {"type": "table", "key": "phuong_an", "label": "Chọn phương án xử lý dữ liệu (số liệu bước 9)",
+         "rows": ["A – Tổng hợp thô theo phường", "B – Bỏ nhóm dưới 10 khách hàng (như HAVING)",
+                  "D – Gộp Cảng Mới vào Đông Hòa", "F – Phương án 2: chỉ Sinh hoạt + Kinh doanh"],
+         "columns": [col("nhom_nho", "Nhóm nhỏ nhất (KH)"), col("ty_trong", "Tỷ trọng lớn nhất (%)"),
+                     col("giu_sl", "Giữ bao nhiêu % sản lượng"), col("chon", "Chọn?", ["Chọn", "Không chọn"]),
+                     col("ly_do", "Vì sao")]},
+        ta("phan_tach", "Phần sản lượng không có trong phương án bạn chọn là của ai? Báo anh Minh thế nào để dự báo không bị thiếu?"),
         {"type": "table", "key": "phieu", "label": "Phiếu yêu cầu dữ liệu (mẫu C7)",
          "rows": ["Người yêu cầu, đơn vị", "Mục đích sử dụng", "Các trường cần và lý do", "Mức chi tiết",
                   "Kỹ thuật giảm dữ liệu áp dụng", "Công cụ sẽ dùng (có AI không, đã được duyệt chưa)", "Hạn sử dụng và cách hủy", "Chủ dữ liệu duyệt"],

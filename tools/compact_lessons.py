@@ -875,11 +875,269 @@ TEXT_FIXES = {
         ("Tạo bản tổng hợp theo phường × tháng (SQL do giảng viên chạy, hoặc PivotTable).",
          "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4)."),
         ("Tạo bản che từng dòng (Python do giảng viên chạy, hoặc công thức Excel).",
-         "Tạo bản che từng dòng bằng công thức Excel (mục 2.4).")],
+         "Tạo bản che từng dòng bằng công thức Excel (mục 2.4)."),
+        ("(3) bảng so sánh đầu vào – đầu ra; (4)", "(3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4)")],
 }
 
 TH6_FILE = "/static/labs/BaoCao_Thang.xlsx"
 TH7_FILE = "/static/labs/DLX_SanLuong_Q3.csv"
+
+
+# ====================== Thực hành 6, 7: hướng dẫn từng bước ======================
+def d_th6():
+    f = Fig("th6-flow", 720, 200, "Tám bước của Phần A Thực hành 6")
+    chevrons(f, [(["1", "Khảo sát", "sheet ẩn, cột ẩn"], "r-warn"),
+                 (["2", "File mới", "chỉ TongHop, dán giá trị"], "r-brand"),
+                 (["3", "Dọn file", "Inspect Document"], "r-brand"),
+                 (["4", "Mã hóa", "đặt mật khẩu mở file"], "r-brand")], 2, 8, 176, 84, 179, size=12.5)
+    chevrons(f, [(["5", "Thử mở lại", "mật khẩu sai → từ chối"], "r-ok"),
+                 (["6", "So sánh", "với Protect Sheet"], "r-note"),
+                 (["7", "Gửi đi", "mật khẩu kênh khác"], "r-brand"),
+                 (["8", "Thu hồi", "xóa file trung gian"], "r-warn")], 2, 106, 176, 84, 179, size=12.5)
+    return f
+
+
+def d_th7():
+    f = Fig("th7-flow", 720, 232, "Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp")
+    f.box(10, 82, 150, 68, ["DLX_SanLuong_Q3.csv", ("2.211 dòng × 9 cột", "f-mut")], "box", 12.5)
+    f.box(222, 14, 214, 72, ["Bước 3: bản che", ("bỏ tên, địa chỉ, số nợ;", "f-mut"), ("che SĐT; mã thay thế HMAC", "f-mut")], "r-warn", 12.5)
+    f.box(222, 146, 214, 72, ["Bước 4–8: tổng hợp", ("phường × tháng;", "f-mut"), ("bốn phép kiểm tra", "f-mut")], "r-brand", 12.5)
+    f.box(492, 14, 218, 72, ["DLX_BanChe.csv", ("vẫn là dữ liệu cá nhân", "f-bad"), ("không giao", "f-bad")], "r-bad", 12.5)
+    f.box(492, 146, 218, 72, ["DLX_TongHop_PA2.csv", ("chỉ số đếm và tổng", "f-ok"), ("giao sau khi được duyệt", "f-ok")], "r-ok", 12.5)
+    f.arrow(160, 108, 220, 54)
+    f.arrow(160, 124, 220, 180)
+    f.arrow(436, 50, 490, 50, "bad")
+    f.arrow(436, 182, 490, 182, "ok")
+    return f
+
+
+def EXPECT(s):
+    return P("**Kết quả mong đợi:** " + s, callout="apply")
+
+
+def TH6_A():
+    return [
+        FIG(d_th6(), "Phần A gồm tám bước. Mỗi bước có phần kết quả mong đợi để bạn tự kiểm tra trước khi sang bước sau."),
+        P("Chuẩn bị: tạo thư mục **TH6** ở ổ dữ liệu (không để trên Desktop) và lưu file BaoCao_Thang.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này."),
+        H4("Bước 1 – Khảo sát file (5 phút)"),
+        OL("Mở BaoCao_Thang.xlsx. Nếu Excel hiện thanh vàng **Protected View**, bấm **Enable Editing**.",
+           "Nhìn các thẻ sheet ở cạnh dưới cửa sổ, ghi lại tên từng sheet.",
+           "Chuột phải vào một thẻ sheet bất kỳ → **Unhide…**. Mục này bấm được nghĩa là còn sheet đang ẩn: chọn tên sheet trong hộp thoại → **OK**. Mục này mờ nghĩa là không còn sheet ẩn.",
+           "Mở từng sheet, nhìn hàng chữ cái tiêu đề cột. Chữ cái nhảy cóc (ví dụ H rồi J) là có cột ẩn ở giữa: bôi đen hai cột hai bên (H đến J) → chuột phải → **Unhide**.",
+           "Ghi vào bài: file có bao nhiêu sheet, sheet nào ẩn, cột nào ẩn, trong đó chứa gì, thông tin nào nhạy cảm."),
+        EXPECT("bạn liệt kê được mọi sheet và mọi cột, kể cả phần đang ẩn. Bỏ sót cũng không sao: Inspect Document ở bước 3 sẽ báo lại, nhưng khi chữa bài giảng viên sẽ hỏi vì sao bạn không thấy."),
+        H4("Bước 2 – Tạo file mới chỉ có bảng tổng hợp (5 phút)"),
+        OL("Mở sheet **TongHop** → bấm ô A1 → **Ctrl+A** để chọn cả bảng → **Ctrl+C**.",
+           "**Ctrl+N** để mở một workbook trống.",
+           "Bấm ô A1 → **Home → Paste ▾ → Values** (biểu tượng 123). Cách nhanh: **Ctrl+Alt+V** → chọn **Values** → **OK**.",
+           "Bấm vào một ô số, nhìn thanh công thức: phải là con số, không bắt đầu bằng dấu =. Có dấu = là còn công thức trỏ về file gốc → dán lại bằng Values.",
+           "**File → Save As** → chọn thư mục TH6 → đặt tên **BaoCao_T10_TongHop.xlsx** → **Save**."),
+        EXPECT("file mới chỉ có 1 sheet, 5 dòng (1 dòng tiêu đề và 4 vùng), không có tên hay số điện thoại khách hàng nào."),
+        P("Không sửa thẳng trên file gốc rồi xóa bớt sheet: dễ sót sheet ẩn, tên vùng (Name), liên kết. Tạo file mới rồi chỉ dán thứ cần gửi là cách chắc nhất.", callout="note"),
+        H4("Bước 3 – Dọn thông tin ẩn bằng Inspect Document (5 phút)"),
+        OL("Trong file BaoCao_T10_TongHop.xlsx: **File → Info → Check for Issues → Inspect Document**. Nếu Excel hỏi có lưu không, chọn **Yes**.",
+           "Để nguyên các mục đã được đánh dấu → bấm **Inspect**.",
+           "Mục **Document Properties and Personal Information** (tên tác giả, người sửa cuối) → **Remove All**.",
+           "Nếu thấy **Hidden Worksheets**, **Hidden Rows and Columns** hoặc **Links to Other Files** là bạn đã chép thừa: đóng file, làm lại bước 2.",
+           "Bấm **Close** → **Ctrl+S**. Chụp màn hình kết quả Inspect để nộp."),
+        EXPECT("sau khi bấm Remove All, các mục đều có dấu tích, không còn sheet ẩn hay liên kết."),
+        P("Thao tác Remove All không hoàn tác được. Vì vậy chỉ chạy Inspect Document trên file mới, không chạy trên file gốc.", callout="note"),
+        H4("Bước 4 – Mã hóa file (10 phút)"),
+        P("**Cách 1 – Bằng Excel (mọi học viên đều làm):**"),
+        OL("Vẫn ở file BaoCao_T10_TongHop.xlsx: **File → Info → Protect Workbook → Encrypt with Password**.",
+           "Gõ mật khẩu → **OK** → gõ lại đúng mật khẩu đó → **OK**. Dòng Protect Workbook chuyển màu vàng, ghi “A password is required to open this workbook”.",
+           "Bấm **Ctrl+S**. Chưa lưu thì mã hóa chưa có hiệu lực.",
+           "Đóng file."),
+        P("**Chọn mật khẩu:** cụm 4–5 từ ngẫu nhiên, từ 16 ký tự trở lên, không chứa tên đơn vị, tên người, ngày tháng. **Quên mật khẩu là mất file**: Microsoft cũng không mở lại được. Lưu mật khẩu trong trình quản lý mật khẩu đơn vị cho phép, không ghi trong email, trong tên file hay trên giấy dán màn hình.", callout="note"),
+        P("**Cách 2 – Bằng Python (tùy chọn, khi phải mã hóa nhiều file mỗi tháng).** Kết quả giống hệt Cách 1: Excel hỏi mật khẩu khi mở file."),
+        OL("Mở Command Prompt (**Windows + R** → gõ cmd → Enter). Cài thư viện, chỉ cần làm một lần: **pip install msoffcrypto-tool**. Nếu báo không nhận lệnh pip, dùng **py -m pip install msoffcrypto-tool**.",
+           "Mở Notepad, chép đoạn mã dưới đây, **File → Save As** → chọn thư mục TH6, Save as type: **All files**, tên **ma_hoa.py**, Encoding: **UTF-8**.",
+           "Trong Command Prompt, chuyển vào thư mục TH6: **cd /d** rồi dán đường dẫn thư mục (lấy bằng cách bấm vào thanh địa chỉ của File Explorer).",
+           "Chạy **python ma_hoa.py**. Gõ mật khẩu hai lần (màn hình không hiện ký tự – đó là bình thường) → Enter."),
+        CODE('''# ma_hoa.py – mã hóa file Excel bằng mật khẩu, giống Encrypt with Password
+from getpass import getpass
+from msoffcrypto.format.ooxml import OOXMLFile
+
+vao = "BaoCao_T10_TongHop.xlsx"          # file chưa mã hóa (phải là .xlsx)
+ra = "BaoCao_T10_TongHop_MaHoa.xlsx"     # file sẽ gửi đi, đặt tên khác file vào
+
+mat_khau = getpass("Mật khẩu: ")         # gõ không hiện chữ; không ghi mật khẩu trong code
+if mat_khau != getpass("Gõ lại mật khẩu: "):
+    raise SystemExit("Hai lần gõ không khớp, chạy lại.")
+
+with open(vao, "rb") as f_vao, open(ra, "wb") as f_ra:
+    OOXMLFile(f_vao).encrypt(mat_khau, f_ra)
+print("Đã tạo", ra)'''),
+        EXPECT("dòng “Đã tạo BaoCao_T10_TongHop_MaHoa.xlsx”; mở file đó bằng Excel thì hiện hộp thoại hỏi mật khẩu. Sau khi kiểm tra xong ở bước 5, xóa bản chưa mã hóa."),
+        H4("Bước 5 – Thử mở lại bằng mật khẩu sai (5 phút)"),
+        OL("Mở file đã mã hóa → Excel hỏi mật khẩu.",
+           "Cố ý gõ sai (ví dụ thiếu một chữ) → **OK**.",
+           "Chụp màn hình thông báo từ chối (**Windows + Shift + S**) để nộp.",
+           "Mở lại, gõ đúng mật khẩu → thấy bảng 4 vùng."),
+        EXPECT("thông báo “The password you supplied is not correct…” và không thấy dữ liệu nào. Nếu file mở ra mà không hỏi mật khẩu là bạn chưa bấm Ctrl+S ở bước 4."),
+        H4("Bước 6 – So sánh với Protect Sheet (5 phút)"),
+        OL("Mở file gốc BaoCao_Thang.xlsx → **File → Save As** → đặt tên **BanSao_ProtectSheet.xlsx**.",
+           "Mở sheet ChiTiet → **Review → Protect Sheet** → gõ mật khẩu → **OK** → gõ lại → **OK** → **Ctrl+S** → đóng file.",
+           "Mở lại BanSao_ProtectSheet.xlsx. Excel có hỏi mật khẩu không? Bạn có đọc được tên, số nợ không? Thử gõ vào một ô.",
+           "Ghi vào bài: Protect Sheet chặn được gì, không chặn được gì; khác Encrypt with Password ở đâu. Xong thì xóa bản sao này."),
+        H4("Bước 7 – Chọn kênh gửi và cách báo mật khẩu (5 phút)"),
+        UL("**Người nhận:** họ tên, chức vụ, địa chỉ email công vụ – chọn từ danh bạ, không gõ tay.",
+           "**Kênh gửi file:** kênh nào, gửi file nào (chỉ file đã mã hóa, không kèm file gốc).",
+           "**Kênh báo mật khẩu:** phải khác kênh gửi file; báo vào lúc nào (ví dụ sau khi người nhận xác nhận đã nhận file)."),
+        H4("Bước 8 – Kế hoạch thu hồi, lưu giữ (5 phút)"),
+        UL("Khi nào xóa các file trung gian trên máy bạn (bản chưa mã hóa, bản sao Protect Sheet), và nhớ dọn cả Recycle Bin.",
+           "Ai xác nhận đã nhận file, xác nhận bằng cách nào, trong bao lâu.",
+           "File gốc lưu ở đâu, ai được truy cập."),
+    ]
+
+
+def TH6_B():
+    return [
+        OL("Mở BaoCao_Thang.xlsx → sheet **ChiTiet** → bấm một ô trong bảng → **Data → Filter**.",
+           "Bấm mũi tên ở tiêu đề **SoTienNo** → **Number Filters → Greater Than…** → gõ **0** → **OK**. Thanh trạng thái góc dưới bên trái ghi số dòng tìm được.",
+           "**Ctrl+A** → **Ctrl+C** → **Ctrl+N** → bấm ô A1 → dán bằng **Values**. Excel chỉ chép các dòng đang hiện sau khi lọc.",
+           "Trong file mới, xóa hẳn các cột không cần: bấm chữ cái tiêu đề cột DienThoai, giữ **Ctrl** và bấm thêm các cột Vung, kWh_T10, SoNgayQuaHan, GhiChuNoiBo → chuột phải → **Delete**. Cột đang ẩn ở file gốc có thể bị chép theo: kiểm tra hàng chữ cái cột có nhảy cóc không.",
+           "Kiểm tra: chỉ còn đúng 4 cột **MaKH, TenKH, DiaChi, SoTienNo**. Bấm vào chữ cái cột A, nhìn **Count** ở thanh trạng thái: 107 (1 dòng tiêu đề và 106 hộ).",
+           "Lưu thành **DSNo_T10_CongTyThuHo.xlsx**, chạy Inspect Document (bước 3), mã hóa (bước 4), thử mật khẩu sai (bước 5).",
+           "Viết cách chia sẻ: OneDrive → chuột phải file → **Share** → mục quyền chọn **Specific people** → nhập đúng một địa chỉ bên công ty thu hộ → chọn **Can view** (hoặc cho tải nếu hợp đồng yêu cầu) → đặt **expiration date** 7 ngày → **Send**. Mật khẩu báo qua điện thoại theo số ghi trong hợp đồng.",
+           "Trả lời: vì sao bỏ cột DienThoai, kWh_T10, SoNgayQuaHan, GhiChuNoiBo? Nếu công ty thu hộ nói “cần số điện thoại để gọi nhắc”, bạn xử lý thế nào?"),
+        EXPECT("thanh trạng thái ở bước 2 ghi “106 of 400 records found”; file gửi có đúng 4 cột, 106 hộ, hỏi mật khẩu khi mở."),
+    ]
+
+
+def TH7_STEPS():
+    return [
+        FIG(d_th7(), "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao."),
+        H4("Bước 0 – Chuẩn bị máy (5 phút)"),
+        OL("Mở Command Prompt (**Windows + R** → gõ cmd → Enter), gõ **python --version**. Cần Python 3.10 trở lên. Chưa có Python: máy cơ quan thì nhờ CNTT cài; máy riêng thì tải từ python.org, khi cài nhớ đánh dấu **Add python.exe to PATH**.",
+           "Cài thư viện pandas, chỉ cần làm một lần: **pip install pandas** (báo không nhận lệnh pip thì dùng **py -m pip install pandas**).",
+           "Tạo thư mục **TH7**, lưu file DLX_SanLuong_Q3.csv vào đó.",
+           "Mở Notepad, **File → Save As** → thư mục TH7, Save as type: **All files**, tên **th7.py**, Encoding: **UTF-8**.",
+           "Trong Command Prompt: **cd /d** rồi dán đường dẫn thư mục TH7."),
+        P("Cách làm ở mỗi bước dưới đây: chép đoạn mã **nối vào cuối** th7.py → Ctrl+S → chạy **python th7.py** trong Command Prompt → so với phần kết quả mong đợi rồi mới sang bước sau. Dòng bắt đầu bằng # là chú thích, không cần chép."),
+        P("Máy không cài được Python: làm bước 4–9 bằng PivotTable như mục 2.4 và ghi rõ trong bài là bạn dùng Excel.", callout="note"),
+        H4("Bước 1 – Đọc file, xem các cột"),
+        CODE('''import pandas as pd
+
+df = pd.read_csv("DLX_SanLuong_Q3.csv", encoding="utf-8-sig",
+                 dtype={"dien_thoai": str})   # đọc số điện thoại dạng chữ để giữ số 0 đầu
+print(df.shape)                               # (số dòng, số cột)
+print(df.columns.tolist())'''),
+        EXPECT("(2211, 9) và danh sách 9 cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. Báo lỗi FileNotFoundError là Command Prompt chưa đứng ở thư mục TH7."),
+        H4("Bước 2 – Phân loại cột (không cần mã)"),
+        P("Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."),
+        H4("Bước 3 – Tạo bản che từng dòng (masking và giả danh hóa)"),
+        P("Bản che giữ từng dòng nhưng bỏ hẳn cột không cần, che số điện thoại và thay mã khách hàng bằng mã thay thế. Bạn tạo bản này để **kiểm tra** nó an toàn đến đâu ở bước 8, không phải để giao."),
+        CODE('''import hashlib, hmac, os
+from getpass import getpass
+
+# Khóa bí mật không ghi trong code. Ở lớp: gõ một cụm từ dài khi được hỏi, nhớ để lần sau gõ lại đúng.
+khoa = (os.environ.get("KHOA_GIA_DANH") or getpass("Khóa giả danh: ")).encode()
+
+def ma_thay_the(ma_kh):
+    """Cùng khóa và cùng mã khách hàng → luôn ra cùng một mã thay thế 8 ký tự."""
+    return hmac.new(khoa, ma_kh.encode(), hashlib.sha256).hexdigest()[:8]
+
+def che_sdt(sdt):
+    """0900000001 → 090****001; ô trống hoặc số quá ngắn → để trống."""
+    if pd.isna(sdt) or len(sdt) < 7:
+        return ""
+    return sdt[:3] + "****" + sdt[-3:]
+
+che = df.drop(columns=["ho_ten", "dia_chi", "so_tien_no"])   # bỏ hẳn cột, không chỉ ẩn
+che["ma_kh"] = che["ma_kh"].map(ma_thay_the)
+che["dien_thoai"] = che["dien_thoai"].map(che_sdt)
+che.to_csv("DLX_BanChe.csv", index=False, encoding="utf-8-sig")
+print(che.head(3))'''),
+        EXPECT("3 dòng đầu có dien_thoai dạng 090****001, ma_kh là 8 ký tự gồm chữ a–f và số; cả 3 dòng (3 tháng của cùng một khách hàng) có cùng mã thay thế. Mã của bạn khác mã của bạn bên cạnh vì mỗi người dùng một khóa. File DLX_BanChe.csv mở bằng Excel có 6 cột."),
+        P("Thử chạy lại và gõ một khóa khác: mã thay thế đổi hết. Vì vậy khóa phải giữ cố định và bí mật – ai có khóa và danh sách mã khách hàng là nối ngược lại được (mục 2.3).", callout="question"),
+        H4("Bước 4 – Tổng hợp theo phường × tháng"),
+        CODE('''def tong_hop(bang):
+    """Mỗi phường – tháng: số khách hàng, tổng kWh, kWh của khách lớn nhất và tỷ trọng của khách đó (%)."""
+    th = (bang.groupby(["phuong", "thang"])
+              .agg(so_kh=("ma_kh", "nunique"), tong_kwh=("kwh", "sum"), kwh_max=("kwh", "max"))
+              .reset_index())
+    th["ty_trong_max"] = (th["kwh_max"] / th["tong_kwh"] * 100).round(1)
+    return th
+
+A = tong_hop(df)
+print(A[A["thang"] == "2026-09"].sort_values("so_kh"))'''),
+        EXPECT("6 dòng của tháng 2026-09, xếp từ phường ít khách hàng nhất. Để tự kiểm tra: dòng An Phú có tong_kwh = 64263. Ra số khác thì xem lại bước 1."),
+        H4("Bước 5 – Kiểm tra nhóm nhỏ và áp đảo, thử gộp nhóm"),
+        CODE('''NGUONG = 10                                   # ngưỡng nhóm tối thiểu dùng trong lớp
+print(A[A["so_kh"] < NGUONG])                 # phép 1: nhóm nhỏ
+print(A.sort_values("ty_trong_max", ascending=False).head(5))   # phép 3: một khách chiếm bao nhiêu % tổng nhóm'''),
+        P("Ghi lại: phường nào dưới ngưỡng, ở những tháng nào; phường nào có một khách hàng chiếm tỷ trọng cao bất thường. Sau đó thử cách hay dùng – gộp phường nhỏ vào phường lân cận **Đông Hòa**. Sửa chữ Tên phường nhỏ thành tên phường bạn vừa tìm được, rồi chạy lại:"),
+        CODE('''GOP = {"Tên phường nhỏ": "Đông Hòa"}           # sửa tên phường cho đúng kết quả ở trên
+gop = df.copy()
+gop["phuong"] = gop["phuong"].replace(GOP)
+D = tong_hop(gop)
+print(D[D["thang"] == "2026-09"].sort_values("ty_trong_max", ascending=False))'''),
+        P("Gộp xong, nhóm mới đã qua ngưỡng chưa? Trong nhóm mới, khách hàng lớn nhất chiếm bao nhiêu phần trăm tổng? Người biết mức tiêu thụ bình thường của Đông Hòa có ước được số của khách đó không?", callout="question"),
+        H4("Bước 6 – Kiểm tra ngoại lai"),
+        CODE('''sh = df[(df["thang"] == "2026-09") & (df["loai_kh"] == "Sinh hoạt")]
+print(sh.groupby("phuong")["kwh"].agg(["mean", "max"]).round(0))   # trung bình và lớn nhất của hộ sinh hoạt'''),
+        P("Phường nào có hộ sinh hoạt dùng điện vượt xa trung bình? Trong bản tổng hợp, hộ đó có lộ ra không? Còn trong bản che từng dòng thì sao?", callout="question"),
+        H4("Bước 7 – Phương án 2: chỉ tổng hợp nhóm Sinh hoạt và Kinh doanh"),
+        CODE('''pa2 = df[df["loai_kh"].isin(["Sinh hoạt", "Kinh doanh"])]
+F = tong_hop(pa2)
+print("Nhóm nhỏ nhất:", F["so_kh"].min(), "khách hàng")
+print("Tỷ trọng lớn nhất:", F["ty_trong_max"].max(), "%")'''),
+        P("So với ngưỡng 10 và với kết quả bước 5: phương án này đạt chưa? Khách hàng loại khác bị tách ra không có trong bản này – ghi vào đề xuất để anh Minh dự báo riêng phần đó, đừng để dự báo bị thiếu mà không ai biết."),
+        H4("Bước 8 – Kiểm tra bản che bằng bốn phép"),
+        CODE('''print(che.groupby(["phuong", "loai_kh"])["ma_kh"].nunique().sort_values().head(3))  # nhóm nhỏ trong bản che
+print(che.sort_values("kwh", ascending=False).head(3))                               # dòng nổi bật
+mot_ma = che["ma_kh"].iloc[0]
+print(che[che["ma_kh"] == mot_ma][["ma_kh", "thang", "kwh"]])                        # theo dõi một hộ qua 3 tháng'''),
+        P("Bản che có qua được phép nhóm nhỏ, ngoại lai không? Mã thay thế cố định có cho phép theo dõi từng hộ qua các tháng không? Phép trừ: nếu anh Minh có cả bản tổng hợp thô (bước 4) và bản phương án 2 (bước 7), lấy bản này trừ bản kia thì ra số của ai?", callout="question"),
+        H4("Bước 9 – So sánh và chọn phương án xử lý"),
+        P("Đến đây bạn có bốn cách làm bản tổng hợp: A (thô), D (gộp Cảng Mới vào Đông Hòa), F (phương án 2) và một cách nữa hay gặp – B: bỏ hẳn các nhóm dưới ngưỡng, giống HAVING trong SQL. Đặt cả bốn cạnh nhau theo cùng ba con số rồi mới chọn:"),
+        CODE('''B = A[A["so_kh"] >= NGUONG]                   # phương án B: bỏ nhóm dưới ngưỡng
+tong = df["kwh"].sum()                         # tổng sản lượng quý III của file đủ cột
+for ten, bang in [("A thô", A), ("B bỏ nhóm nhỏ", B), ("D gộp", D), ("F phương án 2", F)]:
+    print(ten.ljust(15),
+          "nhóm nhỏ nhất:", bang["so_kh"].min(),
+          "| tỷ trọng lớn nhất:", bang["ty_trong_max"].max(), "%",
+          "| giữ:", round(bang["tong_kwh"].sum() / tong * 100, 1), "% sản lượng")'''),
+        EXPECT("4 dòng. A: 1 – 100,0% – 100,0%. B: 121 – 5,2% – 86,6%. D: 121 – 49,5% – 100,0% (49,5% là tháng 2026-08; riêng tháng 2026-09 là 46,3%). F: 121 – 5,2% – 86,6%."),
+        T(["Con số", "Đạt khi", "Không đạt thì"],
+          ["Nhóm nhỏ nhất", "Từ ngưỡng 10 khách hàng trở lên", "Dòng tổng hợp chính là số của một vài người"],
+          ["Tỷ trọng lớn nhất", "Không ai chiếm phần lớn tổng nhóm – ngang mức các phường khác (vài %)", "Ai biết mức bình thường của phường sẽ ước được số của khách lớn"],
+          ["Giữ % sản lượng", "100%, hoặc phần bị tách ra được ghi trong đề xuất và có cách dự báo riêng", "Dự báo thiếu mà không ai biết"]),
+        P("B và F ra cùng con số. Vậy khác nhau ở đâu? Phần sản lượng bị bỏ (100% − 86,6%) là của ai, anh Minh có biết không? Tháng sau một phường có thêm khách hàng sản xuất thì cách nào vẫn cho kết quả đúng?", callout="question"),
+        P("Ghi số liệu và lựa chọn vào bảng **Chọn phương án xử lý dữ liệu** của bài nộp: mỗi phương án một dòng, chọn hay không và vì sao. Làm bằng Excel: mỗi phương án là một PivotTable (lọc loai_kh, hoặc sửa phuong Cảng Mới thành Đông Hòa trên bản sao); lấy Count of ma_kh nhỏ nhất, Max of kwh chia Sum of kwh lớn nhất, Sum of kwh so với tổng của file."),
+        H4("Bước 10 – Lưu bản đề xuất giao và đọc lại để kiểm tra"),
+        CODE('''giao = F[["phuong", "thang", "so_kh", "tong_kwh"]]   # bỏ kwh_max, ty_trong_max: đó là số của đúng một khách hàng
+giao.to_csv("DLX_TongHop_PA2.csv", index=False, encoding="utf-8-sig")
+
+kt = pd.read_csv("DLX_TongHop_PA2.csv", encoding="utf-8-sig")
+print(kt.shape, kt.columns.tolist())
+cam = {"ma_kh", "ho_ten", "dien_thoai", "dia_chi", "so_tien_no", "loai_kh"}
+print("Cột không được có:", cam & set(kt.columns) or "không có – đạt")'''),
+        EXPECT("(15, 4) với 4 cột phuong, thang, so_kh, tong_kwh và dòng “Cột không được có: không có – đạt”. Mở DLX_TongHop_PA2.csv bằng Excel để xem lại lần cuối."),
+        H4("Bước 11 – Hoàn thiện bài"),
+        OL("Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
+           "Ghi kết quả bốn phép kiểm tra cho bản tổng hợp và bản che.",
+           "Điền bảng chọn phương án xử lý (bước 9) và ghi phần sản lượng bị tách ra được báo cho anh Minh thế nào.",
+           "Quyết định bản nào được đưa vào môi trường AI thử nghiệm, bản nào không; cần ai duyệt; cần xác nhận gì về công cụ AI.",
+           "Viết đoạn đề xuất gửi anh Tuấn.",
+           "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv và DLX_BanChe.csv khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Giữ th7.py: tháng sau chỉ cần đổi tên file và chạy lại."),
+    ]
+
+
+def TH7_PHUONG_AN():
+    """Đáp án bảng chọn phương án xử lý (bước 9), hiện khi công bố."""
+    r = {"reveal": "m06-th7"}
+    return [
+        P("Chọn phương án xử lý (bước 9, số của cả quý III):", **r),
+        T(["Phương án", "Nhóm nhỏ nhất", "Tỷ trọng lớn nhất", "Giữ sản lượng", "Chọn?", "Vì sao"],
+          ["A – Tổng hợp thô", "1 KH", "100%", "100%", "Không", "Dòng Cảng Mới là sản lượng của đúng một xưởng"],
+          ["B – Bỏ nhóm dưới 10", "121 KH", "5,2%", "86,6%", "Không", "Số đạt nhưng mất xưởng Cảng Mới (13,4% sản lượng) mà không ai biết; tháng sau có thêm nhóm nhỏ là mất tiếp"],
+          ["D – Gộp Cảng Mới vào Đông Hòa", "121 KH", "49,5%", "100%", "Không", "Qua ngưỡng nhóm nhưng xưởng chiếm gần nửa tổng – vẫn ước được số của xưởng"],
+          ["F – Phương án 2", "121 KH", "5,2%", "86,6%", "Chọn", "Đạt cả hai phép; phần tách ra là khách hàng sản xuất, ghi trong đề xuất để dự báo riêng theo hợp đồng"],
+          **r),
+        P("Phần không có trong bản giao: khách hàng sản xuất Cảng Mới, 128.185 kWh quý III. Ghi trong đề xuất và báo anh Minh: phần này không nằm trong bản tổng hợp, dự báo riêng theo hợp đồng cung cấp điện.", **r),
+    ]
 
 
 def _fix_text(value, fixes):
@@ -897,35 +1155,53 @@ def _fix_text(value, fixes):
     return value
 
 
+def H4(s):
+    return {"t": "h4", "text": s}
+
+
+def _is_link(b, href):
+    return b.get("html", "").startswith(f'<a href="{href}"')
+
+
+def _replace(blocks, start, stop, new):
+    """Thay các block nằm sau tiêu đề h3 `start` cho tới block đầu tiên thỏa `stop` (giữ cả hai)."""
+    i = next(k for k, b in enumerate(blocks) if b["t"] == "h3" and b["text"] == start)
+    j = next(k for k in range(i + 1, len(blocks)) if stop(blocks[k]))
+    return blocks[:i + 1] + new + blocks[j:]
+
+
 def _th6(blocks):
-    """Bỏ script tạo file; học viên tải file luyện tập, giảng viên giữ số liệu đối chiếu."""
-    if any(b.get("html", "").startswith(f'<a href="{TH6_FILE}"') for b in blocks):
-        return blocks
+    """Bỏ script tạo file; học viên tải file luyện tập, giảng viên giữ số liệu đối chiếu; nhiệm vụ viết thành từng bước."""
     out = []
     for b in blocks:
         p = b.get("plain", "")
-        if b.get("teacher") and (b["t"] == "code" or p.startswith(("Có thể tạo file", "Kết quả khi chạy", "Trước buổi học"))):
+        if _is_link(b, TH6_FILE) or b.get("teacher") and (
+                b["t"] == "code" or p.startswith(("Có thể tạo file", "Kết quả khi chạy", "Trước buổi học", "Số liệu để đối chiếu"))):
             continue
         out.append(b)
         if b["t"] == "table" and b.get("teacher"):
-            out += [P("Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password; cài 7-Zip nếu muốn cho học viên thử nén mã hóa.", teacher=True),
+            out += [P("Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password. Nếu cho học viên làm Cách 2 ở bước 4, cài sẵn Python và chạy py -m pip install msoffcrypto-tool trên máy lớp.", teacher=True),
                     P("Số liệu để đối chiếu khi chữa bài: 400 hộ, 106 hộ còn nợ. TongHop: Phường Bắc 89 hộ / 40.707 kWh; Phường Nam 100 / 47.559; Xã Đông 94 / 42.083; Xã Tây 117 / 55.170.", teacher=True)]
     at = next(i for i, b in enumerate(out) if b["t"] == "list") + 1
     out.insert(at, LINK(TH6_FILE, "Tải file luyện tập BaoCao_Thang.xlsx", " (dữ liệu giả lập, mở bằng Excel)."))
-    return out
+    out = _replace(out, "Nhiệm vụ – Phần A", lambda b: b.get("plain", "").startswith("Đầu ra Phần A"), TH6_A())
+    return _replace(out, "Nhiệm vụ – Phần B (làm như chị Dung)", lambda b: b["t"] == "h3", TH6_B())
 
 
 def _th7(blocks):
-    """Bỏ ba script của giảng viên; thay bằng file CSV tải sẵn và bảng kết quả kiểm tra để chữa bài."""
-    if any(b.get("html", "").startswith(f'<a href="{TH7_FILE}"') for b in blocks):
-        return blocks
-    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả")
+    """Bỏ ba script của giảng viên; thay bằng file CSV tải sẵn, bảng kết quả kiểm tra và hướng dẫn Python từng bước."""
+    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả", "File DLX_SanLuong_Q3.csv được tạo sẵn", "Bước 9 (so sánh")
     out = []
     for b in blocks:
         p = b.get("plain", "")
-        if b.get("teacher") and (b["t"] == "code" or p.startswith(drop)):
+        if _is_link(b, TH7_FILE) or b.get("teacher") and (
+                b["t"] == "code" or p.startswith(drop) or b["t"] == "table" and b["rows"][0][0]["plain"] == "Bước"):
+            continue
+        if b.get("reveal") and (p.startswith(("Chọn phương án xử lý", "Phần không có trong bản giao")) or b["t"] == "table" and b["rows"][0][0]["plain"] == "Phương án"):
             continue
         out.append(b)
+        if b.get("reveal") and b["t"] == "table" and [c["plain"] for c in b["rows"][0][:2]] == ["Bản", "Đưa vào AI thử nghiệm?"]:
+            out += TH7_PHUONG_AN()
         if b["t"] == "h3" and b.get("teacher"):
             out += [
                 P("File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):", teacher=True),
@@ -937,10 +1213,12 @@ def _th7(blocks):
                   ["E", "Tỷ trọng khách hàng lớn nhất trong nhóm", "Đông Hòa và Cảng Mới 46,3%; các phường khác 3,6–5,2%"],
                   ["F", "Phương án 2: chỉ Sinh hoạt và Kinh doanh", "Mọi phường từ 121 KH, không ai quá 5,2% – đạt"],
                   ["Bản che", "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế HMAC", "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng"],
-                  teacher=True)]
+                  teacher=True),
+                P("Bước 9 (so sánh 4 phương án, cả quý): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,6%; D 121 – 49,5% (tháng 8) – 100%; F 121 – 5,2% – 86,6%. Phần 13,4% bị tách là xưởng Cảng Mới (128.185 kWh). B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.", teacher=True),
+                P("Kết quả học viên chạy mã ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: bỏ dtype ở bước 1 (mất số 0 đầu số điện thoại); đếm count thay vì nunique; quên lọc tháng 2026-09 khi so sánh. Mã thay thế ở bước 3 khác nhau giữa các học viên vì mỗi người dùng một khóa – đúng như mong đợi.", teacher=True)]
     at = next(i for i, b in enumerate(out) if b.get("plain", "").startswith("Dữ liệu để làm bài")) + 1
     out.insert(at, LINK(TH7_FILE, "Tải file luyện tập DLX_SanLuong_Q3.csv", " (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV)."))
-    return out
+    return _replace(out, "Nhiệm vụ", lambda b: b.get("plain", "").startswith("Bài cần nộp"), TH7_STEPS())
 
 
 def apply(module):

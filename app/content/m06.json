@@ -2086,6 +2086,18 @@
     },
     {
      "t": "p",
+     "plain": "Bước 9 (so sánh 4 phương án, cả quý): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,6%; D 121 – 49,5% (tháng 8) – 100%; F 121 – 5,2% – 86,6%. Phần 13,4% bị tách là xưởng Cảng Mới (128.185 kWh). B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.",
+     "html": "Bước 9 (so sánh 4 phương án, cả quý): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,6%; D 121 – 49,5% (tháng 8) – 100%; F 121 – 5,2% – 86,6%. Phần 13,4% bị tách là xưởng Cảng Mới (128.185 kWh). B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.",
+     "teacher": true
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả học viên chạy mã ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: bỏ dtype ở bước 1 (mất số 0 đầu số điện thoại); đếm count thay vì nunique; quên lọc tháng 2026-09 khi so sánh. Mã thay thế ở bước 3 khác nhau giữa các học viên vì mỗi người dùng một khóa – đúng như mong đợi.",
+     "html": "Kết quả học viên chạy mã ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: bỏ dtype ở bước 1 (mất số 0 đầu số điện thoại); đếm count thay vì nunique; quên lọc tháng 2026-09 khi so sánh. Mã thay thế ở bước 3 khác nhau giữa các học viên vì mỗi người dùng một khóa – đúng như mong đợi.",
+     "teacher": true
+    },
+    {
+     "t": "p",
      "html": "<strong>Nhóm không lập trình</strong> làm bằng Excel: Data → From Text/CSV → chọn file → Load. Insert → PivotTable: Rows = phuong, Columns = thang, Values = Count of ma_kh và Sum of kwh; thêm Filter loai_kh. Thêm một giá trị Max of kwh để kiểm tra ngoại lai và áp đảo. Kết quả chép sang file mới bằng Paste Values. Bản che dùng các công thức ở mục 2.4.",
      "plain": "Nhóm không lập trình làm bằng Excel: Data → From Text/CSV → chọn file → Load. Insert → PivotTable: Rows = phuong, Columns = thang, Values = Count of ma_kh và Sum of kwh; thêm Filter loai_kh. Thêm một giá trị Max of kwh để kiểm tra ngoại lai và áp đảo. Kết quả chép sang file mới bằng Paste Values. Bản che dùng các công thức ở mục 2.4.",
      "teacher": true
@@ -2095,45 +2107,332 @@
      "text": "Nhiệm vụ"
     },
     {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 232\" role=\"img\" aria-label=\"Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"th7-flow-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"th7-flow-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"th7-flow-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"th7-flow-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"th7-flow-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"82\" width=\"150\" height=\"68\" rx=\"8\" class=\"box\"/><text x=\"85.0\" y=\"112.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_SanLuong_Q3.csv</text><text x=\"85.0\" y=\"128.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">2.211 dòng × 9 cột</text><rect x=\"222\" y=\"14\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-warn\"/><text x=\"329.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 3: bản che</text><text x=\"329.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bỏ tên, địa chỉ, số nợ;</text><text x=\"329.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">che SĐT; mã thay thế HMAC</text><rect x=\"222\" y=\"146\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-brand\"/><text x=\"329.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 4–8: tổng hợp</text><text x=\"329.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">phường × tháng;</text><text x=\"329.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bốn phép kiểm tra</text><rect x=\"492\" y=\"14\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-bad\"/><text x=\"601.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_BanChe.csv</text><text x=\"601.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">vẫn là dữ liệu cá nhân</text><text x=\"601.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">không giao</text><rect x=\"492\" y=\"146\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-ok\"/><text x=\"601.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_TongHop_PA2.csv</text><text x=\"601.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">chỉ số đếm và tổng</text><text x=\"601.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">giao sau khi được duyệt</text><line x1=\"160\" y1=\"108\" x2=\"220\" y2=\"54\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"160\" y1=\"124\" x2=\"220\" y2=\"180\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"436\" y1=\"50\" x2=\"490\" y2=\"50\" class=\"l-bad\" marker-end=\"url(#th7-flow-bad)\"/><line x1=\"436\" y1=\"182\" x2=\"490\" y2=\"182\" class=\"l-ok\" marker-end=\"url(#th7-flow-ok)\"/></svg>",
+     "caption": "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao.",
+     "plain": "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao."
+    },
+    {
+     "t": "h4",
+     "text": "Bước 0 – Chuẩn bị máy (5 phút)"
+    },
+    {
      "t": "list",
      "ordered": true,
      "items": [
       {
-       "html": "<strong>Phân loại cột:</strong> xếp 9 cột của file vào 4 loại; ghi anh Minh cần hay không.",
-       "level": 0,
-       "plain": "Phân loại cột: xếp 9 cột của file vào 4 loại; ghi anh Minh cần hay không."
+       "plain": "Mở Command Prompt (Windows + R → gõ cmd → Enter), gõ python --version. Cần Python 3.10 trở lên. Chưa có Python: máy cơ quan thì nhờ CNTT cài; máy riêng thì tải từ python.org, khi cài nhớ đánh dấu Add python.exe to PATH.",
+       "html": "Mở Command Prompt (<strong>Windows + R</strong> → gõ cmd → Enter), gõ <strong>python --version</strong>. Cần Python 3.10 trở lên. Chưa có Python: máy cơ quan thì nhờ CNTT cài; máy riêng thì tải từ python.org, khi cài nhớ đánh dấu <strong>Add python.exe to PATH</strong>.",
+       "level": 0
       },
       {
-       "html": "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4).",
-       "level": 0,
-       "plain": "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4)."
+       "plain": "Cài thư viện pandas, chỉ cần làm một lần: pip install pandas (báo không nhận lệnh pip thì dùng py -m pip install pandas).",
+       "html": "Cài thư viện pandas, chỉ cần làm một lần: <strong>pip install pandas</strong> (báo không nhận lệnh pip thì dùng <strong>py -m pip install pandas</strong>).",
+       "level": 0
       },
       {
-       "html": "Tạo bản che từng dòng bằng công thức Excel (mục 2.4).",
-       "level": 0,
-       "plain": "Tạo bản che từng dòng bằng công thức Excel (mục 2.4)."
+       "plain": "Tạo thư mục TH7, lưu file DLX_SanLuong_Q3.csv vào đó.",
+       "html": "Tạo thư mục <strong>TH7</strong>, lưu file DLX_SanLuong_Q3.csv vào đó.",
+       "level": 0
       },
       {
-       "html": "<strong>Kiểm tra nhận diện</strong> cả hai bản bằng bốn phép ở mục 1.6: nhóm nhỏ, ngoại lai, áp đảo, phép trừ giữa các bảng.",
-       "level": 0,
-       "plain": "Kiểm tra nhận diện cả hai bản bằng bốn phép ở mục 1.6: nhóm nhỏ, ngoại lai, áp đảo, phép trừ giữa các bảng."
+       "plain": "Mở Notepad, File → Save As → thư mục TH7, Save as type: All files, tên th7.py, Encoding: UTF-8.",
+       "html": "Mở Notepad, <strong>File → Save As</strong> → thư mục TH7, Save as type: <strong>All files</strong>, tên <strong>th7.py</strong>, Encoding: <strong>UTF-8</strong>.",
+       "level": 0
       },
       {
-       "html": "<strong>Lập bảng so sánh đầu vào – đầu ra:</strong> cột nào bỏ, giữ, biến đổi, vì sao.",
-       "level": 0,
-       "plain": "Lập bảng so sánh đầu vào – đầu ra: cột nào bỏ, giữ, biến đổi, vì sao."
-      },
-      {
-       "html": "<strong>Quyết định:</strong> bản nào được đưa vào môi trường AI thử nghiệm, bản nào không, cần ai duyệt, cần xác nhận gì về công cụ AI.",
-       "level": 0,
-       "plain": "Quyết định: bản nào được đưa vào môi trường AI thử nghiệm, bản nào không, cần ai duyệt, cần xác nhận gì về công cụ AI."
+       "plain": "Trong Command Prompt: cd /d rồi dán đường dẫn thư mục TH7.",
+       "html": "Trong Command Prompt: <strong>cd /d</strong> rồi dán đường dẫn thư mục TH7.",
+       "level": 0
       }
      ]
     },
     {
      "t": "p",
-     "html": "<strong>Bài cần nộp:</strong> (1) bảng phân loại cột; (2) bản tổng hợp đề xuất giao; (3) bảng so sánh đầu vào – đầu ra; (4) kết quả bốn phép kiểm tra; (5) đoạn đề xuất gửi anh Tuấn.",
-     "plain": "Bài cần nộp: (1) bảng phân loại cột; (2) bản tổng hợp đề xuất giao; (3) bảng so sánh đầu vào – đầu ra; (4) kết quả bốn phép kiểm tra; (5) đoạn đề xuất gửi anh Tuấn."
+     "plain": "Cách làm ở mỗi bước dưới đây: chép đoạn mã nối vào cuối th7.py → Ctrl+S → chạy python th7.py trong Command Prompt → so với phần kết quả mong đợi rồi mới sang bước sau. Dòng bắt đầu bằng # là chú thích, không cần chép.",
+     "html": "Cách làm ở mỗi bước dưới đây: chép đoạn mã <strong>nối vào cuối</strong> th7.py → Ctrl+S → chạy <strong>python th7.py</strong> trong Command Prompt → so với phần kết quả mong đợi rồi mới sang bước sau. Dòng bắt đầu bằng # là chú thích, không cần chép."
+    },
+    {
+     "t": "p",
+     "plain": "Máy không cài được Python: làm bước 4–9 bằng PivotTable như mục 2.4 và ghi rõ trong bài là bạn dùng Excel.",
+     "html": "Máy không cài được Python: làm bước 4–9 bằng PivotTable như mục 2.4 và ghi rõ trong bài là bạn dùng Excel.",
+     "callout": "note"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 1 – Đọc file, xem các cột"
+    },
+    {
+     "t": "code",
+     "text": "import pandas as pd\n\ndf = pd.read_csv(\"DLX_SanLuong_Q3.csv\", encoding=\"utf-8-sig\",\n                 dtype={\"dien_thoai\": str})   # đọc số điện thoại dạng chữ để giữ số 0 đầu\nprint(df.shape)                               # (số dòng, số cột)\nprint(df.columns.tolist())"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: (2211, 9) và danh sách 9 cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. Báo lỗi FileNotFoundError là Command Prompt chưa đứng ở thư mục TH7.",
+     "html": "<strong>Kết quả mong đợi:</strong> (2211, 9) và danh sách 9 cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. Báo lỗi FileNotFoundError là Command Prompt chưa đứng ở thư mục TH7.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 2 – Phân loại cột (không cần mã)"
+    },
+    {
+     "t": "p",
+     "plain": "Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp.",
+     "html": "Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."
+    },
+    {
+     "t": "h4",
+     "text": "Bước 3 – Tạo bản che từng dòng (masking và giả danh hóa)"
+    },
+    {
+     "t": "p",
+     "plain": "Bản che giữ từng dòng nhưng bỏ hẳn cột không cần, che số điện thoại và thay mã khách hàng bằng mã thay thế. Bạn tạo bản này để kiểm tra nó an toàn đến đâu ở bước 8, không phải để giao.",
+     "html": "Bản che giữ từng dòng nhưng bỏ hẳn cột không cần, che số điện thoại và thay mã khách hàng bằng mã thay thế. Bạn tạo bản này để <strong>kiểm tra</strong> nó an toàn đến đâu ở bước 8, không phải để giao."
+    },
+    {
+     "t": "code",
+     "text": "import hashlib, hmac, os\nfrom getpass import getpass\n\n# Khóa bí mật không ghi trong code. Ở lớp: gõ một cụm từ dài khi được hỏi, nhớ để lần sau gõ lại đúng.\nkhoa = (os.environ.get(\"KHOA_GIA_DANH\") or getpass(\"Khóa giả danh: \")).encode()\n\ndef ma_thay_the(ma_kh):\n    \"\"\"Cùng khóa và cùng mã khách hàng → luôn ra cùng một mã thay thế 8 ký tự.\"\"\"\n    return hmac.new(khoa, ma_kh.encode(), hashlib.sha256).hexdigest()[:8]\n\ndef che_sdt(sdt):\n    \"\"\"0900000001 → 090****001; ô trống hoặc số quá ngắn → để trống.\"\"\"\n    if pd.isna(sdt) or len(sdt) < 7:\n        return \"\"\n    return sdt[:3] + \"****\" + sdt[-3:]\n\nche = df.drop(columns=[\"ho_ten\", \"dia_chi\", \"so_tien_no\"])   # bỏ hẳn cột, không chỉ ẩn\nche[\"ma_kh\"] = che[\"ma_kh\"].map(ma_thay_the)\nche[\"dien_thoai\"] = che[\"dien_thoai\"].map(che_sdt)\nche.to_csv(\"DLX_BanChe.csv\", index=False, encoding=\"utf-8-sig\")\nprint(che.head(3))"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: 3 dòng đầu có dien_thoai dạng 090001, ma_kh là 8 ký tự gồm chữ a–f và số; cả 3 dòng (3 tháng của cùng một khách hàng) có cùng mã thay thế. Mã của bạn khác mã của bạn bên cạnh vì mỗi người dùng một khóa. File DLX_BanChe.csv mở bằng Excel có 6 cột.",
+     "html": "<strong>Kết quả mong đợi:</strong> 3 dòng đầu có dien_thoai dạng 090****001, ma_kh là 8 ký tự gồm chữ a–f và số; cả 3 dòng (3 tháng của cùng một khách hàng) có cùng mã thay thế. Mã của bạn khác mã của bạn bên cạnh vì mỗi người dùng một khóa. File DLX_BanChe.csv mở bằng Excel có 6 cột.",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "plain": "Thử chạy lại và gõ một khóa khác: mã thay thế đổi hết. Vì vậy khóa phải giữ cố định và bí mật – ai có khóa và danh sách mã khách hàng là nối ngược lại được (mục 2.3).",
+     "html": "Thử chạy lại và gõ một khóa khác: mã thay thế đổi hết. Vì vậy khóa phải giữ cố định và bí mật – ai có khóa và danh sách mã khách hàng là nối ngược lại được (mục 2.3).",
+     "callout": "question"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 4 – Tổng hợp theo phường × tháng"
+    },
+    {
+     "t": "code",
+     "text": "def tong_hop(bang):\n    \"\"\"Mỗi phường – tháng: số khách hàng, tổng kWh, kWh của khách lớn nhất và tỷ trọng của khách đó (%).\"\"\"\n    th = (bang.groupby([\"phuong\", \"thang\"])\n              .agg(so_kh=(\"ma_kh\", \"nunique\"), tong_kwh=(\"kwh\", \"sum\"), kwh_max=(\"kwh\", \"max\"))\n              .reset_index())\n    th[\"ty_trong_max\"] = (th[\"kwh_max\"] / th[\"tong_kwh\"] * 100).round(1)\n    return th\n\nA = tong_hop(df)\nprint(A[A[\"thang\"] == \"2026-09\"].sort_values(\"so_kh\"))"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: 6 dòng của tháng 2026-09, xếp từ phường ít khách hàng nhất. Để tự kiểm tra: dòng An Phú có tong_kwh = 64263. Ra số khác thì xem lại bước 1.",
+     "html": "<strong>Kết quả mong đợi:</strong> 6 dòng của tháng 2026-09, xếp từ phường ít khách hàng nhất. Để tự kiểm tra: dòng An Phú có tong_kwh = 64263. Ra số khác thì xem lại bước 1.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 5 – Kiểm tra nhóm nhỏ và áp đảo, thử gộp nhóm"
+    },
+    {
+     "t": "code",
+     "text": "NGUONG = 10                                   # ngưỡng nhóm tối thiểu dùng trong lớp\nprint(A[A[\"so_kh\"] < NGUONG])                 # phép 1: nhóm nhỏ\nprint(A.sort_values(\"ty_trong_max\", ascending=False).head(5))   # phép 3: một khách chiếm bao nhiêu % tổng nhóm"
+    },
+    {
+     "t": "p",
+     "plain": "Ghi lại: phường nào dưới ngưỡng, ở những tháng nào; phường nào có một khách hàng chiếm tỷ trọng cao bất thường. Sau đó thử cách hay dùng – gộp phường nhỏ vào phường lân cận Đông Hòa. Sửa chữ Tên phường nhỏ thành tên phường bạn vừa tìm được, rồi chạy lại:",
+     "html": "Ghi lại: phường nào dưới ngưỡng, ở những tháng nào; phường nào có một khách hàng chiếm tỷ trọng cao bất thường. Sau đó thử cách hay dùng – gộp phường nhỏ vào phường lân cận <strong>Đông Hòa</strong>. Sửa chữ Tên phường nhỏ thành tên phường bạn vừa tìm được, rồi chạy lại:"
+    },
+    {
+     "t": "code",
+     "text": "GOP = {\"Tên phường nhỏ\": \"Đông Hòa\"}           # sửa tên phường cho đúng kết quả ở trên\ngop = df.copy()\ngop[\"phuong\"] = gop[\"phuong\"].replace(GOP)\nD = tong_hop(gop)\nprint(D[D[\"thang\"] == \"2026-09\"].sort_values(\"ty_trong_max\", ascending=False))"
+    },
+    {
+     "t": "p",
+     "plain": "Gộp xong, nhóm mới đã qua ngưỡng chưa? Trong nhóm mới, khách hàng lớn nhất chiếm bao nhiêu phần trăm tổng? Người biết mức tiêu thụ bình thường của Đông Hòa có ước được số của khách đó không?",
+     "html": "Gộp xong, nhóm mới đã qua ngưỡng chưa? Trong nhóm mới, khách hàng lớn nhất chiếm bao nhiêu phần trăm tổng? Người biết mức tiêu thụ bình thường của Đông Hòa có ước được số của khách đó không?",
+     "callout": "question"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 6 – Kiểm tra ngoại lai"
+    },
+    {
+     "t": "code",
+     "text": "sh = df[(df[\"thang\"] == \"2026-09\") & (df[\"loai_kh\"] == \"Sinh hoạt\")]\nprint(sh.groupby(\"phuong\")[\"kwh\"].agg([\"mean\", \"max\"]).round(0))   # trung bình và lớn nhất của hộ sinh hoạt"
+    },
+    {
+     "t": "p",
+     "plain": "Phường nào có hộ sinh hoạt dùng điện vượt xa trung bình? Trong bản tổng hợp, hộ đó có lộ ra không? Còn trong bản che từng dòng thì sao?",
+     "html": "Phường nào có hộ sinh hoạt dùng điện vượt xa trung bình? Trong bản tổng hợp, hộ đó có lộ ra không? Còn trong bản che từng dòng thì sao?",
+     "callout": "question"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 7 – Phương án 2: chỉ tổng hợp nhóm Sinh hoạt và Kinh doanh"
+    },
+    {
+     "t": "code",
+     "text": "pa2 = df[df[\"loai_kh\"].isin([\"Sinh hoạt\", \"Kinh doanh\"])]\nF = tong_hop(pa2)\nprint(\"Nhóm nhỏ nhất:\", F[\"so_kh\"].min(), \"khách hàng\")\nprint(\"Tỷ trọng lớn nhất:\", F[\"ty_trong_max\"].max(), \"%\")"
+    },
+    {
+     "t": "p",
+     "plain": "So với ngưỡng 10 và với kết quả bước 5: phương án này đạt chưa? Khách hàng loại khác bị tách ra không có trong bản này – ghi vào đề xuất để anh Minh dự báo riêng phần đó, đừng để dự báo bị thiếu mà không ai biết.",
+     "html": "So với ngưỡng 10 và với kết quả bước 5: phương án này đạt chưa? Khách hàng loại khác bị tách ra không có trong bản này – ghi vào đề xuất để anh Minh dự báo riêng phần đó, đừng để dự báo bị thiếu mà không ai biết."
+    },
+    {
+     "t": "h4",
+     "text": "Bước 8 – Kiểm tra bản che bằng bốn phép"
+    },
+    {
+     "t": "code",
+     "text": "print(che.groupby([\"phuong\", \"loai_kh\"])[\"ma_kh\"].nunique().sort_values().head(3))  # nhóm nhỏ trong bản che\nprint(che.sort_values(\"kwh\", ascending=False).head(3))                               # dòng nổi bật\nmot_ma = che[\"ma_kh\"].iloc[0]\nprint(che[che[\"ma_kh\"] == mot_ma][[\"ma_kh\", \"thang\", \"kwh\"]])                        # theo dõi một hộ qua 3 tháng"
+    },
+    {
+     "t": "p",
+     "plain": "Bản che có qua được phép nhóm nhỏ, ngoại lai không? Mã thay thế cố định có cho phép theo dõi từng hộ qua các tháng không? Phép trừ: nếu anh Minh có cả bản tổng hợp thô (bước 4) và bản phương án 2 (bước 7), lấy bản này trừ bản kia thì ra số của ai?",
+     "html": "Bản che có qua được phép nhóm nhỏ, ngoại lai không? Mã thay thế cố định có cho phép theo dõi từng hộ qua các tháng không? Phép trừ: nếu anh Minh có cả bản tổng hợp thô (bước 4) và bản phương án 2 (bước 7), lấy bản này trừ bản kia thì ra số của ai?",
+     "callout": "question"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 9 – So sánh và chọn phương án xử lý"
+    },
+    {
+     "t": "p",
+     "plain": "Đến đây bạn có bốn cách làm bản tổng hợp: A (thô), D (gộp Cảng Mới vào Đông Hòa), F (phương án 2) và một cách nữa hay gặp – B: bỏ hẳn các nhóm dưới ngưỡng, giống HAVING trong SQL. Đặt cả bốn cạnh nhau theo cùng ba con số rồi mới chọn:",
+     "html": "Đến đây bạn có bốn cách làm bản tổng hợp: A (thô), D (gộp Cảng Mới vào Đông Hòa), F (phương án 2) và một cách nữa hay gặp – B: bỏ hẳn các nhóm dưới ngưỡng, giống HAVING trong SQL. Đặt cả bốn cạnh nhau theo cùng ba con số rồi mới chọn:"
+    },
+    {
+     "t": "code",
+     "text": "B = A[A[\"so_kh\"] >= NGUONG]                   # phương án B: bỏ nhóm dưới ngưỡng\ntong = df[\"kwh\"].sum()                         # tổng sản lượng quý III của file đủ cột\nfor ten, bang in [(\"A thô\", A), (\"B bỏ nhóm nhỏ\", B), (\"D gộp\", D), (\"F phương án 2\", F)]:\n    print(ten.ljust(15),\n          \"nhóm nhỏ nhất:\", bang[\"so_kh\"].min(),\n          \"| tỷ trọng lớn nhất:\", bang[\"ty_trong_max\"].max(), \"%\",\n          \"| giữ:\", round(bang[\"tong_kwh\"].sum() / tong * 100, 1), \"% sản lượng\")"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: 4 dòng. A: 1 – 100,0% – 100,0%. B: 121 – 5,2% – 86,6%. D: 121 – 49,5% – 100,0% (49,5% là tháng 2026-08; riêng tháng 2026-09 là 46,3%). F: 121 – 5,2% – 86,6%.",
+     "html": "<strong>Kết quả mong đợi:</strong> 4 dòng. A: 1 – 100,0% – 100,0%. B: 121 – 5,2% – 86,6%. D: 121 – 49,5% – 100,0% (49,5% là tháng 2026-08; riêng tháng 2026-09 là 46,3%). F: 121 – 5,2% – 86,6%.",
+     "callout": "apply"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Con số",
+        "html": "Con số"
+       },
+       {
+        "plain": "Đạt khi",
+        "html": "Đạt khi"
+       },
+       {
+        "plain": "Không đạt thì",
+        "html": "Không đạt thì"
+       }
+      ],
+      [
+       {
+        "plain": "Nhóm nhỏ nhất",
+        "html": "Nhóm nhỏ nhất"
+       },
+       {
+        "plain": "Từ ngưỡng 10 khách hàng trở lên",
+        "html": "Từ ngưỡng 10 khách hàng trở lên"
+       },
+       {
+        "plain": "Dòng tổng hợp chính là số của một vài người",
+        "html": "Dòng tổng hợp chính là số của một vài người"
+       }
+      ],
+      [
+       {
+        "plain": "Tỷ trọng lớn nhất",
+        "html": "Tỷ trọng lớn nhất"
+       },
+       {
+        "plain": "Không ai chiếm phần lớn tổng nhóm – ngang mức các phường khác (vài %)",
+        "html": "Không ai chiếm phần lớn tổng nhóm – ngang mức các phường khác (vài %)"
+       },
+       {
+        "plain": "Ai biết mức bình thường của phường sẽ ước được số của khách lớn",
+        "html": "Ai biết mức bình thường của phường sẽ ước được số của khách lớn"
+       }
+      ],
+      [
+       {
+        "plain": "Giữ % sản lượng",
+        "html": "Giữ % sản lượng"
+       },
+       {
+        "plain": "100%, hoặc phần bị tách ra được ghi trong đề xuất và có cách dự báo riêng",
+        "html": "100%, hoặc phần bị tách ra được ghi trong đề xuất và có cách dự báo riêng"
+       },
+       {
+        "plain": "Dự báo thiếu mà không ai biết",
+        "html": "Dự báo thiếu mà không ai biết"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "B và F ra cùng con số. Vậy khác nhau ở đâu? Phần sản lượng bị bỏ (100% − 86,6%) là của ai, anh Minh có biết không? Tháng sau một phường có thêm khách hàng sản xuất thì cách nào vẫn cho kết quả đúng?",
+     "html": "B và F ra cùng con số. Vậy khác nhau ở đâu? Phần sản lượng bị bỏ (100% − 86,6%) là của ai, anh Minh có biết không? Tháng sau một phường có thêm khách hàng sản xuất thì cách nào vẫn cho kết quả đúng?",
+     "callout": "question"
+    },
+    {
+     "t": "p",
+     "plain": "Ghi số liệu và lựa chọn vào bảng Chọn phương án xử lý dữ liệu của bài nộp: mỗi phương án một dòng, chọn hay không và vì sao. Làm bằng Excel: mỗi phương án là một PivotTable (lọc loai_kh, hoặc sửa phuong Cảng Mới thành Đông Hòa trên bản sao); lấy Count of ma_kh nhỏ nhất, Max of kwh chia Sum of kwh lớn nhất, Sum of kwh so với tổng của file.",
+     "html": "Ghi số liệu và lựa chọn vào bảng <strong>Chọn phương án xử lý dữ liệu</strong> của bài nộp: mỗi phương án một dòng, chọn hay không và vì sao. Làm bằng Excel: mỗi phương án là một PivotTable (lọc loai_kh, hoặc sửa phuong Cảng Mới thành Đông Hòa trên bản sao); lấy Count of ma_kh nhỏ nhất, Max of kwh chia Sum of kwh lớn nhất, Sum of kwh so với tổng của file."
+    },
+    {
+     "t": "h4",
+     "text": "Bước 10 – Lưu bản đề xuất giao và đọc lại để kiểm tra"
+    },
+    {
+     "t": "code",
+     "text": "giao = F[[\"phuong\", \"thang\", \"so_kh\", \"tong_kwh\"]]   # bỏ kwh_max, ty_trong_max: đó là số của đúng một khách hàng\ngiao.to_csv(\"DLX_TongHop_PA2.csv\", index=False, encoding=\"utf-8-sig\")\n\nkt = pd.read_csv(\"DLX_TongHop_PA2.csv\", encoding=\"utf-8-sig\")\nprint(kt.shape, kt.columns.tolist())\ncam = {\"ma_kh\", \"ho_ten\", \"dien_thoai\", \"dia_chi\", \"so_tien_no\", \"loai_kh\"}\nprint(\"Cột không được có:\", cam & set(kt.columns) or \"không có – đạt\")"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: (15, 4) với 4 cột phuong, thang, so_kh, tong_kwh và dòng “Cột không được có: không có – đạt”. Mở DLX_TongHop_PA2.csv bằng Excel để xem lại lần cuối.",
+     "html": "<strong>Kết quả mong đợi:</strong> (15, 4) với 4 cột phuong, thang, so_kh, tong_kwh và dòng “Cột không được có: không có – đạt”. Mở DLX_TongHop_PA2.csv bằng Excel để xem lại lần cuối.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 11 – Hoàn thiện bài"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
+       "html": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
+       "level": 0
+      },
+      {
+       "plain": "Ghi kết quả bốn phép kiểm tra cho bản tổng hợp và bản che.",
+       "html": "Ghi kết quả bốn phép kiểm tra cho bản tổng hợp và bản che.",
+       "level": 0
+      },
+      {
+       "plain": "Điền bảng chọn phương án xử lý (bước 9) và ghi phần sản lượng bị tách ra được báo cho anh Minh thế nào.",
+       "html": "Điền bảng chọn phương án xử lý (bước 9) và ghi phần sản lượng bị tách ra được báo cho anh Minh thế nào.",
+       "level": 0
+      },
+      {
+       "plain": "Quyết định bản nào được đưa vào môi trường AI thử nghiệm, bản nào không; cần ai duyệt; cần xác nhận gì về công cụ AI.",
+       "html": "Quyết định bản nào được đưa vào môi trường AI thử nghiệm, bản nào không; cần ai duyệt; cần xác nhận gì về công cụ AI.",
+       "level": 0
+      },
+      {
+       "plain": "Viết đoạn đề xuất gửi anh Tuấn.",
+       "html": "Viết đoạn đề xuất gửi anh Tuấn.",
+       "level": 0
+      },
+      {
+       "plain": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv và DLX_BanChe.csv khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Giữ th7.py: tháng sau chỉ cần đổi tên file và chạy lại.",
+       "html": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv và DLX_BanChe.csv khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Giữ th7.py: tháng sau chỉ cần đổi tên file và chạy lại.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Bài cần nộp:</strong> (1) bảng phân loại cột; (2) bản tổng hợp đề xuất giao; (3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4) kết quả bốn phép kiểm tra; (5) đoạn đề xuất gửi anh Tuấn.",
+     "plain": "Bài cần nộp: (1) bảng phân loại cột; (2) bản tổng hợp đề xuất giao; (3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4) kết quả bốn phép kiểm tra; (5) đoạn đề xuất gửi anh Tuấn."
     },
     {
      "t": "h3",
@@ -2472,6 +2771,154 @@
        }
       ]
      ],
+     "reveal": "m06-th7"
+    },
+    {
+     "t": "p",
+     "plain": "Chọn phương án xử lý (bước 9, số của cả quý III):",
+     "html": "Chọn phương án xử lý (bước 9, số của cả quý III):",
+     "reveal": "m06-th7"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Phương án",
+        "html": "Phương án"
+       },
+       {
+        "plain": "Nhóm nhỏ nhất",
+        "html": "Nhóm nhỏ nhất"
+       },
+       {
+        "plain": "Tỷ trọng lớn nhất",
+        "html": "Tỷ trọng lớn nhất"
+       },
+       {
+        "plain": "Giữ sản lượng",
+        "html": "Giữ sản lượng"
+       },
+       {
+        "plain": "Chọn?",
+        "html": "Chọn?"
+       },
+       {
+        "plain": "Vì sao",
+        "html": "Vì sao"
+       }
+      ],
+      [
+       {
+        "plain": "A – Tổng hợp thô",
+        "html": "A – Tổng hợp thô"
+       },
+       {
+        "plain": "1 KH",
+        "html": "1 KH"
+       },
+       {
+        "plain": "100%",
+        "html": "100%"
+       },
+       {
+        "plain": "100%",
+        "html": "100%"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Dòng Cảng Mới là sản lượng của đúng một xưởng",
+        "html": "Dòng Cảng Mới là sản lượng của đúng một xưởng"
+       }
+      ],
+      [
+       {
+        "plain": "B – Bỏ nhóm dưới 10",
+        "html": "B – Bỏ nhóm dưới 10"
+       },
+       {
+        "plain": "121 KH",
+        "html": "121 KH"
+       },
+       {
+        "plain": "5,2%",
+        "html": "5,2%"
+       },
+       {
+        "plain": "86,6%",
+        "html": "86,6%"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Số đạt nhưng mất xưởng Cảng Mới (13,4% sản lượng) mà không ai biết; tháng sau có thêm nhóm nhỏ là mất tiếp",
+        "html": "Số đạt nhưng mất xưởng Cảng Mới (13,4% sản lượng) mà không ai biết; tháng sau có thêm nhóm nhỏ là mất tiếp"
+       }
+      ],
+      [
+       {
+        "plain": "D – Gộp Cảng Mới vào Đông Hòa",
+        "html": "D – Gộp Cảng Mới vào Đông Hòa"
+       },
+       {
+        "plain": "121 KH",
+        "html": "121 KH"
+       },
+       {
+        "plain": "49,5%",
+        "html": "49,5%"
+       },
+       {
+        "plain": "100%",
+        "html": "100%"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Qua ngưỡng nhóm nhưng xưởng chiếm gần nửa tổng – vẫn ước được số của xưởng",
+        "html": "Qua ngưỡng nhóm nhưng xưởng chiếm gần nửa tổng – vẫn ước được số của xưởng"
+       }
+      ],
+      [
+       {
+        "plain": "F – Phương án 2",
+        "html": "F – Phương án 2"
+       },
+       {
+        "plain": "121 KH",
+        "html": "121 KH"
+       },
+       {
+        "plain": "5,2%",
+        "html": "5,2%"
+       },
+       {
+        "plain": "86,6%",
+        "html": "86,6%"
+       },
+       {
+        "plain": "Chọn",
+        "html": "Chọn"
+       },
+       {
+        "plain": "Đạt cả hai phép; phần tách ra là khách hàng sản xuất, ghi trong đề xuất để dự báo riêng theo hợp đồng",
+        "html": "Đạt cả hai phép; phần tách ra là khách hàng sản xuất, ghi trong đề xuất để dự báo riêng theo hợp đồng"
+       }
+      ]
+     ],
+     "reveal": "m06-th7"
+    },
+    {
+     "t": "p",
+     "plain": "Phần không có trong bản giao: khách hàng sản xuất Cảng Mới, 128.185 kWh quý III. Ghi trong đề xuất và báo anh Minh: phần này không nằm trong bản tổng hợp, dự báo riêng theo hợp đồng cung cấp điện.",
+     "html": "Phần không có trong bản giao: khách hàng sản xuất Cảng Mới, 128.185 kWh quý III. Ghi trong đề xuất và báo anh Minh: phần này không nằm trong bản tổng hợp, dự báo riêng theo hợp đồng cung cấp điện.",
      "reveal": "m06-th7"
     },
     {

@@ -2021,8 +2021,8 @@
     },
     {
      "t": "p",
-     "plain": "Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password; cài 7-Zip nếu muốn cho học viên thử nén mã hóa.",
-     "html": "Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password; cài 7-Zip nếu muốn cho học viên thử nén mã hóa.",
+     "plain": "Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password. Nếu cho học viên làm Cách 2 ở bước 4, cài sẵn Python và chạy py -m pip install msoffcrypto-tool trên máy lớp.",
+     "html": "Trước buổi học: kiểm tra Excel trên máy lớp có mục Encrypt with Password. Nếu cho học viên làm Cách 2 ở bước 4, cài sẵn Python và chạy py -m pip install msoffcrypto-tool trên máy lớp.",
      "teacher": true
     },
     {
@@ -2036,43 +2036,346 @@
      "text": "Nhiệm vụ – Phần A"
     },
     {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 200\" role=\"img\" aria-label=\"Tám bước của Phần A Thực hành 6\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"th6-flow-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"th6-flow-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"th6-flow-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"th6-flow-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"th6-flow-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><polygon points=\"2,8 164,8 178,50.0 164,92 2,92\" class=\"r-warn\"/><text x=\"83.0\" y=\"38.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">1</text><text x=\"83.0\" y=\"54.4\" font-size=\"12.5\" text-anchor=\"middle\">Khảo sát</text><text x=\"83.0\" y=\"70.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">sheet ẩn, cột ẩn</text><polygon points=\"181,8 343,8 357,50.0 343,92 181,92 195,50.0\" class=\"r-brand\"/><text x=\"269.0\" y=\"38.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">2</text><text x=\"269.0\" y=\"54.4\" font-size=\"12.5\" text-anchor=\"middle\">File mới</text><text x=\"269.0\" y=\"70.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">chỉ TongHop, dán giá trị</text><polygon points=\"360,8 522,8 536,50.0 522,92 360,92 374,50.0\" class=\"r-brand\"/><text x=\"448.0\" y=\"38.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">3</text><text x=\"448.0\" y=\"54.4\" font-size=\"12.5\" text-anchor=\"middle\">Dọn file</text><text x=\"448.0\" y=\"70.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">Inspect Document</text><polygon points=\"539,8 701,8 715,50.0 701,92 539,92 553,50.0\" class=\"r-brand\"/><text x=\"627.0\" y=\"38.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">4</text><text x=\"627.0\" y=\"54.4\" font-size=\"12.5\" text-anchor=\"middle\">Mã hóa</text><text x=\"627.0\" y=\"70.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">đặt mật khẩu mở file</text><polygon points=\"2,106 164,106 178,148.0 164,190 2,190\" class=\"r-ok\"/><text x=\"83.0\" y=\"136.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">5</text><text x=\"83.0\" y=\"152.4\" font-size=\"12.5\" text-anchor=\"middle\">Thử mở lại</text><text x=\"83.0\" y=\"168.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">mật khẩu sai → từ chối</text><polygon points=\"181,106 343,106 357,148.0 343,190 181,190 195,148.0\" class=\"r-note\"/><text x=\"269.0\" y=\"136.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">6</text><text x=\"269.0\" y=\"152.4\" font-size=\"12.5\" text-anchor=\"middle\">So sánh</text><text x=\"269.0\" y=\"168.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">với Protect Sheet</text><polygon points=\"360,106 522,106 536,148.0 522,190 360,190 374,148.0\" class=\"r-brand\"/><text x=\"448.0\" y=\"136.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">7</text><text x=\"448.0\" y=\"152.4\" font-size=\"12.5\" text-anchor=\"middle\">Gửi đi</text><text x=\"448.0\" y=\"168.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">mật khẩu kênh khác</text><polygon points=\"539,106 701,106 715,148.0 701,190 539,190 553,148.0\" class=\"r-warn\"/><text x=\"627.0\" y=\"136.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">8</text><text x=\"627.0\" y=\"152.4\" font-size=\"12.5\" text-anchor=\"middle\">Thu hồi</text><text x=\"627.0\" y=\"168.6\" font-size=\"11.5\" text-anchor=\"middle\" class=\"f-mut\">xóa file trung gian</text></svg>",
+     "caption": "Phần A gồm tám bước. Mỗi bước có phần kết quả mong đợi để bạn tự kiểm tra trước khi sang bước sau.",
+     "plain": "Phần A gồm tám bước. Mỗi bước có phần kết quả mong đợi để bạn tự kiểm tra trước khi sang bước sau."
+    },
+    {
+     "t": "p",
+     "plain": "Chuẩn bị: tạo thư mục TH6 ở ổ dữ liệu (không để trên Desktop) và lưu file BaoCao_Thang.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
+     "html": "Chuẩn bị: tạo thư mục <strong>TH6</strong> ở ổ dữ liệu (không để trên Desktop) và lưu file BaoCao_Thang.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này."
+    },
+    {
+     "t": "h4",
+     "text": "Bước 1 – Khảo sát file (5 phút)"
+    },
+    {
      "t": "list",
      "ordered": true,
      "items": [
       {
-       "html": "<strong>Khảo sát file.</strong> Mở file, tìm tất cả sheet, kể cả sheet ẩn (chuột phải vào tên sheet → Unhide) và cột ẩn. Ghi lại: có bao nhiêu sheet, sheet nào ẩn, cột nào ẩn, trong đó có gì.",
-       "level": 0,
-       "plain": "Khảo sát file. Mở file, tìm tất cả sheet, kể cả sheet ẩn (chuột phải vào tên sheet → Unhide) và cột ẩn. Ghi lại: có bao nhiêu sheet, sheet nào ẩn, cột nào ẩn, trong đó có gì."
+       "plain": "Mở BaoCao_Thang.xlsx. Nếu Excel hiện thanh vàng Protected View, bấm Enable Editing.",
+       "html": "Mở BaoCao_Thang.xlsx. Nếu Excel hiện thanh vàng <strong>Protected View</strong>, bấm <strong>Enable Editing</strong>.",
+       "level": 0
       },
       {
-       "html": "<strong>Quyết định giữ gì.</strong> Người nhận cần gì? Tạo <strong>file mới</strong> chỉ chứa nội dung sheet TongHop. Dán giá trị (Paste Values), không dán công thức liên kết về file gốc. Chạy File → Info → Check for Issues → Inspect Document trên file mới.",
-       "level": 0,
-       "plain": "Quyết định giữ gì. Người nhận cần gì? Tạo file mới chỉ chứa nội dung sheet TongHop. Dán giá trị (Paste Values), không dán công thức liên kết về file gốc. Chạy File → Info → Check for Issues → Inspect Document trên file mới."
+       "plain": "Nhìn các thẻ sheet ở cạnh dưới cửa sổ, ghi lại tên từng sheet.",
+       "html": "Nhìn các thẻ sheet ở cạnh dưới cửa sổ, ghi lại tên từng sheet.",
+       "level": 0
       },
       {
-       "html": "<strong>Mã hóa bằng tính năng mã hóa thật.</strong> File → Info → Protect Workbook → Encrypt with Password. Mật khẩu là cụm từ dài, không liên quan tên đơn vị hay ngày tháng.",
-       "level": 0,
-       "plain": "Mã hóa bằng tính năng mã hóa thật. File → Info → Protect Workbook → Encrypt with Password. Mật khẩu là cụm từ dài, không liên quan tên đơn vị hay ngày tháng."
+       "plain": "Chuột phải vào một thẻ sheet bất kỳ → Unhide…. Mục này bấm được nghĩa là còn sheet đang ẩn: chọn tên sheet trong hộp thoại → OK. Mục này mờ nghĩa là không còn sheet ẩn.",
+       "html": "Chuột phải vào một thẻ sheet bất kỳ → <strong>Unhide…</strong>. Mục này bấm được nghĩa là còn sheet đang ẩn: chọn tên sheet trong hộp thoại → <strong>OK</strong>. Mục này mờ nghĩa là không còn sheet ẩn.",
+       "level": 0
       },
       {
-       "html": "<strong>So sánh với Protect Sheet.</strong> Mở một bản sao khác, dùng Review → Protect Sheet đặt mật khẩu; đóng và mở lại. Ghi lại: bạn có đọc được nội dung không?",
-       "level": 0,
-       "plain": "So sánh với Protect Sheet. Mở một bản sao khác, dùng Review → Protect Sheet đặt mật khẩu; đóng và mở lại. Ghi lại: bạn có đọc được nội dung không?"
+       "plain": "Mở từng sheet, nhìn hàng chữ cái tiêu đề cột. Chữ cái nhảy cóc (ví dụ H rồi J) là có cột ẩn ở giữa: bôi đen hai cột hai bên (H đến J) → chuột phải → Unhide.",
+       "html": "Mở từng sheet, nhìn hàng chữ cái tiêu đề cột. Chữ cái nhảy cóc (ví dụ H rồi J) là có cột ẩn ở giữa: bôi đen hai cột hai bên (H đến J) → chuột phải → <strong>Unhide</strong>.",
+       "level": 0
       },
       {
-       "html": "<strong>Chọn kênh và cách báo mật khẩu.</strong> Viết danh sách người nhận (tên, chức vụ, địa chỉ), kênh gửi file, kênh báo mật khẩu.",
-       "level": 0,
-       "plain": "Chọn kênh và cách báo mật khẩu. Viết danh sách người nhận (tên, chức vụ, địa chỉ), kênh gửi file, kênh báo mật khẩu."
+       "plain": "Ghi vào bài: file có bao nhiêu sheet, sheet nào ẩn, cột nào ẩn, trong đó chứa gì, thông tin nào nhạy cảm.",
+       "html": "Ghi vào bài: file có bao nhiêu sheet, sheet nào ẩn, cột nào ẩn, trong đó chứa gì, thông tin nào nhạy cảm.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: bạn liệt kê được mọi sheet và mọi cột, kể cả phần đang ẩn. Bỏ sót cũng không sao: Inspect Document ở bước 3 sẽ báo lại, nhưng khi chữa bài giảng viên sẽ hỏi vì sao bạn không thấy.",
+     "html": "<strong>Kết quả mong đợi:</strong> bạn liệt kê được mọi sheet và mọi cột, kể cả phần đang ẩn. Bỏ sót cũng không sao: Inspect Document ở bước 3 sẽ báo lại, nhưng khi chữa bài giảng viên sẽ hỏi vì sao bạn không thấy.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 2 – Tạo file mới chỉ có bảng tổng hợp (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Mở sheet TongHop → bấm ô A1 → Ctrl+A để chọn cả bảng → Ctrl+C.",
+       "html": "Mở sheet <strong>TongHop</strong> → bấm ô A1 → <strong>Ctrl+A</strong> để chọn cả bảng → <strong>Ctrl+C</strong>.",
+       "level": 0
       },
       {
-       "html": "<strong>Kiểm tra chéo.</strong> Tự đóng file rồi thử mở lại bằng mật khẩu sai → phải không mở được. Chụp màn hình thông báo từ chối.",
-       "level": 0,
-       "plain": "Kiểm tra chéo. Tự đóng file rồi thử mở lại bằng mật khẩu sai → phải không mở được. Chụp màn hình thông báo từ chối."
+       "plain": "Ctrl+N để mở một workbook trống.",
+       "html": "<strong>Ctrl+N</strong> để mở một workbook trống.",
+       "level": 0
       },
       {
-       "html": "<strong>Viết kế hoạch thu hồi/lưu giữ.</strong> Bao giờ xóa file trung gian trên máy mình, ai xác nhận đã nhận, file gốc để ở đâu.",
-       "level": 0,
-       "plain": "Viết kế hoạch thu hồi/lưu giữ. Bao giờ xóa file trung gian trên máy mình, ai xác nhận đã nhận, file gốc để ở đâu."
+       "plain": "Bấm ô A1 → Home → Paste ▾ → Values (biểu tượng 123). Cách nhanh: Ctrl+Alt+V → chọn Values → OK.",
+       "html": "Bấm ô A1 → <strong>Home → Paste ▾ → Values</strong> (biểu tượng 123). Cách nhanh: <strong>Ctrl+Alt+V</strong> → chọn <strong>Values</strong> → <strong>OK</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Bấm vào một ô số, nhìn thanh công thức: phải là con số, không bắt đầu bằng dấu =. Có dấu = là còn công thức trỏ về file gốc → dán lại bằng Values.",
+       "html": "Bấm vào một ô số, nhìn thanh công thức: phải là con số, không bắt đầu bằng dấu =. Có dấu = là còn công thức trỏ về file gốc → dán lại bằng Values.",
+       "level": 0
+      },
+      {
+       "plain": "File → Save As → chọn thư mục TH6 → đặt tên BaoCao_T10_TongHop.xlsx → Save.",
+       "html": "<strong>File → Save As</strong> → chọn thư mục TH6 → đặt tên <strong>BaoCao_T10_TongHop.xlsx</strong> → <strong>Save</strong>.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: file mới chỉ có 1 sheet, 5 dòng (1 dòng tiêu đề và 4 vùng), không có tên hay số điện thoại khách hàng nào.",
+     "html": "<strong>Kết quả mong đợi:</strong> file mới chỉ có 1 sheet, 5 dòng (1 dòng tiêu đề và 4 vùng), không có tên hay số điện thoại khách hàng nào.",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "plain": "Không sửa thẳng trên file gốc rồi xóa bớt sheet: dễ sót sheet ẩn, tên vùng (Name), liên kết. Tạo file mới rồi chỉ dán thứ cần gửi là cách chắc nhất.",
+     "html": "Không sửa thẳng trên file gốc rồi xóa bớt sheet: dễ sót sheet ẩn, tên vùng (Name), liên kết. Tạo file mới rồi chỉ dán thứ cần gửi là cách chắc nhất.",
+     "callout": "note"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 3 – Dọn thông tin ẩn bằng Inspect Document (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Trong file BaoCao_T10_TongHop.xlsx: File → Info → Check for Issues → Inspect Document. Nếu Excel hỏi có lưu không, chọn Yes.",
+       "html": "Trong file BaoCao_T10_TongHop.xlsx: <strong>File → Info → Check for Issues → Inspect Document</strong>. Nếu Excel hỏi có lưu không, chọn <strong>Yes</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Để nguyên các mục đã được đánh dấu → bấm Inspect.",
+       "html": "Để nguyên các mục đã được đánh dấu → bấm <strong>Inspect</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Mục Document Properties and Personal Information (tên tác giả, người sửa cuối) → Remove All.",
+       "html": "Mục <strong>Document Properties and Personal Information</strong> (tên tác giả, người sửa cuối) → <strong>Remove All</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Nếu thấy Hidden Worksheets, Hidden Rows and Columns hoặc Links to Other Files là bạn đã chép thừa: đóng file, làm lại bước 2.",
+       "html": "Nếu thấy <strong>Hidden Worksheets</strong>, <strong>Hidden Rows and Columns</strong> hoặc <strong>Links to Other Files</strong> là bạn đã chép thừa: đóng file, làm lại bước 2.",
+       "level": 0
+      },
+      {
+       "plain": "Bấm Close → Ctrl+S. Chụp màn hình kết quả Inspect để nộp.",
+       "html": "Bấm <strong>Close</strong> → <strong>Ctrl+S</strong>. Chụp màn hình kết quả Inspect để nộp.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: sau khi bấm Remove All, các mục đều có dấu tích, không còn sheet ẩn hay liên kết.",
+     "html": "<strong>Kết quả mong đợi:</strong> sau khi bấm Remove All, các mục đều có dấu tích, không còn sheet ẩn hay liên kết.",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "plain": "Thao tác Remove All không hoàn tác được. Vì vậy chỉ chạy Inspect Document trên file mới, không chạy trên file gốc.",
+     "html": "Thao tác Remove All không hoàn tác được. Vì vậy chỉ chạy Inspect Document trên file mới, không chạy trên file gốc.",
+     "callout": "note"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 4 – Mã hóa file (10 phút)"
+    },
+    {
+     "t": "p",
+     "plain": "Cách 1 – Bằng Excel (mọi học viên đều làm):",
+     "html": "<strong>Cách 1 – Bằng Excel (mọi học viên đều làm):</strong>"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Vẫn ở file BaoCao_T10_TongHop.xlsx: File → Info → Protect Workbook → Encrypt with Password.",
+       "html": "Vẫn ở file BaoCao_T10_TongHop.xlsx: <strong>File → Info → Protect Workbook → Encrypt with Password</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Gõ mật khẩu → OK → gõ lại đúng mật khẩu đó → OK. Dòng Protect Workbook chuyển màu vàng, ghi “A password is required to open this workbook”.",
+       "html": "Gõ mật khẩu → <strong>OK</strong> → gõ lại đúng mật khẩu đó → <strong>OK</strong>. Dòng Protect Workbook chuyển màu vàng, ghi “A password is required to open this workbook”.",
+       "level": 0
+      },
+      {
+       "plain": "Bấm Ctrl+S. Chưa lưu thì mã hóa chưa có hiệu lực.",
+       "html": "Bấm <strong>Ctrl+S</strong>. Chưa lưu thì mã hóa chưa có hiệu lực.",
+       "level": 0
+      },
+      {
+       "plain": "Đóng file.",
+       "html": "Đóng file.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Chọn mật khẩu: cụm 4–5 từ ngẫu nhiên, từ 16 ký tự trở lên, không chứa tên đơn vị, tên người, ngày tháng. Quên mật khẩu là mất file: Microsoft cũng không mở lại được. Lưu mật khẩu trong trình quản lý mật khẩu đơn vị cho phép, không ghi trong email, trong tên file hay trên giấy dán màn hình.",
+     "html": "<strong>Chọn mật khẩu:</strong> cụm 4–5 từ ngẫu nhiên, từ 16 ký tự trở lên, không chứa tên đơn vị, tên người, ngày tháng. <strong>Quên mật khẩu là mất file</strong>: Microsoft cũng không mở lại được. Lưu mật khẩu trong trình quản lý mật khẩu đơn vị cho phép, không ghi trong email, trong tên file hay trên giấy dán màn hình.",
+     "callout": "note"
+    },
+    {
+     "t": "p",
+     "plain": "Cách 2 – Bằng Python (tùy chọn, khi phải mã hóa nhiều file mỗi tháng). Kết quả giống hệt Cách 1: Excel hỏi mật khẩu khi mở file.",
+     "html": "<strong>Cách 2 – Bằng Python (tùy chọn, khi phải mã hóa nhiều file mỗi tháng).</strong> Kết quả giống hệt Cách 1: Excel hỏi mật khẩu khi mở file."
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Mở Command Prompt (Windows + R → gõ cmd → Enter). Cài thư viện, chỉ cần làm một lần: pip install msoffcrypto-tool. Nếu báo không nhận lệnh pip, dùng py -m pip install msoffcrypto-tool.",
+       "html": "Mở Command Prompt (<strong>Windows + R</strong> → gõ cmd → Enter). Cài thư viện, chỉ cần làm một lần: <strong>pip install msoffcrypto-tool</strong>. Nếu báo không nhận lệnh pip, dùng <strong>py -m pip install msoffcrypto-tool</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Mở Notepad, chép đoạn mã dưới đây, File → Save As → chọn thư mục TH6, Save as type: All files, tên ma_hoa.py, Encoding: UTF-8.",
+       "html": "Mở Notepad, chép đoạn mã dưới đây, <strong>File → Save As</strong> → chọn thư mục TH6, Save as type: <strong>All files</strong>, tên <strong>ma_hoa.py</strong>, Encoding: <strong>UTF-8</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Trong Command Prompt, chuyển vào thư mục TH6: cd /d rồi dán đường dẫn thư mục (lấy bằng cách bấm vào thanh địa chỉ của File Explorer).",
+       "html": "Trong Command Prompt, chuyển vào thư mục TH6: <strong>cd /d</strong> rồi dán đường dẫn thư mục (lấy bằng cách bấm vào thanh địa chỉ của File Explorer).",
+       "level": 0
+      },
+      {
+       "plain": "Chạy python ma_hoa.py. Gõ mật khẩu hai lần (màn hình không hiện ký tự – đó là bình thường) → Enter.",
+       "html": "Chạy <strong>python ma_hoa.py</strong>. Gõ mật khẩu hai lần (màn hình không hiện ký tự – đó là bình thường) → Enter.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "# ma_hoa.py – mã hóa file Excel bằng mật khẩu, giống Encrypt with Password\nfrom getpass import getpass\nfrom msoffcrypto.format.ooxml import OOXMLFile\n\nvao = \"BaoCao_T10_TongHop.xlsx\"          # file chưa mã hóa (phải là .xlsx)\nra = \"BaoCao_T10_TongHop_MaHoa.xlsx\"     # file sẽ gửi đi, đặt tên khác file vào\n\nmat_khau = getpass(\"Mật khẩu: \")         # gõ không hiện chữ; không ghi mật khẩu trong code\nif mat_khau != getpass(\"Gõ lại mật khẩu: \"):\n    raise SystemExit(\"Hai lần gõ không khớp, chạy lại.\")\n\nwith open(vao, \"rb\") as f_vao, open(ra, \"wb\") as f_ra:\n    OOXMLFile(f_vao).encrypt(mat_khau, f_ra)\nprint(\"Đã tạo\", ra)"
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: dòng “Đã tạo BaoCao_T10_TongHop_MaHoa.xlsx”; mở file đó bằng Excel thì hiện hộp thoại hỏi mật khẩu. Sau khi kiểm tra xong ở bước 5, xóa bản chưa mã hóa.",
+     "html": "<strong>Kết quả mong đợi:</strong> dòng “Đã tạo BaoCao_T10_TongHop_MaHoa.xlsx”; mở file đó bằng Excel thì hiện hộp thoại hỏi mật khẩu. Sau khi kiểm tra xong ở bước 5, xóa bản chưa mã hóa.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 5 – Thử mở lại bằng mật khẩu sai (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Mở file đã mã hóa → Excel hỏi mật khẩu.",
+       "html": "Mở file đã mã hóa → Excel hỏi mật khẩu.",
+       "level": 0
+      },
+      {
+       "plain": "Cố ý gõ sai (ví dụ thiếu một chữ) → OK.",
+       "html": "Cố ý gõ sai (ví dụ thiếu một chữ) → <strong>OK</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Chụp màn hình thông báo từ chối (Windows + Shift + S) để nộp.",
+       "html": "Chụp màn hình thông báo từ chối (<strong>Windows + Shift + S</strong>) để nộp.",
+       "level": 0
+      },
+      {
+       "plain": "Mở lại, gõ đúng mật khẩu → thấy bảng 4 vùng.",
+       "html": "Mở lại, gõ đúng mật khẩu → thấy bảng 4 vùng.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: thông báo “The password you supplied is not correct…” và không thấy dữ liệu nào. Nếu file mở ra mà không hỏi mật khẩu là bạn chưa bấm Ctrl+S ở bước 4.",
+     "html": "<strong>Kết quả mong đợi:</strong> thông báo “The password you supplied is not correct…” và không thấy dữ liệu nào. Nếu file mở ra mà không hỏi mật khẩu là bạn chưa bấm Ctrl+S ở bước 4.",
+     "callout": "apply"
+    },
+    {
+     "t": "h4",
+     "text": "Bước 6 – So sánh với Protect Sheet (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "plain": "Mở file gốc BaoCao_Thang.xlsx → File → Save As → đặt tên BanSao_ProtectSheet.xlsx.",
+       "html": "Mở file gốc BaoCao_Thang.xlsx → <strong>File → Save As</strong> → đặt tên <strong>BanSao_ProtectSheet.xlsx</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "Mở sheet ChiTiet → Review → Protect Sheet → gõ mật khẩu → OK → gõ lại → OK → Ctrl+S → đóng file.",
+       "html": "Mở sheet ChiTiet → <strong>Review → Protect Sheet</strong> → gõ mật khẩu → <strong>OK</strong> → gõ lại → <strong>OK</strong> → <strong>Ctrl+S</strong> → đóng file.",
+       "level": 0
+      },
+      {
+       "plain": "Mở lại BanSao_ProtectSheet.xlsx. Excel có hỏi mật khẩu không? Bạn có đọc được tên, số nợ không? Thử gõ vào một ô.",
+       "html": "Mở lại BanSao_ProtectSheet.xlsx. Excel có hỏi mật khẩu không? Bạn có đọc được tên, số nợ không? Thử gõ vào một ô.",
+       "level": 0
+      },
+      {
+       "plain": "Ghi vào bài: Protect Sheet chặn được gì, không chặn được gì; khác Encrypt with Password ở đâu. Xong thì xóa bản sao này.",
+       "html": "Ghi vào bài: Protect Sheet chặn được gì, không chặn được gì; khác Encrypt with Password ở đâu. Xong thì xóa bản sao này.",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "h4",
+     "text": "Bước 7 – Chọn kênh gửi và cách báo mật khẩu (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "plain": "Người nhận: họ tên, chức vụ, địa chỉ email công vụ – chọn từ danh bạ, không gõ tay.",
+       "html": "<strong>Người nhận:</strong> họ tên, chức vụ, địa chỉ email công vụ – chọn từ danh bạ, không gõ tay.",
+       "level": 0
+      },
+      {
+       "plain": "Kênh gửi file: kênh nào, gửi file nào (chỉ file đã mã hóa, không kèm file gốc).",
+       "html": "<strong>Kênh gửi file:</strong> kênh nào, gửi file nào (chỉ file đã mã hóa, không kèm file gốc).",
+       "level": 0
+      },
+      {
+       "plain": "Kênh báo mật khẩu: phải khác kênh gửi file; báo vào lúc nào (ví dụ sau khi người nhận xác nhận đã nhận file).",
+       "html": "<strong>Kênh báo mật khẩu:</strong> phải khác kênh gửi file; báo vào lúc nào (ví dụ sau khi người nhận xác nhận đã nhận file).",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "h4",
+     "text": "Bước 8 – Kế hoạch thu hồi, lưu giữ (5 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "plain": "Khi nào xóa các file trung gian trên máy bạn (bản chưa mã hóa, bản sao Protect Sheet), và nhớ dọn cả Recycle Bin.",
+       "html": "Khi nào xóa các file trung gian trên máy bạn (bản chưa mã hóa, bản sao Protect Sheet), và nhớ dọn cả Recycle Bin.",
+       "level": 0
+      },
+      {
+       "plain": "Ai xác nhận đã nhận file, xác nhận bằng cách nào, trong bao lâu.",
+       "html": "Ai xác nhận đã nhận file, xác nhận bằng cách nào, trong bao lâu.",
+       "level": 0
+      },
+      {
+       "plain": "File gốc lưu ở đâu, ai được truy cập.",
+       "html": "File gốc lưu ở đâu, ai được truy cập.",
+       "level": 0
       }
      ]
     },
@@ -2090,26 +2393,52 @@
      "ordered": true,
      "items": [
       {
-       "html": "Từ sheet ChiTiet, lọc các hộ có SoTienNo lớn hơn 0.",
-       "level": 0,
-       "plain": "Từ sheet ChiTiet, lọc các hộ có SoTienNo lớn hơn 0."
+       "plain": "Mở BaoCao_Thang.xlsx → sheet ChiTiet → bấm một ô trong bảng → Data → Filter.",
+       "html": "Mở BaoCao_Thang.xlsx → sheet <strong>ChiTiet</strong> → bấm một ô trong bảng → <strong>Data → Filter</strong>.",
+       "level": 0
       },
       {
-       "html": "Chép sang file mới <strong>chỉ 4 cột</strong>: MaKH, TenKH, DiaChi, SoTienNo. Xóa hẳn, không chỉ ẩn. Kiểm tra số dòng (file mẫu: 106 hộ).",
-       "level": 0,
-       "plain": "Chép sang file mới chỉ 4 cột: MaKH, TenKH, DiaChi, SoTienNo. Xóa hẳn, không chỉ ẩn. Kiểm tra số dòng (file mẫu: 106 hộ)."
+       "plain": "Bấm mũi tên ở tiêu đề SoTienNo → Number Filters → Greater Than… → gõ 0 → OK. Thanh trạng thái góc dưới bên trái ghi số dòng tìm được.",
+       "html": "Bấm mũi tên ở tiêu đề <strong>SoTienNo</strong> → <strong>Number Filters → Greater Than…</strong> → gõ <strong>0</strong> → <strong>OK</strong>. Thanh trạng thái góc dưới bên trái ghi số dòng tìm được.",
+       "level": 0
       },
       {
-       "html": "Mã hóa file; viết cách chia sẻ: OneDrive \"Specific people\" cho một địa chỉ bên công ty thu hộ, chỉ xem hoặc cho tải tùy nhu cầu, hạn 7 ngày; mật khẩu báo qua điện thoại theo số trong hợp đồng.",
-       "level": 0,
-       "plain": "Mã hóa file; viết cách chia sẻ: OneDrive \"Specific people\" cho một địa chỉ bên công ty thu hộ, chỉ xem hoặc cho tải tùy nhu cầu, hạn 7 ngày; mật khẩu báo qua điện thoại theo số trong hợp đồng."
+       "plain": "Ctrl+A → Ctrl+C → Ctrl+N → bấm ô A1 → dán bằng Values. Excel chỉ chép các dòng đang hiện sau khi lọc.",
+       "html": "<strong>Ctrl+A</strong> → <strong>Ctrl+C</strong> → <strong>Ctrl+N</strong> → bấm ô A1 → dán bằng <strong>Values</strong>. Excel chỉ chép các dòng đang hiện sau khi lọc.",
+       "level": 0
       },
       {
-       "html": "Trả lời: vì sao bỏ cột DienThoai, kWh_T10, SoNgayQuaHan, GhiChuNoiBo? Nếu công ty thu hộ nói \"cần số điện thoại để gọi nhắc\", bạn xử lý thế nào?",
-       "level": 0,
-       "plain": "Trả lời: vì sao bỏ cột DienThoai, kWh_T10, SoNgayQuaHan, GhiChuNoiBo? Nếu công ty thu hộ nói \"cần số điện thoại để gọi nhắc\", bạn xử lý thế nào?"
+       "plain": "Trong file mới, xóa hẳn các cột không cần: bấm chữ cái tiêu đề cột DienThoai, giữ Ctrl và bấm thêm các cột Vung, kWh_T10, SoNgayQuaHan, GhiChuNoiBo → chuột phải → Delete. Cột đang ẩn ở file gốc có thể bị chép theo: kiểm tra hàng chữ cái cột có nhảy cóc không.",
+       "html": "Trong file mới, xóa hẳn các cột không cần: bấm chữ cái tiêu đề cột DienThoai, giữ <strong>Ctrl</strong> và bấm thêm các cột Vung, kWh_T10, SoNgayQuaHan, GhiChuNoiBo → chuột phải → <strong>Delete</strong>. Cột đang ẩn ở file gốc có thể bị chép theo: kiểm tra hàng chữ cái cột có nhảy cóc không.",
+       "level": 0
+      },
+      {
+       "plain": "Kiểm tra: chỉ còn đúng 4 cột MaKH, TenKH, DiaChi, SoTienNo. Bấm vào chữ cái cột A, nhìn Count ở thanh trạng thái: 107 (1 dòng tiêu đề và 106 hộ).",
+       "html": "Kiểm tra: chỉ còn đúng 4 cột <strong>MaKH, TenKH, DiaChi, SoTienNo</strong>. Bấm vào chữ cái cột A, nhìn <strong>Count</strong> ở thanh trạng thái: 107 (1 dòng tiêu đề và 106 hộ).",
+       "level": 0
+      },
+      {
+       "plain": "Lưu thành DSNo_T10_CongTyThuHo.xlsx, chạy Inspect Document (bước 3), mã hóa (bước 4), thử mật khẩu sai (bước 5).",
+       "html": "Lưu thành <strong>DSNo_T10_CongTyThuHo.xlsx</strong>, chạy Inspect Document (bước 3), mã hóa (bước 4), thử mật khẩu sai (bước 5).",
+       "level": 0
+      },
+      {
+       "plain": "Viết cách chia sẻ: OneDrive → chuột phải file → Share → mục quyền chọn Specific people → nhập đúng một địa chỉ bên công ty thu hộ → chọn Can view (hoặc cho tải nếu hợp đồng yêu cầu) → đặt expiration date 7 ngày → Send. Mật khẩu báo qua điện thoại theo số ghi trong hợp đồng.",
+       "html": "Viết cách chia sẻ: OneDrive → chuột phải file → <strong>Share</strong> → mục quyền chọn <strong>Specific people</strong> → nhập đúng một địa chỉ bên công ty thu hộ → chọn <strong>Can view</strong> (hoặc cho tải nếu hợp đồng yêu cầu) → đặt <strong>expiration date</strong> 7 ngày → <strong>Send</strong>. Mật khẩu báo qua điện thoại theo số ghi trong hợp đồng.",
+       "level": 0
+      },
+      {
+       "plain": "Trả lời: vì sao bỏ cột DienThoai, kWh_T10, SoNgayQuaHan, GhiChuNoiBo? Nếu công ty thu hộ nói “cần số điện thoại để gọi nhắc”, bạn xử lý thế nào?",
+       "html": "Trả lời: vì sao bỏ cột DienThoai, kWh_T10, SoNgayQuaHan, GhiChuNoiBo? Nếu công ty thu hộ nói “cần số điện thoại để gọi nhắc”, bạn xử lý thế nào?",
+       "level": 0
       }
      ]
+    },
+    {
+     "t": "p",
+     "plain": "Kết quả mong đợi: thanh trạng thái ở bước 2 ghi “106 of 400 records found”; file gửi có đúng 4 cột, 106 hộ, hỏi mật khẩu khi mở.",
+     "html": "<strong>Kết quả mong đợi:</strong> thanh trạng thái ở bước 2 ghi “106 of 400 records found”; file gửi có đúng 4 cột, 106 hộ, hỏi mật khẩu khi mở.",
+     "callout": "apply"
     },
     {
      "t": "h3",
