@@ -2269,6 +2269,12 @@
      "html": "Bạn làm và nộp bài cá nhân theo mẫu trên web. Lưu file, ảnh minh chứng trên máy; ghi tên file và kết quả kiểm tra vào bài làm. Khi chữa bài, giảng viên có thể yêu cầu bạn mở file để đối chiếu."
     },
     {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Chưa có Power BI? Làm Thực hành 8 trên phòng thí nghiệm RLS: /static/labs/rls/index.html?bai=th8. Có đủ bốn bảng, Manage roles, View as, Publish, Security, Manage access và đăng nhập thử từng tài khoản. Ghi rõ trong bài nộp là kiểm thử trên mô phỏng.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=th8\" target=\"_blank\" rel=\"noopener\">Chưa có Power BI? Làm Thực hành 8 trên phòng thí nghiệm RLS</a> Có đủ bốn bảng, Manage roles, View as, Publish, Security, Manage access và đăng nhập thử từng tài khoản. Ghi rõ trong bài nộp là kiểm thử trên mô phỏng."
+    },
+    {
      "t": "h3",
      "text": "Tình huống"
     },
@@ -4033,6 +4039,31 @@
     },
     {
      "t": "h3",
+     "text": "Phòng thí nghiệm RLS (mô phỏng Power BI)"
+    },
+    {
+     "t": "p",
+     "plain": "Máy chưa cài Power BI Desktop, hoặc lớp chưa có workspace và giấy phép service? Mở phòng thí nghiệm ngay trên trình duyệt. Có hai chế độ: Desktop (Enter data, Table/Model view, New measure, Manage roles, View as, Publish) và service (Manage access, Security, Test as role, App, Share, Export data, Analyze in Excel, Publish to web, Admin portal, nhật ký hoạt động). Dữ liệu và số kiểm tra giống hệt bài trên Power BI thật.",
+     "html": "Máy chưa cài Power BI Desktop, hoặc lớp chưa có workspace và giấy phép service? Mở phòng thí nghiệm ngay trên trình duyệt. Có hai chế độ: Desktop (Enter data, Table/Model view, New measure, Manage roles, View as, Publish) và service (Manage access, Security, Test as role, App, Share, Export data, Analyze in Excel, Publish to web, Admin portal, nhật ký hoạt động). Dữ liệu và số kiểm tra giống hệt bài trên Power BI thật."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Mở phòng thí nghiệm RLS ở bài BI 01: /static/labs/rls/index.html?bai=bi01. Chọn bài khác ở ô “Bài” phía trên. Bài làm tự lưu trong trình duyệt của bạn.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi01\" target=\"_blank\" rel=\"noopener\">Mở phòng thí nghiệm RLS ở bài BI 01</a> Chọn bài khác ở ô “Bài” phía trên. Bài làm tự lưu trong trình duyệt của bạn."
+    },
+    {
+     "t": "p",
+     "plain": "Ô “Đang đăng nhập” trên service cho phép đóng vai từng người để kiểm thử quyền người xem thật. Phần BI 10 vốn chỉ làm được khi có service, nay làm được trên mô phỏng. Mỗi lần View as, Test as role hoặc đăng nhập thử đều tự ghi một dòng vào ma trận kiểm thử. Chép ma trận vào bài nộp.",
+     "html": "Ô “Đang đăng nhập” trên service cho phép đóng vai từng người để kiểm thử quyền người xem thật. Phần BI 10 vốn chỉ làm được khi có service, nay làm được trên mô phỏng. Mỗi lần View as, Test as role hoặc đăng nhập thử đều tự ghi một dòng vào ma trận kiểm thử. Chép ma trận vào bài nộp."
+    },
+    {
+     "t": "p",
+     "plain": "Mô phỏng chỉ để học hành vi phân quyền, không thay cho Power BI thật: chỉ hỗ trợ một phần DAX, giao diện được rút gọn. Khi nộp bài làm trên mô phỏng, chọn “Đã chạy / đã thao tác” và ghi rõ “làm trên phòng thí nghiệm mô phỏng”. Kết quả service trên mô phỏng không thay cho kiểm thử trên service thật của đơn vị.",
+     "html": "Mô phỏng chỉ để học hành vi phân quyền, không thay cho Power BI thật: chỉ hỗ trợ một phần DAX, giao diện được rút gọn. Khi nộp bài làm trên mô phỏng, chọn “Đã chạy / đã thao tác” và ghi rõ “làm trên phòng thí nghiệm mô phỏng”. Kết quả service trên mô phỏng không thay cho kiểm thử trên service thật của đơn vị."
+    },
+    {
+     "t": "h3",
      "text": "Gán thành viên và kiểm tra vai trò trên Power BI service"
     },
     {
@@ -4075,6 +4106,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi01. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi01\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -4138,6 +4175,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi02. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi02\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Trong Model view, nối DimDonVi[MaDonVi] (1) với FactDien[MaDonVi] (*).",
      "html": "1. Trong Model view, nối DimDonVi[MaDonVi] (1) với FactDien[MaDonVi] (*)."
     },
@@ -4195,6 +4238,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi03. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi03\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -4267,6 +4316,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi04. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi04\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Tạo So KH = DISTINCTCOUNT(FactDien[MaKH]) và So dong = COUNTROWS(FactDien).",
      "html": "1. Tạo So KH = DISTINCTCOUNT(FactDien[MaKH]) và So dong = COUNTROWS(FactDien)."
     },
@@ -4336,6 +4391,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi05. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi05\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Thêm slicer từ DimDonVi[MaDonVi], chọn DV_A.",
      "html": "1. Thêm slicer từ DimDonVi[MaDonVi], chọn DV_A."
     },
@@ -4393,6 +4454,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi06. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi06\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -4465,6 +4532,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi07. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi07\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Lưu một bản sao file thực hành. Trong bản sao, tạm tắt quan hệ DimDonVi–FactDien.",
      "html": "1. Lưu một bản sao file thực hành. Trong bản sao, tạm tắt quan hệ DimDonVi–FactDien."
     },
@@ -4522,6 +4595,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi08. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi08\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -4585,6 +4664,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi09. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi09\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Thêm slicer từ DimNgay[Ngay], dùng cột ngày trực tiếp thay vì Date hierarchy nếu giao diện tự chọn phân cấp.",
      "html": "1. Thêm slicer từ DimNgay[Ngay], dùng cột ngày trực tiếp thay vì Date hierarchy nếu giao diện tự chọn phân cấp."
     },
@@ -4645,6 +4730,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi10. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi10\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Nếu có workspace thực hành và giấy phép phù hợp: publish bản có quan hệ đúng; mở Security của semantic model, gán tài khoản thử vào role A/B.",
      "html": "1. Nếu có workspace thực hành và giấy phép phù hợp: publish bản có quan hệ đúng; mở Security của semantic model, gán tài khoản thử vào role A/B."
     },
@@ -4681,6 +4772,159 @@
     }
    ],
    "activity": "m07-bi10-v1"
+  },
+  {
+   "id": "s29",
+   "title": "Phòng thí nghiệm RLS – Rà soát báo cáo đang vận hành",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "activity",
+     "id": "m07-rlslab-v1",
+     "title": "Phòng thí nghiệm RLS – Rà soát báo cáo đang vận hành",
+     "inline": false
+    },
+    {
+     "t": "p",
+     "plain": "Báo cáo SanLuong_Q3 đã chạy từ tháng 8/2026. Trước khi mở rộng cho 30 đơn vị, lãnh đạo yêu cầu rà soát toàn bộ việc phân quyền và các đường dữ liệu đi ra ngoài. Bạn được quyền Admin workspace và quản trị tenant trên môi trường mô phỏng.",
+     "html": "Báo cáo SanLuong_Q3 đã chạy từ tháng 8/2026. Trước khi mở rộng cho 30 đơn vị, lãnh đạo yêu cầu rà soát toàn bộ việc phân quyền và các đường dữ liệu đi ra ngoài. Bạn được quyền Admin workspace và quản trị tenant trên môi trường mô phỏng."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Mở kịch bản Rà soát báo cáo đang vận hành: /static/labs/rls/index.html?bai=rasoat. Làm cá nhân, khoảng 40–60 phút.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=rasoat\" target=\"_blank\" rel=\"noopener\">Mở kịch bản Rà soát báo cáo đang vận hành</a> Làm cá nhân, khoảng 40–60 phút."
+    },
+    {
+     "t": "h3",
+     "text": "Việc cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Mở kịch bản “Rà soát báo cáo đang vận hành”. Đọc cột Ghi chú trong Microsoft Entra ID để biết ai cần thấy gì.",
+     "html": "1. Mở kịch bản “Rà soát báo cáo đang vận hành”. Đọc cột Ghi chú trong Microsoft Entra ID để biết ai cần thấy gì."
+    },
+    {
+     "t": "p",
+     "plain": "2. Đăng nhập thử từng tài khoản (ô “Đang đăng nhập”), cả “Người ngoài internet”. Ghi số liệu thực tế vào ma trận kiểm thử.",
+     "html": "2. Đăng nhập thử từng tài khoản (ô “Đang đăng nhập”), cả “Người ngoài internet”. Ghi số liệu thực tế vào ma trận kiểm thử."
+    },
+    {
+     "t": "p",
+     "plain": "3. Lần theo từng lớp: Manage access, App, liên kết chia sẻ, Security, Manage permissions, mô hình trên Desktop (quan hệ, quy tắc, bảng/cột ẩn, Power Query), Admin portal, Nhật ký hoạt động. Thử Export data và Analyze in Excel.",
+     "html": "3. Lần theo từng lớp: Manage access, App, liên kết chia sẻ, Security, Manage permissions, mô hình trên Desktop (quan hệ, quy tắc, bảng/cột ẩn, Power Query), Admin portal, Nhật ký hoạt động. Thử Export data và Analyze in Excel."
+    },
+    {
+     "t": "p",
+     "plain": "4. Ghi mỗi lỗi một dòng: bằng chứng (tài khoản, con số), nguyên nhân, cách sửa và người làm, buổi liên quan.",
+     "html": "4. Ghi mỗi lỗi một dòng: bằng chứng (tài khoản, con số), nguyên nhân, cách sửa và người làm, buổi liên quan."
+    },
+    {
+     "t": "p",
+     "plain": "5. Sửa trên mô phỏng (nhớ Publish lại sau khi sửa Desktop), rồi kiểm thử lại đủ tài khoản. Dán ma trận sau khi sửa.",
+     "html": "5. Sửa trên mô phỏng (nhớ Publish lại sau khi sửa Desktop), rồi kiểm thử lại đủ tài khoản. Dán ma trận sau khi sửa."
+    },
+    {
+     "t": "p",
+     "plain": "Gợi ý: báo cáo có hơn mười lỗi, nằm ở cả mô hình, workspace, chia sẻ, dữ liệu nguồn, thư mục người dùng và cài đặt tenant. Một số lỗi che lấp lỗi khác: sửa xong một lỗi, kiểm thử lại để thấy lỗi tiếp theo.",
+     "html": "Gợi ý: báo cáo có hơn mười lỗi, nằm ở cả mô hình, workspace, chia sẻ, dữ liệu nguồn, thư mục người dùng và cài đặt tenant. Một số lỗi che lấp lỗi khác: sửa xong một lỗi, kiểm thử lại để thấy lỗi tiếp theo."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí 10 điểm: tìm đúng lỗi, có bằng chứng bằng con số hoặc tài khoản (4); sửa đúng gốc, không nâng quyền để “cho chạy” (3); kiểm thử lại có cả trường hợp bị từ chối, nối được với bài học buổi trước (3).",
+     "html": "Tiêu chí 10 điểm: tìm đúng lỗi, có bằng chứng bằng con số hoặc tài khoản (4); sửa đúng gốc, không nâng quyền để “cho chạy” (3); kiểm thử lại có cả trường hợp bị từ chối, nối được với bài học buổi trước (3)."
+    },
+    {
+     "t": "p",
+     "plain": "Giảng viên: bảng lỗi cài sẵn, cách tái hiện từng lỗi, trình tự trình diễn và ma trận sau khi sửa nằm ở nút 📘 Đáp án của bài này.",
+     "html": "Giảng viên: bảng lỗi cài sẵn, cách tái hiện từng lỗi, trình tự trình diễn và ma trận sau khi sửa nằm ở nút 📘 Đáp án của bài này.",
+     "teacher": true
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "m07-rlslab-v1"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "reveal": "m07-rlslab-v1",
+     "items": [
+      {
+       "html": "Role TatCa_TamThoi (TRUE) gán cho nhóm Toan_Cong_Ty “để demo” rồi không gỡ: mọi nhân viên thấy hết (Buổi 3).",
+       "plain": "Role TatCa_TamThoi (TRUE) gán cho nhóm Toan_Cong_Ty “để demo” rồi không gỡ: mọi nhân viên thấy hết (Buổi 3).",
+       "level": 0
+      },
+      {
+       "html": "Liên kết “Mọi người trong tổ chức” kèm chia sẻ lại và Build (Buổi 5, 7).",
+       "plain": "Liên kết “Mọi người trong tổ chức” kèm chia sẻ lại và Build (Buổi 5, 7).",
+       "level": 0
+      },
+      {
+       "html": "Anh Tuấn là Member của workspace: RLS không áp (Buổi 7).",
+       "plain": "Anh Tuấn là Member của workspace: RLS không áp (Buổi 7).",
+       "level": 0
+      },
+      {
+       "html": "Nhân viên chỉ cần xem lại là Contributor (Buổi 3, 7).",
+       "plain": "Nhân viên chỉ cần xem lại là Contributor (Buổi 3, 7).",
+       "level": 0
+      },
+      {
+       "html": "PhanQuyen còn dòng cũ của chị Hà (đã chuyển đơn vị) (Buổi 3).",
+       "plain": "PhanQuyen còn dòng cũ của chị Hà (đã chuyển đơn vị) (Buổi 3).",
+       "level": 0
+      },
+      {
+       "html": "Anh An đã nghỉ việc vẫn là Viewer, còn trong nhóm và PhanQuyen (Buổi 3).",
+       "plain": "Anh An đã nghỉ việc vẫn là Viewer, còn trong nhóm và PhanQuyen (Buổi 3).",
+       "level": 0
+      },
+      {
+       "html": "Tài khoản dùng chung baocao.chung có quyền cả hai đơn vị (Buổi 4).",
+       "plain": "Tài khoản dùng chung baocao.chung có quyền cả hai đơn vị (Buổi 4).",
+       "level": 0
+      },
+      {
+       "html": "Nhóm KT_TongHop nằm trong cả DonVi_A và DonVi_B: chị Lan thấy hợp quyền (Buổi 3, 7).",
+       "plain": "Nhóm KT_TongHop nằm trong cả DonVi_A và DonVi_B: chị Lan thấy hợp quyền (Buổi 3, 7).",
+       "level": 0
+      },
+      {
+       "html": "Bảng DSKhachHang không có quan hệ tới DimDonVi: RLS không lọc được (Buổi 7).",
+       "plain": "Bảng DSKhachHang không có quan hệ tới DimDonVi: RLS không lọc được (Buổi 7).",
+       "level": 0
+      },
+      {
+       "html": "Số điện thoại chỉ che trên hình ảnh; dữ liệu gốc vẫn xuất được, cột CCCD chỉ ẩn (Buổi 6).",
+       "plain": "Số điện thoại chỉ che trên hình ảnh; dữ liệu gốc vẫn xuất được, cột CCCD chỉ ẩn (Buổi 6).",
+       "level": 0
+      },
+      {
+       "html": "Bảng PhanQuyen không ẩn, không có quy tắc riêng: ai có Build đọc được cả danh sách (Buổi 7).",
+       "plain": "Bảng PhanQuyen không ẩn, không có quy tắc riêng: ai có Build đọc được cả danh sách (Buổi 7).",
+       "level": 0
+      },
+      {
+       "html": "Bản sao SanLuong_BanNhap không có RLS đã Publish to web (Buổi 5, 7).",
+       "plain": "Bản sao SanLuong_BanNhap không có RLS đã Publish to web (Buổi 5, 7).",
+       "level": 0
+      },
+      {
+       "html": "Nhãn độ nhạy “Công khai” cho báo cáo có dữ liệu khách hàng; cho xuất dữ liệu gốc (Buổi 1, 5).",
+       "plain": "Nhãn độ nhạy “Công khai” cho báo cáo có dữ liệu khách hàng; cho xuất dữ liệu gốc (Buổi 1, 5).",
+       "level": 0
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "plain": "Sau khi sửa: anh Tuấn và chị Lan chỉ thấy Điện lực X (826.436 kWh); trưởng phòng Điện lực Y và chị Hà chỉ thấy Điện lực Y (742.030); anh Minh thấy cả hai (1.568.466); người mới, nhân viên kỹ thuật, đối tác, tài khoản đã khóa và người ngoài internet không thấy dữ liệu.",
+     "html": "Sau khi sửa: anh Tuấn và chị Lan chỉ thấy Điện lực X (826.436 kWh); trưởng phòng Điện lực Y và chị Hà chỉ thấy Điện lực Y (742.030); anh Minh thấy cả hai (1.568.466); người mới, nhân viên kỹ thuật, đối tác, tài khoản đã khóa và người ngoài internet không thấy dữ liệu.",
+     "reveal": "m07-rlslab-v1"
+    }
+   ],
+   "activity": "m07-rlslab-v1"
   }
  ],
  "activities": [
@@ -4959,6 +5203,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi01. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi01\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Tạo file Power BI mới. Mở huong_dan_BI.md trong gói thực hành. Dùng Home → Enter data, dán lần lượt ba bảng và đặt đúng tên DimDonVi, DimNgay, FactDien.",
      "html": "1. Tạo file Power BI mới. Mở huong_dan_BI.md trong gói thực hành. Dùng Home → Enter data, dán lần lượt ba bảng và đặt đúng tên DimDonVi, DimNgay, FactDien."
     },
@@ -5042,6 +5292,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi02. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi02\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Trong Model view, nối DimDonVi[MaDonVi] (1) với FactDien[MaDonVi] (*).",
      "html": "1. Trong Model view, nối DimDonVi[MaDonVi] (1) với FactDien[MaDonVi] (*)."
     },
@@ -5122,6 +5378,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi03. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi03\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -5217,6 +5479,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi04. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi04\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Tạo So KH = DISTINCTCOUNT(FactDien[MaKH]) và So dong = COUNTROWS(FactDien).",
      "html": "1. Tạo So KH = DISTINCTCOUNT(FactDien[MaKH]) và So dong = COUNTROWS(FactDien)."
     },
@@ -5309,6 +5577,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi05. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi05\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Thêm slicer từ DimDonVi[MaDonVi], chọn DV_A.",
      "html": "1. Thêm slicer từ DimDonVi[MaDonVi], chọn DV_A."
     },
@@ -5389,6 +5663,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi06. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi06\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -5484,6 +5764,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi07. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi07\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Lưu một bản sao file thực hành. Trong bản sao, tạm tắt quan hệ DimDonVi–FactDien.",
      "html": "1. Lưu một bản sao file thực hành. Trong bản sao, tạm tắt quan hệ DimDonVi–FactDien."
     },
@@ -5564,6 +5850,12 @@
      "t": "p",
      "plain": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy.",
      "html": "Bài cá nhân. Đọc phần Chuẩn bị thực hành SQL và Python hoặc Chuẩn bị thực hành Power BI trong buổi này để lấy dữ liệu và cách chạy."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi08. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi08\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
     },
     {
      "t": "p",
@@ -5650,6 +5942,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi09. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi09\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Thêm slicer từ DimNgay[Ngay], dùng cột ngày trực tiếp thay vì Date hierarchy nếu giao diện tự chọn phân cấp.",
      "html": "1. Thêm slicer từ DimNgay[Ngay], dùng cột ngày trực tiếp thay vì Date hierarchy nếu giao diện tự chọn phân cấp."
     },
@@ -5733,6 +6031,12 @@
     },
     {
      "t": "p",
+     "callout": "apply",
+     "plain": "Làm bài này trên phòng thí nghiệm RLS (mô phỏng): /static/labs/rls/index.html?bai=bi10. Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=bi10\" target=\"_blank\" rel=\"noopener\">Làm bài này trên phòng thí nghiệm RLS (mô phỏng)</a> Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra."
+    },
+    {
+     "t": "p",
      "plain": "1. Nếu có workspace thực hành và giấy phép phù hợp: publish bản có quan hệ đúng; mở Security của semantic model, gán tài khoản thử vào role A/B.",
      "html": "1. Nếu có workspace thực hành và giấy phép phù hợp: publish bản có quan hệ đúng; mở Security của semantic model, gán tài khoản thử vào role A/B."
     },
@@ -5758,6 +6062,117 @@
     }
    ],
    "section": "s28"
+  },
+  {
+   "id": "m07-rlslab-v1",
+   "type": "practice",
+   "scope": "student",
+   "title": "Phòng thí nghiệm RLS – Rà soát báo cáo đang vận hành",
+   "intro": "Tìm và sửa các lỗi phân quyền của một báo cáo đã chạy, kiểm thử lại bằng từng tài khoản.",
+   "fields": [
+    {
+     "type": "table",
+     "key": "phat_hien",
+     "label": "Các lỗi tìm được (mỗi dòng một lỗi)",
+     "rows": null,
+     "min_rows": 6,
+     "columns": [
+      {
+       "key": "loi",
+       "label": "Lỗi"
+      },
+      {
+       "key": "bang_chung",
+       "label": "Bằng chứng (tài khoản, con số)"
+      },
+      {
+       "key": "nguyen_nhan",
+       "label": "Nguyên nhân"
+      },
+      {
+       "key": "cach_sua",
+       "label": "Cách sửa, người làm"
+      },
+      {
+       "key": "buoi",
+       "label": "Liên quan",
+       "options": [
+        "Buổi 1 – phân loại, nhãn",
+        "Buổi 2 – luồng dữ liệu, bản sao",
+        "Buổi 3 – quyền tối thiểu, Vào–Chuyển–Ra",
+        "Buổi 4 – tài khoản dùng chung",
+        "Buổi 5 – chia sẻ an toàn",
+        "Buổi 6 – giảm dữ liệu, che",
+        "Buổi 7 – RLS, workspace, chia sẻ"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "textarea",
+     "key": "kiem_thu_lai",
+     "label": "Kiểm thử lại sau khi sửa",
+     "hint": "Dán ma trận kiểm thử (nút Chép TSV) sau khi sửa, ghi Kỳ vọng và Đạt cho từng dòng."
+    },
+    {
+     "type": "textarea",
+     "key": "quy_trinh",
+     "label": "Ba việc cần đưa vào quy trình của đơn vị để lỗi không lặp lại"
+    }
+   ],
+   "instructions": [
+    {
+     "t": "p",
+     "plain": "Báo cáo SanLuong_Q3 đã chạy từ tháng 8/2026. Trước khi mở rộng cho 30 đơn vị, lãnh đạo yêu cầu rà soát toàn bộ việc phân quyền và các đường dữ liệu đi ra ngoài. Bạn được quyền Admin workspace và quản trị tenant trên môi trường mô phỏng.",
+     "html": "Báo cáo SanLuong_Q3 đã chạy từ tháng 8/2026. Trước khi mở rộng cho 30 đơn vị, lãnh đạo yêu cầu rà soát toàn bộ việc phân quyền và các đường dữ liệu đi ra ngoài. Bạn được quyền Admin workspace và quản trị tenant trên môi trường mô phỏng."
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Mở kịch bản Rà soát báo cáo đang vận hành: /static/labs/rls/index.html?bai=rasoat. Làm cá nhân, khoảng 40–60 phút.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=rasoat\" target=\"_blank\" rel=\"noopener\">Mở kịch bản Rà soát báo cáo đang vận hành</a> Làm cá nhân, khoảng 40–60 phút."
+    },
+    {
+     "t": "h3",
+     "text": "Việc cần làm"
+    },
+    {
+     "t": "p",
+     "plain": "1. Mở kịch bản “Rà soát báo cáo đang vận hành”. Đọc cột Ghi chú trong Microsoft Entra ID để biết ai cần thấy gì.",
+     "html": "1. Mở kịch bản “Rà soát báo cáo đang vận hành”. Đọc cột Ghi chú trong Microsoft Entra ID để biết ai cần thấy gì."
+    },
+    {
+     "t": "p",
+     "plain": "2. Đăng nhập thử từng tài khoản (ô “Đang đăng nhập”), cả “Người ngoài internet”. Ghi số liệu thực tế vào ma trận kiểm thử.",
+     "html": "2. Đăng nhập thử từng tài khoản (ô “Đang đăng nhập”), cả “Người ngoài internet”. Ghi số liệu thực tế vào ma trận kiểm thử."
+    },
+    {
+     "t": "p",
+     "plain": "3. Lần theo từng lớp: Manage access, App, liên kết chia sẻ, Security, Manage permissions, mô hình trên Desktop (quan hệ, quy tắc, bảng/cột ẩn, Power Query), Admin portal, Nhật ký hoạt động. Thử Export data và Analyze in Excel.",
+     "html": "3. Lần theo từng lớp: Manage access, App, liên kết chia sẻ, Security, Manage permissions, mô hình trên Desktop (quan hệ, quy tắc, bảng/cột ẩn, Power Query), Admin portal, Nhật ký hoạt động. Thử Export data và Analyze in Excel."
+    },
+    {
+     "t": "p",
+     "plain": "4. Ghi mỗi lỗi một dòng: bằng chứng (tài khoản, con số), nguyên nhân, cách sửa và người làm, buổi liên quan.",
+     "html": "4. Ghi mỗi lỗi một dòng: bằng chứng (tài khoản, con số), nguyên nhân, cách sửa và người làm, buổi liên quan."
+    },
+    {
+     "t": "p",
+     "plain": "5. Sửa trên mô phỏng (nhớ Publish lại sau khi sửa Desktop), rồi kiểm thử lại đủ tài khoản. Dán ma trận sau khi sửa.",
+     "html": "5. Sửa trên mô phỏng (nhớ Publish lại sau khi sửa Desktop), rồi kiểm thử lại đủ tài khoản. Dán ma trận sau khi sửa."
+    },
+    {
+     "t": "p",
+     "plain": "Gợi ý: báo cáo có hơn mười lỗi, nằm ở cả mô hình, workspace, chia sẻ, dữ liệu nguồn, thư mục người dùng và cài đặt tenant. Một số lỗi che lấp lỗi khác: sửa xong một lỗi, kiểm thử lại để thấy lỗi tiếp theo.",
+     "html": "Gợi ý: báo cáo có hơn mười lỗi, nằm ở cả mô hình, workspace, chia sẻ, dữ liệu nguồn, thư mục người dùng và cài đặt tenant. Một số lỗi che lấp lỗi khác: sửa xong một lỗi, kiểm thử lại để thấy lỗi tiếp theo."
+    },
+    {
+     "t": "p",
+     "plain": "Tiêu chí 10 điểm: tìm đúng lỗi, có bằng chứng bằng con số hoặc tài khoản (4); sửa đúng gốc, không nâng quyền để “cho chạy” (3); kiểm thử lại có cả trường hợp bị từ chối, nối được với bài học buổi trước (3).",
+     "html": "Tiêu chí 10 điểm: tìm đúng lỗi, có bằng chứng bằng con số hoặc tài khoản (4); sửa đúng gốc, không nâng quyền để “cho chạy” (3); kiểm thử lại có cả trường hợp bị từ chối, nối được với bài học buổi trước (3)."
+    }
+   ],
+   "section": "s29"
   }
  ]
 }

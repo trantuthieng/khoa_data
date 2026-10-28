@@ -4,6 +4,7 @@ import contextlib
 import io
 import json
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -89,6 +90,33 @@ class BeginnerLabs(unittest.TestCase):
         for no in (6,7):
             ids = [s['id'] for s in MODULES[no]['sections']]
             self.assertEqual(len(ids), len(set(ids)))
+
+    def test_rls_lab_wiring_and_data(self):
+        # Phòng thí nghiệm RLS: tệp tĩnh có thật, số liệu khớp bài, bài rà soát chỉ lộ gợi ý khi công bố.
+        from app.content import ACTIVITIES, MODULES, student_module
+        from app.answer_keys import ANSWER_KEYS
+        lab = Path(__file__).resolve().parents[1] / 'app/static/labs/rls'
+        for name in ('index.html', 'app.js', 'engine.js', 'data.js', 'rls.css'):
+            self.assertTrue((lab / name).is_file(), name)
+        data = (lab / 'data.js').read_text(encoding='utf-8')
+        fact = re.search(r'const TH8_FACT = (\[.*?\]\]);', data, re.S).group(1)
+        rows = json.loads(fact.replace("'", '"'))
+        self.assertEqual({u: sum(r[4] for r in rows if r[0] == u) for u in ('DV_A', 'DV_B')}, {'DV_A': 826436, 'DV_B': 742030})
+        self.assertEqual(sum(r[3] for r in rows if r[0] == 'DV_A' and r[1] == '2026-09'), 736)
+        bi = re.search(r'const BI_FACT = (\[.*?\]\]);', data, re.S).group(1)
+        self.assertEqual([[r['MaKH'], r['MaDonVi'], r['Ngay'], r['kWh']] for r in FACT], json.loads(bi.replace("'", '"')))
+        links = {b['html'] for s in MODULES[7]['sections'] for b in s['blocks'] if 'labs/rls' in b.get('html', '')}
+        for bai in ['th8', 'rasoat'] + [f'bi{i:02d}' for i in range(1, 11)]:
+            self.assertTrue(any(f'/static/labs/rls/index.html?bai={bai}"' in h for h in links), bai)
+            self.assertIn(f"{bai}: {{ title", data)
+        aid = 'm07-rlslab-v1'
+        self.assertIn(aid, ANSWER_KEYS)
+        self.assertEqual(len(ANSWER_KEYS[aid]['fields']['phat_hien']), 13)
+        self.assertFalse(any(b.get('reveal') or b.get('teacher') for b in ACTIVITIES[aid]['instructions']))
+        hidden = next(s for s in student_module(7, None, set())['sections'] if s.get('activity') == aid)
+        self.assertFalse(any(b.get('reveal') or b.get('teacher') for b in hidden['blocks']))
+        shown = next(s for s in student_module(7, None, {aid})['sections'] if s.get('activity') == aid)
+        self.assertTrue(any(b.get('reveal') == aid for b in shown['blocks']))
 
     def test_student_pack_runs_without_solutions(self):
         files = build_pack()

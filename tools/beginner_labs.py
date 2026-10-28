@@ -157,6 +157,34 @@ def p(text, **flags):
     return {'t':'p', 'plain':text, 'html':html.escape(text), **flags}
 
 
+# Phòng thí nghiệm RLS: mô phỏng Power BI Desktop/service chạy trong trình duyệt (app/static/labs/rls).
+RLS_LAB = '/static/labs/rls/index.html'
+
+
+def lab_link(bai, text, after=''):
+    """Đoạn có liên kết mở phòng thí nghiệm ở đúng bài."""
+    href = f'{RLS_LAB}?bai={bai}'
+    return {'t':'p', 'callout':'apply', 'plain':f'{text}: {href}. {after}'.strip(),
+            'html':f'<a href="{href}" target="_blank" rel="noopener">{html.escape(text)}</a>' + (f' {html.escape(after)}' if after else '')}
+
+
+# Lỗi cài sẵn trong kịch bản “Rà soát báo cáo đang vận hành”: (lỗi, buổi liên quan). Đáp án chi tiết ở app/answer_keys/m07.py.
+RASOAT_LOI = [
+    ('Role TatCa_TamThoi (TRUE) gán cho nhóm Toan_Cong_Ty “để demo” rồi không gỡ: mọi nhân viên thấy hết', 'Buổi 3'),
+    ('Liên kết “Mọi người trong tổ chức” kèm chia sẻ lại và Build', 'Buổi 5, 7'),
+    ('Anh Tuấn là Member của workspace: RLS không áp', 'Buổi 7'),
+    ('Nhân viên chỉ cần xem lại là Contributor', 'Buổi 3, 7'),
+    ('PhanQuyen còn dòng cũ của chị Hà (đã chuyển đơn vị)', 'Buổi 3'),
+    ('Anh An đã nghỉ việc vẫn là Viewer, còn trong nhóm và PhanQuyen', 'Buổi 3'),
+    ('Tài khoản dùng chung baocao.chung có quyền cả hai đơn vị', 'Buổi 4'),
+    ('Nhóm KT_TongHop nằm trong cả DonVi_A và DonVi_B: chị Lan thấy hợp quyền', 'Buổi 3, 7'),
+    ('Bảng DSKhachHang không có quan hệ tới DimDonVi: RLS không lọc được', 'Buổi 7'),
+    ('Số điện thoại chỉ che trên hình ảnh; dữ liệu gốc vẫn xuất được, cột CCCD chỉ ẩn', 'Buổi 6'),
+    ('Bảng PhanQuyen không ẩn, không có quy tắc riêng: ai có Build đọc được cả danh sách', 'Buổi 7'),
+    ('Bản sao SanLuong_BanNhap không có RLS đã Publish to web', 'Buổi 5, 7'),
+    ('Nhãn độ nhạy “Công khai” cho báo cáo có dữ liệu khách hàng; cho xuất dữ liệu gốc', 'Buổi 1, 5')]
+
+
 def table(rows):
     return {'t':'table', 'rows':[[{'plain':str(c), 'html':html.escape(str(c))} for c in row] for row in rows]}
 
@@ -195,7 +223,12 @@ def add_labs(module):
             p('Mở huong_dan_BI.md để sao chép ba bảng vào Home → Enter data trong Power BI Desktop. Chưa cần Power BI service cho bài 01–09. Mỗi bài tập trung một thao tác; BI 10 chỉ làm khi có môi trường service thực hành.'),
             p('Mô hình nhỏ dùng ngày: DimDonVi[MaDonVi] (1) tới FactDien[MaDonVi] (*); DimNgay[Ngay] (1) tới FactDien[Ngay] (*). FactDien có 8 dòng, 6 khách, trong đó hai khách có thêm dữ liệu ngày thứ hai.'),
             p('Trong mô hình nhỏ, dùng DISTINCTCOUNT(FactDien[MaKH]) để đếm khách duy nhất trong phạm vi đang lọc. Trong bản tổng hợp tháng của giáo trình, SoKH đã là số tổng hợp; dùng chỉ tiêu phù hợp và giải thích ý nghĩa, không đếm số dòng như số khách.'),
-            p('Mỗi bài khoảng 5–10 phút, riêng nhập dữ liệu và service có thể lâu hơn. Nộp cá nhân, lưu .pbix và ảnh trên máy, ghi kết quả vào mẫu web. Nếu chưa thực hiện trên service, chọn Chưa chạy và không ghi đã kiểm thử quyền người xem thật.')])
+            p('Mỗi bài khoảng 5–10 phút, riêng nhập dữ liệu và service có thể lâu hơn. Nộp cá nhân, lưu .pbix và ảnh trên máy, ghi kết quả vào mẫu web. Nếu chưa thực hiện trên service, chọn Chưa chạy và không ghi đã kiểm thử quyền người xem thật.'),
+            {'t':'h3','text':'Phòng thí nghiệm RLS (mô phỏng Power BI)'},
+            p('Máy chưa cài Power BI Desktop, hoặc lớp chưa có workspace và giấy phép service? Mở phòng thí nghiệm ngay trên trình duyệt. Có hai chế độ: Desktop (Enter data, Table/Model view, New measure, Manage roles, View as, Publish) và service (Manage access, Security, Test as role, App, Share, Export data, Analyze in Excel, Publish to web, Admin portal, nhật ký hoạt động). Dữ liệu và số kiểm tra giống hệt bài trên Power BI thật.'),
+            lab_link('bi01', 'Mở phòng thí nghiệm RLS ở bài BI 01', 'Chọn bài khác ở ô “Bài” phía trên. Bài làm tự lưu trong trình duyệt của bạn.'),
+            p('Ô “Đang đăng nhập” trên service cho phép đóng vai từng người để kiểm thử quyền người xem thật. Phần BI 10 vốn chỉ làm được khi có service, nay làm được trên mô phỏng. Mỗi lần View as, Test as role hoặc đăng nhập thử đều tự ghi một dòng vào ma trận kiểm thử. Chép ma trận vào bài nộp.'),
+            p('Mô phỏng chỉ để học hành vi phân quyền, không thay cho Power BI thật: chỉ hỗ trợ một phần DAX, giao diện được rút gọn. Khi nộp bài làm trên mô phỏng, chọn “Đã chạy / đã thao tác” và ghi rõ “làm trên phòng thí nghiệm mô phỏng”. Kết quả service trên mô phỏng không thay cho kiểm thử trên service thật của đơn vị.')])
         module['sections'][-1]['blocks'] += [
             {'t':'h3','text':'Hai vị trí trên service được minh họa trong slide'},
             p('Ảnh trích từ slide 76: thêm người dùng vào role ở Security của semantic model. Đây là ảnh tài liệu, giao diện môi trường của bạn có thể khác.'),
@@ -207,6 +240,9 @@ def add_labs(module):
         for i, ex in enumerate(exercises, 1):
             aid = f'm{no:02d}-{kind}{i:02d}-v1'
             blocks = [p(ex['goal']), p('Bài cá nhân. Đọc phần Bắt đầu SQL và Python hoặc Bắt đầu Power BI trong buổi này để lấy dữ liệu và cách chạy.')]
+            if kind == 'bi':
+                blocks.append(lab_link(f'bi{i:02d}', f'Làm bài này trên phòng thí nghiệm RLS (mô phỏng)',
+                                       'Dùng khi chưa có Power BI. Khung Đề bài bên phải có danh sách tự kiểm tra.'))
             for j, task in enumerate(ex['tasks'], 1):
                 blocks.append(p(f'{j}. {task}'))
             if ex.get('starter') or ex.get('code'):
@@ -231,7 +267,50 @@ def add_labs(module):
             append_section(module, ex['title'], blocks, {'id':aid, 'type':'practice','scope':'student',
                 'title':ex['title'], 'intro':ex['goal'], 'fields':fields,
                 'instructions':[download] + [b for b in blocks[1:] if not b.get('reveal')]})
+    if no == 7:
+        add_rls_lab(module)
     return module
+
+
+def add_rls_lab(module):
+    """Thực hành 8 trỏ tới mô phỏng; thêm bài rà soát một báo cáo cài sẵn lỗi phân quyền."""
+    for s in module['sections']:
+        if s.get('activity') == 'm07-th8' and not any('labs/rls' in b.get('html', '') for b in s['blocks']):
+            s['blocks'].insert(1, lab_link('th8', 'Chưa có Power BI? Làm Thực hành 8 trên phòng thí nghiệm RLS',
+                'Có đủ bốn bảng, Manage roles, View as, Publish, Security, Manage access và đăng nhập thử từng tài khoản. Ghi rõ trong bài nộp là kiểm thử trên mô phỏng.'))
+    aid = 'm07-rlslab-v1'
+    sessions = ['Buổi 1 – phân loại, nhãn', 'Buổi 2 – luồng dữ liệu, bản sao', 'Buổi 3 – quyền tối thiểu, Vào–Chuyển–Ra',
+                'Buổi 4 – tài khoản dùng chung', 'Buổi 5 – chia sẻ an toàn', 'Buổi 6 – giảm dữ liệu, che', 'Buổi 7 – RLS, workspace, chia sẻ']
+    task = [
+        'Mở kịch bản “Rà soát báo cáo đang vận hành”. Đọc cột Ghi chú trong Microsoft Entra ID để biết ai cần thấy gì.',
+        'Đăng nhập thử từng tài khoản (ô “Đang đăng nhập”), cả “Người ngoài internet”. Ghi số liệu thực tế vào ma trận kiểm thử.',
+        'Lần theo từng lớp: Manage access, App, liên kết chia sẻ, Security, Manage permissions, mô hình trên Desktop (quan hệ, quy tắc, bảng/cột ẩn, Power Query), Admin portal, Nhật ký hoạt động. Thử Export data và Analyze in Excel.',
+        'Ghi mỗi lỗi một dòng: bằng chứng (tài khoản, con số), nguyên nhân, cách sửa và người làm, buổi liên quan.',
+        'Sửa trên mô phỏng (nhớ Publish lại sau khi sửa Desktop), rồi kiểm thử lại đủ tài khoản. Dán ma trận sau khi sửa.']
+    blocks = [
+        p('Báo cáo SanLuong_Q3 đã chạy từ tháng 8/2026. Trước khi mở rộng cho 30 đơn vị, lãnh đạo yêu cầu rà soát toàn bộ việc phân quyền và các đường dữ liệu đi ra ngoài. Bạn được quyền Admin workspace và quản trị tenant trên môi trường mô phỏng.'),
+        lab_link('rasoat', 'Mở kịch bản Rà soát báo cáo đang vận hành', 'Làm cá nhân, khoảng 40–60 phút.'),
+        {'t':'h3','text':'Việc cần làm'},
+        *[p(f'{j}. {t}') for j, t in enumerate(task, 1)],
+        p('Gợi ý: báo cáo có hơn mười lỗi, nằm ở cả mô hình, workspace, chia sẻ, dữ liệu nguồn, thư mục người dùng và cài đặt tenant. Một số lỗi che lấp lỗi khác: sửa xong một lỗi, kiểm thử lại để thấy lỗi tiếp theo.'),
+        p('Tiêu chí 10 điểm: tìm đúng lỗi, có bằng chứng bằng con số hoặc tài khoản (4); sửa đúng gốc, không nâng quyền để “cho chạy” (3); kiểm thử lại có cả trường hợp bị từ chối, nối được với bài học buổi trước (3).'),
+        p('Giảng viên: bảng lỗi cài sẵn, cách tái hiện từng lỗi, trình tự trình diễn và ma trận sau khi sửa nằm ở nút 📘 Đáp án của bài này.', teacher=True),
+        {'t':'h3','text':'Gợi ý chữa bài', 'reveal':aid},
+        {'t':'list', 'ordered':True, 'reveal':aid,
+         'items':[{'html':html.escape(f'{t} ({b}).'), 'plain':f'{t} ({b}).', 'level':0} for t, b in RASOAT_LOI]},
+        p('Sau khi sửa: anh Tuấn và chị Lan chỉ thấy Điện lực X (826.436 kWh); trưởng phòng Điện lực Y và chị Hà chỉ thấy Điện lực Y (742.030); anh Minh thấy cả hai (1.568.466); người mới, nhân viên kỹ thuật, đối tác, tài khoản đã khóa và người ngoài internet không thấy dữ liệu.', reveal=aid)]
+    fields = [
+        {'type':'table','key':'phat_hien','label':'Các lỗi tìm được (mỗi dòng một lỗi)','rows':None,'min_rows':6,
+         'columns':[{'key':'loi','label':'Lỗi'}, {'key':'bang_chung','label':'Bằng chứng (tài khoản, con số)'},
+                    {'key':'nguyen_nhan','label':'Nguyên nhân'}, {'key':'cach_sua','label':'Cách sửa, người làm'},
+                    {'key':'buoi','label':'Liên quan', 'options':sessions}]},
+        {'type':'textarea','key':'kiem_thu_lai','label':'Kiểm thử lại sau khi sửa',
+         'hint':'Dán ma trận kiểm thử (nút Chép TSV) sau khi sửa, ghi Kỳ vọng và Đạt cho từng dòng.'},
+        {'type':'textarea','key':'quy_trinh','label':'Ba việc cần đưa vào quy trình của đơn vị để lỗi không lặp lại'}]
+    append_section(module, 'Phòng thí nghiệm RLS – Rà soát báo cáo đang vận hành', blocks,
+                   {'id':aid, 'type':'practice', 'scope':'student', 'title':'Phòng thí nghiệm RLS – Rà soát báo cáo đang vận hành',
+                    'intro':'Tìm và sửa các lỗi phân quyền của một báo cáo đã chạy, kiểm thử lại bằng từng tài khoản.',
+                    'fields':fields, 'instructions':[b for b in blocks if not b.get('reveal') and not b.get('teacher')]})
 
 
 def build_pack():
