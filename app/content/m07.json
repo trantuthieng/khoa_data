@@ -93,6 +93,12 @@
        }
       ]
      ]
+    },
+    {
+     "t": "p",
+     "callout": "apply",
+     "plain": "Phòng thí nghiệm RLS – mô phỏng Power BI Desktop và service ngay trên trình duyệt: /static/labs/rls/index.html?bai=th8. Không cần cài Power BI hay tài khoản Microsoft. Chọn bài ở ô “Bài”: Thực hành 8, BI 01–10 hoặc Rà soát báo cáo đang vận hành.",
+     "html": "<a href=\"/static/labs/rls/index.html?bai=th8\" target=\"_blank\" rel=\"noopener\">Phòng thí nghiệm RLS – mô phỏng Power BI Desktop và service ngay trên trình duyệt</a> Không cần cài Power BI hay tài khoản Microsoft. Chọn bài ở ô “Bài”: Thực hành 8, BI 01–10 hoặc Rà soát báo cáo đang vận hành."
     }
    ],
    "id": "s1"

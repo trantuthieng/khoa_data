@@ -31,6 +31,15 @@ class TeachingFlow(unittest.TestCase):
     def post(self, url, data, headers=None):
         return self.client.post(url, json=data, headers=headers or self.headers)
 
+    def test_open_all_includes_sections_added_later(self):
+        room = self.post('/api/t/classes', {'name': 'Open all'}).json()
+        st = self.post('/api/join', {'code': room['code'], 'name': 'Chi'}).json()
+        n = len(json.loads(Path('app/content/m07.json').read_text(encoding='utf-8'))['sections'])
+        view = self.post(f'/api/t/classes/{room["id"]}/view', {'module': 7, 'unlocked': n - 1}).json()
+        self.assertGreater(view['unlocked'], n)
+        sections = self.client.get('/api/s/module/7', headers={'Authorization': 'Bearer ' + st['token']}).json()['sections']
+        self.assertTrue(any(s.get('activity') == 'm07-rlslab-v1' for s in sections))
+
     def test_individual_grading_and_revision(self):
         room = self.post('/api/t/classes', {'name': 'Test individual'}).json()
         cid = room['id']

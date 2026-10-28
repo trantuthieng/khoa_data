@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or secrets.token_urlsafe(32)
 PROD = bool(os.environ.get("RENDER") or os.environ.get("PRODUCTION"))
 ONLINE_SECONDS = 20
 MAX_PAYLOAD = 100_000
+OPEN_ALL = 9999  # giá trị unlocked khi giảng viên mở toàn bộ buổi
 VN_TZ = timezone(timedelta(hours=7))
 
 app = FastAPI(title="Lớp học An toàn dữ liệu", docs_url=None, redoc_url=None, openapi_url=None)
@@ -39,6 +40,8 @@ app.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
 @app.on_event("startup")
 def _startup():
     db.init_db()
+    # Buổi 7 có thêm phần Phòng thí nghiệm RLS ở cuối: lớp đã mở đến phần cuối cũ (28) thì mở luôn phần mới
+    db.x("UPDATE class_modules SET unlocked=:a WHERE module_no=7 AND unlocked=28", a=OPEN_ALL)
 
 
 @app.middleware("http")
@@ -557,7 +560,10 @@ def set_view(cid: int, body: ViewIn, _=Depends(teacher)):
     v = view_row(cid, body.module, create=True)
     n = len(MODULES[body.module]["sections"])
     cur = body.current_section or v["current_section"]
-    unlocked = v["unlocked"] if body.unlocked is None else max(-1, min(body.unlocked, n - 1))
+    unlocked = v["unlocked"] if body.unlocked is None else max(-1, body.unlocked)
+    if unlocked >= n - 1:
+        # "Mở toàn bộ" gồm cả các phần thêm vào giáo trình sau này
+        unlocked = OPEN_ALL
     if body.current_section:
         # trình chiếu phần nào thì tự mở đến phần đó
         unlocked = max(unlocked, section_index(body.module, cur))

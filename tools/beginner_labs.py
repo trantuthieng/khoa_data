@@ -278,6 +278,10 @@ def add_rls_lab(module):
         if s.get('activity') == 'm07-th8' and not any('labs/rls' in b.get('html', '') for b in s['blocks']):
             s['blocks'].insert(1, lab_link('th8', 'Chưa có Power BI? Làm Thực hành 8 trên phòng thí nghiệm RLS',
                 'Có đủ bốn bảng, Manage roles, View as, Publish, Security, Manage access và đăng nhập thử từng tài khoản. Ghi rõ trong bài nộp là kiểm thử trên mô phỏng.'))
+        # lối vào ngay đầu buổi: học viên thấy từ lúc mở buổi, không phải chờ tới phần thực hành
+        if s['title'] == 'Thông tin buổi học' and not any('labs/rls' in b.get('html', '') for b in s['blocks']):
+            s['blocks'].append(lab_link('th8', 'Phòng thí nghiệm RLS – mô phỏng Power BI Desktop và service ngay trên trình duyệt',
+                'Không cần cài Power BI hay tài khoản Microsoft. Chọn bài ở ô “Bài”: Thực hành 8, BI 01–10 hoặc Rà soát báo cáo đang vận hành.'))
     aid = 'm07-rlslab-v1'
     sessions = ['Buổi 1 – phân loại, nhãn', 'Buổi 2 – luồng dữ liệu, bản sao', 'Buổi 3 – quyền tối thiểu, Vào–Chuyển–Ra',
                 'Buổi 4 – tài khoản dùng chung', 'Buổi 5 – chia sẻ an toàn', 'Buổi 6 – giảm dữ liệu, che', 'Buổi 7 – RLS, workspace, chia sẻ']
