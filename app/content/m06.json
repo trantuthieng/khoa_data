@@ -88,8 +88,8 @@
         "plain": "Vật dụng"
        },
        {
-        "html": "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.csv (tải ở Thực hành 7)",
-        "plain": "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.csv (tải ở Thực hành 7)"
+        "html": "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.xlsx (tải ở Thực hành 7)",
+        "plain": "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.xlsx (tải ở Thực hành 7)"
        }
       ]
      ]
@@ -1947,13 +1947,13 @@
     },
     {
      "t": "p",
-     "html": "Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.csv – 737 khách hàng × 3 tháng = 2.211 dòng, các cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. File này đóng vai kết quả của chức năng \"Xuất danh sách\" – đủ mọi cột.",
-     "plain": "Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.csv – 737 khách hàng × 3 tháng = 2.211 dòng, các cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. File này đóng vai kết quả của chức năng \"Xuất danh sách\" – đủ mọi cột."
+     "plain": "Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.xlsx – 737 khách hàng × 3 tháng = 2.211 dòng, 16 cột: ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. File này đóng vai kết quả của chức năng “Xuất danh sách” – đủ mọi cột; sheet MoTa giải thích từng cột.",
+     "html": "Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.xlsx – 737 khách hàng × 3 tháng = 2.211 dòng, 16 cột: ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. File này đóng vai kết quả của chức năng “Xuất danh sách” – đủ mọi cột; sheet MoTa giải thích từng cột."
     },
     {
      "t": "p",
-     "plain": "Tải file luyện tập DLX_SanLuong_Q3.csv (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV).",
-     "html": "<a href=\"/static/labs/DLX_SanLuong_Q3.csv\" download>Tải file luyện tập DLX_SanLuong_Q3.csv</a> (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV)."
+     "plain": "Tải file luyện tập DLX_SanLuong_Q3.xlsx (dữ liệu giả lập, mở bằng Excel).",
+     "html": "<a href=\"/static/labs/DLX_SanLuong_Q3.xlsx\" download>Tải file luyện tập DLX_SanLuong_Q3.xlsx</a> (dữ liệu giả lập, mở bằng Excel)."
     },
     {
      "t": "h3",
@@ -1962,8 +1962,8 @@
     },
     {
      "t": "p",
-     "plain": "File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
-     "html": "File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
+     "plain": "File DLX_SanLuong_Q3.xlsx (tạo bằng tools/practice_files.py) có 16 cột, trong đó 7 cột thông tin cá nhân để học viên phân loại: so_cccd, ngay_sinh, gioi_tinh, email, ho_chinh_sach (70 hộ nghèo, cận nghèo), so_tk_ngan_hang, ghi_chu (77 khách có ghi chú gõ tự do: số người thân, chạy thận, khuyết tật…). Phường + giới tính + ngày sinh: 735/737 khách hàng là duy nhất. Hai “bẫy” về số liệu: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
+     "html": "File DLX_SanLuong_Q3.xlsx (tạo bằng tools/practice_files.py) có 16 cột, trong đó 7 cột thông tin cá nhân để học viên phân loại: so_cccd, ngay_sinh, gioi_tinh, email, ho_chinh_sach (70 hộ nghèo, cận nghèo), so_tk_ngan_hang, ghi_chu (77 khách có ghi chú gõ tự do: số người thân, chạy thận, khuyết tật…). Phường + giới tính + ngày sinh: 735/737 khách hàng là duy nhất. Hai “bẫy” về số liệu: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):",
      "teacher": true
     },
     {
@@ -2092,8 +2092,8 @@
     },
     {
      "t": "p",
-     "plain": "Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: không chọn Do not detect data types ở bước 1 (số điện thoại mất số 0 đầu, thang thành ngày); quên đổi kwh sang Whole Number (Sum ra 0); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.",
-     "html": "Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: không chọn Do not detect data types ở bước 1 (số điện thoại mất số 0 đầu, thang thành ngày); quên đổi kwh sang Whole Number (Sum ra 0); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.",
+     "plain": "Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: dán bằng Ctrl+V thay vì Paste Values ở bước 3d (công thức lỗi #REF! trong file mới); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.",
+     "html": "Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: dán bằng Ctrl+V thay vì Paste Values ở bước 3d (công thức lỗi #REF! trong file mới); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.",
      "teacher": true
     },
     {
@@ -2108,7 +2108,7 @@
     },
     {
      "t": "figure",
-     "html": "<svg class=\"dg\" viewBox=\"0 0 720 232\" role=\"img\" aria-label=\"Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"th7-flow-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"th7-flow-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"th7-flow-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"th7-flow-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"th7-flow-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"82\" width=\"150\" height=\"68\" rx=\"8\" class=\"box\"/><text x=\"85.0\" y=\"112.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_SanLuong_Q3.csv</text><text x=\"85.0\" y=\"128.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">2.211 dòng × 9 cột</text><rect x=\"222\" y=\"14\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-warn\"/><text x=\"329.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 3: bản che</text><text x=\"329.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bỏ tên, địa chỉ, số nợ;</text><text x=\"329.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">che SĐT; mã thay thế P0001…</text><rect x=\"222\" y=\"146\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-brand\"/><text x=\"329.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 4–8: PivotTable</text><text x=\"329.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">tổng hợp theo phường;</text><text x=\"329.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bốn phép kiểm tra</text><rect x=\"492\" y=\"14\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-bad\"/><text x=\"601.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_BanChe.xlsx</text><text x=\"601.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">vẫn là dữ liệu cá nhân</text><text x=\"601.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">không giao</text><rect x=\"492\" y=\"146\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-ok\"/><text x=\"601.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_TongHop_PA2.xlsx</text><text x=\"601.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">chỉ số đếm và tổng</text><text x=\"601.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">giao sau khi được duyệt</text><line x1=\"160\" y1=\"108\" x2=\"220\" y2=\"54\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"160\" y1=\"124\" x2=\"220\" y2=\"180\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"436\" y1=\"50\" x2=\"490\" y2=\"50\" class=\"l-bad\" marker-end=\"url(#th7-flow-bad)\"/><line x1=\"436\" y1=\"182\" x2=\"490\" y2=\"182\" class=\"l-ok\" marker-end=\"url(#th7-flow-ok)\"/></svg>",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 232\" role=\"img\" aria-label=\"Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"th7-flow-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"th7-flow-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"th7-flow-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"th7-flow-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"th7-flow-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"82\" width=\"150\" height=\"68\" rx=\"8\" class=\"box\"/><text x=\"85.0\" y=\"112.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_SanLuong_Q3.xlsx</text><text x=\"85.0\" y=\"128.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">2.211 dòng × 16 cột</text><rect x=\"222\" y=\"14\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-warn\"/><text x=\"329.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 3: bản che</text><text x=\"329.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bỏ tên, địa chỉ, số nợ;</text><text x=\"329.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">che SĐT; mã thay thế P0001…</text><rect x=\"222\" y=\"146\" width=\"214\" height=\"72\" rx=\"8\" class=\"r-brand\"/><text x=\"329.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Bước 4–8: PivotTable</text><text x=\"329.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">tổng hợp theo phường;</text><text x=\"329.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">bốn phép kiểm tra</text><rect x=\"492\" y=\"14\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-bad\"/><text x=\"601.0\" y=\"37.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_BanChe.xlsx</text><text x=\"601.0\" y=\"54.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">vẫn là dữ liệu cá nhân</text><text x=\"601.0\" y=\"70.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-bad\">không giao</text><rect x=\"492\" y=\"146\" width=\"218\" height=\"72\" rx=\"8\" class=\"r-ok\"/><text x=\"601.0\" y=\"169.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">DLX_TongHop_PA2.xlsx</text><text x=\"601.0\" y=\"186.4\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">chỉ số đếm và tổng</text><text x=\"601.0\" y=\"202.9\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-ok\">giao sau khi được duyệt</text><line x1=\"160\" y1=\"108\" x2=\"220\" y2=\"54\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"160\" y1=\"124\" x2=\"220\" y2=\"180\" class=\"l-mut\" marker-end=\"url(#th7-flow-mut)\"/><line x1=\"436\" y1=\"50\" x2=\"490\" y2=\"50\" class=\"l-bad\" marker-end=\"url(#th7-flow-bad)\"/><line x1=\"436\" y1=\"182\" x2=\"490\" y2=\"182\" class=\"l-ok\" marker-end=\"url(#th7-flow-ok)\"/></svg>",
      "caption": "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao.",
      "plain": "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao."
     },
@@ -2126,51 +2126,56 @@
      "ordered": true,
      "items": [
       {
-       "plain": "Tạo thư mục TH7 ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.csv vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
-       "html": "Tạo thư mục <strong>TH7</strong> ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.csv vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
+       "plain": "Tạo thư mục TH7 ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
+       "html": "Tạo thư mục <strong>TH7</strong> ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
        "level": 0
       },
       {
-       "plain": "Mở Excel → Blank workbook → lưu ngay thành TH7_LamViec.xlsx trong thư mục TH7. File này chứa dữ liệu đủ cột – cuối bài phải xóa.",
-       "html": "Mở Excel → <strong>Blank workbook</strong> → lưu ngay thành <strong>TH7_LamViec.xlsx</strong> trong thư mục TH7. File này chứa dữ liệu đủ cột – cuối bài phải xóa.",
+       "plain": "Mở DLX_SanLuong_Q3.xlsx. Nếu Excel hiện thanh vàng Protected View, bấm Enable Editing.",
+       "html": "Mở DLX_SanLuong_Q3.xlsx. Nếu Excel hiện thanh vàng <strong>Protected View</strong>, bấm <strong>Enable Editing</strong>.",
+       "level": 0
+      },
+      {
+       "plain": "File → Save As → thư mục TH7, tên TH7_LamViec.xlsx. Từ đây chỉ làm trên file này; file này chứa dữ liệu đủ cột – cuối bài phải xóa.",
+       "html": "<strong>File → Save As</strong> → thư mục TH7, tên <strong>TH7_LamViec.xlsx</strong>. Từ đây chỉ làm trên file này; file này chứa dữ liệu đủ cột – cuối bài phải xóa.",
        "level": 0
       }
      ]
     },
     {
      "t": "h4",
-     "text": "Bước 1 – Nhập file, giữ đúng kiểu dữ liệu"
+     "text": "Bước 1 – Xem file có gì"
     },
     {
      "t": "list",
      "ordered": true,
      "items": [
       {
-       "plain": "Data → From Text/CSV → chọn DLX_SanLuong_Q3.csv → Import.",
-       "html": "<strong>Data → From Text/CSV</strong> → chọn DLX_SanLuong_Q3.csv → <strong>Import</strong>.",
+       "plain": "Mở sheet MoTa: đọc nghĩa của từng cột.",
+       "html": "Mở sheet <strong>MoTa</strong>: đọc nghĩa của từng cột.",
        "level": 0
       },
       {
-       "plain": "Trong hộp xem trước: File Origin chọn 65001: Unicode (UTF-8) (để tên phường có dấu); Data Type Detection chọn Do not detect data types (để số điện thoại giữ số 0 đầu, cột thang giữ dạng 2026-07) → bấm Transform Data.",
-       "html": "Trong hộp xem trước: <strong>File Origin</strong> chọn <strong>65001: Unicode (UTF-8)</strong> (để tên phường có dấu); <strong>Data Type Detection</strong> chọn <strong>Do not detect data types</strong> (để số điện thoại giữ số 0 đầu, cột thang giữ dạng 2026-07) → bấm <strong>Transform Data</strong>.",
+       "plain": "Sang sheet DuLieu: dữ liệu nằm trong một bảng Excel tên SanLuong (bấm vào bảng, tab Table Design ghi tên ở góc trái).",
+       "html": "Sang sheet <strong>DuLieu</strong>: dữ liệu nằm trong một bảng Excel tên <strong>SanLuong</strong> (bấm vào bảng, tab <strong>Table Design</strong> ghi tên ở góc trái).",
        "level": 0
       },
       {
-       "plain": "Trong cửa sổ Power Query: bấm tiêu đề cột kwh → Transform → Data Type → Whole Number. Làm tương tự với cột so_tien_no.",
-       "html": "Trong cửa sổ Power Query: bấm tiêu đề cột <strong>kwh</strong> → <strong>Transform → Data Type → Whole Number</strong>. Làm tương tự với cột <strong>so_tien_no</strong>.",
+       "plain": "Bấm ô A1 → Ctrl+↓ để xuống dòng cuối, Ctrl+↑ để về đầu.",
+       "html": "Bấm ô A1 → <strong>Ctrl+↓</strong> để xuống dòng cuối, <strong>Ctrl+↑</strong> để về đầu.",
        "level": 0
       },
       {
-       "plain": "Home → Close & Load. Đổi tên sheet chứa bảng thành DuLieu, Ctrl+S.",
-       "html": "<strong>Home → Close &amp; Load</strong>. Đổi tên sheet chứa bảng thành <strong>DuLieu</strong>, Ctrl+S.",
+       "plain": "Đọc thử khoảng 10 ô có chữ ở cột ghi_chu (bấm mũi tên ở tiêu đề cột → bỏ đánh dấu (Blanks); xem xong chọn lại Select All).",
+       "html": "Đọc thử khoảng 10 ô có chữ ở cột <strong>ghi_chu</strong> (bấm mũi tên ở tiêu đề cột → bỏ đánh dấu <strong>(Blanks)</strong>; xem xong chọn lại <strong>Select All</strong>).",
        "level": 0
       }
      ]
     },
     {
      "t": "p",
-     "plain": "Kết quả mong đợi: bảng có 9 cột A–I: ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no; khung Queries & Connections bên phải ghi 2,211 rows loaded. Ô C2 là 0900000001 (còn số 0 đầu), ô G2 là 2026-07. Nếu C2 là 900000001 thì làm lại bước 1, nhớ chọn Do not detect data types.",
-     "html": "<strong>Kết quả mong đợi:</strong> bảng có 9 cột A–I: ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no; khung Queries &amp; Connections bên phải ghi <strong>2,211 rows loaded</strong>. Ô C2 là 0900000001 (còn số 0 đầu), ô G2 là 2026-07. Nếu C2 là 900000001 thì làm lại bước 1, nhớ chọn Do not detect data types.",
+     "plain": "Kết quả mong đợi: 16 cột A–P: ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. Dòng cuối là 2212 (tiêu đề + 2.211 dòng dữ liệu). Ô F2 là 0900000001 (còn số 0 đầu), ô K2 là 2026-07. Cột ghi_chu có tên người thân, số điện thoại, tình trạng sức khỏe – thứ mà không ai kiểm soát được khi gõ tự do.",
+     "html": "<strong>Kết quả mong đợi:</strong> 16 cột A–P: ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. Dòng cuối là 2212 (tiêu đề + 2.211 dòng dữ liệu). Ô F2 là 0900000001 (còn số 0 đầu), ô K2 là 2026-07. Cột ghi_chu có tên người thân, số điện thoại, tình trạng sức khỏe – thứ mà không ai kiểm soát được khi gõ tự do.",
      "callout": "apply"
     },
     {
@@ -2179,8 +2184,14 @@
     },
     {
      "t": "p",
-     "plain": "Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp.",
-     "html": "Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."
+     "plain": "Xếp 16 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp.",
+     "html": "Xếp 16 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."
+    },
+    {
+     "t": "p",
+     "plain": "Cột không có tên người vẫn có thể chỉ ra một người: thử nghĩ xem trong một phường có bao nhiêu người cùng giới tính và cùng ngày sinh với bạn? 6 số đầu của số CCCD cho biết những gì?",
+     "html": "Cột không có tên người vẫn có thể chỉ ra một người: thử nghĩ xem trong một phường có bao nhiêu người cùng giới tính và cùng ngày sinh với bạn? 6 số đầu của số CCCD cho biết những gì?",
+     "callout": "question"
     },
     {
      "t": "h4",
@@ -2193,12 +2204,12 @@
     },
     {
      "t": "p",
-     "plain": "3a. Che số điện thoại. Ở sheet DuLieu, gõ sdt_che vào ô J1 (bảng tự mở rộng thêm cột), rồi gõ vào J2 và Enter – Excel tự điền cả cột:",
-     "html": "<strong>3a. Che số điện thoại.</strong> Ở sheet DuLieu, gõ <strong>sdt_che</strong> vào ô J1 (bảng tự mở rộng thêm cột), rồi gõ vào J2 và Enter – Excel tự điền cả cột:"
+     "plain": "3a. Che số điện thoại. Ở sheet DuLieu, gõ sdt_che vào ô Q1 (bảng tự mở rộng thêm cột), rồi gõ vào Q2 và Enter – Excel tự điền cả cột:",
+     "html": "<strong>3a. Che số điện thoại.</strong> Ở sheet DuLieu, gõ <strong>sdt_che</strong> vào ô Q1 (bảng tự mở rộng thêm cột), rồi gõ vào Q2 và Enter – Excel tự điền cả cột:"
     },
     {
      "t": "code",
-     "text": "=LEFT(C2;3)&\"****\"&RIGHT(C2;3)"
+     "text": "=LEFT(F2;3)&\"****\"&RIGHT(F2;3)"
     },
     {
      "t": "p",
@@ -2238,8 +2249,8 @@
     },
     {
      "t": "p",
-     "plain": "3c. Gắn mã thay thế vào dữ liệu. Về sheet DuLieu, gõ ma_moi vào K1, gõ vào K2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):",
-     "html": "<strong>3c. Gắn mã thay thế vào dữ liệu.</strong> Về sheet DuLieu, gõ <strong>ma_moi</strong> vào K1, gõ vào K2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):"
+     "plain": "3c. Gắn mã thay thế vào dữ liệu. Về sheet DuLieu, gõ ma_moi vào R1, gõ vào R2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):",
+     "html": "<strong>3c. Gắn mã thay thế vào dữ liệu.</strong> Về sheet DuLieu, gõ <strong>ma_moi</strong> vào R1, gõ vào R2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):"
     },
     {
      "t": "code",
@@ -2247,8 +2258,8 @@
     },
     {
      "t": "p",
-     "plain": "3d. Tách ra file bản che. Ctrl+N mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng chuột phải → Paste Values: cột K (ma_moi) vào cột A; cột J (sdt_che) vào cột B; bốn cột E:H (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành DLX_BanChe.xlsx trong thư mục TH7.",
-     "html": "<strong>3d. Tách ra file bản che.</strong> <strong>Ctrl+N</strong> mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng <strong>chuột phải → Paste Values</strong>: cột K (ma_moi) vào cột A; cột J (sdt_che) vào cột B; bốn cột E:H (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành <strong>DLX_BanChe.xlsx</strong> trong thư mục TH7."
+     "plain": "3d. Tách ra file bản che. Ctrl+N mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng chuột phải → Paste Values: cột R (ma_moi) vào cột A; cột Q (sdt_che) vào cột B; bốn cột I:L (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành DLX_BanChe.xlsx trong thư mục TH7. Các cột còn lại – CCCD, ngày sinh, giới tính, email, địa chỉ, số nợ, hộ chính sách, tài khoản, ghi chú – không chép sang.",
+     "html": "<strong>3d. Tách ra file bản che.</strong> <strong>Ctrl+N</strong> mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng <strong>chuột phải → Paste Values</strong>: cột R (ma_moi) vào cột A; cột Q (sdt_che) vào cột B; bốn cột I:L (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành <strong>DLX_BanChe.xlsx</strong> trong thư mục TH7. Các cột còn lại – CCCD, ngày sinh, giới tính, email, địa chỉ, số nợ, hộ chính sách, tài khoản, ghi chú – không chép sang."
     },
     {
      "t": "p",
@@ -2327,8 +2338,8 @@
        "level": 0
       },
       {
-       "plain": "Thử gộp phường nhỏ vào phường lân cận Đông Hòa. Ở sheet DuLieu, gõ phuong_gop vào L1, gõ vào L2: =IF(E2=\"Cảng Mới\";\"Đông Hòa\";E2).",
-       "html": "<strong>Thử gộp phường nhỏ vào phường lân cận Đông Hòa.</strong> Ở sheet DuLieu, gõ <strong>phuong_gop</strong> vào L1, gõ vào L2: <strong>=IF(E2=\"Cảng Mới\";\"Đông Hòa\";E2)</strong>.",
+       "plain": "Thử gộp phường nhỏ vào phường lân cận Đông Hòa. Ở sheet DuLieu, gõ phuong_gop vào S1, gõ vào S2: =IF(I2=\"Cảng Mới\";\"Đông Hòa\";I2).",
+       "html": "<strong>Thử gộp phường nhỏ vào phường lân cận Đông Hòa.</strong> Ở sheet DuLieu, gõ <strong>phuong_gop</strong> vào S1, gõ vào S2: <strong>=IF(I2=\"Cảng Mới\";\"Đông Hòa\";I2)</strong>.",
        "level": 0
       },
       {
@@ -2609,8 +2620,8 @@
     },
     {
      "t": "p",
-     "plain": "Kết quả mong đợi: file có 1 sheet, 4 cột, 15 dòng dữ liệu (5 phường × 3 tháng), không có cột ma_kh, ho_ten, dien_thoai, dia_chi, so_tien_no, loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable.",
-     "html": "<strong>Kết quả mong đợi:</strong> file có 1 sheet, 4 cột, 15 dòng dữ liệu (5 phường × 3 tháng), không có cột ma_kh, ho_ten, dien_thoai, dia_chi, so_tien_no, loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable.",
+     "plain": "Kết quả mong đợi: file có 1 sheet, đúng 4 cột phuong, thang, so_kh, tong_kwh, 15 dòng dữ liệu (5 phường × 3 tháng) – không còn cột nào trong 12 cột định danh, nhạy cảm và cả loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable.",
+     "html": "<strong>Kết quả mong đợi:</strong> file có 1 sheet, đúng 4 cột phuong, thang, so_kh, tong_kwh, 15 dòng dữ liệu (5 phường × 3 tháng) – không còn cột nào trong 12 cột định danh, nhạy cảm và cả loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable.",
      "callout": "apply"
     },
     {
@@ -2622,8 +2633,8 @@
      "ordered": true,
      "items": [
       {
-       "plain": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
-       "html": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
+       "plain": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 16 cột bị bỏ, giữ hay biến đổi, vì sao.",
+       "html": "Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 16 cột bị bỏ, giữ hay biến đổi, vì sao.",
        "level": 0
       },
       {
@@ -2647,8 +2658,8 @@
        "level": 0
       },
       {
-       "plain": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx.",
-       "html": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx.",
+       "plain": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx.",
+       "html": "Sau khi chữa bài: xóa DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx.",
        "level": 0
       }
      ]
@@ -2665,8 +2676,240 @@
     },
     {
      "t": "p",
-     "html": "<strong>Phân loại cột:</strong> như bảng \"Áp vào chương 6\" ở mục 1.2.",
-     "plain": "Phân loại cột: như bảng \"Áp vào chương 6\" ở mục 1.2.",
+     "plain": "Phân loại cột:",
+     "html": "Phân loại cột:",
+     "reveal": "m06-th7"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "plain": "Cột",
+        "html": "Cột"
+       },
+       {
+        "plain": "Loại",
+        "html": "Loại"
+       },
+       {
+        "plain": "Anh Minh cần?",
+        "html": "Anh Minh cần?"
+       },
+       {
+        "plain": "Xử lý",
+        "html": "Xử lý"
+       },
+       {
+        "plain": "Lý do",
+        "html": "Lý do"
+       }
+      ],
+      [
+       {
+        "plain": "ma_kh, ho_ten, dien_thoai, email, dia_chi",
+        "html": "ma_kh, ho_ten, dien_thoai, email, dia_chi"
+       },
+       {
+        "plain": "Định danh trực tiếp",
+        "html": "Định danh trực tiếp"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Chỉ ra ngay một người, tra ngược được trên hệ thống, hóa đơn",
+        "html": "Chỉ ra ngay một người, tra ngược được trên hệ thống, hóa đơn"
+       }
+      ],
+      [
+       {
+        "plain": "so_cccd",
+        "html": "so_cccd"
+       },
+       {
+        "plain": "Định danh trực tiếp",
+        "html": "Định danh trực tiếp"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Số định danh cá nhân; 6 số đầu còn cho biết nơi đăng ký, giới tính, năm sinh",
+        "html": "Số định danh cá nhân; 6 số đầu còn cho biết nơi đăng ký, giới tính, năm sinh"
+       }
+      ],
+      [
+       {
+        "plain": "ngay_sinh, gioi_tinh",
+        "html": "ngay_sinh, gioi_tinh"
+       },
+       {
+        "plain": "Định danh gián tiếp",
+        "html": "Định danh gián tiếp"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Ghép với phường: 735/737 khách hàng là duy nhất",
+        "html": "Ghép với phường: 735/737 khách hàng là duy nhất"
+       }
+      ],
+      [
+       {
+        "plain": "phuong",
+        "html": "phuong"
+       },
+       {
+        "plain": "Định danh gián tiếp",
+        "html": "Định danh gián tiếp"
+       },
+       {
+        "plain": "Cần",
+        "html": "Cần"
+       },
+       {
+        "plain": "Giữ",
+        "html": "Giữ"
+       },
+       {
+        "plain": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng",
+        "html": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng"
+       }
+      ],
+      [
+       {
+        "plain": "loai_kh",
+        "html": "loai_kh"
+       },
+       {
+        "plain": "Định danh gián tiếp",
+        "html": "Định danh gián tiếp"
+       },
+       {
+        "plain": "Cần để lọc",
+        "html": "Cần để lọc"
+       },
+       {
+        "plain": "Lọc, không xuất ra",
+        "html": "Lọc, không xuất ra"
+       },
+       {
+        "plain": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)",
+        "html": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)"
+       }
+      ],
+      [
+       {
+        "plain": "so_tien_no, ho_chinh_sach",
+        "html": "so_tien_no, ho_chinh_sach"
+       },
+       {
+        "plain": "Thuộc tính nhạy cảm",
+        "html": "Thuộc tính nhạy cảm"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Tình trạng tài chính, hoàn cảnh gia đình – ngoài mục đích dự báo",
+        "html": "Tình trạng tài chính, hoàn cảnh gia đình – ngoài mục đích dự báo"
+       }
+      ],
+      [
+       {
+        "plain": "so_tk_ngan_hang",
+        "html": "so_tk_ngan_hang"
+       },
+       {
+        "plain": "Thuộc tính nhạy cảm",
+        "html": "Thuộc tính nhạy cảm"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Thông tin tài khoản; lộ ra dễ bị dùng để lừa đảo",
+        "html": "Thông tin tài khoản; lộ ra dễ bị dùng để lừa đảo"
+       }
+      ],
+      [
+       {
+        "plain": "ghi_chu",
+        "html": "ghi_chu"
+       },
+       {
+        "plain": "Thuộc tính nhạy cảm",
+        "html": "Thuộc tính nhạy cảm"
+       },
+       {
+        "plain": "Không",
+        "html": "Không"
+       },
+       {
+        "plain": "Bỏ",
+        "html": "Bỏ"
+       },
+       {
+        "plain": "Gõ tự do: có tên và số điện thoại người thân, tình trạng sức khỏe",
+        "html": "Gõ tự do: có tên và số điện thoại người thân, tình trạng sức khỏe"
+       }
+      ],
+      [
+       {
+        "plain": "thang, kwh",
+        "html": "thang, kwh"
+       },
+       {
+        "plain": "Dữ liệu phân tích",
+        "html": "Dữ liệu phân tích"
+       },
+       {
+        "plain": "Cần",
+        "html": "Cần"
+       },
+       {
+        "plain": "Giữ thang; kwh tổng hợp",
+        "html": "Giữ thang; kwh tổng hợp"
+       },
+       {
+        "plain": "Thành số khách hàng và tổng kWh theo phường – tháng",
+        "html": "Thành số khách hàng và tổng kWh theo phường – tháng"
+       }
+      ]
+     ],
+     "reveal": "m06-th7"
+    },
+    {
+     "t": "p",
+     "plain": "Xếp so_tk_ngan_hang hoặc ghi_chu vào định danh trực tiếp cũng đúng, miễn là xử lý Bỏ.",
+     "html": "Xếp so_tk_ngan_hang hoặc ghi_chu vào định danh trực tiếp cũng đúng, miễn là xử lý Bỏ.",
      "reveal": "m06-th7"
     },
     {
@@ -2802,114 +3045,114 @@
      "rows": [
       [
        {
-        "html": "Cột đầu vào",
-        "plain": "Cột đầu vào"
+        "plain": "Cột đầu vào",
+        "html": "Cột đầu vào"
        },
        {
-        "html": "Xử lý",
-        "plain": "Xử lý"
+        "plain": "Xử lý",
+        "html": "Xử lý"
        },
        {
-        "html": "Lý do",
-        "plain": "Lý do"
+        "plain": "Lý do",
+        "html": "Lý do"
        }
       ],
       [
        {
-        "html": "ma_kh, ho_ten, dien_thoai, dia_chi",
-        "plain": "ma_kh, ho_ten, dien_thoai, dia_chi"
+        "plain": "ma_kh, ho_ten, so_cccd, dien_thoai, email, dia_chi",
+        "html": "ma_kh, ho_ten, so_cccd, dien_thoai, email, dia_chi"
        },
        {
-        "html": "Bỏ",
-        "plain": "Bỏ"
+        "plain": "Bỏ",
+        "html": "Bỏ"
        },
        {
-        "html": "Định danh; dự báo theo phường không cần",
-        "plain": "Định danh; dự báo theo phường không cần"
+        "plain": "Định danh trực tiếp; dự báo theo phường không cần",
+        "html": "Định danh trực tiếp; dự báo theo phường không cần"
        }
       ],
       [
        {
-        "html": "so_tien_no",
-        "plain": "so_tien_no"
+        "plain": "ngay_sinh, gioi_tinh",
+        "html": "ngay_sinh, gioi_tinh"
        },
        {
-        "html": "Bỏ",
-        "plain": "Bỏ"
+        "plain": "Bỏ",
+        "html": "Bỏ"
        },
        {
-        "html": "Thuộc tính nhạy cảm, ngoài mục đích",
-        "plain": "Thuộc tính nhạy cảm, ngoài mục đích"
+        "plain": "Định danh gián tiếp; ghép lại là nhận ra người",
+        "html": "Định danh gián tiếp; ghép lại là nhận ra người"
        }
       ],
       [
        {
-        "html": "phuong",
-        "plain": "phuong"
+        "plain": "so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu",
+        "html": "so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu"
        },
        {
-        "html": "Giữ",
-        "plain": "Giữ"
+        "plain": "Bỏ",
+        "html": "Bỏ"
        },
        {
-        "html": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng",
-        "plain": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng"
+        "plain": "Thuộc tính nhạy cảm, ngoài mục đích",
+        "html": "Thuộc tính nhạy cảm, ngoài mục đích"
        }
       ],
       [
        {
-        "html": "loai_kh",
-        "plain": "loai_kh"
+        "plain": "phuong",
+        "html": "phuong"
        },
        {
-        "html": "Dùng để lọc, không xuất ra",
-        "plain": "Dùng để lọc, không xuất ra"
+        "plain": "Giữ",
+        "html": "Giữ"
        },
        {
-        "html": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)",
-        "plain": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)"
+        "plain": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng",
+        "html": "Đơn vị dự báo; mọi nhóm ≥ ngưỡng"
        }
       ],
       [
        {
-        "html": "thang",
-        "plain": "thang"
+        "plain": "loai_kh",
+        "html": "loai_kh"
        },
        {
-        "html": "Giữ",
-        "plain": "Giữ"
+        "plain": "Dùng để lọc, không xuất ra",
+        "html": "Dùng để lọc, không xuất ra"
        },
        {
-        "html": "Cần cho dự báo",
-        "plain": "Cần cho dự báo"
+        "plain": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)",
+        "html": "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)"
        }
       ],
       [
        {
-        "html": "kwh",
-        "plain": "kwh"
+        "plain": "thang",
+        "html": "thang"
        },
        {
-        "html": "Tổng hợp",
-        "plain": "Tổng hợp"
+        "plain": "Giữ",
+        "html": "Giữ"
        },
        {
-        "html": "Số khách hàng và tổng kWh theo phường – tháng",
-        "plain": "Số khách hàng và tổng kWh theo phường – tháng"
+        "plain": "Dự báo theo tháng",
+        "html": "Dự báo theo tháng"
        }
       ],
       [
        {
-        "html": "Khách hàng sản xuất Cảng Mới",
-        "plain": "Khách hàng sản xuất Cảng Mới"
+        "plain": "kwh",
+        "html": "kwh"
        },
        {
-        "html": "Tách khỏi bản giao",
-        "plain": "Tách khỏi bản giao"
+        "plain": "Tổng hợp",
+        "html": "Tổng hợp"
        },
        {
-        "html": "Một khách hàng; phụ tải lớn được dự báo riêng theo hợp đồng và đăng ký của khách hàng",
-        "plain": "Một khách hàng; phụ tải lớn được dự báo riêng theo hợp đồng và đăng ký của khách hàng"
+        "plain": "Thành so_kh và tong_kwh theo phường – tháng",
+        "html": "Thành so_kh và tong_kwh theo phường – tháng"
        }
       ]
      ],
@@ -3147,8 +3390,8 @@
     },
     {
      "t": "p",
-     "html": "Trước khi giao cần: anh Tuấn (chủ dữ liệu) duyệt file thật; xác nhận với CNTT và chị Lan rằng công cụ AI thử nghiệm đã được phép dùng và dữ liệu không được dùng để huấn luyện mô hình của nhà cung cấp (buổi 1); ghi vào sổ theo dõi bản xuất; xóa file đủ cột DLX_SanLuong_Q3.csv và bản che khỏi máy người làm.",
-     "plain": "Trước khi giao cần: anh Tuấn (chủ dữ liệu) duyệt file thật; xác nhận với CNTT và chị Lan rằng công cụ AI thử nghiệm đã được phép dùng và dữ liệu không được dùng để huấn luyện mô hình của nhà cung cấp (buổi 1); ghi vào sổ theo dõi bản xuất; xóa file đủ cột DLX_SanLuong_Q3.csv và bản che khỏi máy người làm.",
+     "html": "Trước khi giao cần: anh Tuấn (chủ dữ liệu) duyệt file thật; xác nhận với CNTT và chị Lan rằng công cụ AI thử nghiệm đã được phép dùng và dữ liệu không được dùng để huấn luyện mô hình của nhà cung cấp (buổi 1); ghi vào sổ theo dõi bản xuất; xóa file đủ cột DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx và bản che khỏi máy người làm.",
+     "plain": "Trước khi giao cần: anh Tuấn (chủ dữ liệu) duyệt file thật; xác nhận với CNTT và chị Lan rằng công cụ AI thử nghiệm đã được phép dùng và dữ liệu không được dùng để huấn luyện mô hình của nhà cung cấp (buổi 1); ghi vào sổ theo dõi bản xuất; xóa file đủ cột DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx và bản che khỏi máy người làm.",
      "reveal": "m06-th7"
     },
     {

@@ -878,13 +878,15 @@ TEXT_FIXES = {
          "Tạo bản che từng dòng bằng công thức Excel (mục 2.4)."),
         ("(3) bảng so sánh đầu vào – đầu ra; (4)", "(3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4)"),
         ("Python 3 (kèm pandas) trên máy giảng viên; Excel cho học viên chọn cách xử lý không dùng lập trình; file giả lập DLX_SanLuong_Q3.csv (cách tạo ở Thực hành 7)",
-         "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.csv (tải ở Thực hành 7)"),
+         "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.xlsx (tải ở Thực hành 7)"),
+        ("DLX_SanLuong_Q3.csv (tải ở Thực hành 7)", "DLX_SanLuong_Q3.xlsx (tải ở Thực hành 7)"),
+        ("xóa file đủ cột DLX_SanLuong_Q3.csv và bản che", "xóa file đủ cột DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx và bản che"),
         ("Ghi khóa HMAC cứng trong script rồi gửi script kèm file", "Để sheet DoiChieu trong file, hoặc gửi bảng đối chiếu kèm bản che"),
         ("Khóa lưu riêng, đọc từ biến môi trường hoặc kho khóa", "Bảng đối chiếu lưu file riêng có mã hóa, ít người được mở; file giao chỉ có mã thay thế")],
 }
 
 TH6_FILE = "/static/labs/BaoCao_Thang.xlsx"
-TH7_FILE = "/static/labs/DLX_SanLuong_Q3.csv"
+TH7_FILE = "/static/labs/DLX_SanLuong_Q3.xlsx"
 
 
 # ====================== Thực hành 6, 7: hướng dẫn từng bước ======================
@@ -903,7 +905,7 @@ def d_th6():
 
 def d_th7():
     f = Fig("th7-flow", 720, 232, "Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp")
-    f.box(10, 82, 150, 68, ["DLX_SanLuong_Q3.csv", ("2.211 dòng × 9 cột", "f-mut")], "box", 12.5)
+    f.box(10, 82, 150, 68, ["DLX_SanLuong_Q3.xlsx", ("2.211 dòng × 16 cột", "f-mut")], "box", 12.5)
     f.box(222, 14, 214, 72, ["Bước 3: bản che", ("bỏ tên, địa chỉ, số nợ;", "f-mut"), ("che SĐT; mã thay thế P0001…", "f-mut")], "r-warn", 12.5)
     f.box(222, 146, 214, 72, ["Bước 4–8: PivotTable", ("tổng hợp theo phường;", "f-mut"), ("bốn phép kiểm tra", "f-mut")], "r-brand", 12.5)
     f.box(492, 14, 218, 72, ["DLX_BanChe.xlsx", ("vẫn là dữ liệu cá nhân", "f-bad"), ("không giao", "f-bad")], "r-bad", 12.5)
@@ -1019,29 +1021,31 @@ def TH7_STEPS():
         FIG(d_th7(), "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao."),
         P("Cả bài làm bằng Excel (Microsoft 365 hoặc Excel 2016 trở lên), không cần cài thêm gì. Công thức trong bài dùng dấu **;** – máy nào báo lỗi công thức thì đổi thành dấu **,**."),
         H4("Bước 0 – Chuẩn bị (5 phút)"),
-        OL("Tạo thư mục **TH7** ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.csv vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
-           "Mở Excel → **Blank workbook** → lưu ngay thành **TH7_LamViec.xlsx** trong thư mục TH7. File này chứa dữ liệu đủ cột – cuối bài phải xóa."),
-        H4("Bước 1 – Nhập file, giữ đúng kiểu dữ liệu"),
-        OL("**Data → From Text/CSV** → chọn DLX_SanLuong_Q3.csv → **Import**.",
-           "Trong hộp xem trước: **File Origin** chọn **65001: Unicode (UTF-8)** (để tên phường có dấu); **Data Type Detection** chọn **Do not detect data types** (để số điện thoại giữ số 0 đầu, cột thang giữ dạng 2026-07) → bấm **Transform Data**.",
-           "Trong cửa sổ Power Query: bấm tiêu đề cột **kwh** → **Transform → Data Type → Whole Number**. Làm tương tự với cột **so_tien_no**.",
-           "**Home → Close & Load**. Đổi tên sheet chứa bảng thành **DuLieu**, Ctrl+S."),
-        EXPECT("bảng có 9 cột A–I: ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no; khung Queries & Connections bên phải ghi **2,211 rows loaded**. Ô C2 là 0900000001 (còn số 0 đầu), ô G2 là 2026-07. Nếu C2 là 900000001 thì làm lại bước 1, nhớ chọn Do not detect data types."),
+        OL("Tạo thư mục **TH7** ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.xlsx vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
+           "Mở DLX_SanLuong_Q3.xlsx. Nếu Excel hiện thanh vàng **Protected View**, bấm **Enable Editing**.",
+           "**File → Save As** → thư mục TH7, tên **TH7_LamViec.xlsx**. Từ đây chỉ làm trên file này; file này chứa dữ liệu đủ cột – cuối bài phải xóa."),
+        H4("Bước 1 – Xem file có gì"),
+        OL("Mở sheet **MoTa**: đọc nghĩa của từng cột.",
+           "Sang sheet **DuLieu**: dữ liệu nằm trong một bảng Excel tên **SanLuong** (bấm vào bảng, tab **Table Design** ghi tên ở góc trái).",
+           "Bấm ô A1 → **Ctrl+↓** để xuống dòng cuối, **Ctrl+↑** để về đầu.",
+           "Đọc thử khoảng 10 ô có chữ ở cột **ghi_chu** (bấm mũi tên ở tiêu đề cột → bỏ đánh dấu **(Blanks)**; xem xong chọn lại **Select All**)."),
+        EXPECT("16 cột A–P: ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. Dòng cuối là 2212 (tiêu đề + 2.211 dòng dữ liệu). Ô F2 là 0900000001 (còn số 0 đầu), ô K2 là 2026-07. Cột ghi_chu có tên người thân, số điện thoại, tình trạng sức khỏe – thứ mà không ai kiểm soát được khi gõ tự do."),
         H4("Bước 2 – Phân loại cột (không cần Excel)"),
-        P("Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."),
+        P("Xếp 16 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."),
+        P("Cột không có tên người vẫn có thể chỉ ra một người: thử nghĩ xem trong một phường có bao nhiêu người cùng giới tính và cùng ngày sinh với bạn? 6 số đầu của số CCCD cho biết những gì?", callout="question"),
         H4("Bước 3 – Tạo bản che từng dòng (masking và giả danh hóa)"),
         P("Bản che giữ từng dòng nhưng bỏ hẳn cột không cần, che số điện thoại và thay mã khách hàng bằng mã thay thế. Bạn tạo bản này để **kiểm tra** nó an toàn đến đâu ở bước 8, không phải để giao."),
-        P("**3a. Che số điện thoại.** Ở sheet DuLieu, gõ **sdt_che** vào ô J1 (bảng tự mở rộng thêm cột), rồi gõ vào J2 và Enter – Excel tự điền cả cột:"),
-        CODE('=LEFT(C2;3)&"****"&RIGHT(C2;3)'),
+        P("**3a. Che số điện thoại.** Ở sheet DuLieu, gõ **sdt_che** vào ô Q1 (bảng tự mở rộng thêm cột), rồi gõ vào Q2 và Enter – Excel tự điền cả cột:"),
+        CODE('=LEFT(F2;3)&"****"&RIGHT(F2;3)'),
         P("**3b. Lập bảng đối chiếu mã.** Thêm sheet mới tên **DoiChieu**:"),
         OL("Ở sheet DuLieu bấm vào ô A1, **Ctrl+Shift+↓** chọn hết cột ma_kh → Ctrl+C → sang DoiChieu, bấm A1 → Ctrl+V.",
            "Giữ vùng vừa dán đang chọn → **Data → Remove Duplicates** → OK. Excel báo còn **737 unique values**.",
            "B1 gõ **ngau_nhien**, B2 gõ **=RAND()** rồi bấm đúp chấm vuông góc ô để điền xuống hết. Bấm vào một ô cột B → **Data → Sort Smallest to Largest**: danh sách mã bị xáo trộn ngẫu nhiên.",
            "C1 gõ **ma_moi**, C2 gõ **=\"P\"&TEXT(ROW()-1;\"0000\")** rồi bấm đúp để điền xuống: P0001, P0002…",
            "Chọn cột B và C → Ctrl+C → chuột phải → **Paste Values** (để mã không đổi khi Excel tính lại)."),
-        P("**3c. Gắn mã thay thế vào dữ liệu.** Về sheet DuLieu, gõ **ma_moi** vào K1, gõ vào K2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):"),
+        P("**3c. Gắn mã thay thế vào dữ liệu.** Về sheet DuLieu, gõ **ma_moi** vào R1, gõ vào R2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):"),
         CODE('=XLOOKUP(A2;DoiChieu!A:A;DoiChieu!C:C)'),
-        P("**3d. Tách ra file bản che.** **Ctrl+N** mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng **chuột phải → Paste Values**: cột K (ma_moi) vào cột A; cột J (sdt_che) vào cột B; bốn cột E:H (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành **DLX_BanChe.xlsx** trong thư mục TH7."),
+        P("**3d. Tách ra file bản che.** **Ctrl+N** mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng **chuột phải → Paste Values**: cột R (ma_moi) vào cột A; cột Q (sdt_che) vào cột B; bốn cột I:L (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành **DLX_BanChe.xlsx** trong thư mục TH7. Các cột còn lại – CCCD, ngày sinh, giới tính, email, địa chỉ, số nợ, hộ chính sách, tài khoản, ghi chú – không chép sang."),
         EXPECT_RAW("DLX_BanChe.xlsx có 6 cột ma_moi, sdt_che, phuong, loai_kh, thang, kwh và 2.211 dòng dữ liệu. Ô B2 là 090****001. Dòng 2–4 (3 tháng của cùng một khách hàng) có cùng mã dạng P0xxx. Mã của bạn khác mã của bạn bên cạnh vì mỗi người xáo trộn ngẫu nhiên một lần."),
         P("Sheet DoiChieu đóng vai trò như “khóa”: ai có bảng này là nối mã P0xxx ngược về mã khách hàng thật (mục 2.3). Ở đơn vị, bảng đối chiếu lưu file riêng có mã hóa, ít người được mở, không bao giờ gửi kèm bản che.", callout="question"),
         H4("Bước 4 – Tổng hợp theo phường bằng PivotTable"),
@@ -1055,7 +1059,7 @@ def TH7_STEPS():
         H4("Bước 5 – Kiểm tra nhóm nhỏ và áp đảo, thử gộp nhóm"),
         OL("**Nhóm nhỏ:** ở sheet A, chọn các ô số của cột Count of ma_kh (không chọn Grand Total) → **Home → Conditional Formatting → Highlight Cells Rules → Less Than** → gõ **10** → OK.",
            "**Áp đảo:** đọc cột E – phường nào có một khách hàng chiếm tỷ trọng cao bất thường?",
-           "**Thử gộp phường nhỏ vào phường lân cận Đông Hòa.** Ở sheet DuLieu, gõ **phuong_gop** vào L1, gõ vào L2: **=IF(E2=\"Cảng Mới\";\"Đông Hòa\";E2)**.",
+           "**Thử gộp phường nhỏ vào phường lân cận Đông Hòa.** Ở sheet DuLieu, gõ **phuong_gop** vào S1, gõ vào S2: **=IF(I2=\"Cảng Mới\";\"Đông Hòa\";I2)**.",
            "Chuột phải vào tên sheet A → **Move or Copy** → đánh dấu **Create a copy** → OK; đổi tên bản sao thành **D**.",
            "Ở sheet D: bấm vào PivotTable → **PivotTable Analyze → Refresh**. Trong khung Fields bỏ đánh dấu **phuong**, đánh dấu **phuong_gop**. Ô cột E nằm ở dòng Grand Total (nếu có) thì xóa đi."),
         EXPECT("sheet A tô màu đúng một ô: Cảng Mới = 1. Sheet D còn 5 dòng; dòng Đông Hòa: 131 | 91.587 | 42.359 | 46,3%."),
@@ -1097,15 +1101,53 @@ def TH7_STEPS():
            "Chọn từ dòng tiêu đề của PivotTable đến dòng cuối (không chọn ô lọc loai_kh phía trên) → Ctrl+C → **Ctrl+N** → bấm A1 → chuột phải → **Paste Values**.",
            "Sửa tiêu đề thành **phuong, thang, so_kh, tong_kwh**. Lưu thành **DLX_TongHop_PA2.xlsx**.",
            "Kiểm tra: ô trống bất kỳ gõ **=SUM(D2:D16)**, đọc xong thì xóa ô đó. **File → Info → Check for Issues → Inspect Document → Inspect**: không còn sheet ẩn, dữ liệu ẩn. Lưu lại."),
-        EXPECT("file có 1 sheet, 4 cột, 15 dòng dữ liệu (5 phường × 3 tháng), không có cột ma_kh, ho_ten, dien_thoai, dia_chi, so_tien_no, loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable."),
+        EXPECT("file có 1 sheet, đúng 4 cột phuong, thang, so_kh, tong_kwh, 15 dòng dữ liệu (5 phường × 3 tháng) – không còn cột nào trong 12 cột định danh, nhạy cảm và cả loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable."),
         H4("Bước 11 – Hoàn thiện bài"),
-        OL("Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
+        OL("Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 16 cột bị bỏ, giữ hay biến đổi, vì sao.",
            "Ghi kết quả bốn phép kiểm tra cho bản tổng hợp và bản che.",
            "Điền bảng chọn phương án xử lý (bước 9) và ghi phần sản lượng bị tách ra được báo cho anh Minh thế nào.",
            "Quyết định bản nào được đưa vào môi trường AI thử nghiệm, bản nào không; cần ai duyệt; cần xác nhận gì về công cụ AI.",
            "Viết đoạn đề xuất gửi anh Tuấn.",
-           "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx."),
+           "Sau khi chữa bài: xóa DLX_SanLuong_Q3.xlsx, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx."),
     ]
+
+
+TH7_DU_LIEU = ("Dữ liệu để làm bài: file giả lập DLX_SanLuong_Q3.xlsx – 737 khách hàng × 3 tháng = 2.211 dòng, 16 cột: "
+               "ma_kh, ho_ten, so_cccd, ngay_sinh, gioi_tinh, dien_thoai, email, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu. File này đóng vai kết quả của chức năng “Xuất danh sách” – đủ mọi cột; "
+               "sheet MoTa giải thích từng cột.")
+
+
+def TH7_PHAN_LOAI():
+    """Đáp án phân loại 16 cột (hiện khi công bố)."""
+    r = {"reveal": "m06-th7"}
+    return [
+        P("Phân loại cột:", **r),
+        T(["Cột", "Loại", "Anh Minh cần?", "Xử lý", "Lý do"],
+          ["ma_kh, ho_ten, dien_thoai, email, dia_chi", "Định danh trực tiếp", "Không", "Bỏ", "Chỉ ra ngay một người, tra ngược được trên hệ thống, hóa đơn"],
+          ["so_cccd", "Định danh trực tiếp", "Không", "Bỏ", "Số định danh cá nhân; 6 số đầu còn cho biết nơi đăng ký, giới tính, năm sinh"],
+          ["ngay_sinh, gioi_tinh", "Định danh gián tiếp", "Không", "Bỏ", "Ghép với phường: 735/737 khách hàng là duy nhất"],
+          ["phuong", "Định danh gián tiếp", "Cần", "Giữ", "Đơn vị dự báo; mọi nhóm ≥ ngưỡng"],
+          ["loai_kh", "Định danh gián tiếp", "Cần để lọc", "Lọc, không xuất ra", "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)"],
+          ["so_tien_no, ho_chinh_sach", "Thuộc tính nhạy cảm", "Không", "Bỏ", "Tình trạng tài chính, hoàn cảnh gia đình – ngoài mục đích dự báo"],
+          ["so_tk_ngan_hang", "Thuộc tính nhạy cảm", "Không", "Bỏ", "Thông tin tài khoản; lộ ra dễ bị dùng để lừa đảo"],
+          ["ghi_chu", "Thuộc tính nhạy cảm", "Không", "Bỏ", "Gõ tự do: có tên và số điện thoại người thân, tình trạng sức khỏe"],
+          ["thang, kwh", "Dữ liệu phân tích", "Cần", "Giữ thang; kwh tổng hợp", "Thành số khách hàng và tổng kWh theo phường – tháng"],
+          **r),
+        P("Xếp so_tk_ngan_hang hoặc ghi_chu vào định danh trực tiếp cũng đúng, miễn là xử lý Bỏ.", **r),
+    ]
+
+
+def TH7_DAU_VAO_RA():
+    """Bảng so sánh đầu vào – đầu ra cho bản giao phương án 2 (hiện khi công bố)."""
+    return T(["Cột đầu vào", "Xử lý", "Lý do"],
+             ["ma_kh, ho_ten, so_cccd, dien_thoai, email, dia_chi", "Bỏ", "Định danh trực tiếp; dự báo theo phường không cần"],
+             ["ngay_sinh, gioi_tinh", "Bỏ", "Định danh gián tiếp; ghép lại là nhận ra người"],
+             ["so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu", "Bỏ", "Thuộc tính nhạy cảm, ngoài mục đích"],
+             ["phuong", "Giữ", "Đơn vị dự báo; mọi nhóm ≥ ngưỡng"],
+             ["loai_kh", "Dùng để lọc, không xuất ra", "Xuất ra sẽ tạo nhóm nhỏ (Bình Minh – Kinh doanh: 8)"],
+             ["thang", "Giữ", "Dự báo theo tháng"],
+             ["kwh", "Tổng hợp", "Thành so_kh và tong_kwh theo phường – tháng"],
+             reveal="m06-th7")
 
 
 def TH7_PHUONG_AN():
@@ -1173,21 +1215,32 @@ def _th6(blocks):
 
 def _th7(blocks):
     """Bỏ ba script của giảng viên; thay bằng file CSV tải sẵn, bảng kết quả kiểm tra và hướng dẫn Excel từng bước."""
-    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả", "File DLX_SanLuong_Q3.csv được tạo sẵn", "Bước 9 (", "Nhóm không lập trình", "Máy lớp")
+    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả", "File DLX_SanLuong_Q3", "Bước 9 (", "Nhóm không lập trình", "Máy lớp")
     out = []
     for b in blocks:
         p = b.get("plain", "")
-        if _is_link(b, TH7_FILE) or b.get("teacher") and (
+        if _is_link(b, TH7_FILE) or _is_link(b, "/static/labs/DLX_SanLuong_Q3.csv") or b.get("teacher") and (
                 b["t"] == "code" or p.startswith(drop) or b["t"] == "table" and b["rows"][0][0]["plain"] == "Bước"):
             continue
         if b.get("reveal") and (p.startswith(("Chọn phương án xử lý", "Phần không có trong bản giao")) or b["t"] == "table" and b["rows"][0][0]["plain"] == "Phương án"):
             continue
+        if b.get("reveal") and p.startswith("Xếp so_tk_ngan_hang"):
+            continue                             # ghi chú của bảng phân loại, thêm lại cùng bảng
+        if p.startswith("Dữ liệu để làm bài"):
+            b = P(TH7_DU_LIEU)
+        if b.get("reveal") and p.startswith("Phân loại cột"):
+            out += TH7_PHAN_LOAI()
+            continue
+        if b.get("reveal") and b["t"] == "table" and b["rows"][0][0]["plain"] in ("Cột đầu vào", "Cột"):
+            if b["rows"][0][0]["plain"] == "Cột":
+                continue                         # bảng phân loại đã thêm ở trên
+            b = TH7_DAU_VAO_RA()
         out.append(b)
         if b.get("reveal") and b["t"] == "table" and [c["plain"] for c in b["rows"][0][:2]] == ["Bản", "Đưa vào AI thử nghiệm?"]:
             out += TH7_PHUONG_AN()
         if b["t"] == "h3" and b.get("teacher"):
             out += [
-                P("File DLX_SanLuong_Q3.csv được tạo sẵn với hai “bẫy”: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):", teacher=True),
+                P("File DLX_SanLuong_Q3.xlsx (tạo bằng tools/practice_files.py) có 16 cột, trong đó 7 cột thông tin cá nhân để học viên phân loại: so_cccd, ngay_sinh, gioi_tinh, email, ho_chinh_sach (70 hộ nghèo, cận nghèo), so_tk_ngan_hang, ghi_chu (77 khách có ghi chú gõ tự do: số người thân, chạy thận, khuyết tật…). Phường + giới tính + ngày sinh: 735/737 khách hàng là duy nhất. Hai “bẫy” về số liệu: phường Cảng Mới chỉ có một xưởng sản xuất; một hộ sinh hoạt ở An Phú dùng điện rất lớn. Kết quả kiểm tra để chữa bài (tháng 2026-09):", teacher=True),
                 T(["Bước", "Kiểm tra", "Kết quả chính"],
                   ["A", "Tổng hợp thô theo phường", "Cảng Mới 1 KH / 42.359 kWh; Phú Thượng 121 / 50.321; Đông Hòa 130 / 49.228; Bình Minh 148 / 50.969; Tân Lập 163 / 62.234; An Phú 174 / 64.263"],
                   ["B", "Nhóm dưới 10 khách hàng", "Cảng Mới, cả 3 tháng (1 khách hàng)"],
@@ -1198,10 +1251,10 @@ def _th7(blocks):
                   ["Bản che", "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế P0001… từ bảng đối chiếu", "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng"],
                   teacher=True),
                 P("Bước 9 (tháng 2026-09): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,7%; D 121 – 46,3% – 100%; F 121 – 5,2% – 86,7%. Phần bị tách là xưởng Cảng Mới: 42.359 kWh tháng 9, 128.185 kWh cả quý. B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.", teacher=True),
-                P("Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: không chọn Do not detect data types ở bước 1 (số điện thoại mất số 0 đầu, thang thành ngày); quên đổi kwh sang Whole Number (Sum ra 0); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.", teacher=True),
+                P("Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: dán bằng Ctrl+V thay vì Paste Values ở bước 3d (công thức lỗi #REF! trong file mới); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.", teacher=True),
                 P("Máy lớp: Excel Microsoft 365 hoặc 2016 trở lên (có Data → From Text/CSV và Power Query). Excel 2016/2019 không có XLOOKUP – học viên dùng VLOOKUP như ghi ở bước 3c.", teacher=True)]
     at = next(i for i, b in enumerate(out) if b.get("plain", "").startswith("Dữ liệu để làm bài")) + 1
-    out.insert(at, LINK(TH7_FILE, "Tải file luyện tập DLX_SanLuong_Q3.csv", " (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV)."))
+    out.insert(at, LINK(TH7_FILE, "Tải file luyện tập DLX_SanLuong_Q3.xlsx", " (dữ liệu giả lập, mở bằng Excel)."))
     return _replace(out, "Nhiệm vụ", lambda b: b.get("plain", "").startswith("Bài cần nộp"), TH7_STEPS())
 
 

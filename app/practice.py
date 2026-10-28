@@ -515,11 +515,12 @@ BOARD_TH6 = {
 }
 
 # ---------- Buổi 6 – Thực hành 7: chuẩn bị dữ liệu cho phân tích và AI ----------
-COT_TH7 = ["ma_kh", "ho_ten", "dien_thoai", "dia_chi", "phuong", "loai_kh", "thang", "kwh", "so_tien_no"]
+COT_TH7 = ["ma_kh", "ho_ten", "so_cccd", "ngay_sinh", "gioi_tinh", "dien_thoai", "email", "dia_chi", "phuong", "loai_kh",
+           "thang", "kwh", "so_tien_no", "ho_chinh_sach", "so_tk_ngan_hang", "ghi_chu"]
 BOARD_TH7 = {
-    "type": "board", "key": "chuan_bi_du_lieu", "size": [1760, 1000],
-    "label": "Không gian chuẩn bị dữ liệu – xếp 9 cột vào 4 loại, ghi kết quả kiểm tra nhận diện, quyết định bản nào được giao",
-    "hint": "File DLX_SanLuong_Q3.csv: 737 khách hàng × 3 tháng. Anh Minh cần dự báo nhu cầu điện theo phường trên môi trường AI thử nghiệm.",
+    "type": "board", "key": "chuan_bi_du_lieu", "size": [1760, 1090],
+    "label": "Không gian chuẩn bị dữ liệu – xếp 16 cột vào 4 loại, ghi kết quả kiểm tra nhận diện, quyết định bản nào được giao",
+    "hint": "File DLX_SanLuong_Q3.xlsx: 737 khách hàng × 3 tháng, 16 cột. Anh Minh cần dự báo nhu cầu điện theo phường trên môi trường AI thử nghiệm.",
     "steps": [
         "Kéo từng cột trong hàng trên cùng xuống 1 trong 4 loại: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích.",
         "Ở bảng bên dưới, ghi anh Minh cần hay không, cách xử lý (giữ, bỏ, biến đổi) và lý do cho từng cột.",
@@ -528,13 +529,13 @@ BOARD_TH7 = {
         "Ở vùng “Quyết định giao”, chọn quyết định cho từng bản. Thêm người duyệt / xác nhận (đặt ở cột bên phải vùng), nối tới bản liên quan, ghi họ duyệt gì.",
         "Điền phiếu yêu cầu dữ liệu C7 và viết đoạn đề xuất gửi anh Tuấn ở bên dưới.",
     ],
-    "zones": [zone(20, 20, 1125, 330, "9 cột của file – kéo từng cột xuống loại phù hợp", "slate"),
-              sz("z_dd", 20, 370, 270, 610, "Định danh trực tiếp", "red", "Chỉ ra ngay một người"),
-              sz("z_gt", 305, 370, 270, 610, "Định danh gián tiếp", "amber", "Ghép lại thì nhận ra người"),
-              sz("z_nc", 590, 370, 270, 610, "Thuộc tính nhạy cảm", "violet", "Lộ ra thì ảnh hưởng tới người đó"),
-              sz("z_pt", 875, 370, 270, 610, "Dữ liệu phân tích", "green", "Phục vụ mục đích dự báo"),
+    "zones": [zone(20, 20, 1125, 420, "16 cột của file – kéo từng cột xuống loại phù hợp", "slate"),
+              sz("z_dd", 20, 460, 270, 610, "Định danh trực tiếp", "red", "Chỉ ra ngay một người"),
+              sz("z_gt", 305, 460, 270, 610, "Định danh gián tiếp", "amber", "Ghép lại thì nhận ra người"),
+              sz("z_nc", 590, 460, 270, 610, "Thuộc tính nhạy cảm", "violet", "Lộ ra thì ảnh hưởng tới người đó"),
+              sz("z_pt", 875, 460, 270, 610, "Dữ liệu phân tích", "green", "Phục vụ mục đích dự báo"),
               zone(1170, 20, 570, 250, "Bốn phép kiểm tra nhận diện", "blue", "Ghi kết quả ở bảng bên dưới"),
-              zone(1170, 290, 570, 690, "Quyết định giao", "teal", "Bản nào được đưa vào AI thử nghiệm? Ai duyệt, xác nhận gì?")],
+              zone(1170, 290, 570, 780, "Quyết định giao", "teal", "Bản nào được đưa vào AI thử nghiệm? Ai duyệt, xác nhận gì?")],
     "kinds": [
         kind("col", "Cột", "slate", "🧩", notext=True,
              props=[pr("can", "Anh Minh cần?", options=["Cần", "Không cần"], table=True),
@@ -556,7 +557,7 @@ BOARD_TH7 = {
     ],
     "links": [{"a": "actor", "b": "ver", "fields": [lf("viec", "Duyệt / xác nhận gì", "VD: duyệt file thật")]}],
     "goals": [
-        {"type": "inzone", "kind": "col", "text": "Xếp cả 9 cột vào 4 loại"},
+        {"type": "inzone", "kind": "col", "text": "Xếp cả 16 cột vào 4 loại"},
         {"type": "props", "kind": "col", "fields": ["can", "xu_ly"], "text": "Ghi anh Minh cần hay không và cách xử lý từng cột"},
         {"type": "props", "kind": "col", "fields": ["ly_do"], "text": "Ghi lý do cho từng cột"},
         {"type": "props", "kind": "check", "fields": ["ban_th", "ban_che"], "text": "Ghi kết quả bốn phép kiểm tra cho cả hai bản"},
@@ -567,6 +568,10 @@ BOARD_TH7 = {
         {"type": "inzone", "node": "c_ho_ten", "zone": "z_pt", "text": "Họ tên có phục vụ dự báo nhu cầu theo phường không?"},
         {"type": "prop", "node": "c_dien_thoai", "key": "xu_ly", "value": "Giữ", "text": "Dự báo nhu cầu theo phường có cần số điện thoại không?"},
         {"type": "prop", "node": "c_so_tien_no", "key": "xu_ly", "value": "Giữ", "text": "Số tiền nợ có nằm trong mục đích dự báo nhu cầu điện không?"},
+        {"type": "prop", "node": "c_so_cccd", "key": "xu_ly", "value": "Giữ", "text": "Dự báo theo phường có cần số CCCD không? 6 số đầu CCCD còn lộ cả giới tính và năm sinh."},
+        {"type": "prop", "node": "c_ngay_sinh", "key": "xu_ly", "value": "Giữ", "text": "Phường + giới tính + ngày sinh: trong file này gần như mỗi tổ hợp chỉ có một người."},
+        {"type": "prop", "node": "c_ghi_chu", "key": "xu_ly", "value": "Giữ", "text": "Đọc thử vài ô ghi_chu: có tên người thân, số điện thoại, tình trạng sức khỏe không?"},
+        {"type": "inzone", "node": "c_ho_chinh_sach", "zone": "z_pt", "text": "Hộ nghèo, cận nghèo là hoàn cảnh của một gia đình – lộ ra thì ảnh hưởng tới họ thế nào?"},
         {"type": "tag", "node": "v_che", "value": "Đưa vào AI thử nghiệm", "text": "Bản che từng dòng vẫn là từng khách hàng một – bốn phép kiểm tra nói gì về bản này?"},
     ],
     "summary": [

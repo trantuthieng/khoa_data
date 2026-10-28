@@ -36,19 +36,26 @@ PHAN_TACH = ("Phần không có trong bản giao là khách hàng sản xuất �
 
 # ---------- Thực hành 7: chuẩn bị dữ liệu cho phân tích và AI ----------
 KEY_TH7 = key(
-    "Bốn cột định danh và số nợ bị bỏ; so sánh 4 phương án A, B, D, F rồi giao bản tổng hợp phường × tháng của nhóm Sinh hoạt + Kinh doanh (phương án 2), tách riêng "
+    "Các cột định danh, ngày sinh, giới tính và nhạy cảm bị bỏ; so sánh 4 phương án A, B, D, F rồi giao bản tổng hợp phường × tháng của nhóm Sinh hoạt + Kinh doanh (phương án 2), tách riêng "
     "khách hàng sản xuất Cảng Mới. Bản gộp Cảng Mới vào Đông Hòa vẫn bị áp đảo (46,3%); bản che từng dòng không đưa vào AI. "
     "Anh Tuấn duyệt file thật, CNTT xác nhận công cụ.",
     {"chuan_bi_du_lieu": board([
-        col("ma_kh", 30, 420, "Không cần", "Bỏ", "Định danh; dự báo theo phường không cần"),
-        col("ho_ten", 30, 510, "Không cần", "Bỏ", "Định danh trực tiếp"),
-        col("dien_thoai", 30, 600, "Không cần", "Bỏ", "Định danh trực tiếp"),
-        col("dia_chi", 30, 690, "Không cần", "Bỏ", "Định danh; phường đã đủ cho dự báo"),
-        col("phuong", 315, 420, "Cần", "Giữ", "Đơn vị dự báo; mọi nhóm ≥ 10 khách hàng"),
-        col("loai_kh", 315, 510, "Cần", "Biến đổi", "Chỉ dùng để lọc Sinh hoạt + Kinh doanh, không xuất ra (Bình Minh – KD chỉ 8)"),
-        col("so_tien_no", 600, 420, "Không cần", "Bỏ", "Nhạy cảm, ngoài mục đích dự báo"),
-        col("thang", 885, 420, "Cần", "Giữ", "Cần cho dự báo theo tháng"),
-        col("kwh", 885, 510, "Cần", "Biến đổi", "Tổng hợp thành số khách hàng và tổng kWh theo phường – tháng"),
+        col("ma_kh", 30, 510, "Không cần", "Bỏ", "Định danh; dự báo theo phường không cần"),
+        col("ho_ten", 30, 600, "Không cần", "Bỏ", "Định danh trực tiếp"),
+        col("so_cccd", 30, 690, "Không cần", "Bỏ", "Số định danh cá nhân; 6 số đầu còn lộ giới tính, năm sinh"),
+        col("dien_thoai", 30, 780, "Không cần", "Bỏ", "Định danh trực tiếp"),
+        col("email", 30, 870, "Không cần", "Bỏ", "Định danh trực tiếp (có cả tên trong địa chỉ email)"),
+        col("dia_chi", 30, 960, "Không cần", "Bỏ", "Định danh; phường đã đủ cho dự báo"),
+        col("ngay_sinh", 315, 510, "Không cần", "Bỏ", "Ghép với phường, giới tính là nhận ra gần như từng người"),
+        col("gioi_tinh", 315, 600, "Không cần", "Bỏ", "Dự báo theo phường không cần; chia nhóm nhỏ hơn"),
+        col("phuong", 315, 690, "Cần", "Giữ", "Đơn vị dự báo; mọi nhóm ≥ 10 khách hàng"),
+        col("loai_kh", 315, 780, "Cần", "Biến đổi", "Chỉ dùng để lọc Sinh hoạt + Kinh doanh, không xuất ra (Bình Minh – KD chỉ 8)"),
+        col("so_tien_no", 600, 510, "Không cần", "Bỏ", "Nhạy cảm, ngoài mục đích dự báo"),
+        col("ho_chinh_sach", 600, 600, "Không cần", "Bỏ", "Hoàn cảnh kinh tế của gia đình; ngoài mục đích"),
+        col("so_tk_ngan_hang", 600, 690, "Không cần", "Bỏ", "Thông tin tài khoản – lộ ra dễ bị lừa đảo"),
+        col("ghi_chu", 600, 780, "Không cần", "Bỏ", "Gõ tự do: có tên, số người thân, tình trạng sức khỏe"),
+        col("thang", 885, 510, "Cần", "Giữ", "Cần cho dự báo theo tháng"),
+        col("kwh", 885, 600, "Cần", "Biến đổi", "Tổng hợp thành số khách hàng và tổng kWh theo phường – tháng"),
         chk("k1", 1192, 70, "Đạt: mọi nhóm ≥ 10 (Cảng Mới đã tách)", "Không đạt: Cảng Mới – SX 1; Bình Minh – KD 8"),
         chk("k2", 1470, 70, "Hộ 3.370 kWh chìm trong 174 hộ", "Dòng 3.370 và 42.359 kWh nổi bật"),
         chk("k3", 1192, 160, "Lớn nhất 5,2% – đạt (bản gộp: 46,3% – không đạt)", "– (mỗi dòng là một khách hàng)"),
@@ -69,10 +76,10 @@ KEY_TH7 = key(
      "phieu": [{"noi_dung": x} for x in PHIEU],
      "de_xuat": DE_XUAT},
     modules=[
-        ("🧩 <b>Định danh trực tiếp</b>", "ma_kh, ho_ten, dien_thoai, dia_chi → Bỏ.", "ho_ten ở vùng Dữ liệu phân tích là sai (có ⚠)."),
-        ("🧩 <b>Định danh gián tiếp</b>", "phuong (Giữ), loai_kh (dùng để lọc, không xuất).",
-         "Xuất thêm loai_kh “cho đầy đủ” tạo nhóm nhỏ Bình Minh – Kinh doanh: 8."),
-        ("🧩 <b>Thuộc tính nhạy cảm</b>", "so_tien_no → Bỏ.", "Giữ số nợ là ngoài mục đích (có ⚠)."),
+        ("🧩 <b>Định danh trực tiếp</b>", "ma_kh, ho_ten, so_cccd, dien_thoai, email, dia_chi → Bỏ.", "ho_ten ở vùng Dữ liệu phân tích là sai (có ⚠)."),
+        ("🧩 <b>Định danh gián tiếp</b>", "ngay_sinh, gioi_tinh (Bỏ); phuong (Giữ), loai_kh (dùng để lọc, không xuất).",
+         "Phường + giới tính + ngày sinh: 735/737 khách hàng là duy nhất. Xuất thêm loai_kh “cho đầy đủ” tạo nhóm nhỏ Bình Minh – Kinh doanh: 8."),
+        ("🧩 <b>Thuộc tính nhạy cảm</b>", "so_tien_no, ho_chinh_sach, so_tk_ngan_hang, ghi_chu → Bỏ.", "Xếp so_tk_ngan_hang hoặc ghi_chu vào định danh trực tiếp cũng chấp nhận nếu vẫn Bỏ."),
         ("🧩 <b>Dữ liệu phân tích</b>", "thang (Giữ), kwh (tổng hợp).", "Xếp ma_kh vào gián tiếp cũng chấp nhận nếu vẫn Bỏ."),
         ("🔍 <b>Bốn phép kiểm tra</b>", "Kết quả cho cả bản tổng hợp và bản che.", "Bản che không đạt nhóm nhỏ, ngoại lai, phép trừ."),
         ("📦 <b>Quyết định giao</b>", "Tổng hợp phương án 2: Đưa vào AI. Bản che: Không đưa.",
@@ -92,7 +99,7 @@ KEY_TH7 = key(
         P("Chỉ ghi “đã khử nhận dạng” khi có căn cứ đánh giá như trên, không dựa vào việc bỏ cột tên. Phiếu C7 và đoạn đề xuất mẫu ở dưới bảng."),
     ])],
     rubric=[
-        ("Phân loại cột", "2", "Đủ 9 cột, 4 cột định danh trực tiếp bị bỏ, số nợ bỏ; có lý do."),
+        ("Phân loại cột", "2", "Đủ 16 cột; 6 cột định danh trực tiếp, ngày sinh, giới tính và 4 cột nhạy cảm bị bỏ; có lý do."),
         ("Bản tổng hợp và chọn phương án", "2", "Bảng chọn phương án đủ 4 dòng có số; chọn F (hoặc B có báo phần bị bỏ); xử lý Cảng Mới có báo lại cho anh Minh."),
         ("Kiểm tra nhận diện", "2", "Đủ 4 phép cho 2 bản; phát hiện áp đảo sau khi gộp."),
         ("Quyết định và người duyệt", "2", "Không giao bản che từng dòng; 2 người duyệt, điều kiện công cụ AI."),
@@ -103,6 +110,7 @@ KEY_TH7 = key(
         ("Gộp rồi dừng", "Không có kết quả áp đảo", "“Trong nhóm gộp, xưởng chiếm bao nhiêu phần trăm?”"),
         ("Chọn phương án theo một con số", "Chọn D vì giữ 100% sản lượng, hoặc B vì số giống F", "“Ba con số của phương án này đều đạt chưa? Phần bị bỏ là của ai?”"),
         ("Xuất thêm loai_kh", "loai_kh xử lý Giữ", "“Mỗi cột thêm chia nhóm nhỏ hơn: Bình Minh – Kinh doanh còn mấy khách?”"),
+        ("Giữ ghi_chu hoặc ngày sinh “vì không phải tên”", "ghi_chu, ngay_sinh xử lý Giữ (có ⚠)", "“Đọc thử 5 ô ghi chú. Phường + giới tính + ngày sinh có mấy người trùng?”"),
         ("Gọi bản che là ẩn danh", "Bản che chọn Đưa vào AI, có ⚠", "“Mã thay thế cố định theo dõi được từng hộ qua 3 tháng không?”"),
         ("Để bảng đối chiếu đi cùng bản che", "Sheet DoiChieu còn trong file, hoặc gửi kèm", "Ai có bảng đối chiếu là nối ngược mã P0xxx về khách hàng thật; lưu file riêng có mã hóa."),
         ("Quên xóa file đủ cột", "Đề xuất không nhắc", "Bước cuối của quy trình."),
