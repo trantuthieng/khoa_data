@@ -27,10 +27,10 @@ PHIEU = ["Anh Minh, phòng Kế hoạch Công ty",
          "Anh Tuấn – chủ dữ liệu Điện lực X"]
 
 PHUONG_AN = [("1", "100", "100", "Không chọn", "Dòng Cảng Mới là sản lượng của đúng một xưởng"),
-             ("121", "5,2", "86,6", "Không chọn", "Số đạt nhưng mất xưởng Cảng Mới mà không ai biết"),
-             ("121", "49,5", "100", "Không chọn", "Xưởng chiếm gần nửa tổng nhóm gộp – vẫn ước được"),
-             ("121", "5,2", "86,6", "Chọn", "Đạt hai phép; phần tách ra (khách hàng sản xuất) ghi trong đề xuất")]
-PHAN_TACH = ("Phần không có trong bản giao là khách hàng sản xuất ở Cảng Mới: 128.185 kWh, 13,4% sản lượng quý III. "
+             ("121", "5,2", "86,7", "Không chọn", "Số đạt nhưng mất xưởng Cảng Mới mà không ai biết"),
+             ("121", "46,3", "100", "Không chọn", "Xưởng chiếm gần nửa tổng nhóm gộp – vẫn ước được"),
+             ("121", "5,2", "86,7", "Chọn", "Đạt hai phép; phần tách ra (khách hàng sản xuất) ghi trong đề xuất")]
+PHAN_TACH = ("Phần không có trong bản giao là khách hàng sản xuất ở Cảng Mới: 42.359 kWh tháng 9 (13,3%), 128.185 kWh cả quý III. "
              "Ghi rõ trong đề xuất và báo anh Minh: bản tổng hợp chỉ gồm Sinh hoạt + Kinh doanh, phần sản xuất dự báo riêng "
              "theo hợp đồng cung cấp điện, không đưa vào AI thử nghiệm.")
 
@@ -79,15 +79,15 @@ KEY_TH7 = key(
          "Chọn “Chưa – cần xử lý thêm” cho bản tổng hợp cũng đạt nếu lý do là chờ duyệt công cụ."),
         ("👤 <b>Người duyệt, xác nhận</b>", "Anh Tuấn duyệt file; CNTT, chị Lan xác nhận công cụ.", "Ít nhất 2 người, ghi rõ duyệt gì."),
     ],
-    more=[("Bảng chọn phương án xử lý (bước 9)", [
+    more=[("Bảng chọn phương án xử lý (bước 9, tháng 2026-09)", [
         TABLE(["Phương án", "Nhóm nhỏ nhất", "Tỷ trọng lớn nhất", "Giữ sản lượng", "Quyết định"],
               ["A – tổng hợp thô", "1 KH (Cảng Mới)", "100%", "100%", "Không"],
-              ["B – bỏ nhóm dưới 10 (HAVING)", "121 KH", "5,2%", "86,6%", "Không – mất xưởng mà không báo ai"],
-              ["D – gộp Cảng Mới vào Đông Hòa", "121 KH", "49,5% (tháng 8; tháng 9: 46,3%)", "100%", "Không – áp đảo"],
-              ["F – phương án 2 (Sinh hoạt + Kinh doanh)", "121 KH", "5,2%", "86,6%", "Có, sau khi duyệt"],
+              ["B – bỏ nhóm dưới 10 (HAVING)", "121 KH", "5,2%", "86,7%", "Không – mất xưởng mà không báo ai"],
+              ["D – gộp Cảng Mới vào Đông Hòa", "121 KH", "46,3%", "100%", "Không – áp đảo"],
+              ["F – phương án 2 (Sinh hoạt + Kinh doanh)", "121 KH", "5,2%", "86,7%", "Có, sau khi duyệt"],
               ["Bản che từng dòng", "Cảng Mới – SX 1; Bình Minh – KD 8", "–", "–", "Không"]),
         P("B và F ra cùng số vì Cảng Mới chỉ có khách hàng sản xuất. Khác biệt là cách làm: B lọc theo kết quả nên lặng lẽ bỏ cả phường; "
-          "F tách theo loại khách hàng có lý do, báo anh Minh phần sản xuất 128.185 kWh (13,4%) để dự báo riêng. Học viên chọn B "
+          "F tách theo loại khách hàng có lý do, báo anh Minh phần sản xuất (42.359 kWh tháng 9, 13,3%; 128.185 kWh cả quý) để dự báo riêng. Học viên chọn B "
           "nhưng ghi rõ phần bị bỏ và báo anh Minh thì chấp nhận được."),
         P("Chỉ ghi “đã khử nhận dạng” khi có căn cứ đánh giá như trên, không dựa vào việc bỏ cột tên. Phiếu C7 và đoạn đề xuất mẫu ở dưới bảng."),
     ])],
@@ -104,7 +104,7 @@ KEY_TH7 = key(
         ("Chọn phương án theo một con số", "Chọn D vì giữ 100% sản lượng, hoặc B vì số giống F", "“Ba con số của phương án này đều đạt chưa? Phần bị bỏ là của ai?”"),
         ("Xuất thêm loai_kh", "loai_kh xử lý Giữ", "“Mỗi cột thêm chia nhóm nhỏ hơn: Bình Minh – Kinh doanh còn mấy khách?”"),
         ("Gọi bản che là ẩn danh", "Bản che chọn Đưa vào AI, có ⚠", "“Mã thay thế cố định theo dõi được từng hộ qua 3 tháng không?”"),
-        ("Khóa HMAC ghi trong script", "Ghi khóa trong bài", "Khóa lưu riêng, đọc từ biến môi trường hoặc kho khóa."),
+        ("Để bảng đối chiếu đi cùng bản che", "Sheet DoiChieu còn trong file, hoặc gửi kèm", "Ai có bảng đối chiếu là nối ngược mã P0xxx về khách hàng thật; lưu file riêng có mã hóa."),
         ("Quên xóa file đủ cột", "Đề xuất không nhắc", "Bước cuối của quy trình."),
     ],
     flow=["Mở bảng kết quả kiểm tra A–F (phần Chuẩn bị của giảng viên, Thực hành 7) đến bước B: lớp thấy Cảng Mới chỉ 1 khách hàng.",

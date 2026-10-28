@@ -876,7 +876,11 @@ TEXT_FIXES = {
          "Tạo bản tổng hợp theo phường × tháng bằng PivotTable (mục 2.4)."),
         ("Tạo bản che từng dòng (Python do giảng viên chạy, hoặc công thức Excel).",
          "Tạo bản che từng dòng bằng công thức Excel (mục 2.4)."),
-        ("(3) bảng so sánh đầu vào – đầu ra; (4)", "(3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4)")],
+        ("(3) bảng so sánh đầu vào – đầu ra; (4)", "(3) bảng so sánh đầu vào – đầu ra và bảng chọn phương án xử lý; (4)"),
+        ("Python 3 (kèm pandas) trên máy giảng viên; Excel cho học viên chọn cách xử lý không dùng lập trình; file giả lập DLX_SanLuong_Q3.csv (cách tạo ở Thực hành 7)",
+         "Excel (Microsoft 365 hoặc 2016 trở lên) trên máy học viên; file giả lập DLX_SanLuong_Q3.csv (tải ở Thực hành 7)"),
+        ("Ghi khóa HMAC cứng trong script rồi gửi script kèm file", "Để sheet DoiChieu trong file, hoặc gửi bảng đối chiếu kèm bản che"),
+        ("Khóa lưu riêng, đọc từ biến môi trường hoặc kho khóa", "Bảng đối chiếu lưu file riêng có mã hóa, ít người được mở; file giao chỉ có mã thay thế")],
 }
 
 TH6_FILE = "/static/labs/BaoCao_Thang.xlsx"
@@ -900,10 +904,10 @@ def d_th6():
 def d_th7():
     f = Fig("th7-flow", 720, 232, "Từ file đủ cột ra hai bản: bản che từng dòng và bản tổng hợp")
     f.box(10, 82, 150, 68, ["DLX_SanLuong_Q3.csv", ("2.211 dòng × 9 cột", "f-mut")], "box", 12.5)
-    f.box(222, 14, 214, 72, ["Bước 3: bản che", ("bỏ tên, địa chỉ, số nợ;", "f-mut"), ("che SĐT; mã thay thế HMAC", "f-mut")], "r-warn", 12.5)
-    f.box(222, 146, 214, 72, ["Bước 4–8: tổng hợp", ("phường × tháng;", "f-mut"), ("bốn phép kiểm tra", "f-mut")], "r-brand", 12.5)
-    f.box(492, 14, 218, 72, ["DLX_BanChe.csv", ("vẫn là dữ liệu cá nhân", "f-bad"), ("không giao", "f-bad")], "r-bad", 12.5)
-    f.box(492, 146, 218, 72, ["DLX_TongHop_PA2.csv", ("chỉ số đếm và tổng", "f-ok"), ("giao sau khi được duyệt", "f-ok")], "r-ok", 12.5)
+    f.box(222, 14, 214, 72, ["Bước 3: bản che", ("bỏ tên, địa chỉ, số nợ;", "f-mut"), ("che SĐT; mã thay thế P0001…", "f-mut")], "r-warn", 12.5)
+    f.box(222, 146, 214, 72, ["Bước 4–8: PivotTable", ("tổng hợp theo phường;", "f-mut"), ("bốn phép kiểm tra", "f-mut")], "r-brand", 12.5)
+    f.box(492, 14, 218, 72, ["DLX_BanChe.xlsx", ("vẫn là dữ liệu cá nhân", "f-bad"), ("không giao", "f-bad")], "r-bad", 12.5)
+    f.box(492, 146, 218, 72, ["DLX_TongHop_PA2.xlsx", ("chỉ số đếm và tổng", "f-ok"), ("giao sau khi được duyệt", "f-ok")], "r-ok", 12.5)
     f.arrow(160, 108, 220, 54)
     f.arrow(160, 124, 220, 180)
     f.arrow(436, 50, 490, 50, "bad")
@@ -913,6 +917,11 @@ def d_th7():
 
 def EXPECT(s):
     return P("**Kết quả mong đợi:** " + s, callout="apply")
+
+
+def EXPECT_RAW(s):
+    return {"t": "p", "plain": "Kết quả mong đợi: " + s,
+            "html": "<strong>Kết quả mong đợi:</strong> " + esc(s), "callout": "apply"}
 
 
 def TH6_A():
@@ -1008,120 +1017,94 @@ def TH6_B():
 def TH7_STEPS():
     return [
         FIG(d_th7(), "Cùng một file đủ cột, bạn tạo hai bản rồi kiểm tra cả hai: bản che từng dòng vẫn là dữ liệu cá nhân, bản tổng hợp qua kiểm tra mới được đề xuất giao."),
-        H4("Bước 0 – Chuẩn bị máy (5 phút)"),
-        OL("Mở Command Prompt (**Windows + R** → gõ cmd → Enter), gõ **python --version**. Cần Python 3.10 trở lên. Chưa có Python: máy cơ quan thì nhờ CNTT cài; máy riêng thì tải từ python.org, khi cài nhớ đánh dấu **Add python.exe to PATH**.",
-           "Cài thư viện pandas, chỉ cần làm một lần: **pip install pandas** (báo không nhận lệnh pip thì dùng **py -m pip install pandas**).",
-           "Tạo thư mục **TH7**, lưu file DLX_SanLuong_Q3.csv vào đó.",
-           "Mở Notepad, **File → Save As** → thư mục TH7, Save as type: **All files**, tên **th7.py**, Encoding: **UTF-8**.",
-           "Trong Command Prompt: **cd /d** rồi dán đường dẫn thư mục TH7."),
-        P("Cách làm ở mỗi bước dưới đây: chép đoạn mã **nối vào cuối** th7.py → Ctrl+S → chạy **python th7.py** trong Command Prompt → so với phần kết quả mong đợi rồi mới sang bước sau. Dòng bắt đầu bằng # là chú thích, không cần chép."),
-        P("Máy không cài được Python: làm bước 4–9 bằng PivotTable như mục 2.4 và ghi rõ trong bài là bạn dùng Excel.", callout="note"),
-        H4("Bước 1 – Đọc file, xem các cột"),
-        CODE('''import pandas as pd
-
-df = pd.read_csv("DLX_SanLuong_Q3.csv", encoding="utf-8-sig",
-                 dtype={"dien_thoai": str})   # đọc số điện thoại dạng chữ để giữ số 0 đầu
-print(df.shape)                               # (số dòng, số cột)
-print(df.columns.tolist())'''),
-        EXPECT("(2211, 9) và danh sách 9 cột ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no. Báo lỗi FileNotFoundError là Command Prompt chưa đứng ở thư mục TH7."),
-        H4("Bước 2 – Phân loại cột (không cần mã)"),
+        P("Cả bài làm bằng Excel (Microsoft 365 hoặc Excel 2016 trở lên), không cần cài thêm gì. Công thức trong bài dùng dấu **;** – máy nào báo lỗi công thức thì đổi thành dấu **,**."),
+        H4("Bước 0 – Chuẩn bị (5 phút)"),
+        OL("Tạo thư mục **TH7** ở ổ dữ liệu (không để trên Desktop), lưu file DLX_SanLuong_Q3.csv vào đó. Mọi file bạn tạo trong bài đều lưu trong thư mục này.",
+           "Mở Excel → **Blank workbook** → lưu ngay thành **TH7_LamViec.xlsx** trong thư mục TH7. File này chứa dữ liệu đủ cột – cuối bài phải xóa."),
+        H4("Bước 1 – Nhập file, giữ đúng kiểu dữ liệu"),
+        OL("**Data → From Text/CSV** → chọn DLX_SanLuong_Q3.csv → **Import**.",
+           "Trong hộp xem trước: **File Origin** chọn **65001: Unicode (UTF-8)** (để tên phường có dấu); **Data Type Detection** chọn **Do not detect data types** (để số điện thoại giữ số 0 đầu, cột thang giữ dạng 2026-07) → bấm **Transform Data**.",
+           "Trong cửa sổ Power Query: bấm tiêu đề cột **kwh** → **Transform → Data Type → Whole Number**. Làm tương tự với cột **so_tien_no**.",
+           "**Home → Close & Load**. Đổi tên sheet chứa bảng thành **DuLieu**, Ctrl+S."),
+        EXPECT("bảng có 9 cột A–I: ma_kh, ho_ten, dien_thoai, dia_chi, phuong, loai_kh, thang, kwh, so_tien_no; khung Queries & Connections bên phải ghi **2,211 rows loaded**. Ô C2 là 0900000001 (còn số 0 đầu), ô G2 là 2026-07. Nếu C2 là 900000001 thì làm lại bước 1, nhớ chọn Do not detect data types."),
+        H4("Bước 2 – Phân loại cột (không cần Excel)"),
         P("Xếp 9 cột vào 4 loại ở mục 1.2: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích. Mỗi cột ghi anh Minh có cần cho dự báo theo phường không. Bảng này là phần (1) của bài nộp."),
         H4("Bước 3 – Tạo bản che từng dòng (masking và giả danh hóa)"),
         P("Bản che giữ từng dòng nhưng bỏ hẳn cột không cần, che số điện thoại và thay mã khách hàng bằng mã thay thế. Bạn tạo bản này để **kiểm tra** nó an toàn đến đâu ở bước 8, không phải để giao."),
-        CODE('''import hashlib, hmac, os
-from getpass import getpass
-
-# Khóa bí mật không ghi trong code. Ở lớp: gõ một cụm từ dài khi được hỏi, nhớ để lần sau gõ lại đúng.
-khoa = (os.environ.get("KHOA_GIA_DANH") or getpass("Khóa giả danh: ")).encode()
-
-def ma_thay_the(ma_kh):
-    """Cùng khóa và cùng mã khách hàng → luôn ra cùng một mã thay thế 8 ký tự."""
-    return hmac.new(khoa, ma_kh.encode(), hashlib.sha256).hexdigest()[:8]
-
-def che_sdt(sdt):
-    """0900000001 → 090****001; ô trống hoặc số quá ngắn → để trống."""
-    if pd.isna(sdt) or len(sdt) < 7:
-        return ""
-    return sdt[:3] + "****" + sdt[-3:]
-
-che = df.drop(columns=["ho_ten", "dia_chi", "so_tien_no"])   # bỏ hẳn cột, không chỉ ẩn
-che["ma_kh"] = che["ma_kh"].map(ma_thay_the)
-che["dien_thoai"] = che["dien_thoai"].map(che_sdt)
-che.to_csv("DLX_BanChe.csv", index=False, encoding="utf-8-sig")
-print(che.head(3))'''),
-        EXPECT("3 dòng đầu có dien_thoai dạng 090****001, ma_kh là 8 ký tự gồm chữ a–f và số; cả 3 dòng (3 tháng của cùng một khách hàng) có cùng mã thay thế. Mã của bạn khác mã của bạn bên cạnh vì mỗi người dùng một khóa. File DLX_BanChe.csv mở bằng Excel có 6 cột."),
-        P("Thử chạy lại và gõ một khóa khác: mã thay thế đổi hết. Vì vậy khóa phải giữ cố định và bí mật – ai có khóa và danh sách mã khách hàng là nối ngược lại được (mục 2.3).", callout="question"),
-        H4("Bước 4 – Tổng hợp theo phường × tháng"),
-        CODE('''def tong_hop(bang):
-    """Mỗi phường – tháng: số khách hàng, tổng kWh, kWh của khách lớn nhất và tỷ trọng của khách đó (%)."""
-    th = (bang.groupby(["phuong", "thang"])
-              .agg(so_kh=("ma_kh", "nunique"), tong_kwh=("kwh", "sum"), kwh_max=("kwh", "max"))
-              .reset_index())
-    th["ty_trong_max"] = (th["kwh_max"] / th["tong_kwh"] * 100).round(1)
-    return th
-
-A = tong_hop(df)
-print(A[A["thang"] == "2026-09"].sort_values("so_kh"))'''),
-        EXPECT("6 dòng của tháng 2026-09, xếp từ phường ít khách hàng nhất. Để tự kiểm tra: dòng An Phú có tong_kwh = 64263. Ra số khác thì xem lại bước 1."),
+        P("**3a. Che số điện thoại.** Ở sheet DuLieu, gõ **sdt_che** vào ô J1 (bảng tự mở rộng thêm cột), rồi gõ vào J2 và Enter – Excel tự điền cả cột:"),
+        CODE('=LEFT(C2;3)&"****"&RIGHT(C2;3)'),
+        P("**3b. Lập bảng đối chiếu mã.** Thêm sheet mới tên **DoiChieu**:"),
+        OL("Ở sheet DuLieu bấm vào ô A1, **Ctrl+Shift+↓** chọn hết cột ma_kh → Ctrl+C → sang DoiChieu, bấm A1 → Ctrl+V.",
+           "Giữ vùng vừa dán đang chọn → **Data → Remove Duplicates** → OK. Excel báo còn **737 unique values**.",
+           "B1 gõ **ngau_nhien**, B2 gõ **=RAND()** rồi bấm đúp chấm vuông góc ô để điền xuống hết. Bấm vào một ô cột B → **Data → Sort Smallest to Largest**: danh sách mã bị xáo trộn ngẫu nhiên.",
+           "C1 gõ **ma_moi**, C2 gõ **=\"P\"&TEXT(ROW()-1;\"0000\")** rồi bấm đúp để điền xuống: P0001, P0002…",
+           "Chọn cột B và C → Ctrl+C → chuột phải → **Paste Values** (để mã không đổi khi Excel tính lại)."),
+        P("**3c. Gắn mã thay thế vào dữ liệu.** Về sheet DuLieu, gõ **ma_moi** vào K1, gõ vào K2 (Excel không có XLOOKUP thì dùng =VLOOKUP(A2;DoiChieu!A:C;3;FALSE)):"),
+        CODE('=XLOOKUP(A2;DoiChieu!A:A;DoiChieu!C:C)'),
+        P("**3d. Tách ra file bản che.** **Ctrl+N** mở file mới. Chép từ sheet DuLieu sang, mỗi lần dán bằng **chuột phải → Paste Values**: cột K (ma_moi) vào cột A; cột J (sdt_che) vào cột B; bốn cột E:H (phuong, loai_kh, thang, kwh) vào C:F. Lưu thành **DLX_BanChe.xlsx** trong thư mục TH7."),
+        EXPECT_RAW("DLX_BanChe.xlsx có 6 cột ma_moi, sdt_che, phuong, loai_kh, thang, kwh và 2.211 dòng dữ liệu. Ô B2 là 090****001. Dòng 2–4 (3 tháng của cùng một khách hàng) có cùng mã dạng P0xxx. Mã của bạn khác mã của bạn bên cạnh vì mỗi người xáo trộn ngẫu nhiên một lần."),
+        P("Sheet DoiChieu đóng vai trò như “khóa”: ai có bảng này là nối mã P0xxx ngược về mã khách hàng thật (mục 2.3). Ở đơn vị, bảng đối chiếu lưu file riêng có mã hóa, ít người được mở, không bao giờ gửi kèm bản che.", callout="question"),
+        H4("Bước 4 – Tổng hợp theo phường bằng PivotTable"),
+        OL("Ở sheet DuLieu, bấm một ô trong bảng → **Insert → PivotTable** → **New Worksheet** → OK. Đổi tên sheet mới thành **A**.",
+           "Trong khung PivotTable Fields: kéo **thang** vào **Filters**, **phuong** vào **Rows**, **ma_kh** vào **Values** (thành Count of ma_kh), **kwh** vào **Values** (Sum of kwh), rồi kéo **kwh** vào Values lần nữa.",
+           "Bấm vào **Sum of kwh2** trong ô Values → **Value Field Settings** → chọn **Max** → OK.",
+           "Ở ô lọc thang (ô B1) chọn **2026-09** → OK.",
+           "Bấm một ô trong cột Count of ma_kh → **Data → Sort Smallest to Largest**.",
+           "Ô E3 gõ **Tỷ trọng**. Ô E4 gõ **=D4/C4** (gõ tay địa chỉ, không bấm chuột vào ô), kéo xuống đến dòng phường cuối cùng – không kéo tới dòng Grand Total. Chọn cột E → **Home → %**, bấm **Increase Decimal** một lần."),
+        EXPECT("6 dòng phường, Cảng Mới ở trên cùng: 1 | 42.359 | 42.359 | 100,0%. Dòng An Phú: 174 | 64.263 | 3.370 | 5,2%. Grand Total: 737 | 319.374. Nếu Grand Total đếm ra 2.211 là bạn chưa chọn tháng 2026-09; nếu Sum of kwh ra 0 là chưa đổi kwh sang Whole Number ở bước 1."),
         H4("Bước 5 – Kiểm tra nhóm nhỏ và áp đảo, thử gộp nhóm"),
-        CODE('''NGUONG = 10                                   # ngưỡng nhóm tối thiểu dùng trong lớp
-print(A[A["so_kh"] < NGUONG])                 # phép 1: nhóm nhỏ
-print(A.sort_values("ty_trong_max", ascending=False).head(5))   # phép 3: một khách chiếm bao nhiêu % tổng nhóm'''),
-        P("Ghi lại: phường nào dưới ngưỡng, ở những tháng nào; phường nào có một khách hàng chiếm tỷ trọng cao bất thường. Sau đó thử cách hay dùng – gộp phường nhỏ vào phường lân cận **Đông Hòa**. Sửa chữ Tên phường nhỏ thành tên phường bạn vừa tìm được, rồi chạy lại:"),
-        CODE('''GOP = {"Tên phường nhỏ": "Đông Hòa"}           # sửa tên phường cho đúng kết quả ở trên
-gop = df.copy()
-gop["phuong"] = gop["phuong"].replace(GOP)
-D = tong_hop(gop)
-print(D[D["thang"] == "2026-09"].sort_values("ty_trong_max", ascending=False))'''),
+        OL("**Nhóm nhỏ:** ở sheet A, chọn các ô số của cột Count of ma_kh (không chọn Grand Total) → **Home → Conditional Formatting → Highlight Cells Rules → Less Than** → gõ **10** → OK.",
+           "**Áp đảo:** đọc cột E – phường nào có một khách hàng chiếm tỷ trọng cao bất thường?",
+           "**Thử gộp phường nhỏ vào phường lân cận Đông Hòa.** Ở sheet DuLieu, gõ **phuong_gop** vào L1, gõ vào L2: **=IF(E2=\"Cảng Mới\";\"Đông Hòa\";E2)**.",
+           "Chuột phải vào tên sheet A → **Move or Copy** → đánh dấu **Create a copy** → OK; đổi tên bản sao thành **D**.",
+           "Ở sheet D: bấm vào PivotTable → **PivotTable Analyze → Refresh**. Trong khung Fields bỏ đánh dấu **phuong**, đánh dấu **phuong_gop**. Ô cột E nằm ở dòng Grand Total (nếu có) thì xóa đi."),
+        EXPECT("sheet A tô màu đúng một ô: Cảng Mới = 1. Sheet D còn 5 dòng; dòng Đông Hòa: 131 | 91.587 | 42.359 | 46,3%."),
         P("Gộp xong, nhóm mới đã qua ngưỡng chưa? Trong nhóm mới, khách hàng lớn nhất chiếm bao nhiêu phần trăm tổng? Người biết mức tiêu thụ bình thường của Đông Hòa có ước được số của khách đó không?", callout="question"),
         H4("Bước 6 – Kiểm tra ngoại lai"),
-        CODE('''sh = df[(df["thang"] == "2026-09") & (df["loai_kh"] == "Sinh hoạt")]
-print(sh.groupby("phuong")["kwh"].agg(["mean", "max"]).round(0))   # trung bình và lớn nhất của hộ sinh hoạt'''),
+        OL("Tạo bản sao sheet A như bước 5, đặt tên **NgoaiLai**. Xóa cột E.",
+           "Kéo **loai_kh** vào **Filters**, chọn **Sinh hoạt**.",
+           "Bấm **Sum of kwh** trong ô Values → **Value Field Settings** → chọn **Average** → OK."),
+        EXPECT("An Phú: trung bình 303, lớn nhất 3.370 kWh; các phường còn lại lớn nhất chỉ 470–517 kWh."),
         P("Phường nào có hộ sinh hoạt dùng điện vượt xa trung bình? Trong bản tổng hợp, hộ đó có lộ ra không? Còn trong bản che từng dòng thì sao?", callout="question"),
         H4("Bước 7 – Phương án 2: chỉ tổng hợp nhóm Sinh hoạt và Kinh doanh"),
-        CODE('''pa2 = df[df["loai_kh"].isin(["Sinh hoạt", "Kinh doanh"])]
-F = tong_hop(pa2)
-print("Nhóm nhỏ nhất:", F["so_kh"].min(), "khách hàng")
-print("Tỷ trọng lớn nhất:", F["ty_trong_max"].max(), "%")'''),
+        OL("Tạo bản sao sheet A, đặt tên **F**.",
+           "Kéo **loai_kh** vào **Filters** → bấm ô lọc loai_kh → đánh dấu **Select Multiple Items** → chỉ chọn **Sinh hoạt** và **Kinh doanh** → OK.",
+           "Ô cột E nằm ở dòng Grand Total (nếu có) thì xóa đi."),
+        EXPECT("5 dòng phường, không còn Cảng Mới; Count of ma_kh nhỏ nhất là 121; cột E lớn nhất 5,2%; Grand Total Sum of kwh 277.015."),
         P("So với ngưỡng 10 và với kết quả bước 5: phương án này đạt chưa? Khách hàng loại khác bị tách ra không có trong bản này – ghi vào đề xuất để anh Minh dự báo riêng phần đó, đừng để dự báo bị thiếu mà không ai biết."),
         H4("Bước 8 – Kiểm tra bản che bằng bốn phép"),
-        CODE('''print(che.groupby(["phuong", "loai_kh"])["ma_kh"].nunique().sort_values().head(3))  # nhóm nhỏ trong bản che
-print(che.sort_values("kwh", ascending=False).head(3))                               # dòng nổi bật
-mot_ma = che["ma_kh"].iloc[0]
-print(che[che["ma_kh"] == mot_ma][["ma_kh", "thang", "kwh"]])                        # theo dõi một hộ qua 3 tháng'''),
-        P("Bản che có qua được phép nhóm nhỏ, ngoại lai không? Mã thay thế cố định có cho phép theo dõi từng hộ qua các tháng không? Phép trừ: nếu anh Minh có cả bản tổng hợp thô (bước 4) và bản phương án 2 (bước 7), lấy bản này trừ bản kia thì ra số của ai?", callout="question"),
+        P("Mở DLX_BanChe.xlsx:"),
+        OL("**Nhóm nhỏ:** bấm ô A1 → **Insert → PivotTable → New Worksheet**. Filters: **thang** = 2026-09; Rows: **phuong** rồi **loai_kh**; Values: **ma_moi** (Count). Tìm nhóm có số đếm dưới 10.",
+           "**Ngoại lai:** về Sheet1, bấm một ô cột kwh → **Data → Sort Largest to Smallest**. Đọc các dòng đầu.",
+           "**Theo dõi một hộ:** **Data → Filter** → bấm mũi tên ở cột ma_moi → gõ mã ở ô A2 vào ô tìm kiếm → OK.",
+           "Đóng DLX_BanChe.xlsx, **không lưu** các thay đổi ở bước này."),
+        EXPECT("còn nhóm nhỏ Cảng Mới – Sản xuất: 1 và Bình Minh – Kinh doanh: 8. Ba dòng đầu là xưởng Cảng Mới (47.755, 42.359, 38.071 kWh), ngay sau là ba dòng trên 3.000 kWh của một hộ An Phú. Lọc một mã ra đúng 3 dòng – ba tháng của cùng một hộ."),
+        P("Bản che có qua được phép nhóm nhỏ, ngoại lai không? Mã thay thế cố định có cho phép theo dõi từng hộ qua các tháng không? Phép trừ: nếu anh Minh có cả bản tổng hợp thô (sheet A) và bản phương án 2 (sheet F), lấy bản này trừ bản kia thì ra số của ai?", callout="question"),
         H4("Bước 9 – So sánh và chọn phương án xử lý"),
-        P("Đến đây bạn có bốn cách làm bản tổng hợp: A (thô), D (gộp Cảng Mới vào Đông Hòa), F (phương án 2) và một cách nữa hay gặp – B: bỏ hẳn các nhóm dưới ngưỡng, giống HAVING trong SQL. Đặt cả bốn cạnh nhau theo cùng ba con số rồi mới chọn:"),
-        CODE('''B = A[A["so_kh"] >= NGUONG]                   # phương án B: bỏ nhóm dưới ngưỡng
-tong = df["kwh"].sum()                         # tổng sản lượng quý III của file đủ cột
-for ten, bang in [("A thô", A), ("B bỏ nhóm nhỏ", B), ("D gộp", D), ("F phương án 2", F)]:
-    print(ten.ljust(15),
-          "nhóm nhỏ nhất:", bang["so_kh"].min(),
-          "| tỷ trọng lớn nhất:", bang["ty_trong_max"].max(), "%",
-          "| giữ:", round(bang["tong_kwh"].sum() / tong * 100, 1), "% sản lượng")'''),
-        EXPECT("4 dòng. A: 1 – 100,0% – 100,0%. B: 121 – 5,2% – 86,6%. D: 121 – 49,5% – 100,0% (49,5% là tháng 2026-08; riêng tháng 2026-09 là 46,3%). F: 121 – 5,2% – 86,6%."),
+        P("Đến đây bạn có bốn cách làm bản tổng hợp: A (thô), D (gộp Cảng Mới vào Đông Hòa), F (phương án 2) và một cách nữa hay gặp – B: bỏ hẳn các nhóm dưới ngưỡng, giống HAVING trong SQL. Với B không cần sheet mới: đó là sheet A bỏ dòng Cảng Mới."),
+        P("Với mỗi phương án, đọc ba con số từ sheet tương ứng: **nhóm nhỏ nhất** (số Count nhỏ nhất), **tỷ trọng lớn nhất** (số lớn nhất ở cột E), **giữ % sản lượng** = Grand Total Sum of kwh của phương án ÷ 319.374 (Grand Total của sheet A). Ví dụ với F, gõ vào một ô trống: **=277015/319374**."),
+        EXPECT("A: 1 – 100,0% – 100%. B: 121 – 5,2% – 86,7%. D: 121 – 46,3% – 100%. F: 121 – 5,2% – 86,7%."),
         T(["Con số", "Đạt khi", "Không đạt thì"],
           ["Nhóm nhỏ nhất", "Từ ngưỡng 10 khách hàng trở lên", "Dòng tổng hợp chính là số của một vài người"],
           ["Tỷ trọng lớn nhất", "Không ai chiếm phần lớn tổng nhóm – ngang mức các phường khác (vài %)", "Ai biết mức bình thường của phường sẽ ước được số của khách lớn"],
           ["Giữ % sản lượng", "100%, hoặc phần bị tách ra được ghi trong đề xuất và có cách dự báo riêng", "Dự báo thiếu mà không ai biết"]),
-        P("B và F ra cùng con số. Vậy khác nhau ở đâu? Phần sản lượng bị bỏ (100% − 86,6%) là của ai, anh Minh có biết không? Tháng sau một phường có thêm khách hàng sản xuất thì cách nào vẫn cho kết quả đúng?", callout="question"),
-        P("Ghi số liệu và lựa chọn vào bảng **Chọn phương án xử lý dữ liệu** của bài nộp: mỗi phương án một dòng, chọn hay không và vì sao. Làm bằng Excel: mỗi phương án là một PivotTable (lọc loai_kh, hoặc sửa phuong Cảng Mới thành Đông Hòa trên bản sao); lấy Count of ma_kh nhỏ nhất, Max of kwh chia Sum of kwh lớn nhất, Sum of kwh so với tổng của file."),
-        H4("Bước 10 – Lưu bản đề xuất giao và đọc lại để kiểm tra"),
-        CODE('''giao = F[["phuong", "thang", "so_kh", "tong_kwh"]]   # bỏ kwh_max, ty_trong_max: đó là số của đúng một khách hàng
-giao.to_csv("DLX_TongHop_PA2.csv", index=False, encoding="utf-8-sig")
-
-kt = pd.read_csv("DLX_TongHop_PA2.csv", encoding="utf-8-sig")
-print(kt.shape, kt.columns.tolist())
-cam = {"ma_kh", "ho_ten", "dien_thoai", "dia_chi", "so_tien_no", "loai_kh"}
-print("Cột không được có:", cam & set(kt.columns) or "không có – đạt")'''),
-        EXPECT("(15, 4) với 4 cột phuong, thang, so_kh, tong_kwh và dòng “Cột không được có: không có – đạt”. Mở DLX_TongHop_PA2.csv bằng Excel để xem lại lần cuối."),
+        P("B và F ra cùng con số. Vậy khác nhau ở đâu? Phần sản lượng bị bỏ (100% − 86,7%) là của ai, anh Minh có biết không? Tháng sau một phường có thêm khách hàng sản xuất thì cách nào vẫn cho kết quả đúng?", callout="question"),
+        P("Ghi số liệu và lựa chọn vào bảng **Chọn phương án xử lý dữ liệu** của bài nộp: mỗi phương án một dòng, chọn hay không và vì sao."),
+        H4("Bước 10 – Lưu bản đề xuất giao và kiểm tra lại"),
+        OL("Tạo bản sao sheet F, đặt tên **Giao**. Xóa cột E.",
+           "Trong khung Fields: kéo **thang** từ Filters xuống **Rows**, đặt dưới phuong (bản giao gồm cả 3 tháng). Kéo **Max of kwh** ra khỏi Values – đó là số của đúng một khách hàng.",
+           "Bấm vào PivotTable → tab **Design**: **Report Layout → Show in Tabular Form**, rồi **Report Layout → Repeat All Item Labels**; **Subtotals → Do Not Show Subtotals**; **Grand Totals → Off for Rows and Columns**.",
+           "Chọn từ dòng tiêu đề của PivotTable đến dòng cuối (không chọn ô lọc loai_kh phía trên) → Ctrl+C → **Ctrl+N** → bấm A1 → chuột phải → **Paste Values**.",
+           "Sửa tiêu đề thành **phuong, thang, so_kh, tong_kwh**. Lưu thành **DLX_TongHop_PA2.xlsx**.",
+           "Kiểm tra: ô trống bất kỳ gõ **=SUM(D2:D16)**, đọc xong thì xóa ô đó. **File → Info → Check for Issues → Inspect Document → Inspect**: không còn sheet ẩn, dữ liệu ẩn. Lưu lại."),
+        EXPECT("file có 1 sheet, 4 cột, 15 dòng dữ liệu (5 phường × 3 tháng), không có cột ma_kh, ho_ten, dien_thoai, dia_chi, so_tien_no, loai_kh; =SUM(D2:D16) ra 826.436. Bấm đúp vào một ô số không hiện ra dữ liệu chi tiết – vì đây là giá trị đã dán, không còn là PivotTable."),
         H4("Bước 11 – Hoàn thiện bài"),
         OL("Lập bảng so sánh đầu vào – đầu ra: mỗi cột trong 9 cột bị bỏ, giữ hay biến đổi, vì sao.",
            "Ghi kết quả bốn phép kiểm tra cho bản tổng hợp và bản che.",
            "Điền bảng chọn phương án xử lý (bước 9) và ghi phần sản lượng bị tách ra được báo cho anh Minh thế nào.",
            "Quyết định bản nào được đưa vào môi trường AI thử nghiệm, bản nào không; cần ai duyệt; cần xác nhận gì về công cụ AI.",
            "Viết đoạn đề xuất gửi anh Tuấn.",
-           "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv và DLX_BanChe.csv khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Giữ th7.py: tháng sau chỉ cần đổi tên file và chạy lại."),
+           "Sau khi chữa bài: xóa DLX_SanLuong_Q3.csv, TH7_LamViec.xlsx (có dữ liệu đủ cột và bảng đối chiếu) và DLX_BanChe.xlsx khỏi máy (Shift+Delete hoặc dọn Recycle Bin). Chỉ giữ DLX_TongHop_PA2.xlsx."),
     ]
 
 
@@ -1129,14 +1112,14 @@ def TH7_PHUONG_AN():
     """Đáp án bảng chọn phương án xử lý (bước 9), hiện khi công bố."""
     r = {"reveal": "m06-th7"}
     return [
-        P("Chọn phương án xử lý (bước 9, số của cả quý III):", **r),
+        P("Chọn phương án xử lý (bước 9, tháng 2026-09):", **r),
         T(["Phương án", "Nhóm nhỏ nhất", "Tỷ trọng lớn nhất", "Giữ sản lượng", "Chọn?", "Vì sao"],
           ["A – Tổng hợp thô", "1 KH", "100%", "100%", "Không", "Dòng Cảng Mới là sản lượng của đúng một xưởng"],
-          ["B – Bỏ nhóm dưới 10", "121 KH", "5,2%", "86,6%", "Không", "Số đạt nhưng mất xưởng Cảng Mới (13,4% sản lượng) mà không ai biết; tháng sau có thêm nhóm nhỏ là mất tiếp"],
-          ["D – Gộp Cảng Mới vào Đông Hòa", "121 KH", "49,5%", "100%", "Không", "Qua ngưỡng nhóm nhưng xưởng chiếm gần nửa tổng – vẫn ước được số của xưởng"],
-          ["F – Phương án 2", "121 KH", "5,2%", "86,6%", "Chọn", "Đạt cả hai phép; phần tách ra là khách hàng sản xuất, ghi trong đề xuất để dự báo riêng theo hợp đồng"],
+          ["B – Bỏ nhóm dưới 10", "121 KH", "5,2%", "86,7%", "Không", "Số đạt nhưng mất xưởng Cảng Mới (13,3% sản lượng) mà không ai biết; tháng sau có thêm nhóm nhỏ là mất tiếp"],
+          ["D – Gộp Cảng Mới vào Đông Hòa", "121 KH", "46,3%", "100%", "Không", "Qua ngưỡng nhóm nhưng xưởng chiếm gần nửa tổng – vẫn ước được số của xưởng"],
+          ["F – Phương án 2", "121 KH", "5,2%", "86,7%", "Chọn", "Đạt cả hai phép; phần tách ra là khách hàng sản xuất, ghi trong đề xuất để dự báo riêng theo hợp đồng"],
           **r),
-        P("Phần không có trong bản giao: khách hàng sản xuất Cảng Mới, 128.185 kWh quý III. Ghi trong đề xuất và báo anh Minh: phần này không nằm trong bản tổng hợp, dự báo riêng theo hợp đồng cung cấp điện.", **r),
+        P("Phần không có trong bản giao: khách hàng sản xuất Cảng Mới, 42.359 kWh tháng 9 (128.185 kWh cả quý III). Ghi trong đề xuất và báo anh Minh: phần này không nằm trong bản tổng hợp, dự báo riêng theo hợp đồng cung cấp điện.", **r),
     ]
 
 
@@ -1189,8 +1172,8 @@ def _th6(blocks):
 
 
 def _th7(blocks):
-    """Bỏ ba script của giảng viên; thay bằng file CSV tải sẵn, bảng kết quả kiểm tra và hướng dẫn Python từng bước."""
-    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả", "File DLX_SanLuong_Q3.csv được tạo sẵn", "Bước 9 (so sánh")
+    """Bỏ ba script của giảng viên; thay bằng file CSV tải sẵn, bảng kết quả kiểm tra và hướng dẫn Excel từng bước."""
+    drop = ("Ba script Python", "Script 1", "Script 2", "Script 3", "Kết quả", "File DLX_SanLuong_Q3.csv được tạo sẵn", "Bước 9 (", "Nhóm không lập trình", "Máy lớp")
     out = []
     for b in blocks:
         p = b.get("plain", "")
@@ -1212,10 +1195,11 @@ def _th7(blocks):
                   ["D", "Gộp Cảng Mới vào Đông Hòa", "Đông Hòa và Cảng Mới: 131 KH / 91.587 kWh – qua ngưỡng nhóm"],
                   ["E", "Tỷ trọng khách hàng lớn nhất trong nhóm", "Đông Hòa và Cảng Mới 46,3%; các phường khác 3,6–5,2%"],
                   ["F", "Phương án 2: chỉ Sinh hoạt và Kinh doanh", "Mọi phường từ 121 KH, không ai quá 5,2% – đạt"],
-                  ["Bản che", "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế HMAC", "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng"],
+                  ["Bản che", "Bỏ tên, địa chỉ, nợ; che điện thoại; mã thay thế P0001… từ bảng đối chiếu", "Còn nhóm nhỏ: Cảng Mới – Sản xuất 1, Bình Minh – Kinh doanh 8; nổi bật dòng 42.359 và 3.370 kWh; mã thay thế cố định qua 3 tháng"],
                   teacher=True),
-                P("Bước 9 (so sánh 4 phương án, cả quý): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,6%; D 121 – 49,5% (tháng 8) – 100%; F 121 – 5,2% – 86,6%. Phần 13,4% bị tách là xưởng Cảng Mới (128.185 kWh). B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.", teacher=True),
-                P("Kết quả học viên chạy mã ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: bỏ dtype ở bước 1 (mất số 0 đầu số điện thoại); đếm count thay vì nunique; quên lọc tháng 2026-09 khi so sánh. Mã thay thế ở bước 3 khác nhau giữa các học viên vì mỗi người dùng một khóa – đúng như mong đợi.", teacher=True)]
+                P("Bước 9 (tháng 2026-09): A 1 KH – 100% – giữ 100%; B 121 – 5,2% – 86,7%; D 121 – 46,3% – 100%; F 121 – 5,2% – 86,7%. Phần bị tách là xưởng Cảng Mới: 42.359 kWh tháng 9, 128.185 kWh cả quý. B và F cùng số nhưng B bỏ mất xưởng mà không báo ai; F tách có chủ đích và ghi trong đề xuất.", teacher=True),
+                P("Kết quả học viên làm ở các bước 4–10 phải ra đúng các số trên. Hay lệch vì: không chọn Do not detect data types ở bước 1 (số điện thoại mất số 0 đầu, thang thành ngày); quên đổi kwh sang Whole Number (Sum ra 0); quên lọc thang = 2026-09 (Grand Total 2.211 thay vì 737); bấm chuột khi gõ =D4/C4 nên Excel sinh GETPIVOTDATA, kéo xuống ra cùng một số. Mã thay thế P0xxx khác nhau giữa các học viên vì mỗi người xáo trộn bằng RAND – đúng như mong đợi.", teacher=True),
+                P("Máy lớp: Excel Microsoft 365 hoặc 2016 trở lên (có Data → From Text/CSV và Power Query). Excel 2016/2019 không có XLOOKUP – học viên dùng VLOOKUP như ghi ở bước 3c.", teacher=True)]
     at = next(i for i, b in enumerate(out) if b.get("plain", "").startswith("Dữ liệu để làm bài")) + 1
     out.insert(at, LINK(TH7_FILE, "Tải file luyện tập DLX_SanLuong_Q3.csv", " (dữ liệu giả lập; mở bằng Excel qua Data → From Text/CSV)."))
     return _replace(out, "Nhiệm vụ", lambda b: b.get("plain", "").startswith("Bài cần nộp"), TH7_STEPS())

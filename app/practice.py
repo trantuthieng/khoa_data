@@ -523,7 +523,7 @@ BOARD_TH7 = {
     "steps": [
         "Kéo từng cột trong hàng trên cùng xuống 1 trong 4 loại: định danh trực tiếp, định danh gián tiếp, thuộc tính nhạy cảm, dữ liệu phân tích.",
         "Ở bảng bên dưới, ghi anh Minh cần hay không, cách xử lý (giữ, bỏ, biến đổi) và lý do cho từng cột.",
-        "Tạo bản tổng hợp theo phường × tháng và bản che từng dòng (SQL / Python do giảng viên chạy, hoặc PivotTable, công thức Excel).",
+        "Tạo bản che từng dòng và bản tổng hợp theo phường bằng Excel (công thức, PivotTable – bước 3–7 của bài).",
         "Ghi kết quả bốn phép kiểm tra nhận diện cho cả hai bản ở bảng thứ hai.",
         "Ở vùng “Quyết định giao”, chọn quyết định cho từng bản. Thêm người duyệt / xác nhận (đặt ở cột bên phải vùng), nối tới bản liên quan, ghi họ duyệt gì.",
         "Điền phiếu yêu cầu dữ liệu C7 và viết đoạn đề xuất gửi anh Tuấn ở bên dưới.",
