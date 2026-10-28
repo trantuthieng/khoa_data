@@ -2,6 +2,9 @@
 from .kit import L, N, P, TABLE, board, case_key, key
 
 
+LAB_TH8 = '<a href="/static/labs/rls/index.html?bai=th8" target="_blank" rel="noopener">phòng thí nghiệm RLS – Thực hành 8</a>'
+
+
 def acc(id, x, y, text, ws, ky_vong, thuc_te, dat, title=None):
     return N(id, "acc", x, y, text, title=title, p={"ws": ws, "ky_vong": ky_vong, "thuc_te": thuc_te, "dat": dat})
 
@@ -66,6 +69,39 @@ KEY_TH8 = key(
               ["ha.kehoach", "Viewer", "NguoiXem", "Chỉ DV_B", "1.568.466", "Không đạt"],
               ["moi.vao", "Viewer", "NguoiXem", "Không thấy gì", "Trống", "Đạt"]),
         P("Lớp chưa có Power BI service: chấp nhận ghi “chưa kiểm thử trên service” cho dòng Member, vì View as trên Desktop không phát hiện được lỗi này."),
+    ]), ("Làm trên phòng thí nghiệm RLS (bài mẫu từng bước)", [
+        P(f'Mở {LAB_TH8}. Bốn bảng đã nạp sẵn. Khung 📋 Đề bài có 10 mục tự kiểm tra: đủ ✓ là đạt phần thao tác. '
+          "Tài khoản trên mô phỏng khác tên trong đề: Tuấn (tuan.truongphong) là người xem A, truongphong@dly là người xem B, khong.gan là người chưa gán role, bientap.a dùng để thử Contributor."),
+        {"t": "list", "ordered": True, "items": [{"html": x, "level": 0} for x in [
+            "Model view: quan hệ DimDonVi → PhanQuyen có nhãn “tự phát hiện” → Xóa. Giữ DimDonVi → FactDien và DimThang → FactDien.",
+            "Home → New measure: <code>Tong kWh = SUM ( FactDien[kWh] )</code> và "
+            "<code>So KH binh quan thang = AVERAGEX ( VALUES ( DimThang[Thang] ), CALCULATE ( SUM ( FactDien[SoKH] ) ) )</code>.",
+            "Visualizations: Clustered bar (TenDonVi, Tong kWh); Card (So KH binh quan thang); Table (Phuong, Thang, Tong kWh); Slicer (DimDonVi[TenDonVi]).",
+            'Modeling → Manage roles: DonVi_A trên DimDonVi <code>[MaDonVi] = "DV_A"</code>; DonVi_B tương tự; '
+            "NguoiXem có hai quy tắc – DimDonVi: <code>[MaDonVi] IN CALCULATETABLE ( VALUES ( PhanQuyen[MaDonVi] ), PhanQuyen[Email] = USERPRINCIPALNAME () )</code>; "
+            "PhanQuyen: <code>[Email] = USERPRINCIPALNAME ()</code>. Kiểm tra (✓) rồi Save.",
+            "Data pane: bấm 👁 cạnh PhanQuyen (Hide in report view).",
+            "Modeling → View as: DonVi_A, rồi DonVi_B. Sau đó Other user + NguoiXem lần lượt minh.kehoach, ha.kehoach, moi.vao.",
+            "Home → Publish. Service → Security (RLS): thêm tuan.truongphong, truongphong@dly, minh.kehoach, ha.kehoach vào NguoiXem; không thêm khong.gan.",
+            "Workspace → Manage access: các tài khoản trên và khong.gan làm Viewer. Thêm bientap.a làm Contributor (hoặc đổi Tuấn thành Member) để tái hiện lỗi.",
+            "Ô “Đang đăng nhập”: đổi lần lượt từng người, mở báo cáo. Ma trận kiểm thử tự ghi; bấm Chép (TSV) để dán vào bảng C8.",
+            "Sửa lỗi chị Hà: Desktop → Table view → PhanQuyen → ✎ Sửa dữ liệu nguồn → xóa dòng ha.kehoach – DV_A → Publish lại → đăng nhập chị Hà lần nữa."]]},
+        TABLE(["Bước kiểm thử trên mô phỏng", "Phải thấy (Tong kWh)", "Số KH bình quân tháng"],
+              ["View as DonVi_A", "826.436, chỉ Điện lực X", "736"],
+              ["View as DonVi_B", "742.030, chỉ Điện lực Y", "701"],
+              ["Không View as (người làm báo cáo)", "1.568.466", "1.437"],
+              ["View as Other user minh.kehoach + NguoiXem", "1.568.466", "1.437"],
+              ["View as Other user ha.kehoach + NguoiXem (chưa sửa)", "1.568.466 – lỗi dòng cũ", "1.437"],
+              ["View as Other user moi.vao + NguoiXem", "Trống", "—"],
+              ["Service – đăng nhập tuan.truongphong (Viewer, NguoiXem)", "826.436", "736"],
+              ["Service – đăng nhập truongphong@dly", "742.030", "701"],
+              ["Service – đăng nhập khong.gan (Viewer, không role)", "“Không thể tải dữ liệu cho hình ảnh này”", "—"],
+              ["Service – đăng nhập bientap.a (Contributor) / Tuấn là Member", "1.568.466 – không chịu RLS", "1.437"],
+              ["Service – đăng nhập ha.kehoach sau khi xóa dòng DV_A", "742.030", "701"]),
+        P("Hai chỗ học viên hay vấp trên mô phỏng, giống hệt Power BI thật: "
+          "(1) Test as role ra số đúng nhưng đăng nhập bằng chính người đó thì bị chặn – vì Test as role không thêm thành viên vào role; phải thêm ở Security. "
+          "(2) Quên quy tắc trên PhanQuyen: một Table có Email, MaDonVi sẽ hiện quyền của cả công ty với mọi người xem. "
+          "Thẻ số khách ra 2.208 khi View as DonVi_A (4.311 khi xem tất cả) là cộng dồn ba tháng: dùng SUM thay cho bình quân, hoặc thiếu CALCULATE trong AVERAGEX."),
     ])],
     rubric=[
         ("RLS tĩnh", "2", "Nối đúng tài khoản → role → đơn vị, quy tắc lọc đúng cột MaDonVi."),
