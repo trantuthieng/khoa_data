@@ -521,6 +521,15 @@ def answer_key(aid: str, _=Depends(teacher)):
     return {**ANSWER_KEYS[aid], "activity": ACTIVITIES[aid]}
 
 
+@app.get("/api/t/labs/rls/{bai}")
+def rls_solution(bai: str, _=Depends(teacher)):
+    # bài mẫu hoàn chỉnh của phòng thí nghiệm RLS (tools/build_rls_solutions.cjs dựng); không đặt trong /static để học viên không tải được
+    path = BASE / "answer_keys" / "rls_solutions" / f"{bai}.json"
+    if not bai.isalnum() or not path.is_file():
+        raise HTTPException(404, "Bài này chưa có bài mẫu trên phòng thí nghiệm RLS.")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 @app.get("/api/t/classes/{cid}/state")
 @db.batched
 def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):

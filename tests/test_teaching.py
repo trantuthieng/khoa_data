@@ -40,6 +40,21 @@ class TeachingFlow(unittest.TestCase):
         sections = self.client.get('/api/s/module/7', headers={'Authorization': 'Bearer ' + st['token']}).json()['sections']
         self.assertTrue(any(s.get('activity') == 'm07-rlslab-v1' for s in sections))
 
+    def test_rls_lab_solutions_teacher_only(self):
+        from fastapi.testclient import TestClient
+        from app.main import app
+        bais = ['th8', 'rasoat'] + [f'bi{i:02d}' for i in range(1, 11)]
+        self.assertEqual(TestClient(app).get('/api/t/labs/rls/th8').status_code, 401)
+        self.assertFalse(Path('app/static/labs/rls/th8.json').exists())
+        for bai in bais:
+            sol = self.client.get(f'/api/t/labs/rls/{bai}').json()
+            self.assertEqual(sol['v'], 2, bai)
+        th8 = self.client.get('/api/t/labs/rls/th8').json()
+        role = next(r for r in th8['sc']['desktop']['model']['roles'] if r['name'] == 'NguoiXem')
+        self.assertIn('PhanQuyen', role['filters'])
+        self.assertTrue(all(t['pass'] for t in th8['tests']))
+        self.assertEqual(self.client.get('/api/t/labs/rls/..%2Fm07').status_code, 404)
+
     def test_individual_grading_and_revision(self):
         room = self.post('/api/t/classes', {'name': 'Test individual'}).json()
         cid = room['id']

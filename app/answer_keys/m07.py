@@ -1,5 +1,5 @@
 """Đáp án giảng viên – buổi 7 (bài lớn và bài tình huống; bài ngắn Power BI ở labs.py)."""
-from .kit import L, N, P, TABLE, board, case_key, key
+from .kit import LAB_SOLUTION, L, N, P, TABLE, board, case_key, key
 
 
 LAB_TH8 = '<a href="/static/labs/rls/index.html?bai=th8" target="_blank" rel="noopener">phòng thí nghiệm RLS – Thực hành 8</a>'
@@ -70,8 +70,9 @@ KEY_TH8 = key(
               ["moi.vao", "Viewer", "NguoiXem", "Không thấy gì", "Trống", "Đạt"]),
         P("Lớp chưa có Power BI service: chấp nhận ghi “chưa kiểm thử trên service” cho dòng Member, vì View as trên Desktop không phát hiện được lỗi này."),
     ]), ("Làm trên phòng thí nghiệm RLS (bài mẫu từng bước)", [
-        P(f'Mở {LAB_TH8}. Bốn bảng đã nạp sẵn. Khung 📋 Đề bài có 10 mục tự kiểm tra: đủ ✓ là đạt phần thao tác. '
-          "Tài khoản trên mô phỏng khác tên trong đề: Tuấn (tuan.truongphong) là người xem A, truongphong@dly là người xem B, khong.gan là người chưa gán role, bientap.a dùng để thử Contributor."),
+        LAB_SOLUTION("th8"),
+        P(f'Học viên mở {LAB_TH8}. Bốn bảng đã nạp sẵn. Khung 📋 Đề bài có 10 mục tự kiểm tra: đủ ✓ là đạt phần thao tác. '
+          "Tài khoản trên mô phỏng khác tên trong đề: Tuấn (tuan.truongphong) là người xem A, truongphong@dly là người xem B, khong.gan là người chưa gán role, bientap.a dùng để thử Member."),
         {"t": "list", "ordered": True, "items": [{"html": x, "level": 0} for x in [
             "Model view: quan hệ DimDonVi → PhanQuyen có nhãn “tự phát hiện” → Xóa. Giữ DimDonVi → FactDien và DimThang → FactDien.",
             "Home → New measure: <code>Tong kWh = SUM ( FactDien[kWh] )</code> và "
@@ -83,7 +84,7 @@ KEY_TH8 = key(
             "Data pane: bấm 👁 cạnh PhanQuyen (Hide in report view).",
             "Modeling → View as: DonVi_A, rồi DonVi_B. Sau đó Other user + NguoiXem lần lượt minh.kehoach, ha.kehoach, moi.vao.",
             "Home → Publish. Service → Security (RLS): thêm tuan.truongphong, truongphong@dly, minh.kehoach, ha.kehoach vào NguoiXem; không thêm khong.gan.",
-            "Workspace → Manage access: các tài khoản trên và khong.gan làm Viewer. Thêm bientap.a làm Contributor (hoặc đổi Tuấn thành Member) để tái hiện lỗi.",
+            "Workspace → Manage access: các tài khoản trên và khong.gan làm Viewer. Thêm bientap.a làm Member để tái hiện lỗi; thử xong thì gỡ ra.",
             "Ô “Đang đăng nhập”: đổi lần lượt từng người, mở báo cáo. Ma trận kiểm thử tự ghi; bấm Chép (TSV) để dán vào bảng C8.",
             "Sửa lỗi chị Hà: Desktop → Table view → PhanQuyen → ✎ Sửa dữ liệu nguồn → xóa dòng ha.kehoach – DV_A → Publish lại → đăng nhập chị Hà lần nữa."]]},
         TABLE(["Bước kiểm thử trên mô phỏng", "Phải thấy (Tong kWh)", "Số KH bình quân tháng"],
@@ -96,7 +97,7 @@ KEY_TH8 = key(
               ["Service – đăng nhập tuan.truongphong (Viewer, NguoiXem)", "826.436", "736"],
               ["Service – đăng nhập truongphong@dly", "742.030", "701"],
               ["Service – đăng nhập khong.gan (Viewer, không role)", "“Không thể tải dữ liệu cho hình ảnh này”", "—"],
-              ["Service – đăng nhập bientap.a (Contributor) / Tuấn là Member", "1.568.466 – không chịu RLS", "1.437"],
+              ["Service – đăng nhập bientap.a (Member)", "1.568.466 – không chịu RLS", "1.437"],
               ["Service – đăng nhập ha.kehoach sau khi xóa dòng DV_A", "742.030", "701"]),
         P("Hai chỗ học viên hay vấp trên mô phỏng, giống hệt Power BI thật: "
           "(1) Test as role ra số đúng nhưng đăng nhập bằng chính người đó thì bị chặn – vì Test as role không thêm thành viên vào role; phải thêm ở Security. "
@@ -259,7 +260,7 @@ KEY_RLSLAB = key(
                   "2. Quy trình Vào – Chuyển – Ra cập nhật cả PhanQuyen, nhóm bảo mật, workspace; không dùng tài khoản chung.\n"
                   "3. Trước khi publish: chỉ nạp cột cần dùng, gắn nhãn đúng, kiểm thử bằng tài khoản Viewer thật cả trường hợp bị từ chối; "
                   "Publish to web và xuất dữ liệu gốc chỉ bật cho nhóm được duyệt."},
-    read=[P("Ba ô phía trên là bài làm mẫu đạt 10 điểm: đủ 13 lỗi, ma trận sau khi sửa và ba việc cho quy trình. "
+    read=[LAB_SOLUTION("rasoat"), P("Ba ô phía trên là bài làm mẫu đạt 10 điểm: đủ 13 lỗi, ma trận sau khi sửa và ba việc cho quy trình. "
             f"Học viên tìm được 8–9 lỗi có bằng chứng bằng con số đã là bài tốt. Mở {LAB} để trình diễn.")],
     more=[
         ("Bảng lỗi cài sẵn: tái hiện và sửa", [

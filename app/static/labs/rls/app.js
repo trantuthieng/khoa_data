@@ -324,12 +324,16 @@
   // ---------- Ứng dụng ----------
   const params = new URLSearchParams(location.search);
   const startId = D.SCENARIOS[params.get('bai')] ? params.get('bai') : 'th8';
+  // ?dapan=1: bài mẫu hoàn chỉnh của giảng viên, tải qua API giảng viên; lưu riêng, không đụng bài của học viên trên cùng máy
+  const DAPAN = params.get('dapan') === '1';
+  const KEY = DAPAN ? 'rlslab-dapan:' : 'rlslab:';
 
   createApp({
     components: { RcCanvas: Canvas },
     data() {
       return Object.assign(this.fresh(startId, true), {
-        baiOpen: window.innerWidth > 1100, matrixOpen: false, toast: '', toastTimer: null
+        baiOpen: window.innerWidth > 1100, matrixOpen: false, toast: '', toastTimer: null,
+        dapan: DAPAN, dapanMsg: ''
       });
     },
     computed: {
@@ -452,6 +456,9 @@
         return L.join('\n');
       }
     },
+    mounted() {
+      if (this.dapan && !store.get(KEY + this.scenarioId)) this.loadSolution();
+    },
     watch: {
       sc: { deep: true, handler() { this.persist(); } },
       tests: { deep: true, handler() { this.persist(); } },
@@ -460,7 +467,7 @@
     methods: {
       fmt,
       fresh(id, useStore) {
-        const saved = useStore ? store.get('rlslab:' + id) : null;
+        const saved = useStore ? store.get(KEY + id) : null;
         const sc = saved && saved.v === 2 ? saved.sc : D.SCENARIOS[id].build();
         return {
           scenarioId: id, sc, tests: (saved && saved.tests) || [], events: (saved && saved.events) || {},
@@ -470,17 +477,39 @@
           dlg: null, formula: null
         };
       },
-      persist() { store.set('rlslab:' + this.scenarioId, { v: 2, sc: this.sc, tests: this.tests, events: this.events }); },
+      persist() { store.set(KEY + this.scenarioId, { v: 2, sc: this.sc, tests: this.tests, events: this.events }); },
       loadScenario() {
         const id = this.scenarioId;
         Object.assign(this, this.fresh(id, true));
         const u = new URL(location.href); u.searchParams.set('bai', id); history.replaceState(null, '', u);
+        if (this.dapan && !store.get(KEY + id)) this.loadSolution();
       },
       reset() {
+        if (this.dapan) {
+          if (confirm('Nạp lại bài mẫu? Các thay đổi bạn vừa thử trên bài mẫu sẽ bị xóa.')) this.loadSolution();
+          return;
+        }
         if (!confirm('Làm lại từ đầu bài này? Mọi thay đổi và ma trận kiểm thử của bài sẽ bị xóa.')) return;
-        store.del('rlslab:' + this.scenarioId);
+        store.del(KEY + this.scenarioId);
         Object.assign(this, this.fresh(this.scenarioId, false));
         this.persist();
+      },
+      async loadSolution() {
+        const id = this.scenarioId;
+        this.dapanMsg = 'Đang tải bài mẫu…';
+        let r;
+        try { r = await fetch('/api/t/labs/rls/' + id, { credentials: 'same-origin' }); } catch (e) { r = null; }
+        if (!r || !r.ok) {
+          this.dapanMsg = r && r.status === 401 ? 'Bài mẫu chỉ dành cho giảng viên: đăng nhập trang giảng viên (/teacher) trong trình duyệt này rồi tải lại trang.'
+            : 'Chưa tải được bài mẫu. Kiểm tra kết nối rồi tải lại trang.';
+          return;
+        }
+        const saved = await r.json();
+        if (id !== this.scenarioId) return;
+        store.set(KEY + id, saved);
+        Object.assign(this, this.fresh(id, true));
+        this.dapanMsg = '';
+        this.say('Đã nạp bài mẫu hoàn chỉnh. Mở 📋 Đề bài và 🧪 Ma trận kiểm thử để xem kết quả.');
       },
       say(msg) { this.toast = msg; clearTimeout(this.toastTimer); this.toastTimer = setTimeout(() => { this.toast = ''; }, 3500); },
       colIndex(t, c) { const x = tbl(this.model, t); return x ? x.columns.findIndex(k => k.name === c) : 0; },
@@ -917,9 +946,11 @@
     <div class="top-right">
       <button @click="matrixOpen = !matrixOpen" :class="{ on: matrixOpen }">🧪 Ma trận kiểm thử ({{ tests.length }})</button>
       <button @click="baiOpen = !baiOpen" :class="{ on: baiOpen }">📋 Đề bài</button>
-      <button @click="reset" title="Làm lại bài từ đầu">↺ Làm lại</button>
+      <button @click="reset" :title="dapan ? 'Nạp lại bài mẫu' : 'Làm lại bài từ đầu'">↺ {{ dapan ? 'Nạp lại bài mẫu' : 'Làm lại' }}</button>
     </div>
   </header>
+  <div v-if="dapan" class="dapan-bar">📘 <b>Bài mẫu hoàn chỉnh – đáp án giảng viên.</b>
+    {{ dapanMsg || 'Mô hình, báo cáo, role, quyền trên service và ma trận kiểm thử đã làm xong. Thử thay đổi thoải mái: bài mẫu lưu riêng, không ảnh hưởng bài của học viên; bấm “↺ Nạp lại bài mẫu” để quay về.' }}</div>
 
   <div class="body">
   <main class="main">

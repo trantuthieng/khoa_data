@@ -5,6 +5,14 @@ def P(html):
     return {"t": "p", "html": html}
 
 
+def LAB_SOLUTION(bai):
+    """Nút mở bài mẫu hoàn chỉnh trên phòng thí nghiệm RLS (tải qua /api/t/labs/rls, chỉ giảng viên)."""
+    return {"t": "p", "callout": "apply", "html":
+            f'<a href="/static/labs/rls/index.html?bai={bai}&amp;dapan=1" target="_blank" rel="noopener"><b>▶ Mở bài mẫu hoàn chỉnh trên phòng thí nghiệm RLS</b></a> '
+            "Mô hình, báo cáo, role, quyền trên service và ma trận kiểm thử (có cột Kỳ vọng, Đạt) đã làm xong. "
+            "Dùng để trình diễn trên lớp hoặc đối chiếu bài học viên; thay đổi trên bài mẫu không ảnh hưởng bài của ai."}
+
+
 def UL(*items):
     return {"t": "list", "ordered": False, "items": [{"html": x, "level": 0} for x in items]}
 

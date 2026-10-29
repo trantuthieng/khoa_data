@@ -6,7 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 
-from .kit import CODE, P, TABLE, key
+from .kit import CODE, LAB_SOLUTION, P, TABLE, key
 
 _spec = importlib.util.spec_from_file_location(
     "beginner_labs", Path(__file__).resolve().parents[2] / "tools" / "beginner_labs.py")
@@ -80,7 +80,8 @@ SIM = {
 def _sim(i):
     steps, seen = SIM[i]
     return ("Làm trên phòng thí nghiệm RLS", [
-        P(f"Mở {_sim_link(i)}. Khung Đề bài bên phải có danh sách tự kiểm tra: đủ dấu ✓ là đạt phần thao tác. "
+        LAB_SOLUTION(f"bi{i:02d}"),
+        P(f"Học viên mở {_sim_link(i)}. Khung Đề bài bên phải có danh sách tự kiểm tra: đủ dấu ✓ là đạt phần thao tác. "
           "Mỗi lần View as, Test as role hoặc đổi tài khoản đăng nhập, ma trận kiểm thử tự ghi một dòng; học viên bấm chép để dán vào bài nộp."),
         {"t": "list", "ordered": True, "items": [{"html": s, "level": 0} for s in steps]},
         TABLE(["Phải thấy", "Số liệu trên mô phỏng"], *[list(r) for r in seen]),
