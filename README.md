@@ -10,7 +10,7 @@ Webapp dạy khóa học 10 buổi. Mỗi buổi là một module; giảng viên
 
 | Việc | Cách làm |
 |---|---|
-| Tạo lớp | `/teacher` → đăng nhập → **Tạo lớp**. Mỗi lớp có một mã 6 ký tự để chiếu cho học viên |
+| Tạo lớp | `/teacher` → đăng nhập → chọn khóa học → **Tạo lớp**. Mỗi lớp có một mã 6 ký tự để chiếu cho học viên |
 | Chọn buổi học | Chọn buổi ở cột trái → **Bắt đầu buổi N**. Học viên chuyển sang buổi mới |
 | Dẫn bài | Bấm **Phần sau / Phần trước** (hoặc phím ←/→, PageUp/PageDown của bút trình chiếu). Học viên chỉ thấy các phần đã trình bày và tự chuyển theo nếu bật “Học viên tự chuyển theo giảng viên” |
 | Trình chiếu | **⛶ Trình chiếu**: ẩn bảng điều khiển, chữ lớn, ghi mã lớp ở góc. Phần chỉ dành cho giảng viên và đáp án chưa công bố tự ẩn |
@@ -108,6 +108,10 @@ Cuối bước dựng nội dung, `tools/production_copy.py` áp dụng phần b
 Buổi 5 và 6 dùng bản gọn trong `tools/compact_lessons.py`: bốn bài lý thuyết được viết lại ngắn hơn, có 20 sơ đồ SVG (block `figure`, màu theo giao diện sáng/tối) và bỏ các đoạn mã dài. Chạy `python tools/compact_lessons.py` để áp bản gọn vào JSON hiện có mà không cần dựng lại từ Word. File luyện tập của Thực hành 6, 7 (`BaoCao_Thang.xlsx`, `DLX_SanLuong_Q3.xlsx` trong `app/static/labs/`) do `python tools/practice_files.py` tạo (cần openpyxl). `DLX_SanLuong_Q3.xlsx` có 16 cột, trong đó 7 cột thông tin cá nhân (CCCD, ngày sinh, giới tính, email, hộ chính sách, tài khoản ngân hàng, ghi chú tự do) để học viên phân loại; số sản lượng giữ như bản CSV trước nên đáp án không đổi; học viên tải từ bài, giảng viên có bảng số liệu đối chiếu.
 
 Bài ngắn nằm trong `tools/beginner_labs.py`, được thêm khi build. Script cũng dựng gói học viên `app/static/labs/bai_tap_SQL_Python_BI.zip` chỉ có dữ liệu, file khung và hướng dẫn. Lời giải ở phần nội dung có cờ công bố, không nằm trong ZIP. Xem `DOI_CHIEU_SLIDE.md` để biết kết quả so sánh với 111 slide và cách chọn bài theo thời lượng. Dùng file BI mới cho bộ bài nhỏ theo ngày; bài lớn theo tháng giữ mô hình và công thức riêng.
+
+### Khóa AI Agent
+
+Ngoài khóa An toàn dữ liệu, ứng dụng có khóa **AI Agent** (5 buổi + Tổng quan), soạn từ bộ slide PDF trong thư mục `AI Agent`. Nội dung nằm trong `app/content/ai_agent/`, do `python tools/ai_agent_course.py` sinh ra; sửa bài thì sửa script này rồi chạy lại. Mã hoạt động bắt đầu bằng `ai` (VD `ai01-th1`). Danh sách khóa ở `COURSES` trong `app/content.py`; mỗi lớp lưu khóa của mình ở cột `classes.course` (lớp cũ mặc định `atdl`), tự thêm khi khởi động.
 
 Khi khởi động, ứng dụng tự tạo bảng `response_grades` cho điểm và nhận xét, kể cả trên cơ sở dữ liệu đã có. Mã hoạt động và bài nộp cũ được giữ lại.
 

@@ -118,7 +118,7 @@ const app = Vue.createApp({
       const first = !this.state;
       this.state = s;
       const v = s.view;
-      if (first) { this.viewModule = v.module; this.sectionId = v.current_section; }
+      if (first) { this.viewModule = v.module; this.sectionId = v.current_section; document.title = 'Học viên | ' + s.cls.course_title; }
       if (!first && v.module !== this.lastActive && v.follow) { this.viewModule = v.module; this.sectionId = v.current_section; if (this.mode !== 'activity') this.mode = 'lesson'; }
       if (!s.modules.some(m => m.no === this.viewModule)) this.viewModule = v.module;
       try {

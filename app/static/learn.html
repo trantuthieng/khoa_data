@@ -45,7 +45,7 @@
   <div class="layout" v-if="state">
     <aside class="side" :class="{show: showSide}">
       <div class="sidebar-heading"><span class="eyebrow">KHÔNG GIAN HỌC TẬP</span><button class="btn sm ghost mobile-only" @click="showSide=false" aria-label="Đóng mục lục">✕</button></div>
-      <div class="sidebar-course"><span class="course-symbol" v-html="logo"></span><b>An toàn ứng dụng &amp; Dữ liệu<br><small style="font-weight:400">dành cho cán bộ vận hành</small></b></div>
+      <div class="sidebar-course"><span class="course-symbol" v-html="logo"></span><b>{{ state.cls.course_title }}<br><small style="font-weight:400">{{ state.cls.course_subtitle }}</small></b></div>
       <div class="sidebar-mode-tabs">
         <button :class="{active:mode==='lesson'}" @click="mode='lesson';showSide=false">Bài học</button>
         <button :class="{active:mode!=='lesson'}" @click="mode='activities';showSide=false">Bài tập của tôi</button>

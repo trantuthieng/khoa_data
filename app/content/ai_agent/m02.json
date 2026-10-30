@@ -1,0 +1,1023 @@
+{
+ "no": 2,
+ "title": "Buổi 2 – Quản lý tri thức & Knowledge Base (RAG)",
+ "short": "Quản lý tri thức & Knowledge Base (RAG)",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 2 xây <strong>bộ não tri thức</strong> cho Agent. LLM giỏi ngôn ngữ nhưng không biết quy định, sản phẩm, quy trình của đơn vị bạn. RAG (Retrieval-Augmented Generation) cho Agent “mở sách” trước khi trả lời.",
+     "plain": "Buổi 2 xây bộ não tri thức cho Agent. LLM giỏi ngôn ngữ nhưng không biết quy định, sản phẩm, quy trình của đơn vị bạn. RAG (Retrieval-Augmented Generation) cho Agent “mở sách” trước khi trả lời."
+    },
+    {
+     "t": "quote",
+     "html": "LLM mà không có ngữ cảnh giống như một con vẹt khổng lồ. RAG chính là bộ não và cuốn bách khoa toàn thư để nó thực sự hiểu biết.",
+     "plain": "LLM mà không có ngữ cảnh giống như một con vẹt khổng lồ. RAG chính là bộ não và cuốn bách khoa toàn thư để nó thực sự hiểu biết."
+    },
+    {
+     "t": "activity",
+     "id": "ai02-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Bạn hỏi một chatbot về quy định nghỉ phép của chính công ty bạn. Theo bạn, nó sẽ trả lời thế nào? Vì sao?",
+      "Nếu được phép đưa cho AI 1 tài liệu để nó trả lời đồng nghiệp chính xác hơn, bạn chọn tài liệu nào?",
+      "Tài liệu đó hiện ở dạng gì (PDF scan, Word, Excel…)? Bạn đoán AI đọc nó có gặp khó khăn gì không?"
+     ]
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Giải thích giới hạn Context Window, nguyên nhân ảo giác và lý do cần RAG.",
+       "level": 0,
+       "plain": "Giải thích giới hạn Context Window, nguyên nhân ảo giác và lý do cần RAG."
+      },
+      {
+       "html": "Mô tả cách Vector Database đọc văn bản dưới dạng vector và tìm kiếm theo ngữ nghĩa.",
+       "level": 0,
+       "plain": "Mô tả cách Vector Database đọc văn bản dưới dạng vector và tìm kiếm theo ngữ nghĩa."
+      },
+      {
+       "html": "Xâu chuỗi câu lệnh (Prompt Chain) để Agent suy luận logic và chính xác hơn.",
+       "level": 0,
+       "plain": "Xâu chuỗi câu lệnh (Prompt Chain) để Agent suy luận logic và chính xác hơn."
+      },
+      {
+       "html": "Làm sạch, định dạng và chia nhỏ dữ liệu thô trước khi nạp vào Knowledge Base.",
+       "level": 0,
+       "plain": "Làm sạch, định dạng và chia nhỏ dữ liệu thô trước khi nạp vào Knowledge Base."
+      }
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Phần 1 – Giới hạn ngữ cảnh",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Vấn đề của LLM truyền thống"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Lỗi thời (out-of-date):</strong> kiến thức bị đóng băng tại thời điểm huấn luyện.",
+       "level": 0,
+       "plain": "Lỗi thời (out-of-date): kiến thức bị đóng băng tại thời điểm huấn luyện."
+      },
+      {
+       "html": "<strong>Ảo giác (hallucination):</strong> không biết thì “bịa” ra thông tin nghe hợp lý nhưng sai.",
+       "level": 0,
+       "plain": "Ảo giác (hallucination): không biết thì “bịa” ra thông tin nghe hợp lý nhưng sai."
+      },
+      {
+       "html": "<strong>Thiếu ngữ cảnh nội bộ:</strong> không biết quy trình, chính sách riêng của doanh nghiệp bạn.",
+       "level": 0,
+       "plain": "Thiếu ngữ cảnh nội bộ: không biết quy trình, chính sách riêng của doanh nghiệp bạn."
+      },
+      {
+       "html": "<strong>Không thể nhồi nhét mọi thứ:</strong> đưa toàn bộ tài liệu công ty vào một prompt là bất khả thi.",
+       "level": 0,
+       "plain": "Không thể nhồi nhét mọi thứ: đưa toàn bộ tài liệu công ty vào một prompt là bất khả thi."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Context Window và nút thắt chi phí"
+    },
+    {
+     "t": "p",
+     "html": "Nhiều mô hình hỗ trợ cửa sổ ngữ cảnh rất lớn (128k, thậm chí 1 triệu token). Nhưng đẩy toàn bộ dữ liệu vào prompt mỗi lần hỏi gặp ba vấn đề:",
+     "plain": "Nhiều mô hình hỗ trợ cửa sổ ngữ cảnh rất lớn (128k, thậm chí 1 triệu token). Nhưng đẩy toàn bộ dữ liệu vào prompt mỗi lần hỏi gặp ba vấn đề:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Chi phí cực cao:</strong> trả tiền cho hàng trăm nghìn token mỗi lần gọi.",
+       "level": 0,
+       "plain": "Chi phí cực cao: trả tiền cho hàng trăm nghìn token mỗi lần gọi."
+      },
+      {
+       "html": "<strong>Độ trễ:</strong> chờ AI đọc xong tài liệu khổng lồ rất lâu.",
+       "level": 0,
+       "plain": "Độ trễ: chờ AI đọc xong tài liệu khổng lồ rất lâu."
+      },
+      {
+       "html": "<strong>Lost in the middle:</strong> AI thường “quên” hoặc giảm chú ý vào thông tin nằm giữa văn bản quá dài.",
+       "level": 0,
+       "plain": "Lost in the middle: AI thường “quên” hoặc giảm chú ý vào thông tin nằm giữa văn bản quá dài."
+      }
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Phần 2 – Giải pháp RAG",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "RAG là một kỹ thuật kiến trúc: thay vì bắt AI học thuộc, cho AI <strong>tìm thông tin trước khi trả lời</strong>.",
+     "plain": "RAG là một kỹ thuật kiến trúc: thay vì bắt AI học thuộc, cho AI tìm thông tin trước khi trả lời."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Việc hệ thống làm",
+        "plain": "Việc hệ thống làm"
+       }
+      ],
+      [
+       {
+        "html": "R – Retrieval (Truy xuất)",
+        "plain": "R – Retrieval (Truy xuất)"
+       },
+       {
+        "html": "Đổi câu hỏi thành vector, tìm các đoạn (chunk) có nghĩa gần nhất trong Vector Database.",
+        "plain": "Đổi câu hỏi thành vector, tìm các đoạn (chunk) có nghĩa gần nhất trong Vector Database."
+       }
+      ],
+      [
+       {
+        "html": "A – Augmented (Tăng cường)",
+        "plain": "A – Augmented (Tăng cường)"
+       },
+       {
+        "html": "Ghép câu hỏi + các đoạn vừa tìm thành một prompt đầy đủ ngữ cảnh.",
+        "plain": "Ghép câu hỏi + các đoạn vừa tìm thành một prompt đầy đủ ngữ cảnh."
+       }
+      ],
+      [
+       {
+        "html": "G – Generation (Sinh)",
+        "plain": "G – Generation (Sinh)"
+       },
+       {
+        "html": "LLM đọc prompt đã tăng cường và tổng hợp câu trả lời dựa trên dữ liệu thật.",
+        "plain": "LLM đọc prompt đã tăng cường và tổng hợp câu trả lời dựa trên dữ liệu thật."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "So sánh: thi đóng và thi mở"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thi đóng – LLM thuần",
+        "plain": "Thi đóng – LLM thuần"
+       },
+       {
+        "html": "Thi mở – dùng RAG",
+        "plain": "Thi mở – dùng RAG"
+       }
+      ],
+      [
+       {
+        "html": "Chỉ dựa vào trí nhớ lúc huấn luyện, dễ nhớ sai.",
+        "plain": "Chỉ dựa vào trí nhớ lúc huấn luyện, dễ nhớ sai."
+       },
+       {
+        "html": "Tìm đúng trang sách trước khi viết đáp án.",
+        "plain": "Tìm đúng trang sách trước khi viết đáp án."
+       }
+      ],
+      [
+       {
+        "html": "Không biết kiến thức mới xuất hiện hôm qua.",
+        "plain": "Không biết kiến thức mới xuất hiện hôm qua."
+       },
+       {
+        "html": "Thêm file vào kho là cập nhật kiến thức ngay, không cần huấn luyện lại.",
+        "plain": "Thêm file vào kho là cập nhật kiến thức ngay, không cần huấn luyện lại."
+       }
+      ],
+      [
+       {
+        "html": "Cập nhật bằng fine-tuning rất tốn kém.",
+        "plain": "Cập nhật bằng fine-tuning rất tốn kém."
+       },
+       {
+        "html": "Câu trả lời bám tài liệu, trích dẫn được nguồn.",
+        "plain": "Câu trả lời bám tài liệu, trích dẫn được nguồn."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "RAG giảm mạnh ảo giác nhưng không tự động đúng 100%: tài liệu sai, cắt đoạn kém hoặc truy xuất nhầm vẫn cho câu trả lời sai. Vì vậy phần chuẩn bị dữ liệu và kiểm thử truy xuất quan trọng không kém.",
+     "plain": "RAG giảm mạnh ảo giác nhưng không tự động đúng 100%: tài liệu sai, cắt đoạn kém hoặc truy xuất nhầm vẫn cho câu trả lời sai. Vì vậy phần chuẩn bị dữ liệu và kiểm thử truy xuất quan trọng không kém.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Phần 3 – Vector Database",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Embeddings: biến chữ thành số"
+    },
+    {
+     "t": "p",
+     "html": "Mô hình embedding (VD: text-embedding-3-small) chuyển một câu thành một vector – mảng hàng nghìn con số. Các câu cùng nghĩa có vector gần nhau: “chó” và “mèo” nằm gần nhau hơn “chó” và “máy tính”.",
+     "plain": "Mô hình embedding (VD: text-embedding-3-small) chuyển một câu thành một vector – mảng hàng nghìn con số. Các câu cùng nghĩa có vector gần nhau: “chó” và “mèo” nằm gần nhau hơn “chó” và “máy tính”."
+    },
+    {
+     "t": "h3",
+     "text": "Ba kiểu tìm kiếm"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Kiểu",
+        "plain": "Kiểu"
+       },
+       {
+        "html": "Cách hoạt động",
+        "plain": "Cách hoạt động"
+       },
+       {
+        "html": "Điểm yếu / mạnh",
+        "plain": "Điểm yếu / mạnh"
+       }
+      ],
+      [
+       {
+        "html": "Keyword Search",
+        "plain": "Keyword Search"
+       },
+       {
+        "html": "Khớp chính xác từng từ.",
+        "plain": "Khớp chính xác từng từ."
+       },
+       {
+        "html": "Tìm “xe hơi” sẽ bỏ sót tài liệu ghi “ô tô”.",
+        "plain": "Tìm “xe hơi” sẽ bỏ sót tài liệu ghi “ô tô”."
+       }
+      ],
+      [
+       {
+        "html": "Semantic Search",
+        "plain": "Semantic Search"
+       },
+       {
+        "html": "So khớp ý nghĩa qua vector.",
+        "plain": "So khớp ý nghĩa qua vector."
+       },
+       {
+        "html": "Tìm “hủy đơn hàng” lấy được cả “quy trình trả hàng, hoàn tiền”.",
+        "plain": "Tìm “hủy đơn hàng” lấy được cả “quy trình trả hàng, hoàn tiền”."
+       }
+      ],
+      [
+       {
+        "html": "Hybrid Search",
+        "plain": "Hybrid Search"
+       },
+       {
+        "html": "Kết hợp cả hai.",
+        "plain": "Kết hợp cả hai."
+       },
+       {
+        "html": "Bắt được cả ngữ nghĩa lẫn mã số, từ khóa đặc thù.",
+        "plain": "Bắt được cả ngữ nghĩa lẫn mã số, từ khóa đặc thù."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Vector Database hoạt động ra sao?"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất.",
+     "plain": "Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Sản phẩm",
+        "plain": "Sản phẩm"
+       },
+       {
+        "html": "Đặc điểm",
+        "plain": "Đặc điểm"
+       }
+      ],
+      [
+       {
+        "html": "Pinecone",
+        "plain": "Pinecone"
+       },
+       {
+        "html": "Dịch vụ quản lý sẵn, dễ dùng, không cần quản lý hạ tầng.",
+        "plain": "Dịch vụ quản lý sẵn, dễ dùng, không cần quản lý hạ tầng."
+       }
+      ],
+      [
+       {
+        "html": "Milvus / Zilliz",
+        "plain": "Milvus / Zilliz"
+       },
+       {
+        "html": "Mã nguồn mở, hiệu năng cao, quy mô hàng tỷ vector.",
+        "plain": "Mã nguồn mở, hiệu năng cao, quy mô hàng tỷ vector."
+       }
+      ],
+      [
+       {
+        "html": "Qdrant, Weaviate",
+        "plain": "Qdrant, Weaviate"
+       },
+       {
+        "html": "Cân bằng tốc độ và tính năng, hỗ trợ tốt Hybrid Search.",
+        "plain": "Cân bằng tốc độ và tính năng, hỗ trợ tốt Hybrid Search."
+       }
+      ],
+      [
+       {
+        "html": "PostgreSQL + pgvector",
+        "plain": "PostgreSQL + pgvector"
+       },
+       {
+        "html": "Tận dụng Postgres sẵn có bằng extension.",
+        "plain": "Tận dụng Postgres sẵn có bằng extension."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.",
+     "plain": "Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Phần 4 – Chuẩn bị dữ liệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "<strong>GIGO – Garbage In, Garbage Out:</strong> dữ liệu rác tạo ra Agent rác. Hệ thống RAG tốt đến mấy cũng vô dụng nếu tài liệu đầu vào lộn xộn.",
+     "plain": "GIGO – Garbage In, Garbage Out: dữ liệu rác tạo ra Agent rác. Hệ thống RAG tốt đến mấy cũng vô dụng nếu tài liệu đầu vào lộn xộn."
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "PDF scan dạng ảnh mà không OCR → máy chỉ thấy khoảng trắng.",
+       "level": 0,
+       "plain": "PDF scan dạng ảnh mà không OCR → máy chỉ thấy khoảng trắng."
+      },
+      {
+       "html": "Bảng phức tạp bị vỡ dòng → thông tin bị nối sai ngữ cảnh.",
+       "level": 0,
+       "plain": "Bảng phức tạp bị vỡ dòng → thông tin bị nối sai ngữ cảnh."
+      },
+      {
+       "html": "Header/footer lặp lại mọi trang → gây nhiễu khi tìm kiếm.",
+       "level": 0,
+       "plain": "Header/footer lặp lại mọi trang → gây nhiễu khi tìm kiếm."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Kỹ thuật làm sạch"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Loại bỏ nhiễu:</strong> xóa ký tự đặc biệt, số trang, tiêu đề lặp.",
+       "level": 0,
+       "plain": "Loại bỏ nhiễu: xóa ký tự đặc biệt, số trang, tiêu đề lặp."
+      },
+      {
+       "html": "<strong>Chuẩn hóa định dạng:</strong> chuyển về Markdown – giữ cấu trúc H1, H2, in đậm, thân thiện với LLM.",
+       "level": 0,
+       "plain": "Chuẩn hóa định dạng: chuyển về Markdown – giữ cấu trúc H1, H2, in đậm, thân thiện với LLM."
+      },
+      {
+       "html": "<strong>Xử lý bảng:</strong> chuyển thành bảng Markdown hoặc viết lại thành câu văn dễ hiểu.",
+       "level": 0,
+       "plain": "Xử lý bảng: chuyển thành bảng Markdown hoặc viết lại thành câu văn dễ hiểu."
+      },
+      {
+       "html": "<strong>Gắn metadata:</strong> ngày hiệu lực, danh mục, đơn vị ban hành – giúp lọc trước khi tìm.",
+       "level": 0,
+       "plain": "Gắn metadata: ngày hiệu lực, danh mục, đơn vị ban hành – giúp lọc trước khi tìm."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Chunking – cắt nhỏ dữ liệu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vấn đề",
+        "plain": "Vấn đề"
+       },
+       {
+        "html": "Khuyến nghị",
+        "plain": "Khuyến nghị"
+       }
+      ],
+      [
+       {
+        "html": "Vì sao phải cắt?",
+        "plain": "Vì sao phải cắt?"
+       },
+       {
+        "html": "Không thể embed cả cuốn sách vào một vector. Cỡ chunk lý tưởng khoảng 500–1.000 token.",
+        "plain": "Không thể embed cả cuốn sách vào một vector. Cỡ chunk lý tưởng khoảng 500–1.000 token."
+       }
+      ],
+      [
+       {
+        "html": "Cắt thế nào?",
+        "plain": "Cắt thế nào?"
+       },
+       {
+        "html": "Cắt theo số ký tự (fixed-size), hoặc tốt hơn: semantic chunking theo câu, đoạn, heading.",
+        "plain": "Cắt theo số ký tự (fixed-size), hoặc tốt hơn: semantic chunking theo câu, đoạn, heading."
+       }
+      ],
+      [
+       {
+        "html": "Chunk overlap",
+        "plain": "Chunk overlap"
+       },
+       {
+        "html": "Cho các đoạn gối lên nhau (VD: 1.000 từ, gối 150 từ) để không mất ý nằm vắt ngang điểm cắt.",
+        "plain": "Cho các đoạn gối lên nhau (VD: 1.000 từ, gối 150 từ) để không mất ý nằm vắt ngang điểm cắt."
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Phần 5 – Prompt Chain",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "<strong>Chia để trị:</strong> đừng bắt Agent “tìm kiếm + phân tích + trả lời” trong một prompt. Chia thành workflow nhiều bước; đầu ra bước trước là đầu vào bước sau → giảm ảo giác, tăng độ chính xác.",
+     "plain": "Chia để trị: đừng bắt Agent “tìm kiếm + phân tích + trả lời” trong một prompt. Chia thành workflow nhiều bước; đầu ra bước trước là đầu vào bước sau → giảm ảo giác, tăng độ chính xác."
+    },
+    {
+     "t": "h3",
+     "text": "Ví dụ: chuỗi lệnh RAG nâng cao"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Node",
+        "plain": "Node"
+       },
+       {
+        "html": "Việc",
+        "plain": "Việc"
+       },
+       {
+        "html": "Prompt mẫu",
+        "plain": "Prompt mẫu"
+       }
+      ],
+      [
+       {
+        "html": "1. Viết lại câu hỏi (Query Rewrite)",
+        "plain": "1. Viết lại câu hỏi (Query Rewrite)"
+       },
+       {
+        "html": "Người dùng hỏi “Thế còn tháng trước thì sao?” – thiếu ngữ cảnh.",
+        "plain": "Người dùng hỏi “Thế còn tháng trước thì sao?” – thiếu ngữ cảnh."
+       },
+       {
+        "html": "“Dựa vào lịch sử chat, hãy viết lại câu hỏi trên thành một câu truy vấn độc lập và rõ nghĩa.” → “Doanh thu bán hàng của tháng 9/2023 là bao nhiêu?”",
+        "plain": "“Dựa vào lịch sử chat, hãy viết lại câu hỏi trên thành một câu truy vấn độc lập và rõ nghĩa.” → “Doanh thu bán hàng của tháng 9/2023 là bao nhiêu?”"
+       }
+      ],
+      [
+       {
+        "html": "2. Tìm kiếm & tổng hợp",
+        "plain": "2. Tìm kiếm & tổng hợp"
+       },
+       {
+        "html": "Dùng câu đã viết lại để tìm trong Vector DB.",
+        "plain": "Dùng câu đã viết lại để tìm trong Vector DB."
+       },
+       {
+        "html": "“Dựa vào bộ tài liệu dưới đây, hãy trả lời câu hỏi: [Câu hỏi]. Nếu tài liệu không có thông tin, hãy nói ‘Tôi không biết’, TUYỆT ĐỐI không bịa đặt.”",
+        "plain": "“Dựa vào bộ tài liệu dưới đây, hãy trả lời câu hỏi: [Câu hỏi]. Nếu tài liệu không có thông tin, hãy nói ‘Tôi không biết’, TUYỆT ĐỐI không bịa đặt.”"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "activity",
+     "id": "ai02-check",
+     "title": "Kiểm tra nhanh: RAG và dữ liệu",
+     "inline": false
+    }
+   ],
+   "id": "s6"
+  },
+  {
+   "title": "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "activity",
+     "id": "ai02-th2",
+     "title": "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
+     "inline": false
+    },
+    {
+     "t": "p",
+     "html": "<strong>Mục tiêu:</strong> tạo một Agent HR/Sales nội bộ trả lời nhanh quy định thưởng, quy trình hoàn hàng cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Công cụ: Coze hoặc Dify. Tài liệu: bộ PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” giảng viên cung cấp.",
+     "plain": "Mục tiêu: tạo một Agent HR/Sales nội bộ trả lời nhanh quy định thưởng, quy trình hoàn hàng cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Công cụ: Coze hoặc Dify. Tài liệu: bộ PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” giảng viên cung cấp."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Làm sạch và định dạng tài liệu"
+    },
+    {
+     "t": "p",
+     "html": "Không upload thẳng PDF gốc. Đây là một trang trích từ tài liệu gốc sau khi chuyển sang văn bản:",
+     "plain": "Không upload thẳng PDF gốc. Đây là một trang trích từ tài liệu gốc sau khi chuyển sang văn bản:"
+    },
+    {
+     "t": "code",
+     "text": "CÔNG TY TNHH ABC – SỔ TAY NHÂN SỰ 2025            Trang 3/42\nMỤC LỤC .......................................................... 1\nChương 3. Chế độ thưởng ............................................ 3\n\n3.2 Thưởng KPI quý\n| Xếp hạng | Điều kiện       | Mức thưởng |\n| A        | KPI >= 110%     | 5.000.000  |\n| B        | 95% <= KPI <110%| 3.000.000  |\n| C        | KPI < 95%       | 0          |\nGhi chú: nhân viên thử việc không áp dụng. Thời hạn chi: ngày 15 tháng đầu quý sau.\nCÔNG TY TNHH ABC – Lưu hành nội bộ                    Trang 3/42"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Xóa trang bìa, mục lục (mục lục làm nhiễu tìm kiếm ngữ nghĩa), header/footer, số trang.",
+       "level": 0,
+       "plain": "Xóa trang bìa, mục lục (mục lục làm nhiễu tìm kiếm ngữ nghĩa), header/footer, số trang."
+      },
+      {
+       "html": "Biến bảng thành câu: “Thưởng KPI quý: hạng A (KPI từ 110%) được 5.000.000 đồng…”.",
+       "level": 0,
+       "plain": "Biến bảng thành câu: “Thưởng KPI quý: hạng A (KPI từ 110%) được 5.000.000 đồng…”."
+      },
+      {
+       "html": "Lưu thành file Markdown (.md) sạch.",
+       "level": 0,
+       "plain": "Lưu thành file Markdown (.md) sạch."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Tạo Knowledge Base"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Vào mục Knowledge/Dataset, tạo mới, upload các file .md đã làm sạch.",
+       "level": 0,
+       "plain": "Vào mục Knowledge/Dataset, tạo mới, upload các file .md đã làm sạch."
+      },
+      {
+       "html": "Chọn mô hình embedding (VD: text-embedding-3-small).",
+       "level": 0,
+       "plain": "Chọn mô hình embedding (VD: text-embedding-3-small)."
+      },
+      {
+       "html": "Chọn chế độ Custom thay vì Auto: chunk size 800–1.000 token; overlap 15–20%; delimiter <code>\\n</code> để giữ trọn câu.",
+       "level": 0,
+       "plain": "Chọn chế độ Custom thay vì Auto: chunk size 800–1.000 token; overlap 15–20%; delimiter \\n để giữ trọn câu."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Kiểm thử và tinh chỉnh truy xuất"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Top-K</strong> 3–5: ít quá thiếu ý, nhiều quá tốn token.",
+       "level": 0,
+       "plain": "Top-K 3–5: ít quá thiếu ý, nhiều quá tốn token."
+      },
+      {
+       "html": "<strong>Score Threshold</strong> khoảng 0,5: bỏ qua đoạn tương đồng thấp.",
+       "level": 0,
+       "plain": "Score Threshold khoảng 0,5: bỏ qua đoạn tương đồng thấp."
+      },
+      {
+       "html": "<strong>Hit Test</strong>: gõ thử câu hỏi, xem hệ thống bốc đúng đoạn quy định chưa, trước khi nối với LLM.",
+       "level": 0,
+       "plain": "Hit Test: gõ thử câu hỏi, xem hệ thống bốc đúng đoạn quy định chưa, trước khi nối với LLM."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 4 – Nối Knowledge Base vào Agent với prompt chuỗi hai bước"
+    },
+    {
+     "t": "p",
+     "html": "Tiêu chí chữa bài (10 điểm): tài liệu sạch, bảng được viết lại đúng nghĩa (3); cấu hình hợp lý, có lý do (2); Hit Test đủ 5 câu, có câu “bẫy” không có trong tài liệu (3); prompt chuỗi rõ ràng, có câu chống bịa (2).",
+     "plain": "Tiêu chí chữa bài (10 điểm): tài liệu sạch, bảng được viết lại đúng nghĩa (3); cấu hình hợp lý, có lý do (2); Hit Test đủ 5 câu, có câu “bẫy” không có trong tài liệu (3); prompt chuỗi rõ ràng, có câu chống bịa (2)."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "ai02-th2"
+    },
+    {
+     "t": "code",
+     "text": "---\ntai_lieu: So tay nhan su 2025\nchuong: 3 - Che do thuong\nhieu_luc: 2025\n---\n## Thưởng KPI quý\n- Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý.\n- Hạng B: KPI từ 95% đến dưới 110%, thưởng 3.000.000 đồng/quý.\n- Hạng C: KPI dưới 95%, không có thưởng.\n- Nhân viên thử việc không áp dụng.\n- Thời hạn chi: ngày 15 tháng đầu tiên của quý sau.",
+     "reveal": "ai02-th2"
+    },
+    {
+     "t": "p",
+     "html": "Hit Test nên có ít nhất một câu hỏi mà tài liệu không có câu trả lời (VD: “Thưởng Tết bao nhiêu?”). Agent đạt khi trả lời “Tôi không biết / tài liệu chưa đề cập” thay vì bịa.",
+     "plain": "Hit Test nên có ít nhất một câu hỏi mà tài liệu không có câu trả lời (VD: “Thưởng Tết bao nhiêu?”). Agent đạt khi trả lời “Tôi không biết / tài liệu chưa đề cập” thay vì bịa.",
+     "reveal": "ai02-th2"
+    },
+    {
+     "t": "p",
+     "html": "Lỗi hay gặp: giữ nguyên bảng vỡ dòng; để chế độ Auto; Top-K quá cao (10–20) khiến câu trả lời lẫn quy định khác; không thử câu hỏi bẫy.",
+     "plain": "Lỗi hay gặp: giữ nguyên bảng vỡ dòng; để chế độ Auto; Top-K quá cao (10–20) khiến câu trả lời lẫn quy định khác; không thử câu hỏi bẫy.",
+     "reveal": "ai02-th2"
+    }
+   ],
+   "activity": "ai02-th2",
+   "id": "s7"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "LLM thuần lỗi thời, dễ ảo giác, không biết nội bộ; nhồi cả kho tài liệu vào prompt thì đắt, chậm và “lost in the middle”.",
+       "level": 0,
+       "plain": "LLM thuần lỗi thời, dễ ảo giác, không biết nội bộ; nhồi cả kho tài liệu vào prompt thì đắt, chậm và “lost in the middle”."
+      },
+      {
+       "html": "RAG = tìm đoạn liên quan → ghép vào prompt → sinh câu trả lời dựa trên dữ liệu thật.",
+       "level": 0,
+       "plain": "RAG = tìm đoạn liên quan → ghép vào prompt → sinh câu trả lời dựa trên dữ liệu thật."
+      },
+      {
+       "html": "Embedding biến chữ thành vector; Vector DB tìm theo nghĩa; Hybrid Search kết hợp từ khóa và ngữ nghĩa.",
+       "level": 0,
+       "plain": "Embedding biến chữ thành vector; Vector DB tìm theo nghĩa; Hybrid Search kết hợp từ khóa và ngữ nghĩa."
+      },
+      {
+       "html": "GIGO: làm sạch, chuyển Markdown, viết lại bảng, gắn metadata; chunk 500–1.000 token, overlap 15–20%.",
+       "level": 0,
+       "plain": "GIGO: làm sạch, chuyển Markdown, viết lại bảng, gắn metadata; chunk 500–1.000 token, overlap 15–20%."
+      },
+      {
+       "html": "Prompt Chain: viết lại câu hỏi → tìm và tổng hợp, kèm luật “không biết thì nói không biết”.",
+       "level": 0,
+       "plain": "Prompt Chain: viết lại câu hỏi → tìm và tổng hợp, kèm luật “không biết thì nói không biết”."
+      }
+     ]
+    },
+    {
+     "t": "activity",
+     "id": "ai02-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
+    }
+   ],
+   "id": "s8"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Trình diễn quan trọng nhất của buổi: nạp cùng một tài liệu ở hai bản – PDF gốc (có mục lục, bảng vỡ) và Markdown đã làm sạch – rồi Hit Test cùng một câu hỏi. Cho lớp thấy điểm tương đồng và đoạn được bốc ra khác nhau thế nào.",
+     "plain": "Trình diễn quan trọng nhất của buổi: nạp cùng một tài liệu ở hai bản – PDF gốc (có mục lục, bảng vỡ) và Markdown đã làm sạch – rồi Hit Test cùng một câu hỏi. Cho lớp thấy điểm tương đồng và đoạn được bốc ra khác nhau thế nào."
+    },
+    {
+     "t": "p",
+     "html": "Nếu thời gian ngắn: bỏ bước 4, chỉ yêu cầu Hit Test và một prompt tổng hợp có câu chống bịa.",
+     "plain": "Nếu thời gian ngắn: bỏ bước 4, chỉ yêu cầu Hit Test và một prompt tổng hợp có câu chống bịa."
+    }
+   ],
+   "id": "s9"
+  }
+ ],
+ "activities": [
+  {
+   "id": "ai02-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Cuối buổi, bạn tự đối chiếu với những gì đã học.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Bạn hỏi một chatbot về quy định nghỉ phép của chính công ty bạn. Theo bạn, nó sẽ trả lời thế nào? Vì sao?"
+    },
+    {
+     "id": "q2",
+     "text": "Nếu được phép đưa cho AI 1 tài liệu để nó trả lời đồng nghiệp chính xác hơn, bạn chọn tài liệu nào?"
+    },
+    {
+     "id": "q3",
+     "text": "Tài liệu đó hiện ở dạng gì (PDF scan, Word, Excel…)? Bạn đoán AI đọc nó có gặp khó khăn gì không?"
+    }
+   ]
+  },
+  {
+   "id": "ai02-check",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: RAG và dữ liệu",
+   "intro": "Chọn một phương án đúng nhất cho mỗi câu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Vì sao không nên “nhồi” toàn bộ tài liệu công ty vào prompt mỗi lần hỏi, kể cả khi mô hình có Context Window 1 triệu token?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Vì mô hình sẽ từ chối"
+      },
+      {
+       "key": "B",
+       "text": "Chi phí cao, độ trễ lớn và dễ “lost in the middle”"
+      },
+      {
+       "key": "C",
+       "text": "Vì token không đủ chữ tiếng Việt"
+      },
+      {
+       "key": "D",
+       "text": "Vì vi phạm bản quyền"
+      }
+     ],
+     "correct": "B",
+     "explain": "Ba vấn đề của cách nhồi nhét: tốn tiền token, chờ lâu, và AI giảm chú ý vào thông tin ở giữa văn bản dài."
+    },
+    {
+     "id": "q2",
+     "text": "Người dùng tìm “hủy đơn hàng”, hệ thống trả về cả tài liệu “quy trình trả hàng, hoàn tiền”. Đó là kiểu tìm kiếm nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Keyword Search"
+      },
+      {
+       "key": "B",
+       "text": "Semantic Search"
+      },
+      {
+       "key": "C",
+       "text": "Tìm theo ngày tạo"
+      },
+      {
+       "key": "D",
+       "text": "Tìm theo tên file"
+      }
+     ],
+     "correct": "B",
+     "explain": "Tìm theo ngữ nghĩa so khớp ý nghĩa (qua embedding), không cần trùng từ."
+    },
+    {
+     "id": "q3",
+     "text": "Bảng thưởng KPI trong PDF bị vỡ dòng khi nạp vào Knowledge Base. Cách xử lý tốt nhất?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Upload nguyên PDF, hệ thống tự hiểu"
+      },
+      {
+       "key": "B",
+       "text": "Xóa bảng đi"
+      },
+      {
+       "key": "C",
+       "text": "Viết lại bảng thành câu văn hoặc bảng Markdown rõ ràng"
+      },
+      {
+       "key": "D",
+       "text": "Tăng Top-K lên 20"
+      }
+     ],
+     "correct": "C",
+     "explain": "GIGO: viết lại thành câu kiểu “Hạng A được 5 triệu…” hoặc bảng Markdown giữ đúng ngữ cảnh."
+    },
+    {
+     "id": "q4",
+     "text": "Agent hay trả lời lạc đề vì bốc phải các đoạn chỉ hơi liên quan. Nên chỉnh gì trước?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Tăng Score Threshold (VD lên khoảng 0,5) và kiểm tra bằng Hit Test"
+      },
+      {
+       "key": "B",
+       "text": "Đổi sang mô hình đắt hơn"
+      },
+      {
+       "key": "C",
+       "text": "Bỏ chunk overlap"
+      },
+      {
+       "key": "D",
+       "text": "Tăng chunk size lên 5.000 token"
+      }
+     ],
+     "correct": "A",
+     "explain": "Ngưỡng tương đồng loại bỏ đoạn “rác”; Hit Test cho thấy hệ thống thực sự bốc đoạn nào."
+    }
+   ]
+  },
+  {
+   "id": "ai02-th2",
+   "type": "practice",
+   "scope": "student",
+   "title": "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
+   "section": "s7",
+   "intro": "Làm sạch tài liệu, tạo Knowledge Base trên Coze hoặc Dify, cấu hình chunking và truy xuất, kiểm thử bằng Hit Test và viết prompt chuỗi hai bước.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "lam_sach",
+     "label": "Bước 1 – Viết lại đoạn “Thưởng KPI quý” thành Markdown sạch",
+     "hint": "Bỏ header/footer, số trang, mục lục; biến bảng thành câu văn hoặc bảng Markdown; thêm metadata."
+    },
+    {
+     "type": "table",
+     "key": "cau_hinh",
+     "label": "Bước 2 – Cấu hình Knowledge Base",
+     "columns": [
+      {
+       "key": "gia_tri",
+       "label": "Giá trị bạn đặt"
+      },
+      {
+       "key": "ly_do",
+       "label": "Lý do"
+      }
+     ],
+     "rows": [
+      "Nền tảng (Coze/Dify)",
+      "Mô hình Embedding",
+      "Chunk size",
+      "Chunk overlap",
+      "Delimiter",
+      "Top-K",
+      "Score Threshold"
+     ],
+     "min_rows": 3
+    },
+    {
+     "type": "table",
+     "key": "hit_test",
+     "label": "Bước 3 – Hit Test: 5 câu hỏi thử",
+     "columns": [
+      {
+       "key": "cau_hoi",
+       "label": "Câu hỏi"
+      },
+      {
+       "key": "doan",
+       "label": "Đoạn được bốc ra (tóm tắt) và điểm"
+      },
+      {
+       "key": "dung",
+       "label": "Bốc đúng đoạn?",
+       "options": [
+        "Đúng",
+        "Sai",
+        "Thiếu"
+       ]
+      }
+     ],
+     "rows": null,
+     "min_rows": 5
+    },
+    {
+     "type": "textarea",
+     "key": "prompt_chain",
+     "label": "Bước 4 – Prompt của 2 node: Viết lại câu hỏi (Query Rewrite) và Tổng hợp câu trả lời"
+    },
+    {
+     "type": "textarea",
+     "key": "bai_hoc",
+     "label": "Một điều bạn đã chỉnh sau khi Hit Test và tác động của nó"
+    }
+   ]
+  },
+  {
+   "id": "ai02-review",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi ôn tập",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Nêu 4 vấn đề của LLM “thuần” khi dùng trong doanh nghiệp.",
+     "answer": "Kiến thức lỗi thời; ảo giác; thiếu ngữ cảnh nội bộ; không thể nhồi mọi tài liệu vào prompt do giới hạn token."
+    },
+    {
+     "id": "q2",
+     "text": "R, A, G trong RAG là gì?",
+     "answer": "Retrieval – tìm đoạn liên quan nhất; Augmented – ghép đoạn đó vào prompt; Generation – LLM sinh câu trả lời dựa trên dữ liệu thật."
+    },
+    {
+     "id": "q3",
+     "text": "Embedding là gì? Vì sao “chó” gần “mèo” hơn “máy tính”?",
+     "answer": "Biến câu chữ thành vector số; các câu cùng nghĩa có vector gần nhau trong không gian nhiều chiều."
+    },
+    {
+     "id": "q4",
+     "text": "Vì sao cần chunk overlap?",
+     "answer": "Để thông tin nằm vắt ngang điểm cắt không bị mất ngữ cảnh; thường gối 15–20%."
+    },
+    {
+     "id": "q5",
+     "text": "Top-K và Score Threshold ảnh hưởng thế nào đến câu trả lời?",
+     "answer": "Top-K quá ít thiếu ý, quá nhiều tốn token và nhiễu (nên 3–5). Threshold (~0,5) loại đoạn tương đồng thấp để tránh rác."
+    },
+    {
+     "id": "q6",
+     "text": "Câu “Nếu tài liệu không có thông tin, hãy nói ‘Tôi không biết’” nhằm mục đích gì?",
+     "answer": "Chặn ảo giác: buộc Agent chỉ trả lời dựa trên tài liệu tìm được."
+    }
+   ]
+  }
+ ]
+}

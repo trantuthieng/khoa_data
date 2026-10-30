@@ -1,0 +1,473 @@
+{
+ "no": 0,
+ "title": "Khóa học AI Agent – Tổng quan",
+ "short": "Tổng quan",
+ "sections": [
+  {
+   "title": "Lời giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Khóa học giúp người làm việc văn phòng, quản lý và cán bộ nghiệp vụ hiểu và tự dựng được <strong>AI Agent</strong> – những “nhân sự ảo” nhận mục tiêu, tự lập kế hoạch, dùng công cụ và hoàn thành công việc nhiều bước. Khóa không đòi hỏi biết lập trình: mọi bài thực hành làm trên nền tảng no-code/low-code (Custom GPT, Coze, Dify).",
+     "plain": "Khóa học giúp người làm việc văn phòng, quản lý và cán bộ nghiệp vụ hiểu và tự dựng được AI Agent – những “nhân sự ảo” nhận mục tiêu, tự lập kế hoạch, dùng công cụ và hoàn thành công việc nhiều bước. Khóa không đòi hỏi biết lập trình: mọi bài thực hành làm trên nền tảng no-code/low-code (Custom GPT, Coze, Dify)."
+    },
+    {
+     "t": "quote",
+     "html": "AI đang chuyển dịch từ vị trí của một công cụ hỗ trợ thụ động sang vai trò của những “nhân sự ảo” chủ động, tự tư duy và giải quyết trọn vẹn vấn đề.",
+     "plain": "AI đang chuyển dịch từ vị trí của một công cụ hỗ trợ thụ động sang vai trò của những “nhân sự ảo” chủ động, tự tư duy và giải quyết trọn vẹn vấn đề."
+    },
+    {
+     "t": "p",
+     "html": "Mỗi buổi gồm phần bài học (giảng viên trình chiếu, học viên đọc theo trên máy), câu hỏi mở đầu, kiểm tra nhanh, một bài thực hành cá nhân và câu hỏi ôn tập. Bài thực hành nộp ngay trên trang này; giảng viên chấm, nhận xét và công bố gợi ý chữa bài.",
+     "plain": "Mỗi buổi gồm phần bài học (giảng viên trình chiếu, học viên đọc theo trên máy), câu hỏi mở đầu, kiểm tra nhanh, một bài thực hành cá nhân và câu hỏi ôn tập. Bài thực hành nộp ngay trên trang này; giảng viên chấm, nhận xét và công bố gợi ý chữa bài."
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Danh sách 5 buổi học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       },
+       {
+        "html": "Chủ đề",
+        "plain": "Chủ đề"
+       },
+       {
+        "html": "Câu hỏi trung tâm",
+        "plain": "Câu hỏi trung tâm"
+       },
+       {
+        "html": "Sản phẩm của học viên",
+        "plain": "Sản phẩm của học viên"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Kiến trúc AI Agent & tư duy “nhân sự ảo”",
+        "plain": "Kiến trúc AI Agent & tư duy “nhân sự ảo”"
+       },
+       {
+        "html": "Agent khác chatbot ở đâu, và giao việc cho nó thế nào?",
+        "plain": "Agent khác chatbot ở đâu, và giao việc cho nó thế nào?"
+       },
+       {
+        "html": "Khung Persona + một Custom GPT trợ lý nội bộ",
+        "plain": "Khung Persona + một Custom GPT trợ lý nội bộ"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Quản lý tri thức & Knowledge Base (RAG)",
+        "plain": "Quản lý tri thức & Knowledge Base (RAG)"
+       },
+       {
+        "html": "Làm sao để Agent trả lời đúng theo tài liệu của mình?",
+        "plain": "Làm sao để Agent trả lời đúng theo tài liệu của mình?"
+       },
+       {
+        "html": "Knowledge Base tư vấn chính sách nội bộ trên Coze/Dify",
+        "plain": "Knowledge Base tư vấn chính sách nội bộ trên Coze/Dify"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Xây dựng Agent chuyên biệt",
+        "plain": "Xây dựng Agent chuyên biệt"
+       },
+       {
+        "html": "Làm sao để Agent tự kiểm tra, rẽ nhánh và ghi nhớ?",
+        "plain": "Làm sao để Agent tự kiểm tra, rẽ nhánh và ghi nhớ?"
+       },
+       {
+        "html": "Workflow Agent phân tích đối thủ cạnh tranh",
+        "plain": "Workflow Agent phân tích đối thủ cạnh tranh"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Trang bị kỹ năng (Plugins) cho Agent",
+        "plain": "Trang bị kỹ năng (Plugins) cho Agent"
+       },
+       {
+        "html": "Làm sao để Agent hành động ngoài đời thực mà vẫn an toàn?",
+        "plain": "Làm sao để Agent hành động ngoài đời thực mà vẫn an toàn?"
+       },
+       {
+        "html": "Kịch bản Agent tổng hợp tin tức + báo giá + báo cáo, có Guardrails",
+        "plain": "Kịch bản Agent tổng hợp tin tức + báo giá + báo cáo, có Guardrails"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Multi-Agent & đánh giá hiệu suất",
+        "plain": "Multi-Agent & đánh giá hiệu suất"
+       },
+       {
+        "html": "Làm sao để nhiều Agent phối hợp và ngày càng tốt hơn?",
+        "plain": "Làm sao để nhiều Agent phối hợp và ngày càng tốt hơn?"
+       },
+       {
+        "html": "Phòng ban ảo Writer – Editor, bộ KPI và nhật ký tinh chỉnh",
+        "plain": "Phòng ban ảo Writer – Editor, bộ KPI và nhật ký tinh chỉnh"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Bản đồ khóa học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Năm buổi đi theo đúng thứ tự một Agent “lớn lên” trong doanh nghiệp:",
+     "plain": "Năm buổi đi theo đúng thứ tự một Agent “lớn lên” trong doanh nghiệp:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Có vai trò</strong> – Persona: Agent là ai, phục vụ ai, được và không được làm gì (buổi 1).",
+       "level": 0,
+       "plain": "Có vai trò – Persona: Agent là ai, phục vụ ai, được và không được làm gì (buổi 1)."
+      },
+      {
+       "html": "<strong>Có tri thức</strong> – Knowledge Base: Agent trả lời dựa trên tài liệu thật của đơn vị (buổi 2).",
+       "level": 0,
+       "plain": "Có tri thức – Knowledge Base: Agent trả lời dựa trên tài liệu thật của đơn vị (buổi 2)."
+      },
+      {
+       "html": "<strong>Có quy trình</strong> – Workflow: Agent làm việc theo các bước, tự kiểm tra, biết hỏi lại và ghi nhớ (buổi 3).",
+       "level": 0,
+       "plain": "Có quy trình – Workflow: Agent làm việc theo các bước, tự kiểm tra, biết hỏi lại và ghi nhớ (buổi 3)."
+      },
+      {
+       "html": "<strong>Có công cụ</strong> – Plugins/API: Agent tra cứu, tính toán, thao tác phần mềm, trong giới hạn an toàn (buổi 4).",
+       "level": 0,
+       "plain": "Có công cụ – Plugins/API: Agent tra cứu, tính toán, thao tác phần mềm, trong giới hạn an toàn (buổi 4)."
+      },
+      {
+       "html": "<strong>Có đồng đội và có KPI</strong> – Multi-Agent: nhiều Agent phân vai, được đo lường và cải tiến liên tục (buổi 5).",
+       "level": 0,
+       "plain": "Có đồng đội và có KPI – Multi-Agent: nhiều Agent phân vai, được đo lường và cải tiến liên tục (buổi 5)."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Sản phẩm của buổi trước là đầu vào của buổi sau. Hãy giữ lại Persona, tài liệu và prompt bạn viết trong từng buổi.",
+     "plain": "Sản phẩm của buổi trước là đầu vào của buổi sau. Hãy giữ lại Persona, tài liệu và prompt bạn viết trong từng buổi.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Chuẩn bị của học viên",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Máy tính có trình duyệt Chrome hoặc Edge bản mới.",
+       "level": 0,
+       "plain": "Máy tính có trình duyệt Chrome hoặc Edge bản mới."
+      },
+      {
+       "html": "Tài khoản ChatGPT có quyền tạo GPT (buổi 1). Kiểm tra trước buổi học: vào <em>Explore GPTs → Create</em>.",
+       "level": 0,
+       "plain": "Tài khoản ChatGPT có quyền tạo GPT (buổi 1). Kiểm tra trước buổi học: vào Explore GPTs → Create."
+      },
+      {
+       "html": "Tài khoản Coze hoặc Dify bản cloud (buổi 2–5). Đăng ký trước, đăng nhập thử một lần.",
+       "level": 0,
+       "plain": "Tài khoản Coze hoặc Dify bản cloud (buổi 2–5). Đăng ký trước, đăng nhập thử một lần."
+      },
+      {
+       "html": "Một vài tài liệu nội bộ <strong>không mật</strong> để thử (quy định, hướng dẫn, câu hỏi thường gặp). Không đưa dữ liệu cá nhân của khách hàng, đồng nghiệp hay tài liệu mật lên nền tảng bên ngoài.",
+       "level": 0,
+       "plain": "Một vài tài liệu nội bộ không mật để thử (quy định, hướng dẫn, câu hỏi thường gặp). Không đưa dữ liệu cá nhân của khách hàng, đồng nghiệp hay tài liệu mật lên nền tảng bên ngoài."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Toàn bộ tình huống trong bài là giả lập. Khi áp dụng thật tại đơn vị, làm theo quy định về dữ liệu và công cụ AI đã được phê duyệt.",
+     "plain": "Toàn bộ tình huống trong bài là giả lập. Khi áp dụng thật tại đơn vị, làm theo quy định về dữ liệu và công cụ AI đã được phê duyệt.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Chuẩn bị khóa học",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Kiểm tra mạng lớp học truy cập được chatgpt.com, coze.com, cloud.dify.ai.",
+       "level": 0,
+       "plain": "Kiểm tra mạng lớp học truy cập được chatgpt.com, coze.com, cloud.dify.ai."
+      },
+      {
+       "html": "Chuẩn bị sẵn một Custom GPT, một Knowledge Base và một workflow mẫu cho từng buổi để trình diễn khi học viên gặp sự cố tài khoản.",
+       "level": 0,
+       "plain": "Chuẩn bị sẵn một Custom GPT, một Knowledge Base và một workflow mẫu cho từng buổi để trình diễn khi học viên gặp sự cố tài khoản."
+      },
+      {
+       "html": "Chuẩn bị 3–5 file PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” (có bảng, header/footer, trang mục lục) cho buổi 2 – nên có cả bản “bẩn” và bản đã làm sạch để so sánh.",
+       "level": 0,
+       "plain": "Chuẩn bị 3–5 file PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” (có bảng, header/footer, trang mục lục) cho buổi 2 – nên có cả bản “bẩn” và bản đã làm sạch để so sánh."
+      },
+      {
+       "html": "Mỗi buổi: mở câu hỏi mở đầu ngay đầu giờ, mở kiểm tra nhanh sau phần lý thuyết, mở bài thực hành khi bắt đầu phần thực hành; đóng bài trước khi chấm, công bố sau khi chữa.",
+       "level": 0,
+       "plain": "Mỗi buổi: mở câu hỏi mở đầu ngay đầu giờ, mở kiểm tra nhanh sau phần lý thuyết, mở bài thực hành khi bắt đầu phần thực hành; đóng bài trước khi chấm, công bố sau khi chữa."
+      }
+     ]
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Thuật ngữ toàn khóa",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thuật ngữ",
+        "plain": "Thuật ngữ"
+       },
+       {
+        "html": "Giải thích ngắn",
+        "plain": "Giải thích ngắn"
+       }
+      ],
+      [
+       {
+        "html": "AI Agent",
+        "plain": "AI Agent"
+       },
+       {
+        "html": "Hệ thống AI nhận mục tiêu, tự lập kế hoạch, dùng công cụ và thực hiện nhiều bước để hoàn thành nhiệm vụ.",
+        "plain": "Hệ thống AI nhận mục tiêu, tự lập kế hoạch, dùng công cụ và thực hiện nhiều bước để hoàn thành nhiệm vụ."
+       }
+      ],
+      [
+       {
+        "html": "LLM",
+        "plain": "LLM"
+       },
+       {
+        "html": "Mô hình ngôn ngữ lớn (GPT, Claude, Gemini…) – “bộ não” suy luận của Agent.",
+        "plain": "Mô hình ngôn ngữ lớn (GPT, Claude, Gemini…) – “bộ não” suy luận của Agent."
+       }
+      ],
+      [
+       {
+        "html": "Persona",
+        "plain": "Persona"
+       },
+       {
+        "html": "Bộ mô tả vai trò, mục tiêu, giọng điệu, giới hạn và bối cảnh của Agent.",
+        "plain": "Bộ mô tả vai trò, mục tiêu, giọng điệu, giới hạn và bối cảnh của Agent."
+       }
+      ],
+      [
+       {
+        "html": "System Prompt",
+        "plain": "System Prompt"
+       },
+       {
+        "html": "Chỉ dẫn gốc nạp cho Agent trước mọi cuộc hội thoại.",
+        "plain": "Chỉ dẫn gốc nạp cho Agent trước mọi cuộc hội thoại."
+       }
+      ],
+      [
+       {
+        "html": "Hallucination (ảo giác)",
+        "plain": "Hallucination (ảo giác)"
+       },
+       {
+        "html": "AI “bịa” ra thông tin nghe hợp lý nhưng sai sự thật.",
+        "plain": "AI “bịa” ra thông tin nghe hợp lý nhưng sai sự thật."
+       }
+      ],
+      [
+       {
+        "html": "Context Window",
+        "plain": "Context Window"
+       },
+       {
+        "html": "Lượng văn bản (token) tối đa mô hình đọc được trong một lần gọi.",
+        "plain": "Lượng văn bản (token) tối đa mô hình đọc được trong một lần gọi."
+       }
+      ],
+      [
+       {
+        "html": "RAG",
+        "plain": "RAG"
+       },
+       {
+        "html": "Retrieval-Augmented Generation: tìm tài liệu liên quan rồi mới sinh câu trả lời.",
+        "plain": "Retrieval-Augmented Generation: tìm tài liệu liên quan rồi mới sinh câu trả lời."
+       }
+      ],
+      [
+       {
+        "html": "Embedding / Vector",
+        "plain": "Embedding / Vector"
+       },
+       {
+        "html": "Cách biến câu chữ thành dãy số để so sánh độ giống nhau về nghĩa.",
+        "plain": "Cách biến câu chữ thành dãy số để so sánh độ giống nhau về nghĩa."
+       }
+      ],
+      [
+       {
+        "html": "Chunk",
+        "plain": "Chunk"
+       },
+       {
+        "html": "Một đoạn tài liệu được cắt nhỏ để lưu và tìm kiếm.",
+        "plain": "Một đoạn tài liệu được cắt nhỏ để lưu và tìm kiếm."
+       }
+      ],
+      [
+       {
+        "html": "Top-K, Score Threshold",
+        "plain": "Top-K, Score Threshold"
+       },
+       {
+        "html": "Số đoạn lấy ra cho AI đọc và ngưỡng độ tương đồng tối thiểu.",
+        "plain": "Số đoạn lấy ra cho AI đọc và ngưỡng độ tương đồng tối thiểu."
+       }
+      ],
+      [
+       {
+        "html": "Workflow / Node",
+        "plain": "Workflow / Node"
+       },
+       {
+        "html": "Quy trình nhiều bước; mỗi bước là một node (LLM, điều kiện, công cụ…).",
+        "plain": "Quy trình nhiều bước; mỗi bước là một node (LLM, điều kiện, công cụ…)."
+       }
+      ],
+      [
+       {
+        "html": "Self-Correction",
+        "plain": "Self-Correction"
+       },
+       {
+        "html": "Agent tự đối chiếu kết quả với checklist và sửa trước khi trả lời.",
+        "plain": "Agent tự đối chiếu kết quả với checklist và sửa trước khi trả lời."
+       }
+      ],
+      [
+       {
+        "html": "Memory",
+        "plain": "Memory"
+       },
+       {
+        "html": "Bộ nhớ ngắn hạn (lịch sử phiên) và dài hạn (lưu qua nhiều phiên).",
+        "plain": "Bộ nhớ ngắn hạn (lịch sử phiên) và dài hạn (lưu qua nhiều phiên)."
+       }
+      ],
+      [
+       {
+        "html": "Function Calling",
+        "plain": "Function Calling"
+       },
+       {
+        "html": "Cơ chế LLM xuất JSON yêu cầu hệ thống gọi một hàm/công cụ bên ngoài.",
+        "plain": "Cơ chế LLM xuất JSON yêu cầu hệ thống gọi một hàm/công cụ bên ngoài."
+       }
+      ],
+      [
+       {
+        "html": "Guardrails",
+        "plain": "Guardrails"
+       },
+       {
+        "html": "Hàng rào an toàn: giới hạn quyền, tài nguyên và bắt buộc người duyệt.",
+        "plain": "Hàng rào an toàn: giới hạn quyền, tài nguyên và bắt buộc người duyệt."
+       }
+      ],
+      [
+       {
+        "html": "Human-in-the-loop",
+        "plain": "Human-in-the-loop"
+       },
+       {
+        "html": "Con người duyệt trước khi Agent thực hiện hành động nhạy cảm.",
+        "plain": "Con người duyệt trước khi Agent thực hiện hành động nhạy cảm."
+       }
+      ],
+      [
+       {
+        "html": "Router / Worker / Reviewer",
+        "plain": "Router / Worker / Reviewer"
+       },
+       {
+        "html": "Ba vai trong đội Multi-Agent: điều phối, thực thi, kiểm duyệt.",
+        "plain": "Ba vai trong đội Multi-Agent: điều phối, thực thi, kiểm duyệt."
+       }
+      ],
+      [
+       {
+        "html": "Eval",
+        "plain": "Eval"
+       },
+       {
+        "html": "Đánh giá chất lượng Agent theo bộ tiêu chí và bộ câu hỏi kiểm thử cố định.",
+        "plain": "Đánh giá chất lượng Agent theo bộ tiêu chí và bộ câu hỏi kiểm thử cố định."
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s5"
+  }
+ ],
+ "activities": []
+}

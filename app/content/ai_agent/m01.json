@@ -1,0 +1,988 @@
+{
+ "no": 1,
+ "title": "Buổi 1 – Kiến trúc AI Agent & tư duy “nhân sự ảo”",
+ "short": "Kiến trúc AI Agent & tư duy “nhân sự ảo”",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 1 trả lời câu hỏi nền của cả khóa: <strong>AI Agent là gì, nó vận hành ra sao, và giao việc cho nó như thế nào?</strong> Cuối buổi, mỗi học viên có một Persona viết tay và một Custom GPT trợ lý nội bộ chạy được.",
+     "plain": "Buổi 1 trả lời câu hỏi nền của cả khóa: AI Agent là gì, nó vận hành ra sao, và giao việc cho nó như thế nào? Cuối buổi, mỗi học viên có một Persona viết tay và một Custom GPT trợ lý nội bộ chạy được."
+    },
+    {
+     "t": "quote",
+     "html": "Thay vì con người phải prompt từng bước nhỏ, chúng ta chỉ cần giao “Mục tiêu”. AI Agent sẽ tự lên kế hoạch, chọn công cụ và thực thi cho đến khi hoàn thành nhiệm vụ.",
+     "plain": "Thay vì con người phải prompt từng bước nhỏ, chúng ta chỉ cần giao “Mục tiêu”. AI Agent sẽ tự lên kế hoạch, chọn công cụ và thực thi cho đến khi hoàn thành nhiệm vụ."
+    },
+    {
+     "t": "activity",
+     "id": "ai01-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Bạn đã dùng ChatGPT (hoặc công cụ tương tự) vào việc gì gần đây? Bạn phải gõ bao nhiêu lượt để ra được kết quả dùng được?",
+      "Nếu có một “nhân viên ảo” trong phòng, bạn sẽ giao cho nó việc gì đầu tiên? Vì sao?",
+      "Bạn sẽ dặn nhân viên mới những gì trong ngày đầu đi làm? Ghi 3 điều."
+     ]
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Hiểu khái niệm:</strong> giải thích AI Agent và sự chuyển dịch sang “nhân sự ảo” thay vì công cụ thụ động.",
+       "level": 0,
+       "plain": "Hiểu khái niệm: giải thích AI Agent và sự chuyển dịch sang “nhân sự ảo” thay vì công cụ thụ động."
+      },
+      {
+       "html": "<strong>Nắm cấu trúc:</strong> mô tả vòng lặp Nhận thức – Suy luận – Hành động của một Agent.",
+       "level": 0,
+       "plain": "Nắm cấu trúc: mô tả vòng lặp Nhận thức – Suy luận – Hành động của một Agent."
+      },
+      {
+       "html": "<strong>Biết ứng dụng:</strong> so sánh các nền tảng dựng Agent và định hình Persona, vai trò, mục tiêu cho Agent.",
+       "level": 0,
+       "plain": "Biết ứng dụng: so sánh các nền tảng dựng Agent và định hình Persona, vai trò, mục tiêu cho Agent."
+      }
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Phần 1 – Kỷ nguyên nhân sự ảo",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "AI Agent không chỉ là công cụ tạo văn bản. Nó là một <strong>thực thể tự chủ</strong> có bốn đặc điểm:",
+     "plain": "AI Agent không chỉ là công cụ tạo văn bản. Nó là một thực thể tự chủ có bốn đặc điểm:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Tự chủ một phần:</strong> tự đưa ra quyết định dựa trên mục tiêu được giao.",
+       "level": 0,
+       "plain": "Tự chủ một phần: tự đưa ra quyết định dựa trên mục tiêu được giao."
+      },
+      {
+       "html": "<strong>Thực thi chuỗi tác vụ:</strong> thay vì trả lời một câu hỏi, Agent lên kế hoạch và làm nhiều bước.",
+       "level": 0,
+       "plain": "Thực thi chuỗi tác vụ: thay vì trả lời một câu hỏi, Agent lên kế hoạch và làm nhiều bước."
+      },
+      {
+       "html": "<strong>Tương tác môi trường:</strong> biết dùng công cụ – duyệt web, gọi API, thao tác phần mềm.",
+       "level": 0,
+       "plain": "Tương tác môi trường: biết dùng công cụ – duyệt web, gọi API, thao tác phần mềm."
+      },
+      {
+       "html": "<strong>Đóng vai nhân sự:</strong> trở thành Virtual Employee (nhân sự ảo) trong các phòng ban.",
+       "level": 0,
+       "plain": "Đóng vai nhân sự: trở thành Virtual Employee (nhân sự ảo) trong các phòng ban."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "Chatbot / công cụ",
+        "plain": "Chatbot / công cụ"
+       },
+       {
+        "html": "AI Agent (nhân sự ảo)",
+        "plain": "AI Agent (nhân sự ảo)"
+       }
+      ],
+      [
+       {
+        "html": "Bạn giao",
+        "plain": "Bạn giao"
+       },
+       {
+        "html": "Từng câu lệnh nhỏ",
+        "plain": "Từng câu lệnh nhỏ"
+       },
+       {
+        "html": "Một mục tiêu",
+        "plain": "Một mục tiêu"
+       }
+      ],
+      [
+       {
+        "html": "Ai lập kế hoạch",
+        "plain": "Ai lập kế hoạch"
+       },
+       {
+        "html": "Người dùng",
+        "plain": "Người dùng"
+       },
+       {
+        "html": "Agent tự chia nhỏ việc (planning)",
+        "plain": "Agent tự chia nhỏ việc (planning)"
+       }
+      ],
+      [
+       {
+        "html": "Công cụ",
+        "plain": "Công cụ"
+       },
+       {
+        "html": "Không có hoặc rất ít",
+        "plain": "Không có hoặc rất ít"
+       },
+       {
+        "html": "Web, API, chạy mã, phần mềm nội bộ",
+        "plain": "Web, API, chạy mã, phần mềm nội bộ"
+       }
+      ],
+      [
+       {
+        "html": "Kết quả",
+        "plain": "Kết quả"
+       },
+       {
+        "html": "Một câu trả lời",
+        "plain": "Một câu trả lời"
+       },
+       {
+        "html": "Một việc được làm xong",
+        "plain": "Một việc được làm xong"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ví dụ: với chatbot, bạn gõ “Viết giúp tôi email mời họp”. Với Agent, bạn giao “Sắp xếp cuộc họp tổng kết quý với 5 trưởng phòng tuần sau” – Agent tự xem lịch, đề xuất giờ, soạn email mời và chờ bạn duyệt trước khi gửi.",
+     "plain": "Ví dụ: với chatbot, bạn gõ “Viết giúp tôi email mời họp”. Với Agent, bạn giao “Sắp xếp cuộc họp tổng kết quý với 5 trưởng phòng tuần sau” – Agent tự xem lịch, đề xuất giờ, soạn email mời và chờ bạn duyệt trước khi gửi.",
+     "callout": "example"
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Phần 2 – Cấu trúc vận hành cốt lõi",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Mọi Agent, dù đơn giản hay phức tạp, đều chạy theo một vòng lặp ba bước và lặp lại cho đến khi đạt mục tiêu:",
+     "plain": "Mọi Agent, dù đơn giản hay phức tạp, đều chạy theo một vòng lặp ba bước và lặp lại cho đến khi đạt mục tiêu:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Giai đoạn",
+        "plain": "Giai đoạn"
+       },
+       {
+        "html": "Agent làm gì",
+        "plain": "Agent làm gì"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "1. Nhận thức (Perception)",
+        "plain": "1. Nhận thức (Perception)"
+       },
+       {
+        "html": "Thu thập thông tin từ người dùng và môi trường: văn bản, giọng nói, hình ảnh, dữ liệu từ hệ thống khác qua API.",
+        "plain": "Thu thập thông tin từ người dùng và môi trường: văn bản, giọng nói, hình ảnh, dữ liệu từ hệ thống khác qua API."
+       },
+       {
+        "html": "Đọc yêu cầu, đọc file đính kèm, đọc lịch sử trao đổi.",
+        "plain": "Đọc yêu cầu, đọc file đính kèm, đọc lịch sử trao đổi."
+       }
+      ],
+      [
+       {
+        "html": "2. Suy luận (Reasoning)",
+        "plain": "2. Suy luận (Reasoning)"
+       },
+       {
+        "html": "LLM là “bộ não”: phân tích bối cảnh, lập kế hoạch (chia nhỏ việc), quyết định dùng công cụ nào cho từng bước.",
+        "plain": "LLM là “bộ não”: phân tích bối cảnh, lập kế hoạch (chia nhỏ việc), quyết định dùng công cụ nào cho từng bước."
+       },
+       {
+        "html": "“Cần tra lịch 5 người → tìm giờ trống chung → soạn email.”",
+        "plain": "“Cần tra lịch 5 người → tìm giờ trống chung → soạn email.”"
+       }
+      ],
+      [
+       {
+        "html": "3. Hành động (Action)",
+        "plain": "3. Hành động (Action)"
+       },
+       {
+        "html": "Thực thi: tìm web, chạy mã, gửi email, cập nhật CRM… hoặc đưa ra câu trả lời cuối cùng.",
+        "plain": "Thực thi: tìm web, chạy mã, gửi email, cập nhật CRM… hoặc đưa ra câu trả lời cuối cùng."
+       },
+       {
+        "html": "Gọi API lịch, tạo bản nháp email.",
+        "plain": "Gọi API lịch, tạo bản nháp email."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Nhận thức đúng bối cảnh là điều kiện tiên quyết"
+    },
+    {
+     "t": "p",
+     "html": "Thiếu nhận thức, Agent sẽ bị <strong>ảo giác (hallucination)</strong>: nó vẫn trả lời, nhưng bằng nội dung tự “bịa” cho hợp lý. Phần lớn lỗi của Agent trong thực tế đến từ việc thiếu hoặc sai bối cảnh đầu vào, không phải do mô hình kém.",
+     "plain": "Thiếu nhận thức, Agent sẽ bị ảo giác (hallucination): nó vẫn trả lời, nhưng bằng nội dung tự “bịa” cho hợp lý. Phần lớn lỗi của Agent trong thực tế đến từ việc thiếu hoặc sai bối cảnh đầu vào, không phải do mô hình kém.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Suy luận: lập kế hoạch và chọn công cụ"
+    },
+    {
+     "t": "p",
+     "html": "Ở bước suy luận, các LLM như GPT, Claude phân tích yêu cầu, chia việc lớn thành các bước nhỏ (task breakdown) và quyết định bước nào cần công cụ. Buổi 3 sẽ biến bước này thành workflow có kiểm soát.",
+     "plain": "Ở bước suy luận, các LLM như GPT, Claude phân tích yêu cầu, chia việc lớn thành các bước nhỏ (task breakdown) và quyết định bước nào cần công cụ. Buổi 3 sẽ biến bước này thành workflow có kiểm soát."
+    },
+    {
+     "t": "h3",
+     "text": "Hành động: nơi giá trị được tạo ra"
+    },
+    {
+     "t": "p",
+     "html": "Hành động có thể là tìm kiếm web, tạo hình ảnh, chạy mã (Code Interpreter), gửi email, cập nhật dữ liệu vào CRM, hoặc đơn giản là trả lời. Buổi 4 đi sâu vào cách trang bị công cụ và giới hạn an toàn cho bước này.",
+     "plain": "Hành động có thể là tìm kiếm web, tạo hình ảnh, chạy mã (Code Interpreter), gửi email, cập nhật dữ liệu vào CRM, hoặc đơn giản là trả lời. Buổi 4 đi sâu vào cách trang bị công cụ và giới hạn an toàn cho bước này."
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Phần 3 – Nền tảng xây dựng Agent",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tiêu chí",
+        "plain": "Tiêu chí"
+       },
+       {
+        "html": "Custom GPTs (OpenAI)",
+        "plain": "Custom GPTs (OpenAI)"
+       },
+       {
+        "html": "Coze (ByteDance)",
+        "plain": "Coze (ByteDance)"
+       },
+       {
+        "html": "Dify.AI",
+        "plain": "Dify.AI"
+       }
+      ],
+      [
+       {
+        "html": "Độ khó tiếp cận",
+        "plain": "Độ khó tiếp cận"
+       },
+       {
+        "html": "Rất dễ (no-code)",
+        "plain": "Rất dễ (no-code)"
+       },
+       {
+        "html": "Trung bình (low-code)",
+        "plain": "Trung bình (low-code)"
+       },
+       {
+        "html": "Khó hơn (cần tư duy logic/code)",
+        "plain": "Khó hơn (cần tư duy logic/code)"
+       }
+      ],
+      [
+       {
+        "html": "Định hình Persona",
+        "plain": "Định hình Persona"
+       },
+       {
+        "html": "Tốt (qua System Prompt)",
+        "plain": "Tốt (qua System Prompt)"
+       },
+       {
+        "html": "Rất tốt",
+        "plain": "Rất tốt"
+       },
+       {
+        "html": "Xuất sắc",
+        "plain": "Xuất sắc"
+       }
+      ],
+      [
+       {
+        "html": "Tích hợp Workflow",
+        "plain": "Tích hợp Workflow"
+       },
+       {
+        "html": "Không có",
+        "plain": "Không có"
+       },
+       {
+        "html": "Có, trực quan",
+        "plain": "Có, trực quan"
+       },
+       {
+        "html": "Có, tùy biến sâu",
+        "plain": "Có, tùy biến sâu"
+       }
+      ],
+      [
+       {
+        "html": "Triển khai (Deploy)",
+        "plain": "Triển khai (Deploy)"
+       },
+       {
+        "html": "Chỉ trong hệ sinh thái ChatGPT",
+        "plain": "Chỉ trong hệ sinh thái ChatGPT"
+       },
+       {
+        "html": "Đa kênh (Telegram, Discord…)",
+        "plain": "Đa kênh (Telegram, Discord…)"
+       },
+       {
+        "html": "Web, đa kênh, API tích hợp nội bộ",
+        "plain": "Web, đa kênh, API tích hợp nội bộ"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Cách chọn nhanh: <strong>thử ý tưởng</strong> → Custom GPT; <strong>cần quy trình và kênh chat</strong> → Coze; <strong>cần tích hợp hệ thống nội bộ, kiểm soát sâu</strong> → Dify. Khóa học bắt đầu bằng Custom GPT ở buổi 1, chuyển sang Coze/Dify từ buổi 2.",
+     "plain": "Cách chọn nhanh: thử ý tưởng → Custom GPT; cần quy trình và kênh chat → Coze; cần tích hợp hệ thống nội bộ, kiểm soát sâu → Dify. Khóa học bắt đầu bằng Custom GPT ở buổi 1, chuyển sang Coze/Dify từ buổi 2.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Phần 4 – Định hình Persona cho Agent",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Dựng Persona giống như tuyển dụng và giao việc cho một nhân viên mới. Persona càng rõ, Agent càng ít “đoán”.",
+     "plain": "Dựng Persona giống như tuyển dụng và giao việc cho một nhân viên mới. Persona càng rõ, Agent càng ít “đoán”."
+    },
+    {
+     "t": "h3",
+     "text": "1. Vai trò (Role)"
+    },
+    {
+     "t": "p",
+     "html": "Chức danh rõ ràng giúp LLM khoanh vùng kiến thức chuyên môn cần dùng.",
+     "plain": "Chức danh rõ ràng giúp LLM khoanh vùng kiến thức chuyên môn cần dùng."
+    },
+    {
+     "t": "code",
+     "text": "Bạn là một [Chức danh] với [X] năm kinh nghiệm trong lĩnh vực [Y]..."
+    },
+    {
+     "t": "h3",
+     "text": "2. Mục tiêu (Goals)"
+    },
+    {
+     "t": "p",
+     "html": "Mục tiêu định hướng hành vi xuyên suốt, giúp Agent biết khi nào nhiệm vụ coi là hoàn thành và KPI cần đạt.",
+     "plain": "Mục tiêu định hướng hành vi xuyên suốt, giúp Agent biết khi nào nhiệm vụ coi là hoàn thành và KPI cần đạt."
+    },
+    {
+     "t": "code",
+     "text": "Mục tiêu tối thượng của bạn là [Mục tiêu], bằng cách thực hiện [Hành động]..."
+    },
+    {
+     "t": "h3",
+     "text": "3. Khung Persona chi tiết"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thành phần",
+        "plain": "Thành phần"
+       },
+       {
+        "html": "Trả lời câu hỏi",
+        "plain": "Trả lời câu hỏi"
+       },
+       {
+        "html": "Ví dụ (Trợ lý Content Marketing)",
+        "plain": "Ví dụ (Trợ lý Content Marketing)"
+       }
+      ],
+      [
+       {
+        "html": "Giới hạn hành vi (Do's & Don'ts)",
+        "plain": "Giới hạn hành vi (Do's & Don'ts)"
+       },
+       {
+        "html": "Được làm gì? Tuyệt đối không làm gì?",
+        "plain": "Được làm gì? Tuyệt đối không làm gì?"
+       },
+       {
+        "html": "Được: viết nháp bài, gợi ý tiêu đề. Không: bịa số liệu, nêu tên khách hàng, bàn chuyện nội bộ nhân sự.",
+        "plain": "Được: viết nháp bài, gợi ý tiêu đề. Không: bịa số liệu, nêu tên khách hàng, bàn chuyện nội bộ nhân sự."
+       }
+      ],
+      [
+       {
+        "html": "Giọng điệu (Tone of Voice)",
+        "plain": "Giọng điệu (Tone of Voice)"
+       },
+       {
+        "html": "Giao tiếp thế nào?",
+        "plain": "Giao tiếp thế nào?"
+       },
+       {
+        "html": "Thân thiện, chuyên nghiệp, câu ngắn, tối đa 2 emoji mỗi bài.",
+        "plain": "Thân thiện, chuyên nghiệp, câu ngắn, tối đa 2 emoji mỗi bài."
+       }
+      ],
+      [
+       {
+        "html": "Chuyên môn & bối cảnh (Context)",
+        "plain": "Chuyên môn & bối cảnh (Context)"
+       },
+       {
+        "html": "Phục vụ ai, trong hoàn cảnh nào?",
+        "plain": "Phục vụ ai, trong hoàn cảnh nào?"
+       },
+       {
+        "html": "Công ty bán thiết bị điện gia dụng, khách hàng là hộ gia đình 25–45 tuổi, kênh chính là Facebook.",
+        "plain": "Công ty bán thiết bị điện gia dụng, khách hàng là hộ gia đình 25–45 tuổi, kênh chính là Facebook."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Giới hạn hành vi cần kèm <strong>câu trả lời thay thế</strong>. Ví dụ: “Nếu được hỏi về lương thưởng, trả lời: ‘Nội dung này thuộc phòng Nhân sự, anh/chị vui lòng liên hệ…’”. Chỉ ghi “không trả lời” thì Agent dễ lúng túng hoặc vẫn trả lời vòng vo.",
+     "plain": "Giới hạn hành vi cần kèm câu trả lời thay thế. Ví dụ: “Nếu được hỏi về lương thưởng, trả lời: ‘Nội dung này thuộc phòng Nhân sự, anh/chị vui lòng liên hệ…’”. Chỉ ghi “không trả lời” thì Agent dễ lúng túng hoặc vẫn trả lời vòng vo.",
+     "callout": "misconception"
+    },
+    {
+     "t": "activity",
+     "id": "ai01-check",
+     "title": "Kiểm tra nhanh: Agent và Persona",
+     "inline": false
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Thực hành 1 – Persona và Custom GPT trợ lý nội bộ (45 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "activity",
+     "id": "ai01-th1",
+     "title": "Thực hành 1 – Persona và Custom GPT trợ lý nội bộ (45 phút)",
+     "inline": false
+    },
+    {
+     "t": "p",
+     "html": "Bài làm cá nhân. Chọn một vị trí nhân sự ảo gần với công việc của bạn (VD: Trợ lý Content Marketing, Trợ lý soạn công văn, Trợ lý giải đáp quy trình nội bộ).",
+     "plain": "Bài làm cá nhân. Chọn một vị trí nhân sự ảo gần với công việc của bạn (VD: Trợ lý Content Marketing, Trợ lý soạn công văn, Trợ lý giải đáp quy trình nội bộ)."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Viết khung Persona (15 phút)"
+    },
+    {
+     "t": "p",
+     "html": "Điền đủ 6 thành phần: Vai trò, Mục tiêu, Giọng điệu, Được làm, Không được làm, Bối cảnh.",
+     "plain": "Điền đủ 6 thành phần: Vai trò, Mục tiêu, Giọng điệu, Được làm, Không được làm, Bối cảnh."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Tạo Custom GPT (15 phút)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vào ChatGPT → <em>Explore GPTs</em> → <em>Create</em> → tab <em>Configure</em>.",
+       "level": 0,
+       "plain": "Vào ChatGPT → Explore GPTs → Create → tab Configure."
+      },
+      {
+       "html": "Đặt <strong>Name</strong>, <strong>Description</strong> ngắn gọn theo vai trò.",
+       "level": 0,
+       "plain": "Đặt Name, Description ngắn gọn theo vai trò."
+      },
+      {
+       "html": "Dán System Prompt vào ô <strong>Instructions</strong>.",
+       "level": 0,
+       "plain": "Dán System Prompt vào ô Instructions."
+      },
+      {
+       "html": "Thêm 4 <strong>Conversation Starters</strong> – những câu người dùng hay hỏi nhất.",
+       "level": 0,
+       "plain": "Thêm 4 Conversation Starters – những câu người dùng hay hỏi nhất."
+      },
+      {
+       "html": "Tắt các khả năng không cần (VD: tạo ảnh) – càng ít công cụ, càng ít rủi ro.",
+       "level": 0,
+       "plain": "Tắt các khả năng không cần (VD: tạo ảnh) – càng ít công cụ, càng ít rủi ro."
+      },
+      {
+       "html": "Chọn chế độ chia sẻ <strong>Only me</strong> trong lúc thử.",
+       "level": 0,
+       "plain": "Chọn chế độ chia sẻ Only me trong lúc thử."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Thử nghiệm và siết giới hạn (15 phút)"
+    },
+    {
+     "t": "p",
+     "html": "Hỏi 3 câu bình thường và 2 câu cố tình vượt giới hạn (VD: hỏi chuyện ngoài phạm vi, yêu cầu bịa số liệu). Ghi lại kết quả, sửa Instructions và thử lại.",
+     "plain": "Hỏi 3 câu bình thường và 2 câu cố tình vượt giới hạn (VD: hỏi chuyện ngoài phạm vi, yêu cầu bịa số liệu). Ghi lại kết quả, sửa Instructions và thử lại."
+    },
+    {
+     "t": "p",
+     "html": "Không đưa dữ liệu cá nhân hoặc tài liệu mật vào GPT. Dùng nội dung giả lập.",
+     "plain": "Không đưa dữ liệu cá nhân hoặc tài liệu mật vào GPT. Dùng nội dung giả lập.",
+     "callout": "misconception"
+    },
+    {
+     "t": "p",
+     "html": "Tiêu chí chữa bài (10 điểm): Persona đủ 6 thành phần và cụ thể (3); System Prompt có cấu trúc, có câu trả lời thay thế cho giới hạn (3); thử nghiệm có câu vượt giới hạn và có điều chỉnh sau thử (4).",
+     "plain": "Tiêu chí chữa bài (10 điểm): Persona đủ 6 thành phần và cụ thể (3); System Prompt có cấu trúc, có câu trả lời thay thế cho giới hạn (3); thử nghiệm có câu vượt giới hạn và có điều chỉnh sau thử (4)."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "ai01-th1"
+    },
+    {
+     "t": "p",
+     "html": "Mẫu System Prompt cho Trợ lý Content Marketing:",
+     "plain": "Mẫu System Prompt cho Trợ lý Content Marketing:",
+     "reveal": "ai01-th1"
+    },
+    {
+     "t": "code",
+     "text": "# VAI TRÒ\nBạn là chuyên viên Content Marketing 5 năm kinh nghiệm, viết cho fanpage bán thiết bị điện gia dụng.\n\n# MỤC TIÊU\nGiúp phòng Truyền thông ra bản nháp bài đăng đạt chuẩn trong 1 lượt trao đổi.\nBài đạt chuẩn: 120–180 chữ, có 1 tiêu đề, 3 ý chính, 1 lời kêu gọi hành động.\n\n# QUY TRÌNH\n1. Nếu thiếu sản phẩm, đối tượng hoặc mục đích bài, hỏi lại tối đa 2 câu.\n2. Viết 1 bản nháp + 2 phương án tiêu đề.\n3. Tự kiểm tra: đủ 3 ý? có CTA? không có số liệu tự bịa?\n\n# GIỌNG ĐIỆU\nThân thiện, chuyên nghiệp, câu ngắn, tối đa 2 emoji.\n\n# GIỚI HẠN\n- Không bịa số liệu, giá, khuyến mãi. Thiếu thì để [CẦN XÁC NHẬN].\n- Không nêu tên khách hàng thật, không bàn chuyện nhân sự nội bộ.\n- Câu hỏi ngoài phạm vi: \"Nội dung này nằm ngoài phạm vi hỗ trợ của tôi, anh/chị vui lòng liên hệ ...\".",
+     "reveal": "ai01-th1"
+    },
+    {
+     "t": "p",
+     "html": "Lỗi hay gặp: Persona chung chung (“bạn là trợ lý giỏi”); mục tiêu không đo được; chỉ ghi “không được” mà không có câu trả lời thay thế; không thử câu vượt giới hạn nên không phát hiện lỗ hổng.",
+     "plain": "Lỗi hay gặp: Persona chung chung (“bạn là trợ lý giỏi”); mục tiêu không đo được; chỉ ghi “không được” mà không có câu trả lời thay thế; không thử câu vượt giới hạn nên không phát hiện lỗ hổng.",
+     "reveal": "ai01-th1"
+    }
+   ],
+   "activity": "ai01-th1",
+   "id": "s6"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "AI Agent nhận <strong>mục tiêu</strong>, tự lập kế hoạch, dùng công cụ và thực hiện nhiều bước – một “nhân sự ảo”.",
+       "level": 0,
+       "plain": "AI Agent nhận mục tiêu, tự lập kế hoạch, dùng công cụ và thực hiện nhiều bước – một “nhân sự ảo”."
+      },
+      {
+       "html": "Vòng lặp cốt lõi: <strong>Nhận thức → Suy luận → Hành động</strong>. Thiếu bối cảnh ở bước nhận thức là nguồn gốc chính của ảo giác.",
+       "level": 0,
+       "plain": "Vòng lặp cốt lõi: Nhận thức → Suy luận → Hành động. Thiếu bối cảnh ở bước nhận thức là nguồn gốc chính của ảo giác."
+      },
+      {
+       "html": "Custom GPT dễ nhất; Coze có workflow trực quan, đa kênh; Dify tùy biến sâu và tích hợp API.",
+       "level": 0,
+       "plain": "Custom GPT dễ nhất; Coze có workflow trực quan, đa kênh; Dify tùy biến sâu và tích hợp API."
+      },
+      {
+       "html": "Persona = Vai trò + Mục tiêu + Giọng điệu + Được/Không được làm + Bối cảnh. Viết như giao việc cho nhân viên mới.",
+       "level": 0,
+       "plain": "Persona = Vai trò + Mục tiêu + Giọng điệu + Được/Không được làm + Bối cảnh. Viết như giao việc cho nhân viên mới."
+      }
+     ]
+    },
+    {
+     "t": "activity",
+     "id": "ai01-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thời lượng",
+        "plain": "Thời lượng"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       }
+      ],
+      [
+       {
+        "html": "10 phút",
+        "plain": "10 phút"
+       },
+       {
+        "html": "Câu hỏi mở đầu; cho 2–3 học viên chia sẻ việc muốn giao cho nhân viên ảo.",
+        "plain": "Câu hỏi mở đầu; cho 2–3 học viên chia sẻ việc muốn giao cho nhân viên ảo."
+       }
+      ],
+      [
+       {
+        "html": "40 phút",
+        "plain": "40 phút"
+       },
+       {
+        "html": "Phần 1–3. Trình diễn trực tiếp: cùng một yêu cầu, so sánh chatbot thường và Agent có công cụ.",
+        "plain": "Phần 1–3. Trình diễn trực tiếp: cùng một yêu cầu, so sánh chatbot thường và Agent có công cụ."
+       }
+      ],
+      [
+       {
+        "html": "20 phút",
+        "plain": "20 phút"
+       },
+       {
+        "html": "Phần 4 + kiểm tra nhanh. Chữa ngay câu 3 (giới hạn hành vi).",
+        "plain": "Phần 4 + kiểm tra nhanh. Chữa ngay câu 3 (giới hạn hành vi)."
+       }
+      ],
+      [
+       {
+        "html": "45 phút",
+        "plain": "45 phút"
+       },
+       {
+        "html": "Thực hành 1. Đi vòng lớp kiểm tra tài khoản tạo GPT ngay từ phút đầu.",
+        "plain": "Thực hành 1. Đi vòng lớp kiểm tra tài khoản tạo GPT ngay từ phút đầu."
+       }
+      ],
+      [
+       {
+        "html": "15 phút",
+        "plain": "15 phút"
+       },
+       {
+        "html": "Chữa bài: chiếu 2 bài, thử câu vượt giới hạn trực tiếp trên GPT của học viên.",
+        "plain": "Chữa bài: chiếu 2 bài, thử câu vượt giới hạn trực tiếp trên GPT của học viên."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Học viên không có quyền tạo GPT: cho viết Persona + System Prompt, rồi thử bằng cách dán System Prompt vào đầu một cuộc trò chuyện thường; bước tạo GPT làm sau buổi học.",
+     "plain": "Học viên không có quyền tạo GPT: cho viết Persona + System Prompt, rồi thử bằng cách dán System Prompt vào đầu một cuộc trò chuyện thường; bước tạo GPT làm sau buổi học."
+    }
+   ],
+   "id": "s8"
+  }
+ ],
+ "activities": [
+  {
+   "id": "ai01-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Cuối buổi, bạn tự đối chiếu với những gì đã học.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Bạn đã dùng ChatGPT (hoặc công cụ tương tự) vào việc gì gần đây? Bạn phải gõ bao nhiêu lượt để ra được kết quả dùng được?"
+    },
+    {
+     "id": "q2",
+     "text": "Nếu có một “nhân viên ảo” trong phòng, bạn sẽ giao cho nó việc gì đầu tiên? Vì sao?"
+    },
+    {
+     "id": "q3",
+     "text": "Bạn sẽ dặn nhân viên mới những gì trong ngày đầu đi làm? Ghi 3 điều."
+    }
+   ]
+  },
+  {
+   "id": "ai01-check",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: Agent và Persona",
+   "intro": "Chọn một phương án đúng nhất cho mỗi câu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Điểm khác biệt cốt lõi giữa AI Agent và một chatbot hỏi–đáp là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Agent dùng mô hình lớn hơn"
+      },
+      {
+       "key": "B",
+       "text": "Agent nhận mục tiêu, tự lập kế hoạch và dùng công cụ để thực hiện nhiều bước"
+      },
+      {
+       "key": "C",
+       "text": "Agent trả lời nhanh hơn"
+      },
+      {
+       "key": "D",
+       "text": "Agent không cần prompt"
+      }
+     ],
+     "correct": "B",
+     "explain": "Agent được giao “mục tiêu”, không phải từng câu lệnh nhỏ; nó tự chia việc, chọn công cụ và thực thi."
+    },
+    {
+     "id": "q2",
+     "text": "Agent trả lời sai vì không biết quy định riêng của công ty. Lỗi nằm chủ yếu ở giai đoạn nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Nhận thức (Perception) – thiếu bối cảnh đầu vào"
+      },
+      {
+       "key": "B",
+       "text": "Hành động (Action)"
+      },
+      {
+       "key": "C",
+       "text": "Giọng điệu (Tone)"
+      },
+      {
+       "key": "D",
+       "text": "Triển khai (Deploy)"
+      }
+     ],
+     "correct": "A",
+     "explain": "Thiếu bối cảnh ở bước nhận thức là nguyên nhân hàng đầu của ảo giác."
+    },
+    {
+     "id": "q3",
+     "text": "Muốn Agent không bao giờ bàn về lương thưởng của nhân viên, bạn đặt điều này ở đâu trong Persona?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Vai trò (Role)"
+      },
+      {
+       "key": "B",
+       "text": "Giọng điệu"
+      },
+      {
+       "key": "C",
+       "text": "Giới hạn hành vi (Do's & Don'ts)"
+      },
+      {
+       "key": "D",
+       "text": "Câu hỏi mồi"
+      }
+     ],
+     "correct": "C",
+     "explain": "Giới hạn hành vi là hàng rào: ghi rõ chủ đề tuyệt đối không trả lời và câu trả lời thay thế."
+    },
+    {
+     "id": "q4",
+     "text": "Nhóm cần một Agent trả lời khách trên Telegram và có workflow nhiều bước, ít người biết code. Nền tảng nào phù hợp nhất?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Custom GPT"
+      },
+      {
+       "key": "B",
+       "text": "Coze"
+      },
+      {
+       "key": "C",
+       "text": "Viết code từ đầu"
+      },
+      {
+       "key": "D",
+       "text": "Không nền tảng nào làm được"
+      }
+     ],
+     "correct": "B",
+     "explain": "Coze là low-code, có workflow trực quan và triển khai đa kênh như Telegram, Discord."
+    }
+   ]
+  },
+  {
+   "id": "ai01-th1",
+   "type": "practice",
+   "scope": "student",
+   "title": "Thực hành 1 – Persona và Custom GPT trợ lý nội bộ (45 phút)",
+   "section": "s6",
+   "intro": "Thiết kế Persona cho một vị trí nhân sự ảo cụ thể, tạo Custom GPT từ Persona đó, cấu hình câu hỏi mồi và giới hạn hành vi, rồi thử nghiệm.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "vi_tri",
+     "label": "Vị trí nhân sự ảo bạn chọn và người dùng của nó",
+     "hint": "VD: Trợ lý Content Marketing cho phòng Truyền thông; người dùng là 6 chuyên viên của phòng."
+    },
+    {
+     "type": "table",
+     "key": "persona",
+     "label": "Khung Persona",
+     "columns": [
+      {
+       "key": "noi_dung",
+       "label": "Nội dung"
+      }
+     ],
+     "rows": [
+      "Vai trò (Role)",
+      "Mục tiêu (Goals) và tiêu chí hoàn thành",
+      "Giọng điệu (Tone of Voice)",
+      "Được phép làm (Do's)",
+      "Không được làm (Don'ts)",
+      "Chuyên môn & bối cảnh (Context)"
+     ],
+     "min_rows": 3
+    },
+    {
+     "type": "textarea",
+     "key": "system_prompt",
+     "label": "System Prompt (phần Instructions) bạn dán vào Custom GPT",
+     "hint": "Viết thành các mục rõ ràng: Vai trò, Mục tiêu, Quy trình làm việc, Định dạng trả lời, Giới hạn."
+    },
+    {
+     "type": "table",
+     "key": "starters",
+     "label": "Câu hỏi mồi (Conversation Starters)",
+     "columns": [
+      {
+       "key": "cau",
+       "label": "Câu hỏi mồi"
+      },
+      {
+       "key": "vi_sao",
+       "label": "Vì sao chọn câu này"
+      }
+     ],
+     "rows": null,
+     "min_rows": 4
+    },
+    {
+     "type": "table",
+     "key": "thu_nghiem",
+     "label": "Thử nghiệm: 3 câu hỏi thường và 2 câu cố tình vượt giới hạn",
+     "columns": [
+      {
+       "key": "cau_hoi",
+       "label": "Câu hỏi thử"
+      },
+      {
+       "key": "ket_qua",
+       "label": "Agent trả lời (tóm tắt)"
+      },
+      {
+       "key": "dat",
+       "label": "Đạt?",
+       "options": [
+        "Đạt",
+        "Chưa đạt"
+       ]
+      }
+     ],
+     "rows": null,
+     "min_rows": 5
+    },
+    {
+     "type": "textarea",
+     "key": "dieu_chinh",
+     "label": "Bạn đã sửa gì trong System Prompt sau khi thử? Kết quả thay đổi thế nào?"
+    }
+   ]
+  },
+  {
+   "id": "ai01-review",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi ôn tập",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Nêu 4 đặc điểm khiến AI Agent khác một công cụ tạo văn bản.",
+     "answer": "Tự chủ một phần theo mục tiêu; thực thi chuỗi tác vụ nhiều bước; tương tác môi trường qua công cụ; đóng vai một nhân sự ảo trong phòng ban."
+    },
+    {
+     "id": "q2",
+     "text": "Ba giai đoạn trong vòng lặp cốt lõi của Agent là gì? Mỗi giai đoạn làm gì?",
+     "answer": "Nhận thức – thu thập thông tin, bối cảnh; Suy luận – LLM phân tích, lập kế hoạch, chọn công cụ; Hành động – thực thi và trả kết quả."
+    },
+    {
+     "id": "q3",
+     "text": "Vì sao thiếu bối cảnh dễ dẫn đến ảo giác?",
+     "answer": "LLM vẫn cố trả lời; không có dữ kiện thật thì nó lấp chỗ trống bằng nội dung “nghe hợp lý”."
+    },
+    {
+     "id": "q4",
+     "text": "Sáu thành phần của khung Persona?",
+     "answer": "Vai trò, Mục tiêu, Giọng điệu, Được phép làm, Không được làm (giới hạn hành vi), Chuyên môn & bối cảnh."
+    },
+    {
+     "id": "q5",
+     "text": "Khi nào chọn Custom GPT, khi nào chọn Coze hoặc Dify?",
+     "answer": "Custom GPT: nhanh, no-code, dùng trong ChatGPT. Coze: low-code, workflow trực quan, đa kênh. Dify: tùy biến sâu, API, tích hợp hệ thống nội bộ."
+    }
+   ]
+  }
+ ]
+}

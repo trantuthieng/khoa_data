@@ -103,6 +103,11 @@ def init_db():
         elif "phone_hash" not in {r[1] for r in c.execute(text("PRAGMA table_info(students)"))}:
             c.execute(text("ALTER TABLE students ADD COLUMN phone_hash TEXT"))
         c.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS students_class_phone ON students(class_id, phone_hash)"))
+        # mỗi lớp học theo một khóa; lớp tạo trước đó thuộc khóa An toàn dữ liệu
+        if IS_PG:
+            c.execute(text("ALTER TABLE classes ADD COLUMN IF NOT EXISTS course TEXT NOT NULL DEFAULT 'atdl'"))
+        elif "course" not in {r[1] for r in c.execute(text("PRAGMA table_info(classes)"))}:
+            c.execute(text("ALTER TABLE classes ADD COLUMN course TEXT NOT NULL DEFAULT 'atdl'"))
         if IS_PG:
             # Supabase tự mở các bảng trong schema public qua Data API (khóa anon).
             # Bật RLS và không tạo policy nào => API công khai không đọc/ghi được;

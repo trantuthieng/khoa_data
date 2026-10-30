@@ -8,37 +8,54 @@ from .practice import OVERRIDES, template_for
 CONTENT_DIR = Path(__file__).parent / "content"
 STUDENT_KINDS = ("content", "practice")
 
-MODULES = {}
+# Mỗi lớp học theo một khóa. Khóa mặc định (lớp tạo trước khi có nhiều khóa) nằm thẳng trong content/,
+# khóa khác nằm trong thư mục con. Mã hoạt động phải khác nhau giữa các khóa (VD m01-…, ai01-…).
+DEFAULT_COURSE = "atdl"
+COURSES = {
+    "atdl": {"title": "An toàn ứng dụng & Dữ liệu", "subtitle": "dành cho cán bộ vận hành", "dir": CONTENT_DIR},
+    "ai-agent": {"title": "AI Agent – Nhân sự ảo cho doanh nghiệp", "subtitle": "từ kiến trúc đến đội hình Multi-Agent",
+                 "dir": CONTENT_DIR / "ai_agent"},
+}
+
 ACTIVITIES = {}
-for f in sorted(CONTENT_DIR.glob("m*.json")):
-    m = json.loads(f.read_text(encoding="utf-8"))
-    for a in m["activities"]:
-        a["module"] = m["no"]
-        if a["type"] == "practice":
-            if a["id"] in OVERRIDES:
-                a["fields"] = OVERRIDES[a["id"]]
-            a.setdefault("fields", template_for(a["id"]))
-        ACTIVITIES[a["id"]] = a
-    m["has_stages"] = any(b.get("stage") for s in m["sections"] for b in s["blocks"])
-    MODULES[m["no"]] = m
+for course_id, course in COURSES.items():
+    course["modules"] = {}
+    for f in sorted(course["dir"].glob("m*.json")):
+        m = json.loads(f.read_text(encoding="utf-8"))
+        for a in m["activities"]:
+            a["module"] = m["no"]
+            a["course"] = course_id
+            if a["type"] == "practice":
+                if a["id"] in OVERRIDES:
+                    a["fields"] = OVERRIDES[a["id"]]
+                a.setdefault("fields", template_for(a["id"]))
+            ACTIVITIES[a["id"]] = a
+        m["has_stages"] = any(b.get("stage") for s in m["sections"] for b in s["blocks"])
+        course["modules"][m["no"]] = m
+    course["index"] = [{"no": m["no"], "title": m["title"], "short": m["short"]} for m in course["modules"].values()]
 
-INDEX = [{"no": m["no"], "title": m["title"], "short": m["short"]} for m in MODULES.values()]
+MODULES = COURSES[DEFAULT_COURSE]["modules"]
+INDEX = COURSES[DEFAULT_COURSE]["index"]
 
 
-def section_index(module_no, section_id):
-    for i, s in enumerate(MODULES[module_no]["sections"]):
+def course_modules(course):
+    return COURSES.get(course or DEFAULT_COURSE, COURSES[DEFAULT_COURSE])["modules"]
+
+
+def section_index(module_no, section_id, course=DEFAULT_COURSE):
+    for i, s in enumerate(course_modules(course)[module_no]["sections"]):
         if s["id"] == section_id:
             return i
     return 0
 
 
-def student_module(module_no, view, revealed):
+def student_module(module_no, view, revealed, course=DEFAULT_COURSE):
     """Bản nội dung học viên được thấy.
 
     view: dòng class_modules (unlocked, stage) hoặc None (= mở toàn bộ, dùng cho Tổng quan).
     revealed: tập activity_id đã được giảng viên công bố đáp án.
     """
-    m = MODULES[module_no]
+    m = course_modules(course)[module_no]
     unlocked = len(m["sections"]) if view is None else view["unlocked"]
     stage = 99 if view is None else view["stage"]
     sections = []

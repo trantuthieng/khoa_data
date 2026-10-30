@@ -54,12 +54,16 @@
       <div class="reading">
         <div class="page-intro"><span class="eyebrow">KHÔNG GIAN GIẢNG VIÊN</span><h2 class="section-title">Lớp học của bạn</h2><p class="muted">Chọn lớp để bắt đầu buổi học, mở bài tập và theo dõi từng học viên.</p></div>
         <form class="card row" @submit.prevent="createClass" style="margin-bottom:18px">
-          <input v-model="newName" class="grow" style="flex:1;min-width:200px" placeholder="Tên lớp, ví dụ: An toàn ứng dụng & Dữ liệu – Khóa 01" maxlength="100" aria-label="Tên lớp mới">
+          <select v-model="newCourse" style="width:auto;max-width:300px" aria-label="Khóa học của lớp mới">
+            <option v-for="c in courses" :key="c.id" :value="c.id">{{ c.title }}</option>
+          </select>
+          <input v-model="newName" class="grow" style="flex:1;min-width:200px" :placeholder="'Tên lớp, ví dụ: ' + courseTitle(newCourse) + ' – Khóa 01'" maxlength="100" aria-label="Tên lớp mới">
           <button class="btn primary" :disabled="newName.trim().length < 2">+ Tạo lớp</button>
         </form>
         <div class="class-grid">
           <div v-for="c in classes" :key="c.id" class="card" :style="c.archived ? 'opacity:.6' : ''">
             <div style="font-weight:700">{{ c.name }}</div>
+            <div class="muted" style="font-size:13px">{{ courseTitle(c.course) }}</div>
             <div class="muted" style="font-size:14px">Mã lớp <b>{{ c.code }}</b> · {{ c.n_students }} học viên · buổi hiện tại: {{ c.active_module }}</div>
             <div class="muted" style="font-size:13px">Tạo {{ fmtTime(c.created_at) }} <span v-if="c.archived" class="tag">Đã đóng</span></div>
             <div class="row" style="margin-top:10px">
@@ -86,6 +90,9 @@
         </template>
         <h3 style="margin-top:36px">Xem trước giáo trình</h3>
         <div class="row">
+          <select v-if="courses.length > 1" v-model="previewCourse" @change="preview = null" style="width:auto;max-width:300px" aria-label="Khóa học cần xem trước">
+            <option v-for="c in courses" :key="c.id" :value="c.id">{{ c.title }}</option>
+          </select>
           <button v-for="m in index" :key="m.no" class="btn sm" @click="previewModule(m.no)">{{ m.no === 0 ? 'Tổng quan' : 'Buổi ' + m.no }}</button>
         </div>
         <div v-if="preview" class="card" style="margin-top:16px">

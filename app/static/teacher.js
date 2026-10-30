@@ -32,7 +32,7 @@ const app = Vue.createApp({
       logo: LOGO, authed: null, password: '', err: '', toast: '',
       statusLabel: STATUS_LABEL, typeLabel: TYPE_LABEL, statuses: ['hidden', 'open', 'closed', 'revealed'],
       segLabel: { hidden: 'Ẩn', open: 'Mở', closed: 'Đóng', revealed: 'Công bố' },
-      index: [], classes: [], newName: '', preview: null, rosterText: '', rosterMsg: '',
+      courses: [], classes: [], newName: '', newCourse: 'atdl', previewCourse: 'atdl', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
       tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null, rev: 0, polling: false,
       gradeDrafts: {}, grading: {}, answerIndex: [], answer: null, answerPick: '',
@@ -40,7 +40,9 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    mod() { return this.modCache[this.viewModule] || null; },
+    course() { return this.cls ? this.cls.course : this.previewCourse; },
+    index() { const c = this.courses.find(x => x.id === this.course); return c ? c.modules : []; },
+    mod() { return this.modCache[this.course + ':' + this.viewModule] || null; },
     localSec() { return this.mod ? (this.mod.sections.find(s => s.id === this.localSection) || this.mod.sections[0]) : null; },
     curIdx() {
       if (!this.mod || !this.room || !this.room.view) return 0;
@@ -85,10 +87,11 @@ const app = Vue.createApp({
     },
     async logout() { await api('POST', '/api/t/logout'); this.authed = false; this.cls = null; this.room = null; this.stop(); },
     async loadClasses() {
-      this.index = await this.call('GET', '/api/modules');
+      this.courses = await this.call('GET', '/api/courses');
       this.classes = await this.call('GET', '/api/t/classes');
       this.answerIndex = await this.call('GET', '/api/t/answers');
     },
+    courseTitle(id) { const c = this.courses.find(x => x.id === id); return c ? c.title : id; },
     hasAnswer(id) { return this.answerIndex.some(x => x.id === id); },
     async openAnswer(id) {
       this.answer = await this.call('GET', '/api/t/answers/' + id);
@@ -96,7 +99,7 @@ const app = Vue.createApp({
       this.scrollTop();
     },
     async createClass() {
-      const c = await this.call('POST', '/api/t/classes', { name: this.newName.trim() });
+      const c = await this.call('POST', '/api/t/classes', { name: this.newName.trim(), course: this.newCourse });
       this.newName = '';
       await this.loadClasses();
       this.enterClass(c);
@@ -111,12 +114,13 @@ const app = Vue.createApp({
       await this.loadClasses();
     },
     async previewModule(no) {
-      this.preview = await this.loadMod(no);
+      this.preview = await this.loadMod(no, this.previewCourse);
     },
     kindTag(s) { return { teacher: 'Chỉ giảng viên', review: 'Thành bài tập', exam: 'Thành bài tập', practice: 'Thực hành' }[s.kind] || ''; },
-    async loadMod(no) {
-      if (!this.modCache[no]) this.modCache = { ...this.modCache, [no]: await this.call('GET', '/api/t/module/' + no) };
-      return this.modCache[no];
+    async loadMod(no, course = this.course) {
+      const key = course + ':' + no;
+      if (!this.modCache[key]) this.modCache = { ...this.modCache, [key]: await this.call('GET', `/api/t/module/${no}?course=${course}`) };
+      return this.modCache[key];
     },
 
     // ---------- phòng học ----------

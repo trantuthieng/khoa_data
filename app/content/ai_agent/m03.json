@@ -1,0 +1,822 @@
+{
+ "no": 3,
+ "title": "Buổi 3 – Xây dựng Agent chuyên biệt: tự suy luận và tự sửa lỗi",
+ "short": "Agent chuyên biệt: Workflow, Self-Correction, Memory",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi 3 dạy Agent <strong>tự suy luận và tự sửa lỗi</strong>. Chuyển từ “một prompt thật dài” sang “một quy trình nhiều bước”, có kiểm duyệt, có rẽ nhánh theo tình huống và có trí nhớ.",
+     "plain": "Buổi 3 dạy Agent tự suy luận và tự sửa lỗi. Chuyển từ “một prompt thật dài” sang “một quy trình nhiều bước”, có kiểm duyệt, có rẽ nhánh theo tình huống và có trí nhớ."
+    },
+    {
+     "t": "quote",
+     "html": "Sự khác biệt giữa một chatbot thông thường và một AI Agent thực thụ nằm ở khả năng tự sửa lỗi (Self-Correction) và ghi nhớ bối cảnh dài hạn.",
+     "plain": "Sự khác biệt giữa một chatbot thông thường và một AI Agent thực thụ nằm ở khả năng tự sửa lỗi (Self-Correction) và ghi nhớ bối cảnh dài hạn."
+    },
+    {
+     "t": "activity",
+     "id": "ai03-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Một nhân viên mới làm báo cáo sai. Bạn muốn họ tự phát hiện lỗi trước khi nộp. Bạn sẽ đưa cho họ cái gì?",
+      "Khi khách hàng nói “Phân tích đối thủ A cho tôi”, một nhân viên giỏi sẽ hỏi lại những gì?",
+      "Bạn thấy khó chịu nhất điều gì khi chatbot “quên” những gì bạn đã nói trước đó?"
+     ]
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Xây dựng quy trình suy luận (workflow) cho Agent trên Coze/Dify thay vì chỉ dùng prompt đơn lẻ.",
+       "level": 0,
+       "plain": "Xây dựng quy trình suy luận (workflow) cho Agent trên Coze/Dify thay vì chỉ dùng prompt đơn lẻ."
+      },
+      {
+       "html": "Thiết kế lệnh gốc giúp Agent tự đánh giá kết quả (Self-Correction) trước khi trả lời.",
+       "level": 0,
+       "plain": "Thiết kế lệnh gốc giúp Agent tự đánh giá kết quả (Self-Correction) trước khi trả lời."
+      },
+      {
+       "html": "Xây luồng rẽ nhánh cho tình huống phức tạp và cấu hình bộ nhớ dài hạn (Memory).",
+       "level": 0,
+       "plain": "Xây luồng rẽ nhánh cho tình huống phức tạp và cấu hình bộ nhớ dài hạn (Memory)."
+      }
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Phần 1 – Workflow suy luận của Agent",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Trên các nền tảng chuyên sâu (Coze, Dify), ta không chỉ cấu hình một System Prompt. Ta vẽ một quy trình:",
+     "plain": "Trên các nền tảng chuyên sâu (Coze, Dify), ta không chỉ cấu hình một System Prompt. Ta vẽ một quy trình:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Phân rã tác vụ:</strong> tách nhiệm vụ lớn thành chuỗi các bước (node) liên kết với nhau.",
+       "level": 0,
+       "plain": "Phân rã tác vụ: tách nhiệm vụ lớn thành chuỗi các bước (node) liên kết với nhau."
+      },
+      {
+       "html": "<strong>Kiểm soát dòng chảy:</strong> dữ liệu từ bước này làm đầu vào cho bước tiếp theo.",
+       "level": 0,
+       "plain": "Kiểm soát dòng chảy: dữ liệu từ bước này làm đầu vào cho bước tiếp theo."
+      },
+      {
+       "html": "<strong>Giảm ảo giác:</strong> chia nhỏ giúp LLM tập trung xử lý từng phần chính xác hơn.",
+       "level": 0,
+       "plain": "Giảm ảo giác: chia nhỏ giúp LLM tập trung xử lý từng phần chính xác hơn."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại node thường dùng",
+        "plain": "Loại node thường dùng"
+       },
+       {
+        "html": "Vai trò",
+        "plain": "Vai trò"
+       }
+      ],
+      [
+       {
+        "html": "Start / Input",
+        "plain": "Start / Input"
+       },
+       {
+        "html": "Nhận câu hỏi và biến đầu vào.",
+        "plain": "Nhận câu hỏi và biến đầu vào."
+       }
+      ],
+      [
+       {
+        "html": "LLM",
+        "plain": "LLM"
+       },
+       {
+        "html": "Một bước suy luận với prompt riêng.",
+        "plain": "Một bước suy luận với prompt riêng."
+       }
+      ],
+      [
+       {
+        "html": "Knowledge Retrieval",
+        "plain": "Knowledge Retrieval"
+       },
+       {
+        "html": "Tìm trong Knowledge Base (buổi 2).",
+        "plain": "Tìm trong Knowledge Base (buổi 2)."
+       }
+      ],
+      [
+       {
+        "html": "Condition (If/Else)",
+        "plain": "Condition (If/Else)"
+       },
+       {
+        "html": "Rẽ nhánh theo điều kiện.",
+        "plain": "Rẽ nhánh theo điều kiện."
+       }
+      ],
+      [
+       {
+        "html": "Tool / Plugin",
+        "plain": "Tool / Plugin"
+       },
+       {
+        "html": "Gọi công cụ: web search, API… (buổi 4).",
+        "plain": "Gọi công cụ: web search, API… (buổi 4)."
+       }
+      ],
+      [
+       {
+        "html": "Variable / Memory",
+        "plain": "Variable / Memory"
+       },
+       {
+        "html": "Đọc, ghi biến nhớ.",
+        "plain": "Đọc, ghi biến nhớ."
+       }
+      ],
+      [
+       {
+        "html": "End / Output",
+        "plain": "End / Output"
+       },
+       {
+        "html": "Trả kết quả cho người dùng.",
+        "plain": "Trả kết quả cho người dùng."
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Phần 2 – Tự đánh giá và tự sửa lỗi (Self-Correction)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "AI thường sai ở lần thử đầu. Self-Correction buộc Agent <strong>tự kiểm tra lại</strong> câu trả lời trước khi hiển thị. Trong workflow, ta thêm một <strong>Node Đánh giá (Evaluator)</strong> như người kiểm duyệt: đạt → xuất ra; không đạt → yêu cầu sinh lại kèm gợi ý sửa.",
+     "plain": "AI thường sai ở lần thử đầu. Self-Correction buộc Agent tự kiểm tra lại câu trả lời trước khi hiển thị. Trong workflow, ta thêm một Node Đánh giá (Evaluator) như người kiểm duyệt: đạt → xuất ra; không đạt → yêu cầu sinh lại kèm gợi ý sửa."
+    },
+    {
+     "t": "h3",
+     "text": "Ba kỹ thuật thiết kế prompt nâng cao"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Kỹ thuật",
+        "plain": "Kỹ thuật"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       }
+      ],
+      [
+       {
+        "html": "Yêu cầu quy trình suy nghĩ",
+        "plain": "Yêu cầu quy trình suy nghĩ"
+       },
+       {
+        "html": "Bắt buộc Agent trình bày lập luận trong một thẻ riêng (VD <code>&lt;thinking&gt;…&lt;/thinking&gt;</code>) trước khi đưa câu trả lời cuối.",
+        "plain": "Bắt buộc Agent trình bày lập luận trong một thẻ riêng (VD &lt;thinking&gt;…&lt;/thinking&gt;) trước khi đưa câu trả lời cuối."
+       }
+      ],
+      [
+       {
+        "html": "Đưa bộ tiêu chí kiểm tra",
+        "plain": "Đưa bộ tiêu chí kiểm tra"
+       },
+       {
+        "html": "“Hãy tự kiểm tra: 1. Đã đủ 3 ý chưa? 2. Có dùng từ cấm không? 3. Giọng văn đã chuẩn chưa?”",
+        "plain": "“Hãy tự kiểm tra: 1. Đã đủ 3 ý chưa? 2. Có dùng từ cấm không? 3. Giọng văn đã chuẩn chưa?”"
+       }
+      ],
+      [
+       {
+        "html": "Vòng lặp sửa sai",
+        "plain": "Vòng lặp sửa sai"
+       },
+       {
+        "html": "Nếu vi phạm checklist, Agent tự giải thích lỗi và sinh phiên bản mới – tối đa 3 lần.",
+        "plain": "Nếu vi phạm checklist, Agent tự giải thích lỗi và sinh phiên bản mới – tối đa 3 lần."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Bạn là người kiểm duyệt. Đối chiếu BẢN NHÁP với CHECKLIST.\nCHECKLIST:\n1. Có đủ 3 cột: Tính năng, Giá, Điểm mạnh/yếu\n2. Mọi con số giá đều có nguồn và năm\n3. Không có câu khẳng định thiếu dẫn chứng\nTrả về JSON: {\"dat\": true|false, \"loi\": [\"...\"], \"goi_y_sua\": \"...\"}"
+    },
+    {
+     "t": "p",
+     "html": "Checklist phải <strong>kiểm tra được</strong>. “Bài viết hay” không phải tiêu chí; “có đủ 3 cột, mỗi giá có nguồn” mới là tiêu chí.",
+     "plain": "Checklist phải kiểm tra được. “Bài viết hay” không phải tiêu chí; “có đủ 3 cột, mỗi giá có nguồn” mới là tiêu chí.",
+     "callout": "misconception"
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Phần 3 – Luồng logic rẽ nhánh",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Người dùng không phải lúc nào cũng cung cấp đủ thông tin ngay từ câu đầu. Agent thông minh cần <strong>nhận diện ý định (Intent Recognition)</strong> và rẽ nhánh xử lý (If/Else):",
+     "plain": "Người dùng không phải lúc nào cũng cung cấp đủ thông tin ngay từ câu đầu. Agent thông minh cần nhận diện ý định (Intent Recognition) và rẽ nhánh xử lý (If/Else):"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Intent = “Hỏi chính sách” → truy xuất Knowledge Base.",
+       "level": 0,
+       "plain": "Intent = “Hỏi chính sách” → truy xuất Knowledge Base."
+      },
+      {
+       "html": "Intent = “Khiếu nại” → luồng xin lỗi và xin thông tin đơn hàng.",
+       "level": 0,
+       "plain": "Intent = “Khiếu nại” → luồng xin lỗi và xin thông tin đơn hàng."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ví dụ: kịch bản đủ/thiếu dữ liệu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình trạng dữ liệu",
+        "plain": "Tình trạng dữ liệu"
+       },
+       {
+        "html": "Điều kiện",
+        "plain": "Điều kiện"
+       },
+       {
+        "html": "Hành động của Agent",
+        "plain": "Hành động của Agent"
+       }
+      ],
+      [
+       {
+        "html": "Thiếu dữ liệu",
+        "plain": "Thiếu dữ liệu"
+       },
+       {
+        "html": "Người dùng chỉ gõ “Phân tích đối thủ A cho tôi” – thiếu khía cạnh cần phân tích.",
+        "plain": "Người dùng chỉ gõ “Phân tích đối thủ A cho tôi” – thiếu khía cạnh cần phân tích."
+       },
+       {
+        "html": "Hỏi thêm: “Bạn muốn phân tích đối thủ A về giá bán, tính năng hay chiến dịch marketing?”",
+        "plain": "Hỏi thêm: “Bạn muốn phân tích đối thủ A về giá bán, tính năng hay chiến dịch marketing?”"
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu mâu thuẫn",
+        "plain": "Dữ liệu mâu thuẫn"
+       },
+       {
+        "html": "Thông tin từ web và cơ sở dữ liệu nội bộ lệch nhau.",
+        "plain": "Thông tin từ web và cơ sở dữ liệu nội bộ lệch nhau."
+       },
+       {
+        "html": "Xác nhận: báo cáo chênh lệch và hỏi người dùng muốn ưu tiên nguồn nào.",
+        "plain": "Xác nhận: báo cáo chênh lệch và hỏi người dùng muốn ưu tiên nguồn nào."
+       }
+      ],
+      [
+       {
+        "html": "Đủ dữ liệu",
+        "plain": "Đủ dữ liệu"
+       },
+       {
+        "html": "Có tên đối thủ, khía cạnh cần phân tích, khoảng thời gian.",
+        "plain": "Có tên đối thủ, khía cạnh cần phân tích, khoảng thời gian."
+       },
+       {
+        "html": "Thực thi: gọi công cụ phân tích → xuất báo cáo.",
+        "plain": "Thực thi: gọi công cụ phân tích → xuất báo cáo."
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Phần 4 – Cơ chế bộ nhớ (Memory)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Chatbot thông thường “mất trí nhớ ngắn hạn”: đóng tab là quên bạn là ai. Dùng biến lưu trữ (variables) và Vector DB làm bộ nhớ, Agent nhớ tên, sở thích của bạn và những gì đã trao đổi từ nhiều ngày trước.",
+     "plain": "Chatbot thông thường “mất trí nhớ ngắn hạn”: đóng tab là quên bạn là ai. Dùng biến lưu trữ (variables) và Vector DB làm bộ nhớ, Agent nhớ tên, sở thích của bạn và những gì đã trao đổi từ nhiều ngày trước."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Nội dung",
+        "plain": "Nội dung"
+       },
+       {
+        "html": "Thời gian sống",
+        "plain": "Thời gian sống"
+       }
+      ],
+      [
+       {
+        "html": "Short-term memory",
+        "plain": "Short-term memory"
+       },
+       {
+        "html": "Lịch sử phiên chat hiện tại – giúp hiểu câu nối tiếp như “Vậy còn giá thì sao?”.",
+        "plain": "Lịch sử phiên chat hiện tại – giúp hiểu câu nối tiếp như “Vậy còn giá thì sao?”."
+       },
+       {
+        "html": "Mất khi tạo cuộc hội thoại mới.",
+        "plain": "Mất khi tạo cuộc hội thoại mới."
+       }
+      ],
+      [
+       {
+        "html": "Long-term memory",
+        "plain": "Long-term memory"
+       },
+       {
+        "html": "Thông tin quan trọng (sở thích người dùng, quy định công ty) lưu vào CSDL riêng.",
+        "plain": "Thông tin quan trọng (sở thích người dùng, quy định công ty) lưu vào CSDL riêng."
+       },
+       {
+        "html": "Dùng lại ở các phiên chat sau.",
+        "plain": "Dùng lại ở các phiên chat sau."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Chỉ lưu vào bộ nhớ dài hạn những gì ổn định và thật sự cần (tên doanh nghiệp, ngành hàng). Không lưu dữ liệu cá nhân nhạy cảm; người dùng nên biết Agent đang nhớ gì.",
+     "plain": "Chỉ lưu vào bộ nhớ dài hạn những gì ổn định và thật sự cần (tên doanh nghiệp, ngành hàng). Không lưu dữ liệu cá nhân nhạy cảm; người dùng nên biết Agent đang nhớ gì.",
+     "callout": "apply"
+    },
+    {
+     "t": "activity",
+     "id": "ai03-check",
+     "title": "Kiểm tra nhanh: Workflow, Self-Correction, Memory",
+     "inline": false
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Thực hành 3 – Agent phân tích đối thủ cạnh tranh (60 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "activity",
+     "id": "ai03-th3",
+     "title": "Thực hành 3 – Agent phân tích đối thủ cạnh tranh (60 phút)",
+     "inline": false
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Sườn prompt"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Vai trò: chuyên gia phân tích thị trường.",
+       "level": 0,
+       "plain": "Vai trò: chuyên gia phân tích thị trường."
+      },
+      {
+       "html": "Định dạng đầu ra bắt buộc: bảng so sánh 3 cột – Tính năng, Giá, Điểm mạnh/yếu.",
+       "level": 0,
+       "plain": "Định dạng đầu ra bắt buộc: bảng so sánh 3 cột – Tính năng, Giá, Điểm mạnh/yếu."
+      },
+      {
+       "html": "Luật Self-Correction: “Luôn kiểm tra lại thông tin giá trước khi xuất báo cáo. Đảm bảo dữ liệu được cập nhật trong năm nay.”",
+       "level": 0,
+       "plain": "Luật Self-Correction: “Luôn kiểm tra lại thông tin giá trước khi xuất báo cáo. Đảm bảo dữ liệu được cập nhật trong năm nay.”"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Bộ nhớ"
+    },
+    {
+     "t": "p",
+     "html": "Cấu hình để Agent nhớ <strong>tên doanh nghiệp của người dùng</strong> và <strong>ngành hàng đang kinh doanh</strong>, không phải hỏi lại ở các lượt chat sau.",
+     "plain": "Cấu hình để Agent nhớ tên doanh nghiệp của người dùng và ngành hàng đang kinh doanh, không phải hỏi lại ở các lượt chat sau."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Luồng rẽ nhánh (Condition Node)"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhánh 1 – IF thiếu dữ liệu:</strong> node LLM kiểm tra người dùng đã nhập tên đối thủ chưa; nếu chưa → gửi tin nhắn yêu cầu cung cấp tên.",
+       "level": 0,
+       "plain": "Nhánh 1 – IF thiếu dữ liệu: node LLM kiểm tra người dùng đã nhập tên đối thủ chưa; nếu chưa → gửi tin nhắn yêu cầu cung cấp tên."
+      },
+      {
+       "html": "<strong>Nhánh 2 – ELSE đủ dữ liệu:</strong> gọi Web Search thu thập tin tức về đối thủ → tổng hợp → node Evaluator → xuất báo cáo.",
+       "level": 0,
+       "plain": "Nhánh 2 – ELSE đủ dữ liệu: gọi Web Search thu thập tin tức về đối thủ → tổng hợp → node Evaluator → xuất báo cáo."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 4 – Thử 3 kịch bản"
+    },
+    {
+     "t": "p",
+     "html": "Một câu thiếu dữ liệu, một câu đủ dữ liệu, một câu cố tình gây mâu thuẫn (VD: tự nêu một mức giá khác với nguồn web).",
+     "plain": "Một câu thiếu dữ liệu, một câu đủ dữ liệu, một câu cố tình gây mâu thuẫn (VD: tự nêu một mức giá khác với nguồn web)."
+    },
+    {
+     "t": "p",
+     "html": "Tiêu chí chữa bài (10 điểm): System Prompt có định dạng bắt buộc và luật tự kiểm tra (2); checklist kiểm tra được, có giới hạn vòng sửa (2); ba nhánh có điều kiện và hành động rõ (3); bộ nhớ hợp lý, không lưu thừa (1); thử nghiệm đủ 3 kịch bản (2).",
+     "plain": "Tiêu chí chữa bài (10 điểm): System Prompt có định dạng bắt buộc và luật tự kiểm tra (2); checklist kiểm tra được, có giới hạn vòng sửa (2); ba nhánh có điều kiện và hành động rõ (3); bộ nhớ hợp lý, không lưu thừa (1); thử nghiệm đủ 3 kịch bản (2)."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "ai03-th3"
+    },
+    {
+     "t": "code",
+     "text": "Start → [LLM: Trích xuất] tên đối thủ, khía cạnh, thời gian → biến\n      → [Condition] thiếu tên đối thủ hoặc khía cạnh?\n          ├─ Có  → [Trả lời] hỏi lại đúng thông tin còn thiếu → End\n          └─ Không → [Web Search] → [LLM: Viết bảng 3 cột]\n                    → [LLM Evaluator] đạt?\n                        ├─ Không (≤ 3 lần) → quay lại Viết bảng kèm gợi ý sửa\n                        └─ Có → [Trả lời] báo cáo + nguồn → End\nBộ nhớ dài hạn: ten_doanh_nghiep, nganh_hang (ghi khi người dùng nêu lần đầu).",
+     "reveal": "ai03-th3"
+    },
+    {
+     "t": "p",
+     "html": "Lỗi hay gặp: checklist mơ hồ (“kiểm tra kỹ”); không giới hạn số vòng sửa; nhánh mâu thuẫn chỉ ghi “xử lý” mà không nêu Agent hỏi gì; lưu cả nội dung từng cuộc chat vào bộ nhớ dài hạn.",
+     "plain": "Lỗi hay gặp: checklist mơ hồ (“kiểm tra kỹ”); không giới hạn số vòng sửa; nhánh mâu thuẫn chỉ ghi “xử lý” mà không nêu Agent hỏi gì; lưu cả nội dung từng cuộc chat vào bộ nhớ dài hạn.",
+     "reveal": "ai03-th3"
+    }
+   ],
+   "activity": "ai03-th3",
+   "id": "s6"
+  },
+  {
+   "title": "Tóm tắt",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Sức mạnh của workflow:</strong> chia nhỏ để trị; Agent mạnh là kết nối logic của nhiều module nhỏ.",
+       "level": 0,
+       "plain": "Sức mạnh của workflow: chia nhỏ để trị; Agent mạnh là kết nối logic của nhiều module nhỏ."
+      },
+      {
+       "html": "<strong>Chìa khóa tự chủ:</strong> dạy Agent “suy nghĩ trước khi nói” và tự đối chiếu với checklist.",
+       "level": 0,
+       "plain": "Chìa khóa tự chủ: dạy Agent “suy nghĩ trước khi nói” và tự đối chiếu với checklist."
+      },
+      {
+       "html": "<strong>Xử lý linh hoạt:</strong> rẽ nhánh theo ý định và tình trạng dữ liệu; bộ nhớ dài hạn tạo trải nghiệm “nhân sự ảo” thực thụ.",
+       "level": 0,
+       "plain": "Xử lý linh hoạt: rẽ nhánh theo ý định và tình trạng dữ liệu; bộ nhớ dài hạn tạo trải nghiệm “nhân sự ảo” thực thụ."
+      }
+     ]
+    },
+    {
+     "t": "activity",
+     "id": "ai03-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Vẽ workflow mẫu lên bảng trước khi học viên mở Coze/Dify. Học viên hay lạc trong giao diện; khi có sơ đồ trên giấy, việc kéo thả node nhanh hơn nhiều.",
+     "plain": "Vẽ workflow mẫu lên bảng trước khi học viên mở Coze/Dify. Học viên hay lạc trong giao diện; khi có sơ đồ trên giấy, việc kéo thả node nhanh hơn nhiều."
+    },
+    {
+     "t": "p",
+     "html": "Chữa bài: chạy kịch bản “mâu thuẫn” trên workflow của 2 học viên – đa số workflow sẽ bỏ qua nhánh này. Đây là điểm nhấn của buổi.",
+     "plain": "Chữa bài: chạy kịch bản “mâu thuẫn” trên workflow của 2 học viên – đa số workflow sẽ bỏ qua nhánh này. Đây là điểm nhấn của buổi."
+    }
+   ],
+   "id": "s8"
+  }
+ ],
+ "activities": [
+  {
+   "id": "ai03-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Cuối buổi, bạn tự đối chiếu với những gì đã học.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Một nhân viên mới làm báo cáo sai. Bạn muốn họ tự phát hiện lỗi trước khi nộp. Bạn sẽ đưa cho họ cái gì?"
+    },
+    {
+     "id": "q2",
+     "text": "Khi khách hàng nói “Phân tích đối thủ A cho tôi”, một nhân viên giỏi sẽ hỏi lại những gì?"
+    },
+    {
+     "id": "q3",
+     "text": "Bạn thấy khó chịu nhất điều gì khi chatbot “quên” những gì bạn đã nói trước đó?"
+    }
+   ]
+  },
+  {
+   "id": "ai03-check",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: Workflow, Self-Correction, Memory",
+   "intro": "Chọn một phương án đúng nhất cho mỗi câu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Vì sao nên chia một nhiệm vụ lớn thành nhiều node trong workflow thay vì viết một prompt siêu dài?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Để tốn ít node hơn"
+      },
+      {
+       "key": "B",
+       "text": "Mỗi bước tập trung một việc, kiểm soát được dòng chảy dữ liệu, giảm ảo giác"
+      },
+      {
+       "key": "C",
+       "text": "Vì nền tảng không cho prompt dài"
+      },
+      {
+       "key": "D",
+       "text": "Để Agent trả lời ngắn hơn"
+      }
+     ],
+     "correct": "B",
+     "explain": "Một hệ thống Agent mạnh là kết nối logic của nhiều module nhỏ, không phải một prompt siêu dài."
+    },
+    {
+     "id": "q2",
+     "text": "Node Evaluator trả về “Không đạt”. Workflow nên làm gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Xuất kết quả luôn"
+      },
+      {
+       "key": "B",
+       "text": "Yêu cầu sinh lại kèm gợi ý sửa lỗi, giới hạn số vòng (VD tối đa 3 lần)"
+      },
+      {
+       "key": "C",
+       "text": "Xóa lịch sử chat"
+      },
+      {
+       "key": "D",
+       "text": "Chuyển cho người dùng tự sửa"
+      }
+     ],
+     "correct": "B",
+     "explain": "Vòng lặp sửa sai có giới hạn số lần để tránh lặp vô tận."
+    },
+    {
+     "id": "q3",
+     "text": "Thông tin web và cơ sở dữ liệu nội bộ về giá của đối thủ lệch nhau. Agent nên làm gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Chọn số cao hơn"
+      },
+      {
+       "key": "B",
+       "text": "Chọn nguồn web vì mới hơn"
+      },
+      {
+       "key": "C",
+       "text": "Báo cáo chênh lệch và hỏi người dùng muốn ưu tiên nguồn nào"
+      },
+      {
+       "key": "D",
+       "text": "Bỏ qua mục giá"
+      }
+     ],
+     "correct": "C",
+     "explain": "Đây là nhánh “dữ liệu mâu thuẫn” → kích hoạt luồng xác nhận."
+    },
+    {
+     "id": "q4",
+     "text": "Agent cần nhớ “tên doanh nghiệp” và “ngành hàng” của người dùng ở các phiên chat sau. Đây là loại bộ nhớ nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Short-term memory"
+      },
+      {
+       "key": "B",
+       "text": "Long-term memory"
+      },
+      {
+       "key": "C",
+       "text": "Context Window"
+      },
+      {
+       "key": "D",
+       "text": "Chunk overlap"
+      }
+     ],
+     "correct": "B",
+     "explain": "Bộ nhớ dài hạn lưu vào biến/cơ sở dữ liệu riêng, truy xuất lại ở phiên sau."
+    }
+   ]
+  },
+  {
+   "id": "ai03-th3",
+   "type": "practice",
+   "scope": "student",
+   "title": "Thực hành 3 – Agent phân tích đối thủ cạnh tranh (60 phút)",
+   "section": "s6",
+   "intro": "Xây sườn prompt và workflow cho Agent phân tích đối thủ: System Prompt có luật tự kiểm tra, luồng rẽ nhánh đủ/thiếu dữ liệu và bộ nhớ dài hạn.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "system_prompt",
+     "label": "System Prompt của Agent",
+     "hint": "Có vai trò, định dạng đầu ra bắt buộc (bảng 3 cột: Tính năng, Giá, Điểm mạnh/yếu) và luật Self-Correction."
+    },
+    {
+     "type": "textarea",
+     "key": "checklist",
+     "label": "Checklist tự kiểm tra (Evaluator) và cách xử lý khi không đạt",
+     "hint": "Liệt kê 3–5 tiêu chí kiểm tra được; ghi số vòng sửa tối đa."
+    },
+    {
+     "type": "table",
+     "key": "re_nhanh",
+     "label": "Luồng rẽ nhánh",
+     "columns": [
+      {
+       "key": "dieu_kien",
+       "label": "Điều kiện (cách Agent nhận biết)"
+      },
+      {
+       "key": "hanh_dong",
+       "label": "Hành động / câu trả lời của Agent"
+      }
+     ],
+     "rows": [
+      "Thiếu dữ liệu",
+      "Dữ liệu mâu thuẫn",
+      "Đủ dữ liệu"
+     ],
+     "min_rows": 3
+    },
+    {
+     "type": "table",
+     "key": "bo_nho",
+     "label": "Biến bộ nhớ dài hạn",
+     "columns": [
+      {
+       "key": "bien",
+       "label": "Tên biến"
+      },
+      {
+       "key": "khi_nao",
+       "label": "Ghi khi nào"
+      },
+      {
+       "key": "dung",
+       "label": "Dùng để làm gì"
+      }
+     ],
+     "rows": null,
+     "min_rows": 2
+    },
+    {
+     "type": "table",
+     "key": "thu_nghiem",
+     "label": "Thử nghiệm 3 kịch bản",
+     "columns": [
+      {
+       "key": "cau",
+       "label": "Câu người dùng gõ"
+      },
+      {
+       "key": "nhanh",
+       "label": "Nhánh chạy",
+       "options": [
+        "Thiếu",
+        "Mâu thuẫn",
+        "Đủ"
+       ]
+      },
+      {
+       "key": "ket_qua",
+       "label": "Kết quả, có đúng kỳ vọng không"
+      }
+     ],
+     "rows": null,
+     "min_rows": 3
+    }
+   ]
+  },
+  {
+   "id": "ai03-review",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi ôn tập",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Ba lợi ích của việc xây workflow suy luận thay vì một System Prompt duy nhất?",
+     "answer": "Phân rã tác vụ thành chuỗi node; kiểm soát dòng chảy dữ liệu giữa các bước; giảm ảo giác vì LLM tập trung từng phần."
+    },
+    {
+     "id": "q2",
+     "text": "Ba kỹ thuật trong prompt Self-Correction?",
+     "answer": "Yêu cầu quá trình suy nghĩ trước khi trả lời; đưa checklist kiểm tra; vòng lặp sửa sai có giới hạn số lần."
+    },
+    {
+     "id": "q3",
+     "text": "Agent nhận diện ý định để rẽ nhánh như thế nào? Cho ví dụ.",
+     "answer": "Phân loại intent rồi If/Else: “hỏi chính sách” → truy xuất Knowledge Base; “khiếu nại” → luồng xin lỗi và xin thông tin đơn hàng."
+    },
+    {
+     "id": "q4",
+     "text": "Phân biệt bộ nhớ ngắn hạn và dài hạn.",
+     "answer": "Ngắn hạn: lịch sử phiên hiện tại, mất khi tạo hội thoại mới. Dài hạn: thông tin quan trọng lưu vào biến/CSDL, dùng lại ở phiên sau."
+    },
+    {
+     "id": "q5",
+     "text": "Vì sao không nên lưu mọi thứ vào bộ nhớ dài hạn?",
+     "answer": "Gây nhiễu, tốn chi phí và có thể lưu dữ liệu cá nhân không cần thiết; chỉ lưu thông tin ổn định và hữu ích, người dùng biết và đồng ý."
+    }
+   ]
+  }
+ ]
+}

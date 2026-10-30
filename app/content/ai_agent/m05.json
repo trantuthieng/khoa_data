@@ -1,0 +1,1267 @@
+{
+ "no": 5,
+ "title": "Buổi 5 – Multi-Agent & đánh giá hiệu suất",
+ "short": "Multi-Agent & đánh giá hiệu suất",
+ "sections": [
+  {
+   "title": "Giới thiệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Buổi cuối dàn dựng <strong>đội hình Multi-Agent</strong> phối hợp như một phòng ban, và học cách đo lường, bảo trì để hệ thống ngày càng tốt hơn dựa trên dữ liệu thật.",
+     "plain": "Buổi cuối dàn dựng đội hình Multi-Agent phối hợp như một phòng ban, và học cách đo lường, bảo trì để hệ thống ngày càng tốt hơn dựa trên dữ liệu thật."
+    },
+    {
+     "t": "quote",
+     "html": "Xây dựng một hệ thống Multi-Agent thực chất là việc bạn đang tổ chức và vận hành một phòng ban ảo, nơi các nhân sự là trí tuệ nhân tạo.",
+     "plain": "Xây dựng một hệ thống Multi-Agent thực chất là việc bạn đang tổ chức và vận hành một phòng ban ảo, nơi các nhân sự là trí tuệ nhân tạo."
+    },
+    {
+     "t": "activity",
+     "id": "ai05-opening",
+     "title": "Câu hỏi của buổi",
+     "inline": true,
+     "questions": [
+      "Trong phòng ban của bạn, một bài viết/báo cáo đi qua những ai trước khi được gửi ra ngoài? Mỗi người kiểm tra điều gì?",
+      "Bạn làm sao biết một Agent “tuần này tốt hơn tuần trước”?",
+      "Nếu Agent liên tục mắc cùng một lỗi, bạn sẽ đổi mô hình đắt hơn hay sửa prompt? Vì sao?"
+     ]
+    }
+   ],
+   "id": "s0"
+  },
+  {
+   "title": "Mục tiêu học tập",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Sau buổi học, học viên có thể:",
+     "plain": "Sau buổi học, học viên có thể:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Giải thích cách nhiều Agent phối hợp làm việc chung để giải quyết tác vụ lớn.",
+       "level": 0,
+       "plain": "Giải thích cách nhiều Agent phối hợp làm việc chung để giải quyết tác vụ lớn."
+      },
+      {
+       "html": "Thiết lập luồng công việc với phân vai rõ ràng: Router (phân công), Worker (thực thi), Reviewer (kiểm duyệt).",
+       "level": 0,
+       "plain": "Thiết lập luồng công việc với phân vai rõ ràng: Router (phân công), Worker (thực thi), Reviewer (kiểm duyệt)."
+      },
+      {
+       "html": "Thiết lập KPI, đánh giá chất lượng (Eval) và cải tiến hệ thống dựa trên log thực tế.",
+       "level": 0,
+       "plain": "Thiết lập KPI, đánh giá chất lượng (Eval) và cải tiến hệ thống dựa trên log thực tế."
+      }
+     ]
+    }
+   ],
+   "id": "s1"
+  },
+  {
+   "title": "Phần 1 – Hệ thống Multi-Agent",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Không chỉ là một chatbot:</strong> nhiều Agent, mỗi Agent được “tuyển” cho một chuyên môn.",
+       "level": 0,
+       "plain": "Không chỉ là một chatbot: nhiều Agent, mỗi Agent được “tuyển” cho một chuyên môn."
+      },
+      {
+       "html": "<strong>Tương tác nội bộ:</strong> các Agent trao đổi, giao việc cho nhau mà không cần con người đứng giữa.",
+       "level": 0,
+       "plain": "Tương tác nội bộ: các Agent trao đổi, giao việc cho nhau mà không cần con người đứng giữa."
+      },
+      {
+       "html": "<strong>Giải bài toán lớn:</strong> chia dự án thành task nhỏ, giao cho chuyên gia AI phù hợp, chạy tuần tự hoặc song song.",
+       "level": 0,
+       "plain": "Giải bài toán lớn: chia dự án thành task nhỏ, giao cho chuyên gia AI phù hợp, chạy tuần tự hoặc song song."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Single Agent – “nhân viên đa năng”",
+        "plain": "Single Agent – “nhân viên đa năng”"
+       },
+       {
+        "html": "Multi-Agent – “đội ngũ AI”",
+        "plain": "Multi-Agent – “đội ngũ AI”"
+       }
+      ],
+      [
+       {
+        "html": "Dễ quá tải ngữ cảnh, mất tập trung khi prompt quá dài.",
+        "plain": "Dễ quá tải ngữ cảnh, mất tập trung khi prompt quá dài."
+       },
+       {
+        "html": "Mỗi Agent có System Prompt riêng, tập trung một nhiệm vụ.",
+        "plain": "Mỗi Agent có System Prompt riêng, tập trung một nhiệm vụ."
+       }
+      ],
+      [
+       {
+        "html": "Kết quả thường ở mức trung bình.",
+        "plain": "Kết quả thường ở mức trung bình."
+       },
+       {
+        "html": "Chất lượng đầu ra vượt trội.",
+        "plain": "Chất lượng đầu ra vượt trội."
+       }
+      ],
+      [
+       {
+        "html": "Khó biết hỏng ở đâu.",
+        "plain": "Khó biết hỏng ở đâu."
+       },
+       {
+        "html": "Dễ debug và nâng cấp từng thành phần.",
+        "plain": "Dễ debug và nâng cấp từng thành phần."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Cấu trúc đội hình cơ bản"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai",
+        "plain": "Vai"
+       },
+       {
+        "html": "Ví như",
+        "plain": "Ví như"
+       },
+       {
+        "html": "Nhiệm vụ",
+        "plain": "Nhiệm vụ"
+       }
+      ],
+      [
+       {
+        "html": "Router",
+        "plain": "Router"
+       },
+       {
+        "html": "Người điều phối",
+        "plain": "Người điều phối"
+       },
+       {
+        "html": "Đứng ở cửa ngõ, tiếp nhận yêu cầu, phân loại và chuyển việc cho đúng Agent chuyên môn.",
+        "plain": "Đứng ở cửa ngõ, tiếp nhận yêu cầu, phân loại và chuyển việc cho đúng Agent chuyên môn."
+       }
+      ],
+      [
+       {
+        "html": "Worker",
+        "plain": "Worker"
+       },
+       {
+        "html": "Người thực thi",
+        "plain": "Người thực thi"
+       },
+       {
+        "html": "Lực lượng nòng cốt: viết code, tổng hợp tin, thiết kế, viết bài PR…",
+        "plain": "Lực lượng nòng cốt: viết code, tổng hợp tin, thiết kế, viết bài PR…"
+       }
+      ],
+      [
+       {
+        "html": "Reviewer",
+        "plain": "Reviewer"
+       },
+       {
+        "html": "Người kiểm duyệt",
+        "plain": "Người kiểm duyệt"
+       },
+       {
+        "html": "Đối chiếu kết quả với tiêu chuẩn, tìm lỗi, yêu cầu Worker làm lại nếu chưa đạt.",
+        "plain": "Đối chiếu kết quả với tiêu chuẩn, tìm lỗi, yêu cầu Worker làm lại nếu chưa đạt."
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s2"
+  },
+  {
+   "title": "Phần 2 – Dàn dựng đội hình",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vai",
+        "plain": "Vai"
+       },
+       {
+        "html": "Cấu hình chi tiết",
+        "plain": "Cấu hình chi tiết"
+       }
+      ],
+      [
+       {
+        "html": "Router – não bộ định tuyến",
+        "plain": "Router – não bộ định tuyến"
+       },
+       {
+        "html": "Chỉ đọc lướt ý định; trả JSON, VD <code>{\"next_agent\": \"Content_Writer\"}</code>. Không xử lý nội dung.",
+        "plain": "Chỉ đọc lướt ý định; trả JSON, VD {\"next_agent\": \"Content_Writer\"}. Không xử lý nội dung."
+       }
+      ],
+      [
+       {
+        "html": "Worker – chuyên gia sâu",
+        "plain": "Worker – chuyên gia sâu"
+       },
+       {
+        "html": "Có công cụ (plugin) phù hợp; prompt tập trung 100% vào chuyên môn, VD “Bạn là chuyên viên PR bậc thầy, dùng giọng văn trang trọng…”.",
+        "plain": "Có công cụ (plugin) phù hợp; prompt tập trung 100% vào chuyên môn, VD “Bạn là chuyên viên PR bậc thầy, dùng giọng văn trang trọng…”."
+       }
+      ],
+      [
+       {
+        "html": "Reviewer – người gác cổng",
+        "plain": "Reviewer – người gác cổng"
+       },
+       {
+        "html": "Có rubric (thang điểm, tiêu chí rõ ràng); quyền trả “REJECT” kèm lý do chi tiết hoặc “APPROVE” để xuất bản.",
+        "plain": "Có rubric (thang điểm, tiêu chí rõ ràng); quyền trả “REJECT” kèm lý do chi tiết hoặc “APPROVE” để xuất bản."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Sơ đồ luồng công việc"
+    },
+    {
+     "t": "p",
+     "html": "Dàn dựng đội hình là thiết kế một <strong>graph</strong>: dữ liệu (messages) chảy qua các node (Agent). Khi Reviewer không duyệt, luồng quay lại Worker tạo thành vòng lặp cho đến khi đạt chất lượng.",
+     "plain": "Dàn dựng đội hình là thiết kế một graph: dữ liệu (messages) chảy qua các node (Agent). Khi Reviewer không duyệt, luồng quay lại Worker tạo thành vòng lặp cho đến khi đạt chất lượng."
+    },
+    {
+     "t": "code",
+     "text": "Người dùng → [Router] ──► [Writer] ──► [Editor]\n                              ▲            │\n                              └─ REJECT ───┘   (tối đa 3 vòng)\n                                           │ APPROVE\n                                           ▼\n                                        Kết quả"
+    },
+    {
+     "t": "p",
+     "html": "Luôn đặt số vòng tối đa. Hết số vòng mà chưa APPROVE thì chuyển cho người duyệt, kèm lịch sử các lần REJECT.",
+     "plain": "Luôn đặt số vòng tối đa. Hết số vòng mà chưa APPROVE thì chuyển cho người duyệt, kèm lịch sử các lần REJECT.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s3"
+  },
+  {
+   "title": "Phần 3 – Đo lường và đánh giá (KPI & Eval)",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Vì sao phải Eval?"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>AI mang tính xác suất:</strong> cùng một câu hỏi có thể ra nhiều câu trả lời khác nhau.",
+       "level": 0,
+       "plain": "AI mang tính xác suất: cùng một câu hỏi có thể ra nhiều câu trả lời khác nhau."
+      },
+      {
+       "html": "<strong>Ngăn suy thoái:</strong> sửa prompt để chữa một lỗi có thể làm hỏng tính năng khác đang tốt.",
+       "level": 0,
+       "plain": "Ngăn suy thoái: sửa prompt để chữa một lỗi có thể làm hỏng tính năng khác đang tốt."
+      },
+      {
+       "html": "<strong>Cần hệ quy chiếu:</strong> chỉ số rõ ràng để biết Agent hôm nay tốt hơn hay tệ đi so với hôm qua.",
+       "level": 0,
+       "plain": "Cần hệ quy chiếu: chỉ số rõ ràng để biết Agent hôm nay tốt hơn hay tệ đi so với hôm qua."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ba nhóm tiêu chí"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tiêu chí",
+        "plain": "Tiêu chí"
+       },
+       {
+        "html": "Câu hỏi đánh giá",
+        "plain": "Câu hỏi đánh giá"
+       }
+      ],
+      [
+       {
+        "html": "Chính xác (Accuracy)",
+        "plain": "Chính xác (Accuracy)"
+       },
+       {
+        "html": "Có bịa đặt không? Dữ liệu trích từ tài liệu có khớp 100% không?",
+        "plain": "Có bịa đặt không? Dữ liệu trích từ tài liệu có khớp 100% không?"
+       }
+      ],
+      [
+       {
+        "html": "Tuân thủ (Compliance)",
+        "plain": "Tuân thủ (Compliance)"
+       },
+       {
+        "html": "Có đúng format đầu ra (JSON, Markdown) và giọng điệu quy định không?",
+        "plain": "Có đúng format đầu ra (JSON, Markdown) và giọng điệu quy định không?"
+       }
+      ],
+      [
+       {
+        "html": "Tốc độ & chi phí (Latency/Cost)",
+        "plain": "Tốc độ & chi phí (Latency/Cost)"
+       },
+       {
+        "html": "Phản hồi mất bao lâu? Bao nhiêu token cho một chu trình hoàn chỉnh?",
+        "plain": "Phản hồi mất bao lâu? Bao nhiêu token cho một chu trình hoàn chỉnh?"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ví dụ: KPI cho đội PR"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chỉ số",
+        "plain": "Chỉ số"
+       },
+       {
+        "html": "Nhóm",
+        "plain": "Nhóm"
+       },
+       {
+        "html": "Cách đo",
+        "plain": "Cách đo"
+       },
+       {
+        "html": "Mục tiêu gợi ý",
+        "plain": "Mục tiêu gợi ý"
+       }
+      ],
+      [
+       {
+        "html": "Tỷ lệ APPROVE ngay vòng 1",
+        "plain": "Tỷ lệ APPROVE ngay vòng 1"
+       },
+       {
+        "html": "Chất lượng Worker",
+        "plain": "Chất lượng Worker"
+       },
+       {
+        "html": "Số bài APPROVE vòng 1 / tổng số bài",
+        "plain": "Số bài APPROVE vòng 1 / tổng số bài"
+       },
+       {
+        "html": "≥ 60%",
+        "plain": "≥ 60%"
+       }
+      ],
+      [
+       {
+        "html": "Số vòng sửa trung bình",
+        "plain": "Số vòng sửa trung bình"
+       },
+       {
+        "html": "Phối hợp",
+        "plain": "Phối hợp"
+       },
+       {
+        "html": "Tổng số vòng / số bài",
+        "plain": "Tổng số vòng / số bài"
+       },
+       {
+        "html": "≤ 2",
+        "plain": "≤ 2"
+       }
+      ],
+      [
+       {
+        "html": "Lỗi thông tin sai lọt qua Editor",
+        "plain": "Lỗi thông tin sai lọt qua Editor"
+       },
+       {
+        "html": "Chính xác",
+        "plain": "Chính xác"
+       },
+       {
+        "html": "Người kiểm tra mẫu 10 bài/tuần",
+        "plain": "Người kiểm tra mẫu 10 bài/tuần"
+       },
+       {
+        "html": "0",
+        "plain": "0"
+       }
+      ],
+      [
+       {
+        "html": "Đúng định dạng và giọng điệu",
+        "plain": "Đúng định dạng và giọng điệu"
+       },
+       {
+        "html": "Tuân thủ",
+        "plain": "Tuân thủ"
+       },
+       {
+        "html": "Đối chiếu checklist",
+        "plain": "Đối chiếu checklist"
+       },
+       {
+        "html": "100%",
+        "plain": "100%"
+       }
+      ],
+      [
+       {
+        "html": "Thời gian và token mỗi bài",
+        "plain": "Thời gian và token mỗi bài"
+       },
+       {
+        "html": "Tốc độ & chi phí",
+        "plain": "Tốc độ & chi phí"
+       },
+       {
+        "html": "Đọc từ log của nền tảng",
+        "plain": "Đọc từ log của nền tảng"
+       },
+       {
+        "html": "Theo ngân sách đã duyệt",
+        "plain": "Theo ngân sách đã duyệt"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Đo liên tục giúp phát hiện nhanh Agent nào có vấn đề: Worker viết kém hay Reviewer quá khắt khe. Tỷ lệ APPROVE vòng 1 quá thấp chưa chắc do Writer – có khi rubric của Editor mơ hồ.",
+     "plain": "Đo liên tục giúp phát hiện nhanh Agent nào có vấn đề: Worker viết kém hay Reviewer quá khắt khe. Tỷ lệ APPROVE vòng 1 quá thấp chưa chắc do Writer – có khi rubric của Editor mơ hồ.",
+     "callout": "misconception"
+    },
+    {
+     "t": "p",
+     "html": "Bộ Eval tối thiểu: 15–20 đề bài cố định (gồm cả đề khó và đề “bẫy”), chạy lại sau mỗi lần sửa prompt, so điểm với phiên bản trước.",
+     "plain": "Bộ Eval tối thiểu: 15–20 đề bài cố định (gồm cả đề khó và đề “bẫy”), chạy lại sau mỗi lần sửa prompt, so điểm với phiên bản trước.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Phần 4 – Bảo trì và tinh chỉnh",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Đọc log hệ thống"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Lưu trữ mọi tương tác:</strong> ghi log toàn bộ đầu vào và quá trình trao đổi giữa các Agent.",
+       "level": 0,
+       "plain": "Lưu trữ mọi tương tác: ghi log toàn bộ đầu vào và quá trình trao đổi giữa các Agent."
+      },
+      {
+       "html": "<strong>Phân tích điểm nghẽn:</strong> luồng dừng ở đâu? Vì sao Reviewer reject bài này 5 lần liên tiếp?",
+       "level": 0,
+       "plain": "Phân tích điểm nghẽn: luồng dừng ở đâu? Vì sao Reviewer reject bài này 5 lần liên tiếp?"
+      },
+      {
+       "html": "<strong>Nhận diện edge case:</strong> câu lệnh lạ của người dùng mà bạn chưa lường trước khi viết prompt.",
+       "level": 0,
+       "plain": "Nhận diện edge case: câu lệnh lạ của người dùng mà bạn chưa lường trước khi viết prompt."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Tinh chỉnh System Prompt"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Vấn đề phát hiện từ log",
+        "plain": "Vấn đề phát hiện từ log"
+       },
+       {
+        "html": "Giải pháp tinh chỉnh",
+        "plain": "Giải pháp tinh chỉnh"
+       }
+      ],
+      [
+       {
+        "html": "Writer thường xuyên bị Editor từ chối vì “Bài PR thiếu Call-to-Action rõ ràng ở cuối bài”.",
+        "plain": "Writer thường xuyên bị Editor từ chối vì “Bài PR thiếu Call-to-Action rõ ràng ở cuối bài”."
+       },
+       {
+        "html": "Không cần đổi model đắt tiền hơn. Cập nhật prompt của Writer: “BẮT BUỘC có một đoạn Call-to-Action kêu gọi đăng ký ở cuối văn bản.”",
+        "plain": "Không cần đổi model đắt tiền hơn. Cập nhật prompt của Writer: “BẮT BUỘC có một đoạn Call-to-Action kêu gọi đăng ký ở cuối văn bản.”"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Mỗi lần sửa prompt: ghi lại phiên bản, lý do sửa, và chạy lại bộ Eval. Không sửa nhiều chỗ cùng lúc – khó biết thay đổi nào có tác dụng.",
+     "plain": "Mỗi lần sửa prompt: ghi lại phiên bản, lý do sửa, và chạy lại bộ Eval. Không sửa nhiều chỗ cùng lúc – khó biết thay đổi nào có tác dụng.",
+     "callout": "apply"
+    },
+    {
+     "t": "activity",
+     "id": "ai05-check",
+     "title": "Kiểm tra nhanh: Multi-Agent và Eval",
+     "inline": false
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
+   "kind": "practice",
+   "blocks": [
+    {
+     "t": "activity",
+     "id": "ai05-th5",
+     "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
+     "inline": false
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Việc cần làm",
+        "plain": "Việc cần làm"
+       }
+      ],
+      [
+       {
+        "html": "1. Dựng phòng ban ảo",
+        "plain": "1. Dựng phòng ban ảo"
+       },
+       {
+        "html": "Tạo 2 Agent riêng: Content Writer viết bài PR; Editor khó tính chuyên kiểm duyệt theo rubric.",
+        "plain": "Tạo 2 Agent riêng: Content Writer viết bài PR; Editor khó tính chuyên kiểm duyệt theo rubric."
+       }
+      ],
+      [
+       {
+        "html": "2. Chạy thử nghiệm",
+        "plain": "2. Chạy thử nghiệm"
+       },
+       {
+        "html": "Giao một chủ đề chiến dịch; theo dõi Writer viết → Editor duyệt → sửa → chốt kết quả.",
+        "plain": "Giao một chủ đề chiến dịch; theo dõi Writer viết → Editor duyệt → sửa → chốt kết quả."
+       }
+      ],
+      [
+       {
+        "html": "3. Phân tích & tinh chỉnh",
+        "plain": "3. Phân tích & tinh chỉnh"
+       },
+       {
+        "html": "Mở log, tìm điểm nghẽn hoặc đoạn hội thoại “ngớ ngẩn” giữa 2 Agent, sửa System Prompt và chạy lại.",
+        "plain": "Mở log, tìm điểm nghẽn hoặc đoạn hội thoại “ngớ ngẩn” giữa 2 Agent, sửa System Prompt và chạy lại."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Trên Coze: dùng chế độ Multi-Agent hoặc workflow có 2 node LLM với prompt riêng. Trên Dify: workflow có node LLM Writer, node LLM Editor, node Condition đọc trường <code>status</code> và vòng lặp có giới hạn.",
+     "plain": "Trên Coze: dùng chế độ Multi-Agent hoặc workflow có 2 node LLM với prompt riêng. Trên Dify: workflow có node LLM Writer, node LLM Editor, node Condition đọc trường status và vòng lặp có giới hạn."
+    },
+    {
+     "t": "p",
+     "html": "Chủ đề gợi ý: “Ra mắt gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình, ưu đãi đăng ký trong tháng”.",
+     "plain": "Chủ đề gợi ý: “Ra mắt gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình, ưu đãi đăng ký trong tháng”."
+    },
+    {
+     "t": "p",
+     "html": "Tiêu chí chữa bài (10 điểm): prompt hai vai tách bạch, tập trung (2); rubric chấm được, đầu ra JSON (2); luồng có giới hạn vòng và xử lý khi hết vòng (2); KPI đủ ba nhóm, đo được (2); có ít nhất một lần sửa dựa trên log và so sánh trước/sau (2).",
+     "plain": "Tiêu chí chữa bài (10 điểm): prompt hai vai tách bạch, tập trung (2); rubric chấm được, đầu ra JSON (2); luồng có giới hạn vòng và xử lý khi hết vòng (2); KPI đủ ba nhóm, đo được (2); có ít nhất một lần sửa dựa trên log và so sánh trước/sau (2)."
+    },
+    {
+     "t": "h3",
+     "text": "Gợi ý chữa bài",
+     "reveal": "ai05-th5"
+    },
+    {
+     "t": "code",
+     "text": "# EDITOR – RUBRIC\nChấm bài PR theo 5 tiêu chí, mỗi tiêu chí Đạt/Không đạt:\n1. Tiêu đề ≤ 12 từ, nêu lợi ích chính\n2. Có đủ: sản phẩm, đối tượng, ưu đãi, thời hạn\n3. Không có số liệu/cam kết không có trong BRIEF\n4. Giọng trang trọng, không quá 1 dấu chấm than\n5. Kết thúc bằng 1 đoạn Call-to-Action có cách đăng ký\nAPPROVE khi cả 5 tiêu chí Đạt. Ngược lại REJECT.\nChỉ trả về JSON:\n{\"status\": \"APPROVE\" | \"REJECT\", \"ly_do\": [\"tiêu chí 3: ...\"], \"goi_y_sua\": \"...\"}",
+     "reveal": "ai05-th5"
+    },
+    {
+     "t": "p",
+     "html": "Lỗi hay gặp: Editor không có rubric nên duyệt cảm tính; không giới hạn vòng; KPI chỉ có “bài hay”; sửa prompt nhưng không chạy lại cùng chủ đề để so sánh.",
+     "plain": "Lỗi hay gặp: Editor không có rubric nên duyệt cảm tính; không giới hạn vòng; KPI chỉ có “bài hay”; sửa prompt nhưng không chạy lại cùng chủ đề để so sánh.",
+     "reveal": "ai05-th5"
+    }
+   ],
+   "activity": "ai05-th5",
+   "id": "s6"
+  },
+  {
+   "title": "Tổng kết khóa học",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Buổi",
+        "plain": "Buổi"
+       },
+       {
+        "html": "Agent có thêm",
+        "plain": "Agent có thêm"
+       },
+       {
+        "html": "Câu cần nhớ",
+        "plain": "Câu cần nhớ"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Vai trò – Persona",
+        "plain": "Vai trò – Persona"
+       },
+       {
+        "html": "Giao mục tiêu, không giao từng câu lệnh; Persona rõ thì Agent ít đoán.",
+        "plain": "Giao mục tiêu, không giao từng câu lệnh; Persona rõ thì Agent ít đoán."
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Tri thức – RAG",
+        "plain": "Tri thức – RAG"
+       },
+       {
+        "html": "Không có bối cảnh thì ảo giác; dữ liệu rác cho Agent rác.",
+        "plain": "Không có bối cảnh thì ảo giác; dữ liệu rác cho Agent rác."
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Quy trình – Workflow",
+        "plain": "Quy trình – Workflow"
+       },
+       {
+        "html": "Chia nhỏ để trị; suy nghĩ trước khi nói; biết hỏi lại.",
+        "plain": "Chia nhỏ để trị; suy nghĩ trước khi nói; biết hỏi lại."
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Công cụ – Plugins",
+        "plain": "Công cụ – Plugins"
+       },
+       {
+        "html": "Hành động thật cần quyền tối thiểu và người duyệt.",
+        "plain": "Hành động thật cần quyền tối thiểu và người duyệt."
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Đồng đội và KPI",
+        "plain": "Đồng đội và KPI"
+       },
+       {
+        "html": "Phân vai rõ, đo liên tục, sửa đúng gốc lỗi.",
+        "plain": "Phân vai rõ, đo liên tục, sửa đúng gốc lỗi."
+       }
+      ]
+     ]
+    },
+    {
+     "t": "activity",
+     "id": "ai05-review",
+     "title": "Câu hỏi ôn tập",
+     "inline": false
+    },
+    {
+     "t": "activity",
+     "id": "ai05-exam",
+     "title": "Bài kiểm tra cuối khóa",
+     "inline": false
+    }
+   ],
+   "id": "s7"
+  },
+  {
+   "title": "Ghi chú cho giảng viên",
+   "kind": "teacher",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Phần thực hành dài nhất khóa; nên bắt đầu thực hành sớm, phần lý thuyết 3–4 có thể giảng xen trong lúc học viên chờ Agent chạy.",
+     "plain": "Phần thực hành dài nhất khóa; nên bắt đầu thực hành sớm, phần lý thuyết 3–4 có thể giảng xen trong lúc học viên chờ Agent chạy."
+    },
+    {
+     "t": "p",
+     "html": "Mở Bài kiểm tra cuối khóa ở 15 phút cuối, đóng rồi công bố để chữa chung.",
+     "plain": "Mở Bài kiểm tra cuối khóa ở 15 phút cuối, đóng rồi công bố để chữa chung."
+    }
+   ],
+   "id": "s8"
+  }
+ ],
+ "activities": [
+  {
+   "id": "ai05-opening",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi của buổi",
+   "intro": "Trả lời bằng suy nghĩ của bạn trước khi vào bài. Cuối buổi, bạn tự đối chiếu với những gì đã học.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Trong phòng ban của bạn, một bài viết/báo cáo đi qua những ai trước khi được gửi ra ngoài? Mỗi người kiểm tra điều gì?"
+    },
+    {
+     "id": "q2",
+     "text": "Bạn làm sao biết một Agent “tuần này tốt hơn tuần trước”?"
+    },
+    {
+     "id": "q3",
+     "text": "Nếu Agent liên tục mắc cùng một lỗi, bạn sẽ đổi mô hình đắt hơn hay sửa prompt? Vì sao?"
+    }
+   ]
+  },
+  {
+   "id": "ai05-check",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Kiểm tra nhanh: Multi-Agent và Eval",
+   "intro": "Chọn một phương án đúng nhất cho mỗi câu.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Trong đội Multi-Agent, ai nên trả về kết quả dạng {\"next_agent\": \"Content_Writer\"}?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Worker"
+      },
+      {
+       "key": "B",
+       "text": "Reviewer"
+      },
+      {
+       "key": "C",
+       "text": "Router"
+      },
+      {
+       "key": "D",
+       "text": "Người dùng"
+      }
+     ],
+     "correct": "C",
+     "explain": "Router chỉ đọc ý định và định tuyến; không trực tiếp xử lý nội dung."
+    },
+    {
+     "id": "q2",
+     "text": "Reviewer cần gì để duyệt nhất quán?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Mô hình đắt nhất"
+      },
+      {
+       "key": "B",
+       "text": "Rubric – thang điểm, tiêu chí rõ ràng – và quyền trả REJECT kèm lý do"
+      },
+      {
+       "key": "C",
+       "text": "Toàn bộ công cụ của Worker"
+      },
+      {
+       "key": "D",
+       "text": "Không cần gì, tự cảm nhận"
+      }
+     ],
+     "correct": "B",
+     "explain": "Không có rubric, Reviewer duyệt cảm tính, quá dễ hoặc quá khắt khe."
+    },
+    {
+     "id": "q3",
+     "text": "Vì sao phải có bộ Eval cố định trước khi sửa prompt?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Để tốn ít token"
+      },
+      {
+       "key": "B",
+       "text": "Vì sửa một lỗi có thể làm hỏng tính năng khác; cần hệ quy chiếu để so phiên bản"
+      },
+      {
+       "key": "C",
+       "text": "Vì nền tảng bắt buộc"
+      },
+      {
+       "key": "D",
+       "text": "Để Agent trả lời giống hệt nhau mọi lần"
+      }
+     ],
+     "correct": "B",
+     "explain": "LLM mang tính xác suất; bộ Eval giúp phát hiện suy thoái khi thay đổi."
+    },
+    {
+     "id": "q4",
+     "text": "Log cho thấy Reviewer từ chối Writer 5 lần liên tiếp vì “thiếu Call-to-Action”. Cách sửa hợp lý nhất?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Đổi sang mô hình đắt hơn"
+      },
+      {
+       "key": "B",
+       "text": "Bỏ Reviewer"
+      },
+      {
+       "key": "C",
+       "text": "Thêm luật bắt buộc có đoạn Call-to-Action vào prompt của Writer"
+      },
+      {
+       "key": "D",
+       "text": "Tăng số vòng lặp lên 20"
+      }
+     ],
+     "correct": "C",
+     "explain": "Sửa đúng gốc lỗi trong System Prompt của Worker, không phải đổi model."
+    }
+   ]
+  },
+  {
+   "id": "ai05-exam",
+   "type": "mcq",
+   "scope": "student",
+   "title": "Bài kiểm tra cuối khóa",
+   "intro": "10 câu, mỗi câu chọn một đáp án đúng nhất. Bao quát cả 5 buổi.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "AI Agent khác chatbot chủ yếu ở điểm nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Giao diện đẹp hơn"
+      },
+      {
+       "key": "B",
+       "text": "Nhận mục tiêu, tự lập kế hoạch và dùng công cụ thực hiện nhiều bước"
+      },
+      {
+       "key": "C",
+       "text": "Trả lời bằng giọng nói"
+      },
+      {
+       "key": "D",
+       "text": "Không cần LLM"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 1."
+    },
+    {
+     "id": "q2",
+     "text": "Thành phần nào của Persona giúp Agent biết khi nào nhiệm vụ coi là hoàn thành?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Giọng điệu"
+      },
+      {
+       "key": "B",
+       "text": "Mục tiêu (Goals)"
+      },
+      {
+       "key": "C",
+       "text": "Câu hỏi mồi"
+      },
+      {
+       "key": "D",
+       "text": "Tên GPT"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 1."
+    },
+    {
+     "id": "q3",
+     "text": "“Lost in the middle” là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Agent lạc trong workflow"
+      },
+      {
+       "key": "B",
+       "text": "AI giảm chú ý vào thông tin nằm giữa văn bản quá dài"
+      },
+      {
+       "key": "C",
+       "text": "Mất kết nối mạng giữa chừng"
+      },
+      {
+       "key": "D",
+       "text": "Chunk bị cắt giữa câu"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 2."
+    },
+    {
+     "id": "q4",
+     "text": "Thứ tự đúng trong RAG?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Sinh → Tìm → Ghép"
+      },
+      {
+       "key": "B",
+       "text": "Tìm → Ghép vào prompt → Sinh"
+      },
+      {
+       "key": "C",
+       "text": "Ghép → Sinh → Tìm"
+      },
+      {
+       "key": "D",
+       "text": "Huấn luyện lại → Sinh"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 2."
+    },
+    {
+     "id": "q5",
+     "text": "Khuyến nghị chunk overlap trên Coze/Dify trong bài thực hành?",
+     "options": [
+      {
+       "key": "A",
+       "text": "0%"
+      },
+      {
+       "key": "B",
+       "text": "15–20%"
+      },
+      {
+       "key": "C",
+       "text": "50%"
+      },
+      {
+       "key": "D",
+       "text": "100%"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 2."
+    },
+    {
+     "id": "q6",
+     "text": "Node nào giúp Agent tự kiểm tra kết quả trước khi trả lời?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Node Evaluator"
+      },
+      {
+       "key": "B",
+       "text": "Node Start"
+      },
+      {
+       "key": "C",
+       "text": "Node Web Search"
+      },
+      {
+       "key": "D",
+       "text": "Node Memory"
+      }
+     ],
+     "correct": "A",
+     "explain": "Buổi 3."
+    },
+    {
+     "id": "q7",
+     "text": "Người dùng chỉ gõ “Phân tích đối thủ A”. Agent tốt nên làm gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Viết báo cáo dài mọi khía cạnh"
+      },
+      {
+       "key": "B",
+       "text": "Hỏi lại khía cạnh cần phân tích"
+      },
+      {
+       "key": "C",
+       "text": "Từ chối"
+      },
+      {
+       "key": "D",
+       "text": "Tự đoán khía cạnh"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 3 – nhánh thiếu dữ liệu."
+    },
+    {
+     "id": "q8",
+     "text": "Trong Function Calling, ai thực sự gọi API thời tiết?",
+     "options": [
+      {
+       "key": "A",
+       "text": "LLM"
+      },
+      {
+       "key": "B",
+       "text": "Hệ thống trung gian nhận JSON từ LLM"
+      },
+      {
+       "key": "C",
+       "text": "Người dùng"
+      },
+      {
+       "key": "D",
+       "text": "Vector Database"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 4."
+    },
+    {
+     "id": "q9",
+     "text": "Agent chỉ cần đọc lịch để đề xuất giờ họp. Cấp quyền nào?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Đọc + xóa"
+      },
+      {
+       "key": "B",
+       "text": "Toàn quyền"
+      },
+      {
+       "key": "C",
+       "text": "Chỉ đọc lịch"
+      },
+      {
+       "key": "D",
+       "text": "Quản trị miền"
+      }
+     ],
+     "correct": "C",
+     "explain": "Buổi 4 – Least Privilege."
+    },
+    {
+     "id": "q10",
+     "text": "Ba tiêu chí Eval được nêu trong khóa?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Màu sắc, phông chữ, độ dài"
+      },
+      {
+       "key": "B",
+       "text": "Chính xác, tuân thủ, tốc độ & chi phí"
+      },
+      {
+       "key": "C",
+       "text": "Số người dùng, lượt thích, chia sẻ"
+      },
+      {
+       "key": "D",
+       "text": "Số node, số plugin, số biến"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 5."
+    }
+   ]
+  },
+  {
+   "id": "ai05-th5",
+   "type": "practice",
+   "scope": "student",
+   "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
+   "section": "s6",
+   "intro": "Dựng hai Agent: Content Writer viết bài PR và Editor khó tính kiểm duyệt. Chạy vòng lặp khép kín, đọc log, tìm điểm nghẽn và tinh chỉnh System Prompt; thiết lập KPI.",
+   "fields": [
+    {
+     "type": "textarea",
+     "key": "writer",
+     "label": "System Prompt của Writer (Worker)"
+    },
+    {
+     "type": "textarea",
+     "key": "editor",
+     "label": "System Prompt và Rubric của Editor (Reviewer)",
+     "hint": "Rubric chấm được; đầu ra bắt buộc dạng JSON: {\"status\": \"APPROVE\" | \"REJECT\", \"ly_do\": [...]}."
+    },
+    {
+     "type": "textarea",
+     "key": "luong",
+     "label": "Sơ đồ luồng: chủ đề → Writer → Editor → (REJECT quay lại Writer) → kết quả; số vòng tối đa"
+    },
+    {
+     "type": "table",
+     "key": "kpi",
+     "label": "Bộ KPI cho đội PR",
+     "columns": [
+      {
+       "key": "chi_so",
+       "label": "Chỉ số"
+      },
+      {
+       "key": "nhom",
+       "label": "Nhóm",
+       "options": [
+        "Chính xác",
+        "Tuân thủ",
+        "Tốc độ & chi phí"
+       ]
+      },
+      {
+       "key": "cach_do",
+       "label": "Cách đo"
+      },
+      {
+       "key": "muc_tieu",
+       "label": "Mục tiêu"
+      }
+     ],
+     "rows": null,
+     "min_rows": 4
+    },
+    {
+     "type": "table",
+     "key": "log",
+     "label": "Phân tích log và tinh chỉnh",
+     "columns": [
+      {
+       "key": "van_de",
+       "label": "Vấn đề thấy trong log"
+      },
+      {
+       "key": "nguyen_nhan",
+       "label": "Nguyên nhân"
+      },
+      {
+       "key": "sua",
+       "label": "Sửa ở prompt nào, sửa gì"
+      },
+      {
+       "key": "sau_sua",
+       "label": "Kết quả sau khi sửa"
+      }
+     ],
+     "rows": null,
+     "min_rows": 2
+    }
+   ]
+  },
+  {
+   "id": "ai05-review",
+   "type": "open",
+   "scope": "student",
+   "title": "Câu hỏi ôn tập",
+   "intro": "Tự trả lời từng câu bằng lời của mình. Gợi ý đáp án hiện ra khi giảng viên công bố.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Multi-Agent khác Single Agent thế nào?",
+     "answer": "Single Agent là nhân viên đa năng, dễ quá tải ngữ cảnh. Multi-Agent chia việc cho nhiều Agent chuyên biệt, mỗi Agent có System Prompt riêng; chất lượng cao hơn, dễ debug và nâng cấp."
+    },
+    {
+     "id": "q2",
+     "text": "Vai trò của Router, Worker, Reviewer?",
+     "answer": "Router: đọc ý định, chuyển việc (trả JSON), không xử lý nội dung. Worker: thực thi chuyên môn, có công cụ. Reviewer: đối chiếu rubric, APPROVE hoặc REJECT kèm lý do."
+    },
+    {
+     "id": "q3",
+     "text": "Vì sao phải đánh giá (Eval) Agent liên tục?",
+     "answer": "LLM mang tính xác suất; sửa prompt có thể làm hỏng tính năng khác; cần hệ quy chiếu để biết phiên bản mới tốt hơn hay tệ đi."
+    },
+    {
+     "id": "q4",
+     "text": "Ba nhóm tiêu chí Eval?",
+     "answer": "Chính xác (không bịa, khớp tài liệu); tuân thủ (format, giọng điệu); tốc độ và chi phí (thời gian phản hồi, token mỗi chu trình)."
+    },
+    {
+     "id": "q5",
+     "text": "Đọc log hệ thống để tìm gì?",
+     "answer": "Điểm nghẽn (luồng dừng ở đâu, vì sao bị reject nhiều lần) và edge case – câu lệnh lạ chưa lường trước khi viết prompt."
+    }
+   ]
+  }
+ ]
+}

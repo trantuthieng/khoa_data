@@ -20,7 +20,8 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from . import db
 from .answer_keys import ANSWER_KEYS
-from .content import ACTIVITIES, INDEX, MODULES, public_activity, score, section_index, student_module
+from .content import (ACTIVITIES, COURSES, DEFAULT_COURSE, course_modules, public_activity, score, section_index,
+                      student_module)
 
 BASE = Path(__file__).parent
 TEACHER_PASSWORD = os.environ.get("TEACHER_PASSWORD", "")
@@ -41,7 +42,8 @@ app.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
 def _startup():
     db.init_db()
     # Buổi 7 có thêm phần Phòng thí nghiệm RLS ở cuối: lớp đã mở đến phần cuối cũ (28) thì mở luôn phần mới
-    db.x("UPDATE class_modules SET unlocked=:a WHERE module_no=7 AND unlocked=28", a=OPEN_ALL)
+    db.x("""UPDATE class_modules SET unlocked=:a WHERE module_no=7 AND unlocked=28
+            AND class_id IN (SELECT id FROM classes WHERE course=:c)""", a=OPEN_ALL, c=DEFAULT_COURSE)
 
 
 @app.middleware("http")
@@ -111,8 +113,15 @@ def health():
 
 
 @app.get("/api/modules")
-def modules_index():
-    return INDEX
+def modules_index(course: str = DEFAULT_COURSE):
+    if course not in COURSES:
+        raise HTTPException(404, "Không tìm thấy khóa học này.")
+    return COURSES[course]["index"]
+
+
+@app.get("/api/courses")
+def courses_index():
+    return [{"id": k, "title": c["title"], "subtitle": c["subtitle"], "modules": c["index"]} for k, c in COURSES.items()]
 
 
 # ---------------------------------------------------------------- chung
@@ -135,9 +144,9 @@ def owner_key(a, student):
     return f"s:{student['id']}"
 
 
-def get_activity(aid):
+def get_activity(aid, course=None):
     a = ACTIVITIES.get(aid)
-    if not a:
+    if not a or course is not None and a["course"] != course:
         raise HTTPException(404, "Không tìm thấy bài tập này")
     return a
 
@@ -231,7 +240,7 @@ def current_student(request: Request):
     auth = request.headers.get("authorization", "")
     if not auth.startswith("Bearer "):
         raise HTTPException(401, "Bạn chưa vào lớp. Vui lòng nhập mã lớp và thông tin cá nhân.")
-    st = db.q1("""SELECT s.*, c.name AS class_name, c.code AS class_code, c.active_module, c.archived
+    st = db.q1("""SELECT s.*, c.name AS class_name, c.code AS class_code, c.active_module, c.archived, c.course
                   FROM students s JOIN classes c ON c.id = s.class_id WHERE s.token_hash=:h""",
                h=sha(auth[7:].strip()))
     if not st or st["archived"]:
@@ -239,9 +248,10 @@ def current_student(request: Request):
     return st
 
 
-def visible_modules(class_id):
+def visible_modules(class_id, course):
+    mods = course_modules(course)
     rows = db.q("SELECT module_no FROM class_modules WHERE class_id=:c", c=class_id)
-    return sorted({0} | {r["module_no"] for r in rows if r["module_no"] in MODULES})
+    return sorted(({0} & mods.keys()) | {r["module_no"] for r in rows if r["module_no"] in mods})
 
 
 # ---- nhịp đồng bộ: học viên hỏi mỗi giây, trả lời từ bộ nhớ, không truy vấn CSDL.
@@ -279,16 +289,18 @@ def student_tick(request: Request):
 @db.batched
 def student_state(st=Depends(current_student)):
     db.x("UPDATE students SET last_seen=:t WHERE id=:id", t=now(), id=st["id"])
-    cid, active = st["class_id"], st["active_module"]
+    cid, active, course = st["class_id"], st["active_module"], st["course"]
+    modules = course_modules(course)
     view = view_row(cid, active, create=True)
     states = activity_states(cid)
-    mods = visible_modules(cid)
+    mods = visible_modules(cid, course)
     views = {r["module_no"]: r for r in db.q("SELECT * FROM class_modules WHERE class_id=:c", c=cid)}
     revealed = sorted(a for a, s in states.items() if s == "revealed")
     content_keys = {}
     for no in mods:
         v = views.get(no)
-        rv = [a for a in revealed if a.startswith(f"m{no:02d}-")]
+        ids = {a["id"] for a in modules[no]["activities"]}
+        rv = [a for a in revealed if a in ids]
         content_keys[no] = f"{v['unlocked']}.{v['stage']}.{','.join(rv)}" if v else "all"
     mine = db.q("""SELECT activity_id, updated_at FROM responses
                    WHERE class_id=:c AND owner_key=:s""",
@@ -296,11 +308,13 @@ def student_state(st=Depends(current_student)):
     done = {r["activity_id"] for r in mine}
     acts = [{"id": a["id"], "title": a["title"], "type": a["type"], "module": a["module"],
              "status": states.get(a["id"], "hidden"), "submitted": a["id"] in done}
-            for a in ACTIVITIES.values() if states.get(a["id"], "hidden") != "hidden" and a["module"] in mods]
+            for a in ACTIVITIES.values()
+            if states.get(a["id"], "hidden") != "hidden" and a["course"] == course and a["module"] in mods]
     return {
         "me": {"name": st["name"]},
-        "cls": {"name": st["class_name"], "code": st["class_code"], "active_module": active},
-        "modules": [{"no": n, "short": MODULES[n]["short"], "title": MODULES[n]["title"]} for n in mods],
+        "cls": {"name": st["class_name"], "code": st["class_code"], "active_module": active,
+                "course": course, "course_title": COURSES[course]["title"], "course_subtitle": COURSES[course]["subtitle"]},
+        "modules": [{"no": n, "short": modules[n]["short"], "title": modules[n]["title"]} for n in mods],
         "view": {"module": active, "current_section": view["current_section"], "follow": bool(view["follow"])},
         "content_keys": content_keys,
         "activities": acts,
@@ -311,12 +325,12 @@ def student_state(st=Depends(current_student)):
 @app.get("/api/s/module/{no}")
 @db.batched
 def student_module_content(no: int, st=Depends(current_student)):
-    if no not in visible_modules(st["class_id"]):
+    if no not in visible_modules(st["class_id"], st["course"]):
         raise HTTPException(403, "Buổi học này chưa mở")
     states = activity_states(st["class_id"])
     revealed = {a for a, s in states.items() if s == "revealed"}
     view = None if no == 0 else view_row(st["class_id"], no)
-    return student_module(no, view, revealed)
+    return student_module(no, view, revealed, st["course"])
 
 
 def my_response(cid, a, st):
@@ -341,9 +355,9 @@ def response_out(r, revealed=False):
 @app.get("/api/s/activity/{aid}")
 @db.batched
 def student_activity(aid: str, st=Depends(current_student)):
-    a = get_activity(aid)
+    a = get_activity(aid, st["course"])
     status = activity_states(st["class_id"]).get(aid, "hidden")
-    if status == "hidden" or a["module"] not in visible_modules(st["class_id"]):
+    if status == "hidden" or a["module"] not in visible_modules(st["class_id"], st["course"]):
         raise HTTPException(403, "Giảng viên chưa mở bài tập này.")
     out = public_activity(a, status)
     r = my_response(st["class_id"], a, st)
@@ -374,9 +388,9 @@ def has_work(value):
 @app.post("/api/s/activity/{aid}")
 @db.batched
 def student_submit(aid: str, body: SubmitIn, st=Depends(current_student)):
-    a = get_activity(aid)
+    a = get_activity(aid, st["course"])
     status = activity_states(st["class_id"]).get(aid, "hidden")
-    if a["module"] not in visible_modules(st["class_id"]):
+    if a["module"] not in visible_modules(st["class_id"], st["course"]):
         raise HTTPException(403, "Buổi học này chưa mở")
     if status != "open":
         raise HTTPException(409, "Bài đã ngừng nhận bài nộp. Vui lòng liên hệ giảng viên nếu cần cập nhật.")
@@ -457,16 +471,20 @@ def list_classes(_=Depends(teacher)):
 
 class ClassIn(BaseModel):
     name: str = Field(min_length=2, max_length=100)
+    course: str = Field(default=DEFAULT_COURSE, max_length=40)
 
 
 @app.post("/api/t/classes")
 def create_class(body: ClassIn, _=Depends(teacher)):
+    if body.course not in COURSES:
+        raise HTTPException(400, "Khóa học không hợp lệ")
     for _try in range(10):
         code = "".join(secrets.choice("ABCDEFGHJKLMNPQRSTUVWXYZ23456789") for _ in range(6))
         if not db.q1("SELECT id FROM classes WHERE code=:c", c=code):
             break
-    rows = db.x("INSERT INTO classes (name, code, active_module, archived, created_at) VALUES (:n, :c, 1, 0, :t) RETURNING id",
-                n=body.name.strip(), c=code, t=now())
+    rows = db.x("""INSERT INTO classes (name, code, active_module, archived, created_at, course)
+                   VALUES (:n, :c, 1, 0, :t, :k) RETURNING id""",
+                n=body.name.strip(), c=code, t=now(), k=body.course)
     view_row(rows[0]["id"], 1, create=True)
     return get_class(rows[0]["id"])
 
@@ -480,11 +498,11 @@ class ClassPatch(BaseModel):
 @app.patch("/api/t/classes/{cid}")
 @db.batched
 def patch_class(cid: int, body: ClassPatch, _=Depends(teacher)):
-    get_class(cid)
+    cls = get_class(cid)
     if body.name is not None:
         db.x("UPDATE classes SET name=:n WHERE id=:id", n=body.name.strip(), id=cid)
     if body.active_module is not None:
-        if body.active_module not in MODULES or body.active_module == 0:
+        if body.active_module not in course_modules(cls["course"]) or body.active_module == 0:
             raise HTTPException(400, "Buổi không hợp lệ")
         db.x("UPDATE classes SET active_module=:m WHERE id=:id", m=body.active_module, id=cid)
         view_row(cid, body.active_module, create=True)
@@ -502,16 +520,18 @@ def delete_class(cid: int, _=Depends(teacher)):
 
 
 @app.get("/api/t/module/{no}")
-def teacher_module(no: int, _=Depends(teacher)):
-    if no not in MODULES:
+def teacher_module(no: int, course: str = DEFAULT_COURSE, _=Depends(teacher)):
+    mods = course_modules(course)
+    if course not in COURSES or no not in mods:
         raise HTTPException(404)
-    m = MODULES[no]
+    m = mods[no]
     return {**m, "activities": [ACTIVITIES[a["id"]] for a in m["activities"]]}
 
 
 @app.get("/api/t/answers")
 def answer_index(_=Depends(teacher)):
-    return [{"id": aid, "title": a["title"], "module": a["module"]} for aid, a in ACTIVITIES.items() if aid in ANSWER_KEYS]
+    return [{"id": aid, "title": a["title"], "module": a["module"], "course": a["course"]}
+            for aid, a in ACTIVITIES.items() if aid in ANSWER_KEYS]
 
 
 @app.get("/api/t/answers/{aid}")
@@ -534,7 +554,8 @@ def rls_solution(bai: str, _=Depends(teacher)):
 @db.batched
 def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
     cls = get_class(cid)
-    no = module if module in MODULES else cls["active_module"]
+    mods = course_modules(cls["course"])
+    no = module if module in mods else cls["active_module"]
     view = view_row(cid, no, create=no != 0) if no != 0 else None
     t = now()
     students = db.q("""SELECT id, name, group_name, last_seen, created_at, phone_hash IS NOT NULL AS by_phone
@@ -548,7 +569,7 @@ def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
               db.q("SELECT activity_id, COUNT(*) AS n FROM responses WHERE class_id=:c GROUP BY activity_id", c=cid)}
     acts = [{"id": a["id"], "title": a["title"], "type": a["type"],
              "status": states.get(a["id"], "hidden"), "count": counts.get(a["id"], 0)}
-            for a in MODULES[no]["activities"]]
+            for a in mods[no]["activities"]]
     return {"cls": cls, "module": no, "view": view, "students": students, "activities": acts}
 
 
@@ -563,11 +584,12 @@ class ViewIn(BaseModel):
 @app.post("/api/t/classes/{cid}/view")
 @db.batched
 def set_view(cid: int, body: ViewIn, _=Depends(teacher)):
-    get_class(cid)
-    if body.module not in MODULES or body.module == 0:
+    course = get_class(cid)["course"]
+    mods = course_modules(course)
+    if body.module not in mods or body.module == 0:
         raise HTTPException(400, "Buổi không hợp lệ")
     v = view_row(cid, body.module, create=True)
-    n = len(MODULES[body.module]["sections"])
+    n = len(mods[body.module]["sections"])
     cur = body.current_section or v["current_section"]
     unlocked = v["unlocked"] if body.unlocked is None else max(-1, body.unlocked)
     if unlocked >= n - 1:
@@ -575,7 +597,7 @@ def set_view(cid: int, body: ViewIn, _=Depends(teacher)):
         unlocked = OPEN_ALL
     if body.current_section:
         # trình chiếu phần nào thì tự mở đến phần đó
-        unlocked = max(unlocked, section_index(body.module, cur))
+        unlocked = max(unlocked, section_index(body.module, cur, course))
     follow = v["follow"] if body.follow is None else int(body.follow)
     stage = v["stage"] if body.stage is None else max(0, min(body.stage, 20))
     db.x("""UPDATE class_modules SET current_section=:s, unlocked=:u, follow=:f, stage=:st, updated_at=:t
@@ -592,8 +614,7 @@ class StatusIn(BaseModel):
 @app.post("/api/t/classes/{cid}/activities/{aid}")
 @db.batched
 def set_activity_status(cid: int, aid: str, body: StatusIn, _=Depends(teacher)):
-    get_class(cid)
-    a = get_activity(aid)
+    a = get_activity(aid, get_class(cid)["course"])
     db.x("""INSERT INTO activity_states (class_id, activity_id, status, updated_at) VALUES (:c, :a, :s, :t)
             ON CONFLICT (class_id, activity_id) DO UPDATE SET status=excluded.status, updated_at=excluded.updated_at""",
          c=cid, a=aid, s=body.status, t=now())
@@ -627,8 +648,7 @@ def mcq_stats(cid, a):
 @app.get("/api/t/classes/{cid}/activities/{aid}/results")
 @db.batched
 def activity_results(cid: int, aid: str, _=Depends(teacher)):
-    get_class(cid)
-    a = get_activity(aid)
+    a = get_activity(aid, get_class(cid)["course"])
     rows = db.q("""SELECT r.id, r.owner_key, r.student_id, r.payload,
                           COALESCE(r.score, g.score) AS score, COALESCE(r.max_score, g.max_score) AS max_score,
                           g.feedback, g.graded_at, r.version, r.updated_by,
