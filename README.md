@@ -23,6 +23,8 @@ Webapp dạy khóa học 10 buổi. Mỗi buổi là một module; giảng viên
 
 Các hoạt động trong khóa học:
 
+- **Ca trực điều tra – 10.000 dòng nhật ký** (buổi 9): bài cá nhân bổ sung `m09-loglab-v1`, mở bàn điều tra ngay trong trình duyệt tại `/static/labs/logs/index.html`. Có thống kê toàn bộ dữ liệu, lọc/tìm kiếm, đọc JSON, truy theo tài khoản/phiên/đối tượng, ghi nhận phạm vi 29 nguồn và 10 ngày, ghim bằng chứng vào hai timeline, hồ sơ và phản biện. Bản nháp có tên riêng lưu trên máy; học viên chép báo cáo hoặc tải `.txt`, dán vào năm ô của bài trên lớp học rồi bấm **Nộp bài**. Giảng viên mở/đóng/chấm/công bố như bài cá nhân khác. Đáp án 60 tình huống và kịch bản dạy ở nút **📘 Đáp án**, nằm ngoài thư mục public. Bộ log có bối cảnh bán hàng, độc lập với bài 17 dòng điện lực; bài cũ và bài đã nộp giữ nguyên. Định nghĩa bài ở `tools/log_investigation.py`, được thêm lại khi dựng giáo trình. Kiểm tra: `python -m unittest discover -s tests -p test_loglab.py`; giao diện: chạy server cục bộ cổng 8766, dùng `node tests/ui_loglab.cjs` với Playwright và Edge.
+
 - **Kiểm tra nhanh** (buổi 1–9): 18 câu tình huống mới, mỗi buổi 2 câu, tự chấm điểm. Các bài “Ôn câu hỏi cuối khóa (tùy chọn)” giữ nguyên để lớp đã học vẫn đọc được kết quả cũ; nên dùng vào phần ôn cuối khóa.
 - **Trò chơi thẻ C–I–A** (buổi 1): chọn nhiều đáp án.
 - **Câu hỏi ôn tập** (mọi buổi): tự luận, giảng viên công bố gợi ý trả lời.

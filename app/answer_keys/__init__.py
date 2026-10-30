@@ -10,8 +10,8 @@ Mỗi đáp án:
             Mục có "private": True (thang điểm, lỗi hay gặp) tự ẩn khi trình chiếu.
 Mỗi buổi một tệp (m01.py …), bài ngắn SQL/Python/BI ở labs.py; tệp nào cũng có KEYS = {mã hoạt động: đáp án}.
 """
-from . import labs, m01, m02, m03, m04, m05, m06, m07, m08, m09, m10
+from . import labs, loglab, m01, m02, m03, m04, m05, m06, m07, m08, m09, m10
 
 ANSWER_KEYS = {}
-for _m in (m01, m02, m03, m04, m05, m06, m07, m08, m09, m10, labs):
+for _m in (m01, m02, m03, m04, m05, m06, m07, m08, m09, m10, labs, loglab):
     ANSWER_KEYS.update(_m.KEYS)
