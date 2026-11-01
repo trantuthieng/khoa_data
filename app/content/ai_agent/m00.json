@@ -68,16 +68,16 @@
         "plain": "1"
        },
        {
-        "html": "Kiến trúc AI Agent & tư duy “nhân sự ảo”",
-        "plain": "Kiến trúc AI Agent & tư duy “nhân sự ảo”"
+        "html": "Tuyển nhân viên AI: kiến trúc và thiết kế AI Agent",
+        "plain": "Tuyển nhân viên AI: kiến trúc và thiết kế AI Agent"
        },
        {
-        "html": "Agent khác chatbot ở đâu, và giao việc cho nó thế nào?",
-        "plain": "Agent khác chatbot ở đâu, và giao việc cho nó thế nào?"
+        "html": "Agent khác model và chatbot ở đâu; giao việc, trao quyền cho nó thế nào?",
+        "plain": "Agent khác model và chatbot ở đâu; giao việc, trao quyền cho nó thế nào?"
        },
        {
-        "html": "Khung Persona + một trợ lý nội bộ (Custom GPT / Gemini Gem / Claude Project)",
-        "plain": "Khung Persona + một trợ lý nội bộ (Custom GPT / Gemini Gem / Claude Project)"
+        "html": "Agent Design Canvas + System Instructions V1 + Agent V1 chạy được + 10 test case + Improvement Log",
+        "plain": "Agent Design Canvas + System Instructions V1 + Agent V1 chạy được + 10 test case + Improvement Log"
        }
       ],
       [

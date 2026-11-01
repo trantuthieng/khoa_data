@@ -65,8 +65,8 @@ class Courses(unittest.TestCase):
         act = self.client.get('/api/s/activity/ai01-th1', headers=auth).json()
         self.assertEqual(act['fields'][1]['type'], 'table')
         self.assertEqual(act['fields'][2]['type'], 'board')
-        self.post('/api/s/activity/ai01-th1', {'payload': {'fields': {'vi_tri': 'Trợ lý Content Marketing'}}})
-        r = self.client.post('/api/s/activity/ai01-th1', json={'payload': {'fields': {'vi_tri': 'Trợ lý Content Marketing'}}},
+        self.post('/api/s/activity/ai01-th1', {'payload': {'fields': {'problem': 'Giao dịch viên mất 5 phút mỗi cuộc gọi'}}})
+        r = self.client.post('/api/s/activity/ai01-th1', json={'payload': {'fields': {'problem': 'Giao dịch viên mất 5 phút mỗi cuộc gọi'}}},
                              headers=auth)
         self.assertEqual(r.status_code, 200)
 
