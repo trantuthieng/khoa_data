@@ -261,6 +261,12 @@
      "plain": "Dàn dựng đội hình là thiết kế một graph: dữ liệu (messages) chảy qua các node (Agent). Khi Reviewer không duyệt, luồng quay lại Worker tạo thành vòng lặp cho đến khi đạt chất lượng."
     },
     {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 230\" role=\"img\" aria-label=\"Kiến trúc đội hình Multi-Agent kết hợp Phân cấp (Router) – Tuần tự – Phản hồi (Writer ⇄ Editor)\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-ma-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-ma-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-ma-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-ma-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-ma-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"78\" width=\"110\" height=\"54\" rx=\"8\" class=\"r-note\"/><text x=\"65.0\" y=\"92.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Yêu cầu</text><text x=\"65.0\" y=\"109.5\" font-size=\"11.5\" text-anchor=\"middle\">từ người dùng</text><text x=\"65.0\" y=\"126.7\" font-size=\"11.5\" text-anchor=\"middle\">(BRIEF)</text><rect x=\"155\" y=\"78\" width=\"135\" height=\"54\" rx=\"8\" class=\"r-brand\"/><text x=\"222.5\" y=\"92.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">1. Router</text><text x=\"222.5\" y=\"109.5\" font-size=\"11.5\" text-anchor=\"middle\">Phân loại ý định</text><text x=\"222.5\" y=\"126.7\" font-size=\"11.5\" text-anchor=\"middle\">xuất JSON điều phối</text><rect x=\"155\" y=\"162\" width=\"135\" height=\"48\" rx=\"8\" class=\"r-bad\"/><text x=\"222.5\" y=\"173.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Human-in-the-loop</text><text x=\"222.5\" y=\"190.6\" font-size=\"11.5\" text-anchor=\"middle\">Chuyển người xử lý</text><text x=\"222.5\" y=\"207.7\" font-size=\"11.5\" text-anchor=\"middle\">(khủng hoảng / nhạy cảm)</text><rect x=\"335\" y=\"36\" width=\"155\" height=\"58\" rx=\"8\" class=\"r-brand\"/><text x=\"412.5\" y=\"52.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">2. Content Writer</text><text x=\"412.5\" y=\"69.5\" font-size=\"11.5\" text-anchor=\"middle\">(Worker chuyên môn)</text><text x=\"412.5\" y=\"86.7\" font-size=\"11.5\" text-anchor=\"middle\">Soạn thảo theo BRIEF</text><rect x=\"335\" y=\"136\" width=\"155\" height=\"58\" rx=\"8\" class=\"r-warn\"/><text x=\"412.5\" y=\"152.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">3. Editor khó tính</text><text x=\"412.5\" y=\"169.6\" font-size=\"11.5\" text-anchor=\"middle\">(Reviewer + Rubric)</text><text x=\"412.5\" y=\"186.7\" font-size=\"11.5\" text-anchor=\"middle\">Trả JSON APPROVE/REJECT</text><rect x=\"540\" y=\"78\" width=\"170\" height=\"58\" rx=\"8\" class=\"r-ok\"/><text x=\"625.0\" y=\"94.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Xuất bản / Bàn giao</text><text x=\"625.0\" y=\"111.5\" font-size=\"11.5\" text-anchor=\"middle\">Đạt cả 5 tiêu chí</text><text x=\"625.0\" y=\"128.7\" font-size=\"11.5\" text-anchor=\"middle\">(hoặc hết 3 vòng → Người)</text><line x1=\"120\" y1=\"105\" x2=\"153\" y2=\"105\" class=\"l-mut\" marker-end=\"url(#ai-ma-mut)\"/><line x1=\"222\" y1=\"132\" x2=\"222\" y2=\"160\" class=\"l-bad\" marker-end=\"url(#ai-ma-bad)\"/><text x=\"262\" y=\"149\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">nhạy cảm</text><line x1=\"290\" y1=\"92\" x2=\"333\" y2=\"65\" class=\"l-brand\" marker-end=\"url(#ai-ma-brand)\"/><text x=\"310\" y=\"68\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">giao việc</text><line x1=\"400\" y1=\"94\" x2=\"400\" y2=\"134\" class=\"l-brand\" marker-end=\"url(#ai-ma-brand)\"/><text x=\"362\" y=\"118\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">bản nháp</text><line x1=\"430\" y1=\"136\" x2=\"430\" y2=\"96\" class=\"l-acc\" marker-end=\"url(#ai-ma-acc)\"/><text x=\"488\" y=\"118\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">REJECT + lý do (≤3)</text><line x1=\"490\" y1=\"165\" x2=\"538\" y2=\"112\" class=\"l-ok\" marker-end=\"url(#ai-ma-ok)\"/><text x=\"522\" y=\"150\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">APPROVE</text></svg>",
+     "caption": "Kiến trúc đội hình Multi-Agent: Router định tuyến, Writer và Editor lặp phản hồi tối đa 3 vòng, chuyển người duyệt khi nhạy cảm",
+     "plain": "Kiến trúc đội hình Multi-Agent: Router định tuyến, Writer và Editor lặp phản hồi tối đa 3 vòng, chuyển người duyệt khi nhạy cảm"
+    },
+    {
      "t": "code",
      "text": "Người dùng → [Router] ──► [Writer] ──► [Editor]\n                              ▲            │\n                              └─ REJECT ───┘   (tối đa 3 vòng)\n                                           │ APPROVE\n                                           ▼\n                                        Kết quả"
     },
@@ -272,6 +278,115 @@
     }
    ],
    "id": "s3"
+  },
+  {
+   "title": "Hướng dẫn – Prompt cho Router, Worker và thông điệp bàn giao",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Router – chỉ phân việc, không làm việc"
+    },
+    {
+     "t": "code",
+     "text": "Bạn là bộ điều phối của phòng Truyền thông ảo. Đọc yêu cầu và chọn MỘT Agent xử lý:\n- Content_Writer: viết bài fanpage, bài PR, thông cáo báo chí\n- Data_Analyst  : tổng hợp, phân tích số liệu, vẽ biểu đồ\n- Translator    : dịch tài liệu Anh – Việt\n- Human         : yêu cầu nhạy cảm (khủng hoảng truyền thông, phát ngôn chính thức,\n                  vấn đề pháp lý) hoặc không rõ thuộc ai\nKhông tự trả lời yêu cầu. Chỉ trả về JSON:\n{\"next_agent\": \"<tên>\", \"ly_do\": \"<1 câu>\", \"yeu_cau_cho_agent\": \"<yêu cầu viết lại rõ ràng>\"}"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Yêu cầu",
+        "plain": "Yêu cầu"
+       },
+       {
+        "html": "Router chọn",
+        "plain": "Router chọn"
+       }
+      ],
+      [
+       {
+        "html": "“Viết bài fanpage giới thiệu gói lắp điện mặt trời áp mái”",
+        "plain": "“Viết bài fanpage giới thiệu gói lắp điện mặt trời áp mái”"
+       },
+       {
+        "html": "Content_Writer",
+        "plain": "Content_Writer"
+       }
+      ],
+      [
+       {
+        "html": "“Tổng hợp lượt tương tác fanpage quý III theo từng tháng”",
+        "plain": "“Tổng hợp lượt tương tác fanpage quý III theo từng tháng”"
+       },
+       {
+        "html": "Data_Analyst",
+        "plain": "Data_Analyst"
+       }
+      ],
+      [
+       {
+        "html": "“Báo chí hỏi về sự cố mất điện diện rộng hôm qua, soạn phát ngôn”",
+        "plain": "“Báo chí hỏi về sự cố mất điện diện rộng hôm qua, soạn phát ngôn”"
+       },
+       {
+        "html": "Human – phát ngôn chính thức, nhạy cảm",
+        "plain": "Human – phát ngôn chính thức, nhạy cảm"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Luôn có lối thoát <strong>Human</strong> cho yêu cầu nhạy cảm hoặc không rõ. Router đoán bừa còn tệ hơn chuyển cho người.",
+     "plain": "Luôn có lối thoát Human cho yêu cầu nhạy cảm hoặc không rõ. Router đoán bừa còn tệ hơn chuyển cho người.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Worker – Content Writer"
+    },
+    {
+     "t": "code",
+     "text": "# VAI TRÒ\nBạn là chuyên viên PR của Công ty Năng lượng Phú An (giả lập), viết bài fanpage và thông cáo ngắn.\n\n# ĐẦU VÀO\nMột BRIEF gồm: sản phẩm, đối tượng, ưu đãi, thời hạn, cách đăng ký.\nTừ vòng 2, bạn nhận thêm phản hồi của Editor.\n\n# YÊU CẦU BÀI VIẾT\n- Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng), nêu lợi ích chính.\n- Thân bài 120–180 chữ: sản phẩm, đối tượng, ưu đãi, thời hạn.\n- BẮT BUỘC kết thúc bằng 1 đoạn kêu gọi hành động có cách đăng ký và hạn đăng ký.\n- Chỉ dùng số liệu, cam kết có trong BRIEF. Thiếu thì ghi [CẦN XÁC NHẬN].\n- Giọng trang trọng, tối đa 1 dấu chấm than.\n\n# KHI NHẬN PHẢN HỒI CỦA EDITOR\nSửa đúng các lỗi được nêu, giữ nguyên phần đã đạt. Không viết lại từ đầu.\n\n# ĐẦU RA\nChỉ trả về bài viết, không giải thích."
+    },
+    {
+     "t": "p",
+     "html": "Reviewer (Editor) dùng rubric ở phần gợi ý chữa bài Thực hành 5. Yêu cầu của Writer và tiêu chí của Editor phải <strong>khớp nhau từng điểm</strong> – Writer không biết tiêu chí thì sẽ bị REJECT mãi.",
+     "plain": "Reviewer (Editor) dùng rubric ở phần gợi ý chữa bài Thực hành 5. Yêu cầu của Writer và tiêu chí của Editor phải khớp nhau từng điểm – Writer không biết tiêu chí thì sẽ bị REJECT mãi."
+    },
+    {
+     "t": "h3",
+     "text": "Thông điệp bàn giao giữa các Agent"
+    },
+    {
+     "t": "p",
+     "html": "Thông tin chuyển từ Agent này sang Agent khác nên có cấu trúc cố định để Agent nhận không phải đoán:",
+     "plain": "Thông tin chuyển từ Agent này sang Agent khác nên có cấu trúc cố định để Agent nhận không phải đoán:"
+    },
+    {
+     "t": "code",
+     "text": "{\"vong\": 2,\n \"brief\": \"...\",\n \"ban_nhap\": \"...\",\n \"phan_hoi_editor\": {\"status\": \"REJECT\",\n                     \"ly_do\": [\"tiêu chí 5: thiếu cách đăng ký\"],\n                     \"goi_y_sua\": \"thêm hotline và hạn đăng ký ở đoạn cuối\"}}"
+    }
+   ],
+   "id": "s4"
+  },
+  {
+   "title": "Ví dụ mẫu – Một vòng Writer – Editor chạy thật",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "code",
+     "text": "BRIEF: Gói lắp đặt điện mặt trời áp mái cho hộ gia đình. Ưu đãi: miễn phí khảo sát và\ngiảm 10% chi phí lắp đặt cho khách đăng ký trước 30/11/2026. Đăng ký: hotline 1900 xxxx\n(giả lập) hoặc tại các phòng giao dịch.\n\n── VÒNG 1 ── Writer:\n\"Điện mặt trời – xu hướng tất yếu của mọi gia đình!!!\nLắp ngay hôm nay để tiết kiệm tới 70% tiền điện mỗi tháng. Công ty Năng lượng Phú An\nmang đến gói lắp đặt điện mặt trời áp mái, thi công nhanh, thiết bị chính hãng...\"\n\n── Editor:\n{\"status\": \"REJECT\",\n \"ly_do\": [\"tiêu chí 1: tiêu đề không nêu lợi ích cụ thể của gói\",\n           \"tiêu chí 2: thiếu ưu đãi và thời hạn\",\n           \"tiêu chí 3: 'tiết kiệm tới 70%', 'thiết bị chính hãng' không có trong BRIEF\",\n           \"tiêu chí 4: 3 dấu chấm than\",\n           \"tiêu chí 5: không có cách đăng ký\"],\n \"goi_y_sua\": \"Bỏ 70% và 'chính hãng'; nêu miễn phí khảo sát, giảm 10%, hạn 30/11/2026, hotline.\"}\n\n── VÒNG 2 ── Writer:\n\"Giảm 10% khi lắp điện mặt trời áp mái\nHộ gia đình đăng ký gói lắp đặt điện mặt trời áp mái của Công ty Năng lượng Phú An trước\nngày 30/11/2026 được miễn phí khảo sát và giảm 10% chi phí lắp đặt. (... rút gọn ...)\nĐăng ký qua hotline 1900 xxxx hoặc tại phòng giao dịch gần nhất trước ngày 30/11/2026\nđể nhận ưu đãi.\"\n\n── Editor:\n{\"status\": \"APPROVE\", \"ly_do\": [], \"goi_y_sua\": \"\"}"
+    },
+    {
+     "t": "p",
+     "html": "Đọc log: lỗi “con số không có trong BRIEF” ở vòng 1 là lỗi của Writer. Nếu lỗi này lặp lại ở nhiều bài, sửa gốc: thêm vào prompt Writer “Chỉ dùng số liệu, cam kết có trong BRIEF” (mẫu ở mục Hướng dẫn đã có câu này). Sau khi sửa, chạy lại bộ Eval để xác nhận tỷ lệ APPROVE vòng 1 thật sự tăng.",
+     "plain": "Đọc log: lỗi “con số không có trong BRIEF” ở vòng 1 là lỗi của Writer. Nếu lỗi này lặp lại ở nhiều bài, sửa gốc: thêm vào prompt Writer “Chỉ dùng số liệu, cam kết có trong BRIEF” (mẫu ở mục Hướng dẫn đã có câu này). Sau khi sửa, chạy lại bộ Eval để xác nhận tỷ lệ APPROVE vòng 1 thật sự tăng.",
+     "callout": "example"
+    }
+   ],
+   "id": "s5"
   },
   {
    "title": "Phần 3 – Đo lường và đánh giá (KPI & Eval)",
@@ -353,7 +468,7 @@
     },
     {
      "t": "h3",
-     "text": "Ví dụ: KPI cho đội PR"
+     "text": "Ví dụ: KPI cho đội PR (chuẩn Slide 15)"
     },
     {
      "t": "table",
@@ -372,76 +487,40 @@
         "plain": "Cách đo"
        },
        {
-        "html": "Mục tiêu gợi ý",
-        "plain": "Mục tiêu gợi ý"
+        "html": "Mục tiêu chuẩn (Slide 15)",
+        "plain": "Mục tiêu chuẩn (Slide 15)"
        }
       ],
       [
        {
-        "html": "Tỷ lệ APPROVE ngay vòng 1",
-        "plain": "Tỷ lệ APPROVE ngay vòng 1"
-       },
-       {
-        "html": "Chất lượng Worker",
-        "plain": "Chất lượng Worker"
-       },
-       {
-        "html": "Số bài APPROVE vòng 1 / tổng số bài",
-        "plain": "Số bài APPROVE vòng 1 / tổng số bài"
-       },
-       {
-        "html": "≥ 60%",
-        "plain": "≥ 60%"
-       }
-      ],
-      [
-       {
-        "html": "Số vòng sửa trung bình",
-        "plain": "Số vòng sửa trung bình"
-       },
-       {
-        "html": "Phối hợp",
-        "plain": "Phối hợp"
-       },
-       {
-        "html": "Tổng số vòng / số bài",
-        "plain": "Tổng số vòng / số bài"
-       },
-       {
-        "html": "≤ 2",
-        "plain": "≤ 2"
-       }
-      ],
-      [
-       {
-        "html": "Lỗi thông tin sai lọt qua Editor",
-        "plain": "Lỗi thông tin sai lọt qua Editor"
-       },
-       {
-        "html": "Chính xác",
-        "plain": "Chính xác"
-       },
-       {
-        "html": "Người kiểm tra mẫu 10 bài/tuần",
-        "plain": "Người kiểm tra mẫu 10 bài/tuần"
-       },
-       {
-        "html": "0",
-        "plain": "0"
-       }
-      ],
-      [
-       {
-        "html": "Đúng định dạng và giọng điệu",
-        "plain": "Đúng định dạng và giọng điệu"
+        "html": "Tỷ lệ duyệt ngay vòng 1",
+        "plain": "Tỷ lệ duyệt ngay vòng 1"
        },
        {
         "html": "Tuân thủ",
         "plain": "Tuân thủ"
        },
        {
-        "html": "Đối chiếu checklist",
-        "plain": "Đối chiếu checklist"
+        "html": "Số bài được Editor APPROVE ngay lần đầu / tổng số bài",
+        "plain": "Số bài được Editor APPROVE ngay lần đầu / tổng số bài"
+       },
+       {
+        "html": "> 80%",
+        "plain": "> 80%"
+       }
+      ],
+      [
+       {
+        "html": "Không sai lỗi chính tả & số liệu",
+        "plain": "Không sai lỗi chính tả & số liệu"
+       },
+       {
+        "html": "Chính xác",
+        "plain": "Chính xác"
+       },
+       {
+        "html": "Tỷ lệ bài xuất bản đúng chính tả, đúng dữ kiện trong BRIEF",
+        "plain": "Tỷ lệ bài xuất bản đúng chính tả, đúng dữ kiện trong BRIEF"
        },
        {
         "html": "100%",
@@ -450,20 +529,38 @@
       ],
       [
        {
-        "html": "Thời gian và token mỗi bài",
-        "plain": "Thời gian và token mỗi bài"
+        "html": "Thời gian hoàn thành 1 bài",
+        "plain": "Thời gian hoàn thành 1 bài"
        },
        {
         "html": "Tốc độ & chi phí",
         "plain": "Tốc độ & chi phí"
        },
        {
-        "html": "Đọc từ log của nền tảng",
-        "plain": "Đọc từ log của nền tảng"
+        "html": "Tổng thời gian từ lúc nhận BRIEF đến khi chốt bài",
+        "plain": "Tổng thời gian từ lúc nhận BRIEF đến khi chốt bài"
        },
        {
-        "html": "Theo ngân sách đã duyệt",
-        "plain": "Theo ngân sách đã duyệt"
+        "html": "< 2 phút",
+        "plain": "< 2 phút"
+       }
+      ],
+      [
+       {
+        "html": "Số vòng lặp tối đa (Max Retries)",
+        "plain": "Số vòng lặp tối đa (Max Retries)"
+       },
+       {
+        "html": "Tốc độ & chi phí",
+        "plain": "Tốc độ & chi phí"
+       },
+       {
+        "html": "Giới hạn số lần Writer – Editor trả bài qua lại trước khi chuyển người duyệt",
+        "plain": "Giới hạn số lần Writer – Editor trả bài qua lại trước khi chuyển người duyệt"
+       },
+       {
+        "html": "Không quá 3 lần (≤ 3)",
+        "plain": "Không quá 3 lần (≤ 3)"
        }
       ]
      ]
@@ -481,7 +578,286 @@
      "callout": "apply"
     }
    ],
-   "id": "s4"
+   "id": "s6"
+  },
+  {
+   "title": "Hướng dẫn – Xây bộ Eval và chấm bằng LLM",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Bước 1 – Viết bộ đề kiểm thử"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi đề gồm đầu vào và kết quả mong đợi. Trộn nhiều loại đề, không chỉ đề “dễ”:",
+     "plain": "Mỗi đề gồm đầu vào và kết quả mong đợi. Trộn nhiều loại đề, không chỉ đề “dễ”:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Kết quả mong đợi",
+        "plain": "Kết quả mong đợi"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Brief đầy đủ: gói điện mặt trời, ưu đãi, hạn, hotline",
+        "plain": "Brief đầy đủ: gói điện mặt trời, ưu đãi, hạn, hotline"
+       },
+       {
+        "html": "Bình thường",
+        "plain": "Bình thường"
+       },
+       {
+        "html": "APPROVE trong tối đa 2 vòng, đủ 5 tiêu chí",
+        "plain": "APPROVE trong tối đa 2 vòng, đủ 5 tiêu chí"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Brief thiếu hạn ưu đãi",
+        "plain": "Brief thiếu hạn ưu đãi"
+       },
+       {
+        "html": "Thiếu dữ liệu",
+        "plain": "Thiếu dữ liệu"
+       },
+       {
+        "html": "Bài ghi [CẦN XÁC NHẬN] ở chỗ thời hạn, không tự bịa ngày",
+        "plain": "Bài ghi [CẦN XÁC NHẬN] ở chỗ thời hạn, không tự bịa ngày"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Brief yêu cầu “cam kết tiết kiệm 50% tiền điện” không có căn cứ",
+        "plain": "Brief yêu cầu “cam kết tiết kiệm 50% tiền điện” không có căn cứ"
+       },
+       {
+        "html": "Bẫy",
+        "plain": "Bẫy"
+       },
+       {
+        "html": "Writer không đưa cam kết, hoặc Editor REJECT",
+        "plain": "Writer không đưa cam kết, hoặc Editor REJECT"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Brief viết bằng tiếng Anh",
+        "plain": "Brief viết bằng tiếng Anh"
+       },
+       {
+        "html": "Khác thường",
+        "plain": "Khác thường"
+       },
+       {
+        "html": "Bài vẫn bằng tiếng Việt, đủ nội dung",
+        "plain": "Bài vẫn bằng tiếng Việt, đủ nội dung"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "“Viết bài xin lỗi khách hàng về sự cố mất điện hôm qua”",
+        "plain": "“Viết bài xin lỗi khách hàng về sự cố mất điện hôm qua”"
+       },
+       {
+        "html": "Nhạy cảm",
+        "plain": "Nhạy cảm"
+       },
+       {
+        "html": "Router chuyển Human",
+        "plain": "Router chuyển Human"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "15–20 đề là đủ để bắt đầu. Mỗi lần gặp lỗi mới trong vận hành, thêm một đề vào bộ – bộ Eval lớn dần theo kinh nghiệm thực tế.",
+     "plain": "15–20 đề là đủ để bắt đầu. Mỗi lần gặp lỗi mới trong vận hành, thêm một đề vào bộ – bộ Eval lớn dần theo kinh nghiệm thực tế.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Chấm bằng LLM (LLM-as-a-judge)"
+    },
+    {
+     "t": "p",
+     "html": "Chấm tay 20 bài sau mỗi lần sửa prompt rất mất thời gian. Có thể dùng một LLM làm giám khảo chấm theo rubric, rồi con người kiểm tra lại khoảng 20–30% số bài.",
+     "plain": "Chấm tay 20 bài sau mỗi lần sửa prompt rất mất thời gian. Có thể dùng một LLM làm giám khảo chấm theo rubric, rồi con người kiểm tra lại khoảng 20–30% số bài."
+    },
+    {
+     "t": "code",
+     "text": "Bạn là giám khảo. Chấm BÀI VIẾT theo từng tiêu chí, mỗi tiêu chí 0, 1 hoặc 2 điểm\n(0: không đạt; 1: đạt một phần; 2: đạt hoàn toàn).\nA. Chính xác: mọi số liệu, cam kết đều có trong BRIEF\nB. Đầy đủ: có sản phẩm, đối tượng, ưu đãi, thời hạn, cách đăng ký\nC. Tuân thủ: tiêu đề tối đa 12 tiếng, giọng trang trọng, tối đa 1 dấu chấm than\nVới mỗi tiêu chí, TRÍCH CÂU trong bài làm căn cứ trước, rồi mới cho điểm.\nChỉ trả về JSON:\n{\"A\": {\"can_cu\": \"...\", \"diem\": 0}, \"B\": {...}, \"C\": {...}, \"tong\": 0}\n\n<brief>{{brief}}</brief>\n<bai_viet>{{bai_viet}}</bai_viet>"
+    },
+    {
+     "t": "p",
+     "html": "Giám khảo LLM cũng chấm sai, thường dễ dãi với bài dài và trôi chảy. Bắt buộc trích căn cứ trước khi cho điểm và định kỳ so với điểm chấm tay giúp giảm sai lệch.",
+     "plain": "Giám khảo LLM cũng chấm sai, thường dễ dãi với bài dài và trôi chảy. Bắt buộc trích căn cứ trước khi cho điểm và định kỳ so với điểm chấm tay giúp giảm sai lệch.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Nhật ký phiên bản"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Phiên bản",
+        "plain": "Phiên bản"
+       },
+       {
+        "html": "Thay đổi",
+        "plain": "Thay đổi"
+       },
+       {
+        "html": "Điểm TB (0–6)",
+        "plain": "Điểm TB (0–6)"
+       },
+       {
+        "html": "APPROVE vòng 1",
+        "plain": "APPROVE vòng 1"
+       },
+       {
+        "html": "Ghi chú",
+        "plain": "Ghi chú"
+       }
+      ],
+      [
+       {
+        "html": "v1",
+        "plain": "v1"
+       },
+       {
+        "html": "Prompt ban đầu",
+        "plain": "Prompt ban đầu"
+       },
+       {
+        "html": "3,8",
+        "plain": "3,8"
+       },
+       {
+        "html": "35%",
+        "plain": "35%"
+       },
+       {
+        "html": "Hay bịa số liệu tiết kiệm",
+        "plain": "Hay bịa số liệu tiết kiệm"
+       }
+      ],
+      [
+       {
+        "html": "v2",
+        "plain": "v2"
+       },
+       {
+        "html": "Writer: “Chỉ dùng số liệu trong BRIEF”",
+        "plain": "Writer: “Chỉ dùng số liệu trong BRIEF”"
+       },
+       {
+        "html": "4,9",
+        "plain": "4,9"
+       },
+       {
+        "html": "55%",
+        "plain": "55%"
+       },
+       {
+        "html": "Hết bịa số; vẫn hay thiếu kêu gọi hành động",
+        "plain": "Hết bịa số; vẫn hay thiếu kêu gọi hành động"
+       }
+      ],
+      [
+       {
+        "html": "v3",
+        "plain": "v3"
+       },
+       {
+        "html": "Writer: “BẮT BUỘC kết thúc bằng kêu gọi hành động có hotline và hạn”",
+        "plain": "Writer: “BẮT BUỘC kết thúc bằng kêu gọi hành động có hotline và hạn”"
+       },
+       {
+        "html": "5,7",
+        "plain": "5,7"
+       },
+       {
+        "html": "85%",
+        "plain": "85%"
+       },
+       {
+        "html": "Đạt mục tiêu > 80%",
+        "plain": "Đạt mục tiêu > 80%"
+       }
+      ],
+      [
+       {
+        "html": "v4",
+        "plain": "v4"
+       },
+       {
+        "html": "Đổi Writer sang mô hình rẻ hơn",
+        "plain": "Đổi Writer sang mô hình rẻ hơn"
+       },
+       {
+        "html": "5,4",
+        "plain": "5,4"
+       },
+       {
+        "html": "75%",
+        "plain": "75%"
+       },
+       {
+        "html": "Chất lượng giảm nhẹ, chi phí giảm – cân nhắc",
+        "plain": "Chất lượng giảm nhẹ, chi phí giảm – cân nhắc"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Số liệu trên là minh họa. Điều cần học là cách đọc: mỗi phiên bản chỉ đổi một điểm, nên biết chính xác thay đổi nào tạo ra cải thiện, và biết đánh đổi giữa chất lượng với chi phí (v3 so với v4).",
+     "plain": "Số liệu trên là minh họa. Điều cần học là cách đọc: mỗi phiên bản chỉ đổi một điểm, nên biết chính xác thay đổi nào tạo ra cải thiện, và biết đánh đổi giữa chất lượng với chi phí (v3 so với v4).",
+     "callout": "example"
+    }
+   ],
+   "id": "s7"
   },
   {
    "title": "Phần 4 – Bảo trì và tinh chỉnh",
@@ -554,7 +930,209 @@
      "inline": false
     }
    ],
-   "id": "s5"
+   "id": "s8"
+  },
+  {
+   "title": "Làm trên Dify – Phòng ban ảo Writer – Editor và bộ Eval",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 5 – Mô phỏng Phòng ban ảo Writer – Editor & Chấm tự động 8 đề Eval):</strong> Chạy thử Router – Writer – Editor trên 8 đề trong bo_de_eval_gia_lap.csv, bật/tắt bản vá prompt v1/v2/v3 và xem KPI trực tiếp. <a href=\"/static/labs/ai/index.html?tab=eval\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 5 – Mô phỏng Phòng ban ảo Writer – Editor & Chấm tự động 8 đề Eval): Chạy thử Router – Writer – Editor trên 8 đề trong bo_de_eval_gia_lap.csv, bật/tắt bản vá prompt v1/v2/v3 và xem KPI trực tiếp. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "html": "Khoảng 75 phút. Dùng loại <strong>Workflow</strong> (mỗi lần chạy xử lý một brief) thay vì Chatflow để dễ chạy lại nhiều đề kiểm thử.",
+     "plain": "Khoảng 75 phút. Dùng loại Workflow (mỗi lần chạy xử lý một brief) thay vì Chatflow để dễ chạy lại nhiều đề kiểm thử."
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/bo_de_eval_gia_lap.csv\" download>bo_de_eval_gia_lap.csv</a> – 8 đề kiểm thử và cột ghi điểm cho bộ Eval (buổi 5)",
+       "level": 0,
+       "plain": "bo_de_eval_gia_lap.csv – 8 đề kiểm thử và cột ghi điểm cho bộ Eval (buổi 5)"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Tạo Workflow và ô nhập brief"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Studio</strong> → <strong>Create from Blank</strong> → <strong>Workflow</strong> → tên “Phong PR ao”.",
+       "level": 0,
+       "plain": "Studio → Create from Blank → Workflow → tên “Phong PR ao”."
+      },
+      {
+       "html": "Node <strong>User Input</strong>: thêm trường <code>brief</code> kiểu đoạn văn dài (Paragraph), bắt buộc.",
+       "level": 0,
+       "plain": "Node User Input: thêm trường brief kiểu đoạn văn dài (Paragraph), bắt buộc."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Router: node Question Classifier"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Sau User Input thêm node <strong>Question Classifier</strong>, đầu vào <code>brief</code>. Tạo hai lớp: “Bài truyền thông thông thường: giới thiệu sản phẩm, dịch vụ, ưu đãi” và “Nhạy cảm: xin lỗi, sự cố, khủng hoảng, phát ngôn chính thức”.",
+       "level": 0,
+       "plain": "Sau User Input thêm node Question Classifier, đầu vào brief. Tạo hai lớp: “Bài truyền thông thông thường: giới thiệu sản phẩm, dịch vụ, ưu đãi” và “Nhạy cảm: xin lỗi, sự cố, khủng hoảng, phát ngôn chính thức”."
+      },
+      {
+       "html": "Lớp Nhạy cảm nối tới node <strong>Output</strong>, trả về: “Chuyển người duyệt: yêu cầu nhạy cảm.”",
+       "level": 0,
+       "plain": "Lớp Nhạy cảm nối tới node Output, trả về: “Chuyển người duyệt: yêu cầu nhạy cảm.”"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Worker: node LLM “Writer”"
+    },
+    {
+     "t": "p",
+     "html": "Lớp thông thường nối tới node LLM đổi tên “Writer”. SYSTEM: dán prompt Writer ở mục “Hướng dẫn – Prompt cho Router, Worker”. USER: “BRIEF:” rồi chèn biến <code>brief</code>.",
+     "plain": "Lớp thông thường nối tới node LLM đổi tên “Writer”. SYSTEM: dán prompt Writer ở mục “Hướng dẫn – Prompt cho Router, Worker”. USER: “BRIEF:” rồi chèn biến brief."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 4 – Reviewer: node LLM “Editor”"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Thêm node LLM “Editor”, tham số kiểu <em>Precise</em>. USER: BRIEF + biến <code>text</code> của Writer. SYSTEM: rubric bạn viết ở Thực hành 5, hoặc bản rút gọn dưới đây.",
+       "level": 0,
+       "plain": "Thêm node LLM “Editor”, tham số kiểu Precise. USER: BRIEF + biến text của Writer. SYSTEM: rubric bạn viết ở Thực hành 5, hoặc bản rút gọn dưới đây."
+      },
+      {
+       "html": "Thêm IF/ELSE: <code>text</code> của Editor <em>start with</em> <code>APPROVE</code> → node Output trả về bài của Writer.",
+       "level": 0,
+       "plain": "Thêm IF/ELSE: text của Editor start with APPROVE → node Output trả về bài của Writer."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Bạn là biên tập viên khó tính. Chấm BÀI VIẾT so với BRIEF theo 5 tiêu chí:\n1. Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng), nêu lợi ích chính\n2. Có đủ: sản phẩm, đối tượng, ưu đãi, thời hạn\n3. Không có số liệu, cam kết nào ngoài BRIEF\n4. Giọng trang trọng, tối đa 1 dấu chấm than\n5. Kết thúc bằng đoạn kêu gọi hành động có cách đăng ký và hạn đăng ký\nDòng đầu tiên chỉ ghi APPROVE (đạt cả 5) hoặc REJECT.\nCác dòng sau: tiêu chí không đạt, trích câu làm căn cứ, gợi ý sửa."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 5 – Vòng sửa"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nhánh ELSE (REJECT) → node LLM “Writer – sửa” (USER: BRIEF + bài cũ + góp ý của Editor; “sửa đúng lỗi được nêu, giữ phần đã đạt”) → node LLM “Editor – vòng 2” (cùng prompt Editor).",
+       "level": 0,
+       "plain": "Nhánh ELSE (REJECT) → node LLM “Writer – sửa” (USER: BRIEF + bài cũ + góp ý của Editor; “sửa đúng lỗi được nêu, giữ phần đã đạt”) → node LLM “Editor – vòng 2” (cùng prompt Editor)."
+      },
+      {
+       "html": "IF/ELSE sau Editor – vòng 2: APPROVE → Output bài đã sửa; REJECT → Output “Chuyển người duyệt” kèm bài và góp ý.",
+       "level": 0,
+       "plain": "IF/ELSE sau Editor – vòng 2: APPROVE → Output bài đã sửa; REJECT → Output “Chuyển người duyệt” kèm bài và góp ý."
+      },
+      {
+       "html": "Khi đã quen, thay phần lặp này bằng node <strong>Loop</strong> với Maximum Loop Count 3, như gợi ý ở buổi 3.",
+       "level": 0,
+       "plain": "Khi đã quen, thay phần lặp này bằng node Loop với Maximum Loop Count 3, như gợi ý ở buổi 3."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 6 – Chạy thử và đọc log"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Bấm <strong>Test Run</strong>, dán brief đề E01 trong file bộ đề, bấm <strong>Start Run</strong>.",
+       "level": 0,
+       "plain": "Bấm Test Run, dán brief đề E01 trong file bộ đề, bấm Start Run."
+      },
+      {
+       "html": "Mở từng node trong kết quả chạy: Writer viết gì, Editor REJECT vì tiêu chí nào, vòng 2 đã sửa được chưa. Đây chính là “đọc log” ở Phần 4.",
+       "level": 0,
+       "plain": "Mở từng node trong kết quả chạy: Writer viết gì, Editor REJECT vì tiêu chí nào, vòng 2 đã sửa được chưa. Đây chính là “đọc log” ở Phần 4."
+      },
+      {
+       "html": "Ghi lại số vòng, thời gian chạy và số token hiện trong chi tiết lần chạy.",
+       "level": 0,
+       "plain": "Ghi lại số vòng, thời gian chạy và số token hiện trong chi tiết lần chạy."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 7 – Chạy bộ Eval"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở bo_de_eval_gia_lap.csv bằng Excel. Chạy lần lượt 8 brief (E01–E08) bằng Test Run.",
+       "level": 0,
+       "plain": "Mở bo_de_eval_gia_lap.csv bằng Excel. Chạy lần lượt 8 brief (E01–E08) bằng Test Run."
+      },
+      {
+       "html": "Chấm từng kết quả theo cột <code>ket_qua_mong_doi</code>, thang 0–6 của prompt giám khảo ở mục “Hướng dẫn – Xây bộ Eval”. Có thể dán prompt giám khảo vào ChatGPT hoặc Claude kèm brief và bài viết để chấm nhanh; tự chấm lại ít nhất 2 bài để kiểm tra giám khảo.",
+       "level": 0,
+       "plain": "Chấm từng kết quả theo cột ket_qua_mong_doi, thang 0–6 của prompt giám khảo ở mục “Hướng dẫn – Xây bộ Eval”. Có thể dán prompt giám khảo vào ChatGPT hoặc Claude kèm brief và bài viết để chấm nhanh; tự chấm lại ít nhất 2 bài để kiểm tra giám khảo."
+      },
+      {
+       "html": "Ghi điểm vào cột <code>diem_v1</code>; tính điểm trung bình và tỷ lệ APPROVE ngay vòng 1.",
+       "level": 0,
+       "plain": "Ghi điểm vào cột diem_v1; tính điểm trung bình và tỷ lệ APPROVE ngay vòng 1."
+      },
+      {
+       "html": "Đọc các bài điểm thấp, tìm lỗi lặp lại, sửa <strong>một</strong> điểm trong prompt Writer hoặc rubric Editor, chạy lại cả 8 đề, ghi vào <code>diem_v2</code>.",
+       "level": 0,
+       "plain": "Đọc các bài điểm thấp, tìm lỗi lặp lại, sửa một điểm trong prompt Writer hoặc rubric Editor, chạy lại cả 8 đề, ghi vào diem_v2."
+      },
+      {
+       "html": "So sánh v1 và v2. Đề nào điểm giảm? Đó là suy thoái – lý do phải chạy lại toàn bộ bộ đề, không chỉ đề bị lỗi.",
+       "level": 0,
+       "plain": "So sánh v1 và v2. Đề nào điểm giảm? Đó là suy thoái – lý do phải chạy lại toàn bộ bộ đề, không chỉ đề bị lỗi."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Đề E08 (xin lỗi về sự cố) phải dừng ở lớp Nhạy cảm. Question Classifier xếp nhầm thì bổ sung ví dụ vào mô tả lớp – đúng kỹ thuật few-shot ở Cẩm nang prompt 2.",
+     "plain": "Đề E08 (xin lỗi về sự cố) phải dừng ở lớp Nhạy cảm. Question Classifier xếp nhầm thì bổ sung ví dụ vào mô tả lớp – đúng kỹ thuật few-shot ở Cẩm nang prompt 2.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Làm trên Coze, hoặc khi không có nền tảng"
+    },
+    {
+     "t": "p",
+     "html": "Coze: tạo Workflow với các node LLM và Condition tương tự, hoặc dùng chế độ Multi-Agent. Không có nền tảng: mở 2 cuộc trò chuyện – một cho Writer (dán prompt Writer), một cho Editor (dán rubric) – và tự chuyển bài qua lại giữa hai cửa sổ. Chậm hơn, nhưng thấy rất rõ hai “nhân sự ảo” phối hợp ra sao.",
+     "plain": "Coze: tạo Workflow với các node LLM và Condition tương tự, hoặc dùng chế độ Multi-Agent. Không có nền tảng: mở 2 cuộc trò chuyện – một cho Writer (dán prompt Writer), một cho Editor (dán rubric) – và tự chuyển bài qua lại giữa hai cửa sổ. Chậm hơn, nhưng thấy rất rõ hai “nhân sự ảo” phối hợp ra sao."
+    }
+   ],
+   "id": "s9"
   },
   {
    "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
@@ -565,6 +1143,52 @@
      "id": "ai05-th5",
      "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
      "inline": false
+    },
+    {
+     "t": "p",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Thử ngay Phòng ban ảo Writer – Editor & Bảng chấm Eval 8 đề trên trình duyệt):</strong> Chạy thử từng đề E01..E08 hoặc chạy cả bộ Eval để so sánh điểm trước và sau khi tinh chỉnh System Prompt. <a href=\"/static/labs/ai/index.html?tab=eval\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Thử ngay Phòng ban ảo Writer – Editor & Bảng chấm Eval 8 đề trên trình duyệt): Chạy thử từng đề E01..E08 hoặc chạy cả bộ Eval để so sánh điểm trước và sau khi tinh chỉnh System Prompt. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "html": "Thao tác chi tiết trên Dify ở mục <strong>Làm trên Dify – Phòng ban ảo Writer – Editor</strong> ngay trước bài này; phần KPI và phân tích log dùng kết quả chạy bộ Eval ở bước 7 của mục đó.",
+     "plain": "Thao tác chi tiết trên Dify ở mục Làm trên Dify – Phòng ban ảo Writer – Editor ngay trước bài này; phần KPI và phân tích log dùng kết quả chạy bộ Eval ở bước 7 của mục đó."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lựa chọn đề thực hành",
+        "plain": "Lựa chọn đề thực hành"
+       },
+       {
+        "html": "Chủ đề & Bộ đề Eval",
+        "plain": "Chủ đề & Bộ đề Eval"
+       }
+      ],
+      [
+       {
+        "html": "Đề A (Theo giáo trình chuẩn)",
+        "plain": "Đề A (Theo giáo trình chuẩn)"
+       },
+       {
+        "html": "Chiến dịch PR Gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình (E01–E02).",
+        "plain": "Chiến dịch PR Gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình (E01–E02)."
+       }
+      ],
+      [
+       {
+        "html": "Đề B (Ngành Điện lực)",
+        "plain": "Đề B (Ngành Điện lực)"
+       },
+       {
+        "html": "Đội truyền thông & thông báo khách hàng Điện lực Phú An: thông báo tiết kiệm điện mùa nắng nóng, cài app CSKH, bảo dưỡng định kỳ và định tuyến sự cố nhạy cảm (E01–E08).",
+        "plain": "Đội truyền thông & thông báo khách hàng Điện lực Phú An: thông báo tiết kiệm điện mùa nắng nóng, cài app CSKH, bảo dưỡng định kỳ và định tuyến sự cố nhạy cảm (E01–E08)."
+       }
+      ]
+     ]
     },
     {
      "t": "table",
@@ -633,7 +1257,7 @@
     },
     {
      "t": "code",
-     "text": "# EDITOR – RUBRIC\nChấm bài PR theo 5 tiêu chí, mỗi tiêu chí Đạt/Không đạt:\n1. Tiêu đề ≤ 12 từ, nêu lợi ích chính\n2. Có đủ: sản phẩm, đối tượng, ưu đãi, thời hạn\n3. Không có số liệu/cam kết không có trong BRIEF\n4. Giọng trang trọng, không quá 1 dấu chấm than\n5. Kết thúc bằng 1 đoạn Call-to-Action có cách đăng ký\nAPPROVE khi cả 5 tiêu chí Đạt. Ngược lại REJECT.\nChỉ trả về JSON:\n{\"status\": \"APPROVE\" | \"REJECT\", \"ly_do\": [\"tiêu chí 3: ...\"], \"goi_y_sua\": \"...\"}",
+     "text": "# EDITOR – RUBRIC\nChấm bài PR theo 5 tiêu chí, mỗi tiêu chí Đạt/Không đạt:\n1. Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng), nêu lợi ích chính\n2. Có đủ: sản phẩm, đối tượng, ưu đãi, thời hạn\n3. Không có số liệu/cam kết không có trong BRIEF\n4. Giọng trang trọng, không quá 1 dấu chấm than\n5. Kết thúc bằng 1 đoạn Call-to-Action có cách đăng ký\nAPPROVE khi cả 5 tiêu chí Đạt. Ngược lại REJECT.\nChỉ trả về JSON:\n{\"status\": \"APPROVE\" | \"REJECT\", \"ly_do\": [\"tiêu chí 3: ...\"], \"goi_y_sua\": \"...\"}",
      "reveal": "ai05-th5"
     },
     {
@@ -644,7 +1268,166 @@
     }
    ],
    "activity": "ai05-th5",
-   "id": "s6"
+   "id": "s10"
+  },
+  {
+   "title": "Tự luyện buổi 5",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Bài 1 – Router cho phòng Chăm sóc khách hàng ảo"
+    },
+    {
+     "t": "p",
+     "html": "Viết prompt Router chọn giữa <code>Agent_HoaDon</code>, <code>Agent_SuCo</code>, <code>Agent_ThuTuc</code> và <code>Human</code>, có 4 ví dụ mẫu và luật ưu tiên an toàn.",
+     "plain": "Viết prompt Router chọn giữa Agent_HoaDon, Agent_SuCo, Agent_ThuTuc và Human, có 4 ví dụ mẫu và luật ưu tiên an toàn."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "code",
+       "text": "Bạn là bộ điều phối của Trung tâm CSKH ảo. Chọn MỘT Agent cho tin nhắn của khách:\n- Agent_HoaDon : tiền điện, chỉ số công tơ, thanh toán\n- Agent_SuCo   : mất điện, chập cháy, dây đứt, điện chập chờn\n- Agent_ThuTuc : cấp điện mới, sang tên, tăng công suất, di dời công tơ\n- Human        : khiếu nại, đòi bồi thường, khách bức xúc, hoặc không rõ\nCó dấu hiệu nguy hiểm (cháy, điện giật, dây đứt) → luôn chọn Agent_SuCo.\nKhông tự trả lời khách. Chỉ trả về JSON: {\"next_agent\": \"...\", \"ly_do\": \"...\"}\n\n\"Sao tháng này tiền điện tăng vọt?\" → {\"next_agent\": \"Agent_HoaDon\", \"ly_do\": \"hỏi tiền điện\"}\n\"Dây điện trước nhà bị đứt, đang tóe lửa\" → {\"next_agent\": \"Agent_SuCo\", \"ly_do\": \"nguy hiểm\"}\n\"Muốn sang tên hợp đồng điện cho con\" → {\"next_agent\": \"Agent_ThuTuc\", \"ly_do\": \"sang tên\"}\n\"Lần thứ ba gọi rồi mà không ai xử lý, tôi sẽ kiện\" → {\"next_agent\": \"Human\", \"ly_do\": \"khiếu nại, bức xúc\"}\n\nTin nhắn: {{tin_nhan}}"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 2 – Rubric chấm 0–2 điểm"
+    },
+    {
+     "t": "p",
+     "html": "Viết rubric 3 tiêu chí, mỗi tiêu chí mô tả rõ thế nào là 0, 1, 2 điểm, để Reviewer kiểm duyệt bản tóm tắt biên bản họp.",
+     "plain": "Viết rubric 3 tiêu chí, mỗi tiêu chí mô tả rõ thế nào là 0, 1, 2 điểm, để Reviewer kiểm duyệt bản tóm tắt biên bản họp."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "table",
+       "rows": [
+        [
+         {
+          "html": "Tiêu chí",
+          "plain": "Tiêu chí"
+         },
+         {
+          "html": "0 điểm",
+          "plain": "0 điểm"
+         },
+         {
+          "html": "1 điểm",
+          "plain": "1 điểm"
+         },
+         {
+          "html": "2 điểm",
+          "plain": "2 điểm"
+         }
+        ],
+        [
+         {
+          "html": "A. Đủ kết luận",
+          "plain": "A. Đủ kết luận"
+         },
+         {
+          "html": "Thiếu từ 2 kết luận trở lên",
+          "plain": "Thiếu từ 2 kết luận trở lên"
+         },
+         {
+          "html": "Thiếu 1 kết luận",
+          "plain": "Thiếu 1 kết luận"
+         },
+         {
+          "html": "Có đủ mọi kết luận trong biên bản gốc",
+          "plain": "Có đủ mọi kết luận trong biên bản gốc"
+         }
+        ],
+        [
+         {
+          "html": "B. Phân công rõ",
+          "plain": "B. Phân công rõ"
+         },
+         {
+          "html": "Phần lớn việc thiếu người chủ trì hoặc hạn",
+          "plain": "Phần lớn việc thiếu người chủ trì hoặc hạn"
+         },
+         {
+          "html": "Có việc thiếu người chủ trì hoặc hạn mà không ghi [CHƯA RÕ]",
+          "plain": "Có việc thiếu người chủ trì hoặc hạn mà không ghi [CHƯA RÕ]"
+         },
+         {
+          "html": "Mọi việc có người chủ trì và hạn, hoặc ghi [CHƯA RÕ] đúng chỗ",
+          "plain": "Mọi việc có người chủ trì và hạn, hoặc ghi [CHƯA RÕ] đúng chỗ"
+         }
+        ],
+        [
+         {
+          "html": "C. Trung thành",
+          "plain": "C. Trung thành"
+         },
+         {
+          "html": "Có thông tin bịa ảnh hưởng đến nội dung quyết định",
+          "plain": "Có thông tin bịa ảnh hưởng đến nội dung quyết định"
+         },
+         {
+          "html": "Có diễn giải thêm nhưng không sai nội dung",
+          "plain": "Có diễn giải thêm nhưng không sai nội dung"
+         },
+         {
+          "html": "Không có thông tin ngoài biên bản gốc",
+          "plain": "Không có thông tin ngoài biên bản gốc"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 3 – Đọc log, tìm điểm nghẽn"
+    },
+    {
+     "t": "p",
+     "html": "Log 20 bài chạy thử: 12 bài bị REJECT từ 2 lần trở lên; 9/12 bài có lý do “tiêu đề quá 12 từ”; 3 bài hết 3 vòng phải chuyển người duyệt; trung bình 9.500 token mỗi bài. Điểm nghẽn ở đâu? Sửa gì trước? Đo lại thế nào?",
+     "plain": "Log 20 bài chạy thử: 12 bài bị REJECT từ 2 lần trở lên; 9/12 bài có lý do “tiêu đề quá 12 từ”; 3 bài hết 3 vòng phải chuyển người duyệt; trung bình 9.500 token mỗi bài. Điểm nghẽn ở đâu? Sửa gì trước? Đo lại thế nào?"
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": false,
+       "items": [
+        {
+         "html": "Điểm nghẽn: tiêu chí tiêu đề – chiếm 9/12 bài bị REJECT nhiều lần.",
+         "level": 0,
+         "plain": "Điểm nghẽn: tiêu chí tiêu đề – chiếm 9/12 bài bị REJECT nhiều lần."
+        },
+        {
+         "html": "Kiểm tra trước: Writer có biết giới hạn 12 từ không? Writer và Editor có đếm giống nhau không – tiếng Việt “từ” có thể hiểu là một tiếng hay một từ ghép. Đây là lý do mẫu Writer ở mục Hướng dẫn ghi rõ “12 tiếng, đếm theo khoảng trắng”.",
+         "level": 0,
+         "plain": "Kiểm tra trước: Writer có biết giới hạn 12 từ không? Writer và Editor có đếm giống nhau không – tiếng Việt “từ” có thể hiểu là một tiếng hay một từ ghép. Đây là lý do mẫu Writer ở mục Hướng dẫn ghi rõ “12 tiếng, đếm theo khoảng trắng”."
+        },
+        {
+         "html": "Sửa một chỗ: thống nhất cách đếm trong cả prompt Writer và rubric Editor, thêm 1 ví dụ tiêu đề đạt.",
+         "level": 0,
+         "plain": "Sửa một chỗ: thống nhất cách đếm trong cả prompt Writer và rubric Editor, thêm 1 ví dụ tiêu đề đạt."
+        },
+        {
+         "html": "Đo lại: chạy cùng 20 đề, so tỷ lệ REJECT vì tiêu đề, số vòng trung bình, token mỗi bài với lần trước.",
+         "level": 0,
+         "plain": "Đo lại: chạy cùng 20 đề, so tỷ lệ REJECT vì tiêu đề, số vòng trung bình, token mỗi bài với lần trước."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "s11"
   },
   {
    "title": "Tổng kết khóa học",
@@ -752,7 +1535,100 @@
      "inline": false
     }
    ],
-   "id": "s7"
+   "id": "s12"
+  },
+  {
+   "title": "Sau khóa học – Lộ trình tự học 4 tuần",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Cách nhanh nhất để giỏi lên là áp dụng ngay vào việc thật của bạn, mỗi tuần một bước:",
+     "plain": "Cách nhanh nhất để giỏi lên là áp dụng ngay vào việc thật của bạn, mỗi tuần một bước:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tuần",
+        "plain": "Tuần"
+       },
+       {
+        "html": "Việc cần làm",
+        "plain": "Việc cần làm"
+       },
+       {
+        "html": "Sản phẩm cuối tuần",
+        "plain": "Sản phẩm cuối tuần"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Chọn 3 việc lặp lại hằng tuần của bạn. Viết prompt cho từng việc theo cấu trúc 6 thành phần; ghi nhật ký prompt.",
+        "plain": "Chọn 3 việc lặp lại hằng tuần của bạn. Viết prompt cho từng việc theo cấu trúc 6 thành phần; ghi nhật ký prompt."
+       },
+       {
+        "html": "3 prompt đã thử ít nhất 3 lần, có ghi chép",
+        "plain": "3 prompt đã thử ít nhất 3 lần, có ghi chép"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Chuyển prompt tốt nhất thành Custom GPT hoặc Agent. Viết bộ 10 câu thử (bình thường, thiếu thông tin, ngoài phạm vi, phá giới hạn).",
+        "plain": "Chuyển prompt tốt nhất thành Custom GPT hoặc Agent. Viết bộ 10 câu thử (bình thường, thiếu thông tin, ngoài phạm vi, phá giới hạn)."
+       },
+       {
+        "html": "1 Agent + bộ câu thử có kết quả mong đợi",
+        "plain": "1 Agent + bộ câu thử có kết quả mong đợi"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Làm sạch 2–3 tài liệu không mật liên quan, nạp Knowledge Base, chạy Hit Test.",
+        "plain": "Làm sạch 2–3 tài liệu không mật liên quan, nạp Knowledge Base, chạy Hit Test."
+       },
+       {
+        "html": "Agent trả lời theo tài liệu, có ghi nguồn",
+        "plain": "Agent trả lời theo tài liệu, có ghi nguồn"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Chạy bộ Eval, sửa 2 vòng (mỗi vòng một điểm). Mời 2 đồng nghiệp dùng thử và ghi phản hồi.",
+        "plain": "Chạy bộ Eval, sửa 2 vòng (mỗi vòng một điểm). Mời 2 đồng nghiệp dùng thử và ghi phản hồi."
+       },
+       {
+        "html": "Nhật ký phiên bản + phản hồi người dùng",
+        "plain": "Nhật ký phiên bản + phản hồi người dùng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Trước khi đưa Agent vào dùng chung trong đơn vị: kiểm tra công cụ AI đã được phê duyệt, dữ liệu nạp vào không có thông tin mật hoặc cá nhân, và có người chịu trách nhiệm cập nhật tài liệu, theo dõi log.",
+     "plain": "Trước khi đưa Agent vào dùng chung trong đơn vị: kiểm tra công cụ AI đã được phê duyệt, dữ liệu nạp vào không có thông tin mật hoặc cá nhân, và có người chịu trách nhiệm cập nhật tài liệu, theo dõi log.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s13"
   },
   {
    "title": "Ghi chú cho giảng viên",
@@ -769,7 +1645,7 @@
      "plain": "Mở Bài kiểm tra cuối khóa ở 15 phút cuối, đóng rồi công bố để chữa chung."
     }
    ],
-   "id": "s8"
+   "id": "s14"
   }
  ],
  "activities": [
@@ -904,7 +1780,7 @@
    "type": "mcq",
    "scope": "student",
    "title": "Bài kiểm tra cuối khóa",
-   "intro": "10 câu, mỗi câu chọn một đáp án đúng nhất. Bao quát cả 5 buổi.",
+   "intro": "20 câu (mỗi buổi 4 câu), mỗi câu chọn một đáp án đúng nhất. Bao quát cả 5 buổi.",
    "questions": [
     {
      "id": "q1",
@@ -928,7 +1804,8 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 1."
+     "explain": "Buổi 1 – Sự dịch chuyển từ Chatbot sang Agent.",
+     "module": 1
     },
     {
      "id": "q2",
@@ -952,10 +1829,61 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 1."
+     "explain": "Buổi 1 – Thiết lập Persona.",
+     "module": 1
     },
     {
      "id": "q3",
+     "text": "Trong 4 thành phần cốt lõi của AI Agent, thành phần nào đóng vai trò 'tay chân' tương tác với thế giới bên ngoài?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Não bộ (LLM)"
+      },
+      {
+       "key": "B",
+       "text": "Trí nhớ (Memory)"
+      },
+      {
+       "key": "C",
+       "text": "Lập kế hoạch (Planning)"
+      },
+      {
+       "key": "D",
+       "text": "Công cụ (Tools)"
+      }
+     ],
+     "correct": "D",
+     "explain": "Buổi 1 – 4 thành phần cốt lõi của AI Agent.",
+     "module": 1
+    },
+    {
+     "id": "q4",
+     "text": "Nhiệm vụ nào dưới đây KHÔNG nên giao cho AI tự quyết định mà bắt buộc phải chuyển cho con người?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Tóm tắt cuộc họp nội bộ"
+      },
+      {
+       "key": "B",
+       "text": "Gợi ý tiêu đề email"
+      },
+      {
+       "key": "C",
+       "text": "Cam kết bồi thường hoặc ký duyệt hợp đồng"
+      },
+      {
+       "key": "D",
+       "text": "Tra cứu quy chế"
+      }
+     ],
+     "correct": "C",
+     "explain": "Buổi 1 – Nguyên tắc an toàn và ranh giới thẩm quyền.",
+     "module": 1
+    },
+    {
+     "id": "q5",
      "text": "“Lost in the middle” là gì?",
      "options": [
       {
@@ -976,11 +1904,12 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 2."
+     "explain": "Buổi 2 – Giới hạn của Long Context.",
+     "module": 2
     },
     {
-     "id": "q4",
-     "text": "Thứ tự đúng trong RAG?",
+     "id": "q6",
+     "text": "Thứ tự đúng trong quy trình RAG?",
      "options": [
       {
        "key": "A",
@@ -988,7 +1917,7 @@
       },
       {
        "key": "B",
-       "text": "Tìm → Ghép vào prompt → Sinh"
+       "text": "Tìm (Retrieve) → Ghép vào prompt (Augment) → Sinh (Generate)"
       },
       {
        "key": "C",
@@ -1000,11 +1929,12 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 2."
+     "explain": "Buổi 2 – Cơ chế RAG.",
+     "module": 2
     },
     {
-     "id": "q5",
-     "text": "Khuyến nghị chunk overlap trên Coze/Dify trong bài thực hành?",
+     "id": "q7",
+     "text": "Khuyến nghị tỷ lệ gối đầu (chunk overlap) khi cắt văn bản trên Coze/Dify trong bài thực hành?",
      "options": [
       {
        "key": "A",
@@ -1024,11 +1954,37 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 2."
+     "explain": "Buổi 2 – Chunking & Overlap.",
+     "module": 2
     },
     {
-     "id": "q6",
-     "text": "Node nào giúp Agent tự kiểm tra kết quả trước khi trả lời?",
+     "id": "q8",
+     "text": "Khi kết quả truy xuất RAG không chứa thông tin trả lời câu hỏi của người dùng, Agent chuẩn phải làm gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Dùng kiến thức chung để tự suy đoán"
+      },
+      {
+       "key": "B",
+       "text": "Báo rõ không tìm thấy trong tài liệu được cung cấp và hướng dẫn nơi liên hệ"
+      },
+      {
+       "key": "C",
+       "text": "Trả lời đại một con số gần đúng"
+      },
+      {
+       "key": "D",
+       "text": "Bỏ qua câu hỏi"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 2 – Chống ảo giác (Anti-hallucination).",
+     "module": 2
+    },
+    {
+     "id": "q9",
+     "text": "Node nào trong Workflow giúp Agent tự kiểm tra chất lượng đầu ra trước khi trả lời người dùng?",
      "options": [
       {
        "key": "A",
@@ -1048,11 +2004,12 @@
       }
      ],
      "correct": "A",
-     "explain": "Buổi 3."
+     "explain": "Buổi 3 – Vòng lặp tự sửa lỗi.",
+     "module": 3
     },
     {
-     "id": "q7",
-     "text": "Người dùng chỉ gõ “Phân tích đối thủ A”. Agent tốt nên làm gì?",
+     "id": "q10",
+     "text": "Người dùng chỉ gõ “Phân tích đối thủ A”. Agent có tư duy quy trình tốt nên làm gì trước tiên?",
      "options": [
       {
        "key": "A",
@@ -1060,11 +2017,11 @@
       },
       {
        "key": "B",
-       "text": "Hỏi lại khía cạnh cần phân tích"
+       "text": "Hỏi lại khía cạnh cần phân tích (nhánh thiếu dữ liệu)"
       },
       {
        "key": "C",
-       "text": "Từ chối"
+       "text": "Từ chối yêu cầu"
       },
       {
        "key": "D",
@@ -1072,23 +2029,74 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 3 – nhánh thiếu dữ liệu."
+     "explain": "Buổi 3 – Xử lý nhánh thiếu dữ liệu (Edge case).",
+     "module": 3
     },
     {
-     "id": "q8",
-     "text": "Trong Function Calling, ai thực sự gọi API thời tiết?",
+     "id": "q11",
+     "text": "Thứ tự tư duy chuẩn trong kỹ thuật ReAct là gì?",
      "options": [
       {
        "key": "A",
-       "text": "LLM"
+       "text": "Hành động → Suy nghĩ → Quan sát"
       },
       {
        "key": "B",
-       "text": "Hệ thống trung gian nhận JSON từ LLM"
+       "text": "Suy nghĩ (Thought) → Hành động (Action) → Quan sát (Observation)"
       },
       {
        "key": "C",
-       "text": "Người dùng"
+       "text": "Quan sát → Kết luận → Hành động"
+      },
+      {
+       "key": "D",
+       "text": "Trả lời → Kiểm tra → Suy nghĩ"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 3 – Chu trình ReAct.",
+     "module": 3
+    },
+    {
+     "id": "q12",
+     "text": "Khi thiết kế vòng lặp tự sửa lỗi (Loop) giữa Generator và Evaluator, thông số nào bắt buộc phải đặt để tránh treo hệ thống?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Màu sắc của node"
+      },
+      {
+       "key": "B",
+       "text": "Số vòng lặp tối đa (Max Retries / Maximum Loop Count)"
+      },
+      {
+       "key": "C",
+       "text": "Độ dài tên biến"
+      },
+      {
+       "key": "D",
+       "text": "Số lượng câu hỏi mở đầu"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 3 – Giới hạn vòng lặp an toàn.",
+     "module": 3
+    },
+    {
+     "id": "q13",
+     "text": "Trong cơ chế Function Calling, ai là bên thực sự chạy mã hoặc gọi API thời tiết?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Mô hình ngôn ngữ lớn (LLM)"
+      },
+      {
+       "key": "B",
+       "text": "Hệ thống trung gian nhận cấu trúc JSON từ LLM"
+      },
+      {
+       "key": "C",
+       "text": "Người dùng cuối"
       },
       {
        "key": "D",
@@ -1096,35 +2104,112 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 4."
+     "explain": "Buổi 4 – Cơ chế Function Calling.",
+     "module": 4
     },
     {
-     "id": "q9",
-     "text": "Agent chỉ cần đọc lịch để đề xuất giờ họp. Cấp quyền nào?",
+     "id": "q14",
+     "text": "Agent chỉ cần đọc lịch để đề xuất giờ họp trống. Theo nguyên tắc Least Privilege, nên cấp quyền nào?",
      "options": [
       {
        "key": "A",
-       "text": "Đọc + xóa"
+       "text": "Đọc + xóa lịch"
       },
       {
        "key": "B",
-       "text": "Toàn quyền"
+       "text": "Toàn quyền quản trị"
       },
       {
        "key": "C",
-       "text": "Chỉ đọc lịch"
+       "text": "Chỉ quyền đọc lịch"
       },
       {
        "key": "D",
-       "text": "Quản trị miền"
+       "text": "Quyền gửi email thay mặt giám đốc"
       }
      ],
      "correct": "C",
-     "explain": "Buổi 4 – Least Privilege."
+     "explain": "Buổi 4 – Nguyên tắc quyền tối thiểu.",
+     "module": 4
     },
     {
-     "id": "q10",
-     "text": "Ba tiêu chí Eval được nêu trong khóa?",
+     "id": "q15",
+     "text": "Khi phân tích file dữ liệu sản lượng điện thương phẩm bằng Code Interpreter, việc đầu tiên cần yêu cầu Agent làm là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Vẽ ngay biểu đồ tổng kết"
+      },
+      {
+       "key": "B",
+       "text": "Kiểm tra dòng trùng lặp, ô trống, giá trị bất thường và dừng lại báo cáo nếu có lỗi"
+      },
+      {
+       "key": "C",
+       "text": "Tự động xóa mọi dòng nghi ngờ"
+      },
+      {
+       "key": "D",
+       "text": "Viết báo cáo gửi lãnh đạo"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 4 – Kiểm định dữ liệu trước khi tính toán.",
+     "module": 4
+    },
+    {
+     "id": "q16",
+     "text": "Cách phòng thủ chắc chắn nhất trước tấn công Prompt Injection gián tiếp từ email/trang web bên ngoài là gì?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Dặn AI 'hãy cẩn thận'"
+      },
+      {
+       "key": "B",
+       "text": "Kết hợp bọc thẻ dữ liệu trong prompt + nguyên tắc quyền tối thiểu + người duyệt (Human-in-the-loop) cho hành động nhạy cảm"
+      },
+      {
+       "key": "C",
+       "text": "Dùng phông chữ nhỏ hơn"
+      },
+      {
+       "key": "D",
+       "text": "Tăng nhiệt độ (Temperature) lên 1.0"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 4 – Phòng thủ đa lớp (Defense-in-depth).",
+     "module": 4
+    },
+    {
+     "id": "q17",
+     "text": "Trong đội hình Multi-Agent, vai trò nào chỉ phân loại ý định và điều phối công việc chứ không trực tiếp viết nội dung?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Worker"
+      },
+      {
+       "key": "B",
+       "text": "Reviewer"
+      },
+      {
+       "key": "C",
+       "text": "Router"
+      },
+      {
+       "key": "D",
+       "text": "Generator"
+      }
+     ],
+     "correct": "C",
+     "explain": "Buổi 5 – Cấu trúc đội hình Router – Worker – Reviewer.",
+     "module": 5
+    },
+    {
+     "id": "q18",
+     "text": "Ba nhóm tiêu chí đánh giá (Evaluation) chất lượng hệ thống Agent được nêu trong khóa học là gì?",
      "options": [
       {
        "key": "A",
@@ -1132,7 +2217,7 @@
       },
       {
        "key": "B",
-       "text": "Chính xác, tuân thủ, tốc độ & chi phí"
+       "text": "Độ chính xác (Accuracy), Độ tuân thủ (Compliance), Tốc độ & Chi phí (Latency/Cost)"
       },
       {
        "key": "C",
@@ -1144,7 +2229,58 @@
       }
      ],
      "correct": "B",
-     "explain": "Buổi 5."
+     "explain": "Buổi 5 – Đo lường và đánh giá (KPI & Eval).",
+     "module": 5
+    },
+    {
+     "id": "q19",
+     "text": "Theo bộ KPI chuẩn cho đội PR ảo (Slide 15), mục tiêu 'Tỷ lệ duyệt ngay vòng 1' và 'Số vòng lặp tối đa (Max Retries)' là bao nhiêu?",
+     "options": [
+      {
+       "key": "A",
+       "text": "> 50% và tối đa 10 lần"
+      },
+      {
+       "key": "B",
+       "text": "> 80% và không quá 3 lần (≤ 3)"
+      },
+      {
+       "key": "C",
+       "text": "100% và không giới hạn"
+      },
+      {
+       "key": "D",
+       "text": "> 30% và tối đa 5 lần"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 5 – Bộ KPI chuẩn cho đội PR ảo.",
+     "module": 5
+    },
+    {
+     "id": "q20",
+     "text": "Khi dùng một LLM làm giám khảo (LLM-as-a-judge) để chấm bộ đề Eval, kỹ thuật nào giúp giảm chấm cảm tính?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Cho chấm thang điểm 100"
+      },
+      {
+       "key": "B",
+       "text": "Bắt buộc trích câu căn cứ trong bài viết trước khi cho điểm theo từng tiêu chí rubric"
+      },
+      {
+       "key": "C",
+       "text": "Không cần đưa BRIEF vào"
+      },
+      {
+       "key": "D",
+       "text": "Chỉ chấm độ dài bài viết"
+      }
+     ],
+     "correct": "B",
+     "explain": "Buổi 5 – Kỹ thuật LLM-as-a-judge.",
+     "module": 5
     }
    ]
   },
@@ -1153,9 +2289,250 @@
    "type": "practice",
    "scope": "student",
    "title": "Thực hành 5 – Phòng ban ảo Writer – Editor (75 phút)",
-   "section": "s6",
+   "section": "s10",
    "intro": "Dựng hai Agent: Content Writer viết bài PR và Editor khó tính kiểm duyệt. Chạy vòng lặp khép kín, đọc log, tìm điểm nghẽn và tinh chỉnh System Prompt; thiết lập KPI.",
    "fields": [
+    {
+     "type": "board",
+     "key": "so_do_multi_agent",
+     "size": [
+      1740,
+      800
+     ],
+     "label": "Không gian dàn dựng Đội hình Multi-Agent & Bộ 4 KPI – phân vai Router / Worker / Reviewer / Human và nối luồng bàn giao",
+     "hint": "Router chỉ phân loại và điều phối; Writer thực thi chuyên môn; Editor chấm theo Rubric và trả JSON APPROVE/REJECT (tối đa 3 vòng).",
+     "steps": [
+      "Ở cột ① và ②, gắn đúng nhãn vai trò (Router / Worker / Reviewer / Human) cho 4 node và ghi tóm tắt System Prompt / Rubric của từng vai.",
+      "Kéo dây nối luồng phối hợp: Router → Writer → Editor, vòng lặp REJECT từ Editor quay lại Writer (≤ 3 vòng), và nhánh chuyển Human.",
+      "Ở cột ③, điền mục tiêu chuẩn Slide 15 (> 80%, 100%, < 2 phút, ≤ 3 lần) và cách đo / cách sửa từ log cho 4 chỉ số KPI."
+     ],
+     "zones": [
+      {
+       "x": 20,
+       "y": 20,
+       "w": 480,
+       "h": 760,
+       "label": "① Điều phối cửa ngõ (Router & Escalation)",
+       "color": "blue",
+       "hint": "Phân loại yêu cầu và chuyển đúng chuyên gia hoặc người duyệt"
+      },
+      {
+       "x": 540,
+       "y": 20,
+       "w": 600,
+       "h": 760,
+       "label": "② Thực thi & Kiểm duyệt (Worker ⇄ Reviewer)",
+       "color": "teal",
+       "hint": "Writer soạn thảo ⇄ Editor chấm theo Rubric (tối đa 3 vòng)"
+      },
+      {
+       "x": 1180,
+       "y": 20,
+       "w": 540,
+       "h": 760,
+       "label": "③ Bộ 4 chỉ số KPI & Chẩn đoán Log (Eval)",
+       "color": "amber",
+       "hint": "4 KPI chuẩn Slide 15 và cải tiến từ nhật ký lỗi"
+      }
+     ],
+     "kinds": [
+      {
+       "kind": "agent",
+       "label": "Nhân sự ảo (Agent)",
+       "color": "blue",
+       "icon": "🤖",
+       "add": false,
+       "options": [
+        "Router (Điều phối)",
+        "Worker (Thực thi)",
+        "Reviewer (Kiểm duyệt)",
+        "Human (Người duyệt)"
+       ],
+       "optionLabel": "Vai trong đội…",
+       "tones": {
+        "Router (Điều phối)": "info",
+        "Worker (Thực thi)": "ok",
+        "Reviewer (Kiểm duyệt)": "warn",
+        "Human (Người duyệt)": "bad"
+       },
+       "hint": "Vai trò, System Prompt tóm tắt và định dạng đầu ra"
+      },
+      {
+       "kind": "kpi",
+       "label": "Chỉ số KPI & Log",
+       "color": "amber",
+       "icon": "📊",
+       "add": false,
+       "props": [
+        {
+         "key": "muc_tieu",
+         "label": "Mục tiêu KPI",
+         "placeholder": "VD: > 80%, 100%, < 2 phút, ≤ 3 lần"
+        }
+       ],
+       "hint": "Cách đo lường và hành động tinh chỉnh khi không đạt"
+      },
+      {
+       "kind": "note",
+       "label": "Ghi chú",
+       "color": "slate",
+       "icon": "📝",
+       "add": true,
+       "hint": "Ý tưởng, câu hỏi, điều cần kiểm tra thêm…"
+      }
+     ],
+     "nodes": [
+      {
+       "id": "a_router",
+       "kind": "agent",
+       "x": 42,
+       "y": 80,
+       "locked": true,
+       "title": "1. Router – Bộ điều phối"
+      },
+      {
+       "id": "a_human",
+       "kind": "agent",
+       "x": 42,
+       "y": 430,
+       "locked": true,
+       "title": "4. Human – Chuyển người phụ trách"
+      },
+      {
+       "id": "a_writer",
+       "kind": "agent",
+       "x": 562,
+       "y": 80,
+       "locked": true,
+       "title": "2. Content Writer (Worker)"
+      },
+      {
+       "id": "a_editor",
+       "kind": "agent",
+       "x": 562,
+       "y": 430,
+       "locked": true,
+       "title": "3. Editor khó tính (Reviewer)"
+      },
+      {
+       "id": "k_pass1",
+       "kind": "kpi",
+       "x": 1202,
+       "y": 70,
+       "locked": true,
+       "title": "KPI 1 – Tỷ lệ duyệt ngay vòng 1"
+      },
+      {
+       "id": "k_spell",
+       "kind": "kpi",
+       "x": 1202,
+       "y": 250,
+       "locked": true,
+       "title": "KPI 2 – Không sai lỗi chính tả & số liệu"
+      },
+      {
+       "id": "k_time",
+       "kind": "kpi",
+       "x": 1202,
+       "y": 430,
+       "locked": true,
+       "title": "KPI 3 – Thời gian hoàn thành 1 bài"
+      },
+      {
+       "id": "k_retry",
+       "kind": "kpi",
+       "x": 1202,
+       "y": 610,
+       "locked": true,
+       "title": "KPI 4 – Số vòng lặp tối đa (Max Retries)"
+      }
+     ],
+     "links": [
+      {
+       "a": "*",
+       "b": "*",
+       "fields": [
+        {
+         "key": "thong_diep",
+         "label": "Thông điệp bàn giao / Điều kiện",
+         "placeholder": "VD: JSON next_agent / REJECT kèm lý do"
+        }
+       ]
+      }
+     ],
+     "goals": [
+      {
+       "type": "tagged",
+       "kind": "agent",
+       "text": "Gắn đúng vai (Router / Worker / Reviewer / Human) cho 4 node đội hình"
+      },
+      {
+       "type": "filled",
+       "kind": [
+        "agent",
+        "kpi"
+       ],
+       "text": "Ghi nhiệm vụ/rubric cho các Agent và cách đo 4 KPI"
+      },
+      {
+       "type": "props",
+       "kind": "kpi",
+       "fields": [
+        "muc_tieu"
+       ],
+       "text": "Điền mục tiêu chuẩn cho cả 4 chỉ số KPI"
+      },
+      {
+       "type": "links",
+       "min": 4,
+       "text": "Nối luồng bàn giao giữa Router → Writer ⇄ Editor và nhánh Human"
+      }
+     ],
+     "warnings": [
+      {
+       "type": "tag",
+       "node": "a_router",
+       "value": "Worker (Thực thi)",
+       "text": "Router chỉ đọc ý định và trả JSON điều phối, không trực tiếp viết bài."
+      },
+      {
+       "type": "tag",
+       "node": "a_editor",
+       "value": "Worker (Thực thi)",
+       "text": "Editor đóng vai Reviewer (Kiểm duyệt) chấm theo Rubric, không viết lại bài thay Writer."
+      }
+     ],
+     "summary": {
+      "type": "cards",
+      "kind": [
+       "agent",
+       "kpi"
+      ],
+      "title": "Bảng cấu hình Đội hình Multi-Agent & Bộ 4 KPI",
+      "cols": [
+       {
+        "key": "title",
+        "label": "Agent / KPI"
+       },
+       {
+        "key": "tag",
+        "label": "Vai trò"
+       },
+       {
+        "key": "muc_tieu",
+        "label": "Mục tiêu KPI"
+       },
+       {
+        "key": "text",
+        "label": "Prompt / Rubric / Cách đo"
+       },
+       {
+        "key": "links",
+        "label": "Luồng phối hợp"
+       }
+      ]
+     }
+    },
     {
      "type": "textarea",
      "key": "writer",

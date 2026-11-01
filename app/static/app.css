@@ -254,3 +254,17 @@ svg.dg .l-acc { stroke: var(--accent); } svg.dg .m-acc { fill: var(--accent); }
 .dg-url .u-bad .u-txt { background: var(--bad-soft); border-color: var(--bad); }
 .dg-url .u-ok small { color: var(--ok); } .dg-url .u-bad small { color: var(--bad); }
 .dg-url .u-hint { font-size: 13px; color: var(--muted); }
+
+/* ---------- code copy, collapsible hints & TOC badges ---------- */
+.codewrap { position: relative; margin: 12px 0; }
+.codewrap pre { margin: 0; padding-top: 32px; }
+.copy-btn { position: absolute; top: 6px; right: 8px; padding: 3px 9px; font-size: 12px; font-weight: 600; border-radius: 6px; background: var(--panel); color: var(--muted); border: 1px solid var(--line); cursor: pointer; z-index: 2; }
+.copy-btn:hover { border-color: var(--brand); color: var(--brand); }
+.hint-details { margin: 14px 0; border-style: dashed; border-color: var(--brand); background: var(--note-soft); }
+.hint-details > summary { cursor: pointer; font-weight: 600; color: var(--brand); padding: 4px 2px; user-select: none; }
+.hint-details[open] > summary { margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.toc-badge { display: inline-block; margin-left: 6px; padding: 1px 6px; font-size: 11px; font-weight: 600; border-radius: 999px; background: var(--note-soft); color: var(--muted); border: 1px solid var(--line); vertical-align: middle; }
+.course-switch { display: inline-flex; gap: 6px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); margin-bottom: 14px; flex-wrap: wrap; }
+.course-switch button { border: 0; border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 600; background: transparent; color: var(--muted); cursor: pointer; }
+.course-switch button.active { background: var(--brand); color: #fff; }
+

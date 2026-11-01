@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vào lớp | An toàn ứng dụng &amp; Dữ liệu dành cho cán bộ vận hành</title>
+<title>Vào lớp | An toàn ứng dụng &amp; Dữ liệu · AI Agent</title>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/app.css">
 <link rel="stylesheet" href="/static/studio.css">
@@ -13,8 +13,30 @@
 <body class="entrance-page">
 <div id="app" class="entrance-shell" v-cloak>
   <section class="entrance-story" aria-label="Giới thiệu khóa học">
-    <div class="brand story-brand"><span v-html="logo"></span><span>An toàn ứng dụng &amp; Dữ liệu<br><small>dành cho cán bộ vận hành</small></span></div>
-    <div class="story-content">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div class="brand story-brand">
+        <span v-html="logo"></span>
+        <span v-if="storyCourse === 'ai-agent'">AI Agent – Nhân sự ảo<br><small>Quy trình &amp; tự động hóa thông minh</small></span>
+        <span v-else>An toàn ứng dụng &amp; Dữ liệu<br><small>dành cho cán bộ vận hành</small></span>
+      </div>
+      <div class="course-switch" role="tablist" aria-label="Chọn chương trình học">
+        <button type="button" :class="{active: storyCourse !== 'ai-agent'}" @click="setCourse('atdl')">An toàn dữ liệu</button>
+        <button type="button" :class="{active: storyCourse === 'ai-agent'}" @click="setCourse('ai-agent')">AI Agent – Nhân sự ảo</button>
+      </div>
+    </div>
+
+    <div v-if="storyCourse === 'ai-agent'" class="story-content">
+      <span class="eyebrow story-eyebrow">CHƯƠNG TRÌNH ỨNG DỤNG AI TÁC VỤ</span>
+      <h1>Xây dựng đội ngũ<br>nhân sự ảo AI Agent.</h1>
+      <p>Khóa học thực chiến từ thiết kế System Prompt, kho tri thức RAG không bịa đặt, Workflow đa nhánh đến kết nối công cụ và điều phối Multi-Agent.</p>
+      <div class="story-topics"><span>System Prompt</span><span>RAG &amp; Dify</span><span>Multi-Agent</span></div>
+      <div class="course-path">
+        <div><span class="path-number">01</span><p><b>Thiết kế tư duy &amp; Tri thức nội bộ</b><small>Persona 4 thành phần, Chunking, Top K và trích dẫn chống ảo giác</small></p></div>
+        <div><span class="path-number">02</span><p><b>Tự động hóa quy trình &amp; Công cụ</b><small>Workflow rẽ nhánh IF/ELIF/ELSE, JSON Schema và Guardrails 3 tầng</small></p></div>
+        <div><span class="path-number">03</span><p><b>Điều phối đội ngũ Multi-Agent</b><small>Mô hình Phân cấp – Tuần tự – Phản hồi và đánh giá KPI tự động</small></p></div>
+      </div>
+    </div>
+    <div v-else class="story-content">
       <span class="eyebrow story-eyebrow">LỚP HỌC DÀNH CHO CÁN BỘ ĐIỆN LỰC</span>
       <h1>Bảo vệ dữ liệu<br>từ từng thao tác.</h1>
       <p>Khóa học dành cho cán bộ quản lý, CNTT và vận hành điện lực. Học qua tình huống công việc, thực hành cá nhân và nhận xét của giảng viên.</p>
@@ -25,7 +47,9 @@
         <div><span class="path-number">03</span><p><b>Phát hiện và xử lý sự cố</b><small>Nhận diện lừa đảo, đọc nhật ký và diễn tập</small></p></div>
       </div>
     </div>
-    <div class="story-footer"><span><b>5</b> ngày học</span><span><b>10</b> buổi học</span><span class="story-individual">Thực hành cá nhân</span></div>
+
+    <div v-if="storyCourse === 'ai-agent'" class="story-footer"><span><b>5</b> buổi học</span><span><b>5</b> bài thực hành</span><span class="story-individual">Bảng kéo–thả &amp; Phòng lab</span></div>
+    <div v-else class="story-footer"><span><b>5</b> ngày học</span><span><b>10</b> buổi học</span><span class="story-individual">Thực hành cá nhân</span></div>
   </section>
   <main class="entrance-form-area">
   <div class="card join-card">
@@ -67,7 +91,7 @@
     <p class="muted" style="font-size:14px;margin-bottom:0;margin-top:20px">Các tình huống và dữ liệu thực hành đều giả lập. Không đưa dữ liệu thật của khách hàng, nhân sự hoặc hệ thống vận hành vào bài làm.</p>
     <div class="join-teacher-link"><span>Bạn phụ trách lớp học?</span><a href="/teacher">Dành cho giảng viên →</a></div>
   </div>
-  <p class="entrance-footnote">An toàn ứng dụng &amp; Dữ liệu dành cho cán bộ vận hành <span>Học để áp dụng trong công việc</span></p>
+  <p class="entrance-footnote">{{ storyCourse === 'ai-agent' ? 'AI Agent – Xây dựng đội ngũ nhân sự ảo & tự động hóa quy trình' : 'An toàn ứng dụng & Dữ liệu dành cho cán bộ vận hành' }} <span>Học để áp dụng trong công việc</span></p>
   </main>
 </div>
 <script src="/static/index.js"></script>

@@ -64,6 +64,7 @@ class Courses(unittest.TestCase):
         self.post(f'/api/t/classes/{cid}/activities/ai01-th1', {'status': 'open'}).raise_for_status()
         act = self.client.get('/api/s/activity/ai01-th1', headers=auth).json()
         self.assertEqual(act['fields'][1]['type'], 'table')
+        self.assertEqual(act['fields'][2]['type'], 'board')
         self.post('/api/s/activity/ai01-th1', {'payload': {'fields': {'vi_tri': 'Trợ lý Content Marketing'}}})
         r = self.client.post('/api/s/activity/ai01-th1', json={'payload': {'fields': {'vi_tri': 'Trợ lý Content Marketing'}}},
                              headers=auth)
@@ -85,8 +86,23 @@ class Courses(unittest.TestCase):
         self.assertEqual((res['responses'][0]['score'], res['responses'][0]['max_score']), (3, 4))
 
         teacher_mod = self.client.get('/api/t/module/5?course=ai-agent').json()
-        self.assertTrue(any(a['id'] == 'ai05-exam' for a in teacher_mod['activities']))
+        exam = next(a for a in teacher_mod['activities'] if a['id'] == 'ai05-exam')
+        self.assertEqual(len(exam['questions']), 20)
+        for no in range(1, 6):
+            self.assertEqual(sum(1 for q in exam['questions'] if q.get('module') == no), 4)
         self.assertEqual(self.client.get('/api/t/module/9?course=ai-agent').status_code, 404)
+
+    def test_ai_agent_boards_answers_and_lab(self):
+        from app.content import ACTIVITIES
+        for no in range(1, 6):
+            aid = f'ai0{no}-th{no}'
+            self.assertTrue(any(f['type'] == 'board' for f in ACTIVITIES[aid]['fields']), aid)
+            ans = self.client.get(f'/api/t/answers/{aid}')
+            self.assertEqual(ans.status_code, 200, aid)
+            self.assertIn('fields', ans.json())
+        lab = self.client.get('/static/labs/ai/index.html')
+        self.assertEqual(lab.status_code, 200)
+        self.assertIn('Phòng thí nghiệm AI Agent', lab.text)
 
 
 if __name__ == '__main__':

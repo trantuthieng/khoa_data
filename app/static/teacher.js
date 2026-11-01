@@ -35,7 +35,7 @@ const app = Vue.createApp({
       courses: [], classes: [], newName: '', newCourse: 'atdl', previewCourse: 'atdl', preview: null, rosterText: '', rosterMsg: '',
       cls: null, room: null, viewModule: 1, modCache: {}, localSection: 's0',
       tab: 'acts', results: null, showKey: false, focusGroup: null, present: false, timer: null, rev: 0, polling: false,
-      gradeDrafts: {}, grading: {}, answerIndex: [], answer: null, answerPick: '',
+      gradeDrafts: {}, grading: {}, answerIndex: [], answer: null, answerPick: '', answerCourse: '',
       showOutline: false, showActivities: false,
     };
   },
@@ -57,9 +57,14 @@ const app = Vue.createApp({
     },
     sortedResponses() { return [...this.results.responses].sort((a, b) => (b.score || 0) - (a.score || 0)); },
     answerGroups() {
+      const list = this.answerCourse ? this.answerIndex.filter(k => k.course === this.answerCourse) : this.answerIndex;
       const g = [];
-      for (const k of this.answerIndex) {
-        if (!g.length || g[g.length - 1].no !== k.module) g.push({ no: k.module, items: [] });
+      for (const k of list) {
+        const key = (k.course || 'atdl') + ':' + k.module;
+        if (!g.length || g[g.length - 1].key !== key) {
+          const prefix = (!this.answerCourse && this.courses.length > 1) ? this.courseTitle(k.course) + ' · ' : '';
+          g.push({ key, no: k.module, course: k.course, label: prefix + 'Buổi ' + k.module, items: [] });
+        }
         g[g.length - 1].items.push(k);
       }
       return g;
@@ -67,6 +72,15 @@ const app = Vue.createApp({
   },
   methods: {
     fmtTime, themeToggle,
+    secBadge(s) {
+      if (!s) return '';
+      if (s.kind === 'practice') return 'Thực hành';
+      const t = s.title || '';
+      if (/^(Làm trên Dify|Thao tác trên nền tảng)/i.test(t)) return 'Công cụ';
+      if (/^Tự luyện thêm/i.test(t)) return 'Tự luyện';
+      if (/^(Cẩm nang|Những điểm cần nắm vững|Tình huống mở đầu)/i.test(t)) return 'Bổ trợ';
+      return '';
+    },
     flash(msg) { this.toast = msg; setTimeout(() => { if (this.toast === msg) this.toast = ''; }, 4000); },
     async call(method, url, body) {
       try { return await api(method, url, body); }
@@ -126,12 +140,17 @@ const app = Vue.createApp({
     // ---------- phòng học ----------
     async enterClass(c) {
       this.cls = c; this.viewModule = c.active_module; this.results = null; this.answer = null;
+      document.title = 'Giảng viên | ' + this.courseTitle(c.course);
       store.set('teacher_class', String(c.id));
       await this.loadMod(this.viewModule);
       await this.refresh(true);
       this.start();
     },
-    leaveClass() { this.cls = null; this.room = null; this.answer = null; this.stop(); store.del('teacher_class'); this.loadClasses(); },
+    leaveClass() {
+      this.cls = null; this.room = null; this.answer = null;
+      document.title = 'Giảng viên | An toàn ứng dụng & Dữ liệu dành cho cán bộ vận hành';
+      this.stop(); store.del('teacher_class'); this.loadClasses();
+    },
     async restore() {
       const id = Number(store.get('teacher_class'));
       const c = this.classes.find(x => x.id === id);

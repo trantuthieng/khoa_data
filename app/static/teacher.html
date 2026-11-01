@@ -78,9 +78,13 @@
           <h3 style="margin-top:36px">Đáp án bài thực hành <span class="tag">Chỉ giảng viên</span></h3>
           <p class="muted" style="font-size:14px">Bài làm mẫu trên bảng (module, dây nối, nội dung), giải thích, thang điểm và lỗi hay gặp.</p>
           <div class="row">
+            <select v-if="courses.length > 1" v-model="answerCourse" @change="answerPick = ''" style="width:auto;max-width:280px" aria-label="Lọc khóa học cho đáp án">
+              <option value="">Tất cả khóa học</option>
+              <option v-for="c in courses" :key="c.id" :value="c.id">{{ c.title }}</option>
+            </select>
             <select v-model="answerPick" class="grow" style="flex:1;min-width:220px" aria-label="Chọn bài để xem đáp án">
               <option value="">Chọn bài…</option>
-              <optgroup v-for="g in answerGroups" :key="g.no" :label="'Buổi ' + g.no">
+              <optgroup v-for="g in answerGroups" :key="g.key" :label="g.label">
                 <option v-for="k in g.items" :key="k.id" :value="k.id">{{ k.title }}</option>
               </optgroup>
             </select>
@@ -110,6 +114,7 @@
         <select v-model.number="viewModule" @change="changeViewModule">
           <option v-for="m in index" :key="m.no" :value="m.no">{{ m.no === 0 ? 'Tổng quan (luôn mở cho học viên)' : 'Buổi ' + m.no + ' – ' + m.short }}{{ m.no === cls.active_module ? ' ●' : '' }}</option>
         </select>
+        <a v-if="cls.course === 'ai-agent'" href="/static/labs/ai/index.html" target="_blank" rel="noopener" class="btn sm" style="width:100%;justify-content:center;margin-top:8px">🧪 Mở Phòng thí nghiệm AI ↗</a>
         <div v-if="viewModule !== 0 && viewModule !== cls.active_module" class="banner" style="margin-top:8px;font-size:14px">
           <span class="grow">Lớp đang học buổi {{ cls.active_module }}.</span>
           <button class="btn sm primary" @click="setActive(viewModule)">Bắt đầu buổi {{ viewModule }}</button>
@@ -131,7 +136,7 @@
         <ul class="toc" v-if="mod">
           <li v-for="(s, i) in mod.sections" :key="s.id">
             <button :class="{active: s.id === localSection && !results && !answer, locked: isLocked(s, i)}" @click="localSection = s.id; results = null; answer = null; showOutline = false; scrollTop()">
-              <span class="ico">{{ secIcon(s, i) }}</span><span>{{ s.title }}</span>
+              <span class="ico">{{ secIcon(s, i) }}</span><span>{{ s.title }} <small v-if="secBadge(s)" class="toc-badge">{{ secBadge(s) }}</small></span>
             </button>
           </li>
         </ul>
@@ -205,7 +210,7 @@
             <template v-if="results.activity.type === 'mcq' || results.activity.type === 'multi'">
               <p v-if="results.responses.length">Điểm trung bình: <b>{{ avgScore }}</b> / {{ results.activity.questions.length }}</p>
               <div v-for="(q, qi) in results.activity.questions" :key="q.id" class="q">
-                <div class="qtext"><b>Câu {{ qi + 1 }}.</b> {{ q.text }} <span class="tag">{{ pctCorrect(q) }}% đúng</span></div>
+                <div class="qtext"><b>Câu {{ qi + 1 }}.</b> {{ q.text }} <span v-if="q.module && results.activity.id.endsWith('-exam')" class="tag">Buổi {{ q.module }}</span> <span class="tag">{{ pctCorrect(q) }}% đúng</span></div>
                 <div v-for="o in q.options" :key="o.key" class="opt" :class="isCorrect(q, o) && (showKey || results.status==='revealed') ? 'right' : ''">
                   <span class="grow">{{ o.text.startsWith(o.key + ' ') ? o.text : o.key + '. ' + o.text }}
                     <div class="bar"><i :style="{width: optPct(q, o) + '%'}"></i></div></span>

@@ -95,6 +95,12 @@
      ]
     },
     {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 250\" role=\"img\" aria-label=\"Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-wf-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-wf-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-wf-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-wf-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-wf-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"88\" width=\"125\" height=\"58\" rx=\"8\" class=\"r-brand\"/><text x=\"72.5\" y=\"104.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">1. Trích xuất</text><text x=\"72.5\" y=\"121.5\" font-size=\"11.5\" text-anchor=\"middle\">&amp; Bộ nhớ dài hạn</text><text x=\"72.5\" y=\"138.7\" font-size=\"11.5\" text-anchor=\"middle\">(doi_thu, khia_canh)</text><rect x=\"170\" y=\"88\" width=\"120\" height=\"58\" rx=\"8\" class=\"r-warn\"/><text x=\"230.0\" y=\"104.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">2. Rẽ nhánh</text><text x=\"230.0\" y=\"121.5\" font-size=\"11.5\" text-anchor=\"middle\">IF / ELIF / ELSE</text><text x=\"230.0\" y=\"138.7\" font-size=\"11.5\" text-anchor=\"middle\">(Condition)</text><rect x=\"335\" y=\"14\" width=\"175\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"422.5\" y=\"36.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Nhánh IF: Thiếu dữ liệu</text><text x=\"422.5\" y=\"53.1\" font-size=\"11.5\" text-anchor=\"middle\">Hỏi lại thông tin thiếu</text><rect x=\"335\" y=\"91\" width=\"175\" height=\"52\" rx=\"8\" class=\"r-warn\"/><text x=\"422.5\" y=\"113.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Nhánh ELIF: Mâu thuẫn</text><text x=\"422.5\" y=\"130.1\" font-size=\"11.5\" text-anchor=\"middle\">Báo chênh lệch, xin xác nhận</text><rect x=\"335\" y=\"170\" width=\"165\" height=\"56\" rx=\"8\" class=\"r-brand\"/><text x=\"417.5\" y=\"194.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Nhánh ELSE: Đủ dữ liệu</text><text x=\"417.5\" y=\"211.1\" font-size=\"11.5\" text-anchor=\"middle\">Tra cứu &amp; Viết bảng 3 cột</text><rect x=\"540\" y=\"170\" width=\"170\" height=\"56\" rx=\"8\" class=\"r-ok\"/><text x=\"625.0\" y=\"185.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">3. Evaluator</text><text x=\"625.0\" y=\"202.6\" font-size=\"11.5\" text-anchor=\"middle\">Chấm Checklist → Đạt?</text><text x=\"625.0\" y=\"219.7\" font-size=\"11.5\" text-anchor=\"middle\">(Tối đa 3 vòng sửa)</text><line x1=\"135\" y1=\"117\" x2=\"168\" y2=\"117\" class=\"l-brand\" marker-end=\"url(#ai-wf-brand)\"/><line x1=\"290\" y1=\"100\" x2=\"333\" y2=\"40\" class=\"l-mut\" marker-end=\"url(#ai-wf-mut)\"/><text x=\"305\" y=\"62\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">thiếu</text><line x1=\"290\" y1=\"117\" x2=\"333\" y2=\"117\" class=\"l-acc\" marker-end=\"url(#ai-wf-acc)\"/><text x=\"312\" y=\"110\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">lệch</text><line x1=\"290\" y1=\"134\" x2=\"333\" y2=\"198\" class=\"l-brand\" marker-end=\"url(#ai-wf-brand)\"/><text x=\"305\" y=\"175\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">đủ</text><line x1=\"500\" y1=\"190\" x2=\"538\" y2=\"190\" class=\"l-brand\" marker-end=\"url(#ai-wf-brand)\"/><line x1=\"540\" y1=\"212\" x2=\"502\" y2=\"212\" class=\"l-acc\" marker-end=\"url(#ai-wf-acc)\"/><text x=\"521\" y=\"236\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">chưa đạt (≤3)</text></svg>",
+     "caption": "Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator",
+     "plain": "Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator"
+    },
+    {
      "t": "table",
      "rows": [
       [
@@ -347,6 +353,147 @@
    "id": "s4"
   },
   {
+   "title": "Hướng dẫn – Viết prompt cho từng loại node",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Mỗi node LLM trong workflow là một prompt nhỏ: <strong>làm đúng một việc</strong> và <strong>trả kết quả có cấu trúc</strong> để node sau dùng được. Ba loại node hay gặp nhất:",
+     "plain": "Mỗi node LLM trong workflow là một prompt nhỏ: làm đúng một việc và trả kết quả có cấu trúc để node sau dùng được. Ba loại node hay gặp nhất:"
+    },
+    {
+     "t": "h3",
+     "text": "1. Node trích xuất thông tin"
+    },
+    {
+     "t": "code",
+     "text": "Trích xuất thông tin từ yêu cầu của người dùng.\nTrả về đúng JSON, không thêm chữ nào khác:\n{\"doi_thu\": \"<tên đối thủ hoặc null>\",\n \"khia_canh\": [\"gia\" | \"tinh_nang\" | \"marketing\"],\n \"thoi_gian\": \"<khoảng thời gian hoặc null>\"}\nThông tin người dùng không nêu thì để null hoặc danh sách rỗng. Không tự đoán.\n\nYêu cầu: {{cau_hoi}}"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Người dùng gõ",
+        "plain": "Người dùng gõ"
+       },
+       {
+        "html": "Node trả về",
+        "plain": "Node trả về"
+       }
+      ],
+      [
+       {
+        "html": "“Phân tích đối thủ cho tôi”",
+        "plain": "“Phân tích đối thủ cho tôi”"
+       },
+       {
+        "html": "<code>{\"doi_thu\": null, \"khia_canh\": [], \"thoi_gian\": null}</code>",
+        "plain": "{\"doi_thu\": null, \"khia_canh\": [], \"thoi_gian\": null}"
+       }
+      ],
+      [
+       {
+        "html": "“So giá với Công ty Sao Mai năm nay”",
+        "plain": "“So giá với Công ty Sao Mai năm nay”"
+       },
+       {
+        "html": "<code>{\"doi_thu\": \"Công ty Sao Mai\", \"khia_canh\": [\"gia\"], \"thoi_gian\": \"năm nay\"}</code>",
+        "plain": "{\"doi_thu\": \"Công ty Sao Mai\", \"khia_canh\": [\"gia\"], \"thoi_gian\": \"năm nay\"}"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Node Condition phía sau chỉ cần kiểm tra: <code>doi_thu</code> rỗng hoặc <code>khia_canh</code> rỗng → nhánh hỏi lại. Nhiều nền tảng có tùy chọn <em>JSON mode / structured output</em> cho node LLM – bật lên nếu có.",
+     "plain": "Node Condition phía sau chỉ cần kiểm tra: doi_thu rỗng hoặc khia_canh rỗng → nhánh hỏi lại. Nhiều nền tảng có tùy chọn JSON mode / structured output cho node LLM – bật lên nếu có.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "2. Node phân loại ý định (Intent)"
+    },
+    {
+     "t": "code",
+     "text": "Phân loại tin nhắn của khách hàng vào đúng một nhãn:\n- BAO_MAT_DIEN : mất điện, sự cố, chập cháy, dây đứt\n- HOI_HOA_DON  : tiền điện, chỉ số, thanh toán\n- CAP_DIEN_MOI : lắp công tơ mới, tăng công suất, sang tên\n- KHIEU_NAI    : phàn nàn về dịch vụ, thái độ, đòi bồi thường\n- KHAC         : không thuộc các nhóm trên\nTin nhắn có yếu tố nguy hiểm (cháy, dây điện đứt, điện giật) thì luôn chọn BAO_MAT_DIEN.\nChỉ trả về nhãn.\n\n\"Cột điện đầu ngõ đang tóe lửa\" → BAO_MAT_DIEN\n\"Tháng này sao tiền điện nhiều thế\" → HOI_HOA_DON\n\"Nhân viên hẹn đến sửa mà không đến, tôi muốn phản ánh\" → KHIEU_NAI\n\nTin nhắn: {{tin_nhan}}"
+    },
+    {
+     "t": "p",
+     "html": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn BAO_MAT_DIEN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Dây điện đứt nằm giữa đường, mà tháng này tiền điện cũng cao” – việc an toàn được xử lý trước.",
+     "plain": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn BAO_MAT_DIEN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Dây điện đứt nằm giữa đường, mà tháng này tiền điện cũng cao” – việc an toàn được xử lý trước.",
+     "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "3. Node đánh giá (Evaluator)"
+    },
+    {
+     "t": "p",
+     "html": "Mẫu prompt ở Phần 2. Ba lưu ý khi cấu hình:",
+     "plain": "Mẫu prompt ở Phần 2. Ba lưu ý khi cấu hình:"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Đặt temperature thấp để chấm ổn định giữa các lần chạy.",
+       "level": 0,
+       "plain": "Đặt temperature thấp để chấm ổn định giữa các lần chạy."
+      },
+      {
+       "html": "Bắt buộc chỉ ra lỗi cụ thể và gợi ý sửa – node viết lại cần biết sửa gì, không chỉ biết “chưa đạt”.",
+       "level": 0,
+       "plain": "Bắt buộc chỉ ra lỗi cụ thể và gợi ý sửa – node viết lại cần biết sửa gì, không chỉ biết “chưa đạt”."
+      },
+      {
+       "html": "Evaluator chỉ chấm, không tự sửa bài. Gộp hai việc vào một node sẽ mất khả năng kiểm soát.",
+       "level": 0,
+       "plain": "Evaluator chỉ chấm, không tự sửa bài. Gộp hai việc vào một node sẽ mất khả năng kiểm soát."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Đặt tên biến"
+    },
+    {
+     "t": "p",
+     "html": "Đặt tên không dấu, rõ nghĩa: <code>ten_doi_thu</code>, <code>khia_canh</code>, <code>ban_nhap</code>, <code>ket_qua_danh_gia</code>. Tránh <code>text1</code>, <code>output2</code> – khi workflow có 10 node, bạn sẽ không nhớ biến nào chứa gì.",
+     "plain": "Đặt tên không dấu, rõ nghĩa: ten_doi_thu, khia_canh, ban_nhap, ket_qua_danh_gia. Tránh text1, output2 – khi workflow có 10 node, bạn sẽ không nhớ biến nào chứa gì."
+    }
+   ],
+   "id": "s5"
+  },
+  {
+   "title": "Ví dụ mẫu – Chạy workflow phân tích đối thủ với hai kịch bản",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Theo dõi giá trị các biến khi workflow ở Thực hành 3 chạy. Doanh nghiệp và số liệu đều là giả lập.",
+     "plain": "Theo dõi giá trị các biến khi workflow ở Thực hành 3 chạy. Doanh nghiệp và số liệu đều là giả lập."
+    },
+    {
+     "t": "code",
+     "text": "KỊCH BẢN A – thiếu dữ liệu\nNgười dùng : \"Phân tích đối thủ giúp mình\"\n[Trích xuất] → {\"doi_thu\": null, \"khia_canh\": [], \"thoi_gian\": null}\n[Condition]  doi_thu = null → nhánh HỎI LẠI\n[Trả lời]    \"Bạn muốn phân tích đối thủ nào, và về khía cạnh gì:\n              giá bán, tính năng hay chiến dịch marketing?\"\n\nKỊCH BẢN B – đủ dữ liệu\nNgười dùng : \"So sánh giá và tính năng của Công ty Sao Mai với bên mình\"\n[Bộ nhớ]     ten_doanh_nghiep = \"Điện máy Phú An\"; nganh_hang = \"điều hòa\"\n[Trích xuất] → {\"doi_thu\": \"Công ty Sao Mai\", \"khia_canh\": [\"gia\", \"tinh_nang\"], \"thoi_gian\": null}\n[Condition]  đủ → nhánh THỰC HIỆN\n[Web Search] \"Sao Mai điều hòa giá\" → 5 kết quả\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 1)\n[Evaluator]  {\"dat\": false, \"loi\": [\"2 mức giá không ghi nguồn\"],\n              \"goi_y_sua\": \"bổ sung nguồn hoặc ghi [CHƯA XÁC MINH]\"}\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 2, đủ nguồn)\n[Evaluator]  {\"dat\": true, \"loi\": [], \"goi_y_sua\": \"\"}\n[Trả lời]    bảng so sánh + danh sách nguồn"
+    },
+    {
+     "t": "p",
+     "html": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Điện máy Phú An, ngành điều hòa – người dùng không phải nói lại.",
+     "plain": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Điện máy Phú An, ngành điều hòa – người dùng không phải nói lại."
+    },
+    {
+     "t": "p",
+     "html": "Tự hỏi: ở kịch bản B, người dùng không nêu khoảng thời gian mà workflow vẫn chạy tiếp. Có hợp lý không? <em>Gợi ý: hợp lý nếu đặt mặc định “12 tháng gần nhất” và ghi rõ giả định này trong báo cáo; không hợp lý nếu âm thầm dùng dữ liệu cũ.</em>",
+     "plain": "Tự hỏi: ở kịch bản B, người dùng không nêu khoảng thời gian mà workflow vẫn chạy tiếp. Có hợp lý không? Gợi ý: hợp lý nếu đặt mặc định “12 tháng gần nhất” và ghi rõ giả định này trong báo cáo; không hợp lý nếu âm thầm dùng dữ liệu cũ.",
+     "callout": "question"
+    }
+   ],
+   "id": "s6"
+  },
+  {
    "title": "Phần 4 – Cơ chế bộ nhớ (Memory)",
    "kind": "content",
    "blocks": [
@@ -409,13 +556,364 @@
      "callout": "apply"
     },
     {
+     "t": "h3",
+     "text": "Prompt ghi nhớ: lưu gì, bỏ gì"
+    },
+    {
+     "t": "p",
+     "html": "Một node LLM đọc tin nhắn và quyết định cập nhật biến nhớ dài hạn:",
+     "plain": "Một node LLM đọc tin nhắn và quyết định cập nhật biến nhớ dài hạn:"
+    },
+    {
+     "t": "code",
+     "text": "Đọc tin nhắn của người dùng. Nếu có thông tin ỔN ĐỊNH, dùng lại được ở các lần sau,\ncập nhật các biến:\n- ten_doanh_nghiep\n- nganh_hang\n- dinh_dang_bao_cao_ua_thich\nKHÔNG lưu: số điện thoại, email, thông tin cá nhân, nội dung chỉ dùng cho yêu cầu hiện tại.\nKhông có thông tin mới thì giữ nguyên giá trị cũ.\nTrả về JSON chỉ gồm các biến cần cập nhật, VD: {\"nganh_hang\": \"điều hòa\"}; không có thì trả {}."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tin nhắn",
+        "plain": "Tin nhắn"
+       },
+       {
+        "html": "Lưu?",
+        "plain": "Lưu?"
+       },
+       {
+        "html": "Vì sao",
+        "plain": "Vì sao"
+       }
+      ],
+      [
+       {
+        "html": "“Bên mình là Điện máy Phú An, chuyên điều hòa”",
+        "plain": "“Bên mình là Điện máy Phú An, chuyên điều hòa”"
+       },
+       {
+        "html": "Lưu ten_doanh_nghiep, nganh_hang",
+        "plain": "Lưu ten_doanh_nghiep, nganh_hang"
+       },
+       {
+        "html": "Ổn định, dùng mọi lần",
+        "plain": "Ổn định, dùng mọi lần"
+       }
+      ],
+      [
+       {
+        "html": "“Lần này so với Sao Mai nhé”",
+        "plain": "“Lần này so với Sao Mai nhé”"
+       },
+       {
+        "html": "Không lưu",
+        "plain": "Không lưu"
+       },
+       {
+        "html": "Chỉ dùng cho yêu cầu hiện tại",
+        "plain": "Chỉ dùng cho yêu cầu hiện tại"
+       }
+      ],
+      [
+       {
+        "html": "“Gửi báo cáo về email riêng của mình giúp”",
+        "plain": "“Gửi báo cáo về email riêng của mình giúp”"
+       },
+       {
+        "html": "Không lưu",
+        "plain": "Không lưu"
+       },
+       {
+        "html": "Thông tin cá nhân",
+        "plain": "Thông tin cá nhân"
+       }
+      ],
+      [
+       {
+        "html": "“Mình thích báo cáo dạng bảng, ngắn thôi”",
+        "plain": "“Mình thích báo cáo dạng bảng, ngắn thôi”"
+       },
+       {
+        "html": "Lưu dinh_dang_bao_cao_ua_thich",
+        "plain": "Lưu dinh_dang_bao_cao_ua_thich"
+       },
+       {
+        "html": "Sở thích ổn định",
+        "plain": "Sở thích ổn định"
+       }
+      ]
+     ]
+    },
+    {
      "t": "activity",
      "id": "ai03-check",
      "title": "Kiểm tra nhanh: Workflow, Self-Correction, Memory",
      "inline": false
     }
    ],
-   "id": "s5"
+   "id": "s7"
+  },
+  {
+   "title": "Làm trên Dify – Chatflow phân tích đối thủ, từng node",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Dựng workflow của Thực hành 3 trên Dify Chatflow, khoảng 60 phút. Để chạy được mà không cần khóa API của công cụ tìm kiếm, bước tìm web được thay bằng một node chứa sẵn tin tức giả lập; khi đã chạy ổn, bạn có thể thay bằng công cụ tìm kiếm thật trong mục Tools.",
+     "plain": "Dựng workflow của Thực hành 3 trên Dify Chatflow, khoảng 60 phút. Để chạy được mà không cần khóa API của công cụ tìm kiếm, bước tìm web được thay bằng một node chứa sẵn tin tức giả lập; khi đã chạy ổn, bạn có thể thay bằng công cụ tìm kiếm thật trong mục Tools."
+    },
+    {
+     "t": "p",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 3 – Mô phỏng Workflow 3 nhánh & Evaluator):</strong> Bấm mở Phòng thí nghiệm để chạy thử ngay cả 3 nhánh (IF Thiếu dữ liệu, ELIF Dữ liệu mâu thuẫn, ELSE Đủ dữ liệu), xem biến Long-term Memory và quan sát vòng lặp tự sửa lỗi của Evaluator. <a href=\"/static/labs/ai/index.html?tab=workflow\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 3 – Mô phỏng Workflow 3 nhánh & Evaluator): Bấm mở Phòng thí nghiệm để chạy thử ngay cả 3 nhánh (IF Thiếu dữ liệu, ELIF Dữ liệu mâu thuẫn, ELSE Đủ dữ liệu), xem biến Long-term Memory và quan sát vòng lặp tự sửa lỗi của Evaluator. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Sơ đồ cần dựng"
+    },
+    {
+     "t": "code",
+     "text": "User Input\n → Parameter Extractor   trích doi_thu, khia_canh, ten_doanh_nghiep, gia_nguoi_dung_neu\n → IF/ELIF/ELSE (Condition)\n     ├─ IF   (doi_thu rỗng hoặc khia_canh rỗng)\n     │       → Answer: hỏi lại tên đối thủ và khía cạnh cần phân tích\n     ├─ ELIF (gia_nguoi_dung_neu khác trống / mâu thuẫn với nguồn chuẩn)\n     │       → LLM \"Đối chiếu chênh lệch\" → Answer: báo cáo độ lệch giữa các nguồn & hỏi xác nhận\n     └─ ELSE (đủ dữ liệu)\n             → Template: tin tức giả lập (thay cho tìm web)\n             → LLM \"Viết bảng\"\n             → LLM \"Kiểm duyệt\"      dòng đầu: DAT hoặc CHUA_DAT\n             → IF/ELSE  bắt đầu bằng DAT?\n                 ├─ IF   → Answer: bảng so sánh\n                 └─ ELSE → LLM \"Viết lại\" (kèm góp ý) → Answer: bảng đã sửa"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Tạo Chatflow"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Studio</strong> → <strong>Create from Blank</strong> → <strong>Chatflow</strong> → tên “Phan tich doi thu”.",
+       "level": 0,
+       "plain": "Studio → Create from Blank → Chatflow → tên “Phan tich doi thu”."
+      },
+      {
+       "html": "Xóa node LLM mặc định; giữ <strong>User Input</strong>. Node Answer mặc định có thể xóa, thêm lại ở từng nhánh.",
+       "level": 0,
+       "plain": "Xóa node LLM mặc định; giữ User Input. Node Answer mặc định có thể xóa, thêm lại ở từng nhánh."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Trích xuất: node Parameter Extractor"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Sau User Input thêm node <strong>Parameter Extractor</strong>. Biến đầu vào: <code>sys.query</code>.",
+       "level": 0,
+       "plain": "Sau User Input thêm node Parameter Extractor. Biến đầu vào: sys.query."
+      },
+      {
+       "html": "Thêm 4 tham số kiểu String: <code>doi_thu</code> – “Tên công ty đối thủ người dùng muốn phân tích”; <code>khia_canh</code> – “Khía cạnh cần phân tích: giá, tính năng, marketing; có thể nhiều”; <code>ten_doanh_nghiep</code> – “Tên doanh nghiệp của chính người dùng, nếu họ nêu”; <code>gia_nguoi_dung_neu</code> – “Mức giá hoặc thông tin mà người dùng tự nêu để đối chiếu (nếu có)”.",
+       "level": 0,
+       "plain": "Thêm 4 tham số kiểu String: doi_thu – “Tên công ty đối thủ người dùng muốn phân tích”; khia_canh – “Khía cạnh cần phân tích: giá, tính năng, marketing; có thể nhiều”; ten_doanh_nghiep – “Tên doanh nghiệp của chính người dùng, nếu họ nêu”; gia_nguoi_dung_neu – “Mức giá hoặc thông tin mà người dùng tự nêu để đối chiếu (nếu có)”."
+      },
+      {
+       "html": "Ô hướng dẫn (Instruction): “Chỉ trích xuất thông tin người dùng nêu rõ. Không nêu thì để trống, không tự đoán.”",
+       "level": 0,
+       "plain": "Ô hướng dẫn (Instruction): “Chỉ trích xuất thông tin người dùng nêu rõ. Không nêu thì để trống, không tự đoán.”"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Rẽ 3 nhánh: node IF/ELIF/ELSE"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Thêm node <strong>IF/ELSE</strong>. Điều kiện <strong>IF (Thiếu dữ liệu)</strong>: <code>doi_thu</code> <em>is empty</em> HOẶC <code>khia_canh</code> <em>is empty</em> → nối tới node <strong>Answer</strong>: “Bạn muốn phân tích đối thủ nào, và về khía cạnh gì: giá bán, tính năng hay chiến dịch marketing?”",
+       "level": 0,
+       "plain": "Thêm node IF/ELSE. Điều kiện IF (Thiếu dữ liệu): doi_thu is empty HOẶC khia_canh is empty → nối tới node Answer: “Bạn muốn phân tích đối thủ nào, và về khía cạnh gì: giá bán, tính năng hay chiến dịch marketing?”"
+      },
+      {
+       "html": "Bấm <strong>+ ELIF (Dữ liệu mâu thuẫn)</strong>: điều kiện <code>gia_nguoi_dung_neu</code> <em>is not empty</em> → nối tới node LLM “Đối chiếu chênh lệch” (so sánh con số người dùng nêu với nguồn tin chuẩn trong Template, chỉ rõ chênh lệch và hỏi người dùng muốn ưu tiên nguồn niêm yết, nguồn khuyến mãi hay số nội bộ) → nối tới <strong>Answer</strong>.",
+       "level": 0,
+       "plain": "Bấm + ELIF (Dữ liệu mâu thuẫn): điều kiện gia_nguoi_dung_neu is not empty → nối tới node LLM “Đối chiếu chênh lệch” (so sánh con số người dùng nêu với nguồn tin chuẩn trong Template, chỉ rõ chênh lệch và hỏi người dùng muốn ưu tiên nguồn niêm yết, nguồn khuyến mãi hay số nội bộ) → nối tới Answer."
+      },
+      {
+       "html": "Nhánh <strong>ELSE (Đủ dữ liệu)</strong> đi tiếp bước 4.",
+       "level": 0,
+       "plain": "Nhánh ELSE (Đủ dữ liệu) đi tiếp bước 4."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 4 – Dữ liệu và node viết bảng"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Trên nhánh ELSE thêm node <strong>Template</strong>, dán khối tin tức giả lập dưới đây. Node này đóng vai công cụ tìm web.",
+       "level": 0,
+       "plain": "Trên nhánh ELSE thêm node Template, dán khối tin tức giả lập dưới đây. Node này đóng vai công cụ tìm web."
+      },
+      {
+       "html": "Thêm node <strong>LLM</strong>, đổi tên “Viết bảng”. SYSTEM: vai trò chuyên gia phân tích thị trường; bắt buộc bảng 3 cột Tính năng | Giá | Điểm mạnh/yếu; mỗi mức giá ghi nguồn và ngày; các nguồn lệch nhau thì ghi đủ và đánh dấu [CHÊNH LỆCH]; chỉ dùng thông tin trong tin tức được cung cấp. USER: chèn biến <code>doi_thu</code>, <code>khia_canh</code> và đầu ra của node Template.",
+       "level": 0,
+       "plain": "Thêm node LLM, đổi tên “Viết bảng”. SYSTEM: vai trò chuyên gia phân tích thị trường; bắt buộc bảng 3 cột Tính năng | Giá | Điểm mạnh/yếu; mỗi mức giá ghi nguồn và ngày; các nguồn lệch nhau thì ghi đủ và đánh dấu [CHÊNH LỆCH]; chỉ dùng thông tin trong tin tức được cung cấp. USER: chèn biến doi_thu, khia_canh và đầu ra của node Template."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "[Nguồn 1 – Báo Kinh tế Phú An, 15/10/2026] Công ty Sao Mai ra mắt điều hòa SM-Inverter 12.000 BTU,\ngiá niêm yết 9.990.000 đồng, bảo hành 3 năm.\n[Nguồn 2 – Website Sao Mai, 20/10/2026] Khuyến mãi tháng 11: SM-Inverter 12.000 BTU giá 8.990.000 đồng,\ntặng công lắp đặt.\n[Nguồn 3 – Diễn đàn người tiêu dùng, 25/10/2026] Nhiều ý kiến khen SM-Inverter chạy êm, chê thời gian chờ\nbảo hành 7–10 ngày.\n(Toàn bộ là tin giả lập để học.)"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 5 – Kiểm duyệt và vòng sửa"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Thêm node LLM “Kiểm duyệt”, tham số kiểu <em>Precise</em>. SYSTEM: dán checklist ở Phần 2, thay phần định dạng trả về bằng: “Dòng đầu tiên chỉ ghi DAT hoặc CHUA_DAT. Các dòng sau: từng lỗi và gợi ý sửa.” USER: chèn biến <code>text</code> của node “Viết bảng”.",
+       "level": 0,
+       "plain": "Thêm node LLM “Kiểm duyệt”, tham số kiểu Precise. SYSTEM: dán checklist ở Phần 2, thay phần định dạng trả về bằng: “Dòng đầu tiên chỉ ghi DAT hoặc CHUA_DAT. Các dòng sau: từng lỗi và gợi ý sửa.” USER: chèn biến text của node “Viết bảng”."
+      },
+      {
+       "html": "Thêm IF/ELSE: <code>text</code> của “Kiểm duyệt” <em>start with</em> <code>DAT</code>. Nhánh IF → Answer hiển thị <code>text</code> của “Viết bảng”.",
+       "level": 0,
+       "plain": "Thêm IF/ELSE: text của “Kiểm duyệt” start with DAT. Nhánh IF → Answer hiển thị text của “Viết bảng”."
+      },
+      {
+       "html": "Nhánh ELSE → node LLM “Viết lại” (USER: bảng cũ + góp ý của “Kiểm duyệt”; “sửa đúng các lỗi được nêu, giữ phần đã đạt”) → Answer hiển thị bảng mới.",
+       "level": 0,
+       "plain": "Nhánh ELSE → node LLM “Viết lại” (USER: bảng cũ + góp ý của “Kiểm duyệt”; “sửa đúng các lỗi được nêu, giữ phần đã đạt”) → Answer hiển thị bảng mới."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Đây là vòng sửa <strong>một lần</strong>, dựng bằng cách đặt thêm node. Muốn tối đa 3 vòng, dùng node <strong>Loop</strong>: khai báo biến vòng lặp (bản nháp, kết quả kiểm duyệt), điều kiện kết thúc (đạt) và <strong>Maximum Loop Count</strong> = 3. Chỉ chuyển sang Loop khi bản một vòng đã chạy ổn.",
+     "plain": "Đây là vòng sửa một lần, dựng bằng cách đặt thêm node. Muốn tối đa 3 vòng, dùng node Loop: khai báo biến vòng lặp (bản nháp, kết quả kiểm duyệt), điều kiện kết thúc (đạt) và Maximum Loop Count = 3. Chỉ chuyển sang Loop khi bản một vòng đã chạy ổn.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 6 – Ghi nhớ tên doanh nghiệp trong phiên chat"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở bảng <strong>Conversation Variables</strong> của Chatflow (nút biến ở thanh trên khung vẽ), thêm biến <code>ten_doanh_nghiep</code> kiểu String.",
+       "level": 0,
+       "plain": "Mở bảng Conversation Variables của Chatflow (nút biến ở thanh trên khung vẽ), thêm biến ten_doanh_nghiep kiểu String."
+      },
+      {
+       "html": "Ngay sau Parameter Extractor chèn một IF/ELSE: <code>ten_doanh_nghiep</code> vừa trích <em>is not empty</em>.",
+       "level": 0,
+       "plain": "Ngay sau Parameter Extractor chèn một IF/ELSE: ten_doanh_nghiep vừa trích is not empty."
+      },
+      {
+       "html": "Nhánh IF: node <strong>Variable Assigner</strong> – Variable: biến hội thoại <code>ten_doanh_nghiep</code>; Set Variable: <code>ten_doanh_nghiep</code> của Parameter Extractor; Operation: <strong>Overwrite</strong>. Nối tiếp vào IF/ELSE ở bước 3. Nhánh ELSE nối thẳng vào IF/ELSE ở bước 3.",
+       "level": 0,
+       "plain": "Nhánh IF: node Variable Assigner – Variable: biến hội thoại ten_doanh_nghiep; Set Variable: ten_doanh_nghiep của Parameter Extractor; Operation: Overwrite. Nối tiếp vào IF/ELSE ở bước 3. Nhánh ELSE nối thẳng vào IF/ELSE ở bước 3."
+      },
+      {
+       "html": "Trong prompt “Viết bảng”, chèn thêm biến hội thoại <code>ten_doanh_nghiep</code> để bảng so sánh với đúng doanh nghiệp của người dùng.",
+       "level": 0,
+       "plain": "Trong prompt “Viết bảng”, chèn thêm biến hội thoại ten_doanh_nghiep để bảng so sánh với đúng doanh nghiệp của người dùng."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Biến hội thoại của Dify chỉ sống trong một phiên chat. Nhớ qua nhiều phiên cần lưu vào cơ sở dữ liệu bên ngoài – ngoài phạm vi bài này. Trên Coze, mục Memory → Variables của Agent lưu giá trị theo từng người dùng.",
+     "plain": "Biến hội thoại của Dify chỉ sống trong một phiên chat. Nhớ qua nhiều phiên cần lưu vào cơ sở dữ liệu bên ngoài – ngoài phạm vi bài này. Trên Coze, mục Memory → Variables của Agent lưu giá trị theo từng người dùng.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 7 – Chạy thử 3 kịch bản"
+    },
+    {
+     "t": "p",
+     "html": "Bấm <strong>Preview</strong>, gõ lần lượt ba câu trong <strong>cùng một</strong> phiên chat:",
+     "plain": "Bấm Preview, gõ lần lượt ba câu trong cùng một phiên chat:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Gõ vào",
+        "plain": "Gõ vào"
+       },
+       {
+        "html": "Nhánh phải chạy",
+        "plain": "Nhánh phải chạy"
+       },
+       {
+        "html": "Kiểm tra",
+        "plain": "Kiểm tra"
+       }
+      ],
+      [
+       {
+        "html": "“Phân tích đối thủ giúp mình”",
+        "plain": "“Phân tích đối thủ giúp mình”"
+       },
+       {
+        "html": "IF – thiếu dữ liệu",
+        "plain": "IF – thiếu dữ liệu"
+       },
+       {
+        "html": "Hỏi lại; không tạo bảng",
+        "plain": "Hỏi lại; không tạo bảng"
+       }
+      ],
+      [
+       {
+        "html": "“Bên mình là Điện máy Phú An. So sánh giá và tính năng của Công ty Sao Mai”",
+        "plain": "“Bên mình là Điện máy Phú An. So sánh giá và tính năng của Công ty Sao Mai”"
+       },
+       {
+        "html": "ELSE → Kiểm duyệt",
+        "plain": "ELSE → Kiểm duyệt"
+       },
+       {
+        "html": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Điện máy Phú An",
+        "plain": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Điện máy Phú An"
+       }
+      ],
+      [
+       {
+        "html": "“Nghe nói Sao Mai bán 7.500.000 đồng, đúng không?”",
+        "plain": "“Nghe nói Sao Mai bán 7.500.000 đồng, đúng không?”"
+       },
+       {
+        "html": "ELSE",
+        "plain": "ELSE"
+       },
+       {
+        "html": "Nói rõ không nguồn nào ghi 7.500.000 đ, nêu các mức giá có nguồn; không tự chọn một con số",
+        "plain": "Nói rõ không nguồn nào ghi 7.500.000 đ, nêu các mức giá có nguồn; không tự chọn một con số"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Mở chi tiết lần chạy để xem giá trị từng biến ở từng node, rồi đối chiếu với nhật ký ở mục “Ví dụ mẫu – Chạy workflow phân tích đối thủ”. Không có Dify: chạy bằng tay – dán prompt của từng node vào một cuộc trò chuyện riêng, chuyển kết quả sang node sau.",
+     "plain": "Mở chi tiết lần chạy để xem giá trị từng biến ở từng node, rồi đối chiếu với nhật ký ở mục “Ví dụ mẫu – Chạy workflow phân tích đối thủ”. Không có Dify: chạy bằng tay – dán prompt của từng node vào một cuộc trò chuyện riêng, chuyển kết quả sang node sau.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s8"
   },
   {
    "title": "Thực hành 3 – Agent phân tích đối thủ cạnh tranh (60 phút)",
@@ -428,17 +926,28 @@
      "inline": false
     },
     {
+     "t": "p",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 3 – Chạy thử Workflow 3 nhánh):</strong> Mở tab Buổi 3 trong Phòng thí nghiệm để thử nghiệm trực quan cả 3 nhánh (Thiếu / Mâu thuẫn / Đủ dữ liệu) và xem log từng node. <a href=\"/static/labs/ai/index.html?tab=workflow\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 3 – Chạy thử Workflow 3 nhánh): Mở tab Buổi 3 trong Phòng thí nghiệm để thử nghiệm trực quan cả 3 nhánh (Thiếu / Mâu thuẫn / Đủ dữ liệu) và xem log từng node. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "html": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục <strong>Làm trên Dify – Chatflow phân tích đối thủ</strong> ngay trước bài này. Bạn có thể chọn <strong>Đề A (Theo slide)</strong>: Phân tích đối thủ ngành điện máy (Công ty Sao Mai), hoặc <strong>Đề B (Ngành Điện lực)</strong>: Phân tích & đối soát báo giá nhà thầu cung cấp vật tư điện / điện mặt trời áp mái.",
+     "plain": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục Làm trên Dify – Chatflow phân tích đối thủ ngay trước bài này. Bạn có thể chọn Đề A (Theo slide): Phân tích đối thủ ngành điện máy (Công ty Sao Mai), hoặc Đề B (Ngành Điện lực): Phân tích & đối soát báo giá nhà thầu cung cấp vật tư điện / điện mặt trời áp mái."
+    },
+    {
      "t": "h3",
-     "text": "Bước 1 – Sườn prompt"
+     "text": "Bước 1 – Thiết kế trên Bảng kéo–thả và viết sườn prompt"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "Vai trò: chuyên gia phân tích thị trường.",
+       "html": "Vai trò: chuyên gia phân tích thị trường / thẩm định báo giá nhà thầu.",
        "level": 0,
-       "plain": "Vai trò: chuyên gia phân tích thị trường."
+       "plain": "Vai trò: chuyên gia phân tích thị trường / thẩm định báo giá nhà thầu."
       },
       {
        "html": "Định dạng đầu ra bắt buộc: bảng so sánh 3 cột – Tính năng, Giá, Điểm mạnh/yếu.",
@@ -454,30 +963,35 @@
     },
     {
      "t": "h3",
-     "text": "Bước 2 – Bộ nhớ"
+     "text": "Bước 2 – Bộ nhớ dài hạn (Long-term Memory)"
     },
     {
      "t": "p",
-     "html": "Cấu hình để Agent nhớ <strong>tên doanh nghiệp của người dùng</strong> và <strong>ngành hàng đang kinh doanh</strong>, không phải hỏi lại ở các lượt chat sau.",
-     "plain": "Cấu hình để Agent nhớ tên doanh nghiệp của người dùng và ngành hàng đang kinh doanh, không phải hỏi lại ở các lượt chat sau."
+     "html": "Cấu hình để Agent nhớ <strong>tên doanh nghiệp/đơn vị của người dùng</strong> và <strong>ngành hàng/nhóm thiết bị đang phụ trách</strong>, không phải hỏi lại ở các lượt chat sau.",
+     "plain": "Cấu hình để Agent nhớ tên doanh nghiệp/đơn vị của người dùng và ngành hàng/nhóm thiết bị đang phụ trách, không phải hỏi lại ở các lượt chat sau."
     },
     {
      "t": "h3",
-     "text": "Bước 3 – Luồng rẽ nhánh (Condition Node)"
+     "text": "Bước 3 – Luồng rẽ nhánh 3 tình huống (Condition Node: IF / ELIF / ELSE)"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "<strong>Nhánh 1 – IF thiếu dữ liệu:</strong> node LLM kiểm tra người dùng đã nhập tên đối thủ chưa; nếu chưa → gửi tin nhắn yêu cầu cung cấp tên.",
+       "html": "<strong>Nhánh 1 – IF Thiếu dữ liệu:</strong> kiểm tra người dùng đã nhập tên đối thủ/nhà thầu và khía cạnh phân tích chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu.",
        "level": 0,
-       "plain": "Nhánh 1 – IF thiếu dữ liệu: node LLM kiểm tra người dùng đã nhập tên đối thủ chưa; nếu chưa → gửi tin nhắn yêu cầu cung cấp tên."
+       "plain": "Nhánh 1 – IF Thiếu dữ liệu: kiểm tra người dùng đã nhập tên đối thủ/nhà thầu và khía cạnh phân tích chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu."
       },
       {
-       "html": "<strong>Nhánh 2 – ELSE đủ dữ liệu:</strong> gọi Web Search thu thập tin tức về đối thủ → tổng hợp → node Evaluator → xuất báo cáo.",
+       "html": "<strong>Nhánh 2 – ELIF Dữ liệu mâu thuẫn:</strong> khi giá từ web và cơ sở dữ liệu nội bộ (hoặc số người dùng đưa vào) lệch nhau → báo cáo rõ hai mức giá kèm nguồn và hỏi người dùng muốn ưu tiên nguồn nào trước khi kết luận.",
        "level": 0,
-       "plain": "Nhánh 2 – ELSE đủ dữ liệu: gọi Web Search thu thập tin tức về đối thủ → tổng hợp → node Evaluator → xuất báo cáo."
+       "plain": "Nhánh 2 – ELIF Dữ liệu mâu thuẫn: khi giá từ web và cơ sở dữ liệu nội bộ (hoặc số người dùng đưa vào) lệch nhau → báo cáo rõ hai mức giá kèm nguồn và hỏi người dùng muốn ưu tiên nguồn nào trước khi kết luận."
+      },
+      {
+       "html": "<strong>Nhánh 3 – ELSE Đủ dữ liệu:</strong> thu thập tin tức → tổng hợp bảng 3 cột → node Evaluator kiểm duyệt (tối đa 3 vòng) → xuất báo cáo.",
+       "level": 0,
+       "plain": "Nhánh 3 – ELSE Đủ dữ liệu: thu thập tin tức → tổng hợp bảng 3 cột → node Evaluator kiểm duyệt (tối đa 3 vòng) → xuất báo cáo."
       }
      ]
     },
@@ -513,7 +1027,108 @@
     }
    ],
    "activity": "ai03-th3",
-   "id": "s6"
+   "id": "s9"
+  },
+  {
+   "title": "Tự luyện buổi 3",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Bài 1 – Node phân loại cho hộp thư góp ý nội bộ"
+    },
+    {
+     "t": "p",
+     "html": "Hộp thư góp ý nhận tin nhắn về: <code>CNTT</code> (máy tính, phần mềm, mạng), <code>HANH_CHINH</code> (văn phòng phẩm, phòng họp, xe), <code>NHAN_SU</code> (nghỉ phép, chấm công, bảo hiểm), <code>KHAC</code>. Viết prompt phân loại có ví dụ mẫu và luật cho tin nhắn thuộc hai nhóm.",
+     "plain": "Hộp thư góp ý nhận tin nhắn về: CNTT (máy tính, phần mềm, mạng), HANH_CHINH (văn phòng phẩm, phòng họp, xe), NHAN_SU (nghỉ phép, chấm công, bảo hiểm), KHAC. Viết prompt phân loại có ví dụ mẫu và luật cho tin nhắn thuộc hai nhóm."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "code",
+       "text": "Phân loại tin nhắn góp ý vào đúng một nhãn: CNTT, HANH_CHINH, NHAN_SU, KHAC.\n- CNTT: máy tính, máy in, phần mềm, mạng, tài khoản đăng nhập\n- HANH_CHINH: văn phòng phẩm, phòng họp, xe công tác, vệ sinh\n- NHAN_SU: nghỉ phép, chấm công, lương, bảo hiểm, đào tạo\n- KHAC: không thuộc các nhóm trên\nTin nhắn thuộc nhiều nhóm: chọn nhóm của việc cần xử lý trước để người gửi làm việc được.\nChỉ trả về nhãn.\n\n\"Máy chấm công tầng 2 không nhận vân tay\" → CNTT\n\"Phòng họp lớn hỏng điều hòa\" → HANH_CHINH\n\"Tôi chưa thấy ngày phép năm nay được cộng\" → NHAN_SU\n\"Đề nghị tổ chức giải bóng đá cuối năm\" → KHAC\n\nTin nhắn: {{tin_nhan}}"
+      },
+      {
+       "t": "p",
+       "html": "Chú ý ví dụ “máy chấm công” – nghe như việc nhân sự nhưng thực chất là lỗi thiết bị. Ví dụ ở “vùng giáp ranh” như vậy dạy AI nhiều hơn ví dụ hiển nhiên.",
+       "plain": "Chú ý ví dụ “máy chấm công” – nghe như việc nhân sự nhưng thực chất là lỗi thiết bị. Ví dụ ở “vùng giáp ranh” như vậy dạy AI nhiều hơn ví dụ hiển nhiên."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 2 – Checklist cho Evaluator"
+    },
+    {
+     "t": "p",
+     "html": "Viết 5 tiêu chí <strong>kiểm tra được</strong> để Evaluator duyệt một công văn trả lời đơn kiến nghị của khách hàng.",
+     "plain": "Viết 5 tiêu chí kiểm tra được để Evaluator duyệt một công văn trả lời đơn kiến nghị của khách hàng."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Có đủ số, ngày, trích yếu và người nhận.",
+         "level": 0,
+         "plain": "Có đủ số, ngày, trích yếu và người nhận."
+        },
+        {
+         "html": "Trả lời đủ từng kiến nghị trong đơn: số kiến nghị được trả lời = số kiến nghị trong đơn.",
+         "level": 0,
+         "plain": "Trả lời đủ từng kiến nghị trong đơn: số kiến nghị được trả lời = số kiến nghị trong đơn."
+        },
+        {
+         "html": "Mỗi khẳng định về quy định có dẫn tên văn bản và điều, khoản.",
+         "level": 0,
+         "plain": "Mỗi khẳng định về quy định có dẫn tên văn bản và điều, khoản."
+        },
+        {
+         "html": "Không hứa thời hạn, kết quả ngoài thẩm quyền (không có câu “cam kết”, “chắc chắn” khi chưa có căn cứ).",
+         "level": 0,
+         "plain": "Không hứa thời hạn, kết quả ngoài thẩm quyền (không có câu “cam kết”, “chắc chắn” khi chưa có căn cứ)."
+        },
+        {
+         "html": "Có đầu mối liên hệ (bộ phận, số điện thoại).",
+         "level": 0,
+         "plain": "Có đầu mối liên hệ (bộ phận, số điện thoại)."
+        }
+       ]
+      },
+      {
+       "t": "p",
+       "html": "So sánh với tiêu chí không kiểm tra được: “văn phong tốt”, “đầy đủ”, “chuyên nghiệp”. Muốn kiểm tra giọng văn, hãy cụ thể hóa: “không có câu dài quá 40 chữ”, “không dùng từ ngữ cảm thán”.",
+       "plain": "So sánh với tiêu chí không kiểm tra được: “văn phong tốt”, “đầy đủ”, “chuyên nghiệp”. Muốn kiểm tra giọng văn, hãy cụ thể hóa: “không có câu dài quá 40 chữ”, “không dùng từ ngữ cảm thán”."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 3 – Vẽ workflow đổi lịch họp"
+    },
+    {
+     "t": "p",
+     "html": "Agent nhận yêu cầu đổi lịch họp. Nó cần biết đổi cuộc họp nào và sang giờ nào, kiểm tra phòng và người tham dự, rồi đề xuất. Vẽ sơ đồ node theo kiểu mũi tên như mẫu ở Thực hành 3, có nhánh thiếu thông tin và nhánh xung đột lịch.",
+     "plain": "Agent nhận yêu cầu đổi lịch họp. Nó cần biết đổi cuộc họp nào và sang giờ nào, kiểm tra phòng và người tham dự, rồi đề xuất. Vẽ sơ đồ node theo kiểu mũi tên như mẫu ở Thực hành 3, có nhánh thiếu thông tin và nhánh xung đột lịch."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "code",
+       "text": "Start → [LLM: Trích xuất] cuoc_hop, gio_moi → biến\n      → [Condition] thiếu cuoc_hop hoặc gio_moi?\n          ├─ Có  → [Trả lời] hỏi lại đúng thông tin còn thiếu → End\n          └─ Không → [Tool: xem lịch phòng + người tham dự]\n                    → [Condition] có xung đột?\n                        ├─ Có  → [LLM] đề xuất 2 giờ thay thế gần nhất, nêu ai vướng → End\n                        └─ Không → [Trả lời] bản nháp thông báo đổi lịch, chờ người dùng duyệt → End"
+      }
+     ]
+    }
+   ],
+   "id": "s10"
   },
   {
    "title": "Tóm tắt",
@@ -547,7 +1162,7 @@
      "inline": false
     }
    ],
-   "id": "s7"
+   "id": "s11"
   },
   {
    "title": "Ghi chú cho giảng viên",
@@ -564,7 +1179,7 @@
      "plain": "Chữa bài: chạy kịch bản “mâu thuẫn” trên workflow của 2 học viên – đa số workflow sẽ bỏ qua nhánh này. Đây là điểm nhấn của buổi."
     }
    ],
-   "id": "s8"
+   "id": "s12"
   }
  ],
  "activities": [
@@ -699,9 +1314,266 @@
    "type": "practice",
    "scope": "student",
    "title": "Thực hành 3 – Agent phân tích đối thủ cạnh tranh (60 phút)",
-   "section": "s6",
-   "intro": "Xây sườn prompt và workflow cho Agent phân tích đối thủ: System Prompt có luật tự kiểm tra, luồng rẽ nhánh đủ/thiếu dữ liệu và bộ nhớ dài hạn.",
+   "section": "s9",
+   "intro": "Thiết kế sơ đồ Workflow trên bảng kéo–thả và xây sườn prompt cho Agent phân tích đối thủ: System Prompt có luật tự kiểm tra, luồng rẽ nhánh 3 tình huống (Thiếu / Mâu thuẫn / Đủ dữ liệu) và bộ nhớ dài hạn.",
    "fields": [
+    {
+     "type": "board",
+     "key": "so_do_workflow",
+     "size": [
+      1740,
+      820
+     ],
+     "label": "Không gian thiết kế Workflow 3 nhánh & Vòng lặp Self-Correction – cấu hình các node, chọn hành động nhánh và nối luồng",
+     "hint": "Đảm bảo đủ cả 3 nhánh (Thiếu dữ liệu / Dữ liệu mâu thuẫn / Đủ dữ liệu) và vòng lặp kiểm duyệt Evaluator có giới hạn số lần.",
+     "steps": [
+      "Ở cột ①, điền các biến cần trích xuất ở Parameter Extractor và các biến lưu ở Long-term Memory.",
+      "Ở cột ②, chọn hành động tương ứng cho 3 nhánh (IF Thiếu dữ liệu, ELIF Dữ liệu mâu thuẫn, ELSE Đủ dữ liệu) và ghi điều kiện kích hoạt.",
+      "Ở cột ③, ghi quy tắc tạo bảng 3 cột và checklist chấm điểm của Evaluator kèm giới hạn vòng lặp tối đa (≤ 3 lần).",
+      "Kéo dây nối từ Trích xuất sang 3 nhánh, từ nhánh Đủ dữ liệu sang Viết bảng ⇄ Evaluator."
+     ],
+     "zones": [
+      {
+       "x": 20,
+       "y": 20,
+       "w": 480,
+       "h": 780,
+       "label": "① Tiếp nhận, Bộ nhớ & Trích xuất",
+       "color": "blue",
+       "hint": "Đọc yêu cầu, nạp biến nhớ và bóc tách tham số"
+      },
+      {
+       "x": 540,
+       "y": 20,
+       "w": 560,
+       "h": 780,
+       "label": "② Rẽ nhánh điều kiện (IF / ELIF / ELSE)",
+       "color": "amber",
+       "hint": "3 nhánh: Thiếu dữ liệu · Mâu thuẫn · Đủ dữ liệu"
+      },
+      {
+       "x": 1140,
+       "y": 20,
+       "w": 580,
+       "h": 780,
+       "label": "③ Thực thi & Tự kiểm duyệt (Self-Correction)",
+       "color": "teal",
+       "hint": "Tạo bảng 3 cột → Evaluator chấm → Sửa tối đa 3 vòng"
+      }
+     ],
+     "kinds": [
+      {
+       "kind": "input",
+       "label": "Tiếp nhận & Bộ nhớ",
+       "color": "blue",
+       "icon": "🧠",
+       "add": false,
+       "props": [
+        {
+         "key": "bien",
+         "label": "Tên biến",
+         "placeholder": "VD: doi_thu, khia_canh, ten_doanh_nghiep"
+        }
+       ],
+       "hint": "Cách bóc tách tham số hoặc quy tắc ghi nhớ"
+      },
+      {
+       "kind": "branch",
+       "label": "Nhánh xử lý",
+       "color": "amber",
+       "icon": "🔀",
+       "add": false,
+       "options": [
+        "Hỏi lại người dùng",
+        "Báo chênh lệch & xin xác nhận",
+        "Chạy công cụ & viết báo cáo"
+       ],
+       "optionLabel": "Hành động nhánh…",
+       "tones": {
+        "Hỏi lại người dùng": "info",
+        "Báo chênh lệch & xin xác nhận": "warn",
+        "Chạy công cụ & viết báo cáo": "ok"
+       },
+       "hint": "Điều kiện kích hoạt và câu trả lời/hành động của nhánh"
+      },
+      {
+       "kind": "eval",
+       "label": "Thực thi & Kiểm duyệt",
+       "color": "teal",
+       "icon": "✅",
+       "add": false,
+       "props": [
+        {
+         "key": "gioi_han",
+         "label": "Giới hạn / Quy tắc",
+         "placeholder": "VD: Tối đa 3 vòng lặp sửa sai"
+        }
+       ],
+       "hint": "Prompt tạo bảng hoặc Checklist Evaluator"
+      },
+      {
+       "kind": "note",
+       "label": "Ghi chú",
+       "color": "slate",
+       "icon": "📝",
+       "add": true,
+       "hint": "Ý tưởng, câu hỏi, điều cần kiểm tra thêm…"
+      }
+     ],
+     "nodes": [
+      {
+       "id": "w_extract",
+       "kind": "input",
+       "x": 42,
+       "y": 90,
+       "locked": true,
+       "title": "1. Parameter Extractor (Trích xuất)"
+      },
+      {
+       "id": "w_memory",
+       "kind": "input",
+       "x": 42,
+       "y": 420,
+       "locked": true,
+       "title": "2. Long-term Memory (Bộ nhớ dài hạn)"
+      },
+      {
+       "id": "b_thieu",
+       "kind": "branch",
+       "x": 562,
+       "y": 70,
+       "locked": true,
+       "title": "Nhánh IF – Thiếu dữ liệu"
+      },
+      {
+       "id": "b_mauthuan",
+       "kind": "branch",
+       "x": 562,
+       "y": 320,
+       "locked": true,
+       "title": "Nhánh ELIF – Dữ liệu mâu thuẫn"
+      },
+      {
+       "id": "b_du",
+       "kind": "branch",
+       "x": 562,
+       "y": 570,
+       "locked": true,
+       "title": "Nhánh ELSE – Đủ dữ liệu"
+      },
+      {
+       "id": "e_draft",
+       "kind": "eval",
+       "x": 1162,
+       "y": 120,
+       "locked": true,
+       "title": "3. Node LLM Viết bảng so sánh 3 cột"
+      },
+      {
+       "id": "e_check",
+       "kind": "eval",
+       "x": 1162,
+       "y": 450,
+       "locked": true,
+       "title": "4. Node Evaluator (Checklist & Vòng lặp)"
+      }
+     ],
+     "links": [
+      {
+       "a": "*",
+       "b": "*",
+       "fields": [
+        {
+         "key": "dieu_kien",
+         "label": "Điều kiện / Dữ liệu chuyển",
+         "placeholder": "VD: doi_thu != null / CHUA_DAT (≤ 3 lần)"
+        }
+       ]
+      }
+     ],
+     "goals": [
+      {
+       "type": "filled",
+       "kind": [
+        "input",
+        "branch",
+        "eval"
+       ],
+       "text": "Mô tả đầy đủ cho cả 7 node trong Workflow"
+      },
+      {
+       "type": "props",
+       "kind": "input",
+       "fields": [
+        "bien"
+       ],
+       "text": "Khai báo tên biến trích xuất và biến bộ nhớ dài hạn"
+      },
+      {
+       "type": "tagged",
+       "kind": "branch",
+       "text": "Chọn đúng hành động cho cả 3 nhánh (Thiếu / Mâu thuẫn / Đủ)"
+      },
+      {
+       "type": "props",
+       "kind": "eval",
+       "fields": [
+        "gioi_han"
+       ],
+       "text": "Ghi quy tắc định dạng và giới hạn số vòng lặp tối đa"
+      },
+      {
+       "type": "links",
+       "min": 5,
+       "text": "Nối dây từ Trích xuất sang các nhánh và nối vòng lặp Viết bảng ⇄ Evaluator"
+      }
+     ],
+     "warnings": [
+      {
+       "type": "tag",
+       "node": "b_thieu",
+       "value": "Chạy công cụ & viết báo cáo",
+       "text": "Khi thiếu tên đối thủ hoặc khía cạnh mà vẫn viết báo cáo ngay thì Agent sẽ tự đoán mò."
+      },
+      {
+       "type": "tag",
+       "node": "b_mauthuan",
+       "value": "Chạy công cụ & viết báo cáo",
+       "text": "Khi nguồn nội bộ và nguồn web lệch giá nhau, Agent cần báo chênh lệch và hỏi người dùng ưu tiên nguồn nào."
+      }
+     ],
+     "summary": {
+      "type": "cards",
+      "kind": [
+       "input",
+       "branch",
+       "eval"
+      ],
+      "title": "Bảng thiết kế các node trong Workflow",
+      "cols": [
+       {
+        "key": "title",
+        "label": "Node"
+       },
+       {
+        "key": "tag",
+        "label": "Hành động"
+       },
+       {
+        "key": "bien",
+        "label": "Biến"
+       },
+       {
+        "key": "gioi_han",
+        "label": "Giới hạn"
+       },
+       {
+        "key": "text",
+        "label": "Nội dung cấu hình"
+       }
+      ]
+     }
+    },
     {
      "type": "textarea",
      "key": "system_prompt",

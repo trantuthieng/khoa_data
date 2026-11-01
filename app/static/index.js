@@ -3,13 +3,28 @@ Vue.createApp({
     const params = new URLSearchParams(location.search);
     let saved = null;
     try { saved = JSON.parse(store.get('session') || 'null'); } catch (e) { saved = null; }
+    const initCourse = params.get('course') === 'ai-agent' ? 'ai-agent' : 'atdl';
     return {
-      logo: LOGO, mode: params.get('code') ? 'new' : 'phone', code: (params.get('code') || '').toUpperCase(), name: '', rejoin: '', phone: '',
-      err: '', busy: false, saved,
+      logo: LOGO,
+      storyCourse: initCourse,
+      mode: params.get('code') ? 'new' : 'phone',
+      code: (params.get('code') || '').toUpperCase(),
+      name: '',
+      rejoin: '',
+      phone: '',
+      err: '',
+      busy: false,
+      saved,
     };
   },
   computed: { hasSession() { return this.saved && this.saved.token; } },
   methods: {
+    setCourse(c) {
+      this.storyCourse = c;
+      document.title = c === 'ai-agent'
+        ? 'Vào lớp | AI Agent – Xây dựng đội ngũ nhân sự ảo'
+        : 'Vào lớp | An toàn ứng dụng & Dữ liệu dành cho cán bộ vận hành';
+    },
     async join() {
       this.err = ''; this.busy = true;
       try {

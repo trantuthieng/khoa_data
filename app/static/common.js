@@ -66,8 +66,17 @@ function initPayload(act, existing) {
 }
 
 const ContentBlocks = {
+  name: 'ContentBlocks',
   props: { blocks: Array, teacher: Boolean, revealed: Array, stage: Number },
+  data() { return { copied: null }; },
   methods: {
+    copyCode(text, i) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text || '');
+      }
+      this.copied = i;
+      setTimeout(() => { if (this.copied === i) this.copied = null; }, 1800);
+    },
     kind(b) {
       if (!this.teacher) return '';
       if (b.teacher) return 'Chỉ giảng viên';
@@ -103,10 +112,19 @@ const ContentBlocks = {
         <thead><tr><th v-for="(c, j) in b.rows[0]" :key="j" :colspan="c.span || 1" v-html="c.html"></th></tr></thead>
         <tbody><tr v-for="(r, k) in b.rows.slice(1)" :key="k"><td v-for="(c, j) in r" :key="j" :colspan="c.span || 1" v-html="c.html"></td></tr></tbody>
       </table></div>
-      <pre v-else-if="b.t === 'code'"><code>{{ b.text }}</code></pre>
+      <div v-else-if="b.t === 'code'" class="codewrap">
+        <button type="button" class="copy-btn noprint" @click="copyCode(b.text, i)">{{ copied === i ? '✓ Đã chép' : '📋 Sao chép' }}</button>
+        <pre><code>{{ b.text }}</code></pre>
+      </div>
       <blockquote v-else-if="b.t === 'quote'" v-html="b.html"></blockquote>
       <img v-else-if="b.t === 'img'" :src="b.src" alt="Hình minh họa trong giáo trình" loading="lazy">
       <figure v-else-if="b.t === 'figure'" class="figure"><div class="figbody" v-html="b.html"></div><figcaption v-if="b.caption">{{ b.caption }}</figcaption></figure>
+      <details v-else-if="b.t === 'details'" class="card hint-details">
+        <summary>{{ b.title || '💡 Xem gợi ý & lời giải mẫu' }}</summary>
+        <content-blocks :blocks="b.blocks" :teacher="teacher" :revealed="revealed" :stage="stage">
+          <template #activity="{ b: ab }"><slot name="activity" :b="ab"></slot></template>
+        </content-blocks>
+      </details>
       <div v-else-if="b.t === 'activity'" class="act-slot">
         <slot name="activity" :b="b">
           <div class="card act-embed">

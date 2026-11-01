@@ -25,7 +25,7 @@ function reviewRows(target, entries, kind) {
 }
 function coverage() {
   const meaningful = obj => Object.values(obj).filter(v => v.trim()).length;
-  $('coverage').textContent = `Đã ghi nhận xét: ${meaningful(draft.sources)}/${Object.keys(count('source')).length} nguồn · ${meaningful(draft.days)}/${Object.keys(count('day')).length} ngày. Nhận xét cần được giảng viên đối chiếu bằng chứng.`;
+  $('coverage').textContent = `Đã ghi: ${meaningful(draft.sources)}/${Object.keys(count('source')).length} nguồn · ${meaningful(draft.days)}/${Object.keys(count('day')).length} ngày.`;
 }
 function restoreUI() {
   document.querySelectorAll('[data-note]').forEach(el => { el.value = draft.notes[el.dataset.note] || ''; });
@@ -51,8 +51,12 @@ document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => {
   document.querySelectorAll('[data-tab]').forEach(t => { t.classList.toggle('active', t === b); t.setAttribute('aria-pressed', String(t === b)); });
 });
 document.querySelectorAll('[data-note]').forEach(el => el.oninput = () => { draft.notes[el.dataset.note] = el.value; store(); words(); });
-function words() { const n = (draft.notes.ban_giao || '').trim().split(/\s+/).filter(Boolean).length; $('word-count').textContent = `${n}/300 từ${n > 300 ? ' · Cần rút gọn trước khi nộp.' : ''}`; }
+function words() { const n = (draft.notes.ban_giao || '').trim().split(/\s+/).filter(Boolean).length; $('word-count').textContent = `${n}/150 từ${n > 150 ? ' · Cần rút gọn trước khi nộp.' : ''}`; }
 function resetFilters() { for (const k of ['query','source','day','severity']) $(k).value = ''; }
+document.querySelectorAll('[data-hint]').forEach(b => b.onclick = () => {
+  resetFilters(); $('query').value = b.dataset.hint; $('source').value = b.dataset.source || ''; applyFilters();
+  document.querySelector('.explorer').scrollIntoView({behavior: 'smooth'});
+});
 $('reset').onclick = () => { resetFilters(); applyFilters(); };
 function applyFilters() {
   const q = $('query').value.trim().toLowerCase(), src = $('source').value, day = $('day').value, sev = $('severity').value;
@@ -93,33 +97,29 @@ function openEvent(e) {
   $('pin').textContent = draft.pins[e.event_id] ? 'Đã ghim · xem ở Bàn giao' : 'Ghim bằng chứng'; $('detail').showModal();
 }
 $('close').onclick = () => $('detail').close();
-$('pin').onclick = () => { if (!selected) return; draft.pins[selected.event_id] ??= {timeline: '1'}; store(); renderEvidence(); $('pin').textContent = 'Đã ghim · xem ở Bàn giao'; };
-function pinned(timeline) { return events.filter(e => draft.pins[e.event_id] && (!timeline || draft.pins[e.event_id].timeline === timeline)).sort((a,b) => new Date(a.ts)-new Date(b.ts)); }
+$('pin').onclick = () => { if (!selected) return; draft.pins[selected.event_id] ??= {}; store(); renderEvidence(); $('pin').textContent = 'Đã ghim · xem ở Bàn giao'; };
+function pinned() { return events.filter(e => draft.pins[e.event_id]).sort((a,b) => new Date(a.ts)-new Date(b.ts)); }
 function renderEvidence() {
   $('evidence').replaceChildren();
-  if (!pinned().length) { $('evidence').append(text('p', 'Chưa ghim bằng chứng. Mở event trong kho nhật ký rồi bấm Ghim bằng chứng.')); return; }
-  for (const group of ['1','2']) {
-    const entries = pinned(group), sources = new Set(entries.map(e => e.source)), days = new Set(entries.map(e => dayOf(e.ts)));
-    $('evidence').append(text('h3', `Timeline ${group} · ${entries.length} event · ${sources.size} nguồn · ${days.size} ngày`));
-    for (const e of entries) {
-      const row = text('div', '', 'evidence-row'), b = text('button', e.event_id); b.onclick = () => openEvent(e);
-      const select = document.createElement('select'); select.setAttribute('aria-label', 'Timeline ' + e.event_id); option(select, '1', 'Timeline 1'); option(select, '2', 'Timeline 2'); select.value = group;
-      select.onchange = () => { draft.pins[e.event_id].timeline = select.value; store(); renderEvidence(); };
-      const remove = text('button', 'Bỏ ghim'); remove.onclick = () => { delete draft.pins[e.event_id]; store(); renderEvidence(); };
-      row.append(b, select, remove, text('p', `${localTime(e.ts)} · ${e.source} · ${e.event_type}`), text('p', 'Giờ nhận: ' + e.ingested_at)); $('evidence').append(row);
-    }
+  const entries = pinned();
+  if (!entries.length) { $('evidence').append(text('p', 'Chưa ghim bằng chứng. Mở event trong kho nhật ký rồi bấm Ghim bằng chứng.')); return; }
+  const sources = new Set(entries.map(e => e.source)), days = new Set(entries.map(e => dayOf(e.ts)));
+  $('evidence').append(text('h3', `Timeline · ${entries.length} event · ${sources.size} nguồn · ${days.size} ngày`));
+  if (entries.length < 3 || sources.size < 2) $('evidence').append(text('p', 'Cần ít nhất 3 event từ 2 nguồn.', 'muted'));
+  for (const e of entries) {
+    const row = text('div', '', 'evidence-row'), b = text('button', e.event_id); b.onclick = () => openEvent(e);
+    const remove = text('button', 'Bỏ ghim'); remove.onclick = () => { delete draft.pins[e.event_id]; store(); renderEvidence(); };
+    row.append(b, remove, text('p', `${localTime(e.ts)} · ${e.source} · ${e.event_type} · ${e.resource_id || e.path || '—'} · ${e.result}`)); $('evidence').append(row);
   }
 }
 function report() {
-  const lines = ['BUỔI 9 – CA TRỰC ĐIỀU TRA', 'Bản nháp: ' + (draftName || 'Chưa đặt tên'), 'Chưa nộp cho giảng viên.', $('hash').textContent, '', '1–2. BẢN ĐỒ / PHẠM VI', draft.notes.nhan_ca || '(chưa ghi)', '', 'NGUỒN'];
-  for (const [k,n] of Object.entries(count('source')).sort()) lines.push(`${k} (${n}): ${draft.sources[k] || '(chưa rà/ghi nhận)'}`);
-  lines.push('', 'NGÀY (ts +07:00)'); for (const [k,n] of Object.entries(count('day')).sort()) lines.push(`${k} (${n}): ${draft.days[k] || '(chưa rà/ghi nhận)'}`);
-  lines.push('', 'TRUY VẤN / PHẠM VI', draft.notes.truy_van || '(chưa ghi)', '', '3. HỒ SƠ', draft.notes.ho_so || '(chưa ghi)', '', '4. PHẢN BIỆN', draft.notes.phan_bien || '(chưa ghi)');
-  for (const group of ['1','2']) {
-    lines.push('', 'TIMELINE ' + group, 'ts gốc | ts +07:00 | ingested_at | event_id | source | hành động | đối tượng | kết quả');
-    for (const e of pinned(group)) lines.push([e.ts,localTime(e.ts),e.ingested_at,e.event_id,e.source,e.event_type,e.resource_id || e.path || '',e.result].join(' | '));
-  }
-  lines.push('', 'LIÊN KẾT / GIỚI HẠN', draft.notes.timeline || '(chưa ghi)', '', 'BÀN GIAO', draft.notes.ban_giao || '(chưa ghi)'); return lines.join('\n');
+  const lines = ['BUỔI 9 – CA TRỰC ĐIỀU TRA', 'Bản nháp: ' + (draftName || 'Chưa đặt tên'), 'Chưa nộp cho giảng viên.', $('hash').textContent, '', '1. LÀM QUEN DỮ LIỆU', draft.notes.nhan_ca || '(chưa ghi)'];
+  const notes = (title, obj) => { const filled = Object.entries(obj).filter(([,v]) => v.trim()).sort(); if (filled.length) lines.push('', title, ...filled.map(([k,v]) => `${k}: ${v}`)); };
+  notes('RÀ THEO NGUỒN (tùy chọn)', draft.sources); notes('RÀ THEO NGÀY (tùy chọn)', draft.days);
+  lines.push('', 'TÌM KIẾM ĐÃ DÙNG', draft.notes.truy_van || '(chưa ghi)', '', '2. NĂM PHÁT HIỆN', draft.notes.ho_so || '(chưa ghi)', '', '3. KIỂM TRA LẠI', draft.notes.phan_bien || '(chưa ghi)');
+  lines.push('', '4. TIMELINE', 'ts (+07:00) | event_id | nguồn | hành động | đối tượng | kết quả');
+  for (const e of pinned()) lines.push([e.ts,e.event_id,e.source,e.event_type,e.resource_id || e.path || '',e.result].join(' | '));
+  lines.push('Liên kết: ' + (draft.notes.timeline || '(chưa ghi)'), '', '5. BÀN GIAO', draft.notes.ban_giao || '(chưa ghi)'); return lines.join('\n');
 }
 $('copy').onclick = async () => { try { await navigator.clipboard.writeText(report()); $('export-status').textContent = 'Đã chép. Dán vào bài trên lớp học rồi bấm Nộp bài.'; } catch { $('export-status').textContent = 'Không chép được. Dùng Tải bản nháp .txt.'; } };
 $('download').onclick = () => { const url = URL.createObjectURL(new Blob([report()], {type: 'text/plain;charset=utf-8'})), a = document.createElement('a'); a.href = url; a.download = 'buoi9-ban-nhap.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); $('export-status').textContent = 'Đã tạo tệp bản nháp; chưa nộp.'; };
@@ -128,7 +128,7 @@ async function init() {
     const response = await fetch('nhat_ky.jsonl.log'); if (!response.ok) throw new Error('HTTP ' + response.status);
     const raw = await response.text(), lines = raw.replace(/^\uFEFF/, '').split(/\r?\n/).filter(s => s.trim());
     events = lines.map((line,i) => { try { const e = JSON.parse(line); if (!e.event_id || !e.source || !Number.isFinite(Date.parse(e.ts)) || !Number.isFinite(Date.parse(e.ingested_at))) throw new Error(); e._search = line.toLowerCase(); return e; } catch { throw new Error('Bản ghi không hợp lệ tại dòng ' + (i+1)); } });
-    $('status').textContent = 'Đã đọc ' + events.length.toLocaleString('vi-VN') + ' bản ghi. Bắt đầu từ Nhận ca.';
+    $('status').textContent = 'Đã đọc ' + events.length.toLocaleString('vi-VN') + ' bản ghi. Bắt đầu từ bước 1 · Làm quen.';
     const sources = count('source'), days = Object.keys(count('day')).sort();
     for (const [id, values] of [['source',Object.keys(sources).sort()],['day',days],['severity',Object.keys(count('severity')).sort()]]) for (const v of values) option($(id), v, v);
     for (const [value,label] of [[events.length.toLocaleString('vi-VN'),'bản ghi'],[Object.keys(sources).length,'nguồn'],[Object.keys(count('zone')).length,'vùng'],[days.length,'ngày']]) { const box = text('div','','metric'); box.append(text('strong',value),text('span',label)); $('metrics').append(box); }

@@ -249,6 +249,114 @@
    "id": "s3"
   },
   {
+   "title": "Ví dụ mẫu – Một câu hỏi đi qua hệ thống RAG",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Hệ thống RAG có hai giai đoạn: <strong>nạp tài liệu</strong> (làm một lần, làm lại khi tài liệu thay đổi) và <strong>hỏi đáp</strong> (mỗi câu hỏi).",
+     "plain": "Hệ thống RAG có hai giai đoạn: nạp tài liệu (làm một lần, làm lại khi tài liệu thay đổi) và hỏi đáp (mỗi câu hỏi)."
+    },
+    {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 190\" role=\"img\" aria-label=\"Hai giai đoạn của RAG: nạp tài liệu vào Vector Database và trả lời từng câu hỏi\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-rag-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-rag-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-rag-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-rag-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-rag-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><text x=\"10\" y=\"16\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">① Nạp tài liệu – làm một lần, làm lại khi tài liệu thay đổi</text><text x=\"10\" y=\"114\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">② Hỏi đáp – mỗi câu hỏi</text><rect x=\"10\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"69.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tài liệu gốc</text><text x=\"69.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">PDF, Word, Excel</text><rect x=\"155\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"214.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Làm sạch</text><text x=\"214.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">chuyển Markdown</text><line x1=\"128\" y1=\"52\" x2=\"153\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"300\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"359.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Cắt đoạn</text><text x=\"359.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">500–1.000 token</text><line x1=\"273\" y1=\"52\" x2=\"298\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"445\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"504.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Embedding</text><text x=\"504.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">chữ → vector</text><line x1=\"418\" y1=\"52\" x2=\"443\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"590\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-brand\"/><text x=\"649.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Vector DB</text><text x=\"649.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">lưu đoạn + vector</text><line x1=\"563\" y1=\"52\" x2=\"588\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"10\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"69.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Câu hỏi</text><text x=\"69.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">của người dùng</text><rect x=\"155\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"214.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Viết lại</text><text x=\"214.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">câu hỏi đủ nghĩa</text><line x1=\"128\" y1=\"152\" x2=\"153\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"300\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-brand\"/><text x=\"359.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tìm Top-K</text><text x=\"359.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">lọc theo ngưỡng</text><line x1=\"273\" y1=\"152\" x2=\"298\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"445\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"504.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Ghép prompt</text><text x=\"504.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">đoạn + câu hỏi</text><line x1=\"418\" y1=\"152\" x2=\"443\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"590\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-ok\"/><text x=\"649.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">LLM trả lời</text><text x=\"649.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">kèm nguồn</text><line x1=\"563\" y1=\"152\" x2=\"588\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><path d=\"M649,78 V100 H359 V124\" class=\"ln l-brand\" marker-end=\"url(#ai-rag-brand)\"/><text x=\"504\" y=\"95\" font-size=\"11\" text-anchor=\"middle\" class=\"f-mut\">tìm theo nghĩa</text></svg>",
+     "caption": "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi",
+     "plain": "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"
+    },
+    {
+     "t": "h3",
+     "text": "Theo dõi một câu hỏi"
+    },
+    {
+     "t": "p",
+     "html": "Người dùng vừa hỏi về thưởng KPI hạng A, rồi hỏi tiếp: <em>“Thế người thử việc có được không?”</em>",
+     "plain": "Người dùng vừa hỏi về thưởng KPI hạng A, rồi hỏi tiếp: “Thế người thử việc có được không?”"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Dữ liệu tại bước đó",
+        "plain": "Dữ liệu tại bước đó"
+       }
+      ],
+      [
+       {
+        "html": "Câu hỏi gốc",
+        "plain": "Câu hỏi gốc"
+       },
+       {
+        "html": "“Thế người thử việc có được không?” – thiếu chủ ngữ, tìm kiếm theo câu này sẽ lạc.",
+        "plain": "“Thế người thử việc có được không?” – thiếu chủ ngữ, tìm kiếm theo câu này sẽ lạc."
+       }
+      ],
+      [
+       {
+        "html": "Viết lại câu hỏi",
+        "plain": "Viết lại câu hỏi"
+       },
+       {
+        "html": "“Nhân viên thử việc có được hưởng thưởng KPI quý không?”",
+        "plain": "“Nhân viên thử việc có được hưởng thưởng KPI quý không?”"
+       }
+      ],
+      [
+       {
+        "html": "Truy xuất (Top-K = 3)",
+        "plain": "Truy xuất (Top-K = 3)"
+       },
+       {
+        "html": "Đoạn 1 – điểm 0,82: “Thưởng KPI quý… Nhân viên thử việc không áp dụng.”<br>Đoạn 2 – điểm 0,61: “Chế độ thử việc: lương thử việc bằng 85% lương của vị trí…”<br>Đoạn 3 – điểm 0,38: “Thưởng sáng kiến: mỗi sáng kiến được công nhận…”",
+        "plain": "Đoạn 1 – điểm 0,82: “Thưởng KPI quý… Nhân viên thử việc không áp dụng.”Đoạn 2 – điểm 0,61: “Chế độ thử việc: lương thử việc bằng 85% lương của vị trí…”Đoạn 3 – điểm 0,38: “Thưởng sáng kiến: mỗi sáng kiến được công nhận…”"
+       }
+      ],
+      [
+       {
+        "html": "Lọc ngưỡng 0,5",
+        "plain": "Lọc ngưỡng 0,5"
+       },
+       {
+        "html": "Bỏ đoạn 3 (0,38 &lt; 0,5). Còn đoạn 1 và 2.",
+        "plain": "Bỏ đoạn 3 (0,38 &lt; 0,5). Còn đoạn 1 và 2."
+       }
+      ],
+      [
+       {
+        "html": "Ghép prompt",
+        "plain": "Ghép prompt"
+       },
+       {
+        "html": "Chỉ dẫn trả lời + đoạn 1, 2 trong thẻ &lt;tai_lieu&gt; + câu hỏi đã viết lại.",
+        "plain": "Chỉ dẫn trả lời + đoạn 1, 2 trong thẻ &lt;tai_lieu&gt; + câu hỏi đã viết lại."
+       }
+      ],
+      [
+       {
+        "html": "Sinh câu trả lời",
+        "plain": "Sinh câu trả lời"
+       },
+       {
+        "html": "“Không. Nhân viên thử việc không áp dụng thưởng KPI quý. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”",
+        "plain": "“Không. Nhân viên thử việc không áp dụng thưởng KPI quý. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Khi Agent trả lời sai, đi lại từng bước như bảng trên. <strong>Bốc nhầm đoạn</strong> → lỗi truy xuất: sửa dữ liệu, cách cắt đoạn, ngưỡng. <strong>Bốc đúng đoạn mà vẫn trả lời sai</strong> → lỗi sinh: sửa prompt.",
+     "plain": "Khi Agent trả lời sai, đi lại từng bước như bảng trên. Bốc nhầm đoạn → lỗi truy xuất: sửa dữ liệu, cách cắt đoạn, ngưỡng. Bốc đúng đoạn mà vẫn trả lời sai → lỗi sinh: sửa prompt.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s4"
+  },
+  {
    "title": "Phần 3 – Vector Database",
    "kind": "content",
    "blocks": [
@@ -397,7 +505,135 @@
      "callout": "apply"
     }
    ],
-   "id": "s4"
+   "id": "s5"
+  },
+  {
+   "title": "Đi sâu – Embedding và độ tương đồng bằng con số",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến <em>sự cố cấp điện</em>, đến <em>tiền, thanh toán</em>, đến <em>thủ tục, giấy tờ</em>. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt.",
+     "plain": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến sự cố cấp điện, đến tiền, thanh toán, đến thủ tục, giấy tờ. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu",
+        "plain": "Câu"
+       },
+       {
+        "html": "Sự cố",
+        "plain": "Sự cố"
+       },
+       {
+        "html": "Tiền",
+        "plain": "Tiền"
+       },
+       {
+        "html": "Thủ tục",
+        "plain": "Thủ tục"
+       }
+      ],
+      [
+       {
+        "html": "A. “Nhà tôi bị mất điện”",
+        "plain": "A. “Nhà tôi bị mất điện”"
+       },
+       {
+        "html": "0,9",
+        "plain": "0,9"
+       },
+       {
+        "html": "0,1",
+        "plain": "0,1"
+       },
+       {
+        "html": "0,1",
+        "plain": "0,1"
+       }
+      ],
+      [
+       {
+        "html": "B. “Khu phố bị cúp điện từ sáng”",
+        "plain": "B. “Khu phố bị cúp điện từ sáng”"
+       },
+       {
+        "html": "0,8",
+        "plain": "0,8"
+       },
+       {
+        "html": "0,1",
+        "plain": "0,1"
+       },
+       {
+        "html": "0,2",
+        "plain": "0,2"
+       }
+      ],
+      [
+       {
+        "html": "C. “Hóa đơn tháng này quá cao”",
+        "plain": "C. “Hóa đơn tháng này quá cao”"
+       },
+       {
+        "html": "0,1",
+        "plain": "0,1"
+       },
+       {
+        "html": "0,9",
+        "plain": "0,9"
+       },
+       {
+        "html": "0,2",
+        "plain": "0,2"
+       }
+      ],
+      [
+       {
+        "html": "<strong>Câu hỏi Q: “Sao điện bị cắt vậy?”</strong>",
+        "plain": "Câu hỏi Q: “Sao điện bị cắt vậy?”"
+       },
+       {
+        "html": "0,85",
+        "plain": "0,85"
+       },
+       {
+        "html": "0,15",
+        "plain": "0,15"
+       },
+       {
+        "html": "0,1",
+        "plain": "0,1"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Độ tương đồng cosine</strong> đo góc giữa hai vector: càng gần 1, nghĩa càng giống.",
+     "plain": "Độ tương đồng cosine đo góc giữa hai vector: càng gần 1, nghĩa càng giống."
+    },
+    {
+     "t": "code",
+     "text": "cos(Q, A) ≈ 0,998   → rất gần nghĩa\ncos(Q, B) ≈ 0,991   → rất gần nghĩa, dù B không có từ \"cắt\"\ncos(Q, C) ≈ 0,298   → khác nghĩa\n\nCách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × độ dài A)\n                   = 0,79 ÷ (0,869 × 0,911) ≈ 0,998"
+    },
+    {
+     "t": "p",
+     "html": "Tìm theo từ khóa “cắt” không thấy câu A, B vì chúng dùng “mất điện”, “cúp điện”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã khách hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
+     "plain": "Tìm theo từ khóa “cắt” không thấy câu A, B vì chúng dùng “mất điện”, “cúp điện”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã khách hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
+     "callout": "example"
+    },
+    {
+     "t": "p",
+     "html": "Score Threshold chính là ngưỡng trên thang điểm này. Nhưng mức điểm thực tế phụ thuộc mô hình embedding: có mô hình cho điểm phổ biến 0,7–0,9, có mô hình chỉ 0,3–0,6. Hãy dùng Hit Test xem điểm thực tế trên dữ liệu của bạn rồi mới chọn ngưỡng; 0,5 chỉ là điểm xuất phát.",
+     "plain": "Score Threshold chính là ngưỡng trên thang điểm này. Nhưng mức điểm thực tế phụ thuộc mô hình embedding: có mô hình cho điểm phổ biến 0,7–0,9, có mô hình chỉ 0,3–0,6. Hãy dùng Hit Test xem điểm thực tế trên dữ liệu của bạn rồi mới chọn ngưỡng; 0,5 chỉ là điểm xuất phát.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s6"
   },
   {
    "title": "Phần 4 – Chuẩn bị dữ liệu",
@@ -509,7 +745,108 @@
      ]
     }
    ],
-   "id": "s5"
+   "id": "s7"
+  },
+  {
+   "title": "Hướng dẫn – Làm sạch và cắt đoạn: làm mẫu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Cắt đoạn kém và cắt đoạn tốt"
+    },
+    {
+     "t": "p",
+     "html": "Cùng một quy định, cắt theo số ký tự cố định và cắt theo đề mục cho kết quả rất khác:",
+     "plain": "Cùng một quy định, cắt theo số ký tự cố định và cắt theo đề mục cho kết quả rất khác:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cắt cố định theo số ký tự (kém)",
+        "plain": "Cắt cố định theo số ký tự (kém)"
+       },
+       {
+        "html": "Cắt theo đề mục (tốt)",
+        "plain": "Cắt theo đề mục (tốt)"
+       }
+      ],
+      [
+       {
+        "html": "Đoạn 1: “…3.2 Thưởng KPI quý. Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý. Hạng B: KPI từ 95%”",
+        "plain": "Đoạn 1: “…3.2 Thưởng KPI quý. Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý. Hạng B: KPI từ 95%”"
+       },
+       {
+        "html": "Đoạn 1: “Sổ tay nhân sự 2025 › 3.2 Thưởng KPI quý: Hạng A… Hạng B… Hạng C… Thử việc không áp dụng. Chi ngày 15 tháng đầu quý sau.”",
+        "plain": "Đoạn 1: “Sổ tay nhân sự 2025 › 3.2 Thưởng KPI quý: Hạng A… Hạng B… Hạng C… Thử việc không áp dụng. Chi ngày 15 tháng đầu quý sau.”"
+       }
+      ],
+      [
+       {
+        "html": "Đoạn 2: “đến dưới 110%, thưởng 3.000.000 đồng/quý. Hạng C: KPI dưới 95%… 3.3 Thưởng sáng kiến…”",
+        "plain": "Đoạn 2: “đến dưới 110%, thưởng 3.000.000 đồng/quý. Hạng C: KPI dưới 95%… 3.3 Thưởng sáng kiến…”"
+       },
+       {
+        "html": "Đoạn 2: “Sổ tay nhân sự 2025 › 3.3 Thưởng sáng kiến: …”",
+        "plain": "Đoạn 2: “Sổ tay nhân sự 2025 › 3.3 Thưởng sáng kiến: …”"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ở cách cắt kém, đoạn 2 mất tiêu đề “Thưởng KPI quý”: AI đọc “thưởng 3.000.000 đồng/quý” mà không biết là thưởng gì; còn đoạn 1 thì thiếu mức thưởng hạng B. Câu hỏi “Hạng B được thưởng bao nhiêu?” rất dễ bị trả lời sai.",
+     "plain": "Ở cách cắt kém, đoạn 2 mất tiêu đề “Thưởng KPI quý”: AI đọc “thưởng 3.000.000 đồng/quý” mà không biết là thưởng gì; còn đoạn 1 thì thiếu mức thưởng hạng B. Câu hỏi “Hạng B được thưởng bao nhiêu?” rất dễ bị trả lời sai.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Mẹo: mỗi đoạn phải tự đứng được"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Thêm tên tài liệu và đề mục vào đầu mỗi đoạn (“Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý”).",
+       "level": 0,
+       "plain": "Thêm tên tài liệu và đề mục vào đầu mỗi đoạn (“Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý”)."
+      },
+      {
+       "html": "Mỗi đoạn trọn một ý: một quy định, một bước quy trình, một cặp hỏi–đáp.",
+       "level": 0,
+       "plain": "Mỗi đoạn trọn một ý: một quy định, một bước quy trình, một cặp hỏi–đáp."
+      },
+      {
+       "html": "Tài liệu dạng hỏi–đáp (FAQ): mỗi cặp là một đoạn; dùng tiêu đề hoặc dòng trống làm dấu phân đoạn (delimiter).",
+       "level": 0,
+       "plain": "Tài liệu dạng hỏi–đáp (FAQ): mỗi cặp là một đoạn; dùng tiêu đề hoặc dòng trống làm dấu phân đoạn (delimiter)."
+      },
+      {
+       "html": "Đoạn quá ngắn (một dòng) cho điểm tương đồng thiếu ổn định – gộp các ý nhỏ cùng mục.",
+       "level": 0,
+       "plain": "Đoạn quá ngắn (một dòng) cho điểm tương đồng thiếu ổn định – gộp các ý nhỏ cùng mục."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Định dạng FAQ mẫu"
+    },
+    {
+     "t": "code",
+     "text": "## Hỏi: Nhân viên thử việc có được thưởng KPI quý không?\nĐáp: Không. Nhân viên thử việc không áp dụng thưởng KPI quý.\nNguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025\n\n## Hỏi: Thưởng KPI quý được chi khi nào?\nĐáp: Ngày 15 của tháng đầu tiên quý sau. VD: thưởng quý III chi ngày 15/10.\nNguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025"
+    },
+    {
+     "t": "p",
+     "html": "Viết câu hỏi trong FAQ bằng chính lời nhân viên hay hỏi (“thử việc có được thưởng không”), không chỉ bằng thuật ngữ trong văn bản. Câu hỏi càng giống cách người dùng gõ, truy xuất càng trúng.",
+     "plain": "Viết câu hỏi trong FAQ bằng chính lời nhân viên hay hỏi (“thử việc có được thưởng không”), không chỉ bằng thuật ngữ trong văn bản. Câu hỏi càng giống cách người dùng gõ, truy xuất càng trúng.",
+     "callout": "apply"
+    }
+   ],
+   "id": "s8"
   },
   {
    "title": "Phần 5 – Prompt Chain",
@@ -578,7 +915,583 @@
      "inline": false
     }
    ],
-   "id": "s6"
+   "id": "s9"
+  },
+  {
+   "title": "Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử.",
+     "plain": "Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử."
+    },
+    {
+     "t": "code",
+     "text": "# VAI TRÒ\nBạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.\n\n# CÁCH TRẢ LỜI\n1. Chỉ dùng thông tin trong <tai_lieu>. Không dùng hiểu biết bên ngoài.\n2. Câu đầu tiên trả lời thẳng câu hỏi (Có/Không, con số, tên bước...).\n3. Sau đó giải thích ngắn, tối đa 4 câu.\n4. Cuối câu trả lời ghi nguồn: (Nguồn: tên tài liệu – mục).\n5. <tai_lieu> không có thông tin thì trả lời đúng câu: \"Tài liệu hiện có chưa đề cập nội dung\n   này. Anh/chị vui lòng liên hệ phòng Nhân sự.\" Không suy đoán.\n6. Hai tài liệu mâu thuẫn: nêu cả hai kèm ngày hiệu lực, ưu tiên văn bản hiệu lực mới hơn.\n\n<tai_lieu>\n{{ket_qua_truy_xuat}}\n</tai_lieu>\n\nCâu hỏi: {{cau_hoi}}"
+    },
+    {
+     "t": "p",
+     "html": "<code>{{ket_qua_truy_xuat}}</code> và <code>{{cau_hoi}}</code> là <strong>biến</strong>: nền tảng tự điền kết quả truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể khác nhau theo nền tảng.",
+     "plain": "{{ket_qua_truy_xuat}} và {{cau_hoi}} là biến: nền tảng tự điền kết quả truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể khác nhau theo nền tảng."
+    },
+    {
+     "t": "p",
+     "html": "Lỗi rất hay gặp: viết prompt đẹp nhưng <strong>quên nối biến kết quả truy xuất</strong> vào prompt. LLM không thấy tài liệu nào và trả lời bằng hiểu biết chung – nhìn bề ngoài như RAG đang chạy. Luôn mở log xem prompt thực tế đã được điền những gì.",
+     "plain": "Lỗi rất hay gặp: viết prompt đẹp nhưng quên nối biến kết quả truy xuất vào prompt. LLM không thấy tài liệu nào và trả lời bằng hiểu biết chung – nhìn bề ngoài như RAG đang chạy. Luôn mở log xem prompt thực tế đã được điền những gì.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Prompt viết lại câu hỏi (Query Rewrite)"
+    },
+    {
+     "t": "code",
+     "text": "Viết lại câu hỏi mới nhất của người dùng thành một câu hỏi đầy đủ, hiểu được\nmà không cần đọc lịch sử chat.\n- Thay \"đó\", \"cái này\", \"còn ... thì sao\", \"tháng trước\"... bằng nội dung cụ thể từ lịch sử.\n- Giữ nguyên mã số, tên riêng, con số.\n- Chỉ trả về câu hỏi đã viết lại, không giải thích.\n\nLịch sử chat:\n{{lich_su}}\n\nCâu hỏi mới nhất: {{cau_hoi}}"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lịch sử",
+        "plain": "Lịch sử"
+       },
+       {
+        "html": "Câu hỏi mới",
+        "plain": "Câu hỏi mới"
+       },
+       {
+        "html": "Sau khi viết lại",
+        "plain": "Sau khi viết lại"
+       }
+      ],
+      [
+       {
+        "html": "“Thưởng KPI quý hạng A bao nhiêu?” – “5 triệu đồng/quý.”",
+        "plain": "“Thưởng KPI quý hạng A bao nhiêu?” – “5 triệu đồng/quý.”"
+       },
+       {
+        "html": "“Còn hạng B?”",
+        "plain": "“Còn hạng B?”"
+       },
+       {
+        "html": "“Mức thưởng KPI quý của hạng B là bao nhiêu?”",
+        "plain": "“Mức thưởng KPI quý của hạng B là bao nhiêu?”"
+       }
+      ],
+      [
+       {
+        "html": "“Quy trình hoàn hàng thế nào?” – (Agent trả lời 4 bước)",
+        "plain": "“Quy trình hoàn hàng thế nào?” – (Agent trả lời 4 bước)"
+       },
+       {
+        "html": "“Bước 3 mất mấy ngày?”",
+        "plain": "“Bước 3 mất mấy ngày?”"
+       },
+       {
+        "html": "“Bước 3 trong quy trình hoàn hàng mất bao nhiêu ngày?”",
+        "plain": "“Bước 3 trong quy trình hoàn hàng mất bao nhiêu ngày?”"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Chẩn đoán lỗi Agent hỏi đáp tài liệu"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Triệu chứng",
+        "plain": "Triệu chứng"
+       },
+       {
+        "html": "Kiểm tra",
+        "plain": "Kiểm tra"
+       },
+       {
+        "html": "Cách sửa",
+        "plain": "Cách sửa"
+       }
+      ],
+      [
+       {
+        "html": "Trả lời “không biết” dù tài liệu có",
+        "plain": "Trả lời “không biết” dù tài liệu có"
+       },
+       {
+        "html": "Hit Test: đoạn đúng có được bốc không, điểm bao nhiêu?",
+        "plain": "Hit Test: đoạn đúng có được bốc không, điểm bao nhiêu?"
+       },
+       {
+        "html": "Hạ ngưỡng; thêm node viết lại câu hỏi; thêm từ đồng nghĩa vào đoạn; bật Hybrid Search",
+        "plain": "Hạ ngưỡng; thêm node viết lại câu hỏi; thêm từ đồng nghĩa vào đoạn; bật Hybrid Search"
+       }
+      ],
+      [
+       {
+        "html": "Sai số liệu",
+        "plain": "Sai số liệu"
+       },
+       {
+        "html": "Đoạn được bốc có đúng số không?",
+        "plain": "Đoạn được bốc có đúng số không?"
+       },
+       {
+        "html": "Đoạn đúng → siết prompt “chỉ dùng tài liệu”. Đoạn sai → làm sạch bảng, cắt lại đoạn",
+        "plain": "Đoạn đúng → siết prompt “chỉ dùng tài liệu”. Đoạn sai → làm sạch bảng, cắt lại đoạn"
+       }
+      ],
+      [
+       {
+        "html": "Trộn quy định cũ và mới",
+        "plain": "Trộn quy định cũ và mới"
+       },
+       {
+        "html": "Kho có nhiều phiên bản cùng văn bản?",
+        "plain": "Kho có nhiều phiên bản cùng văn bản?"
+       },
+       {
+        "html": "Gỡ bản hết hiệu lực hoặc gắn metadata hiệu lực; thêm luật ưu tiên văn bản mới",
+        "plain": "Gỡ bản hết hiệu lực hoặc gắn metadata hiệu lực; thêm luật ưu tiên văn bản mới"
+       }
+      ],
+      [
+       {
+        "html": "Lan man, lẫn chủ đề khác",
+        "plain": "Lan man, lẫn chủ đề khác"
+       },
+       {
+        "html": "Top-K bao nhiêu? Có đoạn điểm thấp lọt vào?",
+        "plain": "Top-K bao nhiêu? Có đoạn điểm thấp lọt vào?"
+       },
+       {
+        "html": "Giảm Top-K, tăng ngưỡng",
+        "plain": "Giảm Top-K, tăng ngưỡng"
+       }
+      ],
+      [
+       {
+        "html": "Không hiểu câu hỏi nối tiếp (“còn hạng B?”)",
+        "plain": "Không hiểu câu hỏi nối tiếp (“còn hạng B?”)"
+       },
+       {
+        "html": "Câu đem đi tìm kiếm có đủ nghĩa không?",
+        "plain": "Câu đem đi tìm kiếm có đủ nghĩa không?"
+       },
+       {
+        "html": "Thêm node viết lại câu hỏi",
+        "plain": "Thêm node viết lại câu hỏi"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s10"
+  },
+  {
+   "title": "Làm trên Dify – Knowledge Base và trợ lý hỏi đáp, từng bước",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Bài làm trên Dify bản cloud (cloud.dify.ai), khoảng 60 phút. Tên nút ghi theo giao diện tiếng Anh; nếu giao diện của bạn là tiếng Việt hoặc đã đổi, tìm nút có ý nghĩa tương tự.",
+     "plain": "Bài làm trên Dify bản cloud (cloud.dify.ai), khoảng 60 phút. Tên nút ghi theo giao diện tiếng Anh; nếu giao diện của bạn là tiếng Việt hoặc đã đổi, tìm nút có ý nghĩa tương tự."
+    },
+    {
+     "t": "p",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 2 – Chunking & Hit Test):</strong> Chưa có tài khoản Dify hoặc hết credit? Bấm mở Phòng thí nghiệm để chỉnh trực tiếp Delimiter (\\n\\n vs \\n), Chunk size, Overlap, Top-K, Score Threshold và chạy Hit Test so sánh Bản gốc (bẩn) với Bản đã làm sạch ngay trên trình duyệt. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 2 – Chunking & Hit Test): Chưa có tài khoản Dify hoặc hết credit? Bấm mở Phòng thí nghiệm để chỉnh trực tiếp Delimiter (\\n\\n vs \\n), Chunk size, Overlap, Top-K, Score Threshold và chạy Hit Test so sánh Bản gốc (bẩn) với Bản đã làm sạch ngay trên trình duyệt. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_ban_goc.txt\" download>so_tay_nhan_su_ban_goc.txt</a> – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_ban_goc.txt – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_da_lam_sach.md\" download>so_tay_nhan_su_da_lam_sach.md</a> – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 0 – Tài khoản và mô hình"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vào cloud.dify.ai, đăng ký bằng email hoặc tài khoản Google/GitHub. Tài khoản mới ở gói <strong>Sandbox</strong> có 200 lượt dùng mô hình (credit), cấp một lần, không tự nạp lại – đủ cho bài học nếu thử có chủ đích.",
+       "level": 0,
+       "plain": "Vào cloud.dify.ai, đăng ký bằng email hoặc tài khoản Google/GitHub. Tài khoản mới ở gói Sandbox có 200 lượt dùng mô hình (credit), cấp một lần, không tự nạp lại – đủ cho bài học nếu thử có chủ đích."
+      },
+      {
+       "html": "Vào <strong>Integrations → Model Provider</strong>, cài nhà cung cấp mô hình (VD OpenAI). Mô hình nằm trong credit thì không cần API key.",
+       "level": 0,
+       "plain": "Vào Integrations → Model Provider, cài nhà cung cấp mô hình (VD OpenAI). Mô hình nằm trong credit thì không cần API key."
+      },
+      {
+       "html": "Nếu đến bước tạo Knowledge mà báo chưa có mô hình embedding, quay lại Model Provider kiểm tra nhà cung cấp đã cài có mô hình embedding.",
+       "level": 0,
+       "plain": "Nếu đến bước tạo Knowledge mà báo chưa có mô hình embedding, quay lại Model Provider kiểm tra nhà cung cấp đã cài có mô hình embedding."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 1 – Tạo Knowledge từ bản gốc (bẩn)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở <strong>Knowledge</strong> → <strong>Create</strong> → chọn tạo knowledge base dùng ngay (ready-to-use) → nguồn dữ liệu: tải file từ máy → chọn so_tay_nhan_su_ban_goc.txt → Next.",
+       "level": 0,
+       "plain": "Mở Knowledge → Create → chọn tạo knowledge base dùng ngay (ready-to-use) → nguồn dữ liệu: tải file từ máy → chọn so_tay_nhan_su_ban_goc.txt → Next."
+      },
+      {
+       "html": "<strong>Chunk settings</strong>: chế độ <strong>General</strong>; Delimiter <code>\\n\\n</code> (dòng trống); Maximum chunk length 500; Chunk overlap 50; đánh dấu “Replace consecutive spaces, newlines, and tabs”.",
+       "level": 0,
+       "plain": "Chunk settings: chế độ General; Delimiter \\n\\n (dòng trống); Maximum chunk length 500; Chunk overlap 50; đánh dấu “Replace consecutive spaces, newlines, and tabs”."
+      },
+      {
+       "html": "Bấm <strong>Preview</strong> và đọc các đoạn đã cắt: đoạn nào là mục lục? đoạn nào lặp dòng “Trang x/42”? bảng KPI bị cắt ra sao?",
+       "level": 0,
+       "plain": "Bấm Preview và đọc các đoạn đã cắt: đoạn nào là mục lục? đoạn nào lặp dòng “Trang x/42”? bảng KPI bị cắt ra sao?"
+      },
+      {
+       "html": "<strong>Index method</strong>: High Quality. <strong>Retrieval setting</strong>: Hybrid Search (hoặc Vector Search); TopK 3; bật Score Threshold 0,5 nếu có.",
+       "level": 0,
+       "plain": "Index method: High Quality. Retrieval setting: Hybrid Search (hoặc Vector Search); TopK 3; bật Score Threshold 0,5 nếu có."
+      },
+      {
+       "html": "Lưu, chờ xử lý xong. Đặt tên knowledge “So tay – ban goc”.",
+       "level": 0,
+       "plain": "Lưu, chờ xử lý xong. Đặt tên knowledge “So tay – ban goc”."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bước 2 – Tạo Knowledge từ bản đã làm sạch"
+    },
+    {
+     "t": "p",
+     "html": "Lặp lại bước 1 với file so_tay_nhan_su_da_lam_sach.md, cùng cấu hình, đặt tên “So tay – ban sach”. Ở Preview, mỗi mục bắt đầu bằng ## phải thành đúng một đoạn, có tên tài liệu và dòng Nguồn.",
+     "plain": "Lặp lại bước 1 với file so_tay_nhan_su_da_lam_sach.md, cùng cấu hình, đặt tên “So tay – ban sach”. Ở Preview, mỗi mục bắt đầu bằng ## phải thành đúng một đoạn, có tên tài liệu và dòng Nguồn."
+    },
+    {
+     "t": "h3",
+     "text": "Bước 3 – Hit Test: so sánh hai Knowledge"
+    },
+    {
+     "t": "p",
+     "html": "Mở từng knowledge → biểu tượng <strong>Retrieval Testing</strong> ở thanh bên trái → gõ từng câu dưới đây → ghi đoạn đứng đầu và điểm của nó.",
+     "plain": "Mở từng knowledge → biểu tượng Retrieval Testing ở thanh bên trái → gõ từng câu dưới đây → ghi đoạn đứng đầu và điểm của nó."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi thử",
+        "plain": "Câu hỏi thử"
+       },
+       {
+        "html": "Đáp án trong tài liệu",
+        "plain": "Đáp án trong tài liệu"
+       },
+       {
+        "html": "Bản gốc thường thấy",
+        "plain": "Bản gốc thường thấy"
+       },
+       {
+        "html": "Bản sạch cần đạt",
+        "plain": "Bản sạch cần đạt"
+       }
+      ],
+      [
+       {
+        "html": "Hạng B được thưởng KPI bao nhiêu?",
+        "plain": "Hạng B được thưởng KPI bao nhiêu?"
+       },
+       {
+        "html": "3.000.000 đồng/quý (KPI 95% đến dưới 110%)",
+        "plain": "3.000.000 đồng/quý (KPI 95% đến dưới 110%)"
+       },
+       {
+        "html": "Bốc đoạn mục lục hoặc đoạn bảng bị vỡ dòng",
+        "plain": "Bốc đoạn mục lục hoặc đoạn bảng bị vỡ dòng"
+       },
+       {
+        "html": "Đoạn 3.2 đứng đầu, đủ cả 3 hạng",
+        "plain": "Đoạn 3.2 đứng đầu, đủ cả 3 hạng"
+       }
+      ],
+      [
+       {
+        "html": "Người thử việc có được thưởng KPI không?",
+        "plain": "Người thử việc có được thưởng KPI không?"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Bốc được Chương 4 nhưng lẫn dòng tiêu đề trang",
+        "plain": "Bốc được Chương 4 nhưng lẫn dòng tiêu đề trang"
+       },
+       {
+        "html": "Đoạn 3.2, Chương 4 hoặc cặp hỏi–đáp về thử việc",
+        "plain": "Đoạn 3.2, Chương 4 hoặc cặp hỏi–đáp về thử việc"
+       }
+      ],
+      [
+       {
+        "html": "Đi công tác ngoài tỉnh được phụ cấp bao nhiêu một ngày?",
+        "plain": "Đi công tác ngoài tỉnh được phụ cấp bao nhiêu một ngày?"
+       },
+       {
+        "html": "300.000 đồng/ngày",
+        "plain": "300.000 đồng/ngày"
+       },
+       {
+        "html": "Đoạn lẫn mục lục và Chương 5",
+        "plain": "Đoạn lẫn mục lục và Chương 5"
+       },
+       {
+        "html": "Đoạn Chương 5",
+        "plain": "Đoạn Chương 5"
+       }
+      ],
+      [
+       {
+        "html": "Phép năm không dùng hết thì sao?",
+        "plain": "Phép năm không dùng hết thì sao?"
+       },
+       {
+        "html": "Chuyển sang năm sau, dùng trước khi hết quý I",
+        "plain": "Chuyển sang năm sau, dùng trước khi hết quý I"
+       },
+       {
+        "html": "Chương 1 và 2 dính chung một đoạn",
+        "plain": "Chương 1 và 2 dính chung một đoạn"
+       },
+       {
+        "html": "Đoạn Chương 2 hoặc cặp hỏi–đáp về phép năm",
+        "plain": "Đoạn Chương 2 hoặc cặp hỏi–đáp về phép năm"
+       }
+      ],
+      [
+       {
+        "html": "Thưởng Tết bao nhiêu?",
+        "plain": "Thưởng Tết bao nhiêu?"
+       },
+       {
+        "html": "Không có trong tài liệu",
+        "plain": "Không có trong tài liệu"
+       },
+       {
+        "html": "Vẫn trả về đoạn có chữ “thưởng” với điểm khá cao",
+        "plain": "Vẫn trả về đoạn có chữ “thưởng” với điểm khá cao"
+       },
+       {
+        "html": "Điểm thấp, bị ngưỡng loại, hoặc chỉ còn đoạn không liên quan",
+        "plain": "Điểm thấp, bị ngưỡng loại, hoặc chỉ còn đoạn không liên quan"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Điểm số phụ thuộc mô hình embedding nên bài không ghi con số cụ thể. Điều cần quan sát là <strong>đoạn nào đứng đầu</strong> và <strong>đoạn đó có đủ ý để trả lời không</strong>. Thử đổi TopK, ngưỡng ngay trên trang Retrieval Testing – thay đổi ở đây chỉ áp dụng cho lần thử, không đổi cấu hình thật.",
+     "plain": "Điểm số phụ thuộc mô hình embedding nên bài không ghi con số cụ thể. Điều cần quan sát là đoạn nào đứng đầu và đoạn đó có đủ ý để trả lời không. Thử đổi TopK, ngưỡng ngay trên trang Retrieval Testing – thay đổi ở đây chỉ áp dụng cho lần thử, không đổi cấu hình thật.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 4 – Tạo trợ lý hỏi đáp (Chatflow)"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vào <strong>Studio</strong> → <strong>Create from Blank</strong> → chọn <strong>Chatflow</strong> → đặt tên “Tro ly so tay” → Create. Chatflow mặc định có các node <strong>User Input → LLM → Answer</strong>.",
+       "level": 0,
+       "plain": "Vào Studio → Create from Blank → chọn Chatflow → đặt tên “Tro ly so tay” → Create. Chatflow mặc định có các node User Input → LLM → Answer."
+      },
+      {
+       "html": "Rê chuột vào đường nối giữa User Input và LLM, bấm “+”, thêm node <strong>Knowledge Retrieval</strong>. Ô truy vấn chọn biến câu hỏi của người dùng (<code>sys.query</code>); thêm knowledge “So tay – ban sach”.",
+       "level": 0,
+       "plain": "Rê chuột vào đường nối giữa User Input và LLM, bấm “+”, thêm node Knowledge Retrieval. Ô truy vấn chọn biến câu hỏi của người dùng (sys.query); thêm knowledge “So tay – ban sach”."
+      },
+      {
+       "html": "Mở node <strong>LLM</strong>: chọn mô hình, chọn kiểu tham số <em>Precise</em> (temperature thấp). Ô <strong>Context</strong>: chọn biến <code>result</code> của node Knowledge Retrieval.",
+       "level": 0,
+       "plain": "Mở node LLM: chọn mô hình, chọn kiểu tham số Precise (temperature thấp). Ô Context: chọn biến result của node Knowledge Retrieval."
+      },
+      {
+       "html": "Ô <strong>SYSTEM</strong>: dán prompt ở mục “Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu”. Xóa dòng <code>{{ket_qua_truy_xuat}}</code>, đặt con trỏ giữa hai thẻ &lt;tai_lieu&gt; rồi chèn biến Context (gõ <code>{</code> hoặc <code>/</code> để mở danh sách biến). Xóa dòng “Câu hỏi: {{cau_hoi}}” – câu hỏi của người dùng đã được gửi kèm.",
+       "level": 0,
+       "plain": "Ô SYSTEM: dán prompt ở mục “Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu”. Xóa dòng {{ket_qua_truy_xuat}}, đặt con trỏ giữa hai thẻ &lt;tai_lieu&gt; rồi chèn biến Context (gõ { hoặc / để mở danh sách biến). Xóa dòng “Câu hỏi: {{cau_hoi}}” – câu hỏi của người dùng đã được gửi kèm."
+      },
+      {
+       "html": "Node <strong>Answer</strong>: nội dung là biến <code>text</code> của node LLM (thường đã đặt sẵn).",
+       "level": 0,
+       "plain": "Node Answer: nội dung là biến text của node LLM (thường đã đặt sẵn)."
+      },
+      {
+       "html": "Bấm <strong>Preview</strong> (góc trên bên phải), hỏi 5 câu ở bước 3, thêm một cặp câu nối tiếp: “Hạng A được bao nhiêu?” rồi “Còn hạng B?”.",
+       "level": 0,
+       "plain": "Bấm Preview (góc trên bên phải), hỏi 5 câu ở bước 3, thêm một cặp câu nối tiếp: “Hạng A được bao nhiêu?” rồi “Còn hạng B?”."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Mở chi tiết từng lần chạy để xem từng node: Knowledge Retrieval trả về đoạn nào, prompt thực tế gửi cho LLM có chứa tài liệu không. Đây là cách nhanh nhất để biết lỗi nằm ở bước truy xuất hay bước sinh câu trả lời.",
+     "plain": "Mở chi tiết từng lần chạy để xem từng node: Knowledge Retrieval trả về đoạn nào, prompt thực tế gửi cho LLM có chứa tài liệu không. Đây là cách nhanh nhất để biết lỗi nằm ở bước truy xuất hay bước sinh câu trả lời.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Bước 5 – So sánh và hoàn thiện"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Đổi knowledge trong node Knowledge Retrieval sang “So tay – ban goc”, hỏi lại 5 câu, ghi các câu trả lời khác nhau.",
+       "level": 0,
+       "plain": "Đổi knowledge trong node Knowledge Retrieval sang “So tay – ban goc”, hỏi lại 5 câu, ghi các câu trả lời khác nhau."
+      },
+      {
+       "html": "Câu “Còn hạng B?” trả lời sai? Thêm một node LLM viết lại câu hỏi (prompt Query Rewrite ở mục Hướng dẫn) trước Knowledge Retrieval, bật <em>Enable Memory</em> cho node này để nó đọc được lịch sử chat, rồi cho Knowledge Retrieval dùng câu đã viết lại làm truy vấn.",
+       "level": 0,
+       "plain": "Câu “Còn hạng B?” trả lời sai? Thêm một node LLM viết lại câu hỏi (prompt Query Rewrite ở mục Hướng dẫn) trước Knowledge Retrieval, bật Enable Memory cho node này để nó đọc được lịch sử chat, rồi cho Knowledge Retrieval dùng câu đã viết lại làm truy vấn."
+      },
+      {
+       "html": "Khi đã ổn: <strong>Publish</strong> → <strong>Publish Update</strong>, mở web app để dùng thử. Chỉ chia sẻ đường link trong nhóm học.",
+       "level": 0,
+       "plain": "Khi đã ổn: Publish → Publish Update, mở web app để dùng thử. Chỉ chia sẻ đường link trong nhóm học."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Làm trên Coze, hoặc khi không có nền tảng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Việc",
+        "plain": "Việc"
+       },
+       {
+        "html": "Dify",
+        "plain": "Dify"
+       },
+       {
+        "html": "Coze",
+        "plain": "Coze"
+       },
+       {
+        "html": "Không có nền tảng",
+        "plain": "Không có nền tảng"
+       }
+      ],
+      [
+       {
+        "html": "Tạo kho tài liệu",
+        "plain": "Tạo kho tài liệu"
+       },
+       {
+        "html": "Knowledge",
+        "plain": "Knowledge"
+       },
+       {
+        "html": "Knowledge loại Text",
+        "plain": "Knowledge loại Text"
+       },
+       {
+        "html": "Đính kèm file vào Claude Project, Gem hoặc cuộc trò chuyện",
+        "plain": "Đính kèm file vào Claude Project, Gem hoặc cuộc trò chuyện"
+       }
+      ],
+      [
+       {
+        "html": "Cấu hình cắt đoạn",
+        "plain": "Cấu hình cắt đoạn"
+       },
+       {
+        "html": "Chunk settings",
+        "plain": "Chunk settings"
+       },
+       {
+        "html": "Chế độ phân đoạn tùy chỉnh (Custom)",
+        "plain": "Chế độ phân đoạn tùy chỉnh (Custom)"
+       },
+       {
+        "html": "Không chỉnh được – công cụ tự xử lý",
+        "plain": "Không chỉnh được – công cụ tự xử lý"
+       }
+      ],
+      [
+       {
+        "html": "Thử truy xuất",
+        "plain": "Thử truy xuất"
+       },
+       {
+        "html": "Retrieval Testing",
+        "plain": "Retrieval Testing"
+       },
+       {
+        "html": "Xem đoạn được bốc trong chi tiết lần chạy ở Preview & Debug",
+        "plain": "Xem đoạn được bốc trong chi tiết lần chạy ở Preview & Debug"
+       },
+       {
+        "html": "Yêu cầu AI trích nguyên văn đoạn tài liệu đã dùng",
+        "plain": "Yêu cầu AI trích nguyên văn đoạn tài liệu đã dùng"
+       }
+      ],
+      [
+       {
+        "html": "Prompt trả lời",
+        "plain": "Prompt trả lời"
+       },
+       {
+        "html": "SYSTEM của node LLM",
+        "plain": "SYSTEM của node LLM"
+       },
+       {
+        "html": "Persona & Prompt, hoặc node LLM trong Workflow",
+        "plain": "Persona & Prompt, hoặc node LLM trong Workflow"
+       },
+       {
+        "html": "Dán prompt hỏi đáp tài liệu làm tin nhắn đầu tiên",
+        "plain": "Dán prompt hỏi đáp tài liệu làm tin nhắn đầu tiên"
+       }
+      ]
+     ]
+    }
+   ],
+   "id": "s11"
   },
   {
    "title": "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
@@ -592,8 +1505,61 @@
     },
     {
      "t": "p",
-     "html": "<strong>Mục tiêu:</strong> tạo một Agent HR/Sales nội bộ trả lời nhanh quy định thưởng, quy trình hoàn hàng cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Công cụ: Coze hoặc Dify. Tài liệu: bộ PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” giảng viên cung cấp.",
-     "plain": "Mục tiêu: tạo một Agent HR/Sales nội bộ trả lời nhanh quy định thưởng, quy trình hoàn hàng cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Công cụ: Coze hoặc Dify. Tài liệu: bộ PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” giảng viên cung cấp."
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 2 – Mô phỏng RAG & Hit Test):</strong> Dùng tab Buổi 2 trong Phòng thí nghiệm để thử nghiệm nhanh thông số Chunking, xem các đoạn được cắt và chạy 5 câu Hit Test. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 2 – Mô phỏng RAG & Hit Test): Dùng tab Buổi 2 trong Phòng thí nghiệm để thử nghiệm nhanh thông số Chunking, xem các đoạn được cắt và chạy 5 câu Hit Test. Mở Phòng thí nghiệm AI Agent ↗",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
+     "html": "<strong>Mục tiêu:</strong> tạo một Agent nội bộ trả lời nhanh quy định và quy trình cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Chọn <strong>một trong hai phương án đề bài</strong>:",
+     "plain": "Mục tiêu: tạo một Agent nội bộ trả lời nhanh quy định và quy trình cho nhân viên mới; đúng theo tài liệu, không ảo giác, dẫn được nguồn. Chọn một trong hai phương án đề bài:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Phương án",
+        "plain": "Phương án"
+       },
+       {
+        "html": "Tài liệu nguồn & phạm vi",
+        "plain": "Tài liệu nguồn & phạm vi"
+       },
+       {
+        "html": "Câu hỏi bẫy gợi ý (ngoài tài liệu)",
+        "plain": "Câu hỏi bẫy gợi ý (ngoài tài liệu)"
+       }
+      ],
+      [
+       {
+        "html": "Đề A (Theo slide)",
+        "plain": "Đề A (Theo slide)"
+       },
+       {
+        "html": "Sổ tay nhân sự & Chính sách thưởng KPI quý (<code>so_tay_nhan_su_ban_goc.txt</code> và <code>so_tay_nhan_su_da_lam_sach.md</code>).",
+        "plain": "Sổ tay nhân sự & Chính sách thưởng KPI quý (so_tay_nhan_su_ban_goc.txt và so_tay_nhan_su_da_lam_sach.md)."
+       },
+       {
+        "html": "“Thưởng Tết Nguyên đán năm nay được mấy tháng lương?”",
+        "plain": "“Thưởng Tết Nguyên đán năm nay được mấy tháng lương?”"
+       }
+      ],
+      [
+       {
+        "html": "Đề B (Ngành Điện lực)",
+        "plain": "Đề B (Ngành Điện lực)"
+       },
+       {
+        "html": "Tài liệu giải đáp hóa đơn tiền điện & quy trình kiểm tra công tơ (<code>hoi_dap_hoa_don_gia_lap.md</code>).",
+        "plain": "Tài liệu giải đáp hóa đơn tiền điện & quy trình kiểm tra công tơ (hoi_dap_hoa_don_gia_lap.md)."
+       },
+       {
+        "html": "“Giá điện sinh hoạt bậc 3 hiện nay là bao nhiêu đồng/kWh?”",
+        "plain": "“Giá điện sinh hoạt bậc 3 hiện nay là bao nhiêu đồng/kWh?”"
+       }
+      ]
+     ]
     },
     {
      "t": "h3",
@@ -631,7 +1597,7 @@
     },
     {
      "t": "h3",
-     "text": "Bước 2 – Tạo Knowledge Base"
+     "text": "Bước 2 – Tạo Knowledge Base và thống nhất thông số Chunking"
     },
     {
      "t": "list",
@@ -643,14 +1609,24 @@
        "plain": "Vào mục Knowledge/Dataset, tạo mới, upload các file .md đã làm sạch."
       },
       {
-       "html": "Chọn mô hình embedding (VD: text-embedding-3-small).",
+       "html": "Chọn mô hình embedding (VD: <code>text-embedding-3-small</code>).",
        "level": 0,
        "plain": "Chọn mô hình embedding (VD: text-embedding-3-small)."
       },
       {
-       "html": "Chọn chế độ Custom thay vì Auto: chunk size 800–1.000 token; overlap 15–20%; delimiter <code>\\n</code> để giữ trọn câu.",
+       "html": "Chọn chế độ <strong>Custom / General</strong> thay vì Auto và chọn thông số phù hợp với cấu trúc tài liệu:",
        "level": 0,
-       "plain": "Chọn chế độ Custom thay vì Auto: chunk size 800–1.000 token; overlap 15–20%; delimiter \\n để giữ trọn câu."
+       "plain": "Chọn chế độ Custom / General thay vì Auto và chọn thông số phù hợp với cấu trúc tài liệu:"
+      },
+      {
+       "html": "<strong>Delimiter (dấu ngắt đoạn):</strong> đặt <code>\\n\\n</code> (dòng trống) khi tài liệu đã chuẩn hóa Markdown theo từng mục <code>##</code> (như <code>so_tay_nhan_su_da_lam_sach.md</code>) để mỗi điều khoản/cặp FAQ thành trọn một chunk; đặt <code>\\n</code> khi cắt văn bản thuần theo từng dòng.",
+       "level": 0,
+       "plain": "Delimiter (dấu ngắt đoạn): đặt \\n\\n (dòng trống) khi tài liệu đã chuẩn hóa Markdown theo từng mục ## (như so_tay_nhan_su_da_lam_sach.md) để mỗi điều khoản/cặp FAQ thành trọn một chunk; đặt \\n khi cắt văn bản thuần theo từng dòng."
+      },
+      {
+       "html": "<strong>Chunk size & Overlap:</strong> trên Dify (đơn vị ký tự), đặt <code>500–800 ký tự</code> và overlap <code>50–100 ký tự</code> (~10–15%) cho sổ tay ngắn; với văn bản quy định dài nhiều trang (tính theo token trên slide), đặt <code>500–1.000 token</code> và overlap <code>15–20%</code>.",
+       "level": 0,
+       "plain": "Chunk size & Overlap: trên Dify (đơn vị ký tự), đặt 500–800 ký tự và overlap 50–100 ký tự (~10–15%) cho sổ tay ngắn; với văn bản quy định dài nhiều trang (tính theo token trên slide), đặt 500–1.000 token và overlap 15–20%."
       }
      ]
     },
@@ -712,7 +1688,187 @@
     }
    ],
    "activity": "ai02-th2",
-   "id": "s7"
+   "id": "s12"
+  },
+  {
+   "title": "Tự luyện buổi 2",
+   "kind": "content",
+   "blocks": [
+    {
+     "t": "h3",
+     "text": "Bài 1 – Làm sạch tài liệu"
+    },
+    {
+     "t": "p",
+     "html": "Đoạn sau được chép từ file PDF. Viết lại thành Markdown sạch, có metadata, và thêm 2 cặp hỏi–đáp FAQ.",
+     "plain": "Đoạn sau được chép từ file PDF. Viết lại thành Markdown sạch, có metadata, và thêm 2 cặp hỏi–đáp FAQ."
+    },
+    {
+     "t": "code",
+     "text": "QUY TRÌNH HOÀN TIỀN – CÔNG TY ABC        Mã: QT-07    Lần ban hành: 03\nTrang 1/6\n1. Khách gửi yêu cầu qua hotline hoặc email trong vòng 7 ngày\nkể từ ngày nhận hàng.     2. CSKH kiểm tra đơn trong 01\nngày làm việc. 3. Kho nhận hàng trả, kiểm tra tình trạng (02 ngày\nlàm việc). 4. Kế toán hoàn tiền trong 05 ngày làm việc kể từ khi kho xác nhận.\nLưu ý: không áp dụng cho hàng khuyến mãi giảm trên 50%.\nQT-07 / Lần ban hành 03 / Trang 1/6          Tài liệu nội bộ"
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "code",
+       "text": "---\ntai_lieu: Quy trình hoàn tiền\nma: QT-07\nlan_ban_hanh: 03\n---\n## Quy trình hoàn tiền (QT-07)\n1. Khách gửi yêu cầu qua hotline hoặc email trong vòng 7 ngày kể từ ngày nhận hàng.\n2. Bộ phận CSKH kiểm tra đơn trong 1 ngày làm việc.\n3. Kho nhận hàng trả, kiểm tra tình trạng trong 2 ngày làm việc.\n4. Kế toán hoàn tiền trong 5 ngày làm việc kể từ khi kho xác nhận.\nKhông áp dụng cho hàng khuyến mãi giảm trên 50%.\n\n## Hỏi: Mua hàng bao lâu thì còn được yêu cầu hoàn tiền?\nĐáp: Trong vòng 7 ngày kể từ ngày nhận hàng. (Nguồn: QT-07, bước 1)\n\n## Hỏi: Hàng giảm giá có được hoàn tiền không?\nĐáp: Hàng khuyến mãi giảm trên 50% không được áp dụng. (Nguồn: QT-07, lưu ý)"
+      },
+      {
+       "t": "p",
+       "html": "Tự kiểm tra: đã bỏ số trang, dòng chân trang lặp lại; nối lại các câu bị ngắt dòng; giữ đúng mọi con số (7, 1, 2, 5 ngày; 50%).",
+       "plain": "Tự kiểm tra: đã bỏ số trang, dòng chân trang lặp lại; nối lại các câu bị ngắt dòng; giữ đúng mọi con số (7, 1, 2, 5 ngày; 50%)."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 2 – Thiết kế bộ Hit Test"
+    },
+    {
+     "t": "p",
+     "html": "Với tài liệu QT-07 đã làm sạch, viết 5 câu hỏi kiểm thử: 2 câu hỏi thẳng, 1 câu dùng từ khác với tài liệu, 1 câu nối tiếp, 1 câu bẫy không có trong tài liệu. Ghi đáp án mong đợi.",
+     "plain": "Với tài liệu QT-07 đã làm sạch, viết 5 câu hỏi kiểm thử: 2 câu hỏi thẳng, 1 câu dùng từ khác với tài liệu, 1 câu nối tiếp, 1 câu bẫy không có trong tài liệu. Ghi đáp án mong đợi."
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "table",
+       "rows": [
+        [
+         {
+          "html": "Loại",
+          "plain": "Loại"
+         },
+         {
+          "html": "Câu hỏi",
+          "plain": "Câu hỏi"
+         },
+         {
+          "html": "Mong đợi",
+          "plain": "Mong đợi"
+         }
+        ],
+        [
+         {
+          "html": "Thẳng",
+          "plain": "Thẳng"
+         },
+         {
+          "html": "“Khách được yêu cầu hoàn tiền trong bao nhiêu ngày?”",
+          "plain": "“Khách được yêu cầu hoàn tiền trong bao nhiêu ngày?”"
+         },
+         {
+          "html": "7 ngày kể từ ngày nhận hàng",
+          "plain": "7 ngày kể từ ngày nhận hàng"
+         }
+        ],
+        [
+         {
+          "html": "Thẳng",
+          "plain": "Thẳng"
+         },
+         {
+          "html": "“Kế toán hoàn tiền mất mấy ngày?”",
+          "plain": "“Kế toán hoàn tiền mất mấy ngày?”"
+         },
+         {
+          "html": "5 ngày làm việc kể từ khi kho xác nhận",
+          "plain": "5 ngày làm việc kể từ khi kho xác nhận"
+         }
+        ],
+        [
+         {
+          "html": "Từ khác",
+          "plain": "Từ khác"
+         },
+         {
+          "html": "“Mua xong muốn trả lại lấy tiền thì làm sao?”",
+          "plain": "“Mua xong muốn trả lại lấy tiền thì làm sao?”"
+         },
+         {
+          "html": "Bốc được đoạn QT-07, nêu 4 bước",
+          "plain": "Bốc được đoạn QT-07, nêu 4 bước"
+         }
+        ],
+        [
+         {
+          "html": "Nối tiếp",
+          "plain": "Nối tiếp"
+         },
+         {
+          "html": "(sau câu trên) “Hàng sale 70% thì sao?”",
+          "plain": "(sau câu trên) “Hàng sale 70% thì sao?”"
+         },
+         {
+          "html": "Không áp dụng (giảm trên 50%)",
+          "plain": "Không áp dụng (giảm trên 50%)"
+         }
+        ],
+        [
+         {
+          "html": "Bẫy",
+          "plain": "Bẫy"
+         },
+         {
+          "html": "“Hoàn tiền qua ví điện tử được không?”",
+          "plain": "“Hoàn tiền qua ví điện tử được không?”"
+         },
+         {
+          "html": "Nói rõ tài liệu chưa đề cập, không bịa",
+          "plain": "Nói rõ tài liệu chưa đề cập, không bịa"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bài 3 – Chẩn đoán"
+    },
+    {
+     "t": "p",
+     "html": "Agent trả lời “Khách có 30 ngày để yêu cầu hoàn tiền”, trong khi tài liệu ghi 7 ngày. Hit Test cho thấy hệ thống bốc đúng đoạn QT-07 với điểm 0,78. Lỗi nằm ở bước nào? Bạn sửa gì?",
+     "plain": "Agent trả lời “Khách có 30 ngày để yêu cầu hoàn tiền”, trong khi tài liệu ghi 7 ngày. Hit Test cho thấy hệ thống bốc đúng đoạn QT-07 với điểm 0,78. Lỗi nằm ở bước nào? Bạn sửa gì?"
+    },
+    {
+     "t": "details",
+     "title": "💡 Xem gợi ý & lời giải mẫu (bấm để mở sau khi đã tự làm)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": false,
+       "items": [
+        {
+         "html": "Truy xuất đúng nên lỗi nằm ở <strong>bước sinh</strong>: LLM dùng hiểu biết chung (nhiều chính sách đổi trả là 30 ngày) thay vì tài liệu.",
+         "level": 0,
+         "plain": "Truy xuất đúng nên lỗi nằm ở bước sinh: LLM dùng hiểu biết chung (nhiều chính sách đổi trả là 30 ngày) thay vì tài liệu."
+        },
+        {
+         "html": "Kiểm tra trước tiên: biến kết quả truy xuất có thực sự được chèn vào prompt không (xem log).",
+         "level": 0,
+         "plain": "Kiểm tra trước tiên: biến kết quả truy xuất có thực sự được chèn vào prompt không (xem log)."
+        },
+        {
+         "html": "Siết prompt: “Chỉ dùng thông tin trong &lt;tai_lieu&gt;”, bắt buộc ghi nguồn; giảm temperature.",
+         "level": 0,
+         "plain": "Siết prompt: “Chỉ dùng thông tin trong &lt;tai_lieu&gt;”, bắt buộc ghi nguồn; giảm temperature."
+        },
+        {
+         "html": "Thêm câu hỏi này vào bộ Hit Test để kiểm tra lại sau mỗi lần sửa.",
+         "level": 0,
+         "plain": "Thêm câu hỏi này vào bộ Hit Test để kiểm tra lại sau mỗi lần sửa."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "id": "s13"
   },
   {
    "title": "Tóm tắt",
@@ -756,7 +1912,7 @@
      "inline": false
     }
    ],
-   "id": "s8"
+   "id": "s14"
   },
   {
    "title": "Ghi chú cho giảng viên",
@@ -773,7 +1929,7 @@
      "plain": "Nếu thời gian ngắn: bỏ bước 4, chỉ yêu cầu Hit Test và một prompt tổng hợp có câu chống bịa."
     }
    ],
-   "id": "s9"
+   "id": "s15"
   }
  ],
  "activities": [
@@ -908,13 +2064,253 @@
    "type": "practice",
    "scope": "student",
    "title": "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
-   "section": "s7",
-   "intro": "Làm sạch tài liệu, tạo Knowledge Base trên Coze hoặc Dify, cấu hình chunking và truy xuất, kiểm thử bằng Hit Test và viết prompt chuỗi hai bước.",
+   "section": "s12",
+   "intro": "Thiết kế đường ống RAG trên bảng kéo–thả, làm sạch tài liệu, tạo Knowledge Base trên Coze/Dify (hoặc Phòng thí nghiệm AI), cấu hình chunking và truy xuất, kiểm thử bằng Hit Test và viết prompt chuỗi hai bước.",
    "fields": [
+    {
+     "type": "board",
+     "key": "so_do_rag",
+     "size": [
+      1720,
+      780
+     ],
+     "label": "Không gian thiết kế đường ống RAG – cấu hình 7 bước từ Làm sạch dữ liệu đến LLM trả lời và nối luồng dữ liệu",
+     "hint": "Điền thông số cho từng bước (Delimiter, Chunk size, Overlap, Top-K, Threshold) và kéo dây nối theo đúng thứ tự xử lý.",
+     "steps": [
+      "Ở cột ① (Nạp tri thức), điền thông số và cách xử lý cho 3 bước: Làm sạch Markdown → Chunking & Overlap → Embedding.",
+      "Ở cột ② (Truy xuất), ghi quy tắc Query Rewrite, chọn chế độ Hybrid Search và thông số Top-K / Score Threshold.",
+      "Ở cột ③ (Sinh câu trả lời & Hit Test), ghi quy tắc chống ảo giác cho LLM và kịch bản kiểm thử câu hỏi bẫy.",
+      "Kéo dây nối giữa các bước theo dòng chảy dữ liệu và ghi tên dữ liệu truyền qua trên dây."
+     ],
+     "zones": [
+      {
+       "x": 20,
+       "y": 20,
+       "w": 520,
+       "h": 740,
+       "label": "① Chuẩn bị & Nạp tri thức (Ingestion)",
+       "color": "blue",
+       "hint": "Làm sạch tài liệu → Cắt đoạn → Embedding"
+      },
+      {
+       "x": 580,
+       "y": 20,
+       "w": 540,
+       "h": 740,
+       "label": "② Truy xuất & Lọc ngữ nghĩa (Retrieval)",
+       "color": "teal",
+       "hint": "Query Rewrite → Tìm Top-K & Lọc ngưỡng"
+      },
+      {
+       "x": 1160,
+       "y": 20,
+       "w": 540,
+       "h": 740,
+       "label": "③ Sinh câu trả lời & Hit Test (Generation)",
+       "color": "amber",
+       "hint": "Ghép Context → LLM trả lời kèm nguồn & Câu hỏi bẫy"
+      }
+     ],
+     "kinds": [
+      {
+       "kind": "ingest",
+       "label": "Bước nạp dữ liệu",
+       "color": "blue",
+       "icon": "📄",
+       "add": false,
+       "props": [
+        {
+         "key": "thong_so",
+         "label": "Thông số chính",
+         "placeholder": "VD: Delimiter \\n\\n, 500–800 ký tự, overlap 15%"
+        }
+       ],
+       "hint": "Làm gì ở bước này và lý do chọn thông số"
+      },
+      {
+       "kind": "retrieve",
+       "label": "Bước truy xuất",
+       "color": "teal",
+       "icon": "🔍",
+       "add": false,
+       "options": [
+        "Hybrid Search (Ngữ nghĩa + Từ khóa)",
+        "Chỉ Keyword Search",
+        "Nhồi toàn bộ file vào Prompt"
+       ],
+       "optionLabel": "Chế độ truy xuất…",
+       "tones": {
+        "Hybrid Search (Ngữ nghĩa + Từ khóa)": "ok",
+        "Chỉ Keyword Search": "warn",
+        "Nhồi toàn bộ file vào Prompt": "bad"
+       },
+       "hint": "Cách biến đổi câu hỏi và lọc đoạn văn"
+      },
+      {
+       "kind": "gen",
+       "label": "Bước sinh & Kiểm thử",
+       "color": "amber",
+       "icon": "💬",
+       "add": true,
+       "hint": "Quy tắc prompt chống bịa hoặc kết quả Hit Test"
+      },
+      {
+       "kind": "note",
+       "label": "Ghi chú",
+       "color": "slate",
+       "icon": "📝",
+       "add": true,
+       "hint": "Ý tưởng, câu hỏi, điều cần kiểm tra thêm…"
+      }
+     ],
+     "nodes": [
+      {
+       "id": "i_clean",
+       "kind": "ingest",
+       "x": 42,
+       "y": 70,
+       "locked": true,
+       "title": "1. Làm sạch & Chuyển Markdown"
+      },
+      {
+       "id": "i_chunk",
+       "kind": "ingest",
+       "x": 42,
+       "y": 310,
+       "locked": true,
+       "title": "2. Chia nhỏ (Chunking) & Overlap"
+      },
+      {
+       "id": "i_embed",
+       "kind": "ingest",
+       "x": 42,
+       "y": 550,
+       "locked": true,
+       "title": "3. Vector Embedding & Lưu kho"
+      },
+      {
+       "id": "r_rewrite",
+       "kind": "retrieve",
+       "x": 602,
+       "y": 120,
+       "locked": true,
+       "title": "4. Viết lại câu hỏi (Query Rewrite)"
+      },
+      {
+       "id": "r_search",
+       "kind": "retrieve",
+       "x": 602,
+       "y": 420,
+       "locked": true,
+       "title": "5. Truy xuất Top-K & Score Threshold"
+      },
+      {
+       "id": "g_llm",
+       "kind": "gen",
+       "x": 1182,
+       "y": 120,
+       "locked": true,
+       "title": "6. LLM tổng hợp & Trích dẫn nguồn"
+      },
+      {
+       "id": "g_trap",
+       "kind": "gen",
+       "x": 1182,
+       "y": 420,
+       "locked": true,
+       "title": "7. Kiểm thử câu hỏi bẫy (ngoài tài liệu)"
+      }
+     ],
+     "links": [
+      {
+       "a": "*",
+       "b": "*",
+       "fields": [
+        {
+         "key": "du_lieu",
+         "label": "Dữ liệu truyền qua",
+         "placeholder": "VD: Top 3 chunk điểm ≥ 0,5"
+        }
+       ]
+      }
+     ],
+     "goals": [
+      {
+       "type": "filled",
+       "kind": [
+        "ingest",
+        "retrieve",
+        "gen"
+       ],
+       "text": "Ghi nội dung cấu hình cho cả 7 bước trên sơ đồ RAG"
+      },
+      {
+       "type": "props",
+       "kind": "ingest",
+       "fields": [
+        "thong_so"
+       ],
+       "text": "Điền thông số kỹ thuật cho 3 bước nạp dữ liệu"
+      },
+      {
+       "type": "tagged",
+       "ids": [
+        "r_search"
+       ],
+       "text": "Chọn chế độ truy xuất cho bước Tìm kiếm Top-K"
+      },
+      {
+       "type": "links",
+       "min": 5,
+       "text": "Nối luồng dữ liệu từ Làm sạch → Chunking → Embedding → Truy xuất → LLM"
+      }
+     ],
+     "warnings": [
+      {
+       "type": "tag",
+       "node": "r_search",
+       "value": "Nhồi toàn bộ file vào Prompt",
+       "text": "Nhồi toàn bộ tài liệu vào prompt gây tốn chi phí, chậm và lỗi Lost in the middle."
+      },
+      {
+       "type": "tag",
+       "node": "r_search",
+       "value": "Chỉ Keyword Search",
+       "text": "Chỉ tìm theo từ khóa sẽ bỏ sót câu hỏi dùng từ đồng nghĩa (VD hỏi 'trả hàng' khi tài liệu ghi 'hoàn tiền')."
+      }
+     ],
+     "summary": {
+      "type": "cards",
+      "kind": [
+       "ingest",
+       "retrieve",
+       "gen"
+      ],
+      "title": "Bảng cấu hình đường ống RAG tự lập từ sơ đồ",
+      "cols": [
+       {
+        "key": "title",
+        "label": "Bước trong RAG"
+       },
+       {
+        "key": "thong_so",
+        "label": "Thông số"
+       },
+       {
+        "key": "tag",
+        "label": "Chế độ"
+       },
+       {
+        "key": "text",
+        "label": "Chi tiết thiết lập & Kiểm thử"
+       }
+      ]
+     }
+    },
     {
      "type": "textarea",
      "key": "lam_sach",
-     "label": "Bước 1 – Viết lại đoạn “Thưởng KPI quý” thành Markdown sạch",
+     "label": "Bước 1 – Viết lại đoạn “Thưởng KPI quý” (Đề A) hoặc “Biểu giá & Kiểm tra công tơ” (Đề B) thành Markdown sạch",
      "hint": "Bỏ header/footer, số trang, mục lục; biến bảng thành câu văn hoặc bảng Markdown; thêm metadata."
     },
     {
