@@ -184,6 +184,271 @@
        }
       ]
      ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: thiết kế workflow từ cách con người đang làm"
+    },
+    {
+     "t": "p",
+     "html": "Buổi 1 đã phân biệt Workflow và Agent: workflow hợp khi đường đi biết trước. Cách nhanh nhất để có workflow tốt là bắt đầu từ quy trình một chuyên viên giỏi đang làm, không phải từ màn hình kéo thả:",
+     "plain": "Buổi 1 đã phân biệt Workflow và Agent: workflow hợp khi đường đi biết trước. Cách nhanh nhất để có workflow tốt là bắt đầu từ quy trình một chuyên viên giỏi đang làm, không phải từ màn hình kéo thả:"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Viết ra các bước chuyên viên làm theo thứ tự, kể cả những bước “nhìn qua” (kiểm tra, đối chiếu).",
+       "level": 0,
+       "plain": "Viết ra các bước chuyên viên làm theo thứ tự, kể cả những bước “nhìn qua” (kiểm tra, đối chiếu)."
+      },
+      {
+       "html": "Đánh dấu từng bước: cần hiểu ngôn ngữ (đọc đơn, tóm tắt, soạn thư) → node LLM; quy tắc rõ ràng (so sánh số, kiểm tra ngày, tra bảng) → node điều kiện, code hoặc công cụ; cần quyết định có trách nhiệm → con người.",
+       "level": 0,
+       "plain": "Đánh dấu từng bước: cần hiểu ngôn ngữ (đọc đơn, tóm tắt, soạn thư) → node LLM; quy tắc rõ ràng (so sánh số, kiểm tra ngày, tra bảng) → node điều kiện, code hoặc công cụ; cần quyết định có trách nhiệm → con người."
+      },
+      {
+       "html": "Xác định dữ liệu đi qua mỗi chỗ nối: tên biến, định dạng.",
+       "level": 0,
+       "plain": "Xác định dữ liệu đi qua mỗi chỗ nối: tên biến, định dạng."
+      },
+      {
+       "html": "Đặt điểm kiểm tra ngay sau bước dễ sai nhất.",
+       "level": 0,
+       "plain": "Đặt điểm kiểm tra ngay sau bước dễ sai nhất."
+      },
+      {
+       "html": "Thiết kế lối thoát: khi thiếu dữ liệu, khi công cụ lỗi, khi kết quả không đạt sau N lần.",
+       "level": 0,
+       "plain": "Thiết kế lối thoát: khi thiếu dữ liệu, khi công cụ lỗi, khi kết quả không đạt sau N lần."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Nguyên tắc vàng: <strong>dùng LLM cho việc cần hiểu ngôn ngữ, dùng quy tắc cứng cho việc so sánh, tính toán, kiểm tra định dạng</strong>. LLM so hai con số hay đếm ngày vẫn có thể sai; một node điều kiện thì không.",
+     "plain": "Nguyên tắc vàng: dùng LLM cho việc cần hiểu ngôn ngữ, dùng quy tắc cứng cho việc so sánh, tính toán, kiểm tra định dạng. LLM so hai con số hay đếm ngày vẫn có thể sai; một node điều kiện thì không.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Ví dụ: workflow xử lý kiến nghị hóa đơn bất thường"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Bước",
+        "plain": "Bước"
+       },
+       {
+        "html": "Loại node",
+        "plain": "Loại node"
+       },
+       {
+        "html": "Làm gì",
+        "plain": "Làm gì"
+       },
+       {
+        "html": "Vì sao chọn loại này",
+        "plain": "Vì sao chọn loại này"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "LLM – trích xuất",
+        "plain": "LLM – trích xuất"
+       },
+       {
+        "html": "Đọc tin nhắn, lấy mã khách hàng, kỳ hóa đơn, mô tả",
+        "plain": "Đọc tin nhắn, lấy mã khách hàng, kỳ hóa đơn, mô tả"
+       },
+       {
+        "html": "Cần hiểu câu chữ tự do",
+        "plain": "Cần hiểu câu chữ tự do"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Điều kiện",
+        "plain": "Điều kiện"
+       },
+       {
+        "html": "Thiếu mã khách hàng hoặc kỳ hóa đơn → hỏi lại",
+        "plain": "Thiếu mã khách hàng hoặc kỳ hóa đơn → hỏi lại"
+       },
+       {
+        "html": "Quy tắc rõ, không cần LLM",
+        "plain": "Quy tắc rõ, không cần LLM"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Công cụ (HTTP/API)",
+        "plain": "Công cụ (HTTP/API)"
+       },
+       {
+        "html": "Lấy sản lượng 3 kỳ gần nhất của khách",
+        "plain": "Lấy sản lượng 3 kỳ gần nhất của khách"
+       },
+       {
+        "html": "Số liệu chính xác từ hệ thống",
+        "plain": "Số liệu chính xác từ hệ thống"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Code",
+        "plain": "Code"
+       },
+       {
+        "html": "Tính % chênh lệch kỳ này so với trung bình 2 kỳ trước",
+        "plain": "Tính % chênh lệch kỳ này so với trung bình 2 kỳ trước"
+       },
+       {
+        "html": "Tính toán phải chính xác",
+        "plain": "Tính toán phải chính xác"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Điều kiện",
+        "plain": "Điều kiện"
+       },
+       {
+        "html": "Chênh lệch trên 30% → nhánh bất thường",
+        "plain": "Chênh lệch trên 30% → nhánh bất thường"
+       },
+       {
+        "html": "Ngưỡng do đơn vị quy định",
+        "plain": "Ngưỡng do đơn vị quy định"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "LLM – soạn thư",
+        "plain": "LLM – soạn thư"
+       },
+       {
+        "html": "Soạn giải thích cho khách theo mẫu, kèm số liệu từ bước 3–4",
+        "plain": "Soạn giải thích cho khách theo mẫu, kèm số liệu từ bước 3–4"
+       },
+       {
+        "html": "Cần viết tự nhiên",
+        "plain": "Cần viết tự nhiên"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Con người",
+        "plain": "Con người"
+       },
+       {
+        "html": "Nhánh bất thường: giao dịch viên duyệt, tạo phiếu kiểm tra công tơ",
+        "plain": "Nhánh bất thường: giao dịch viên duyệt, tạo phiếu kiểm tra công tơ"
+       },
+       {
+        "html": "Quyết định có trách nhiệm",
+        "plain": "Quyết định có trách nhiệm"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ngưỡng 30% và các bước trên là ví dụ minh họa, không phải quy định thật.",
+     "plain": "Ngưỡng 30% và các bước trên là ví dụ minh họa, không phải quy định thật."
+    },
+    {
+     "t": "h3",
+     "text": "Biến và luồng dữ liệu"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi node nhận dữ liệu qua biến và trả kết quả ra biến. Ba lỗi hay gặp: <strong>dùng nhầm biến</strong> (node sau đọc câu hỏi gốc thay vì câu đã viết lại); <strong>biến rỗng không được xử lý</strong> (node sau nhận chuỗi rỗng rồi tự “bịa” cho đủ); <strong>định dạng không khớp</strong> (node trước trả đoạn văn, node sau chờ JSON). Khi workflow chạy sai, việc đầu tiên là mở chi tiết lần chạy và đọc giá trị biến ở từng node.",
+     "plain": "Mỗi node nhận dữ liệu qua biến và trả kết quả ra biến. Ba lỗi hay gặp: dùng nhầm biến (node sau đọc câu hỏi gốc thay vì câu đã viết lại); biến rỗng không được xử lý (node sau nhận chuỗi rỗng rồi tự “bịa” cho đủ); định dạng không khớp (node trước trả đoạn văn, node sau chờ JSON). Khi workflow chạy sai, việc đầu tiên là mở chi tiết lần chạy và đọc giá trị biến ở từng node."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Trong workflow hóa đơn bất thường, vì sao bước tính % chênh lệch nên là node Code thay vì LLM?",
+       "level": 0,
+       "plain": "Trong workflow hóa đơn bất thường, vì sao bước tính % chênh lệch nên là node Code thay vì LLM?"
+      },
+      {
+       "html": "Nêu 3 lỗi hay gặp về biến trong workflow.",
+       "level": 0,
+       "plain": "Nêu 3 lỗi hay gặp về biến trong workflow."
+      },
+      {
+       "html": "Bước nào trong workflow nên để con người làm?",
+       "level": 0,
+       "plain": "Bước nào trong workflow nên để con người làm?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Tính toán cần chính xác tuyệt đối; LLM có thể tính sai, node Code thì không.",
+         "level": 0,
+         "plain": "Tính toán cần chính xác tuyệt đối; LLM có thể tính sai, node Code thì không."
+        },
+        {
+         "html": "Dùng nhầm biến; biến rỗng không được xử lý; định dạng giữa hai node không khớp.",
+         "level": 0,
+         "plain": "Dùng nhầm biến; biến rỗng không được xử lý; định dạng giữa hai node không khớp."
+        },
+        {
+         "html": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: kết luận bất thường, tạo phiếu, cam kết với khách.",
+         "level": 0,
+         "plain": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: kết luận bất thường, tạo phiếu, cam kết với khách."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s2"
@@ -255,6 +520,221 @@
      "html": "Checklist phải <strong>kiểm tra được</strong>. “Bài viết hay” không phải tiêu chí; “có đủ 3 cột, mỗi giá có nguồn” mới là tiêu chí.",
      "plain": "Checklist phải kiểm tra được. “Bài viết hay” không phải tiêu chí; “có đủ 3 cột, mỗi giá có nguồn” mới là tiêu chí.",
      "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: AI tự sửa lỗi được đến đâu?"
+    },
+    {
+     "t": "p",
+     "html": "Yêu cầu mô hình “kiểm tra lại” giúp bắt các lỗi dễ thấy: thiếu mục, sai định dạng, quá độ dài, quên một yêu cầu. Nhưng khi chính mô hình vừa viết lại tự chấm, nó thường không nhận ra lỗi kiến thức của chính mình – nếu đã tin một con số sai, đọc lại nó vẫn tin. Tự sửa lỗi hiệu quả nhất khi có <strong>tín hiệu từ bên ngoài</strong>.",
+     "plain": "Yêu cầu mô hình “kiểm tra lại” giúp bắt các lỗi dễ thấy: thiếu mục, sai định dạng, quá độ dài, quên một yêu cầu. Nhưng khi chính mô hình vừa viết lại tự chấm, nó thường không nhận ra lỗi kiến thức của chính mình – nếu đã tin một con số sai, đọc lại nó vẫn tin. Tự sửa lỗi hiệu quả nhất khi có tín hiệu từ bên ngoài."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nguồn kiểm tra",
+        "plain": "Nguồn kiểm tra"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Độ tin cậy",
+        "plain": "Độ tin cậy"
+       }
+      ],
+      [
+       {
+        "html": "Quy tắc cứng (code, điều kiện)",
+        "plain": "Quy tắc cứng (code, điều kiện)"
+       },
+       {
+        "html": "Đếm số cột, kiểm tra đủ trường JSON, độ dài tối đa 200 chữ",
+        "plain": "Đếm số cột, kiểm tra đủ trường JSON, độ dài tối đa 200 chữ"
+       },
+       {
+        "html": "Rất cao",
+        "plain": "Rất cao"
+       }
+      ],
+      [
+       {
+        "html": "Đối chiếu dữ liệu gốc",
+        "plain": "Đối chiếu dữ liệu gốc"
+       },
+       {
+        "html": "So con số trong bài với con số trong tài liệu hoặc kết quả công cụ",
+        "plain": "So con số trong bài với con số trong tài liệu hoặc kết quả công cụ"
+       },
+       {
+        "html": "Cao",
+        "plain": "Cao"
+       }
+      ],
+      [
+       {
+        "html": "Evaluator riêng (prompt khác, có thể mô hình khác)",
+        "plain": "Evaluator riêng (prompt khác, có thể mô hình khác)"
+       },
+       {
+        "html": "Chấm theo checklist, không biết “ý định” của người viết",
+        "plain": "Chấm theo checklist, không biết “ý định” của người viết"
+       },
+       {
+        "html": "Khá",
+        "plain": "Khá"
+       }
+      ],
+      [
+       {
+        "html": "Tự kiểm tra trong cùng prompt",
+        "plain": "Tự kiểm tra trong cùng prompt"
+       },
+       {
+        "html": "“Hãy kiểm tra lại trước khi trả lời”",
+        "plain": "“Hãy kiểm tra lại trước khi trả lời”"
+       },
+       {
+        "html": "Vừa – bắt được lỗi hình thức",
+        "plain": "Vừa – bắt được lỗi hình thức"
+       }
+      ],
+      [
+       {
+        "html": "Con người",
+        "plain": "Con người"
+       },
+       {
+        "html": "Người phụ trách duyệt",
+        "plain": "Người phụ trách duyệt"
+       },
+       {
+        "html": "Cao nhất cho việc quan trọng, nhưng tốn công",
+        "plain": "Cao nhất cho việc quan trọng, nhưng tốn công"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Ưu tiên kiểm tra bằng quy tắc cứng cho mọi thứ đếm được; dùng Evaluator LLM cho những gì cần hiểu nội dung; để con người duyệt việc có hậu quả.",
+     "plain": "Ưu tiên kiểm tra bằng quy tắc cứng cho mọi thứ đếm được; dùng Evaluator LLM cho những gì cần hiểu nội dung; để con người duyệt việc có hậu quả.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Mẫu Generator – Evaluator"
+    },
+    {
+     "t": "p",
+     "html": "Tách hai vai: Generator chỉ tạo, Evaluator chỉ chấm. Evaluator không biết Generator đã “cố gắng” thế nào nên chấm khách quan hơn; prompt mỗi bên ngắn và tập trung hơn. Vòng lặp: tạo → chấm → nếu chưa đạt, đưa lỗi cụ thể cho Generator sửa → chấm lại, tối đa N lần. Đây cũng là nền móng của đội Writer – Editor ở buổi 5.",
+     "plain": "Tách hai vai: Generator chỉ tạo, Evaluator chỉ chấm. Evaluator không biết Generator đã “cố gắng” thế nào nên chấm khách quan hơn; prompt mỗi bên ngắn và tập trung hơn. Vòng lặp: tạo → chấm → nếu chưa đạt, đưa lỗi cụ thể cho Generator sửa → chấm lại, tối đa N lần. Đây cũng là nền móng của đội Writer – Editor ở buổi 5."
+    },
+    {
+     "t": "h3",
+     "text": "Thiết kế checklist cho Evaluator"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Nhị phân:</strong> mỗi tiêu chí trả lời được Đạt/Không đạt, không phải “khá tốt”.",
+       "level": 0,
+       "plain": "Nhị phân: mỗi tiêu chí trả lời được Đạt/Không đạt, không phải “khá tốt”."
+      },
+      {
+       "html": "<strong>Quan sát được:</strong> chỉ ra được bằng chứng trong bài (câu nào, số nào).",
+       "level": 0,
+       "plain": "Quan sát được: chỉ ra được bằng chứng trong bài (câu nào, số nào)."
+      },
+      {
+       "html": "<strong>Độc lập:</strong> mỗi tiêu chí kiểm một điều, không chồng lấn.",
+       "level": 0,
+       "plain": "Độc lập: mỗi tiêu chí kiểm một điều, không chồng lấn."
+      },
+      {
+       "html": "<strong>Ít mà đủ:</strong> 3–7 tiêu chí; quá nhiều thì Evaluator chấm qua loa.",
+       "level": 0,
+       "plain": "Ít mà đủ: 3–7 tiêu chí; quá nhiều thì Evaluator chấm qua loa."
+      },
+      {
+       "html": "<strong>Khớp yêu cầu của Generator:</strong> tiêu chí nào Evaluator chấm thì Generator phải được dặn trước.",
+       "level": 0,
+       "plain": "Khớp yêu cầu của Generator: tiêu chí nào Evaluator chấm thì Generator phải được dặn trước."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Suy nghĩ trước khi trả lời"
+    },
+    {
+     "t": "p",
+     "html": "Yêu cầu mô hình trình bày lập luận trước khi kết luận giúp các bài toán nhiều bước chính xác hơn; với mô hình có chế độ suy luận sẵn, việc này diễn ra bên trong. Nếu dùng thẻ như &lt;thinking&gt; trong workflow, chỉ hiển thị phần kết luận cho người dùng – phần suy nghĩ là bản nháp, có thể chứa giả định chưa kiểm chứng.",
+     "plain": "Yêu cầu mô hình trình bày lập luận trước khi kết luận giúp các bài toán nhiều bước chính xác hơn; với mô hình có chế độ suy luận sẵn, việc này diễn ra bên trong. Nếu dùng thẻ như &lt;thinking&gt; trong workflow, chỉ hiển thị phần kết luận cho người dùng – phần suy nghĩ là bản nháp, có thể chứa giả định chưa kiểm chứng."
+    },
+    {
+     "t": "p",
+     "html": "Mỗi vòng sửa tốn thêm thời gian và token: 3 vòng có thể tốn gấp 3–4 lần một lần chạy. Nếu Evaluator thường xuyên bắt cùng một lỗi, hãy sửa prompt của Generator thay vì trông vào vòng lặp.",
+     "plain": "Mỗi vòng sửa tốn thêm thời gian và token: 3 vòng có thể tốn gấp 3–4 lần một lần chạy. Nếu Evaluator thường xuyên bắt cùng một lỗi, hãy sửa prompt của Generator thay vì trông vào vòng lặp.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vì sao để chính mô hình vừa viết tự chấm bài thường không bắt được lỗi số liệu?",
+       "level": 0,
+       "plain": "Vì sao để chính mô hình vừa viết tự chấm bài thường không bắt được lỗi số liệu?"
+      },
+      {
+       "html": "“Bài viết thuyết phục” có phải tiêu chí tốt cho Evaluator không? Sửa thế nào?",
+       "level": 0,
+       "plain": "“Bài viết thuyết phục” có phải tiêu chí tốt cho Evaluator không? Sửa thế nào?"
+      },
+      {
+       "html": "Evaluator bắt cùng một lỗi ở 70% số bài. Nên làm gì?",
+       "level": 0,
+       "plain": "Evaluator bắt cùng một lỗi ở 70% số bài. Nên làm gì?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Mô hình đã tin con số sai thì đọc lại vẫn tin; cần tín hiệu bên ngoài: đối chiếu dữ liệu gốc, quy tắc cứng, Evaluator riêng.",
+         "level": 0,
+         "plain": "Mô hình đã tin con số sai thì đọc lại vẫn tin; cần tín hiệu bên ngoài: đối chiếu dữ liệu gốc, quy tắc cứng, Evaluator riêng."
+        },
+        {
+         "html": "Không – không nhị phân, không quan sát được. Thay bằng tiêu chí thấy được, VD “mỗi luận điểm có ít nhất 1 số liệu có nguồn”, “kết thúc bằng một đề xuất cụ thể”.",
+         "level": 0,
+         "plain": "Không – không nhị phân, không quan sát được. Thay bằng tiêu chí thấy được, VD “mỗi luận điểm có ít nhất 1 số liệu có nguồn”, “kết thúc bằng một đề xuất cụ thể”."
+        },
+        {
+         "html": "Sửa prompt Generator để phòng lỗi từ đầu, thay vì dựa vào vòng sửa – tiết kiệm thời gian và token.",
+         "level": 0,
+         "plain": "Sửa prompt Generator để phòng lỗi từ đầu, thay vì dựa vào vòng sửa – tiết kiệm thời gian và token."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s3"
@@ -347,6 +827,193 @@
         "plain": "Thực thi: gọi công cụ phân tích → xuất báo cáo."
        }
       ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: thiết kế bộ ý định (intent)"
+    },
+    {
+     "t": "p",
+     "html": "Bộ nhãn tốt phải <strong>không chồng lấn</strong> (mỗi tin nhắn rõ thuộc một nhãn) và <strong>phủ hết</strong> (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi hóa đơn” và “Khiếu nại hóa đơn”, vậy tin nhắn “hóa đơn sai, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”.",
+     "plain": "Bộ nhãn tốt phải không chồng lấn (mỗi tin nhắn rõ thuộc một nhãn) và phủ hết (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi hóa đơn” và “Khiếu nại hóa đơn”, vậy tin nhắn “hóa đơn sai, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”."
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Định nghĩa mỗi nhãn bằng 1 câu kèm 2–3 ví dụ (few-shot).",
+       "level": 0,
+       "plain": "Định nghĩa mỗi nhãn bằng 1 câu kèm 2–3 ví dụ (few-shot)."
+      },
+      {
+       "html": "Có luật ưu tiên khi thuộc nhiều nhãn, VD an toàn > khiếu nại > hỏi thông tin.",
+       "level": 0,
+       "plain": "Có luật ưu tiên khi thuộc nhiều nhãn, VD an toàn > khiếu nại > hỏi thông tin."
+      },
+      {
+       "html": "Nhãn KHAC luôn dẫn tới hỏi lại hoặc chuyển người, không đoán.",
+       "level": 0,
+       "plain": "Nhãn KHAC luôn dẫn tới hỏi lại hoặc chuyển người, không đoán."
+      },
+      {
+       "html": "5–10 nhãn là vừa; nhiều hơn thì chia hai tầng: nhóm lớn trước, nhãn chi tiết sau.",
+       "level": 0,
+       "plain": "5–10 nhãn là vừa; nhiều hơn thì chia hai tầng: nhóm lớn trước, nhãn chi tiết sau."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ba cách nhận diện ý định"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cách",
+        "plain": "Cách"
+       },
+       {
+        "html": "Ưu",
+        "plain": "Ưu"
+       },
+       {
+        "html": "Nhược",
+        "plain": "Nhược"
+       },
+       {
+        "html": "Hợp khi",
+        "plain": "Hợp khi"
+       }
+      ],
+      [
+       {
+        "html": "Quy tắc từ khóa",
+        "plain": "Quy tắc từ khóa"
+       },
+       {
+        "html": "Nhanh, rẻ, dễ giải thích",
+        "plain": "Nhanh, rẻ, dễ giải thích"
+       },
+       {
+        "html": "Bỏ sót cách nói khác; dễ nhầm",
+        "plain": "Bỏ sót cách nói khác; dễ nhầm"
+       },
+       {
+        "html": "Ít nhãn, từ ngữ cố định",
+        "plain": "Ít nhãn, từ ngữ cố định"
+       }
+      ],
+      [
+       {
+        "html": "LLM phân loại",
+        "plain": "LLM phân loại"
+       },
+       {
+        "html": "Hiểu cách nói tự nhiên, sai chính tả, viết tắt",
+        "plain": "Hiểu cách nói tự nhiên, sai chính tả, viết tắt"
+       },
+       {
+        "html": "Tốn token, đôi khi không ổn định",
+        "plain": "Tốn token, đôi khi không ổn định"
+       },
+       {
+        "html": "Tin nhắn tự do của người dùng",
+        "plain": "Tin nhắn tự do của người dùng"
+       }
+      ],
+      [
+       {
+        "html": "Kết hợp",
+        "plain": "Kết hợp"
+       },
+       {
+        "html": "Từ khóa bắt chắc trường hợp khẩn cấp, LLM xử lý phần còn lại",
+        "plain": "Từ khóa bắt chắc trường hợp khẩn cấp, LLM xử lý phần còn lại"
+       },
+       {
+        "html": "Phức tạp hơn",
+        "plain": "Phức tạp hơn"
+       },
+       {
+        "html": "Có trường hợp khẩn cấp phải bắt chắc chắn",
+        "plain": "Có trường hợp khẩn cấp phải bắt chắc chắn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Với hotline điện lực, các từ “cháy”, “tóe lửa”, “điện giật”, “dây đứt” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng luồng sự cố – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
+     "plain": "Với hotline điện lực, các từ “cháy”, “tóe lửa”, “điện giật”, “dây đứt” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng luồng sự cố – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
+     "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "Thu thập thông tin còn thiếu (slot filling)"
+    },
+    {
+     "t": "p",
+     "html": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký kiểm tra công tơ cần: mã khách hàng, địa chỉ, số điện thoại liên hệ, hiện tượng. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1.",
+     "plain": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký kiểm tra công tơ cần: mã khách hàng, địa chỉ, số điện thoại liên hệ, hiện tượng. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1."
+    },
+    {
+     "t": "code",
+     "text": "Agent: Để đăng ký kiểm tra công tơ, anh/chị cho em xin (1) mã khách hàng và\n       (2) số điện thoại liên hệ. Địa chỉ em đã có: [ĐỊA CHỈ].\nKhách: [MÃ KH], [SĐT]\nAgent: Em xác nhận: kiểm tra công tơ tại [ĐỊA CHỈ], mã KH [MÃ KH], liên hệ [SĐT],\n       hiện tượng: hóa đơn tăng gấp đôi. Anh/chị đồng ý để em tạo yêu cầu không?"
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Bộ nhãn “Hỏi hóa đơn / Khiếu nại hóa đơn / Báo mất điện” có vấn đề gì?",
+       "level": 0,
+       "plain": "Bộ nhãn “Hỏi hóa đơn / Khiếu nại hóa đơn / Báo mất điện” có vấn đề gì?"
+      },
+      {
+       "html": "Vì sao từ khóa “cháy”, “điện giật” nên được bắt bằng quy tắc trước khi qua LLM?",
+       "level": 0,
+       "plain": "Vì sao từ khóa “cháy”, “điện giật” nên được bắt bằng quy tắc trước khi qua LLM?"
+      },
+      {
+       "html": "Ba việc Agent cần làm khi thu thập thông tin còn thiếu?",
+       "level": 0,
+       "plain": "Ba việc Agent cần làm khi thu thập thông tin còn thiếu?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Chồng lấn giữa hỏi và khiếu nại hóa đơn; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC.",
+         "level": 0,
+         "plain": "Chồng lấn giữa hỏi và khiếu nại hóa đơn; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC."
+        },
+        {
+         "html": "Trường hợp khẩn cấp phải được bắt chắc chắn và nhanh; không để rủi ro phân loại nhầm làm chậm xử lý an toàn.",
+         "level": 0,
+         "plain": "Trường hợp khẩn cấp phải được bắt chắc chắn và nhanh; không để rủi ro phân loại nhầm làm chậm xử lý an toàn."
+        },
+        {
+         "html": "Hỏi gộp các ô còn thiếu, giới hạn số lượt hỏi; xác nhận lại toàn bộ trước khi thực hiện; có lối thoát chuyển người khi không đủ thông tin.",
+         "level": 0,
+         "plain": "Hỏi gộp các ô còn thiếu, giới hạn số lượt hỏi; xác nhận lại toàn bộ trước khi thực hiện; có lối thoát chuyển người khi không đủ thông tin."
+        }
+       ]
+      }
      ]
     }
    ],
@@ -641,6 +1308,220 @@
         "plain": "Sở thích ổn định"
        }
       ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: các tầng bộ nhớ"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tầng",
+        "plain": "Tầng"
+       },
+       {
+        "html": "Lưu gì",
+        "plain": "Lưu gì"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Cách làm phổ biến",
+        "plain": "Cách làm phổ biến"
+       }
+      ],
+      [
+       {
+        "html": "Bộ nhớ làm việc",
+        "plain": "Bộ nhớ làm việc"
+       },
+       {
+        "html": "Mọi thứ trong lượt hiện tại",
+        "plain": "Mọi thứ trong lượt hiện tại"
+       },
+       {
+        "html": "Câu hỏi, tài liệu vừa tìm, kết quả công cụ",
+        "plain": "Câu hỏi, tài liệu vừa tìm, kết quả công cụ"
+       },
+       {
+        "html": "Cửa sổ ngữ cảnh",
+        "plain": "Cửa sổ ngữ cảnh"
+       }
+      ],
+      [
+       {
+        "html": "Ngắn hạn",
+        "plain": "Ngắn hạn"
+       },
+       {
+        "html": "Lịch sử phiên chat",
+        "plain": "Lịch sử phiên chat"
+       },
+       {
+        "html": "Hiểu “Vậy còn giá thì sao?” nhờ câu trước",
+        "plain": "Hiểu “Vậy còn giá thì sao?” nhờ câu trước"
+       },
+       {
+        "html": "Gửi kèm N lượt gần nhất, hoặc tóm tắt các lượt cũ",
+        "plain": "Gửi kèm N lượt gần nhất, hoặc tóm tắt các lượt cũ"
+       }
+      ],
+      [
+       {
+        "html": "Dài hạn – hồ sơ",
+        "plain": "Dài hạn – hồ sơ"
+       },
+       {
+        "html": "Sự thật ổn định về người dùng",
+        "plain": "Sự thật ổn định về người dùng"
+       },
+       {
+        "html": "Tên đơn vị, ngành hàng, định dạng ưa thích",
+        "plain": "Tên đơn vị, ngành hàng, định dạng ưa thích"
+       },
+       {
+        "html": "Biến lưu theo người dùng, cơ sở dữ liệu",
+        "plain": "Biến lưu theo người dùng, cơ sở dữ liệu"
+       }
+      ],
+      [
+       {
+        "html": "Dài hạn – sự kiện",
+        "plain": "Dài hạn – sự kiện"
+       },
+       {
+        "html": "Những gì đã xảy ra",
+        "plain": "Những gì đã xảy ra"
+       },
+       {
+        "html": "“Tuần trước đã gửi báo cáo cho anh A”",
+        "plain": "“Tuần trước đã gửi báo cáo cho anh A”"
+       },
+       {
+        "html": "Nhật ký sự kiện, tìm lại khi cần",
+        "plain": "Nhật ký sự kiện, tìm lại khi cần"
+       }
+      ],
+      [
+       {
+        "html": "Dài hạn – tri thức",
+        "plain": "Dài hạn – tri thức"
+       },
+       {
+        "html": "Kiến thức chung của tổ chức",
+        "plain": "Kiến thức chung của tổ chức"
+       },
+       {
+        "html": "Quy định, quy trình",
+        "plain": "Quy định, quy trình"
+       },
+       {
+        "html": "Knowledge Base (buổi 2)",
+        "plain": "Knowledge Base (buổi 2)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hội thoại dài: cắt bớt hay tóm tắt?"
+    },
+    {
+     "t": "p",
+     "html": "Lịch sử chat lớn dần sẽ tốn token và có thể vượt cửa sổ ngữ cảnh. Hai cách: <strong>giữ N lượt gần nhất</strong> – đơn giản nhưng quên chi tiết ở đầu; hoặc <strong>tóm tắt các lượt cũ</strong> thành vài dòng “điều đã thống nhất” và giữ nguyên các lượt mới – giữ được ý chính, đổi lại tốn thêm một bước tóm tắt. Trên Dify, node LLM có tùy chọn bật bộ nhớ (Enable Memory) và giới hạn lượng lịch sử gửi kèm.",
+     "plain": "Lịch sử chat lớn dần sẽ tốn token và có thể vượt cửa sổ ngữ cảnh. Hai cách: giữ N lượt gần nhất – đơn giản nhưng quên chi tiết ở đầu; hoặc tóm tắt các lượt cũ thành vài dòng “điều đã thống nhất” và giữ nguyên các lượt mới – giữ được ý chính, đổi lại tốn thêm một bước tóm tắt. Trên Dify, node LLM có tùy chọn bật bộ nhớ (Enable Memory) và giới hạn lượng lịch sử gửi kèm."
+    },
+    {
+     "t": "h3",
+     "text": "Rủi ro của bộ nhớ dài hạn"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Quyền riêng tư:</strong> lưu dữ liệu cá nhân phải có mục đích, người dùng biết và xóa được; đặt thời hạn lưu.",
+       "level": 0,
+       "plain": "Quyền riêng tư: lưu dữ liệu cá nhân phải có mục đích, người dùng biết và xóa được; đặt thời hạn lưu."
+      },
+      {
+       "html": "<strong>Nhớ sai:</strong> Agent ghi nhầm một điều rồi dùng mãi – cần cách xem và sửa bộ nhớ.",
+       "level": 0,
+       "plain": "Nhớ sai: Agent ghi nhầm một điều rồi dùng mãi – cần cách xem và sửa bộ nhớ."
+      },
+      {
+       "html": "<strong>Nhiễm độc bộ nhớ:</strong> nội dung độc hại (từ email, trang web) được lưu vào bộ nhớ và ảnh hưởng các lần sau – chỉ lưu thông tin do chính người dùng nói, qua bộ lọc.",
+       "level": 0,
+       "plain": "Nhiễm độc bộ nhớ: nội dung độc hại (từ email, trang web) được lưu vào bộ nhớ và ảnh hưởng các lần sau – chỉ lưu thông tin do chính người dùng nói, qua bộ lọc."
+      },
+      {
+       "html": "<strong>Lỗi thời:</strong> sở thích, chức vụ thay đổi – cần cập nhật, ghi đè.",
+       "level": 0,
+       "plain": "Lỗi thời: sở thích, chức vụ thay đổi – cần cập nhật, ghi đè."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Nguyên tắc tối thiểu: lưu ít nhất có thể để làm tốt việc; cho người dùng biết Agent đang nhớ gì; có cách xóa.",
+     "plain": "Nguyên tắc tối thiểu: lưu ít nhất có thể để làm tốt việc; cho người dùng biết Agent đang nhớ gì; có cách xóa.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Agent hiểu được “Vậy còn giá thì sao?” nhờ tầng bộ nhớ nào?",
+       "level": 0,
+       "plain": "Agent hiểu được “Vậy còn giá thì sao?” nhờ tầng bộ nhớ nào?"
+      },
+      {
+       "html": "Hội thoại đã 80 lượt, Agent bắt đầu quên điều đã thống nhất ở đầu. Hai cách xử lý?",
+       "level": 0,
+       "plain": "Hội thoại đã 80 lượt, Agent bắt đầu quên điều đã thống nhất ở đầu. Hai cách xử lý?"
+      },
+      {
+       "html": "“Nhiễm độc bộ nhớ” là gì, phòng thế nào?",
+       "level": 0,
+       "plain": "“Nhiễm độc bộ nhớ” là gì, phòng thế nào?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Bộ nhớ ngắn hạn – lịch sử phiên chat được gửi kèm.",
+         "level": 0,
+         "plain": "Bộ nhớ ngắn hạn – lịch sử phiên chat được gửi kèm."
+        },
+        {
+         "html": "Tóm tắt các lượt cũ thành “điều đã thống nhất” và giữ lượt mới; hoặc mở phiên mới kèm bản tóm tắt.",
+         "level": 0,
+         "plain": "Tóm tắt các lượt cũ thành “điều đã thống nhất” và giữ lượt mới; hoặc mở phiên mới kèm bản tóm tắt."
+        },
+        {
+         "html": "Nội dung độc hại hoặc sai từ nguồn bên ngoài được lưu vào bộ nhớ và ảnh hưởng lần sau. Chỉ lưu thông tin do người dùng nói, lọc trước khi lưu, cho xem/sửa/xóa bộ nhớ.",
+         "level": 0,
+         "plain": "Nội dung độc hại hoặc sai từ nguồn bên ngoài được lưu vào bộ nhớ và ảnh hưởng lần sau. Chỉ lưu thông tin do người dùng nói, lọc trước khi lưu, cho xem/sửa/xóa bộ nhớ."
+        }
+       ]
+      }
      ]
     },
     {

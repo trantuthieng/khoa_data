@@ -198,6 +198,225 @@
        }
       ]
      ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: khi nào nhiều Agent tốt hơn một?"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Nhiều Agent có lợi khi",
+        "plain": "Nhiều Agent có lợi khi"
+       },
+       {
+        "html": "Nhiều Agent gây hại khi",
+        "plain": "Nhiều Agent gây hại khi"
+       }
+      ],
+      [
+       {
+        "html": "Các phần việc cần chuyên môn, công cụ, giọng văn khác nhau",
+        "plain": "Các phần việc cần chuyên môn, công cụ, giọng văn khác nhau"
+       },
+       {
+        "html": "Việc đơn giản – thêm Agent chỉ thêm chỗ nối, thêm lỗi",
+        "plain": "Việc đơn giản – thêm Agent chỉ thêm chỗ nối, thêm lỗi"
+       }
+      ],
+      [
+       {
+        "html": "Prompt của một Agent đã quá dài, chỉ dẫn bắt đầu bị bỏ sót",
+        "plain": "Prompt của một Agent đã quá dài, chỉ dẫn bắt đầu bị bỏ sót"
+       },
+       {
+        "html": "Các Agent cần chia sẻ rất nhiều ngữ cảnh chung – bàn giao làm rơi thông tin",
+        "plain": "Các Agent cần chia sẻ rất nhiều ngữ cảnh chung – bàn giao làm rơi thông tin"
+       }
+      ],
+      [
+       {
+        "html": "Cần một vai kiểm duyệt độc lập với vai tạo ra sản phẩm",
+        "plain": "Cần một vai kiểm duyệt độc lập với vai tạo ra sản phẩm"
+       },
+       {
+        "html": "Reviewer không có tiêu chí rõ – hai Agent “cãi nhau” vô tận",
+        "plain": "Reviewer không có tiêu chí rõ – hai Agent “cãi nhau” vô tận"
+       }
+      ],
+      [
+       {
+        "html": "Các phần việc chạy song song được",
+        "plain": "Các phần việc chạy song song được"
+       },
+       {
+        "html": "Chi phí, độ trễ tăng theo số Agent và số vòng",
+        "plain": "Chi phí, độ trễ tăng theo số Agent và số vòng"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Đúng nguyên tắc “giải pháp đơn giản nhất trước” ở buổi 1: thử một Agent với Instructions tốt và công cụ phù hợp trước; chỉ tách thành nhiều Agent khi thấy rõ lợi ích.",
+     "plain": "Đúng nguyên tắc “giải pháp đơn giản nhất trước” ở buổi 1: thử một Agent với Instructions tốt và công cụ phù hợp trước; chỉ tách thành nhiều Agent khi thấy rõ lợi ích.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Các kiểu tổ chức đội Agent"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Kiểu",
+        "plain": "Kiểu"
+       },
+       {
+        "html": "Cách chạy",
+        "plain": "Cách chạy"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Điều phối – thực thi (orchestrator–worker)",
+        "plain": "Điều phối – thực thi (orchestrator–worker)"
+       },
+       {
+        "html": "Một Agent điều phối chia việc, giao cho Agent chuyên môn, tổng hợp kết quả",
+        "plain": "Một Agent điều phối chia việc, giao cho Agent chuyên môn, tổng hợp kết quả"
+       },
+       {
+        "html": "Router giao việc cho Writer, Data Analyst",
+        "plain": "Router giao việc cho Writer, Data Analyst"
+       }
+      ],
+      [
+       {
+        "html": "Dây chuyền (tuần tự)",
+        "plain": "Dây chuyền (tuần tự)"
+       },
+       {
+        "html": "Đầu ra Agent trước là đầu vào Agent sau",
+        "plain": "Đầu ra Agent trước là đầu vào Agent sau"
+       },
+       {
+        "html": "Thu thập tin → viết bài → kiểm duyệt",
+        "plain": "Thu thập tin → viết bài → kiểm duyệt"
+       }
+      ],
+      [
+       {
+        "html": "Song song rồi gộp",
+        "plain": "Song song rồi gộp"
+       },
+       {
+        "html": "Nhiều Agent làm cùng lúc các phần độc lập, một Agent gộp lại",
+        "plain": "Nhiều Agent làm cùng lúc các phần độc lập, một Agent gộp lại"
+       },
+       {
+        "html": "Phân tích 5 đối thủ cùng lúc rồi tổng hợp",
+        "plain": "Phân tích 5 đối thủ cùng lúc rồi tổng hợp"
+       }
+      ],
+      [
+       {
+        "html": "Tạo – phản biện",
+        "plain": "Tạo – phản biện"
+       },
+       {
+        "html": "Một Agent tạo, một Agent phản biện theo rubric, lặp có giới hạn",
+        "plain": "Một Agent tạo, một Agent phản biện theo rubric, lặp có giới hạn"
+       },
+       {
+        "html": "Writer ⇄ Editor",
+        "plain": "Writer ⇄ Editor"
+       }
+      ],
+      [
+       {
+        "html": "Phân cấp",
+        "plain": "Phân cấp"
+       },
+       {
+        "html": "Agent quản lý giao việc cho các Agent quản lý cấp dưới",
+        "plain": "Agent quản lý giao việc cho các Agent quản lý cấp dưới"
+       },
+       {
+        "html": "Hệ thống lớn; ít dùng ở quy mô phòng ban",
+        "plain": "Hệ thống lớn; ít dùng ở quy mô phòng ban"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Lợi ích ít được nói tới: tách ngữ cảnh"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi Agent chỉ nhận đúng phần ngữ cảnh mình cần. Editor không cần đọc 20 kết quả tìm kiếm mà Writer đã dùng – chỉ cần BRIEF và bản nháp. Ngữ cảnh gọn giúp mỗi Agent tập trung, giảm “lost in the middle”, và giới hạn dữ liệu mỗi Agent được thấy – cũng là một lợi ích an toàn (nhớ “bộ ba nguy hiểm” ở buổi 4).",
+     "plain": "Mỗi Agent chỉ nhận đúng phần ngữ cảnh mình cần. Editor không cần đọc 20 kết quả tìm kiếm mà Writer đã dùng – chỉ cần BRIEF và bản nháp. Ngữ cảnh gọn giúp mỗi Agent tập trung, giảm “lost in the middle”, và giới hạn dữ liệu mỗi Agent được thấy – cũng là một lợi ích an toàn (nhớ “bộ ba nguy hiểm” ở buổi 4)."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nêu 2 trường hợp tách thành nhiều Agent lại gây hại.",
+       "level": 0,
+       "plain": "Nêu 2 trường hợp tách thành nhiều Agent lại gây hại."
+      },
+      {
+       "html": "Phân tích 5 đối thủ độc lập rồi tổng hợp: kiểu tổ chức nào phù hợp?",
+       "level": 0,
+       "plain": "Phân tích 5 đối thủ độc lập rồi tổng hợp: kiểu tổ chức nào phù hợp?"
+      },
+      {
+       "html": "“Tách ngữ cảnh” mang lại lợi ích gì?",
+       "level": 0,
+       "plain": "“Tách ngữ cảnh” mang lại lợi ích gì?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Việc đơn giản (thêm chỗ nối, thêm lỗi); các Agent cần chia sẻ nhiều ngữ cảnh (bàn giao làm rơi thông tin); Reviewer không có tiêu chí rõ; chi phí, độ trễ tăng.",
+         "level": 0,
+         "plain": "Việc đơn giản (thêm chỗ nối, thêm lỗi); các Agent cần chia sẻ nhiều ngữ cảnh (bàn giao làm rơi thông tin); Reviewer không có tiêu chí rõ; chi phí, độ trễ tăng."
+        },
+        {
+         "html": "Song song rồi gộp.",
+         "level": 0,
+         "plain": "Song song rồi gộp."
+        },
+        {
+         "html": "Mỗi Agent tập trung hơn, ít bị nhiễu bởi ngữ cảnh dài, và chỉ thấy dữ liệu mình cần – an toàn hơn.",
+         "level": 0,
+         "plain": "Mỗi Agent tập trung hơn, ít bị nhiễu bởi ngữ cảnh dài, và chỉ thấy dữ liệu mình cần – an toàn hơn."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s2"
@@ -275,6 +494,300 @@
      "html": "Luôn đặt số vòng tối đa. Hết số vòng mà chưa APPROVE thì chuyển cho người duyệt, kèm lịch sử các lần REJECT.",
      "plain": "Luôn đặt số vòng tối đa. Hết số vòng mà chưa APPROVE thì chuyển cho người duyệt, kèm lịch sử các lần REJECT.",
      "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: “hợp đồng” của mỗi vai"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi Agent trong đội cần một bản mô tả công việc rõ như Agent Design Canvas ở buổi 1, rút gọn thành sáu mục:",
+     "plain": "Mỗi Agent trong đội cần một bản mô tả công việc rõ như Agent Design Canvas ở buổi 1, rút gọn thành sáu mục:"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mục",
+        "plain": "Mục"
+       },
+       {
+        "html": "Router",
+        "plain": "Router"
+       },
+       {
+        "html": "Writer",
+        "plain": "Writer"
+       },
+       {
+        "html": "Editor",
+        "plain": "Editor"
+       }
+      ],
+      [
+       {
+        "html": "Trách nhiệm",
+        "plain": "Trách nhiệm"
+       },
+       {
+        "html": "Phân loại, chọn người xử lý",
+        "plain": "Phân loại, chọn người xử lý"
+       },
+       {
+        "html": "Viết bài theo BRIEF",
+        "plain": "Viết bài theo BRIEF"
+       },
+       {
+        "html": "Chấm theo rubric",
+        "plain": "Chấm theo rubric"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Yêu cầu của người dùng",
+        "plain": "Yêu cầu của người dùng"
+       },
+       {
+        "html": "BRIEF (+ góp ý của Editor)",
+        "plain": "BRIEF (+ góp ý của Editor)"
+       },
+       {
+        "html": "BRIEF + bản nháp",
+        "plain": "BRIEF + bản nháp"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra",
+        "plain": "Đầu ra"
+       },
+       {
+        "html": "JSON {next_agent, ly_do}",
+        "plain": "JSON {next_agent, ly_do}"
+       },
+       {
+        "html": "Bài viết",
+        "plain": "Bài viết"
+       },
+       {
+        "html": "JSON {status, ly_do, goi_y_sua}",
+        "plain": "JSON {status, ly_do, goi_y_sua}"
+       }
+      ],
+      [
+       {
+        "html": "Công cụ",
+        "plain": "Công cụ"
+       },
+       {
+        "html": "Không",
+        "plain": "Không"
+       },
+       {
+        "html": "Có thể: tra cứu thông tin sản phẩm",
+        "plain": "Có thể: tra cứu thông tin sản phẩm"
+       },
+       {
+        "html": "Không – chỉ đọc",
+        "plain": "Không – chỉ đọc"
+       }
+      ],
+      [
+       {
+        "html": "Không được làm",
+        "plain": "Không được làm"
+       },
+       {
+        "html": "Tự trả lời yêu cầu",
+        "plain": "Tự trả lời yêu cầu"
+       },
+       {
+        "html": "Đưa số liệu ngoài BRIEF",
+        "plain": "Đưa số liệu ngoài BRIEF"
+       },
+       {
+        "html": "Tự viết lại bài",
+        "plain": "Tự viết lại bài"
+       }
+      ],
+      [
+       {
+        "html": "Điều kiện dừng",
+        "plain": "Điều kiện dừng"
+       },
+       {
+        "html": "Đã chọn xong một Agent",
+        "plain": "Đã chọn xong một Agent"
+       },
+       {
+        "html": "Đã trả bài",
+        "plain": "Đã trả bài"
+       },
+       {
+        "html": "Đã trả kết quả chấm",
+        "plain": "Đã trả kết quả chấm"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Lỗi phối hợp thường gặp"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lỗi",
+        "plain": "Lỗi"
+       },
+       {
+        "html": "Dấu hiệu trong log",
+        "plain": "Dấu hiệu trong log"
+       },
+       {
+        "html": "Cách sửa",
+        "plain": "Cách sửa"
+       }
+      ],
+      [
+       {
+        "html": "“Bóng bàn” vô tận",
+        "plain": "“Bóng bàn” vô tận"
+       },
+       {
+        "html": "Writer – Editor qua lại đến hết số vòng, cùng một lỗi",
+        "plain": "Writer – Editor qua lại đến hết số vòng, cùng một lỗi"
+       },
+       {
+        "html": "Writer chưa được dặn tiêu chí Editor chấm → đồng bộ yêu cầu của Writer với rubric",
+        "plain": "Writer chưa được dặn tiêu chí Editor chấm → đồng bộ yêu cầu của Writer với rubric"
+       }
+      ],
+      [
+       {
+        "html": "Nhầm vai",
+        "plain": "Nhầm vai"
+       },
+       {
+        "html": "Editor tự viết lại bài; Router tự trả lời khách",
+        "plain": "Editor tự viết lại bài; Router tự trả lời khách"
+       },
+       {
+        "html": "Ghi rõ “không được làm” trong prompt từng vai; giới hạn công cụ theo vai",
+        "plain": "Ghi rõ “không được làm” trong prompt từng vai; giới hạn công cụ theo vai"
+       }
+      ],
+      [
+       {
+        "html": "Rơi thông tin khi bàn giao",
+        "plain": "Rơi thông tin khi bàn giao"
+       },
+       {
+        "html": "Writer vòng 2 không biết lỗi ở vòng 1",
+        "plain": "Writer vòng 2 không biết lỗi ở vòng 1"
+       },
+       {
+        "html": "Thông điệp bàn giao có cấu trúc cố định, luôn kèm góp ý",
+        "plain": "Thông điệp bàn giao có cấu trúc cố định, luôn kèm góp ý"
+       }
+      ],
+      [
+       {
+        "html": "Reviewer quá dễ",
+        "plain": "Reviewer quá dễ"
+       },
+       {
+        "html": "APPROVE gần 100% nhưng bài vẫn có lỗi",
+        "plain": "APPROVE gần 100% nhưng bài vẫn có lỗi"
+       },
+       {
+        "html": "Rubric cụ thể hơn; con người kiểm tra mẫu",
+        "plain": "Rubric cụ thể hơn; con người kiểm tra mẫu"
+       }
+      ],
+      [
+       {
+        "html": "Reviewer quá khắt khe",
+        "plain": "Reviewer quá khắt khe"
+       },
+       {
+        "html": "REJECT nhiều với lý do mơ hồ (“chưa hay”)",
+        "plain": "REJECT nhiều với lý do mơ hồ (“chưa hay”)"
+       },
+       {
+        "html": "Bỏ tiêu chí không kiểm tra được",
+        "plain": "Bỏ tiêu chí không kiểm tra được"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Truy vết (tracing)"
+    },
+    {
+     "t": "p",
+     "html": "Với nhiều Agent, một câu trả lời sai có thể đến từ bất kỳ mắt xích nào. Nền tảng tốt cho xem từng bước: Agent nào chạy, nhận gì, trả gì, mất bao lâu, tốn bao nhiêu token. Khi điều tra lỗi, đi ngược từ kết quả cuối qua từng lần bàn giao – tìm chỗ <strong>đầu tiên</strong> thông tin bị sai hoặc bị rơi.",
+     "plain": "Với nhiều Agent, một câu trả lời sai có thể đến từ bất kỳ mắt xích nào. Nền tảng tốt cho xem từng bước: Agent nào chạy, nhận gì, trả gì, mất bao lâu, tốn bao nhiêu token. Khi điều tra lỗi, đi ngược từ kết quả cuối qua từng lần bàn giao – tìm chỗ đầu tiên thông tin bị sai hoặc bị rơi."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Log cho thấy Editor tự viết lại toàn bộ bài thay vì trả góp ý. Đây là lỗi gì, sửa thế nào?",
+       "level": 0,
+       "plain": "Log cho thấy Editor tự viết lại toàn bộ bài thay vì trả góp ý. Đây là lỗi gì, sửa thế nào?"
+      },
+      {
+       "html": "Vì sao thông điệp bàn giao giữa các Agent nên có cấu trúc cố định?",
+       "level": 0,
+       "plain": "Vì sao thông điệp bàn giao giữa các Agent nên có cấu trúc cố định?"
+      },
+      {
+       "html": "Khi truy vết lỗi trong đội Agent, tìm điều gì?",
+       "level": 0,
+       "plain": "Khi truy vết lỗi trong đội Agent, tìm điều gì?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Nhầm vai. Ghi rõ trong prompt Editor “chỉ chấm, không viết lại”, đầu ra bắt buộc là JSON chấm điểm.",
+         "level": 0,
+         "plain": "Nhầm vai. Ghi rõ trong prompt Editor “chỉ chấm, không viết lại”, đầu ra bắt buộc là JSON chấm điểm."
+        },
+        {
+         "html": "Để Agent nhận không phải đoán, không rơi thông tin (VD góp ý của vòng trước) và dễ đọc khi truy vết.",
+         "level": 0,
+         "plain": "Để Agent nhận không phải đoán, không rơi thông tin (VD góp ý của vòng trước) và dễ đọc khi truy vết."
+        },
+        {
+         "html": "Chỗ đầu tiên thông tin bị sai hoặc bị rơi, bằng cách đi ngược từ kết quả cuối qua từng bàn giao.",
+         "level": 0,
+         "plain": "Chỗ đầu tiên thông tin bị sai hoặc bị rơi, bằng cách đi ngược từ kết quả cuối qua từng bàn giao."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s3"
@@ -576,6 +1089,265 @@
      "html": "Bộ Eval tối thiểu: 15–20 đề bài cố định (gồm cả đề khó và đề “bẫy”), chạy lại sau mỗi lần sửa prompt, so điểm với phiên bản trước.",
      "plain": "Bộ Eval tối thiểu: 15–20 đề bài cố định (gồm cả đề khó và đề “bẫy”), chạy lại sau mỗi lần sửa prompt, so điểm với phiên bản trước.",
      "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: đánh giá trước và sau khi triển khai"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "Trước triển khai (offline)",
+        "plain": "Trước triển khai (offline)"
+       },
+       {
+        "html": "Khi đang dùng (online)",
+        "plain": "Khi đang dùng (online)"
+       }
+      ],
+      [
+       {
+        "html": "Dữ liệu",
+        "plain": "Dữ liệu"
+       },
+       {
+        "html": "Bộ đề cố định (golden dataset)",
+        "plain": "Bộ đề cố định (golden dataset)"
+       },
+       {
+        "html": "Câu hỏi thật của người dùng",
+        "plain": "Câu hỏi thật của người dùng"
+       }
+      ],
+      [
+       {
+        "html": "Mục đích",
+        "plain": "Mục đích"
+       },
+       {
+        "html": "So sánh phiên bản, phát hiện suy thoái trước khi phát hành",
+        "plain": "So sánh phiên bản, phát hiện suy thoái trước khi phát hành"
+       },
+       {
+        "html": "Phát hiện vấn đề mới, đo hiệu quả thật",
+        "plain": "Phát hiện vấn đề mới, đo hiệu quả thật"
+       }
+      ],
+      [
+       {
+        "html": "Cách đo",
+        "plain": "Cách đo"
+       },
+       {
+        "html": "Chấm theo rubric (người hoặc LLM)",
+        "plain": "Chấm theo rubric (người hoặc LLM)"
+       },
+       {
+        "html": "Tỷ lệ chuyển người, phản hồi 👍/👎, khiếu nại, kiểm tra mẫu",
+        "plain": "Tỷ lệ chuyển người, phản hồi 👍/👎, khiếu nại, kiểm tra mẫu"
+       }
+      ],
+      [
+       {
+        "html": "Tần suất",
+        "plain": "Tần suất"
+       },
+       {
+        "html": "Mỗi lần sửa prompt, đổi mô hình, đổi tài liệu",
+        "plain": "Mỗi lần sửa prompt, đổi mô hình, đổi tài liệu"
+       },
+       {
+        "html": "Liên tục, tổng hợp hằng tuần",
+        "plain": "Liên tục, tổng hợp hằng tuần"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Các loại chỉ số"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Loại",
+        "plain": "Loại"
+       },
+       {
+        "html": "Ví dụ chỉ số",
+        "plain": "Ví dụ chỉ số"
+       }
+      ],
+      [
+       {
+        "html": "Hoàn thành nhiệm vụ",
+        "plain": "Hoàn thành nhiệm vụ"
+       },
+       {
+        "html": "Tỷ lệ yêu cầu xử lý xong mà không cần người",
+        "plain": "Tỷ lệ yêu cầu xử lý xong mà không cần người"
+       }
+      ],
+      [
+       {
+        "html": "Trung thành với nguồn",
+        "plain": "Trung thành với nguồn"
+       },
+       {
+        "html": "Tỷ lệ câu trả lời mà mọi khẳng định đều có trong tài liệu",
+        "plain": "Tỷ lệ câu trả lời mà mọi khẳng định đều có trong tài liệu"
+       }
+      ],
+      [
+       {
+        "html": "Tuân thủ",
+        "plain": "Tuân thủ"
+       },
+       {
+        "html": "Đúng định dạng, đúng giọng, không vi phạm giới hạn",
+        "plain": "Đúng định dạng, đúng giọng, không vi phạm giới hạn"
+       }
+      ],
+      [
+       {
+        "html": "An toàn",
+        "plain": "An toàn"
+       },
+       {
+        "html": "Số lần làm việc vượt quyền, lộ thông tin – mục tiêu bằng 0",
+        "plain": "Số lần làm việc vượt quyền, lộ thông tin – mục tiêu bằng 0"
+       }
+      ],
+      [
+       {
+        "html": "Chuyển người",
+        "plain": "Chuyển người"
+       },
+       {
+        "html": "Tỷ lệ chuyển người: quá thấp có thể là Agent “cố làm”, quá cao là Agent chưa đủ năng lực",
+        "plain": "Tỷ lệ chuyển người: quá thấp có thể là Agent “cố làm”, quá cao là Agent chưa đủ năng lực"
+       }
+      ],
+      [
+       {
+        "html": "Tốc độ và chi phí",
+        "plain": "Tốc độ và chi phí"
+       },
+       {
+        "html": "Thời gian phản hồi, token và chi phí mỗi yêu cầu",
+        "plain": "Thời gian phản hồi, token và chi phí mỗi yêu cầu"
+       }
+      ],
+      [
+       {
+        "html": "Người dùng",
+        "plain": "Người dùng"
+       },
+       {
+        "html": "Mức hài lòng; thời gian tiết kiệm so với Problem statement ở buổi 1",
+        "plain": "Mức hài lòng; thời gian tiết kiệm so với Problem statement ở buổi 1"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Giám khảo LLM có những thiên lệch gì?"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Thiên vị vị trí:</strong> khi so hai bài, hay chọn bài đứng trước (hoặc sau) – đổi thứ tự và chấm hai lần.",
+       "level": 0,
+       "plain": "Thiên vị vị trí: khi so hai bài, hay chọn bài đứng trước (hoặc sau) – đổi thứ tự và chấm hai lần."
+      },
+      {
+       "html": "<strong>Thiên vị độ dài:</strong> bài dài, trôi chảy hay được điểm cao – rubric phải chấm nội dung cụ thể.",
+       "level": 0,
+       "plain": "Thiên vị độ dài: bài dài, trôi chảy hay được điểm cao – rubric phải chấm nội dung cụ thể."
+      },
+      {
+       "html": "<strong>Thiên vị “người nhà”:</strong> mô hình hay chấm cao bài do chính dòng mô hình đó viết – có thể dùng mô hình khác làm giám khảo.",
+       "level": 0,
+       "plain": "Thiên vị “người nhà”: mô hình hay chấm cao bài do chính dòng mô hình đó viết – có thể dùng mô hình khác làm giám khảo."
+      },
+      {
+       "html": "Cách giảm chung: rubric nhị phân, bắt trích căn cứ trước khi cho điểm, đối chiếu định kỳ với điểm chấm tay.",
+       "level": 0,
+       "plain": "Cách giảm chung: rubric nhị phân, bắt trích căn cứ trước khi cho điểm, đối chiếu định kỳ với điểm chấm tay."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Bộ đề nhỏ thì đọc kết quả cẩn thận"
+    },
+    {
+     "t": "p",
+     "html": "Với 8 đề, mỗi đề chiếm 12,5%: tăng từ 75% lên 87,5% chỉ là đúng thêm một đề – có thể chỉ do may rủi, vì mô hình mỗi lần trả lời một khác. Với 20 đề, mỗi đề là 5%. Hãy để bộ đề lớn dần theo thời gian; với thay đổi quan trọng, chạy mỗi đề 2–3 lần và xem kết quả có ổn định không.",
+     "plain": "Với 8 đề, mỗi đề chiếm 12,5%: tăng từ 75% lên 87,5% chỉ là đúng thêm một đề – có thể chỉ do may rủi, vì mô hình mỗi lần trả lời một khác. Với 20 đề, mỗi đề là 5%. Hãy để bộ đề lớn dần theo thời gian; với thay đổi quan trọng, chạy mỗi đề 2–3 lần và xem kết quả có ổn định không."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Phân biệt đánh giá offline và online.",
+       "level": 0,
+       "plain": "Phân biệt đánh giá offline và online."
+      },
+      {
+       "html": "Tỷ lệ chuyển người gần 0% có chắc là tốt không?",
+       "level": 0,
+       "plain": "Tỷ lệ chuyển người gần 0% có chắc là tốt không?"
+      },
+      {
+       "html": "Phiên bản mới đạt 7/8 đề, bản cũ 6/8. Kết luận được bản mới tốt hơn chưa?",
+       "level": 0,
+       "plain": "Phiên bản mới đạt 7/8 đề, bản cũ 6/8. Kết luận được bản mới tốt hơn chưa?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Offline: bộ đề cố định, chạy trước khi phát hành để so phiên bản. Online: câu hỏi thật khi đang dùng, theo dõi chuyển người, phản hồi, khiếu nại.",
+         "level": 0,
+         "plain": "Offline: bộ đề cố định, chạy trước khi phát hành để so phiên bản. Online: câu hỏi thật khi đang dùng, theo dõi chuyển người, phản hồi, khiếu nại."
+        },
+        {
+         "html": "Chưa chắc: có thể Agent đang “cố làm” cả việc lẽ ra phải chuyển người – cần kiểm tra mẫu.",
+         "level": 0,
+         "plain": "Chưa chắc: có thể Agent đang “cố làm” cả việc lẽ ra phải chuyển người – cần kiểm tra mẫu."
+        },
+        {
+         "html": "Chưa chắc: chênh một đề có thể do may rủi. Cần bộ đề lớn hơn hoặc chạy lặp vài lần để xem kết quả ổn định.",
+         "level": 0,
+         "plain": "Chưa chắc: chênh một đề có thể do may rủi. Cần bộ đề lớn hơn hoặc chạy lặp vài lần để xem kết quả ổn định."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s6"
@@ -922,6 +1694,186 @@
      "html": "Mỗi lần sửa prompt: ghi lại phiên bản, lý do sửa, và chạy lại bộ Eval. Không sửa nhiều chỗ cùng lúc – khó biết thay đổi nào có tác dụng.",
      "plain": "Mỗi lần sửa prompt: ghi lại phiên bản, lý do sửa, và chạy lại bộ Eval. Không sửa nhiều chỗ cùng lúc – khó biết thay đổi nào có tác dụng.",
      "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: vòng đời bảo trì Agent"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Theo dõi:</strong> nhật ký, phản hồi người dùng, chỉ số hằng tuần.",
+       "level": 0,
+       "plain": "Theo dõi: nhật ký, phản hồi người dùng, chỉ số hằng tuần."
+      },
+      {
+       "html": "<strong>Thu thập lỗi:</strong> mỗi lỗi thật trở thành một đề mới trong bộ Eval.",
+       "level": 0,
+       "plain": "Thu thập lỗi: mỗi lỗi thật trở thành một đề mới trong bộ Eval."
+      },
+      {
+       "html": "<strong>Xác định nguyên nhân</strong> theo thứ tự debug ở buổi 1: Objective, Input, quy tắc, Knowledge, Tool, Output, Boundary.",
+       "level": 0,
+       "plain": "Xác định nguyên nhân theo thứ tự debug ở buổi 1: Objective, Input, quy tắc, Knowledge, Tool, Output, Boundary."
+      },
+      {
+       "html": "<strong>Sửa một điểm</strong> và ghi vào Improvement Log.",
+       "level": 0,
+       "plain": "Sửa một điểm và ghi vào Improvement Log."
+      },
+      {
+       "html": "<strong>Chạy lại bộ Eval:</strong> không có suy thoái mới phát hành.",
+       "level": 0,
+       "plain": "Chạy lại bộ Eval: không có suy thoái mới phát hành."
+      },
+      {
+       "html": "<strong>Phát hành có phiên bản:</strong> ghi số phiên bản, ngày, người duyệt; giữ bản cũ để quay lại khi cần.",
+       "level": 0,
+       "plain": "Phát hành có phiên bản: ghi số phiên bản, ngày, người duyệt; giữ bản cũ để quay lại khi cần."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Những thay đổi không do bạn gây ra"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Thay đổi",
+        "plain": "Thay đổi"
+       },
+       {
+        "html": "Ảnh hưởng",
+        "plain": "Ảnh hưởng"
+       },
+       {
+        "html": "Cách ứng phó",
+        "plain": "Cách ứng phó"
+       }
+      ],
+      [
+       {
+        "html": "Nhà cung cấp cập nhật hoặc ngừng một mô hình",
+        "plain": "Nhà cung cấp cập nhật hoặc ngừng một mô hình"
+       },
+       {
+        "html": "Cùng prompt nhưng hành vi khác đi",
+        "plain": "Cùng prompt nhưng hành vi khác đi"
+       },
+       {
+        "html": "Chạy lại bộ Eval khi đổi phiên bản mô hình; giữ cố định phiên bản nếu nền tảng cho phép",
+        "plain": "Chạy lại bộ Eval khi đổi phiên bản mô hình; giữ cố định phiên bản nếu nền tảng cho phép"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu nội bộ thay đổi",
+        "plain": "Tài liệu nội bộ thay đổi"
+       },
+       {
+        "html": "Agent trả lời theo quy định cũ",
+        "plain": "Agent trả lời theo quy định cũ"
+       },
+       {
+        "html": "Gắn việc cập nhật Knowledge vào quy trình ban hành văn bản",
+        "plain": "Gắn việc cập nhật Knowledge vào quy trình ban hành văn bản"
+       }
+      ],
+      [
+       {
+        "html": "Người dùng hỏi kiểu mới",
+        "plain": "Người dùng hỏi kiểu mới"
+       },
+       {
+        "html": "Tỷ lệ chuyển người, câu trả lời “không biết” tăng",
+        "plain": "Tỷ lệ chuyển người, câu trả lời “không biết” tăng"
+       },
+       {
+        "html": "Đọc log hằng tuần, thêm đề mới, bổ sung tài liệu",
+        "plain": "Đọc log hằng tuần, thêm đề mới, bổ sung tài liệu"
+       }
+      ],
+      [
+       {
+        "html": "Công cụ, API thay đổi",
+        "plain": "Công cụ, API thay đổi"
+       },
+       {
+        "html": "Lỗi gọi công cụ tăng",
+        "plain": "Lỗi gọi công cụ tăng"
+       },
+       {
+        "html": "Theo dõi tỷ lệ lỗi công cụ, đặt cảnh báo",
+        "plain": "Theo dõi tỷ lệ lỗi công cụ, đặt cảnh báo"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Ai chịu trách nhiệm?"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi Agent đưa vào dùng thật cần một <strong>người phụ trách</strong> rõ ràng: quyết định thay đổi, duyệt phiên bản, theo dõi chỉ số, xử lý sự cố. Kèm theo là lịch rà soát định kỳ (VD hằng tháng): chỉ số, lỗi nổi bật, tài liệu cần cập nhật, quyền công cụ nào không còn cần. Agent không có người phụ trách sẽ xuống cấp dần.",
+     "plain": "Mỗi Agent đưa vào dùng thật cần một người phụ trách rõ ràng: quyết định thay đổi, duyệt phiên bản, theo dõi chỉ số, xử lý sự cố. Kèm theo là lịch rà soát định kỳ (VD hằng tháng): chỉ số, lỗi nổi bật, tài liệu cần cập nhật, quyền công cụ nào không còn cần. Agent không có người phụ trách sẽ xuống cấp dần."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Nhà cung cấp thông báo nâng cấp mô hình đang dùng. Bạn cần làm gì?",
+       "level": 0,
+       "plain": "Nhà cung cấp thông báo nâng cấp mô hình đang dùng. Bạn cần làm gì?"
+      },
+      {
+       "html": "Vì sao mỗi lỗi thật nên được thêm vào bộ Eval?",
+       "level": 0,
+       "plain": "Vì sao mỗi lỗi thật nên được thêm vào bộ Eval?"
+      },
+      {
+       "html": "Kể 3 việc của người phụ trách Agent.",
+       "level": 0,
+       "plain": "Kể 3 việc của người phụ trách Agent."
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Chạy lại bộ Eval trên phiên bản mới trước khi chuyển; so với bản cũ; chỉ chuyển khi không có suy thoái.",
+         "level": 0,
+         "plain": "Chạy lại bộ Eval trên phiên bản mới trước khi chuyển; so với bản cũ; chỉ chuyển khi không có suy thoái."
+        },
+        {
+         "html": "Để lần sửa sau phát hiện ngay nếu lỗi cũ quay lại; bộ Eval lớn dần theo kinh nghiệm vận hành.",
+         "level": 0,
+         "plain": "Để lần sửa sau phát hiện ngay nếu lỗi cũ quay lại; bộ Eval lớn dần theo kinh nghiệm vận hành."
+        },
+        {
+         "html": "Quyết định và duyệt thay đổi, phiên bản; theo dõi chỉ số; xử lý sự cố; rà soát định kỳ tài liệu và quyền công cụ.",
+         "level": 0,
+         "plain": "Quyết định và duyệt thay đổi, phiên bản; theo dõi chỉ số; xử lý sự cố; rà soát định kỳ tài liệu và quyền công cụ."
+        }
+       ]
+      }
+     ]
     },
     {
      "t": "activity",

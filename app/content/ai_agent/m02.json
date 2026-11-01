@@ -132,6 +132,254 @@
        "plain": "Lost in the middle: AI thường “quên” hoặc giảm chú ý vào thông tin nằm giữa văn bản quá dài."
       }
      ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: vì sao LLM “không biết” chuyện của đơn vị bạn"
+    },
+    {
+     "t": "p",
+     "html": "Kiến thức của LLM đến từ dữ liệu huấn luyện – chủ yếu là văn bản công khai đến một thời điểm. Quy định nội bộ, số liệu vận hành, hồ sơ khách hàng của đơn vị không nằm trong đó. Khi bị hỏi, mô hình không “tra cứu trí nhớ” như con người mà sinh ra câu trả lời có xác suất cao nhất. Vì vậy với câu hỏi về nội bộ, nó tạo ra một câu trả lời <em>giống như quy định thường thấy</em> – nghe hợp lý nhưng không phải quy định của bạn.",
+     "plain": "Kiến thức của LLM đến từ dữ liệu huấn luyện – chủ yếu là văn bản công khai đến một thời điểm. Quy định nội bộ, số liệu vận hành, hồ sơ khách hàng của đơn vị không nằm trong đó. Khi bị hỏi, mô hình không “tra cứu trí nhớ” như con người mà sinh ra câu trả lời có xác suất cao nhất. Vì vậy với câu hỏi về nội bộ, nó tạo ra một câu trả lời giống như quy định thường thấy – nghe hợp lý nhưng không phải quy định của bạn."
+    },
+    {
+     "t": "h3",
+     "text": "Ba cách đưa kiến thức riêng cho AI"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Cách",
+        "plain": "Cách"
+       },
+       {
+        "html": "Làm thế nào",
+        "plain": "Làm thế nào"
+       },
+       {
+        "html": "Ưu điểm",
+        "plain": "Ưu điểm"
+       },
+       {
+        "html": "Nhược điểm",
+        "plain": "Nhược điểm"
+       },
+       {
+        "html": "Hợp khi",
+        "plain": "Hợp khi"
+       }
+      ],
+      [
+       {
+        "html": "Đưa thẳng vào prompt (ngữ cảnh dài)",
+        "plain": "Đưa thẳng vào prompt (ngữ cảnh dài)"
+       },
+       {
+        "html": "Dán hoặc đính kèm toàn bộ tài liệu mỗi lần hỏi",
+        "plain": "Dán hoặc đính kèm toàn bộ tài liệu mỗi lần hỏi"
+       },
+       {
+        "html": "Đơn giản, không cần hạ tầng",
+        "plain": "Đơn giản, không cần hạ tầng"
+       },
+       {
+        "html": "Tốn token mỗi lượt, chậm, giới hạn kích thước, lost in the middle",
+        "plain": "Tốn token mỗi lượt, chậm, giới hạn kích thước, lost in the middle"
+       },
+       {
+        "html": "Phân tích vài tài liệu cụ thể, dùng thỉnh thoảng",
+        "plain": "Phân tích vài tài liệu cụ thể, dùng thỉnh thoảng"
+       }
+      ],
+      [
+       {
+        "html": "Fine-tuning (huấn luyện thêm)",
+        "plain": "Fine-tuning (huấn luyện thêm)"
+       },
+       {
+        "html": "Huấn luyện tiếp mô hình trên dữ liệu của bạn",
+        "plain": "Huấn luyện tiếp mô hình trên dữ liệu của bạn"
+       },
+       {
+        "html": "Học được giọng văn, định dạng, thuật ngữ",
+        "plain": "Học được giọng văn, định dạng, thuật ngữ"
+       },
+       {
+        "html": "Tốn kém, mất thời gian; cập nhật phải huấn luyện lại; không đảm bảo nhớ đúng từng con số; không trích được nguồn",
+        "plain": "Tốn kém, mất thời gian; cập nhật phải huấn luyện lại; không đảm bảo nhớ đúng từng con số; không trích được nguồn"
+       },
+       {
+        "html": "Dạy cách viết, định dạng đầu ra cố định",
+        "plain": "Dạy cách viết, định dạng đầu ra cố định"
+       }
+      ],
+      [
+       {
+        "html": "RAG",
+        "plain": "RAG"
+       },
+       {
+        "html": "Tìm đoạn liên quan rồi đưa vào prompt",
+        "plain": "Tìm đoạn liên quan rồi đưa vào prompt"
+       },
+       {
+        "html": "Cập nhật tức thì bằng cách thay tài liệu; trích được nguồn; chỉ tốn token cho phần liên quan",
+        "plain": "Cập nhật tức thì bằng cách thay tài liệu; trích được nguồn; chỉ tốn token cho phần liên quan"
+       },
+       {
+        "html": "Phải chuẩn bị dữ liệu, cấu hình truy xuất; tìm nhầm thì trả lời sai",
+        "plain": "Phải chuẩn bị dữ liệu, cấu hình truy xuất; tìm nhầm thì trả lời sai"
+       },
+       {
+        "html": "Kho tài liệu lớn, thay đổi thường xuyên, cần dẫn nguồn",
+        "plain": "Kho tài liệu lớn, thay đổi thường xuyên, cần dẫn nguồn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Hiểu nhầm phổ biến: “muốn AI biết quy định công ty thì phải fine-tune”. Với kiến thức dạng sự kiện, con số, quy định thay đổi theo thời gian, RAG thường là lựa chọn đúng; fine-tuning hợp hơn để dạy cách viết.",
+     "plain": "Hiểu nhầm phổ biến: “muốn AI biết quy định công ty thì phải fine-tune”. Với kiến thức dạng sự kiện, con số, quy định thay đổi theo thời gian, RAG thường là lựa chọn đúng; fine-tuning hợp hơn để dạy cách viết.",
+     "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Lost in the middle là gì?"
+    },
+    {
+     "t": "p",
+     "html": "Nghiên cứu của Liu và cộng sự (2023) cho thấy: khi đưa nhiều tài liệu vào một prompt dài, mô hình dùng thông tin ở đầu và cuối tốt hơn hẳn thông tin nằm giữa. Các mô hình mới đã cải thiện nhiều, nhưng nguyên tắc vẫn đúng: càng nhồi nhiều nội dung không liên quan, đoạn quan trọng càng dễ bị bỏ qua.",
+     "plain": "Nghiên cứu của Liu và cộng sự (2023) cho thấy: khi đưa nhiều tài liệu vào một prompt dài, mô hình dùng thông tin ở đầu và cuối tốt hơn hẳn thông tin nằm giữa. Các mô hình mới đã cải thiện nhiều, nhưng nguyên tắc vẫn đúng: càng nhồi nhiều nội dung không liên quan, đoạn quan trọng càng dễ bị bỏ qua."
+    },
+    {
+     "t": "p",
+     "html": "Đưa vào ít nhưng đúng (RAG với Top-K nhỏ) thường tốt hơn đưa vào tất cả. Khi buộc phải dán tài liệu dài, đặt tài liệu lên trước và câu hỏi, chỉ dẫn quan trọng ở cuối prompt.",
+     "plain": "Đưa vào ít nhưng đúng (RAG với Top-K nhỏ) thường tốt hơn đưa vào tất cả. Khi buộc phải dán tài liệu dài, đặt tài liệu lên trước và câu hỏi, chỉ dẫn quan trọng ở cuối prompt.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Đưa thẳng tài liệu hay dùng RAG?"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Tình huống",
+        "plain": "Tình huống"
+       },
+       {
+        "html": "Nên dùng",
+        "plain": "Nên dùng"
+       }
+      ],
+      [
+       {
+        "html": "Tóm tắt, rà soát một hợp đồng 30 trang",
+        "plain": "Tóm tắt, rà soát một hợp đồng 30 trang"
+       },
+       {
+        "html": "Đưa thẳng tài liệu vào prompt",
+        "plain": "Đưa thẳng tài liệu vào prompt"
+       }
+      ],
+      [
+       {
+        "html": "So sánh 3 dự thảo văn bản với nhau",
+        "plain": "So sánh 3 dự thảo văn bản với nhau"
+       },
+       {
+        "html": "Đưa thẳng – 3 tài liệu vừa cửa sổ ngữ cảnh",
+        "plain": "Đưa thẳng – 3 tài liệu vừa cửa sổ ngữ cảnh"
+       }
+      ],
+      [
+       {
+        "html": "Trợ lý trả lời 500 nhân viên về 200 văn bản quy định",
+        "plain": "Trợ lý trả lời 500 nhân viên về 200 văn bản quy định"
+       },
+       {
+        "html": "RAG",
+        "plain": "RAG"
+       }
+      ],
+      [
+       {
+        "html": "Tra cứu quy trình được cập nhật hằng tháng",
+        "plain": "Tra cứu quy trình được cập nhật hằng tháng"
+       },
+       {
+        "html": "RAG – thay tài liệu là xong",
+        "plain": "RAG – thay tài liệu là xong"
+       }
+      ],
+      [
+       {
+        "html": "Hỏi số liệu từ bảng hàng nghìn dòng",
+        "plain": "Hỏi số liệu từ bảng hàng nghìn dòng"
+       },
+       {
+        "html": "Không phải RAG văn bản: dùng công cụ truy vấn, chạy mã (buổi 4)",
+        "plain": "Không phải RAG văn bản: dùng công cụ truy vấn, chạy mã (buổi 4)"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Vì sao hỏi ChatGPT về chế độ thưởng của chính công ty bạn, nó vẫn trả lời trôi chảy?",
+       "level": 0,
+       "plain": "Vì sao hỏi ChatGPT về chế độ thưởng của chính công ty bạn, nó vẫn trả lời trôi chảy?"
+      },
+      {
+       "html": "Trợ lý cần trả lời theo 200 văn bản quy định, cập nhật hằng tháng. Fine-tuning hay RAG? Vì sao?",
+       "level": 0,
+       "plain": "Trợ lý cần trả lời theo 200 văn bản quy định, cập nhật hằng tháng. Fine-tuning hay RAG? Vì sao?"
+      },
+      {
+       "html": "Muốn biết “tổng sản lượng 9 tháng của ĐL Nam” từ bảng 10.000 dòng, có nên dùng RAG không?",
+       "level": 0,
+       "plain": "Muốn biết “tổng sản lượng 9 tháng của ĐL Nam” từ bảng 10.000 dòng, có nên dùng RAG không?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Mô hình sinh câu trả lời có xác suất cao nhất theo dữ liệu huấn luyện – một quy định “thường thấy”, nghe hợp lý nhưng không phải quy định của bạn (ảo giác).",
+         "level": 0,
+         "plain": "Mô hình sinh câu trả lời có xác suất cao nhất theo dữ liệu huấn luyện – một quy định “thường thấy”, nghe hợp lý nhưng không phải quy định của bạn (ảo giác)."
+        },
+        {
+         "html": "RAG: cập nhật bằng cách thay tài liệu, trích được nguồn, chỉ dùng phần liên quan. Fine-tuning tốn kém, phải huấn luyện lại mỗi lần cập nhật và không đảm bảo nhớ đúng con số.",
+         "level": 0,
+         "plain": "RAG: cập nhật bằng cách thay tài liệu, trích được nguồn, chỉ dùng phần liên quan. Fine-tuning tốn kém, phải huấn luyện lại mỗi lần cập nhật và không đảm bảo nhớ đúng con số."
+        },
+        {
+         "html": "Không. Dữ liệu bảng cần tính toán: dùng công cụ truy vấn hoặc chạy mã (buổi 4); RAG văn bản không cộng số chính xác.",
+         "level": 0,
+         "plain": "Không. Dữ liệu bảng cần tính toán: dùng công cụ truy vấn hoặc chạy mã (buổi 4); RAG văn bản không cộng số chính xác."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s2"
@@ -244,6 +492,284 @@
      "html": "RAG giảm mạnh ảo giác nhưng không tự động đúng 100%: tài liệu sai, cắt đoạn kém hoặc truy xuất nhầm vẫn cho câu trả lời sai. Vì vậy phần chuẩn bị dữ liệu và kiểm thử truy xuất quan trọng không kém.",
      "plain": "RAG giảm mạnh ảo giác nhưng không tự động đúng 100%: tài liệu sai, cắt đoạn kém hoặc truy xuất nhầm vẫn cho câu trả lời sai. Vì vậy phần chuẩn bị dữ liệu và kiểm thử truy xuất quan trọng không kém.",
      "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: từ RAG cơ bản đến RAG nâng cao"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mức",
+        "plain": "Mức"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       },
+       {
+        "html": "Khắc phục được",
+        "plain": "Khắc phục được"
+       }
+      ],
+      [
+       {
+        "html": "RAG cơ bản",
+        "plain": "RAG cơ bản"
+       },
+       {
+        "html": "Câu hỏi → tìm Top-K đoạn → LLM trả lời",
+        "plain": "Câu hỏi → tìm Top-K đoạn → LLM trả lời"
+       },
+       {
+        "html": "Ảo giác do thiếu kiến thức nội bộ",
+        "plain": "Ảo giác do thiếu kiến thức nội bộ"
+       }
+      ],
+      [
+       {
+        "html": "+ Viết lại câu hỏi",
+        "plain": "+ Viết lại câu hỏi"
+       },
+       {
+        "html": "Câu hỏi nối tiếp, mơ hồ được viết lại thành câu đầy đủ trước khi tìm",
+        "plain": "Câu hỏi nối tiếp, mơ hồ được viết lại thành câu đầy đủ trước khi tìm"
+       },
+       {
+        "html": "Câu hỏi kiểu “còn hạng B thì sao?”",
+        "plain": "Câu hỏi kiểu “còn hạng B thì sao?”"
+       }
+      ],
+      [
+       {
+        "html": "+ Tìm kết hợp và xếp hạng lại (Hybrid + Rerank)",
+        "plain": "+ Tìm kết hợp và xếp hạng lại (Hybrid + Rerank)"
+       },
+       {
+        "html": "Tìm cả theo nghĩa lẫn từ khóa, rồi một mô hình xếp hạng lại để chọn đoạn sát nhất",
+        "plain": "Tìm cả theo nghĩa lẫn từ khóa, rồi một mô hình xếp hạng lại để chọn đoạn sát nhất"
+       },
+       {
+        "html": "Bỏ sót mã số; đoạn đúng bị xếp thấp",
+        "plain": "Bỏ sót mã số; đoạn đúng bị xếp thấp"
+       }
+      ],
+      [
+       {
+        "html": "+ Lọc theo metadata",
+        "plain": "+ Lọc theo metadata"
+       },
+       {
+        "html": "Chỉ tìm trong văn bản còn hiệu lực, đúng đơn vị, đúng loại",
+        "plain": "Chỉ tìm trong văn bản còn hiệu lực, đúng đơn vị, đúng loại"
+       },
+       {
+        "html": "Trộn quy định cũ và mới",
+        "plain": "Trộn quy định cũ và mới"
+       }
+      ],
+      [
+       {
+        "html": "Agentic RAG",
+        "plain": "Agentic RAG"
+       },
+       {
+        "html": "Agent tự quyết có cần tìm không, tìm mấy lần, tìm ở kho nào",
+        "plain": "Agent tự quyết có cần tìm không, tìm mấy lần, tìm ở kho nào"
+       },
+       {
+        "html": "Câu hỏi phức tạp cần ghép nhiều nguồn",
+        "plain": "Câu hỏi phức tạp cần ghép nhiều nguồn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Bắt đầu từ RAG cơ bản, đo bằng Hit Test, chỉ thêm kỹ thuật khi thấy một lỗi cụ thể mà kỹ thuật đó giải quyết.",
+     "plain": "Bắt đầu từ RAG cơ bản, đo bằng Hit Test, chỉ thêm kỹ thuật khi thấy một lỗi cụ thể mà kỹ thuật đó giải quyết.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Rerank – xếp hạng lại là gì?"
+    },
+    {
+     "t": "p",
+     "html": "Tìm theo vector rất nhanh nhưng chỉ so “gần đúng”. Rerank dùng một mô hình chuyên chấm mức liên quan giữa câu hỏi và từng đoạn – đọc cả hai cùng lúc – nên chính xác hơn nhưng chậm hơn. Vì vậy hệ thống thường làm hai tầng: tìm nhanh 20–50 đoạn ứng viên, rồi rerank chọn 3–5 đoạn tốt nhất đưa cho LLM. Dify có tùy chọn Rerank Model trong cài đặt truy xuất.",
+     "plain": "Tìm theo vector rất nhanh nhưng chỉ so “gần đúng”. Rerank dùng một mô hình chuyên chấm mức liên quan giữa câu hỏi và từng đoạn – đọc cả hai cùng lúc – nên chính xác hơn nhưng chậm hơn. Vì vậy hệ thống thường làm hai tầng: tìm nhanh 20–50 đoạn ứng viên, rồi rerank chọn 3–5 đoạn tốt nhất đưa cho LLM. Dify có tùy chọn Rerank Model trong cài đặt truy xuất."
+    },
+    {
+     "t": "h3",
+     "text": "Năm kiểu lỗi của hệ thống RAG"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Lỗi",
+        "plain": "Lỗi"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       },
+       {
+        "html": "Nằm ở đâu, sửa thế nào",
+        "plain": "Nằm ở đâu, sửa thế nào"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu không có thông tin",
+        "plain": "Tài liệu không có thông tin"
+       },
+       {
+        "html": "Hỏi thưởng Tết, sổ tay không quy định",
+        "plain": "Hỏi thưởng Tết, sổ tay không quy định"
+       },
+       {
+        "html": "Dữ liệu – Agent phải nói “chưa đề cập”, không bịa",
+        "plain": "Dữ liệu – Agent phải nói “chưa đề cập”, không bịa"
+       }
+      ],
+      [
+       {
+        "html": "Có nhưng không tìm thấy",
+        "plain": "Có nhưng không tìm thấy"
+       },
+       {
+        "html": "Tài liệu ghi “hoàn tiền”, người hỏi “trả hàng lấy tiền”",
+        "plain": "Tài liệu ghi “hoàn tiền”, người hỏi “trả hàng lấy tiền”"
+       },
+       {
+        "html": "Truy xuất – Hybrid, viết lại câu hỏi, viết FAQ bằng lời người dùng",
+        "plain": "Truy xuất – Hybrid, viết lại câu hỏi, viết FAQ bằng lời người dùng"
+       }
+      ],
+      [
+       {
+        "html": "Tìm thấy đoạn sai",
+        "plain": "Tìm thấy đoạn sai"
+       },
+       {
+        "html": "Bốc mục lục thay vì nội dung",
+        "plain": "Bốc mục lục thay vì nội dung"
+       },
+       {
+        "html": "Dữ liệu và cắt đoạn – làm sạch, cắt theo đề mục",
+        "plain": "Dữ liệu và cắt đoạn – làm sạch, cắt theo đề mục"
+       }
+      ],
+      [
+       {
+        "html": "Tìm đúng nhưng trả lời sai",
+        "plain": "Tìm đúng nhưng trả lời sai"
+       },
+       {
+        "html": "Đoạn ghi 7 ngày, Agent trả lời 30 ngày",
+        "plain": "Đoạn ghi 7 ngày, Agent trả lời 30 ngày"
+       },
+       {
+        "html": "Sinh câu trả lời – siết prompt, giảm temperature",
+        "plain": "Sinh câu trả lời – siết prompt, giảm temperature"
+       }
+      ],
+      [
+       {
+        "html": "Tài liệu lỗi thời",
+        "plain": "Tài liệu lỗi thời"
+       },
+       {
+        "html": "Trả lời theo quy định đã bị thay thế",
+        "plain": "Trả lời theo quy định đã bị thay thế"
+       },
+       {
+        "html": "Quản trị dữ liệu – gỡ bản cũ, gắn ngày hiệu lực",
+        "plain": "Quản trị dữ liệu – gỡ bản cũ, gắn ngày hiệu lực"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "RAG và phân quyền dữ liệu"
+    },
+    {
+     "t": "p",
+     "html": "RAG trả lời bằng chính nội dung tài liệu. Nếu kho chung có cả tài liệu chỉ dành cho lãnh đạo (bảng lương, hồ sơ kỷ luật), bất kỳ ai hỏi khéo cũng có thể nhận được nội dung đó. Dòng “không tiết lộ tài liệu mật” trong prompt không phải cơ chế bảo vệ.",
+     "plain": "RAG trả lời bằng chính nội dung tài liệu. Nếu kho chung có cả tài liệu chỉ dành cho lãnh đạo (bảng lương, hồ sơ kỷ luật), bất kỳ ai hỏi khéo cũng có thể nhận được nội dung đó. Dòng “không tiết lộ tài liệu mật” trong prompt không phải cơ chế bảo vệ.",
+     "callout": "misconception"
+    },
+    {
+     "t": "p",
+     "html": "Chỉ nạp vào kho những tài liệu mà <strong>mọi người dùng của Agent đều được phép đọc</strong>. Tài liệu có quyền khác nhau thì tách kho, tách Agent theo nhóm người dùng, hoặc dùng nền tảng hỗ trợ lọc theo quyền của người hỏi.",
+     "plain": "Chỉ nạp vào kho những tài liệu mà mọi người dùng của Agent đều được phép đọc. Tài liệu có quyền khác nhau thì tách kho, tách Agent theo nhóm người dùng, hoặc dùng nền tảng hỗ trợ lọc theo quyền của người hỏi.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Trích dẫn nguồn: không chỉ để đẹp"
+    },
+    {
+     "t": "p",
+     "html": "Bắt Agent ghi nguồn (tài liệu – mục) có ba tác dụng: người dùng kiểm chứng nhanh; giảm bịa vì mô hình phải bám vào một đoạn cụ thể; người bảo trì phát hiện được tài liệu nào hay bị dùng sai. Câu trả lời ghi nguồn nhưng nguồn đó không chứa thông tin đã nêu là dấu hiệu lỗi cần sửa ngay.",
+     "plain": "Bắt Agent ghi nguồn (tài liệu – mục) có ba tác dụng: người dùng kiểm chứng nhanh; giảm bịa vì mô hình phải bám vào một đoạn cụ thể; người bảo trì phát hiện được tài liệu nào hay bị dùng sai. Câu trả lời ghi nguồn nhưng nguồn đó không chứa thông tin đã nêu là dấu hiệu lỗi cần sửa ngay."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Người dùng hỏi “trả hàng lấy tiền thế nào?”, tài liệu ghi “quy trình hoàn tiền”, Agent nói không tìm thấy. Lỗi thuộc kiểu nào, khắc phục ra sao?",
+       "level": 0,
+       "plain": "Người dùng hỏi “trả hàng lấy tiền thế nào?”, tài liệu ghi “quy trình hoàn tiền”, Agent nói không tìm thấy. Lỗi thuộc kiểu nào, khắc phục ra sao?"
+      },
+      {
+       "html": "Vì sao không nên nạp bảng lương vào kho chung của trợ lý nhân sự, kể cả khi đã dặn “không tiết lộ lương”?",
+       "level": 0,
+       "plain": "Vì sao không nên nạp bảng lương vào kho chung của trợ lý nhân sự, kể cả khi đã dặn “không tiết lộ lương”?"
+      },
+      {
+       "html": "Rerank giải quyết vấn đề gì, và vì sao không chạy rerank trên toàn bộ kho?",
+       "level": 0,
+       "plain": "Rerank giải quyết vấn đề gì, và vì sao không chạy rerank trên toàn bộ kho?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Có nhưng không tìm thấy (lỗi truy xuất). Bật Hybrid, thêm FAQ dùng lời người dùng, thêm bước viết lại câu hỏi.",
+         "level": 0,
+         "plain": "Có nhưng không tìm thấy (lỗi truy xuất). Bật Hybrid, thêm FAQ dùng lời người dùng, thêm bước viết lại câu hỏi."
+        },
+        {
+         "html": "RAG trả lời bằng nội dung tài liệu; người hỏi khéo vẫn lấy được. Lời dặn không phải cơ chế phân quyền; phải tách kho hoặc lọc theo quyền người hỏi.",
+         "level": 0,
+         "plain": "RAG trả lời bằng nội dung tài liệu; người hỏi khéo vẫn lấy được. Lời dặn không phải cơ chế phân quyền; phải tách kho hoặc lọc theo quyền người hỏi."
+        },
+        {
+         "html": "Chọn chính xác hơn đoạn sát câu hỏi nhất; nhưng chậm, nên chỉ chạy trên 20–50 đoạn đã tìm nhanh trước.",
+         "level": 0,
+         "plain": "Chọn chính xác hơn đoạn sát câu hỏi nhất; nhưng chậm, nên chỉ chạy trên 20–50 đoạn đã tìm nhanh trước."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s3"
@@ -503,6 +1029,187 @@
      "html": "Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.",
      "plain": "Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.",
      "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: chọn mô hình embedding"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Hỗ trợ tiếng Việt:</strong> mô hình đa ngôn ngữ (multilingual) cho kết quả tốt hơn hẳn mô hình chủ yếu học tiếng Anh. Thử bằng Hit Test với câu hỏi có dấu, không dấu, viết tắt (“HĐ”, “CSKH”).",
+       "level": 0,
+       "plain": "Hỗ trợ tiếng Việt: mô hình đa ngôn ngữ (multilingual) cho kết quả tốt hơn hẳn mô hình chủ yếu học tiếng Anh. Thử bằng Hit Test với câu hỏi có dấu, không dấu, viết tắt (“HĐ”, “CSKH”)."
+      },
+      {
+       "html": "<strong>Số chiều:</strong> nhiều chiều thường biểu diễn nghĩa tinh hơn nhưng tốn bộ nhớ hơn; với vài nghìn đoạn, khác biệt chi phí không đáng kể.",
+       "level": 0,
+       "plain": "Số chiều: nhiều chiều thường biểu diễn nghĩa tinh hơn nhưng tốn bộ nhớ hơn; với vài nghìn đoạn, khác biệt chi phí không đáng kể."
+      },
+      {
+       "html": "<strong>Không trộn mô hình:</strong> câu hỏi và tài liệu phải được đổi thành vector bằng cùng một mô hình. Đổi mô hình embedding thì phải nạp lại (re-index) toàn bộ kho.",
+       "level": 0,
+       "plain": "Không trộn mô hình: câu hỏi và tài liệu phải được đổi thành vector bằng cùng một mô hình. Đổi mô hình embedding thì phải nạp lại (re-index) toàn bộ kho."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Tìm nhanh trong hàng triệu vector"
+    },
+    {
+     "t": "p",
+     "html": "So câu hỏi với từng đoạn một sẽ rất chậm khi kho lớn. Vector Database dùng chỉ mục tìm gần đúng (ANN – Approximate Nearest Neighbor, phổ biến là HNSW): sắp các vector thành một mạng lưới để đi nhanh tới vùng gần câu hỏi, chấp nhận đôi khi bỏ sót một đoạn rất sát để đổi lấy tốc độ. Với kho vài nghìn đoạn của một phòng ban, bạn gần như không cần bận tâm chi tiết này – nền tảng đã lo.",
+     "plain": "So câu hỏi với từng đoạn một sẽ rất chậm khi kho lớn. Vector Database dùng chỉ mục tìm gần đúng (ANN – Approximate Nearest Neighbor, phổ biến là HNSW): sắp các vector thành một mạng lưới để đi nhanh tới vùng gần câu hỏi, chấp nhận đôi khi bỏ sót một đoạn rất sát để đổi lấy tốc độ. Với kho vài nghìn đoạn của một phòng ban, bạn gần như không cần bận tâm chi tiết này – nền tảng đã lo."
+    },
+    {
+     "t": "h3",
+     "text": "Tìm theo từ khóa hoạt động thế nào?"
+    },
+    {
+     "t": "p",
+     "html": "Tìm theo từ khóa hiện đại (BM25) không chỉ đếm số lần xuất hiện: từ hiếm (mã “QT-07”, tên riêng) được tính điểm cao hơn từ phổ biến (“quy định”, “các”), và đoạn quá dài bị trừ điểm để không lấn át. Vì vậy nó mạnh với mã số, tên riêng, thuật ngữ chính xác – đúng chỗ mà tìm theo nghĩa hay yếu.",
+     "plain": "Tìm theo từ khóa hiện đại (BM25) không chỉ đếm số lần xuất hiện: từ hiếm (mã “QT-07”, tên riêng) được tính điểm cao hơn từ phổ biến (“quy định”, “các”), và đoạn quá dài bị trừ điểm để không lấn át. Vì vậy nó mạnh với mã số, tên riêng, thuật ngữ chính xác – đúng chỗ mà tìm theo nghĩa hay yếu."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi",
+        "plain": "Câu hỏi"
+       },
+       {
+        "html": "Theo nghĩa",
+        "plain": "Theo nghĩa"
+       },
+       {
+        "html": "Theo từ khóa",
+        "plain": "Theo từ khóa"
+       },
+       {
+        "html": "Kết hợp (Hybrid)",
+        "plain": "Kết hợp (Hybrid)"
+       }
+      ],
+      [
+       {
+        "html": "“Trả hàng lấy lại tiền thế nào?” (tài liệu ghi “hoàn tiền”)",
+        "plain": "“Trả hàng lấy lại tiền thế nào?” (tài liệu ghi “hoàn tiền”)"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       },
+       {
+        "html": "Kém",
+        "plain": "Kém"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       }
+      ],
+      [
+       {
+        "html": "“Quy trình QT-07 bước 3?”",
+        "plain": "“Quy trình QT-07 bước 3?”"
+       },
+       {
+        "html": "Trung bình – mã số ít mang nghĩa",
+        "plain": "Trung bình – mã số ít mang nghĩa"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       }
+      ],
+      [
+       {
+        "html": "“Mất điện có được bồi thường không?”",
+        "plain": "“Mất điện có được bồi thường không?”"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       },
+       {
+        "html": "Trung bình",
+        "plain": "Trung bình"
+       },
+       {
+        "html": "Tốt",
+        "plain": "Tốt"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Metadata: lọc trước, tìm sau"
+    },
+    {
+     "t": "p",
+     "html": "Metadata là thông tin đi kèm mỗi đoạn: tên tài liệu, đơn vị ban hành, ngày hiệu lực, loại văn bản, phạm vi áp dụng. Lọc theo metadata trước khi tìm (chỉ văn bản còn hiệu lực, chỉ tài liệu khối Kinh doanh) loại hẳn những đoạn đúng nghĩa nhưng sai bối cảnh – điều mà tìm theo vector không tự phân biệt được.",
+     "plain": "Metadata là thông tin đi kèm mỗi đoạn: tên tài liệu, đơn vị ban hành, ngày hiệu lực, loại văn bản, phạm vi áp dụng. Lọc theo metadata trước khi tìm (chỉ văn bản còn hiệu lực, chỉ tài liệu khối Kinh doanh) loại hẳn những đoạn đúng nghĩa nhưng sai bối cảnh – điều mà tìm theo vector không tự phân biệt được."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Đơn vị đổi sang mô hình embedding mới tốt hơn. Cần làm gì với kho tài liệu?",
+       "level": 0,
+       "plain": "Đơn vị đổi sang mô hình embedding mới tốt hơn. Cần làm gì với kho tài liệu?"
+      },
+      {
+       "html": "Người dùng hay hỏi theo mã biểu mẫu (“mẫu BM-12”). Chế độ tìm nào phù hợp? Vì sao?",
+       "level": 0,
+       "plain": "Người dùng hay hỏi theo mã biểu mẫu (“mẫu BM-12”). Chế độ tìm nào phù hợp? Vì sao?"
+      },
+      {
+       "html": "Kho có cả quy định 2023 (hết hiệu lực) và 2025. Ngoài việc gỡ bản cũ, còn cách nào?",
+       "level": 0,
+       "plain": "Kho có cả quy định 2023 (hết hiệu lực) và 2025. Ngoài việc gỡ bản cũ, còn cách nào?"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Nạp lại (re-index) toàn bộ kho bằng mô hình mới; câu hỏi và tài liệu phải dùng cùng một mô hình.",
+         "level": 0,
+         "plain": "Nạp lại (re-index) toàn bộ kho bằng mô hình mới; câu hỏi và tài liệu phải dùng cùng một mô hình."
+        },
+        {
+         "html": "Hybrid (có tìm theo từ khóa): mã số ít mang nghĩa nên tìm theo vector dễ bỏ sót; từ khóa khớp chính xác mã.",
+         "level": 0,
+         "plain": "Hybrid (có tìm theo từ khóa): mã số ít mang nghĩa nên tìm theo vector dễ bỏ sót; từ khóa khớp chính xác mã."
+        },
+        {
+         "html": "Gắn metadata ngày hiệu lực/trạng thái và chỉ tìm văn bản còn hiệu lực; thêm luật ưu tiên văn bản mới trong prompt.",
+         "level": 0,
+         "plain": "Gắn metadata ngày hiệu lực/trạng thái và chỉ tìm văn bản còn hiệu lực; thêm luật ưu tiên văn bản mới trong prompt."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s5"
@@ -743,6 +1450,323 @@
        }
       ]
      ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: quy trình 7 bước chuẩn bị tri thức"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Kiểm kê:</strong> liệt kê tài liệu Agent cần, ai sở hữu, bản nào là bản chính thức đang hiệu lực.",
+       "level": 0,
+       "plain": "Kiểm kê: liệt kê tài liệu Agent cần, ai sở hữu, bản nào là bản chính thức đang hiệu lực."
+      },
+      {
+       "html": "<strong>Lọc:</strong> bỏ bản nháp, bản trùng, bản hết hiệu lực; bỏ tài liệu mà người dùng Agent không được quyền đọc.",
+       "level": 0,
+       "plain": "Lọc: bỏ bản nháp, bản trùng, bản hết hiệu lực; bỏ tài liệu mà người dùng Agent không được quyền đọc."
+      },
+      {
+       "html": "<strong>Chuyển đổi:</strong> PDF scan phải OCR; Word, PDF văn bản chuyển sang Markdown; kiểm tra lại số liệu sau khi chuyển.",
+       "level": 0,
+       "plain": "Chuyển đổi: PDF scan phải OCR; Word, PDF văn bản chuyển sang Markdown; kiểm tra lại số liệu sau khi chuyển."
+      },
+      {
+       "html": "<strong>Làm sạch và cấu trúc:</strong> bỏ nhiễu, giữ đề mục, viết lại bảng, che thông tin cá nhân không cần thiết.",
+       "level": 0,
+       "plain": "Làm sạch và cấu trúc: bỏ nhiễu, giữ đề mục, viết lại bảng, che thông tin cá nhân không cần thiết."
+      },
+      {
+       "html": "<strong>Gắn metadata:</strong> tên, số hiệu, ngày hiệu lực, đơn vị, phạm vi áp dụng.",
+       "level": 0,
+       "plain": "Gắn metadata: tên, số hiệu, ngày hiệu lực, đơn vị, phạm vi áp dụng."
+      },
+      {
+       "html": "<strong>Cắt đoạn và kiểm tra:</strong> xem trước các đoạn, chạy Hit Test.",
+       "level": 0,
+       "plain": "Cắt đoạn và kiểm tra: xem trước các đoạn, chạy Hit Test."
+      },
+      {
+       "html": "<strong>Bảo trì:</strong> ai cập nhật khi văn bản thay đổi, bao lâu rà soát một lần.",
+       "level": 0,
+       "plain": "Bảo trì: ai cập nhật khi văn bản thay đổi, bao lâu rà soát một lần."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Các chiến lược cắt đoạn"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Chiến lược",
+        "plain": "Chiến lược"
+       },
+       {
+        "html": "Cách cắt",
+        "plain": "Cách cắt"
+       },
+       {
+        "html": "Ưu",
+        "plain": "Ưu"
+       },
+       {
+        "html": "Nhược",
+        "plain": "Nhược"
+       },
+       {
+        "html": "Hợp với",
+        "plain": "Hợp với"
+       }
+      ],
+      [
+       {
+        "html": "Cố định",
+        "plain": "Cố định"
+       },
+       {
+        "html": "Mỗi N ký tự hoặc token",
+        "plain": "Mỗi N ký tự hoặc token"
+       },
+       {
+        "html": "Đơn giản",
+        "plain": "Đơn giản"
+       },
+       {
+        "html": "Cắt ngang câu, ngang bảng",
+        "plain": "Cắt ngang câu, ngang bảng"
+       },
+       {
+        "html": "Văn bản đồng nhất, không đề mục",
+        "plain": "Văn bản đồng nhất, không đề mục"
+       }
+      ],
+      [
+       {
+        "html": "Theo cấu trúc",
+        "plain": "Theo cấu trúc"
+       },
+       {
+        "html": "Theo đề mục, đoạn văn, dấu phân cách",
+        "plain": "Theo đề mục, đoạn văn, dấu phân cách"
+       },
+       {
+        "html": "Mỗi đoạn trọn ý",
+        "plain": "Mỗi đoạn trọn ý"
+       },
+       {
+        "html": "Mục quá dài vẫn phải cắt tiếp",
+        "plain": "Mục quá dài vẫn phải cắt tiếp"
+       },
+       {
+        "html": "Quy định, sổ tay, quy trình có đề mục",
+        "plain": "Quy định, sổ tay, quy trình có đề mục"
+       }
+      ],
+      [
+       {
+        "html": "Theo ngữ nghĩa",
+        "plain": "Theo ngữ nghĩa"
+       },
+       {
+        "html": "Cắt ở chỗ nội dung đổi chủ đề",
+        "plain": "Cắt ở chỗ nội dung đổi chủ đề"
+       },
+       {
+        "html": "Ranh giới tự nhiên",
+        "plain": "Ranh giới tự nhiên"
+       },
+       {
+        "html": "Tốn tính toán, khó dự đoán",
+        "plain": "Tốn tính toán, khó dự đoán"
+       },
+       {
+        "html": "Văn bản dài không có đề mục",
+        "plain": "Văn bản dài không có đề mục"
+       }
+      ],
+      [
+       {
+        "html": "Cha – con (parent-child)",
+        "plain": "Cha – con (parent-child)"
+       },
+       {
+        "html": "Tìm bằng đoạn con nhỏ, trả về đoạn cha lớn chứa nó",
+        "plain": "Tìm bằng đoạn con nhỏ, trả về đoạn cha lớn chứa nó"
+       },
+       {
+        "html": "Tìm chính xác mà vẫn đủ ngữ cảnh",
+        "plain": "Tìm chính xác mà vẫn đủ ngữ cảnh"
+       },
+       {
+        "html": "Cấu hình phức tạp hơn",
+        "plain": "Cấu hình phức tạp hơn"
+       },
+       {
+        "html": "Quy định nhiều điều kiện, ngoại lệ cần đọc kèm bối cảnh",
+        "plain": "Quy định nhiều điều kiện, ngoại lệ cần đọc kèm bối cảnh"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Dify có hai chế độ General và Parent-child. Với Parent-child, câu hỏi khớp với một câu nhỏ (đoạn con) nhưng LLM nhận cả mục chứa câu đó (đoạn cha) – rất hợp với quy định có nhiều điều kiện, ngoại lệ.",
+     "plain": "Dify có hai chế độ General và Parent-child. Với Parent-child, câu hỏi khớp với một câu nhỏ (đoạn con) nhưng LLM nhận cả mục chứa câu đó (đoạn cha) – rất hợp với quy định có nhiều điều kiện, ngoại lệ."
+    },
+    {
+     "t": "h3",
+     "text": "Đoạn to hay đoạn nhỏ?"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "",
+        "plain": ""
+       },
+       {
+        "html": "Đoạn nhỏ (100–300 token)",
+        "plain": "Đoạn nhỏ (100–300 token)"
+       },
+       {
+        "html": "Đoạn lớn (800–1.500 token)",
+        "plain": "Đoạn lớn (800–1.500 token)"
+       }
+      ],
+      [
+       {
+        "html": "Tìm kiếm",
+        "plain": "Tìm kiếm"
+       },
+       {
+        "html": "Chính xác, khớp đúng câu",
+        "plain": "Chính xác, khớp đúng câu"
+       },
+       {
+        "html": "Kém chính xác hơn, ý chính bị pha loãng",
+        "plain": "Kém chính xác hơn, ý chính bị pha loãng"
+       }
+      ],
+      [
+       {
+        "html": "Ngữ cảnh cho LLM",
+        "plain": "Ngữ cảnh cho LLM"
+       },
+       {
+        "html": "Dễ thiếu điều kiện, ngoại lệ",
+        "plain": "Dễ thiếu điều kiện, ngoại lệ"
+       },
+       {
+        "html": "Đủ ngữ cảnh",
+        "plain": "Đủ ngữ cảnh"
+       }
+      ],
+      [
+       {
+        "html": "Chi phí",
+        "plain": "Chi phí"
+       },
+       {
+        "html": "Mỗi đoạn rẻ nhưng có thể cần Top-K lớn",
+        "plain": "Mỗi đoạn rẻ nhưng có thể cần Top-K lớn"
+       },
+       {
+        "html": "Mỗi đoạn tốn hơn",
+        "plain": "Mỗi đoạn tốn hơn"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Không có con số đúng cho mọi tài liệu. Bắt đầu với 500–800 token cắt theo đề mục, chạy Hit Test, rồi điều chỉnh theo lỗi thấy được.",
+     "plain": "Không có con số đúng cho mọi tài liệu. Bắt đầu với 500–800 token cắt theo đề mục, chạy Hit Test, rồi điều chỉnh theo lỗi thấy được.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
+     "text": "Bảng, hình ảnh và dữ liệu cá nhân"
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<strong>Bảng nhỏ</strong> (vài dòng): viết lại thành câu hoặc bảng Markdown, mỗi dòng giữ đủ tiêu đề cột. <strong>Bảng lớn</strong> (hàng trăm dòng số liệu): không đưa vào RAG văn bản – dùng công cụ phân tích dữ liệu (buổi 4).",
+       "level": 0,
+       "plain": "Bảng nhỏ (vài dòng): viết lại thành câu hoặc bảng Markdown, mỗi dòng giữ đủ tiêu đề cột. Bảng lớn (hàng trăm dòng số liệu): không đưa vào RAG văn bản – dùng công cụ phân tích dữ liệu (buổi 4)."
+      },
+      {
+       "html": "<strong>Hình ảnh, sơ đồ:</strong> mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Tổ giao dịch → Phòng Kỹ thuật → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ.",
+       "level": 0,
+       "plain": "Hình ảnh, sơ đồ: mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Tổ giao dịch → Phòng Kỹ thuật → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ."
+      },
+      {
+       "html": "<strong>Dữ liệu cá nhân:</strong> xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi nạp – Agent không cần chúng để trả lời câu hỏi về quy định.",
+       "level": 0,
+       "plain": "Dữ liệu cá nhân: xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi nạp – Agent không cần chúng để trả lời câu hỏi về quy định."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Bảng giá 300 dòng theo từng mã vật tư có nên đưa vào RAG văn bản không?",
+       "level": 0,
+       "plain": "Bảng giá 300 dòng theo từng mã vật tư có nên đưa vào RAG văn bản không?"
+      },
+      {
+       "html": "Khi nào nên dùng chế độ Parent-child?",
+       "level": 0,
+       "plain": "Khi nào nên dùng chế độ Parent-child?"
+      },
+      {
+       "html": "Kể 3 việc của bước “Lọc” trước khi nạp tài liệu.",
+       "level": 0,
+       "plain": "Kể 3 việc của bước “Lọc” trước khi nạp tài liệu."
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Không. Bảng lớn nên tra bằng công cụ truy vấn/phân tích dữ liệu; RAG văn bản dễ bốc nhầm dòng và không tính toán được.",
+         "level": 0,
+         "plain": "Không. Bảng lớn nên tra bằng công cụ truy vấn/phân tích dữ liệu; RAG văn bản dễ bốc nhầm dòng và không tính toán được."
+        },
+        {
+         "html": "Khi cần tìm chính xác đến câu nhỏ nhưng LLM phải đọc cả mục chứa nó để không thiếu điều kiện, ngoại lệ.",
+         "level": 0,
+         "plain": "Khi cần tìm chính xác đến câu nhỏ nhưng LLM phải đọc cả mục chứa nó để không thiếu điều kiện, ngoại lệ."
+        },
+        {
+         "html": "Bỏ bản nháp, bản trùng; bỏ bản hết hiệu lực; bỏ tài liệu người dùng Agent không được quyền đọc.",
+         "level": 0,
+         "plain": "Bỏ bản nháp, bản trùng; bỏ bản hết hiệu lực; bỏ tài liệu người dùng Agent không được quyền đọc."
+        }
+       ]
+      }
+     ]
     }
    ],
    "id": "s7"
@@ -906,6 +1930,155 @@
         "plain": "“Dựa vào bộ tài liệu dưới đây, hãy trả lời câu hỏi: [Câu hỏi]. Nếu tài liệu không có thông tin, hãy nói ‘Tôi không biết’, TUYỆT ĐỐI không bịa đặt.”"
        }
       ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Hiểu sâu: các mẫu xâu chuỗi thường dùng"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Mẫu",
+        "plain": "Mẫu"
+       },
+       {
+        "html": "Cách làm",
+        "plain": "Cách làm"
+       },
+       {
+        "html": "Ví dụ",
+        "plain": "Ví dụ"
+       }
+      ],
+      [
+       {
+        "html": "Tuần tự",
+        "plain": "Tuần tự"
+       },
+       {
+        "html": "Bước 1 → bước 2 → bước 3; đầu ra bước trước là đầu vào bước sau",
+        "plain": "Bước 1 → bước 2 → bước 3; đầu ra bước trước là đầu vào bước sau"
+       },
+       {
+        "html": "Viết lại câu hỏi → tìm tài liệu → trả lời",
+        "plain": "Viết lại câu hỏi → tìm tài liệu → trả lời"
+       }
+      ],
+      [
+       {
+        "html": "Rẽ nhánh",
+        "plain": "Rẽ nhánh"
+       },
+       {
+        "html": "Một bước phân loại; mỗi loại đi một chuỗi riêng",
+        "plain": "Một bước phân loại; mỗi loại đi một chuỗi riêng"
+       },
+       {
+        "html": "Câu hỏi về hóa đơn → kho Hóa đơn; về nhân sự → kho Sổ tay",
+        "plain": "Câu hỏi về hóa đơn → kho Hóa đơn; về nhân sự → kho Sổ tay"
+       }
+      ],
+      [
+       {
+        "html": "Chia nhỏ rồi gộp (map-reduce)",
+        "plain": "Chia nhỏ rồi gộp (map-reduce)"
+       },
+       {
+        "html": "Chia tài liệu dài thành phần, xử lý từng phần, rồi gộp kết quả",
+        "plain": "Chia tài liệu dài thành phần, xử lý từng phần, rồi gộp kết quả"
+       },
+       {
+        "html": "Tóm tắt từng chương của báo cáo 80 trang → tổng hợp",
+        "plain": "Tóm tắt từng chương của báo cáo 80 trang → tổng hợp"
+       }
+      ],
+      [
+       {
+        "html": "Tạo rồi kiểm",
+        "plain": "Tạo rồi kiểm"
+       },
+       {
+        "html": "Một bước tạo, một bước kiểm tra theo tiêu chí",
+        "plain": "Một bước tạo, một bước kiểm tra theo tiêu chí"
+       },
+       {
+        "html": "Soạn câu trả lời → kiểm tra có trích dẫn, không bịa",
+        "plain": "Soạn câu trả lời → kiểm tra có trích dẫn, không bịa"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Thiết kế đầu ra trung gian"
+    },
+    {
+     "t": "p",
+     "html": "Mắt xích yếu nhất của chuỗi là chỗ nối giữa hai bước. Đầu ra của mỗi bước nên: có định dạng cố định (danh sách, JSON, bảng) để bước sau đọc chắc chắn; chỉ chứa đúng thứ bước sau cần; có cách báo “không có kết quả” rõ ràng (trả về rỗng thay vì một câu văn giải thích).",
+     "plain": "Mắt xích yếu nhất của chuỗi là chỗ nối giữa hai bước. Đầu ra của mỗi bước nên: có định dạng cố định (danh sách, JSON, bảng) để bước sau đọc chắc chắn; chỉ chứa đúng thứ bước sau cần; có cách báo “không có kết quả” rõ ràng (trả về rỗng thay vì một câu văn giải thích)."
+    },
+    {
+     "t": "h3",
+     "text": "Khi nào xâu chuỗi là thừa?"
+    },
+    {
+     "t": "p",
+     "html": "Mỗi bước thêm thời gian chờ, chi phí và một chỗ có thể sai. Việc đơn giản một bước làm tốt (dịch một đoạn văn, viết lại một câu) thì không cần chuỗi. Chỉ tách bước khi: một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra kết quả giữa chừng; hoặc các phần cần cấu hình khác nhau (bước phân loại dùng temperature thấp, bước viết dùng cao hơn).",
+     "plain": "Mỗi bước thêm thời gian chờ, chi phí và một chỗ có thể sai. Việc đơn giản một bước làm tốt (dịch một đoạn văn, viết lại một câu) thì không cần chuỗi. Chỉ tách bước khi: một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra kết quả giữa chừng; hoặc các phần cần cấu hình khác nhau (bước phân loại dùng temperature thấp, bước viết dùng cao hơn)."
+    },
+    {
+     "t": "h3",
+     "text": "Tự kiểm tra"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Cần tóm tắt báo cáo 80 trang, quá dài để xử lý tốt trong một lần. Dùng mẫu chuỗi nào?",
+       "level": 0,
+       "plain": "Cần tóm tắt báo cáo 80 trang, quá dài để xử lý tốt trong một lần. Dùng mẫu chuỗi nào?"
+      },
+      {
+       "html": "Vì sao đầu ra trung gian nên là JSON hoặc danh sách thay vì đoạn văn?",
+       "level": 0,
+       "plain": "Vì sao đầu ra trung gian nên là JSON hoặc danh sách thay vì đoạn văn?"
+      },
+      {
+       "html": "Nêu 2 dấu hiệu cho thấy nên tách một prompt thành chuỗi.",
+       "level": 0,
+       "plain": "Nêu 2 dấu hiệu cho thấy nên tách một prompt thành chuỗi."
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Xem đáp án (tự trả lời trước rồi mới mở)",
+     "blocks": [
+      {
+       "t": "list",
+       "ordered": true,
+       "items": [
+        {
+         "html": "Chia nhỏ rồi gộp (map-reduce): tóm tắt từng phần, rồi tổng hợp các bản tóm tắt.",
+         "level": 0,
+         "plain": "Chia nhỏ rồi gộp (map-reduce): tóm tắt từng phần, rồi tổng hợp các bản tóm tắt."
+        },
+        {
+         "html": "Bước sau đọc chắc chắn, không phải đoán; dễ kiểm tra rỗng hoặc thiếu; không mang theo chữ thừa.",
+         "level": 0,
+         "plain": "Bước sau đọc chắc chắn, không phải đoán; dễ kiểm tra rỗng hoặc thiếu; không mang theo chữ thừa."
+        },
+        {
+         "html": "Một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra giữa chừng; các phần cần cấu hình khác nhau.",
+         "level": 0,
+         "plain": "Một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra giữa chừng; các phần cần cấu hình khác nhau."
+        }
+       ]
+      }
      ]
     },
     {
