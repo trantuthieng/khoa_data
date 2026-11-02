@@ -52,7 +52,7 @@
         <select id="rag-doc">
           <option value="clean">so_tay_nhan_su_da_lam_sach.md (Bản sạch Markdown – khuyến nghị)</option>
           <option value="raw">so_tay_nhan_su_ban_goc.txt (Bản gốc PDF bẩn – có mục lục, bảng vỡ)</option>
-          <option value="power">hoi_dap_hoa_don_gia_lap.md (Điện lực Phú An – Hỏi đáp hóa đơn tiền điện)</option>
+          <option value="shop">chinh_sach_doi_tra_gia_lap.md (Nhà Xanh – Chính sách đổi trả, bảo hành)</option>
         </select>
 
         <label for="rag-text">Nội dung tài liệu (có thể sửa trực tiếp để thử nghiệm)</label>
@@ -99,7 +99,7 @@
           <button type="button" class="chip" data-q="Phép năm không dùng hết thì sao?">Phép năm không dùng hết?</button>
           <button type="button" class="chip" data-q="Thưởng Tết bao nhiêu?">Thưởng Tết bao nhiêu? (Câu bẫy)</button>
           <button type="button" class="chip" data-q="Còn hạng B thì sao?" data-hist="Người dùng: Thưởng KPI quý hạng A bao nhiêu? | Trợ lý: Hạng A (KPI >= 110%) được thưởng 5.000.000 đồng/quý.">Câu hỏi nối tiếp: “Còn hạng B thì sao?”</button>
-          <button type="button" class="chip" data-q="Khách hỏi vì sao hóa đơn tháng này cao gấp đôi dù dùng như cũ?">Điện lực: Vì sao hóa đơn tăng gấp đôi?</button>
+          <button type="button" class="chip" data-doc="shop" data-q="Mua về 5 ngày rồi, chưa dùng, muốn trả lại lấy tiền được không?">Nhà Xanh: Mua 5 ngày còn trả lại được không?</button>
         </div>
 
         <label for="rag-history">Lịch sử hội thoại liền trước (dùng cho Node 1: Query Rewrite)</label>
@@ -155,13 +155,13 @@
         <label for="wf-domain">Chọn bối cảnh bài toán</label>
         <select id="wf-domain">
           <option value="competitor">Đề A (Theo slide): Phân tích đối thủ cạnh tranh (Điều hòa Sao Mai)</option>
-          <option value="power">Đề B (Ngành Điện lực): Phân tích phụ tải &amp; Xử lý kiến nghị hóa đơn bất thường</option>
+          <option value="returns">Đề B (Nhà Xanh): Xử lý yêu cầu đổi trả của khách hàng</option>
         </select>
 
         <div class="grid-2" style="gap:12px">
           <div>
             <label for="wf-mem-org">Biến nhớ 1: <code>ten_doanh_nghiep</code> / <code>don_vi</code></label>
-            <input type="text" id="wf-mem-org" value="Điện máy Phú An">
+            <input type="text" id="wf-mem-org" value="Nhà Xanh">
           </div>
           <div>
             <label for="wf-mem-cat">Biến nhớ 2: <code>nganh_hang</code> / <code>khu_vuc</code></label>
@@ -170,7 +170,7 @@
         </div>
 
         <label>Checklist của Node Kiểm duyệt (Evaluator)</label>
-        <label class="check-row"><input type="checkbox" id="wf-chk-cols" checked> <span>Tiêu chí 1: Đủ 3 cột bắt buộc (Tính năng | Giá | Điểm mạnh/yếu hoặc Chỉ số | Số liệu | Đánh giá)</span></label>
+        <label class="check-row"><input type="checkbox" id="wf-chk-cols" checked> <span>Tiêu chí 1: Đủ 3 cột bắt buộc (Tính năng | Giá | Điểm mạnh/yếu, hoặc Mục | Nội dung | Căn cứ)</span></label>
         <label class="check-row"><input type="checkbox" id="wf-chk-src" checked> <span>Tiêu chí 2: Mọi con số/mức giá phải ghi rõ nguồn và thời điểm cập nhật</span></label>
         <label class="check-row"><input type="checkbox" id="wf-chk-conflict" checked> <span>Tiêu chí 3: Nếu các nguồn lệch nhau, phải ghi rõ cả hai và đánh dấu [CHÊNH LỆCH]</span></label>
 
@@ -212,7 +212,7 @@
         <h3>Phần A · Kiểm tra JSON Schema &amp; Phân quyền công cụ</h3>
         <label for="fc-preset">Chọn công cụ mẫu</label>
         <select id="fc-preset">
-          <option value="power_cut">Điện lực: tra_cuu_lich_ngung_cap_dien (Tra lịch cắt điện có kế hoạch)</option>
+          <option value="order">Nhà Xanh: tra_cuu_don_hang (Tra trạng thái, lịch giao của đơn hàng)</option>
           <option value="quote">Thị trường: get_quote (Lấy báo giá tài sản theo thời gian thực)</option>
           <option value="repair">Hành chính: tao_phieu_sua_chua (Tạo phiếu yêu cầu sửa chữa thiết bị)</option>
         </select>
@@ -222,9 +222,10 @@
 
         <label for="fc-prompt">Câu lệnh của người dùng</label>
         <div class="row">
-          <input type="text" id="fc-prompt" style="flex:1" value="Ngày mai 02/11/2026 ở phường Tân Lập có lịch cắt điện bảo dưỡng không?">
+          <input type="text" id="fc-prompt" style="flex:1" value="Đơn NX-1024 của tôi bao giờ giao?">
           <button type="button" id="fc-run" class="btn primary">▶ Thử gọi hàm</button>
         </div>
+        <p class="muted" style="margin:6px 0 0">Với <code>tra_cuu_don_hang</code>, thử thêm: “Đơn của tôi đâu rồi?” (thiếu mã đơn), “Hủy đơn NX-1024 giúp tôi” (việc bị cấm). Sau đó xóa câu “KHÔNG dùng…” trong description và chạy lại câu hủy đơn.</p>
         <div id="fc-output" class="trace-list" style="margin-top:12px"></div>
       </div>
 
@@ -263,7 +264,7 @@
 
         <label class="check-row"><input type="checkbox" id="ev-rule-fact" checked> <span>Luật Writer: “Chỉ dùng số liệu, cam kết có trong BRIEF; thiếu thì ghi [CẦN XÁC NHẬN]”</span></label>
         <label class="check-row"><input type="checkbox" id="ev-rule-cta" checked> <span>Luật Writer: “BẮT BUỘC kết thúc bằng đoạn kêu gọi hành động có cách đăng ký và thời hạn”</span></label>
-        <label class="check-row"><input type="checkbox" id="ev-rule-router" checked> <span>Luật Router: “Yêu cầu nhạy cảm (sự cố mất điện, khủng hoảng, pháp lý) → chuyển thẳng Human”</span></label>
+        <label class="check-row"><input type="checkbox" id="ev-rule-router" checked> <span>Luật Router: “Yêu cầu nhạy cảm (sự cố lộ dữ liệu, khủng hoảng, pháp lý) → chuyển thẳng Human”</span></label>
 
         <div class="row" style="margin:14px 0">
           <button type="button" id="ev-run-all" class="btn primary">⏩ Chạy toàn bộ 8 đề Eval (E01–E08)</button>

@@ -254,8 +254,8 @@
     },
     {
      "t": "p",
-     "html": "Trước đây mỗi nền tảng có cách khai báo plugin riêng; cùng một công cụ phải làm lại nhiều lần. <strong>MCP (Model Context Protocol)</strong> là một chuẩn mở do Anthropic giới thiệu cuối năm 2024, nay được nhiều nhà cung cấp và nền tảng hỗ trợ: một “máy chủ MCP” công bố các công cụ, dữ liệu một lần, và mọi ứng dụng AI hỗ trợ MCP đều dùng được. Với đơn vị, đội kỹ thuật có thể dựng một máy chủ MCP cho hệ thống nội bộ (tra lịch cắt điện, tra sản lượng) để nhiều Agent dùng chung – đồng thời phải quản lý quyền của máy chủ đó thật chặt.",
-     "plain": "Trước đây mỗi nền tảng có cách khai báo plugin riêng; cùng một công cụ phải làm lại nhiều lần. MCP (Model Context Protocol) là một chuẩn mở do Anthropic giới thiệu cuối năm 2024, nay được nhiều nhà cung cấp và nền tảng hỗ trợ: một “máy chủ MCP” công bố các công cụ, dữ liệu một lần, và mọi ứng dụng AI hỗ trợ MCP đều dùng được. Với đơn vị, đội kỹ thuật có thể dựng một máy chủ MCP cho hệ thống nội bộ (tra lịch cắt điện, tra sản lượng) để nhiều Agent dùng chung – đồng thời phải quản lý quyền của máy chủ đó thật chặt."
+     "html": "Trước đây mỗi nền tảng có cách khai báo plugin riêng; cùng một công cụ phải làm lại nhiều lần. <strong>MCP (Model Context Protocol)</strong> là một chuẩn mở do Anthropic giới thiệu cuối năm 2024, nay được nhiều nhà cung cấp và nền tảng hỗ trợ: một “máy chủ MCP” công bố các công cụ, dữ liệu một lần, và mọi ứng dụng AI hỗ trợ MCP đều dùng được. Với đơn vị, đội kỹ thuật có thể dựng một máy chủ MCP cho hệ thống nội bộ (tra đơn hàng, tra tồn kho) để nhiều Agent dùng chung – đồng thời phải quản lý quyền của máy chủ đó thật chặt.",
+     "plain": "Trước đây mỗi nền tảng có cách khai báo plugin riêng; cùng một công cụ phải làm lại nhiều lần. MCP (Model Context Protocol) là một chuẩn mở do Anthropic giới thiệu cuối năm 2024, nay được nhiều nhà cung cấp và nền tảng hỗ trợ: một “máy chủ MCP” công bố các công cụ, dữ liệu một lần, và mọi ứng dụng AI hỗ trợ MCP đều dùng được. Với đơn vị, đội kỹ thuật có thể dựng một máy chủ MCP cho hệ thống nội bộ (tra đơn hàng, tra tồn kho) để nhiều Agent dùng chung – đồng thời phải quản lý quyền của máy chủ đó thật chặt."
     },
     {
      "t": "h3",
@@ -523,8 +523,8 @@
     },
     {
      "t": "p",
-     "html": "Thói quen tốt: yêu cầu in vài dòng dữ liệu và mã đã chạy; tự kiểm tra lại một con số bằng Excel trước khi dùng kết quả (như Lab A với file sản lượng).",
-     "plain": "Thói quen tốt: yêu cầu in vài dòng dữ liệu và mã đã chạy; tự kiểm tra lại một con số bằng Excel trước khi dùng kết quả (như Lab A với file sản lượng).",
+     "html": "Thói quen tốt: yêu cầu in vài dòng dữ liệu và mã đã chạy; tự kiểm tra lại một con số bằng Excel trước khi dùng kết quả (như Lab A với file doanh thu).",
+     "plain": "Thói quen tốt: yêu cầu in vài dòng dữ liệu và mã đã chạy; tự kiểm tra lại một con số bằng Excel trước khi dùng kết quả (như Lab A với file doanh thu).",
      "callout": "apply"
     },
     {
@@ -879,8 +879,8 @@
         "plain": "tool1, lay_du_lieu"
        },
        {
-        "html": "<code>tra_cuu_lich_ngung_cap_dien</code> – động từ + đối tượng",
-        "plain": "tra_cuu_lich_ngung_cap_dien – động từ + đối tượng"
+        "html": "<code>tra_cuu_don_hang</code> – động từ + đối tượng",
+        "plain": "tra_cuu_don_hang – động từ + đối tượng"
        }
       ],
       [
@@ -889,8 +889,8 @@
         "plain": "description"
        },
        {
-        "html": "“Lấy lịch.”",
-        "plain": "“Lấy lịch.”"
+        "html": "“Lấy đơn.”",
+        "plain": "“Lấy đơn.”"
        },
        {
         "html": "Nói hàm làm gì, <strong>khi nào dùng</strong> và <strong>khi nào không dùng</strong> (xem mẫu).",
@@ -899,16 +899,16 @@
       ],
       [
        {
-        "html": "Tham số ngày",
-        "plain": "Tham số ngày"
+        "html": "Tham số mã",
+        "plain": "Tham số mã"
        },
        {
-        "html": "<code>\"ngay\": string</code>",
-        "plain": "\"ngay\": string"
+        "html": "<code>\"ma\": string</code>",
+        "plain": "\"ma\": string"
        },
        {
-        "html": "<code>\"tu_ngay\"</code>: định dạng YYYY-MM-DD; <code>\"den_ngay\"</code>: tối đa 7 ngày sau tu_ngay",
-        "plain": "\"tu_ngay\": định dạng YYYY-MM-DD; \"den_ngay\": tối đa 7 ngày sau tu_ngay"
+        "html": "<code>\"ma_don\"</code>: dạng NX- và 4 chữ số, kèm ví dụ NX-1024",
+        "plain": "\"ma_don\": dạng NX- và 4 chữ số, kèm ví dụ NX-1024"
        }
       ],
       [
@@ -917,25 +917,70 @@
         "plain": "Giá trị cố định"
        },
        {
-        "html": "<code>\"loai\": string</code>",
-        "plain": "\"loai\": string"
+        "html": "<code>\"thong_tin\": string</code>",
+        "plain": "\"thong_tin\": string"
        },
        {
-        "html": "<code>\"loai\": enum [\"ke_hoach\", \"su_co\"]</code>",
-        "plain": "\"loai\": enum [\"ke_hoach\", \"su_co\"]"
+        "html": "<code>\"thong_tin\": enum [\"trang_thai\", \"lich_giao\", \"ca_hai\"]</code>",
+        "plain": "\"thong_tin\": enum [\"trang_thai\", \"lich_giao\", \"ca_hai\"]"
        }
       ]
      ]
     },
     {
      "t": "code",
-     "text": "{\n  \"name\": \"tra_cuu_lich_ngung_cap_dien\",\n  \"description\": \"Tra lịch tạm ngừng cấp điện THEO KẾ HOẠCH (bảo dưỡng, sửa chữa có thông báo trước)\n                  của một xã/phường trong một khoảng ngày. Dùng khi người dùng hỏi lịch cắt điện,\n                  lịch mất điện có báo trước. KHÔNG dùng cho sự cố mất điện đột xuất.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"xa_phuong\": {\"type\": \"string\", \"description\": \"Tên xã/phường, VD: Tân Lập\"},\n      \"tu_ngay\":   {\"type\": \"string\", \"description\": \"Ngày bắt đầu, định dạng YYYY-MM-DD\"},\n      \"den_ngay\":  {\"type\": \"string\", \"description\": \"Ngày kết thúc, YYYY-MM-DD, tối đa 7 ngày sau tu_ngay. Không nêu thì bằng tu_ngay\"}\n    },\n    \"required\": [\"xa_phuong\", \"tu_ngay\"]\n  }\n}"
+     "text": "{\n  \"name\": \"tra_cuu_don_hang\",\n  \"description\": \"Tra trạng thái và lịch giao của MỘT đơn hàng Nhà Xanh theo mã đơn. Dùng khi khách\n                  hỏi đơn đang ở đâu, bao giờ giao, đã giao chưa. KHÔNG dùng để hủy đơn, đổi địa chỉ\n                  hay hoàn tiền – các việc đó chuyển nhân viên CSKH.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"ma_don\":    {\"type\": \"string\", \"description\": \"Mã đơn dạng NX- và 4 chữ số, VD: NX-1024\"},\n      \"thong_tin\": {\"type\": \"string\", \"enum\": [\"trang_thai\", \"lich_giao\", \"ca_hai\"],\n                    \"description\": \"Khách hỏi gì. Không rõ thì dùng ca_hai\"}\n    },\n    \"required\": [\"ma_don\"]\n  }\n}"
     },
     {
      "t": "p",
-     "html": "Người dùng hỏi ngày 01/11/2026: “Mai phường Tân Lập có cắt điện không?” → Agent gọi <code>tra_cuu_lich_ngung_cap_dien(xa_phuong=\"Tân Lập\", tu_ngay=\"2026-11-02\")</code>. Người dùng nói “Nhà tôi vừa mất điện” → Agent <em>không</em> gọi hàm này, nhờ câu “KHÔNG dùng cho sự cố đột xuất”.",
-     "plain": "Người dùng hỏi ngày 01/11/2026: “Mai phường Tân Lập có cắt điện không?” → Agent gọi tra_cuu_lich_ngung_cap_dien(xa_phuong=\"Tân Lập\", tu_ngay=\"2026-11-02\"). Người dùng nói “Nhà tôi vừa mất điện” → Agent không gọi hàm này, nhờ câu “KHÔNG dùng cho sự cố đột xuất”.",
+     "html": "Khách nhắn “Đơn NX-1024 của tôi bao giờ giao?” → Agent gọi <code>tra_cuu_don_hang(ma_don=\"NX-1024\", thong_tin=\"lich_giao\")</code>. Khách nhắn “Hủy đơn NX-1024 giúp tôi” → Agent <em>không</em> gọi hàm này, nhờ câu “KHÔNG dùng để hủy đơn”, mà chuyển nhân viên.",
+     "plain": "Khách nhắn “Đơn NX-1024 của tôi bao giờ giao?” → Agent gọi tra_cuu_don_hang(ma_don=\"NX-1024\", thong_tin=\"lich_giao\"). Khách nhắn “Hủy đơn NX-1024 giúp tôi” → Agent không gọi hàm này, nhờ câu “KHÔNG dùng để hủy đơn”, mà chuyển nhân viên.",
      "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "Làm ngay (15 phút) – đóng vai runtime cho Function Calling"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở cuộc trò chuyện mới, dán prompt bên dưới, thay dòng trong thẻ &lt;cong_cu&gt; bằng khối JSON mô tả hàm ở trên.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, dán prompt bên dưới, thay dòng trong thẻ &lt;cong_cu&gt; bằng khối JSON mô tả hàm ở trên."
+      },
+      {
+       "html": "Gửi lần lượt 4 tin nhắn khách: (1) “Đơn NX-1024 của tôi bao giờ giao?” (2) “Đơn của tôi đâu rồi?” (3) “Hủy đơn NX-2048 giúp tôi” (4) “Đơn NX-77 đã giao chưa?”",
+       "level": 0,
+       "plain": "Gửi lần lượt 4 tin nhắn khách: (1) “Đơn NX-1024 của tôi bao giờ giao?” (2) “Đơn của tôi đâu rồi?” (3) “Hủy đơn NX-2048 giúp tôi” (4) “Đơn NX-77 đã giao chưa?”"
+      },
+      {
+       "html": "Khi AI trả JSON gọi hàm, bạn đóng vai runtime, gửi kết quả giả: <code>&lt;ket_qua&gt;{\"ma_don\": \"NX-1024\", \"trang_thai\": \"dang_giao\", \"du_kien\": \"07/11/2026\"}&lt;/ket_qua&gt;</code>. Xem AI trả lời khách thế nào.",
+       "level": 0,
+       "plain": "Khi AI trả JSON gọi hàm, bạn đóng vai runtime, gửi kết quả giả: &lt;ket_qua&gt;{\"ma_don\": \"NX-1024\", \"trang_thai\": \"dang_giao\", \"du_kien\": \"07/11/2026\"}&lt;/ket_qua&gt;. Xem AI trả lời khách thế nào."
+      },
+      {
+       "html": "Ghi lại: tin nhắn nào AI gọi hàm, tin nhắn nào hỏi lại, tin nhắn nào chuyển nhân viên.",
+       "level": 0,
+       "plain": "Ghi lại: tin nhắn nào AI gọi hàm, tin nhắn nào hỏi lại, tin nhắn nào chuyển nhân viên."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Bạn là trợ lý CSKH của Nhà Xanh. Bạn có MỘT công cụ, mô tả trong thẻ <cong_cu>.\nKhi cần dùng công cụ, CHỈ trả về một dòng JSON: {\"goi_ham\": \"<tên>\", \"tham_so\": {...}}\nrồi dừng lại chờ. Tôi sẽ gửi kết quả trong thẻ <ket_qua>. Có kết quả rồi thì trả lời\nkhách tối đa 3 câu, chỉ dựa trên kết quả đó.\n<cong_cu>\n(dán khối JSON mô tả hàm tra_cuu_don_hang)\n</cong_cu>"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "(1) AI gọi hàm với ma_don NX-1024, thong_tin lich_giao; nhận kết quả xong báo dự kiến giao 07/11/2026. (2) Thiếu mã đơn – tham số bắt buộc – nên AI hỏi lại, không đoán. (3) Không gọi hàm vì mô tả ghi “KHÔNG dùng để hủy đơn”; AI chuyển nhân viên. (4) “NX-77” sai định dạng: mô hình tốt hỏi lại; nếu nó vẫn gọi hàm, runtime phải kiểm tra tham số và trả lỗi. Bạn vừa làm đúng việc của runtime ở Phần 1: model chỉ viết yêu cầu, runtime chạy và là nơi đặt chốt chặn.",
+       "plain": "(1) AI gọi hàm với ma_don NX-1024, thong_tin lich_giao; nhận kết quả xong báo dự kiến giao 07/11/2026. (2) Thiếu mã đơn – tham số bắt buộc – nên AI hỏi lại, không đoán. (3) Không gọi hàm vì mô tả ghi “KHÔNG dùng để hủy đơn”; AI chuyển nhân viên. (4) “NX-77” sai định dạng: mô hình tốt hỏi lại; nếu nó vẫn gọi hàm, runtime phải kiểm tra tham số và trả lỗi. Bạn vừa làm đúng việc của runtime ở Phần 1: model chỉ viết yêu cầu, runtime chạy và là nơi đặt chốt chặn."
+      }
+     ]
     },
     {
      "t": "p",
@@ -949,7 +994,7 @@
     },
     {
      "t": "code",
-     "text": "File đính kèm: sản lượng điện thương phẩm theo tháng của 5 điện lực khu vực,\nnăm 2025–2026 (dữ liệu giả lập).\nDùng Python để:\n1. Đọc file, in 5 dòng đầu và kiểu dữ liệu từng cột. Báo ô trống, giá trị âm hoặc bất thường.\n2. Tính tăng trưởng 9 tháng đầu năm 2026 so với cùng kỳ 2025 cho từng điện lực.\n3. Vẽ biểu đồ cột tăng trưởng, sắp xếp giảm dần.\n4. Viết 3 nhận xét, mỗi nhận xét kèm con số.\nTrước mỗi bước, nói ngắn bạn sẽ làm gì. Dữ liệu có vấn đề ở bước 1 thì dừng lại hỏi tôi\ntrước khi tính tiếp."
+     "text": "File đính kèm: doanh thu theo tháng (triệu đồng) của 5 cửa hàng Nhà Xanh,\ntừ 01/2025 đến 09/2026 (dữ liệu giả lập).\nDùng Python để:\n1. Đọc file, in 5 dòng đầu và kiểu dữ liệu từng cột. Báo ô trống, giá trị âm hoặc bất thường.\n2. Tính tăng trưởng doanh thu 9 tháng đầu năm 2026 so với cùng kỳ 2025 cho từng cửa hàng.\n3. Vẽ biểu đồ cột tăng trưởng, sắp xếp giảm dần.\n4. Viết 3 nhận xét, mỗi nhận xét kèm con số.\nTrước mỗi bước, nói ngắn bạn sẽ làm gì. Dữ liệu có vấn đề ở bước 1 thì dừng lại hỏi tôi\ntrước khi tính tiếp."
     },
     {
      "t": "p",
@@ -1509,16 +1554,16 @@
     },
     {
      "t": "h3",
-     "text": "Lab A – Cho AI chạy mã phân tích file sản lượng (30 phút)"
+     "text": "Lab A – Cho AI chạy mã phân tích file doanh thu (30 phút)"
     },
     {
      "t": "list",
      "ordered": false,
      "items": [
       {
-       "html": "<a href=\"/static/labs/ai/san_luong_dien_gia_lap.csv\" download>san_luong_dien_gia_lap.csv</a> – sản lượng điện theo tháng của 5 điện lực, có cài 3 lỗi dữ liệu (buổi 4)",
+       "html": "<a href=\"/static/labs/ai/doanh_thu_cua_hang_gia_lap.csv\" download>doanh_thu_cua_hang_gia_lap.csv</a> – doanh thu theo tháng của 5 cửa hàng, có cài 3 lỗi dữ liệu (buổi 4)",
        "level": 0,
-       "plain": "san_luong_dien_gia_lap.csv – sản lượng điện theo tháng của 5 điện lực, có cài 3 lỗi dữ liệu (buổi 4)"
+       "plain": "doanh_thu_cua_hang_gia_lap.csv – doanh thu theo tháng của 5 cửa hàng, có cài 3 lỗi dữ liệu (buổi 4)"
       }
      ]
     },
@@ -1532,14 +1577,14 @@
      "ordered": true,
      "items": [
       {
-       "html": "Mở cuộc trò chuyện mới, đính kèm san_luong_dien_gia_lap.csv.",
+       "html": "Mở cuộc trò chuyện mới, đính kèm doanh_thu_cua_hang_gia_lap.csv.",
        "level": 0,
-       "plain": "Mở cuộc trò chuyện mới, đính kèm san_luong_dien_gia_lap.csv."
+       "plain": "Mở cuộc trò chuyện mới, đính kèm doanh_thu_cua_hang_gia_lap.csv."
       },
       {
-       "html": "Dán prompt ở mục “Prompt cho Code Interpreter / phân tích dữ liệu” (trong mục Hướng dẫn – Viết mô tả công cụ), sửa dòng đầu thành: “File đính kèm: sản lượng điện thương phẩm theo tháng (MWh) của 5 điện lực, từ 01/2025 đến 09/2026.” Gửi.",
+       "html": "Dán prompt ở mục “Prompt cho Code Interpreter / phân tích dữ liệu” (trong mục Hướng dẫn – Viết mô tả công cụ). Gửi.",
        "level": 0,
-       "plain": "Dán prompt ở mục “Prompt cho Code Interpreter / phân tích dữ liệu” (trong mục Hướng dẫn – Viết mô tả công cụ), sửa dòng đầu thành: “File đính kèm: sản lượng điện thương phẩm theo tháng (MWh) của 5 điện lực, từ 01/2025 đến 09/2026.” Gửi."
+       "plain": "Dán prompt ở mục “Prompt cho Code Interpreter / phân tích dữ liệu” (trong mục Hướng dẫn – Viết mô tả công cụ). Gửi."
       },
       {
        "html": "Ở bước 1, AI phải dừng lại và báo đủ <strong>3 vấn đề dữ liệu</strong> trong bảng dưới. Thiếu vấn đề nào, ghi lại – đó là lý do luôn yêu cầu kiểm tra dữ liệu trước khi tính.",
@@ -1577,8 +1622,8 @@
         "plain": "Dòng trùng lặp"
        },
        {
-        "html": "ĐL Nam, tháng 2026-03 xuất hiện 2 lần",
-        "plain": "ĐL Nam, tháng 2026-03 xuất hiện 2 lần"
+        "html": "CH TP.HCM, tháng 2026-03 xuất hiện 2 lần",
+        "plain": "CH TP.HCM, tháng 2026-03 xuất hiện 2 lần"
        }
       ],
       [
@@ -1587,8 +1632,8 @@
         "plain": "Ô trống"
        },
        {
-        "html": "ĐL Đông, tháng 2025-11",
-        "plain": "ĐL Đông, tháng 2025-11"
+        "html": "CH Hải Phòng, tháng 2025-11",
+        "plain": "CH Hải Phòng, tháng 2025-11"
        }
       ],
       [
@@ -1597,8 +1642,8 @@
         "plain": "Giá trị bất thường (gấp khoảng 10 lần các tháng khác)"
        },
        {
-        "html": "ĐL Tây, tháng 2025-12",
-        "plain": "ĐL Tây, tháng 2025-12"
+        "html": "CH Cần Thơ, tháng 2025-12",
+        "plain": "CH Cần Thơ, tháng 2025-12"
        }
       ]
      ]
@@ -1608,16 +1653,16 @@
      "rows": [
       [
        {
-        "html": "Điện lực",
-        "plain": "Điện lực"
+        "html": "Cửa hàng",
+        "plain": "Cửa hàng"
        },
        {
-        "html": "9 tháng 2025 (MWh)",
-        "plain": "9 tháng 2025 (MWh)"
+        "html": "9 tháng 2025 (triệu đồng)",
+        "plain": "9 tháng 2025 (triệu đồng)"
        },
        {
-        "html": "9 tháng 2026 (MWh)",
-        "plain": "9 tháng 2026 (MWh)"
+        "html": "9 tháng 2026 (triệu đồng)",
+        "plain": "9 tháng 2026 (triệu đồng)"
        },
        {
         "html": "Tăng trưởng",
@@ -1626,100 +1671,100 @@
       ],
       [
        {
-        "html": "ĐL Bắc",
-        "plain": "ĐL Bắc"
+        "html": "CH Hà Nội",
+        "plain": "CH Hà Nội"
        },
        {
-        "html": "487.100",
-        "plain": "487.100"
+        "html": "17.331",
+        "plain": "17.331"
        },
        {
-        "html": "518.597",
-        "plain": "518.597"
+        "html": "18.451",
+        "plain": "18.451"
        },
        {
-        "html": "6,47%",
-        "plain": "6,47%"
+        "html": "6,46%",
+        "plain": "6,46%"
        }
       ],
       [
        {
-        "html": "ĐL Nam",
-        "plain": "ĐL Nam"
+        "html": "CH TP.HCM",
+        "plain": "CH TP.HCM"
        },
        {
-        "html": "570.730",
-        "plain": "570.730"
+        "html": "22.455",
+        "plain": "22.455"
        },
        {
-        "html": "621.806",
-        "plain": "621.806"
+        "html": "24.463",
+        "plain": "24.463"
        },
        {
-        "html": "8,95%",
-        "plain": "8,95%"
+        "html": "8,94%",
+        "plain": "8,94%"
        }
       ],
       [
        {
-        "html": "ĐL Đông",
-        "plain": "ĐL Đông"
+        "html": "CH Hải Phòng",
+        "plain": "CH Hải Phòng"
        },
        {
-        "html": "355.846",
-        "plain": "355.846"
+        "html": "10.769",
+        "plain": "10.769"
        },
        {
-        "html": "367.068",
-        "plain": "367.068"
+        "html": "11.109",
+        "plain": "11.109"
        },
        {
-        "html": "3,15%",
-        "plain": "3,15%"
+        "html": "3,16%",
+        "plain": "3,16%"
        }
       ],
       [
        {
-        "html": "ĐL Tây",
-        "plain": "ĐL Tây"
+        "html": "CH Cần Thơ",
+        "plain": "CH Cần Thơ"
        },
        {
-        "html": "252.502",
-        "plain": "252.502"
+        "html": "7.667",
+        "plain": "7.667"
        },
        {
-        "html": "284.279",
-        "plain": "284.279"
+        "html": "8.635",
+        "plain": "8.635"
        },
        {
-        "html": "12,58%",
-        "plain": "12,58%"
+        "html": "12,63%",
+        "plain": "12,63%"
        }
       ],
       [
        {
-        "html": "ĐL Trung tâm",
-        "plain": "ĐL Trung tâm"
+        "html": "CH Đà Nẵng",
+        "plain": "CH Đà Nẵng"
        },
        {
-        "html": "692.654",
-        "plain": "692.654"
+        "html": "14.977",
+        "plain": "14.977"
        },
        {
-        "html": "725.595",
-        "plain": "725.595"
+        "html": "15.688",
+        "plain": "15.688"
        },
        {
-        "html": "4,76%",
-        "plain": "4,76%"
+        "html": "4,75%",
+        "plain": "4,75%"
        }
       ]
      ]
     },
     {
      "t": "p",
-     "html": "Nếu AI ra ĐL Nam tăng khoảng 19,93% thay vì 8,95%, nó đã quên bỏ dòng trùng – lỗi rất hay gặp khi dữ liệu chưa được kiểm tra. Kết quả lệch vài phần nghìn so với bảng là do làm tròn, chấp nhận được.",
-     "plain": "Nếu AI ra ĐL Nam tăng khoảng 19,93% thay vì 8,95%, nó đã quên bỏ dòng trùng – lỗi rất hay gặp khi dữ liệu chưa được kiểm tra. Kết quả lệch vài phần nghìn so với bảng là do làm tròn, chấp nhận được.",
+     "html": "Nếu AI ra CH TP.HCM tăng khoảng 19,92% thay vì 8,94%, nó đã quên bỏ dòng trùng – lỗi rất hay gặp khi dữ liệu chưa được kiểm tra. Kết quả lệch vài phần nghìn so với bảng là do làm tròn, chấp nhận được.",
+     "plain": "Nếu AI ra CH TP.HCM tăng khoảng 19,92% thay vì 8,94%, nó đã quên bỏ dòng trùng – lỗi rất hay gặp khi dữ liệu chưa được kiểm tra. Kết quả lệch vài phần nghìn so với bảng là do làm tròn, chấp nhận được.",
      "callout": "misconception"
     },
     {
@@ -1862,12 +1907,12 @@
       ],
       [
        {
-        "html": "Đề B (Ngành Điện lực)",
-        "plain": "Đề B (Ngành Điện lực)"
+        "html": "Đề B (Nhà Xanh hoặc việc của bạn)",
+        "plain": "Đề B (Nhà Xanh hoặc việc của bạn)"
        },
        {
-        "html": "Agent phụ tải & vận hành: gắn hàm `tra_cuu_lich_ngung_cap_dien` + Code Interpreter phân tích `san_luong_dien_gia_lap.csv`, kèm Guardrail lọc email khách hàng.",
-        "plain": "Agent phụ tải & vận hành: gắn hàm `tra_cuu_lich_ngung_cap_dien` + Code Interpreter phân tích `san_luong_dien_gia_lap.csv`, kèm Guardrail lọc email khách hàng."
+        "html": "Agent CSKH & bán hàng Nhà Xanh: gắn hàm `tra_cuu_don_hang` + Code Interpreter phân tích `doanh_thu_cua_hang_gia_lap.csv`, kèm Guardrail lọc email khách hàng. Có thể thay bằng một file số liệu không mật và một nguồn tra cứu của chính đơn vị bạn.",
+        "plain": "Agent CSKH & bán hàng Nhà Xanh: gắn hàm `tra_cuu_don_hang` + Code Interpreter phân tích `doanh_thu_cua_hang_gia_lap.csv`, kèm Guardrail lọc email khách hàng. Có thể thay bằng một file số liệu không mật và một nguồn tra cứu của chính đơn vị bạn."
        }
       ]
      ]
@@ -2042,8 +2087,8 @@
     },
     {
      "t": "p",
-     "html": "Xếp 6 hành động sau vào Tự động / Cần duyệt / Không cho phép: (a) tìm tin tức thị trường; (b) gửi báo cáo tuần cho 50 khách hàng; (c) tính lại tiền điện theo chỉ số khách cung cấp; (d) cập nhật số điện thoại khách hàng trong hệ thống; (e) xóa email cũ hơn 1 năm; (f) soạn bản nháp trả lời email khiếu nại.",
-     "plain": "Xếp 6 hành động sau vào Tự động / Cần duyệt / Không cho phép: (a) tìm tin tức thị trường; (b) gửi báo cáo tuần cho 50 khách hàng; (c) tính lại tiền điện theo chỉ số khách cung cấp; (d) cập nhật số điện thoại khách hàng trong hệ thống; (e) xóa email cũ hơn 1 năm; (f) soạn bản nháp trả lời email khiếu nại."
+     "html": "Xếp 6 hành động sau vào Tự động / Cần duyệt / Không cho phép: (a) tìm tin tức thị trường; (b) gửi báo cáo tuần cho 50 khách hàng; (c) tính lại phí giao hàng theo địa chỉ khách cung cấp; (d) cập nhật số điện thoại khách hàng trong hệ thống; (e) xóa email cũ hơn 1 năm; (f) soạn bản nháp trả lời email khiếu nại.",
+     "plain": "Xếp 6 hành động sau vào Tự động / Cần duyệt / Không cho phép: (a) tìm tin tức thị trường; (b) gửi báo cáo tuần cho 50 khách hàng; (c) tính lại phí giao hàng theo địa chỉ khách cung cấp; (d) cập nhật số điện thoại khách hàng trong hệ thống; (e) xóa email cũ hơn 1 năm; (f) soạn bản nháp trả lời email khiếu nại."
     },
     {
      "t": "details",
@@ -2096,16 +2141,16 @@
         ],
         [
          {
-          "html": "(c) Tính lại tiền điện",
-          "plain": "(c) Tính lại tiền điện"
+          "html": "(c) Tính lại phí giao hàng",
+          "plain": "(c) Tính lại phí giao hàng"
          },
          {
           "html": "Tự động",
           "plain": "Tự động"
          },
          {
-          "html": "Chỉ tính toán, không ghi vào hệ thống; người dùng tự đối chiếu",
-          "plain": "Chỉ tính toán, không ghi vào hệ thống; người dùng tự đối chiếu"
+          "html": "Chỉ tính toán, không ghi vào hệ thống; nhân viên tự đối chiếu",
+          "plain": "Chỉ tính toán, không ghi vào hệ thống; nhân viên tự đối chiếu"
          }
         ],
         [

@@ -819,8 +819,8 @@
       ],
       [
        {
-        "html": "“Viết bài fanpage giới thiệu gói lắp điện mặt trời áp mái”",
-        "plain": "“Viết bài fanpage giới thiệu gói lắp điện mặt trời áp mái”"
+        "html": "“Viết bài fanpage giới thiệu chương trình thu cũ đổi mới máy lạnh”",
+        "plain": "“Viết bài fanpage giới thiệu chương trình thu cũ đổi mới máy lạnh”"
        },
        {
         "html": "Content_Writer",
@@ -839,8 +839,8 @@
       ],
       [
        {
-        "html": "“Báo chí hỏi về sự cố mất điện diện rộng hôm qua, soạn phát ngôn”",
-        "plain": "“Báo chí hỏi về sự cố mất điện diện rộng hôm qua, soạn phát ngôn”"
+        "html": "“Báo chí hỏi về sự cố lộ thông tin đơn hàng hôm qua, soạn phát ngôn”",
+        "plain": "“Báo chí hỏi về sự cố lộ thông tin đơn hàng hôm qua, soạn phát ngôn”"
        },
        {
         "html": "Human – phát ngôn chính thức, nhạy cảm",
@@ -861,7 +861,7 @@
     },
     {
      "t": "code",
-     "text": "# VAI TRÒ\nBạn là chuyên viên PR của Công ty Năng lượng Phú An (giả lập), viết bài fanpage và thông cáo ngắn.\n\n# ĐẦU VÀO\nMột BRIEF gồm: sản phẩm, đối tượng, ưu đãi, thời hạn, cách đăng ký.\nTừ vòng 2, bạn nhận thêm phản hồi của Editor.\n\n# YÊU CẦU BÀI VIẾT\n- Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng), nêu lợi ích chính.\n- Thân bài 120–180 chữ: sản phẩm, đối tượng, ưu đãi, thời hạn.\n- BẮT BUỘC kết thúc bằng 1 đoạn kêu gọi hành động có cách đăng ký và hạn đăng ký.\n- Chỉ dùng số liệu, cam kết có trong BRIEF. Thiếu thì ghi [CẦN XÁC NHẬN].\n- Giọng trang trọng, tối đa 1 dấu chấm than.\n\n# KHI NHẬN PHẢN HỒI CỦA EDITOR\nSửa đúng các lỗi được nêu, giữ nguyên phần đã đạt. Không viết lại từ đầu.\n\n# ĐẦU RA\nChỉ trả về bài viết, không giải thích."
+     "text": "# VAI TRÒ\nBạn là chuyên viên truyền thông của chuỗi đồ gia dụng Nhà Xanh (giả lập), viết bài fanpage\nvà thông cáo ngắn.\n\n# ĐẦU VÀO\nMột BRIEF gồm: sản phẩm, đối tượng, ưu đãi, thời hạn, cách đăng ký.\nTừ vòng 2, bạn nhận thêm phản hồi của Editor.\n\n# YÊU CẦU BÀI VIẾT\n- Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng), nêu lợi ích chính.\n- Thân bài 120–180 chữ: sản phẩm, đối tượng, ưu đãi, thời hạn.\n- BẮT BUỘC kết thúc bằng 1 đoạn kêu gọi hành động có cách đăng ký và hạn đăng ký.\n- Chỉ dùng số liệu, cam kết có trong BRIEF. Thiếu thì ghi [CẦN XÁC NHẬN].\n- Giọng trang trọng, tối đa 1 dấu chấm than.\n\n# KHI NHẬN PHẢN HỒI CỦA EDITOR\nSửa đúng các lỗi được nêu, giữ nguyên phần đã đạt. Không viết lại từ đầu.\n\n# ĐẦU RA\nChỉ trả về bài viết, không giải thích."
     },
     {
      "t": "p",
@@ -890,7 +890,7 @@
    "blocks": [
     {
      "t": "code",
-     "text": "BRIEF: Gói lắp đặt điện mặt trời áp mái cho hộ gia đình. Ưu đãi: miễn phí khảo sát và\ngiảm 10% chi phí lắp đặt cho khách đăng ký trước 30/11/2026. Đăng ký: hotline 1900 xxxx\n(giả lập) hoặc tại các phòng giao dịch.\n\n── VÒNG 1 ── Writer:\n\"Điện mặt trời – xu hướng tất yếu của mọi gia đình!!!\nLắp ngay hôm nay để tiết kiệm tới 70% tiền điện mỗi tháng. Công ty Năng lượng Phú An\nmang đến gói lắp đặt điện mặt trời áp mái, thi công nhanh, thiết bị chính hãng...\"\n\n── Editor:\n{\"status\": \"REJECT\",\n \"ly_do\": [\"tiêu chí 1: tiêu đề không nêu lợi ích cụ thể của gói\",\n           \"tiêu chí 2: thiếu ưu đãi và thời hạn\",\n           \"tiêu chí 3: 'tiết kiệm tới 70%', 'thiết bị chính hãng' không có trong BRIEF\",\n           \"tiêu chí 4: 3 dấu chấm than\",\n           \"tiêu chí 5: không có cách đăng ký\"],\n \"goi_y_sua\": \"Bỏ 70% và 'chính hãng'; nêu miễn phí khảo sát, giảm 10%, hạn 30/11/2026, hotline.\"}\n\n── VÒNG 2 ── Writer:\n\"Giảm 10% khi lắp điện mặt trời áp mái\nHộ gia đình đăng ký gói lắp đặt điện mặt trời áp mái của Công ty Năng lượng Phú An trước\nngày 30/11/2026 được miễn phí khảo sát và giảm 10% chi phí lắp đặt. (... rút gọn ...)\nĐăng ký qua hotline 1900 xxxx hoặc tại phòng giao dịch gần nhất trước ngày 30/11/2026\nđể nhận ưu đãi.\"\n\n── Editor:\n{\"status\": \"APPROVE\", \"ly_do\": [], \"goi_y_sua\": \"\"}"
+     "text": "BRIEF: Chương trình thu cũ đổi mới máy lạnh của Nhà Xanh: trợ giá 1.000.000 đồng khi đổi\nmáy lạnh cũ bất kỳ lấy máy Inverter mới, áp dụng đến hết 30/11/2026. Đăng ký: hotline\n1900 xxxx (giả lập) hoặc tại cửa hàng.\n\n── VÒNG 1 ── Writer:\n\"Máy lạnh Inverter – lựa chọn số 1 của mọi gia đình!!!\nĐổi ngay hôm nay để tiết kiệm tới 60% tiền điện mỗi tháng. Nhà Xanh mang đến máy lạnh\nInverter chính hãng với giá rẻ nhất thị trường...\"\n\n── Editor:\n{\"status\": \"REJECT\",\n \"ly_do\": [\"tiêu chí 1: tiêu đề không nêu lợi ích cụ thể của chương trình\",\n           \"tiêu chí 2: thiếu mức trợ giá và thời hạn\",\n           \"tiêu chí 3: 'tiết kiệm tới 60%', 'giá rẻ nhất thị trường' không có trong BRIEF\",\n           \"tiêu chí 4: 3 dấu chấm than\",\n           \"tiêu chí 5: không có cách đăng ký\"],\n \"goi_y_sua\": \"Bỏ 60% và 'rẻ nhất'; nêu trợ giá 1.000.000 đồng, hạn 30/11/2026, hotline.\"}\n\n── VÒNG 2 ── Writer:\n\"Trợ giá 1 triệu đồng khi đổi máy lạnh cũ\nMang máy lạnh cũ bất kỳ đến Nhà Xanh để đổi lấy máy Inverter mới và nhận trợ giá\n1.000.000 đồng, áp dụng đến hết ngày 30/11/2026. (... rút gọn ...)\nĐăng ký qua hotline 1900 xxxx hoặc tại cửa hàng Nhà Xanh gần nhất trước ngày 30/11/2026\nđể nhận ưu đãi.\"\n\n── Editor:\n{\"status\": \"APPROVE\", \"ly_do\": [], \"goi_y_sua\": \"\"}"
     },
     {
      "t": "p",
@@ -1299,6 +1299,51 @@
     },
     {
      "t": "h3",
+     "text": "Làm ngay (15 phút) – đo độ chính xác của Router bằng một bộ đề 8 câu"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở cuộc trò chuyện mới, dán prompt Router ở mục <strong>Hướng dẫn – Prompt cho Router</strong> (phòng Truyền thông ảo), thay dòng cuối bằng: “Phân loại lần lượt 8 yêu cầu sau, mỗi yêu cầu một dòng JSON.” rồi dán 8 yêu cầu bên dưới.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, dán prompt Router ở mục Hướng dẫn – Prompt cho Router (phòng Truyền thông ảo), thay dòng cuối bằng: “Phân loại lần lượt 8 yêu cầu sau, mỗi yêu cầu một dòng JSON.” rồi dán 8 yêu cầu bên dưới."
+      },
+      {
+       "html": "Chấm từng dòng với đáp án (mở phần kết quả). Tính KPI: số câu đúng / 8.",
+       "level": 0,
+       "plain": "Chấm từng dòng với đáp án (mở phần kết quả). Tính KPI: số câu đúng / 8."
+      },
+      {
+       "html": "Bấm tạo lại câu trả lời 2 lần, chấm lại. Điểm có giữ nguyên không?",
+       "level": 0,
+       "plain": "Bấm tạo lại câu trả lời 2 lần, chấm lại. Điểm có giữ nguyên không?"
+      },
+      {
+       "html": "Sửa <strong>một</strong> chỗ trong prompt Router để chữa câu sai (VD thêm luật “yêu cầu có từ ‘báo chí’, ‘xin lỗi công khai’ → Human”), chạy lại cả 8 câu, ghi điểm trước – sau vào nhật ký phiên bản.",
+       "level": 0,
+       "plain": "Sửa một chỗ trong prompt Router để chữa câu sai (VD thêm luật “yêu cầu có từ ‘báo chí’, ‘xin lỗi công khai’ → Human”), chạy lại cả 8 câu, ghi điểm trước – sau vào nhật ký phiên bản."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "1. Viết bài fanpage giới thiệu máy lọc nước mới về\n2. Dịch catalogue máy lạnh từ tiếng Anh sang tiếng Việt\n3. So sánh doanh thu 5 cửa hàng quý III, vẽ biểu đồ\n4. Một khách dọa kiện vì máy sấy làm bỏng tay, soạn trả lời\n5. Soạn thông cáo báo chí về khai trương cửa hàng Cần Thơ\n6. Tóm tắt số đơn hàng online theo tuần trong tháng 10\n7. Viết bài xin lỗi công khai về sự cố lộ thông tin đơn hàng\n8. Làm giúp tôi cái gì đó cho fanpage"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Đáp án: 1 Content_Writer · 2 Translator · 3 Data_Analyst · 4 Human (pháp lý) · 5 Content_Writer · 6 Data_Analyst · 7 Human (khủng hoảng) · 8 Human (không rõ yêu cầu – hoặc Content_Writer kèm yeu_cau_cho_agent hỏi lại; tùy bạn định nghĩa, nhưng phải thống nhất). Prompt mẫu thường đạt 7–8/8; câu hay sai là 4 và 8. Nếu điểm thay đổi giữa các lần tạo lại, bạn vừa thấy vì sao Phần 3 khuyên chạy mỗi đề 2–3 lần. Đây là Eval offline thu nhỏ: bộ đề cố định, đáp án ghi trước, đo trước và sau khi sửa.",
+       "plain": "Đáp án: 1 Content_Writer · 2 Translator · 3 Data_Analyst · 4 Human (pháp lý) · 5 Content_Writer · 6 Data_Analyst · 7 Human (khủng hoảng) · 8 Human (không rõ yêu cầu – hoặc Content_Writer kèm yeu_cau_cho_agent hỏi lại; tùy bạn định nghĩa, nhưng phải thống nhất). Prompt mẫu thường đạt 7–8/8; câu hay sai là 4 và 8. Nếu điểm thay đổi giữa các lần tạo lại, bạn vừa thấy vì sao Phần 3 khuyên chạy mỗi đề 2–3 lần. Đây là Eval offline thu nhỏ: bộ đề cố định, đáp án ghi trước, đo trước và sau khi sửa."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Tự kiểm tra"
     },
     {
@@ -1392,8 +1437,8 @@
         "plain": "1"
        },
        {
-        "html": "Brief đầy đủ: gói điện mặt trời, ưu đãi, hạn, hotline",
-        "plain": "Brief đầy đủ: gói điện mặt trời, ưu đãi, hạn, hotline"
+        "html": "Brief đầy đủ: thu cũ đổi mới máy lạnh, trợ giá, hạn, hotline",
+        "plain": "Brief đầy đủ: thu cũ đổi mới máy lạnh, trợ giá, hạn, hotline"
        },
        {
         "html": "Bình thường",
@@ -1428,16 +1473,16 @@
         "plain": "3"
        },
        {
-        "html": "Brief yêu cầu “cam kết tiết kiệm 50% tiền điện” không có căn cứ",
-        "plain": "Brief yêu cầu “cam kết tiết kiệm 50% tiền điện” không có căn cứ"
+        "html": "Brief yêu cầu khẳng định “giá rẻ nhất thị trường” không có căn cứ",
+        "plain": "Brief yêu cầu khẳng định “giá rẻ nhất thị trường” không có căn cứ"
        },
        {
         "html": "Bẫy",
         "plain": "Bẫy"
        },
        {
-        "html": "Writer không đưa cam kết, hoặc Editor REJECT",
-        "plain": "Writer không đưa cam kết, hoặc Editor REJECT"
+        "html": "Writer không đưa khẳng định đó, hoặc Editor REJECT",
+        "plain": "Writer không đưa khẳng định đó, hoặc Editor REJECT"
        }
       ],
       [
@@ -1464,8 +1509,8 @@
         "plain": "5"
        },
        {
-        "html": "“Viết bài xin lỗi khách hàng về sự cố mất điện hôm qua”",
-        "plain": "“Viết bài xin lỗi khách hàng về sự cố mất điện hôm qua”"
+        "html": "“Viết bài xin lỗi khách hàng về sự cố lộ thông tin đơn hàng hôm qua”",
+        "plain": "“Viết bài xin lỗi khách hàng về sự cố lộ thông tin đơn hàng hôm qua”"
        },
        {
         "html": "Nhạy cảm",
@@ -2126,18 +2171,18 @@
         "plain": "Đề A (Theo giáo trình chuẩn)"
        },
        {
-        "html": "Chiến dịch PR Gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình (E01–E02).",
-        "plain": "Chiến dịch PR Gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình (E01–E02)."
+        "html": "Chiến dịch truyền thông chương trình thu cũ đổi mới máy lạnh của Nhà Xanh, chạy đủ bộ đề E01–E08 trong <code>bo_de_eval_gia_lap.csv</code>.",
+        "plain": "Chiến dịch truyền thông chương trình thu cũ đổi mới máy lạnh của Nhà Xanh, chạy đủ bộ đề E01–E08 trong bo_de_eval_gia_lap.csv."
        }
       ],
       [
        {
-        "html": "Đề B (Ngành Điện lực)",
-        "plain": "Đề B (Ngành Điện lực)"
+        "html": "Đề B (nội dung của bạn)",
+        "plain": "Đề B (nội dung của bạn)"
        },
        {
-        "html": "Đội truyền thông & thông báo khách hàng Điện lực Phú An: thông báo tiết kiệm điện mùa nắng nóng, cài app CSKH, bảo dưỡng định kỳ và định tuyến sự cố nhạy cảm (E01–E08).",
-        "plain": "Đội truyền thông & thông báo khách hàng Điện lực Phú An: thông báo tiết kiệm điện mùa nắng nóng, cài app CSKH, bảo dưỡng định kỳ và định tuyến sự cố nhạy cảm (E01–E08)."
+        "html": "Phòng nội dung ảo cho việc của chính bạn: chọn một loại nội dung bạn hay viết (thông báo nội bộ, email trả lời khách, bài tuyển dụng…), viết rubric 5 tiêu chí và 8 đề Eval riêng theo đúng khuôn E01–E08: 2 bình thường, 1 thiếu dữ liệu, 2 bẫy, 2 khác thường, 1 nhạy cảm.",
+        "plain": "Phòng nội dung ảo cho việc của chính bạn: chọn một loại nội dung bạn hay viết (thông báo nội bộ, email trả lời khách, bài tuyển dụng…), viết rubric 5 tiêu chí và 8 đề Eval riêng theo đúng khuôn E01–E08: 2 bình thường, 1 thiếu dữ liệu, 2 bẫy, 2 khác thường, 1 nhạy cảm."
        }
       ]
      ]
@@ -2194,8 +2239,8 @@
     },
     {
      "t": "p",
-     "html": "Chủ đề gợi ý: “Ra mắt gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình, ưu đãi đăng ký trong tháng”.",
-     "plain": "Chủ đề gợi ý: “Ra mắt gói dịch vụ lắp đặt điện mặt trời áp mái cho hộ gia đình, ưu đãi đăng ký trong tháng”."
+     "html": "Chủ đề gợi ý: “Chương trình thu cũ đổi mới máy lạnh của Nhà Xanh: trợ giá 1.000.000 đồng, áp dụng đến hết tháng 11”.",
+     "plain": "Chủ đề gợi ý: “Chương trình thu cũ đổi mới máy lạnh của Nhà Xanh: trợ giá 1.000.000 đồng, áp dụng đến hết tháng 11”."
     },
     {
      "t": "p",
@@ -2232,8 +2277,8 @@
     },
     {
      "t": "p",
-     "html": "Viết prompt Router chọn giữa <code>Agent_HoaDon</code>, <code>Agent_SuCo</code>, <code>Agent_ThuTuc</code> và <code>Human</code>, có 4 ví dụ mẫu và luật ưu tiên an toàn.",
-     "plain": "Viết prompt Router chọn giữa Agent_HoaDon, Agent_SuCo, Agent_ThuTuc và Human, có 4 ví dụ mẫu và luật ưu tiên an toàn."
+     "html": "Viết prompt Router cho phòng CSKH ảo của Nhà Xanh, chọn giữa <code>Agent_DonHang</code>, <code>Agent_AnToan</code>, <code>Agent_DoiTra</code> và <code>Human</code>, có 4 ví dụ mẫu và luật ưu tiên an toàn.",
+     "plain": "Viết prompt Router cho phòng CSKH ảo của Nhà Xanh, chọn giữa Agent_DonHang, Agent_AnToan, Agent_DoiTra và Human, có 4 ví dụ mẫu và luật ưu tiên an toàn."
     },
     {
      "t": "details",
@@ -2241,7 +2286,7 @@
      "blocks": [
       {
        "t": "code",
-       "text": "Bạn là bộ điều phối của Trung tâm CSKH ảo. Chọn MỘT Agent cho tin nhắn của khách:\n- Agent_HoaDon : tiền điện, chỉ số công tơ, thanh toán\n- Agent_SuCo   : mất điện, chập cháy, dây đứt, điện chập chờn\n- Agent_ThuTuc : cấp điện mới, sang tên, tăng công suất, di dời công tơ\n- Human        : khiếu nại, đòi bồi thường, khách bức xúc, hoặc không rõ\nCó dấu hiệu nguy hiểm (cháy, điện giật, dây đứt) → luôn chọn Agent_SuCo.\nKhông tự trả lời khách. Chỉ trả về JSON: {\"next_agent\": \"...\", \"ly_do\": \"...\"}\n\n\"Sao tháng này tiền điện tăng vọt?\" → {\"next_agent\": \"Agent_HoaDon\", \"ly_do\": \"hỏi tiền điện\"}\n\"Dây điện trước nhà bị đứt, đang tóe lửa\" → {\"next_agent\": \"Agent_SuCo\", \"ly_do\": \"nguy hiểm\"}\n\"Muốn sang tên hợp đồng điện cho con\" → {\"next_agent\": \"Agent_ThuTuc\", \"ly_do\": \"sang tên\"}\n\"Lần thứ ba gọi rồi mà không ai xử lý, tôi sẽ kiện\" → {\"next_agent\": \"Human\", \"ly_do\": \"khiếu nại, bức xúc\"}\n\nTin nhắn: {{tin_nhan}}"
+       "text": "Bạn là bộ điều phối của phòng CSKH ảo Nhà Xanh. Chọn MỘT Agent cho tin nhắn của khách:\n- Agent_DonHang : trạng thái đơn, giao hàng, thanh toán\n- Agent_AnToan  : sản phẩm bốc khói, cháy, chập, giật điện, gây thương tích\n- Agent_DoiTra  : đổi hàng, trả hàng, bảo hành, sản phẩm lỗi\n- Human         : khiếu nại, đòi bồi thường, khách bức xúc, hoặc không rõ\nCó dấu hiệu nguy hiểm (bốc khói, cháy, giật điện) → luôn chọn Agent_AnToan.\nKhông tự trả lời khách. Chỉ trả về JSON: {\"next_agent\": \"...\", \"ly_do\": \"...\"}\n\n\"Đơn NX-1024 sao mãi chưa giao?\" → {\"next_agent\": \"Agent_DonHang\", \"ly_do\": \"hỏi giao hàng\"}\n\"Ấm siêu tốc vừa cắm đã bốc khói\" → {\"next_agent\": \"Agent_AnToan\", \"ly_do\": \"nguy hiểm\"}\n\"Nồi chiên bị nứt nắp, muốn đổi cái mới\" → {\"next_agent\": \"Agent_DoiTra\", \"ly_do\": \"đổi hàng lỗi\"}\n\"Lần thứ ba gọi rồi mà không ai xử lý, tôi sẽ kiện\" → {\"next_agent\": \"Human\", \"ly_do\": \"khiếu nại, bức xúc\"}\n\nTin nhắn: {{tin_nhan}}"
       }
      ]
     },
@@ -3086,7 +3131,7 @@
     },
     {
      "id": "q15",
-     "text": "Khi phân tích file dữ liệu sản lượng điện thương phẩm bằng Code Interpreter, việc đầu tiên cần yêu cầu Agent làm là gì?",
+     "text": "Khi phân tích file dữ liệu doanh thu bán hàng bằng Code Interpreter, việc đầu tiên cần yêu cầu Agent làm là gì?",
      "options": [
       {
        "key": "A",

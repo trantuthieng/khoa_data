@@ -233,7 +233,7 @@
     },
     {
      "t": "h3",
-     "text": "Ví dụ: workflow xử lý kiến nghị hóa đơn bất thường"
+     "text": "Ví dụ: workflow xử lý yêu cầu đổi trả"
     },
     {
      "t": "table",
@@ -266,8 +266,8 @@
         "plain": "LLM – trích xuất"
        },
        {
-        "html": "Đọc tin nhắn, lấy mã khách hàng, kỳ hóa đơn, mô tả",
-        "plain": "Đọc tin nhắn, lấy mã khách hàng, kỳ hóa đơn, mô tả"
+        "html": "Đọc tin nhắn, lấy mã đơn hàng, sản phẩm, lý do (lỗi hay đổi ý)",
+        "plain": "Đọc tin nhắn, lấy mã đơn hàng, sản phẩm, lý do (lỗi hay đổi ý)"
        },
        {
         "html": "Cần hiểu câu chữ tự do",
@@ -284,8 +284,8 @@
         "plain": "Điều kiện"
        },
        {
-        "html": "Thiếu mã khách hàng hoặc kỳ hóa đơn → hỏi lại",
-        "plain": "Thiếu mã khách hàng hoặc kỳ hóa đơn → hỏi lại"
+        "html": "Thiếu mã đơn hoặc lý do → hỏi lại",
+        "plain": "Thiếu mã đơn hoặc lý do → hỏi lại"
        },
        {
         "html": "Quy tắc rõ, không cần LLM",
@@ -302,8 +302,8 @@
         "plain": "Công cụ (HTTP/API)"
        },
        {
-        "html": "Lấy sản lượng 3 kỳ gần nhất của khách",
-        "plain": "Lấy sản lượng 3 kỳ gần nhất của khách"
+        "html": "Lấy ngày nhận hàng và loại hàng (có phải hàng xả kho) của đơn",
+        "plain": "Lấy ngày nhận hàng và loại hàng (có phải hàng xả kho) của đơn"
        },
        {
         "html": "Số liệu chính xác từ hệ thống",
@@ -320,12 +320,12 @@
         "plain": "Code"
        },
        {
-        "html": "Tính % chênh lệch kỳ này so với trung bình 2 kỳ trước",
-        "plain": "Tính % chênh lệch kỳ này so với trung bình 2 kỳ trước"
+        "html": "Tính số ngày từ khi nhận hàng đến hôm nay",
+        "plain": "Tính số ngày từ khi nhận hàng đến hôm nay"
        },
        {
-        "html": "Tính toán phải chính xác",
-        "plain": "Tính toán phải chính xác"
+        "html": "Đếm ngày phải chính xác",
+        "plain": "Đếm ngày phải chính xác"
        }
       ],
       [
@@ -338,12 +338,12 @@
         "plain": "Điều kiện"
        },
        {
-        "html": "Chênh lệch trên 30% → nhánh bất thường",
-        "plain": "Chênh lệch trên 30% → nhánh bất thường"
+        "html": "Quá 7 ngày hoặc hàng xả kho → nhánh ngoại lệ",
+        "plain": "Quá 7 ngày hoặc hàng xả kho → nhánh ngoại lệ"
        },
        {
-        "html": "Ngưỡng do đơn vị quy định",
-        "plain": "Ngưỡng do đơn vị quy định"
+        "html": "Ngưỡng theo chính sách",
+        "plain": "Ngưỡng theo chính sách"
        }
       ],
       [
@@ -356,8 +356,8 @@
         "plain": "LLM – soạn thư"
        },
        {
-        "html": "Soạn giải thích cho khách theo mẫu, kèm số liệu từ bước 3–4",
-        "plain": "Soạn giải thích cho khách theo mẫu, kèm số liệu từ bước 3–4"
+        "html": "Soạn hướng dẫn đổi trả cho khách theo mẫu, kèm số liệu từ bước 3–4",
+        "plain": "Soạn hướng dẫn đổi trả cho khách theo mẫu, kèm số liệu từ bước 3–4"
        },
        {
         "html": "Cần viết tự nhiên",
@@ -374,8 +374,8 @@
         "plain": "Con người"
        },
        {
-        "html": "Nhánh bất thường: giao dịch viên duyệt, tạo phiếu kiểm tra công tơ",
-        "plain": "Nhánh bất thường: giao dịch viên duyệt, tạo phiếu kiểm tra công tơ"
+        "html": "Nhánh ngoại lệ: trưởng ca CSKH xem xét, quyết định có nhận đổi trả không",
+        "plain": "Nhánh ngoại lệ: trưởng ca CSKH xem xét, quyết định có nhận đổi trả không"
        },
        {
         "html": "Quyết định có trách nhiệm",
@@ -386,8 +386,8 @@
     },
     {
      "t": "p",
-     "html": "Ngưỡng 30% và các bước trên là ví dụ minh họa, không phải quy định thật.",
-     "plain": "Ngưỡng 30% và các bước trên là ví dụ minh họa, không phải quy định thật."
+     "html": "Ngưỡng 7 ngày lấy từ chính sách giả lập của Nhà Xanh (buổi 1); các bước trên là ví dụ minh họa.",
+     "plain": "Ngưỡng 7 ngày lấy từ chính sách giả lập của Nhà Xanh (buổi 1); các bước trên là ví dụ minh họa."
     },
     {
      "t": "h3",
@@ -400,6 +400,51 @@
     },
     {
      "t": "h3",
+     "text": "Làm ngay (15 phút) – chạy tay workflow đổi trả trong hai cuộc trò chuyện"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Node 1 – Trích xuất:</strong> mở cuộc trò chuyện mới, dán prompt bên dưới, thay <code>{{tin_nhan}}</code> bằng: “Mình nhận nồi chiên hôm 28/10, đơn NX-1024, giờ mới thấy nắp bị nứt, đổi giúp mình nhé”. Ghi lại JSON.",
+       "level": 0,
+       "plain": "Node 1 – Trích xuất: mở cuộc trò chuyện mới, dán prompt bên dưới, thay {{tin_nhan}} bằng: “Mình nhận nồi chiên hôm 28/10, đơn NX-1024, giờ mới thấy nắp bị nứt, đổi giúp mình nhé”. Ghi lại JSON."
+      },
+      {
+       "html": "<strong>Node 2 – Điều kiện và Code (bạn tự làm):</strong> JSON có đủ <code>ma_don</code> và <code>ly_do</code> không? Đủ thì tính số ngày từ ngày nhận đến 06/11/2026 (coi như hôm nay) bằng Excel: <code>=DATE(2026;11;6)-DATE(2026;10;28)</code>.",
+       "level": 0,
+       "plain": "Node 2 – Điều kiện và Code (bạn tự làm): JSON có đủ ma_don và ly_do không? Đủ thì tính số ngày từ ngày nhận đến 06/11/2026 (coi như hôm nay) bằng Excel: =DATE(2026;11;6)-DATE(2026;10;28)."
+      },
+      {
+       "html": "<strong>Node 3 – Soạn thư:</strong> mở cuộc trò chuyện mới khác, gửi: “Soạn tin nhắn trả lời khách, tối đa 4 câu, chỉ dựa trên: [dán JSON]; so_ngay_da_nhan: [số bạn tính]; chính sách: được đổi trong 7 ngày nếu lỗi do nhà sản xuất; quá 7 ngày thì báo sẽ chuyển trưởng ca xem xét, không hứa đổi.”",
+       "level": 0,
+       "plain": "Node 3 – Soạn thư: mở cuộc trò chuyện mới khác, gửi: “Soạn tin nhắn trả lời khách, tối đa 4 câu, chỉ dựa trên: [dán JSON]; so_ngay_da_nhan: [số bạn tính]; chính sách: được đổi trong 7 ngày nếu lỗi do nhà sản xuất; quá 7 ngày thì báo sẽ chuyển trưởng ca xem xét, không hứa đổi.”"
+      },
+      {
+       "html": "Quay lại node 1, chạy với tin nhắn “Hàng lỗi, đổi giúp”. JSON trả về gì? Node 2 phải rẽ nhánh nào?",
+       "level": 0,
+       "plain": "Quay lại node 1, chạy với tin nhắn “Hàng lỗi, đổi giúp”. JSON trả về gì? Node 2 phải rẽ nhánh nào?"
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Trích xuất thông tin từ tin nhắn yêu cầu đổi trả. Trả về đúng JSON, không thêm chữ nào:\n{\"ma_don\": \"<mã đơn hoặc null>\", \"san_pham\": \"<tên sản phẩm hoặc null>\",\n \"ngay_nhan\": \"<dd/mm/yyyy hoặc null>\", \"ly_do\": \"loi_san_pham\" | \"doi_y\" | null}\nThông tin tin nhắn không nêu thì để null. Không tự đoán.\n\nTin nhắn: {{tin_nhan}}"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Node 1: <code>{\"ma_don\": \"NX-1024\", \"san_pham\": \"nồi chiên\", \"ngay_nhan\": \"28/10/2026\", \"ly_do\": \"loi_san_pham\"}</code> – có mô hình tự thêm năm, có mô hình để “28/10”. Node 2 ra 9 ngày, đã quá 7 ngày nên node 3 phải báo chuyển trưởng ca; nếu thư vẫn viết “bạn được đổi”, kiểm tra bạn đã đưa so_ngay_da_nhan vào prompt chưa. Tin nhắn “Hàng lỗi, đổi giúp” cho <code>ma_don</code> và <code>ngay_nhan</code> là null → nhánh hỏi lại. Bạn vừa tự làm việc của node Condition và node Code – đó là lý do workflow thật giao các bước này cho quy tắc cứng, không cho LLM.",
+       "plain": "Node 1: {\"ma_don\": \"NX-1024\", \"san_pham\": \"nồi chiên\", \"ngay_nhan\": \"28/10/2026\", \"ly_do\": \"loi_san_pham\"} – có mô hình tự thêm năm, có mô hình để “28/10”. Node 2 ra 9 ngày, đã quá 7 ngày nên node 3 phải báo chuyển trưởng ca; nếu thư vẫn viết “bạn được đổi”, kiểm tra bạn đã đưa so_ngay_da_nhan vào prompt chưa. Tin nhắn “Hàng lỗi, đổi giúp” cho ma_don và ngay_nhan là null → nhánh hỏi lại. Bạn vừa tự làm việc của node Condition và node Code – đó là lý do workflow thật giao các bước này cho quy tắc cứng, không cho LLM."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Tự kiểm tra"
     },
     {
@@ -407,9 +452,9 @@
      "ordered": true,
      "items": [
       {
-       "html": "Trong workflow hóa đơn bất thường, vì sao bước tính % chênh lệch nên là node Code thay vì LLM?",
+       "html": "Trong workflow đổi trả, vì sao bước tính số ngày từ khi nhận hàng nên là node Code thay vì LLM?",
        "level": 0,
-       "plain": "Trong workflow hóa đơn bất thường, vì sao bước tính % chênh lệch nên là node Code thay vì LLM?"
+       "plain": "Trong workflow đổi trả, vì sao bước tính số ngày từ khi nhận hàng nên là node Code thay vì LLM?"
       },
       {
        "html": "Nêu 3 lỗi hay gặp về biến trong workflow.",
@@ -432,9 +477,9 @@
        "ordered": true,
        "items": [
         {
-         "html": "Tính toán cần chính xác tuyệt đối; LLM có thể tính sai, node Code thì không.",
+         "html": "Đếm ngày cần chính xác tuyệt đối; LLM có thể đếm sai, node Code thì không.",
          "level": 0,
-         "plain": "Tính toán cần chính xác tuyệt đối; LLM có thể tính sai, node Code thì không."
+         "plain": "Đếm ngày cần chính xác tuyệt đối; LLM có thể đếm sai, node Code thì không."
         },
         {
          "html": "Dùng nhầm biến; biến rỗng không được xử lý; định dạng giữa hai node không khớp.",
@@ -442,9 +487,9 @@
          "plain": "Dùng nhầm biến; biến rỗng không được xử lý; định dạng giữa hai node không khớp."
         },
         {
-         "html": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: kết luận bất thường, tạo phiếu, cam kết với khách.",
+         "html": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: chấp nhận ngoại lệ, hoàn tiền, cam kết với khách.",
          "level": 0,
-         "plain": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: kết luận bất thường, tạo phiếu, cam kết với khách."
+         "plain": "Bước ra quyết định có trách nhiệm hoặc hậu quả lớn: chấp nhận ngoại lệ, hoàn tiền, cam kết với khách."
         }
        ]
       }
@@ -686,6 +731,51 @@
     },
     {
      "t": "h3",
+     "text": "Làm ngay (15 phút) – Generator – Evaluator bằng hai cuộc trò chuyện"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Cuộc trò chuyện A – Generator:</strong> gửi “Viết bài đăng fanpage khoảng 120 chữ cho chương trình thu cũ đổi mới máy lạnh của Nhà Xanh: trợ giá 1.000.000 đồng, áp dụng đến hết 30/11/2026, đăng ký qua hotline 1900 xxxx.”",
+       "level": 0,
+       "plain": "Cuộc trò chuyện A – Generator: gửi “Viết bài đăng fanpage khoảng 120 chữ cho chương trình thu cũ đổi mới máy lạnh của Nhà Xanh: trợ giá 1.000.000 đồng, áp dụng đến hết 30/11/2026, đăng ký qua hotline 1900 xxxx.”"
+      },
+      {
+       "html": "<strong>Cuộc trò chuyện B – Evaluator:</strong> dán checklist bên dưới, thay phần trong thẻ &lt;bai&gt; bằng bài vừa viết.",
+       "level": 0,
+       "plain": "Cuộc trò chuyện B – Evaluator: dán checklist bên dưới, thay phần trong thẻ &lt;bai&gt; bằng bài vừa viết."
+      },
+      {
+       "html": "Kết quả CHUA_DAT: chép các lỗi về cuộc trò chuyện A: “Sửa bài theo các lỗi sau: …”. Chấm lại ở B. Tối đa 2 vòng.",
+       "level": 0,
+       "plain": "Kết quả CHUA_DAT: chép các lỗi về cuộc trò chuyện A: “Sửa bài theo các lỗi sau: …”. Chấm lại ở B. Tối đa 2 vòng."
+      },
+      {
+       "html": "Thí nghiệm thêm: ở cuộc trò chuyện A, chỉ gửi “Tự kiểm tra lại bài của bạn”. So với nhận xét của B.",
+       "level": 0,
+       "plain": "Thí nghiệm thêm: ở cuộc trò chuyện A, chỉ gửi “Tự kiểm tra lại bài của bạn”. So với nhận xét của B."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Bạn là người kiểm duyệt. Chấm bài trong thẻ <bai> theo 5 tiêu chí; mỗi tiêu chí ghi ĐẠT hoặc\nKHÔNG ĐẠT kèm câu trích làm bằng chứng:\n1. Có đủ: trợ giá 1.000.000 đồng, hạn 30/11/2026, hotline 1900 xxxx.\n2. Không có con số, cam kết nào ngoài 3 thông tin trên.\n3. Dài 100–140 chữ.\n4. Không dùng từ tuyệt đối (\"nhất\", \"duy nhất\", \"100%\").\n5. Kết thúc bằng một lời kêu gọi hành động.\nDòng đầu chỉ ghi DAT hoặc CHUA_DAT. Các dòng sau: từng lỗi và gợi ý sửa. Không tự viết lại bài.\n<bai>\n(dán bài)\n</bai>"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Lần viết đầu hay trượt tiêu chí 2 hoặc 4 – tự thêm “tiết kiệm điện tới 60%”, “giá tốt nhất” – hoặc quá dài. Evaluator riêng bắt được nhờ checklist nhị phân và buộc trích bằng chứng; còn câu “Tự kiểm tra lại” trong cùng cuộc trò chuyện thường chỉ khen bài hoặc sửa câu chữ, đúng như mục Hiểu sâu đã nói. Sau 1–2 vòng sửa bài thường đạt. Vòng nào cũng trượt cùng một tiêu chí thì đưa tiêu chí đó vào prompt viết bài ngay từ đầu.",
+       "plain": "Lần viết đầu hay trượt tiêu chí 2 hoặc 4 – tự thêm “tiết kiệm điện tới 60%”, “giá tốt nhất” – hoặc quá dài. Evaluator riêng bắt được nhờ checklist nhị phân và buộc trích bằng chứng; còn câu “Tự kiểm tra lại” trong cùng cuộc trò chuyện thường chỉ khen bài hoặc sửa câu chữ, đúng như mục Hiểu sâu đã nói. Sau 1–2 vòng sửa bài thường đạt. Vòng nào cũng trượt cùng một tiêu chí thì đưa tiêu chí đó vào prompt viết bài ngay từ đầu."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Tự kiểm tra"
     },
     {
@@ -835,8 +925,8 @@
     },
     {
      "t": "p",
-     "html": "Bộ nhãn tốt phải <strong>không chồng lấn</strong> (mỗi tin nhắn rõ thuộc một nhãn) và <strong>phủ hết</strong> (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi hóa đơn” và “Khiếu nại hóa đơn”, vậy tin nhắn “hóa đơn sai, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”.",
-     "plain": "Bộ nhãn tốt phải không chồng lấn (mỗi tin nhắn rõ thuộc một nhãn) và phủ hết (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi hóa đơn” và “Khiếu nại hóa đơn”, vậy tin nhắn “hóa đơn sai, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”."
+     "html": "Bộ nhãn tốt phải <strong>không chồng lấn</strong> (mỗi tin nhắn rõ thuộc một nhãn) và <strong>phủ hết</strong> (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi đổi trả” và “Khiếu nại đổi trả”, vậy tin nhắn “đổi hàng mà chờ cả tuần, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”.",
+     "plain": "Bộ nhãn tốt phải không chồng lấn (mỗi tin nhắn rõ thuộc một nhãn) và phủ hết (luôn có nhãn cho tin nhắn lạ). Hai lỗi phổ biến: nhãn chồng lấn – “Hỏi đổi trả” và “Khiếu nại đổi trả”, vậy tin nhắn “đổi hàng mà chờ cả tuần, tôi bực lắm” thuộc nhãn nào? – và thiếu nhãn “Khác”."
     },
     {
      "t": "list",
@@ -947,8 +1037,8 @@
     },
     {
      "t": "p",
-     "html": "Với hotline điện lực, các từ “cháy”, “tóe lửa”, “điện giật”, “dây đứt” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng luồng sự cố – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
-     "plain": "Với hotline điện lực, các từ “cháy”, “tóe lửa”, “điện giật”, “dây đứt” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng luồng sự cố – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
+     "html": "Với tổng đài CSKH đồ gia dụng, các từ “bốc khói”, “cháy”, “giật điện”, “phát nổ” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng bộ phận An toàn sản phẩm – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
+     "plain": "Với tổng đài CSKH đồ gia dụng, các từ “bốc khói”, “cháy”, “giật điện”, “phát nổ” nên được bắt bằng quy tắc từ khóa trước và chuyển thẳng bộ phận An toàn sản phẩm – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
      "callout": "example"
     },
     {
@@ -957,12 +1047,12 @@
     },
     {
      "t": "p",
-     "html": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký kiểm tra công tơ cần: mã khách hàng, địa chỉ, số điện thoại liên hệ, hiện tượng. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1.",
-     "plain": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký kiểm tra công tơ cần: mã khách hàng, địa chỉ, số điện thoại liên hệ, hiện tượng. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1."
+     "html": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký bảo hành tại nhà cần: mã đơn hàng, địa chỉ, số điện thoại liên hệ, mô tả lỗi. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1.",
+     "plain": "Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký bảo hành tại nhà cần: mã đơn hàng, địa chỉ, số điện thoại liên hệ, mô tả lỗi. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô thiếu trong một câu (tối đa 2 lượt hỏi), xác nhận lại toàn bộ trước khi thực hiện, và có lối thoát khi người dùng không cung cấp được (chuyển người). Đây chính là khối INPUT CHECK của System Instructions ở buổi 1."
     },
     {
      "t": "code",
-     "text": "Agent: Để đăng ký kiểm tra công tơ, anh/chị cho em xin (1) mã khách hàng và\n       (2) số điện thoại liên hệ. Địa chỉ em đã có: [ĐỊA CHỈ].\nKhách: [MÃ KH], [SĐT]\nAgent: Em xác nhận: kiểm tra công tơ tại [ĐỊA CHỈ], mã KH [MÃ KH], liên hệ [SĐT],\n       hiện tượng: hóa đơn tăng gấp đôi. Anh/chị đồng ý để em tạo yêu cầu không?"
+     "text": "Agent: Để đăng ký bảo hành tại nhà, anh/chị cho em xin (1) mã đơn hàng và\n       (2) số điện thoại liên hệ. Địa chỉ em đã có: [ĐỊA CHỈ].\nKhách: [MÃ ĐƠN], [SĐT]\nAgent: Em xác nhận: bảo hành tại nhà cho máy giặt, đơn [MÃ ĐƠN], tại [ĐỊA CHỈ],\n       liên hệ [SĐT], lỗi: máy không vắt. Anh/chị đồng ý để em tạo yêu cầu không?"
     },
     {
      "t": "h3",
@@ -973,14 +1063,14 @@
      "ordered": true,
      "items": [
       {
-       "html": "Bộ nhãn “Hỏi hóa đơn / Khiếu nại hóa đơn / Báo mất điện” có vấn đề gì?",
+       "html": "Bộ nhãn “Hỏi đổi trả / Khiếu nại đổi trả / Báo sự cố an toàn” có vấn đề gì?",
        "level": 0,
-       "plain": "Bộ nhãn “Hỏi hóa đơn / Khiếu nại hóa đơn / Báo mất điện” có vấn đề gì?"
+       "plain": "Bộ nhãn “Hỏi đổi trả / Khiếu nại đổi trả / Báo sự cố an toàn” có vấn đề gì?"
       },
       {
-       "html": "Vì sao từ khóa “cháy”, “điện giật” nên được bắt bằng quy tắc trước khi qua LLM?",
+       "html": "Vì sao từ khóa “bốc khói”, “cháy” nên được bắt bằng quy tắc trước khi qua LLM?",
        "level": 0,
-       "plain": "Vì sao từ khóa “cháy”, “điện giật” nên được bắt bằng quy tắc trước khi qua LLM?"
+       "plain": "Vì sao từ khóa “bốc khói”, “cháy” nên được bắt bằng quy tắc trước khi qua LLM?"
       },
       {
        "html": "Ba việc Agent cần làm khi thu thập thông tin còn thiếu?",
@@ -998,9 +1088,9 @@
        "ordered": true,
        "items": [
         {
-         "html": "Chồng lấn giữa hỏi và khiếu nại hóa đơn; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC.",
+         "html": "Chồng lấn giữa hỏi và khiếu nại đổi trả; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC.",
          "level": 0,
-         "plain": "Chồng lấn giữa hỏi và khiếu nại hóa đơn; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC."
+         "plain": "Chồng lấn giữa hỏi và khiếu nại đổi trả; thiếu nhãn Khác. Cần định nghĩa rõ, có luật ưu tiên và thêm KHAC."
         },
         {
          "html": "Trường hợp khẩn cấp phải được bắt chắc chắn và nhanh; không để rủi ro phân loại nhầm làm chậm xử lý an toàn.",
@@ -1083,12 +1173,12 @@
     },
     {
      "t": "code",
-     "text": "Phân loại tin nhắn của khách hàng vào đúng một nhãn:\n- BAO_MAT_DIEN : mất điện, sự cố, chập cháy, dây đứt\n- HOI_HOA_DON  : tiền điện, chỉ số, thanh toán\n- CAP_DIEN_MOI : lắp công tơ mới, tăng công suất, sang tên\n- KHIEU_NAI    : phàn nàn về dịch vụ, thái độ, đòi bồi thường\n- KHAC         : không thuộc các nhóm trên\nTin nhắn có yếu tố nguy hiểm (cháy, dây điện đứt, điện giật) thì luôn chọn BAO_MAT_DIEN.\nChỉ trả về nhãn.\n\n\"Cột điện đầu ngõ đang tóe lửa\" → BAO_MAT_DIEN\n\"Tháng này sao tiền điện nhiều thế\" → HOI_HOA_DON\n\"Nhân viên hẹn đến sửa mà không đến, tôi muốn phản ánh\" → KHIEU_NAI\n\nTin nhắn: {{tin_nhan}}"
+     "text": "Phân loại tin nhắn của khách hàng vào đúng một nhãn:\n- SU_CO_AN_TOAN : sản phẩm bốc khói, cháy, chập, giật điện, gây thương tích\n- HOI_DON_HANG  : trạng thái đơn, giao hàng, thanh toán\n- DOI_TRA_BH    : đổi hàng, trả hàng, bảo hành, sản phẩm lỗi\n- KHIEU_NAI     : phàn nàn về dịch vụ, thái độ, đòi bồi thường\n- KHAC          : không thuộc các nhóm trên\nTin nhắn có yếu tố nguy hiểm (bốc khói, cháy, giật điện) thì luôn chọn SU_CO_AN_TOAN.\nChỉ trả về nhãn.\n\n\"Ấm siêu tốc vừa cắm đã bốc khói khét lẹt\" → SU_CO_AN_TOAN\n\"Đơn của tôi giao đến đâu rồi?\" → HOI_DON_HANG\n\"Kỹ thuật viên hẹn đến bảo hành mà không đến, tôi muốn phản ánh\" → KHIEU_NAI\n\nTin nhắn: {{tin_nhan}}"
     },
     {
      "t": "p",
-     "html": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn BAO_MAT_DIEN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Dây điện đứt nằm giữa đường, mà tháng này tiền điện cũng cao” – việc an toàn được xử lý trước.",
-     "plain": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn BAO_MAT_DIEN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Dây điện đứt nằm giữa đường, mà tháng này tiền điện cũng cao” – việc an toàn được xử lý trước.",
+     "html": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn SU_CO_AN_TOAN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Máy sấy tóc mới mua đã bốc khói, tôi muốn trả hàng” – việc an toàn được xử lý trước.",
+     "plain": "Luật ưu tiên “có yếu tố nguy hiểm thì luôn chọn SU_CO_AN_TOAN” giải quyết tin nhắn thuộc nhiều nhóm, VD “Máy sấy tóc mới mua đã bốc khói, tôi muốn trả hàng” – việc an toàn được xử lý trước.",
      "callout": "example"
     },
     {
@@ -1144,12 +1234,12 @@
     },
     {
      "t": "code",
-     "text": "KỊCH BẢN A – thiếu dữ liệu\nNgười dùng : \"Phân tích đối thủ giúp mình\"\n[Trích xuất] → {\"doi_thu\": null, \"khia_canh\": [], \"thoi_gian\": null}\n[Condition]  doi_thu = null → nhánh HỎI LẠI\n[Trả lời]    \"Bạn muốn phân tích đối thủ nào, và về khía cạnh gì:\n              giá bán, tính năng hay chiến dịch marketing?\"\n\nKỊCH BẢN B – đủ dữ liệu\nNgười dùng : \"So sánh giá và tính năng của Công ty Sao Mai với bên mình\"\n[Bộ nhớ]     ten_doanh_nghiep = \"Điện máy Phú An\"; nganh_hang = \"điều hòa\"\n[Trích xuất] → {\"doi_thu\": \"Công ty Sao Mai\", \"khia_canh\": [\"gia\", \"tinh_nang\"], \"thoi_gian\": null}\n[Condition]  đủ → nhánh THỰC HIỆN\n[Web Search] \"Sao Mai điều hòa giá\" → 5 kết quả\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 1)\n[Evaluator]  {\"dat\": false, \"loi\": [\"2 mức giá không ghi nguồn\"],\n              \"goi_y_sua\": \"bổ sung nguồn hoặc ghi [CHƯA XÁC MINH]\"}\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 2, đủ nguồn)\n[Evaluator]  {\"dat\": true, \"loi\": [], \"goi_y_sua\": \"\"}\n[Trả lời]    bảng so sánh + danh sách nguồn"
+     "text": "KỊCH BẢN A – thiếu dữ liệu\nNgười dùng : \"Phân tích đối thủ giúp mình\"\n[Trích xuất] → {\"doi_thu\": null, \"khia_canh\": [], \"thoi_gian\": null}\n[Condition]  doi_thu = null → nhánh HỎI LẠI\n[Trả lời]    \"Bạn muốn phân tích đối thủ nào, và về khía cạnh gì:\n              giá bán, tính năng hay chiến dịch marketing?\"\n\nKỊCH BẢN B – đủ dữ liệu\nNgười dùng : \"So sánh giá và tính năng của Công ty Sao Mai với bên mình\"\n[Bộ nhớ]     ten_doanh_nghiep = \"Nhà Xanh\"; nganh_hang = \"điều hòa\"\n[Trích xuất] → {\"doi_thu\": \"Công ty Sao Mai\", \"khia_canh\": [\"gia\", \"tinh_nang\"], \"thoi_gian\": null}\n[Condition]  đủ → nhánh THỰC HIỆN\n[Web Search] \"Sao Mai điều hòa giá\" → 5 kết quả\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 1)\n[Evaluator]  {\"dat\": false, \"loi\": [\"2 mức giá không ghi nguồn\"],\n              \"goi_y_sua\": \"bổ sung nguồn hoặc ghi [CHƯA XÁC MINH]\"}\n[Viết bảng]  ban_nhap = bảng 3 cột (lần 2, đủ nguồn)\n[Evaluator]  {\"dat\": true, \"loi\": [], \"goi_y_sua\": \"\"}\n[Trả lời]    bảng so sánh + danh sách nguồn"
     },
     {
      "t": "p",
-     "html": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Điện máy Phú An, ngành điều hòa – người dùng không phải nói lại.",
-     "plain": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Điện máy Phú An, ngành điều hòa – người dùng không phải nói lại."
+     "html": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Nhà Xanh, ngành điều hòa – người dùng không phải nói lại.",
+     "plain": "Nhờ bộ nhớ, ở kịch bản B Agent biết “bên mình” là Nhà Xanh, ngành điều hòa – người dùng không phải nói lại."
     },
     {
      "t": "p",
@@ -1254,8 +1344,8 @@
       ],
       [
        {
-        "html": "“Bên mình là Điện máy Phú An, chuyên điều hòa”",
-        "plain": "“Bên mình là Điện máy Phú An, chuyên điều hòa”"
+        "html": "“Bên mình là Nhà Xanh, mình phụ trách mảng điều hòa”",
+        "plain": "“Bên mình là Nhà Xanh, mình phụ trách mảng điều hòa”"
        },
        {
         "html": "Lưu ten_doanh_nghiep, nganh_hang",
@@ -1474,6 +1564,47 @@
     },
     {
      "t": "h3",
+     "text": "Làm ngay (10 phút) – xem, dùng và xóa bộ nhớ dài hạn của công cụ AI"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Tìm mục bộ nhớ của công cụ bạn dùng: ChatGPT – Settings → Personalization → Memory; Gemini – Settings → Saved info (hoặc Personal context); Claude – Settings, mục Memory nếu tài khoản có. Bật nếu đang tắt.",
+       "level": 0,
+       "plain": "Tìm mục bộ nhớ của công cụ bạn dùng: ChatGPT – Settings → Personalization → Memory; Gemini – Settings → Saved info (hoặc Personal context); Claude – Settings, mục Memory nếu tài khoản có. Bật nếu đang tắt."
+      },
+      {
+       "html": "Trong một cuộc trò chuyện, gửi: “Hãy ghi nhớ: tôi làm ở phòng CSKH, thích câu trả lời dạng bảng, ngắn gọn.”",
+       "level": 0,
+       "plain": "Trong một cuộc trò chuyện, gửi: “Hãy ghi nhớ: tôi làm ở phòng CSKH, thích câu trả lời dạng bảng, ngắn gọn.”"
+      },
+      {
+       "html": "Mở cuộc trò chuyện mới, hỏi: “Ba lỗi hay gặp khi trả lời khách qua chat là gì?” Câu trả lời có dạng bảng, ngắn không?",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, hỏi: “Ba lỗi hay gặp khi trả lời khách qua chat là gì?” Câu trả lời có dạng bảng, ngắn không?"
+      },
+      {
+       "html": "Vào lại mục bộ nhớ: AI đã lưu câu chữ thế nào? Xóa mục đó, mở cuộc trò chuyện mới và hỏi lại câu ở bước 3.",
+       "level": 0,
+       "plain": "Vào lại mục bộ nhớ: AI đã lưu câu chữ thế nào? Xóa mục đó, mở cuộc trò chuyện mới và hỏi lại câu ở bước 3."
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Khi bộ nhớ bật, cuộc trò chuyện mới tự trả dạng bảng ngắn mà bạn không phải nhắc – đây là bộ nhớ dài hạn kiểu “hồ sơ người dùng”. Trong mục bộ nhớ, AI đã tự diễn đạt lại thành một dòng ngắn; xóa xong, câu trả lời quay về kiểu mặc định. Ba điều rút ra cho Agent của bạn: người dùng phải xem, sửa, xóa được bộ nhớ; không bảo AI nhớ dữ liệu cá nhân, mật khẩu; chỉ lưu điều ổn định. Tên mục và tính năng khác nhau giữa các công cụ, gói tài khoản – không thấy mục bộ nhớ thì bỏ qua bài này.",
+       "plain": "Khi bộ nhớ bật, cuộc trò chuyện mới tự trả dạng bảng ngắn mà bạn không phải nhắc – đây là bộ nhớ dài hạn kiểu “hồ sơ người dùng”. Trong mục bộ nhớ, AI đã tự diễn đạt lại thành một dòng ngắn; xóa xong, câu trả lời quay về kiểu mặc định. Ba điều rút ra cho Agent của bạn: người dùng phải xem, sửa, xóa được bộ nhớ; không bảo AI nhớ dữ liệu cá nhân, mật khẩu; chỉ lưu điều ổn định. Tên mục và tính năng khác nhau giữa các công cụ, gói tài khoản – không thấy mục bộ nhớ thì bỏ qua bài này."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Tự kiểm tra"
     },
     {
@@ -1648,7 +1779,7 @@
     },
     {
      "t": "code",
-     "text": "[Nguồn 1 – Báo Kinh tế Phú An, 15/10/2026] Công ty Sao Mai ra mắt điều hòa SM-Inverter 12.000 BTU,\ngiá niêm yết 9.990.000 đồng, bảo hành 3 năm.\n[Nguồn 2 – Website Sao Mai, 20/10/2026] Khuyến mãi tháng 11: SM-Inverter 12.000 BTU giá 8.990.000 đồng,\ntặng công lắp đặt.\n[Nguồn 3 – Diễn đàn người tiêu dùng, 25/10/2026] Nhiều ý kiến khen SM-Inverter chạy êm, chê thời gian chờ\nbảo hành 7–10 ngày.\n(Toàn bộ là tin giả lập để học.)"
+     "text": "[Nguồn 1 – Bản tin Thị trường Điện máy, 15/10/2026] Công ty Sao Mai ra mắt điều hòa SM-Inverter 12.000 BTU,\ngiá niêm yết 9.990.000 đồng, bảo hành 3 năm.\n[Nguồn 2 – Website Sao Mai, 20/10/2026] Khuyến mãi tháng 11: SM-Inverter 12.000 BTU giá 8.990.000 đồng,\ntặng công lắp đặt.\n[Nguồn 3 – Diễn đàn người tiêu dùng, 25/10/2026] Nhiều ý kiến khen SM-Inverter chạy êm, chê thời gian chờ\nbảo hành 7–10 ngày.\n(Toàn bộ là tin giả lập để học.)"
     },
     {
      "t": "h3",
@@ -1759,16 +1890,16 @@
       ],
       [
        {
-        "html": "“Bên mình là Điện máy Phú An. So sánh giá và tính năng của Công ty Sao Mai”",
-        "plain": "“Bên mình là Điện máy Phú An. So sánh giá và tính năng của Công ty Sao Mai”"
+        "html": "“Bên mình là Nhà Xanh. So sánh giá và tính năng của Công ty Sao Mai”",
+        "plain": "“Bên mình là Nhà Xanh. So sánh giá và tính năng của Công ty Sao Mai”"
        },
        {
         "html": "ELSE → Kiểm duyệt",
         "plain": "ELSE → Kiểm duyệt"
        },
        {
-        "html": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Điện máy Phú An",
-        "plain": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Điện máy Phú An"
+        "html": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Nhà Xanh",
+        "plain": "Bảng 3 cột; nêu cả giá niêm yết 9.990.000 đ (Nguồn 1) và giá khuyến mãi 8.990.000 đ (Nguồn 2); biến hội thoại ten_doanh_nghiep = Nhà Xanh"
        }
       ],
       [
@@ -1814,8 +1945,8 @@
     },
     {
      "t": "p",
-     "html": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục <strong>Làm trên Dify – Chatflow phân tích đối thủ</strong> ngay trước bài này. Bạn có thể chọn <strong>Đề A (Theo slide)</strong>: Phân tích đối thủ ngành điện máy (Công ty Sao Mai), hoặc <strong>Đề B (Ngành Điện lực)</strong>: Phân tích & đối soát báo giá nhà thầu cung cấp vật tư điện / điện mặt trời áp mái.",
-     "plain": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục Làm trên Dify – Chatflow phân tích đối thủ ngay trước bài này. Bạn có thể chọn Đề A (Theo slide): Phân tích đối thủ ngành điện máy (Công ty Sao Mai), hoặc Đề B (Ngành Điện lực): Phân tích & đối soát báo giá nhà thầu cung cấp vật tư điện / điện mặt trời áp mái."
+     "html": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục <strong>Làm trên Dify – Chatflow phân tích đối thủ</strong> ngay trước bài này. Bạn có thể chọn <strong>Đề A (Theo slide)</strong>: Agent phân tích đối thủ Công ty Sao Mai cho Nhà Xanh, hoặc <strong>Đề B (quy trình của bạn)</strong>: workflow 3 nhánh cho một quy trình thật ở đơn vị bạn – VD xử lý yêu cầu đổi trả (Phần 1), duyệt đề nghị thanh toán, tiếp nhận yêu cầu hỗ trợ IT. Đề B khó hơn nhưng làm xong là dùng được ngay.",
+     "plain": "Thao tác chi tiết trên Dify (hoặc Phòng thí nghiệm / chạy bằng tay) ở mục Làm trên Dify – Chatflow phân tích đối thủ ngay trước bài này. Bạn có thể chọn Đề A (Theo slide): Agent phân tích đối thủ Công ty Sao Mai cho Nhà Xanh, hoặc Đề B (quy trình của bạn): workflow 3 nhánh cho một quy trình thật ở đơn vị bạn – VD xử lý yêu cầu đổi trả (Phần 1), duyệt đề nghị thanh toán, tiếp nhận yêu cầu hỗ trợ IT. Đề B khó hơn nhưng làm xong là dùng được ngay."
     },
     {
      "t": "h3",
@@ -1826,9 +1957,9 @@
      "ordered": false,
      "items": [
       {
-       "html": "Vai trò: chuyên gia phân tích thị trường / thẩm định báo giá nhà thầu.",
+       "html": "Vai trò: chuyên gia phân tích thị trường (Đề A) hoặc vai trò phù hợp với quy trình bạn chọn (Đề B).",
        "level": 0,
-       "plain": "Vai trò: chuyên gia phân tích thị trường / thẩm định báo giá nhà thầu."
+       "plain": "Vai trò: chuyên gia phân tích thị trường (Đề A) hoặc vai trò phù hợp với quy trình bạn chọn (Đề B)."
       },
       {
        "html": "Định dạng đầu ra bắt buộc: bảng so sánh 3 cột – Tính năng, Giá, Điểm mạnh/yếu.",
@@ -1848,8 +1979,8 @@
     },
     {
      "t": "p",
-     "html": "Cấu hình để Agent nhớ <strong>tên doanh nghiệp/đơn vị của người dùng</strong> và <strong>ngành hàng/nhóm thiết bị đang phụ trách</strong>, không phải hỏi lại ở các lượt chat sau.",
-     "plain": "Cấu hình để Agent nhớ tên doanh nghiệp/đơn vị của người dùng và ngành hàng/nhóm thiết bị đang phụ trách, không phải hỏi lại ở các lượt chat sau."
+     "html": "Cấu hình để Agent nhớ <strong>tên doanh nghiệp/đơn vị của người dùng</strong> và <strong>ngành hàng/mảng việc đang phụ trách</strong>, không phải hỏi lại ở các lượt chat sau.",
+     "plain": "Cấu hình để Agent nhớ tên doanh nghiệp/đơn vị của người dùng và ngành hàng/mảng việc đang phụ trách, không phải hỏi lại ở các lượt chat sau."
     },
     {
      "t": "h3",
@@ -1860,9 +1991,9 @@
      "ordered": false,
      "items": [
       {
-       "html": "<strong>Nhánh 1 – IF Thiếu dữ liệu:</strong> kiểm tra người dùng đã nhập tên đối thủ/nhà thầu và khía cạnh phân tích chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu.",
+       "html": "<strong>Nhánh 1 – IF Thiếu dữ liệu:</strong> kiểm tra người dùng đã nhập tên đối thủ và khía cạnh phân tích (Đề B: các thông tin bắt buộc của quy trình) chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu.",
        "level": 0,
-       "plain": "Nhánh 1 – IF Thiếu dữ liệu: kiểm tra người dùng đã nhập tên đối thủ/nhà thầu và khía cạnh phân tích chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu."
+       "plain": "Nhánh 1 – IF Thiếu dữ liệu: kiểm tra người dùng đã nhập tên đối thủ và khía cạnh phân tích (Đề B: các thông tin bắt buộc của quy trình) chưa; nếu chưa → gửi tin nhắn hỏi lại đúng thông tin còn thiếu."
       },
       {
        "html": "<strong>Nhánh 2 – ELIF Dữ liệu mâu thuẫn:</strong> khi giá từ web và cơ sở dữ liệu nội bộ (hoặc số người dùng đưa vào) lệch nhau → báo cáo rõ hai mức giá kèm nguồn và hỏi người dùng muốn ưu tiên nguồn nào trước khi kết luận.",

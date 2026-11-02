@@ -331,6 +331,51 @@
     },
     {
      "t": "h3",
+     "text": "Làm ngay (10 phút) – AI không có tài liệu và AI có tài liệu"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở cuộc trò chuyện mới, <strong>tắt tìm kiếm web</strong>. Gửi 3 câu hỏi bên dưới, chưa đính kèm gì.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, tắt tìm kiếm web. Gửi 3 câu hỏi bên dưới, chưa đính kèm gì."
+      },
+      {
+       "html": "Ghi lại câu trả lời: AI nói không biết, hay đưa ra con số cụ thể?",
+       "level": 0,
+       "plain": "Ghi lại câu trả lời: AI nói không biết, hay đưa ra con số cụ thể?"
+      },
+      {
+       "html": "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code> (mục Bộ file luyện tập ở phần Tổng quan), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, đính kèm so_tay_nhan_su_da_lam_sach.md (mục Bộ file luyện tập ở phần Tổng quan), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi."
+      },
+      {
+       "html": "So hai lần trả lời với đáp án.",
+       "level": 0,
+       "plain": "So hai lần trả lời với đáp án."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "1. Công ty ABC thưởng KPI quý hạng A bao nhiêu tiền?\n2. Nhân viên thử việc của Công ty ABC có được thưởng KPI quý không?\n3. Công ty ABC thưởng Tết Nguyên đán mấy tháng lương?"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Không có tài liệu: AI thường đưa ra mức “phổ biến” (VD thưởng KPI 1–2 triệu, thưởng Tết 1 tháng lương) – nghe hợp lý nhưng không phải quy định của Công ty ABC. Có tài liệu: (1) 5.000.000 đồng/quý, nguồn mục 3.2; (2) không, nguồn mục 3.2 và Chương 4; (3) sổ tay chưa đề cập. Câu 3 là câu quan trọng nhất: AI có tài liệu mà vẫn bịa thưởng Tết thì prompt thiếu luật “không có thì nói không có”. Đây chính là việc RAG làm tự động: tìm đoạn liên quan rồi đưa vào prompt cho bạn.",
+       "plain": "Không có tài liệu: AI thường đưa ra mức “phổ biến” (VD thưởng KPI 1–2 triệu, thưởng Tết 1 tháng lương) – nghe hợp lý nhưng không phải quy định của Công ty ABC. Có tài liệu: (1) 5.000.000 đồng/quý, nguồn mục 3.2; (2) không, nguồn mục 3.2 và Chương 4; (3) sổ tay chưa đề cập. Câu 3 là câu quan trọng nhất: AI có tài liệu mà vẫn bịa thưởng Tết thì prompt thiếu luật “không có thì nói không có”. Đây chính là việc RAG làm tự động: tìm đoạn liên quan rồi đưa vào prompt cho bạn."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Tự kiểm tra"
     },
     {
@@ -348,9 +393,9 @@
        "plain": "Trợ lý cần trả lời theo 200 văn bản quy định, cập nhật hằng tháng. Fine-tuning hay RAG? Vì sao?"
       },
       {
-       "html": "Muốn biết “tổng sản lượng 9 tháng của ĐL Nam” từ bảng 10.000 dòng, có nên dùng RAG không?",
+       "html": "Muốn biết “tổng doanh thu 9 tháng của CH TP.HCM” từ bảng 10.000 dòng, có nên dùng RAG không?",
        "level": 0,
-       "plain": "Muốn biết “tổng sản lượng 9 tháng của ĐL Nam” từ bảng 10.000 dòng, có nên dùng RAG không?"
+       "plain": "Muốn biết “tổng doanh thu 9 tháng của CH TP.HCM” từ bảng 10.000 dòng, có nên dùng RAG không?"
       }
      ]
     },
@@ -1132,8 +1177,8 @@
       ],
       [
        {
-        "html": "“Mất điện có được bồi thường không?”",
-        "plain": "“Mất điện có được bồi thường không?”"
+        "html": "“Hàng giao trễ có được bồi thường không?”",
+        "plain": "“Hàng giao trễ có được bồi thường không?”"
        },
        {
         "html": "Tốt",
@@ -1220,8 +1265,8 @@
    "blocks": [
     {
      "t": "p",
-     "html": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến <em>sự cố cấp điện</em>, đến <em>tiền, thanh toán</em>, đến <em>thủ tục, giấy tờ</em>. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt.",
-     "plain": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến sự cố cấp điện, đến tiền, thanh toán, đến thủ tục, giấy tờ. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt."
+     "html": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến <em>giao nhận hàng</em>, đến <em>tiền, thanh toán</em>, đến <em>thủ tục, giấy tờ</em>. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt.",
+     "plain": "Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến giao nhận hàng, đến tiền, thanh toán, đến thủ tục, giấy tờ. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt."
     },
     {
      "t": "table",
@@ -1232,8 +1277,8 @@
         "plain": "Câu"
        },
        {
-        "html": "Sự cố",
-        "plain": "Sự cố"
+        "html": "Giao hàng",
+        "plain": "Giao hàng"
        },
        {
         "html": "Tiền",
@@ -1246,8 +1291,8 @@
       ],
       [
        {
-        "html": "A. “Nhà tôi bị mất điện”",
-        "plain": "A. “Nhà tôi bị mất điện”"
+        "html": "A. “Đơn của tôi vẫn chưa nhận được”",
+        "plain": "A. “Đơn của tôi vẫn chưa nhận được”"
        },
        {
         "html": "0,9",
@@ -1264,8 +1309,8 @@
       ],
       [
        {
-        "html": "B. “Khu phố bị cúp điện từ sáng”",
-        "plain": "B. “Khu phố bị cúp điện từ sáng”"
+        "html": "B. “Shipper chưa tới dù đã quá hẹn”",
+        "plain": "B. “Shipper chưa tới dù đã quá hẹn”"
        },
        {
         "html": "0,8",
@@ -1282,8 +1327,8 @@
       ],
       [
        {
-        "html": "C. “Hóa đơn tháng này quá cao”",
-        "plain": "C. “Hóa đơn tháng này quá cao”"
+        "html": "C. “Sao tôi bị trừ tiền hai lần?”",
+        "plain": "C. “Sao tôi bị trừ tiền hai lần?”"
        },
        {
         "html": "0,1",
@@ -1300,8 +1345,8 @@
       ],
       [
        {
-        "html": "<strong>Câu hỏi Q: “Sao điện bị cắt vậy?”</strong>",
-        "plain": "Câu hỏi Q: “Sao điện bị cắt vậy?”"
+        "html": "<strong>Câu hỏi Q: “Sao hàng mãi chưa giao?”</strong>",
+        "plain": "Câu hỏi Q: “Sao hàng mãi chưa giao?”"
        },
        {
         "html": "0,85",
@@ -1325,12 +1370,12 @@
     },
     {
      "t": "code",
-     "text": "cos(Q, A) ≈ 0,998   → rất gần nghĩa\ncos(Q, B) ≈ 0,991   → rất gần nghĩa, dù B không có từ \"cắt\"\ncos(Q, C) ≈ 0,298   → khác nghĩa\n\nCách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × độ dài A)\n                   = 0,79 ÷ (0,869 × 0,911) ≈ 0,998"
+     "text": "cos(Q, A) ≈ 0,998   → rất gần nghĩa\ncos(Q, B) ≈ 0,991   → rất gần nghĩa, dù B không có từ \"giao\"\ncos(Q, C) ≈ 0,298   → khác nghĩa\n\nCách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × độ dài A)\n                   = 0,79 ÷ (0,869 × 0,911) ≈ 0,998"
     },
     {
      "t": "p",
-     "html": "Tìm theo từ khóa “cắt” không thấy câu A, B vì chúng dùng “mất điện”, “cúp điện”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã khách hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
-     "plain": "Tìm theo từ khóa “cắt” không thấy câu A, B vì chúng dùng “mất điện”, “cúp điện”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã khách hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
+     "html": "Tìm theo từ khóa “giao” không thấy câu A, B vì chúng dùng “chưa nhận được”, “shipper chưa tới”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã đơn hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
+     "plain": "Tìm theo từ khóa “giao” không thấy câu A, B vì chúng dùng “chưa nhận được”, “shipper chưa tới”. Tìm theo ngữ nghĩa lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã đơn hàng, tìm theo từ khóa lại chính xác hơn – đó là lý do có Hybrid Search.",
      "callout": "example"
     },
     {
@@ -1705,14 +1750,59 @@
        "plain": "Bảng nhỏ (vài dòng): viết lại thành câu hoặc bảng Markdown, mỗi dòng giữ đủ tiêu đề cột. Bảng lớn (hàng trăm dòng số liệu): không đưa vào RAG văn bản – dùng công cụ phân tích dữ liệu (buổi 4)."
       },
       {
-       "html": "<strong>Hình ảnh, sơ đồ:</strong> mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Tổ giao dịch → Phòng Kỹ thuật → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ.",
+       "html": "<strong>Hình ảnh, sơ đồ:</strong> mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Bộ phận tiếp nhận → Phòng Kinh doanh → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ.",
        "level": 0,
-       "plain": "Hình ảnh, sơ đồ: mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Tổ giao dịch → Phòng Kỹ thuật → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ."
+       "plain": "Hình ảnh, sơ đồ: mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Bộ phận tiếp nhận → Phòng Kinh doanh → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ."
       },
       {
        "html": "<strong>Dữ liệu cá nhân:</strong> xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi nạp – Agent không cần chúng để trả lời câu hỏi về quy định.",
        "level": 0,
        "plain": "Dữ liệu cá nhân: xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi nạp – Agent không cần chúng để trả lời câu hỏi về quy định."
+      }
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Làm ngay (15 phút) – nhờ AI làm sạch tài liệu, rồi tự kiểm tra lại"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_ban_goc.txt</code> (bản “bẩn”, chép từ PDF).",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới, đính kèm so_tay_nhan_su_ban_goc.txt (bản “bẩn”, chép từ PDF)."
+      },
+      {
+       "html": "Dán prompt bên dưới, gửi.",
+       "level": 0,
+       "plain": "Dán prompt bên dưới, gửi."
+      },
+      {
+       "html": "Tự kiểm tra kết quả theo 4 điểm: còn sót header/footer, số trang không? Bảng thưởng KPI đã thành câu, đúng 3 hạng, đúng số tiền chưa? Mỗi mục có dòng Nguồn chưa? Có con số nào bị đổi hoặc thêm vào không?",
+       "level": 0,
+       "plain": "Tự kiểm tra kết quả theo 4 điểm: còn sót header/footer, số trang không? Bảng thưởng KPI đã thành câu, đúng 3 hạng, đúng số tiền chưa? Mỗi mục có dòng Nguồn chưa? Có con số nào bị đổi hoặc thêm vào không?"
+      },
+      {
+       "html": "So với <code>so_tay_nhan_su_da_lam_sach.md</code> – bản làm sạch mẫu. Lưu bản của bạn để dùng ở Thực hành 2.",
+       "level": 0,
+       "plain": "So với so_tay_nhan_su_da_lam_sach.md – bản làm sạch mẫu. Lưu bản của bạn để dùng ở Thực hành 2."
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "Làm sạch tài liệu đính kèm để nạp vào Knowledge Base:\n1. Bỏ trang bìa, mục lục, header, footer, số trang.\n2. Mỗi mục thành một khối Markdown bắt đầu bằng \"## Sổ tay nhân sự 2025 › Chương … › tên mục\",\n   không có dòng trống bên trong khối; giữa các khối là đúng một dòng trống.\n3. Bảng viết lại thành gạch đầu dòng, mỗi dòng đủ ý (hạng, điều kiện, mức thưởng).\n4. Cuối mỗi khối ghi: Nguồn: Sổ tay nhân sự 2025, mục … – hiệu lực 01/01/2025\n5. Giữ nguyên mọi con số. Không thêm thông tin không có trong tài liệu.\n6. Sau cùng, liệt kê các chỗ bạn không chắc (câu bị ngắt dòng, ô bảng vỡ)."
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "AI làm phần lớn việc rất tốt: bỏ nhiễu, viết lại bảng, thêm dòng Nguồn. Chỗ hay sai là bảng thưởng KPI bị vỡ dòng (“95% <= KPI” xuống dòng “<110%”) – AI có thể ghép nhầm điều kiện hạng B; và đôi khi AI “làm đẹp” câu chữ mà đổi nghĩa (VD “trước hết quý I” thành “trong quý I”). Vì vậy bước 6 và việc bạn tự đối chiếu con số là bắt buộc: AI làm sạch nhanh, con người chịu trách nhiệm cuối.",
+       "plain": "AI làm phần lớn việc rất tốt: bỏ nhiễu, viết lại bảng, thêm dòng Nguồn. Chỗ hay sai là bảng thưởng KPI bị vỡ dòng (“95% <= KPI” xuống dòng “<110%”) – AI có thể ghép nhầm điều kiện hạng B; và đôi khi AI “làm đẹp” câu chữ mà đổi nghĩa (VD “trước hết quý I” thành “trong quý I”). Vì vậy bước 6 và việc bạn tự đối chiếu con số là bắt buộc: AI làm sạch nhanh, con người chịu trách nhiệm cuối."
       }
      ]
     },
@@ -1977,8 +2067,8 @@
         "plain": "Một bước phân loại; mỗi loại đi một chuỗi riêng"
        },
        {
-        "html": "Câu hỏi về hóa đơn → kho Hóa đơn; về nhân sự → kho Sổ tay",
-        "plain": "Câu hỏi về hóa đơn → kho Hóa đơn; về nhân sự → kho Sổ tay"
+        "html": "Câu hỏi về đổi trả → kho Chính sách bán hàng; về nhân sự → kho Sổ tay",
+        "plain": "Câu hỏi về đổi trả → kho Chính sách bán hàng; về nhân sự → kho Sổ tay"
        }
       ],
       [
@@ -2720,16 +2810,16 @@
       ],
       [
        {
-        "html": "Đề B (Ngành Điện lực)",
-        "plain": "Đề B (Ngành Điện lực)"
+        "html": "Đề B (Nhà Xanh hoặc tài liệu của bạn)",
+        "plain": "Đề B (Nhà Xanh hoặc tài liệu của bạn)"
        },
        {
-        "html": "Tài liệu giải đáp hóa đơn tiền điện & quy trình kiểm tra công tơ (<code>hoi_dap_hoa_don_gia_lap.md</code>).",
-        "plain": "Tài liệu giải đáp hóa đơn tiền điện & quy trình kiểm tra công tơ (hoi_dap_hoa_don_gia_lap.md)."
+        "html": "Chính sách đổi trả – bảo hành Nhà Xanh (<code>chinh_sach_doi_tra_gia_lap.md</code>), hoặc 3–5 trang quy định, hướng dẫn <strong>không mật</strong> của chính đơn vị bạn – cách học sát việc thật nhất.",
+        "plain": "Chính sách đổi trả – bảo hành Nhà Xanh (chinh_sach_doi_tra_gia_lap.md), hoặc 3–5 trang quy định, hướng dẫn không mật của chính đơn vị bạn – cách học sát việc thật nhất."
        },
        {
-        "html": "“Giá điện sinh hoạt bậc 3 hiện nay là bao nhiêu đồng/kWh?”",
-        "plain": "“Giá điện sinh hoạt bậc 3 hiện nay là bao nhiêu đồng/kWh?”"
+        "html": "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?” (Nhà Xanh) hoặc một câu bạn biết chắc tài liệu không có.",
+        "plain": "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?” (Nhà Xanh) hoặc một câu bạn biết chắc tài liệu không có."
        }
       ]
      ]
@@ -3483,7 +3573,7 @@
     {
      "type": "textarea",
      "key": "lam_sach",
-     "label": "Bước 1 – Viết lại đoạn “Thưởng KPI quý” (Đề A) hoặc “Biểu giá & Kiểm tra công tơ” (Đề B) thành Markdown sạch",
+     "label": "Bước 1 – Viết lại đoạn “Thưởng KPI quý” (Đề A) hoặc một mục tài liệu Đề B thành Markdown sạch",
      "hint": "Bỏ header/footer, số trang, mục lục; biến bảng thành câu văn hoặc bảng Markdown; thêm metadata."
     },
     {

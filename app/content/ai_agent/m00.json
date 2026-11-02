@@ -30,6 +30,12 @@
     },
     {
      "t": "p",
+     "html": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: <strong>Nhà Xanh</strong> – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), trợ lý hỏi đáp sổ tay nhân sự (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên <strong>công việc thật của bạn</strong> – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
+     "plain": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: Nhà Xanh – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), trợ lý hỏi đáp sổ tay nhân sự (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên công việc thật của bạn – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
+     "callout": "example"
+    },
+    {
+     "t": "p",
      "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Toàn khóa – 4 Phòng thí nghiệm tương tác):</strong> Thực hành trực tiếp Chunking & Hit Test (Buổi 2), Workflow 3 nhánh & Evaluator (Buổi 3), Function Calling & Chống Prompt Injection (Buổi 4), Multi-Agent & Chấm bộ đề Eval (Buổi 5) ngay trên trình duyệt. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
      "plain": "🧪 Phòng thí nghiệm trực tuyến (Toàn khóa – 4 Phòng thí nghiệm tương tác): Thực hành trực tiếp Chunking & Hit Test (Buổi 2), Workflow 3 nhánh & Evaluator (Buổi 3), Function Calling & Chống Prompt Injection (Buổi 4), Multi-Agent & Chấm bộ đề Eval (Buổi 5) ngay trên trình duyệt. Mở Phòng thí nghiệm AI Agent ↗",
      "callout": "apply"
@@ -310,7 +316,7 @@
     },
     {
      "t": "code",
-     "text": "Ngày: 05/11/2026          Buổi: 1          Công cụ: ChatGPT\nViệc cần làm : Soạn thông báo lịch tập huấn an toàn điện cho phòng\nPrompt v1    : (dán nguyên văn)\nKết quả v1   : quá dài, giọng như quảng cáo, tự thêm \"có quà tặng\"\nSửa ở v2     : thêm \"tối đa 120 chữ, giọng hành chính, không thêm thông tin ngoài dữ kiện\"\nKết quả v2   : dùng được, chỉ sửa 1 câu\nBài học      : luôn ghi độ dài, giọng văn và luật \"không thêm thông tin\" ngay từ đầu"
+     "text": "Ngày: 05/11/2026          Buổi: 1          Công cụ: ChatGPT\nViệc cần làm : Soạn thông báo lịch tập huấn phần mềm bán hàng mới cho phòng\nPrompt v1    : (dán nguyên văn)\nKết quả v1   : quá dài, giọng như quảng cáo, tự thêm \"có quà tặng\"\nSửa ở v2     : thêm \"tối đa 120 chữ, giọng hành chính, không thêm thông tin ngoài dữ kiện\"\nKết quả v2   : dùng được, chỉ sửa 1 câu\nBài học      : luôn ghi độ dài, giọng văn và luật \"không thêm thông tin\" ngay từ đầu"
     },
     {
      "t": "p",
@@ -619,8 +625,8 @@
     },
     {
      "t": "p",
-     "html": "Dùng hai prompt ở mục <strong>Cẩm nang prompt 1</strong> (prompt yếu và prompt tốt về báo cáo cấp điện mới).",
-     "plain": "Dùng hai prompt ở mục Cẩm nang prompt 1 (prompt yếu và prompt tốt về báo cáo cấp điện mới)."
+     "html": "Dùng hai prompt ở mục <strong>Cẩm nang prompt 1</strong> (prompt yếu và prompt tốt về báo cáo đơn hàng online tháng 10).",
+     "plain": "Dùng hai prompt ở mục Cẩm nang prompt 1 (prompt yếu và prompt tốt về báo cáo đơn hàng online tháng 10)."
     },
     {
      "t": "list",
@@ -642,9 +648,9 @@
        "plain": "Mở cuộc trò chuyện mới khác (để AI không dựa vào câu trả lời trước). Dán prompt tốt, gửi."
       },
       {
-       "html": "Kiểm tra 4 điểm: có đúng 1 câu kết luận? có bảng 3 cột? tối đa 3 đề xuất bắt đầu bằng động từ? ô so sánh “Hoàn thành đúng hạn” có ghi [CHƯA CÓ SỐ LIỆU] không?",
+       "html": "Kiểm tra 4 điểm: có đúng 1 câu kết luận? có bảng 3 cột? tối đa 3 đề xuất bắt đầu bằng động từ? ô so sánh “Giao đúng hẹn” có ghi [CHƯA CÓ SỐ LIỆU] không?",
        "level": 0,
-       "plain": "Kiểm tra 4 điểm: có đúng 1 câu kết luận? có bảng 3 cột? tối đa 3 đề xuất bắt đầu bằng động từ? ô so sánh “Hoàn thành đúng hạn” có ghi [CHƯA CÓ SỐ LIỆU] không?"
+       "plain": "Kiểm tra 4 điểm: có đúng 1 câu kết luận? có bảng 3 cột? tối đa 3 đề xuất bắt đầu bằng động từ? ô so sánh “Giao đúng hẹn” có ghi [CHƯA CÓ SỐ LIỆU] không?"
       },
       {
        "html": "Bấm <strong>tạo lại câu trả lời</strong> 2 lần. Phần nào giữ nguyên, phần nào thay đổi?",
@@ -683,9 +689,9 @@
        "plain": "bien_ban_giao_ban_gia_lap.txt – biên bản họp giao ban – luyện sửa prompt qua 3 phiên bản (Tổng quan)"
       },
       {
-       "html": "<a href=\"/static/labs/ai/hoi_dap_hoa_don_gia_lap.md\" download>hoi_dap_hoa_don_gia_lap.md</a> – tài liệu Knowledge cho trợ lý giải đáp hóa đơn (buổi 1)",
+       "html": "<a href=\"/static/labs/ai/chinh_sach_doi_tra_gia_lap.md\" download>chinh_sach_doi_tra_gia_lap.md</a> – chính sách đổi trả – bảo hành, tài liệu Knowledge cho trợ lý CSKH (buổi 1)",
        "level": 0,
-       "plain": "hoi_dap_hoa_don_gia_lap.md – tài liệu Knowledge cho trợ lý giải đáp hóa đơn (buổi 1)"
+       "plain": "chinh_sach_doi_tra_gia_lap.md – chính sách đổi trả – bảo hành, tài liệu Knowledge cho trợ lý CSKH (buổi 1)"
       },
       {
        "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_ban_goc.txt\" download>so_tay_nhan_su_ban_goc.txt</a> – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)",
@@ -698,9 +704,9 @@
        "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
       },
       {
-       "html": "<a href=\"/static/labs/ai/san_luong_dien_gia_lap.csv\" download>san_luong_dien_gia_lap.csv</a> – sản lượng điện theo tháng của 5 điện lực, có cài 3 lỗi dữ liệu (buổi 4)",
+       "html": "<a href=\"/static/labs/ai/doanh_thu_cua_hang_gia_lap.csv\" download>doanh_thu_cua_hang_gia_lap.csv</a> – doanh thu theo tháng của 5 cửa hàng, có cài 3 lỗi dữ liệu (buổi 4)",
        "level": 0,
-       "plain": "san_luong_dien_gia_lap.csv – sản lượng điện theo tháng của 5 điện lực, có cài 3 lỗi dữ liệu (buổi 4)"
+       "plain": "doanh_thu_cua_hang_gia_lap.csv – doanh thu theo tháng của 5 cửa hàng, có cài 3 lỗi dữ liệu (buổi 4)"
       },
       {
        "html": "<a href=\"/static/labs/ai/email_khach_hang_gia_lap.txt\" download>email_khach_hang_gia_lap.txt</a> – 3 email khách hàng, một email có cài lệnh Prompt Injection (buổi 4)",
@@ -913,6 +919,57 @@
        }
       ]
      ]
+    },
+    {
+     "t": "h3",
+     "text": "Làm ngay (15 phút) – 6 thí nghiệm nhỏ để thấy tận mắt 6 ý trên"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Ảo giác:</strong> tắt tìm kiếm web (nếu công cụ có), hỏi “Tóm tắt 3 điểm chính của Thông tư 99/2026/TT-BCT về bán hàng online.” – văn bản này không có thật. AI thừa nhận không biết, hay tóm tắt trôi chảy?",
+       "level": 0,
+       "plain": "Ảo giác: tắt tìm kiếm web (nếu công cụ có), hỏi “Tóm tắt 3 điểm chính của Thông tư 99/2026/TT-BCT về bán hàng online.” – văn bản này không có thật. AI thừa nhận không biết, hay tóm tắt trôi chảy?"
+      },
+      {
+       "html": "<strong>Token:</strong> mở <em>platform.openai.com/tokenizer</em>, dán một câu tiếng Việt rồi câu tiếng Anh cùng nghĩa; so số token.",
+       "level": 0,
+       "plain": "Token: mở platform.openai.com/tokenizer, dán một câu tiếng Việt rồi câu tiếng Anh cùng nghĩa; so số token."
+      },
+      {
+       "html": "<strong>Context Window:</strong> trong một cuộc trò chuyện, nói “Mã dự án của tôi là NX-27”. Mở cuộc trò chuyện mới, hỏi “Mã dự án của tôi là gì?”.",
+       "level": 0,
+       "plain": "Context Window: trong một cuộc trò chuyện, nói “Mã dự án của tôi là NX-27”. Mở cuộc trò chuyện mới, hỏi “Mã dự án của tôi là gì?”."
+      },
+      {
+       "html": "<strong>Knowledge cutoff:</strong> vẫn tắt tìm kiếm, hỏi “Dữ liệu huấn luyện của bạn đến thời điểm nào? Kể 3 sự kiện gần nhất bạn biết.”",
+       "level": 0,
+       "plain": "Knowledge cutoff: vẫn tắt tìm kiếm, hỏi “Dữ liệu huấn luyện của bạn đến thời điểm nào? Kể 3 sự kiện gần nhất bạn biết.”"
+      },
+      {
+       "html": "<strong>Mỗi lần một khác:</strong> gửi “Đặt 5 tên cho một cửa hàng đồ gia dụng thân thiện môi trường”, bấm tạo lại 2 lần. Rồi gửi “17% của 2.350.000 đồng là bao nhiêu?”, tạo lại 2 lần.",
+       "level": 0,
+       "plain": "Mỗi lần một khác: gửi “Đặt 5 tên cho một cửa hàng đồ gia dụng thân thiện môi trường”, bấm tạo lại 2 lần. Rồi gửi “17% của 2.350.000 đồng là bao nhiêu?”, tạo lại 2 lần."
+      },
+      {
+       "html": "<strong>Làm theo chữ:</strong> gửi “Viết báo cáo”. Mở cuộc trò chuyện mới, gửi “Viết báo cáo 5 dòng gửi trưởng phòng về đơn giao trễ tuần này: 12 đơn, tăng 4 đơn so với tuần trước, nguyên nhân chính là thiếu xe.”",
+       "level": 0,
+       "plain": "Làm theo chữ: gửi “Viết báo cáo”. Mở cuộc trò chuyện mới, gửi “Viết báo cáo 5 dòng gửi trưởng phòng về đơn giao trễ tuần này: 12 đơn, tăng 4 đơn so với tuần trước, nguyên nhân chính là thiếu xe.”"
+      }
+     ]
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "(1) Nhiều mô hình vẫn “tóm tắt” văn bản không tồn tại – ảo giác điển hình; mô hình mới hay nói không tìm thấy, nhưng đừng trông chờ vào điều đó. (2) Câu tiếng Việt thường tốn nhiều token hơn câu tiếng Anh cùng nghĩa. (3) Cuộc trò chuyện mới không biết mã NX-27 – trừ khi công cụ đang bật tính năng ghi nhớ (Memory); nếu nó biết, bạn vừa thấy bộ nhớ dài hạn của buổi 3. (4) Mô hình nêu một mốc thời gian; sự kiện sau mốc đó nó không biết. (5) Tên gọi đổi mỗi lần; phép tính (399.500 đồng) thường giữ nguyên – việc cần nhất quán nên giao cho phần cố định như công cụ tính, mẫu định dạng. (6) “Viết báo cáo” cho bài chung chung, có khi tự thêm số liệu; bản cụ thể cho đúng 5 dòng, đúng dữ kiện.",
+       "plain": "(1) Nhiều mô hình vẫn “tóm tắt” văn bản không tồn tại – ảo giác điển hình; mô hình mới hay nói không tìm thấy, nhưng đừng trông chờ vào điều đó. (2) Câu tiếng Việt thường tốn nhiều token hơn câu tiếng Anh cùng nghĩa. (3) Cuộc trò chuyện mới không biết mã NX-27 – trừ khi công cụ đang bật tính năng ghi nhớ (Memory); nếu nó biết, bạn vừa thấy bộ nhớ dài hạn của buổi 3. (4) Mô hình nêu một mốc thời gian; sự kiện sau mốc đó nó không biết. (5) Tên gọi đổi mỗi lần; phép tính (399.500 đồng) thường giữ nguyên – việc cần nhất quán nên giao cho phần cố định như công cụ tính, mẫu định dạng. (6) “Viết báo cáo” cho bài chung chung, có khi tự thêm số liệu; bản cụ thể cho đúng 5 dòng, đúng dữ kiện."
+      }
+     ]
     }
    ],
    "id": "s7"
@@ -953,8 +1010,8 @@
         "plain": "AI đóng vai ai?"
        },
        {
-        "html": "Bạn là chuyên viên tổng hợp của Phòng Kinh doanh một công ty điện lực.",
-        "plain": "Bạn là chuyên viên tổng hợp của Phòng Kinh doanh một công ty điện lực."
+        "html": "Bạn là chuyên viên tổng hợp của Phòng Kinh doanh một chuỗi bán lẻ.",
+        "plain": "Bạn là chuyên viên tổng hợp của Phòng Kinh doanh một chuỗi bán lẻ."
        }
       ],
       [
@@ -981,8 +1038,8 @@
         "plain": "Cần làm chính xác việc gì?"
        },
        {
-        "html": "Tóm tắt tình hình tiếp nhận yêu cầu cấp điện mới tháng 10.",
-        "plain": "Tóm tắt tình hình tiếp nhận yêu cầu cấp điện mới tháng 10."
+        "html": "Tóm tắt tình hình đơn hàng online tháng 10.",
+        "plain": "Tóm tắt tình hình đơn hàng online tháng 10."
        }
       ],
       [
@@ -1046,7 +1103,7 @@
     },
     {
      "t": "code",
-     "text": "Viết báo cáo tình hình cấp điện mới tháng 10."
+     "text": "Viết báo cáo tình hình đơn hàng online tháng 10."
     },
     {
      "t": "p",
@@ -1060,12 +1117,12 @@
     },
     {
      "t": "code",
-     "text": "# VAI TRÒ\nBạn là chuyên viên tổng hợp của Phòng Kinh doanh, Công ty Điện lực Phú An (đơn vị giả lập).\n\n# BỐI CẢNH\nBáo cáo đọc trong cuộc họp giao ban sáng thứ Hai. Người nghe là Ban Giám đốc,\ncần nắm tình hình trong 2 phút.\n\n# NHIỆM VỤ\nTóm tắt tình hình tiếp nhận và giải quyết yêu cầu cấp điện mới tháng 10/2026.\n\n# DỮ LIỆU\n<du_lieu>\n- Tiếp nhận: 1.240 yêu cầu (tháng 9: 1.105)\n- Hoàn thành đúng hạn: 1.180; quá hạn: 25; đang xử lý: 35\n- Quá hạn tập trung ở xã Tân Lập (17 hồ sơ) do chờ thỏa thuận hướng tuyến\n</du_lieu>\n\n# ĐỊNH DẠNG\n1. Một câu kết luận chung.\n2. Bảng 3 cột: Chỉ tiêu | Tháng 10 | So với tháng 9.\n3. Tối đa 3 đề xuất, mỗi đề xuất 1 dòng, bắt đầu bằng động từ.\nTổng độ dài không quá 200 chữ.\n\n# RÀNG BUỘC\n- Chỉ dùng số liệu trong <du_lieu>. Ô nào không tính được thì ghi [CHƯA CÓ SỐ LIỆU].\n- Giọng văn hành chính, khách quan, không dùng từ cảm thán."
+     "text": "# VAI TRÒ\nBạn là chuyên viên tổng hợp của Phòng Kinh doanh, chuỗi đồ gia dụng Nhà Xanh (đơn vị giả lập).\n\n# BỐI CẢNH\nBáo cáo đọc trong cuộc họp giao ban sáng thứ Hai. Người nghe là Ban Giám đốc,\ncần nắm tình hình trong 2 phút.\n\n# NHIỆM VỤ\nTóm tắt tình hình nhận và giao đơn hàng online tháng 10/2026.\n\n# DỮ LIỆU\n<du_lieu>\n- Đơn hàng online: 1.240 đơn (tháng 9: 1.105)\n- Giao đúng hẹn: 1.180; giao trễ: 25; đang giao: 35\n- Giao trễ tập trung ở khu vực ngoại thành (17 đơn) do đối tác vận chuyển thiếu xe\n</du_lieu>\n\n# ĐỊNH DẠNG\n1. Một câu kết luận chung.\n2. Bảng 3 cột: Chỉ tiêu | Tháng 10 | So với tháng 9.\n3. Tối đa 3 đề xuất, mỗi đề xuất 1 dòng, bắt đầu bằng động từ.\nTổng độ dài không quá 200 chữ.\n\n# RÀNG BUỘC\n- Chỉ dùng số liệu trong <du_lieu>. Ô nào không tính được thì ghi [CHƯA CÓ SỐ LIỆU].\n- Giọng văn hành chính, khách quan, không dùng từ cảm thán."
     },
     {
      "t": "p",
-     "html": "Kết quả mong đợi: câu kết luận kiểu “Tháng 10 tiếp nhận 1.240 yêu cầu, tăng 135 yêu cầu (khoảng 12%) so với tháng 9; khoảng 95% hoàn thành đúng hạn.” Ô so sánh của dòng “Hoàn thành đúng hạn” ghi [CHƯA CÓ SỐ LIỆU] vì không có số tháng 9 – dấu hiệu luật chống bịa đang hoạt động. Hãy tự chạy hai prompt trên và so sánh.",
-     "plain": "Kết quả mong đợi: câu kết luận kiểu “Tháng 10 tiếp nhận 1.240 yêu cầu, tăng 135 yêu cầu (khoảng 12%) so với tháng 9; khoảng 95% hoàn thành đúng hạn.” Ô so sánh của dòng “Hoàn thành đúng hạn” ghi [CHƯA CÓ SỐ LIỆU] vì không có số tháng 9 – dấu hiệu luật chống bịa đang hoạt động. Hãy tự chạy hai prompt trên và so sánh.",
+     "html": "Kết quả mong đợi: câu kết luận kiểu “Tháng 10 nhận 1.240 đơn online, tăng 135 đơn (khoảng 12%) so với tháng 9; khoảng 95% giao đúng hẹn.” Ô so sánh của dòng “Giao đúng hẹn” ghi [CHƯA CÓ SỐ LIỆU] vì không có số tháng 9 – dấu hiệu luật chống bịa đang hoạt động. Hãy tự chạy hai prompt trên và so sánh.",
+     "plain": "Kết quả mong đợi: câu kết luận kiểu “Tháng 10 nhận 1.240 đơn online, tăng 135 đơn (khoảng 12%) so với tháng 9; khoảng 95% giao đúng hẹn.” Ô so sánh của dòng “Giao đúng hẹn” ghi [CHƯA CÓ SỐ LIỆU] vì không có số tháng 9 – dấu hiệu luật chống bịa đang hoạt động. Hãy tự chạy hai prompt trên và so sánh.",
      "callout": "example"
     },
     {
@@ -1128,12 +1185,12 @@
         "plain": "1. Nói rõ người nhận và mục đích"
        },
        {
-        "html": "“Viết email thông báo cắt điện.”",
-        "plain": "“Viết email thông báo cắt điện.”"
+        "html": "“Viết email thông báo tạm ngừng giao hàng.”",
+        "plain": "“Viết email thông báo tạm ngừng giao hàng.”"
        },
        {
-        "html": "“Viết email thông báo tạm ngừng cấp điện gửi 30 doanh nghiệp ở Khu công nghiệp Bắc Phú An, để họ chủ động kế hoạch sản xuất. Nêu rõ thời gian, khu vực, lý do, số điện thoại liên hệ.”",
-        "plain": "“Viết email thông báo tạm ngừng cấp điện gửi 30 doanh nghiệp ở Khu công nghiệp Bắc Phú An, để họ chủ động kế hoạch sản xuất. Nêu rõ thời gian, khu vực, lý do, số điện thoại liên hệ.”"
+        "html": "“Viết email thông báo tạm ngừng giao hàng ngày 14–15/11/2026 do kiểm kê kho, gửi 30 khách hàng doanh nghiệp đang đặt hàng định kỳ, để họ chủ động đặt sớm. Nêu rõ thời gian, lý do, cách nhận hàng thay thế, số điện thoại liên hệ.”",
+        "plain": "“Viết email thông báo tạm ngừng giao hàng ngày 14–15/11/2026 do kiểm kê kho, gửi 30 khách hàng doanh nghiệp đang đặt hàng định kỳ, để họ chủ động đặt sớm. Nêu rõ thời gian, lý do, cách nhận hàng thay thế, số điện thoại liên hệ.”"
        }
       ],
       [
@@ -1270,12 +1327,12 @@
     },
     {
      "t": "p",
-     "html": "Khi khó mô tả bằng lời, hãy cho AI xem ví dụ. Prompt phân loại phản ánh khách hàng:",
-     "plain": "Khi khó mô tả bằng lời, hãy cho AI xem ví dụ. Prompt phân loại phản ánh khách hàng:"
+     "html": "Khi khó mô tả bằng lời, hãy cho AI xem ví dụ. Prompt phân loại tin nhắn khách hàng của một cửa hàng online:",
+     "plain": "Khi khó mô tả bằng lời, hãy cho AI xem ví dụ. Prompt phân loại tin nhắn khách hàng của một cửa hàng online:"
     },
     {
      "t": "code",
-     "text": "Phân loại phản ánh của khách hàng vào đúng một nhóm:\nMAT_DIEN, HOA_DON, CAP_DIEN_MOI, THAI_DO, KHAC.\nChỉ trả về tên nhóm.\n\nPhản ánh: \"Nhà tôi mất điện từ 2 giờ chiều đến giờ chưa có\"\nNhóm: MAT_DIEN\n\nPhản ánh: \"Tháng này hóa đơn tăng gấp đôi dù dùng như cũ\"\nNhóm: HOA_DON\n\nPhản ánh: \"Nhà mới xây muốn lắp công tơ thì làm thủ tục gì?\"\nNhóm: CAP_DIEN_MOI\n\nPhản ánh: \"Nhân viên ghi chỉ số nói chuyện rất khó chịu\"\nNhóm:"
+     "text": "Phân loại tin nhắn của khách hàng vào đúng một nhóm:\nGIAO_HANG, DOI_TRA, HOI_SAN_PHAM, THAI_DO, KHAC.\nChỉ trả về tên nhóm.\n\nTin nhắn: \"Đặt hàng 5 ngày rồi mà vẫn chưa thấy giao\"\nNhóm: GIAO_HANG\n\nTin nhắn: \"Nồi chiên mới nhận bị móp, tôi muốn đổi cái khác\"\nNhóm: DOI_TRA\n\nTin nhắn: \"Máy lọc không khí này dùng cho phòng 30 m² được không?\"\nNhóm: HOI_SAN_PHAM\n\nTin nhắn: \"Anh giao hàng nói chuyện rất khó chịu\"\nNhóm:"
     },
     {
      "t": "p",
@@ -1288,6 +1345,51 @@
      "html": "Ví dụ mẫu nên đa dạng, phủ nhiều nhóm và giống dữ liệu thật; 3–5 ví dụ thường là đủ. AI bắt chước rất sát: nếu mọi ví dụ đều có kết quả 3 gạch đầu dòng, AI sẽ luôn trả 3 gạch đầu dòng, kể cả khi nội dung cần 5.",
      "plain": "Ví dụ mẫu nên đa dạng, phủ nhiều nhóm và giống dữ liệu thật; 3–5 ví dụ thường là đủ. AI bắt chước rất sát: nếu mọi ví dụ đều có kết quả 3 gạch đầu dòng, AI sẽ luôn trả 3 gạch đầu dòng, kể cả khi nội dung cần 5.",
      "callout": "misconception"
+    },
+    {
+     "t": "h3",
+     "text": "Làm ngay (10 phút) – zero-shot hay few-shot?"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mở cuộc trò chuyện mới. Gửi: “Phân loại 6 tin nhắn sau vào GIAO_HANG, DOI_TRA, HOI_SAN_PHAM, THAI_DO, KHAC. Mỗi dòng: số thứ tự – nhóm.” rồi dán 6 tin nhắn bên dưới. Đây là cách <em>zero-shot</em> – không có ví dụ.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới. Gửi: “Phân loại 6 tin nhắn sau vào GIAO_HANG, DOI_TRA, HOI_SAN_PHAM, THAI_DO, KHAC. Mỗi dòng: số thứ tự – nhóm.” rồi dán 6 tin nhắn bên dưới. Đây là cách zero-shot – không có ví dụ."
+      },
+      {
+       "html": "Mở cuộc trò chuyện mới khác. Dán prompt few-shot ở trên (bỏ dòng tin nhắn cuối), thêm 6 tin nhắn bên dưới, gửi.",
+       "level": 0,
+       "plain": "Mở cuộc trò chuyện mới khác. Dán prompt few-shot ở trên (bỏ dòng tin nhắn cuối), thêm 6 tin nhắn bên dưới, gửi."
+      },
+      {
+       "html": "So hai kết quả với đáp án. Ghi lại: cách nào đúng nhiều hơn? Cách nào trả đúng định dạng, không giải thích thừa?",
+       "level": 0,
+       "plain": "So hai kết quả với đáp án. Ghi lại: cách nào đúng nhiều hơn? Cách nào trả đúng định dạng, không giải thích thừa?"
+      },
+      {
+       "html": "Thêm vào prompt few-shot luật “Tin nhắn vừa đổi trả vừa phàn nàn thái độ: chọn DOI_TRA”, chạy lại. Tin nhắn số 5 có đổi nhóm không?",
+       "level": 0,
+       "plain": "Thêm vào prompt few-shot luật “Tin nhắn vừa đổi trả vừa phàn nàn thái độ: chọn DOI_TRA”, chạy lại. Tin nhắn số 5 có đổi nhóm không?"
+      }
+     ]
+    },
+    {
+     "t": "code",
+     "text": "1. \"Shop ơi đơn của mình đang ở đâu rồi?\"\n2. \"Bình đun siêu tốc này có tự ngắt khi sôi không?\"\n3. \"Mình nhận nhầm màu, đổi giúp mình màu trắng nhé\"\n4. \"Cửa hàng có tuyển nhân viên bán thời gian không?\"\n5. \"Máy xay bị nứt cối, nhân viên còn bảo do tôi làm rơi, thái độ quá tệ\"\n6. \"Gọi tổng đài 3 lần không ai nghe máy"
+    },
+    {
+     "t": "details",
+     "title": "Kết quả thường thấy (làm xong rồi mới mở)",
+     "blocks": [
+      {
+       "t": "p",
+       "html": "Đáp án: 1 GIAO_HANG · 2 HOI_SAN_PHAM · 3 DOI_TRA · 4 KHAC · 5 DOI_TRA (khi đã có luật ưu tiên; không có luật thì AI có thể chọn THAI_DO – cả hai đều “có lý”, đó là lý do cần luật) · 6 THAI_DO hoặc KHAC tùy cách bạn định nghĩa nhóm. Zero-shot thường trả kèm lời giải thích và tự đặt thêm nhóm mới; few-shot trả gọn đúng khuôn. Tin nhắn 6 cho thấy bộ nhãn còn thiếu định nghĩa – sửa định nghĩa, không sửa ví dụ.",
+       "plain": "Đáp án: 1 GIAO_HANG · 2 HOI_SAN_PHAM · 3 DOI_TRA · 4 KHAC · 5 DOI_TRA (khi đã có luật ưu tiên; không có luật thì AI có thể chọn THAI_DO – cả hai đều “có lý”, đó là lý do cần luật) · 6 THAI_DO hoặc KHAC tùy cách bạn định nghĩa nhóm. Zero-shot thường trả kèm lời giải thích và tự đặt thêm nhóm mới; few-shot trả gọn đúng khuôn. Tin nhắn 6 cho thấy bộ nhãn còn thiếu định nghĩa – sửa định nghĩa, không sửa ví dụ."
+      }
+     ]
     },
     {
      "t": "h3",
@@ -1676,12 +1778,12 @@
         "plain": "1"
        },
        {
-        "html": "Rà soát 17 hồ sơ cấp điện quá hạn ở xã Tân Lập (phòng Kinh doanh gửi danh sách ngay trong ngày 02/11)",
-        "plain": "Rà soát 17 hồ sơ cấp điện quá hạn ở xã Tân Lập (phòng Kinh doanh gửi danh sách ngay trong ngày 02/11)"
+        "html": "Rà soát 17 đơn giao trễ ở khu vực ngoại thành (phòng Kinh doanh gửi danh sách ngay trong ngày 02/11)",
+        "plain": "Rà soát 17 đơn giao trễ ở khu vực ngoại thành (phòng Kinh doanh gửi danh sách ngay trong ngày 02/11)"
        },
        {
-        "html": "Phòng Kỹ thuật",
-        "plain": "Phòng Kỹ thuật"
+        "html": "Phòng Kho vận",
+        "plain": "Phòng Kho vận"
        },
        {
         "html": "Trước 06/11/2026",
@@ -1694,8 +1796,8 @@
         "plain": "2"
        },
        {
-        "html": "Làm việc với UBND xã Tân Lập về thỏa thuận hướng tuyến",
-        "plain": "Làm việc với UBND xã Tân Lập về thỏa thuận hướng tuyến"
+        "html": "Làm việc với đối tác vận chuyển Giao Nhanh về việc bổ sung xe",
+        "plain": "Làm việc với đối tác vận chuyển Giao Nhanh về việc bổ sung xe"
        },
        {
         "html": "Phòng Kinh doanh",
@@ -1712,8 +1814,8 @@
         "plain": "3"
        },
        {
-        "html": "Chuẩn bị kế hoạch tập huấn an toàn điện quý IV",
-        "plain": "Chuẩn bị kế hoạch tập huấn an toàn điện quý IV"
+        "html": "Chuẩn bị kế hoạch đào tạo kỹ năng bán hàng quý IV",
+        "plain": "Chuẩn bị kế hoạch đào tạo kỹ năng bán hàng quý IV"
        },
        {
         "html": "[CHƯA RÕ]",
@@ -1730,12 +1832,12 @@
         "plain": "4"
        },
        {
-        "html": "Hoàn thiện, gửi báo cáo tháng 10 cho Tổng công ty",
-        "plain": "Hoàn thiện, gửi báo cáo tháng 10 cho Tổng công ty"
+        "html": "Hoàn thiện, gửi báo cáo tháng 10 cho Ban Giám đốc",
+        "plain": "Hoàn thiện, gửi báo cáo tháng 10 cho Ban Giám đốc"
        },
        {
-        "html": "Phòng Tổng hợp",
-        "plain": "Phòng Tổng hợp"
+        "html": "Phòng Hành chính – Tổng hợp",
+        "plain": "Phòng Hành chính – Tổng hợp"
        },
        {
         "html": "Trước 05/11/2026",
@@ -1748,12 +1850,12 @@
         "plain": "5"
        },
        {
-        "html": "Kiểm tra, xử lý cây đổ gần hành lang tuyến 471",
-        "plain": "Kiểm tra, xử lý cây đổ gần hành lang tuyến 471"
+        "html": "Soạn bộ câu hỏi thường gặp về đổi trả",
+        "plain": "Soạn bộ câu hỏi thường gặp về đổi trả"
        },
        {
-        "html": "Đội Quản lý vận hành",
-        "plain": "Đội Quản lý vận hành"
+        "html": "Nhóm Chăm sóc khách hàng",
+        "plain": "Nhóm Chăm sóc khách hàng"
        },
        {
         "html": "Trong tuần",
@@ -1764,8 +1866,8 @@
     },
     {
      "t": "p",
-     "html": "Lỗi hay gặp ở v1, v2: AI giao việc 3 cho phòng An toàn vì phòng này nêu ý kiến – biên bản không giao như vậy, đó là suy đoán; đưa cả ý kiến thảo luận vào danh sách việc; tự đổi “trong tuần” thành một ngày cụ thể. v3 chặn được các lỗi này nhờ hai câu “chỉ lấy ở phần kết luận” và “không tự suy ra”.",
-     "plain": "Lỗi hay gặp ở v1, v2: AI giao việc 3 cho phòng An toàn vì phòng này nêu ý kiến – biên bản không giao như vậy, đó là suy đoán; đưa cả ý kiến thảo luận vào danh sách việc; tự đổi “trong tuần” thành một ngày cụ thể. v3 chặn được các lỗi này nhờ hai câu “chỉ lấy ở phần kết luận” và “không tự suy ra”.",
+     "html": "Lỗi hay gặp ở v1, v2: AI giao việc 3 cho phòng Nhân sự vì phòng này nêu ý kiến – biên bản không giao như vậy, đó là suy đoán; đưa cả ý kiến thảo luận vào danh sách việc; tự đổi “trong tuần” thành một ngày cụ thể. v3 chặn được các lỗi này nhờ hai câu “chỉ lấy ở phần kết luận” và “không tự suy ra”.",
+     "plain": "Lỗi hay gặp ở v1, v2: AI giao việc 3 cho phòng Nhân sự vì phòng này nêu ý kiến – biên bản không giao như vậy, đó là suy đoán; đưa cả ý kiến thảo luận vào danh sách việc; tự đổi “trong tuần” thành một ngày cụ thể. v3 chặn được các lỗi này nhờ hai câu “chỉ lấy ở phần kết luận” và “không tự suy ra”.",
      "callout": "example"
     }
    ],
@@ -1808,7 +1910,7 @@
     },
     {
      "t": "code",
-     "text": "Từ các [đơn thư/email/biên bản] trong thẻ <du_lieu>, lập bảng với các cột:\nSTT | Ngày | Người gửi | Nội dung chính (≤ 15 chữ) | Yêu cầu cụ thể | Mức độ khẩn (Cao/TB/Thấp)\nQuy tắc:\n- Mỗi [đơn thư] một dòng.\n- Thông tin không có trong văn bản thì để trống, không suy đoán.\n- Mức \"Cao\" chỉ khi có yếu tố [an toàn, mất điện kéo dài, hạn xử lý dưới 3 ngày].\n<du_lieu>\n[dán nội dung]\n</du_lieu>"
+     "text": "Từ các [đơn thư/email/biên bản] trong thẻ <du_lieu>, lập bảng với các cột:\nSTT | Ngày | Người gửi | Nội dung chính (≤ 15 chữ) | Yêu cầu cụ thể | Mức độ khẩn (Cao/TB/Thấp)\nQuy tắc:\n- Mỗi [đơn thư] một dòng.\n- Thông tin không có trong văn bản thì để trống, không suy đoán.\n- Mức \"Cao\" chỉ khi có yếu tố [an toàn, khách dọa đăng lên mạng xã hội, hạn xử lý dưới 3 ngày].\n<du_lieu>\n[dán nội dung]\n</du_lieu>"
     },
     {
      "t": "h3",
@@ -1866,8 +1968,8 @@
     },
     {
      "t": "p",
-     "html": "Prompt gốc: “Viết thông báo tập huấn.” Tình huống: Phòng Kỹ thuật (25 người) tổ chức tập huấn an toàn điện bắt buộc, 8h00–11h30 thứ Sáu 13/11/2026, tại hội trường tầng 3; ai vắng phải đăng ký học bù trước ngày 11/11; thông báo đăng lên nhóm chat nội bộ của phòng. Viết lại thành prompt đủ 6 thành phần.",
-     "plain": "Prompt gốc: “Viết thông báo tập huấn.” Tình huống: Phòng Kỹ thuật (25 người) tổ chức tập huấn an toàn điện bắt buộc, 8h00–11h30 thứ Sáu 13/11/2026, tại hội trường tầng 3; ai vắng phải đăng ký học bù trước ngày 11/11; thông báo đăng lên nhóm chat nội bộ của phòng. Viết lại thành prompt đủ 6 thành phần."
+     "html": "Prompt gốc: “Viết thông báo tập huấn.” Tình huống: Phòng Kinh doanh (25 người) tổ chức tập huấn phần mềm bán hàng mới, bắt buộc, 8h00–11h30 thứ Sáu 13/11/2026, tại hội trường tầng 3; ai vắng phải đăng ký học bù trước ngày 11/11; thông báo đăng lên nhóm chat nội bộ của phòng. Viết lại thành prompt đủ 6 thành phần.",
+     "plain": "Prompt gốc: “Viết thông báo tập huấn.” Tình huống: Phòng Kinh doanh (25 người) tổ chức tập huấn phần mềm bán hàng mới, bắt buộc, 8h00–11h30 thứ Sáu 13/11/2026, tại hội trường tầng 3; ai vắng phải đăng ký học bù trước ngày 11/11; thông báo đăng lên nhóm chat nội bộ của phòng. Viết lại thành prompt đủ 6 thành phần."
     },
     {
      "t": "details",
@@ -1875,7 +1977,7 @@
      "blocks": [
       {
        "t": "code",
-       "text": "# VAI TRÒ\nBạn là thư ký Phòng Kỹ thuật, phụ trách thông báo nội bộ.\n# BỐI CẢNH\nThông báo đăng lên nhóm chat của phòng (25 người), đa số đọc trên điện thoại.\n# NHIỆM VỤ\nSoạn thông báo về buổi tập huấn an toàn điện bắt buộc.\n# DỮ LIỆU\n<du_lieu>\n- Thời gian: 8h00–11h30, thứ Sáu 13/11/2026\n- Địa điểm: hội trường tầng 3\n- Bắt buộc với toàn phòng; ai vắng đăng ký học bù trước 11/11/2026\n</du_lieu>\n# ĐỊNH DẠNG\nTối đa 80 chữ, 4–5 dòng ngắn, dòng đầu là tiêu đề viết hoa. Có thể dùng 1 biểu tượng cảm xúc ở tiêu đề.\n# RÀNG BUỘC\nChỉ dùng thông tin trong <du_lieu>. Chưa có đầu mối nhận đăng ký học bù thì để [NGƯỜI NHẬN ĐĂNG KÝ]."
+       "text": "# VAI TRÒ\nBạn là thư ký Phòng Kinh doanh, phụ trách thông báo nội bộ.\n# BỐI CẢNH\nThông báo đăng lên nhóm chat của phòng (25 người), đa số đọc trên điện thoại.\n# NHIỆM VỤ\nSoạn thông báo về buổi tập huấn phần mềm bán hàng mới, bắt buộc.\n# DỮ LIỆU\n<du_lieu>\n- Thời gian: 8h00–11h30, thứ Sáu 13/11/2026\n- Địa điểm: hội trường tầng 3\n- Bắt buộc với toàn phòng; ai vắng đăng ký học bù trước 11/11/2026\n</du_lieu>\n# ĐỊNH DẠNG\nTối đa 80 chữ, 4–5 dòng ngắn, dòng đầu là tiêu đề viết hoa. Có thể dùng 1 biểu tượng cảm xúc ở tiêu đề.\n# RÀNG BUỘC\nChỉ dùng thông tin trong <du_lieu>. Chưa có đầu mối nhận đăng ký học bù thì để [NGƯỜI NHẬN ĐĂNG KÝ]."
       },
       {
        "t": "p",
@@ -1899,7 +2001,7 @@
      "blocks": [
       {
        "t": "code",
-       "text": "Phân loại email vào đúng một nhóm. Chỉ trả về tên nhóm.\n- XU_LY_GAP: yêu cầu có hạn trong 2 ngày làm việc, hoặc liên quan an toàn, sự cố\n- CAN_TRA_LOI: hỏi thông tin, đề nghị phối hợp, không gấp\n- DE_BIET: thông báo chung, báo cáo gửi để biết, không cần phản hồi\n- RAC: quảng cáo, email không liên quan công việc\nEmail vừa gấp vừa cần trả lời: chọn XU_LY_GAP.\n\nEmail: \"Đề nghị phòng gửi số liệu sự cố tháng 10 trước 16h ngày mai\" → XU_LY_GAP\nEmail: \"Nhờ anh chị cho biết đầu mối phụ trách đo đếm khu vực phía Nam\" → CAN_TRA_LOI\nEmail: \"Gửi các phòng lịch công tác tuần 46 của Ban Giám đốc\" → DE_BIET\nEmail: \"Ưu đãi 50% khóa học tiếng Anh cho doanh nghiệp\" → RAC\n\nEmail: \"[dán email cần phân loại]\" →"
+       "text": "Phân loại email vào đúng một nhóm. Chỉ trả về tên nhóm.\n- XU_LY_GAP: yêu cầu có hạn trong 2 ngày làm việc, hoặc liên quan an toàn, sự cố\n- CAN_TRA_LOI: hỏi thông tin, đề nghị phối hợp, không gấp\n- DE_BIET: thông báo chung, báo cáo gửi để biết, không cần phản hồi\n- RAC: quảng cáo, email không liên quan công việc\nEmail vừa gấp vừa cần trả lời: chọn XU_LY_GAP.\n\nEmail: \"Đề nghị phòng gửi số liệu bán hàng tháng 10 trước 16h ngày mai\" → XU_LY_GAP\nEmail: \"Nhờ anh chị cho biết đầu mối phụ trách khách hàng doanh nghiệp phía Nam\" → CAN_TRA_LOI\nEmail: \"Gửi các phòng lịch công tác tuần 46 của Ban Giám đốc\" → DE_BIET\nEmail: \"Ưu đãi 50% khóa học tiếng Anh cho doanh nghiệp\" → RAC\n\nEmail: \"[dán email cần phân loại]\" →"
       }
      ]
     },
@@ -1909,8 +2011,8 @@
     },
     {
      "t": "p",
-     "html": "Prompt: “Bạn là trợ lý pháp chế. Cho biết mức phạt khi sử dụng điện không đúng mục đích.” AI trả lời rất tự tin, có số tiền phạt cụ thể và số hiệu nghị định. Vấn đề là gì? Sửa thế nào?",
-     "plain": "Prompt: “Bạn là trợ lý pháp chế. Cho biết mức phạt khi sử dụng điện không đúng mục đích.” AI trả lời rất tự tin, có số tiền phạt cụ thể và số hiệu nghị định. Vấn đề là gì? Sửa thế nào?"
+     "html": "Prompt: “Bạn là trợ lý pháp chế. Cho biết mức phạt khi doanh nghiệp chậm đóng bảo hiểm xã hội cho nhân viên.” AI trả lời rất tự tin, có số tiền phạt cụ thể và số hiệu nghị định. Vấn đề là gì? Sửa thế nào?",
+     "plain": "Prompt: “Bạn là trợ lý pháp chế. Cho biết mức phạt khi doanh nghiệp chậm đóng bảo hiểm xã hội cho nhân viên.” AI trả lời rất tự tin, có số tiền phạt cụ thể và số hiệu nghị định. Vấn đề là gì? Sửa thế nào?"
     },
     {
      "t": "details",
