@@ -822,6 +822,106 @@
    "blocks": [
     {
      "t": "h3",
+     "text": "Mỗi prompt trong đội cần gì"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Prompt",
+        "plain": "Prompt"
+       },
+       {
+        "html": "Yếu tố bắt buộc",
+        "plain": "Yếu tố bắt buộc"
+       },
+       {
+        "html": "Thiếu thì…",
+        "plain": "Thiếu thì…"
+       }
+      ],
+      [
+       {
+        "html": "Router",
+        "plain": "Router"
+       },
+       {
+        "html": "Danh sách Agent, mỗi Agent một dòng mô tả việc; lối thoát Human; luật “không tự trả lời”; đầu ra JSON có <code>next_agent</code> và yêu cầu đã viết lại",
+        "plain": "Danh sách Agent, mỗi Agent một dòng mô tả việc; lối thoát Human; luật “không tự trả lời”; đầu ra JSON có next_agent và yêu cầu đã viết lại"
+       },
+       {
+        "html": "Chọn nhầm Agent; tự làm luôn việc của Worker; hệ thống không đọc được kết quả để chuyển việc",
+        "plain": "Chọn nhầm Agent; tự làm luôn việc của Worker; hệ thống không đọc được kết quả để chuyển việc"
+       }
+      ],
+      [
+       {
+        "html": "Worker (Writer)",
+        "plain": "Worker (Writer)"
+       },
+       {
+        "html": "Vai trò; đầu vào là gì; yêu cầu bài viết khớp từng tiêu chí của Editor; cách xử lý phản hồi; đầu ra",
+        "plain": "Vai trò; đầu vào là gì; yêu cầu bài viết khớp từng tiêu chí của Editor; cách xử lý phản hồi; đầu ra"
+       },
+       {
+        "html": "Bị REJECT mãi vì không biết bị chấm theo tiêu chí nào; vòng sau viết lại từ đầu, sinh lỗi mới",
+        "plain": "Bị REJECT mãi vì không biết bị chấm theo tiêu chí nào; vòng sau viết lại từ đầu, sinh lỗi mới"
+       }
+      ],
+      [
+       {
+        "html": "Reviewer (Editor)",
+        "plain": "Reviewer (Editor)"
+       },
+       {
+        "html": "Rubric đánh số; luật “chỉ chấm, không tự sửa”; đầu ra JSON <code>status</code>, <code>ly_do</code>, <code>goi_y_sua</code>",
+        "plain": "Rubric đánh số; luật “chỉ chấm, không tự sửa”; đầu ra JSON status, ly_do, goi_y_sua"
+       },
+       {
+        "html": "Chấm cảm tính; Writer không biết phải sửa gì",
+        "plain": "Chấm cảm tính; Writer không biết phải sửa gì"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
+     "text": "Một yêu cầu chạy qua đội thế nào"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Router nhận yêu cầu, trả JSON chọn Agent. Hệ thống đọc <code>next_agent</code> để chuyển việc – Router không tự viết bài.",
+       "level": 0,
+       "plain": "Router nhận yêu cầu, trả JSON chọn Agent. Hệ thống đọc next_agent để chuyển việc – Router không tự viết bài."
+      },
+      {
+       "html": "Hệ thống gửi <code>yeu_cau_cho_agent</code> kèm BRIEF cho Content_Writer. Writer viết bản nháp vòng 1.",
+       "level": 0,
+       "plain": "Hệ thống gửi yeu_cau_cho_agent kèm BRIEF cho Content_Writer. Writer viết bản nháp vòng 1."
+      },
+      {
+       "html": "Editor nhận BRIEF và bản nháp, chấm theo rubric, trả APPROVE hoặc REJECT kèm lý do.",
+       "level": 0,
+       "plain": "Editor nhận BRIEF và bản nháp, chấm theo rubric, trả APPROVE hoặc REJECT kèm lý do."
+      },
+      {
+       "html": "REJECT: hệ thống đóng gói thông điệp bàn giao (vòng, bản nháp, phản hồi) gửi lại Writer; Writer chỉ sửa lỗi được nêu.",
+       "level": 0,
+       "plain": "REJECT: hệ thống đóng gói thông điệp bàn giao (vòng, bản nháp, phản hồi) gửi lại Writer; Writer chỉ sửa lỗi được nêu."
+      },
+      {
+       "html": "Lặp tối đa 3 vòng. APPROVE thì xuất bài; quá 3 vòng thì chuyển người duyệt.",
+       "level": 0,
+       "plain": "Lặp tối đa 3 vòng. APPROVE thì xuất bài; quá 3 vòng thì chuyển người duyệt."
+      }
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Router – chỉ phân việc, không làm việc"
     },
     {
@@ -1565,6 +1665,86 @@
     {
      "t": "code",
      "text": "Bạn là giám khảo. Chấm BÀI VIẾT theo từng tiêu chí, mỗi tiêu chí 0, 1 hoặc 2 điểm\n(0: không đạt; 1: đạt một phần; 2: đạt hoàn toàn).\nA. Chính xác: mọi số liệu, cam kết đều có trong BRIEF\nB. Đầy đủ: có sản phẩm, đối tượng, ưu đãi, thời hạn, cách đăng ký\nC. Tuân thủ: tiêu đề tối đa 12 tiếng, giọng trang trọng, tối đa 1 dấu chấm than\nVới mỗi tiêu chí, TRÍCH CÂU trong bài làm căn cứ trước, rồi mới cho điểm.\nChỉ trả về JSON:\n{\"A\": {\"can_cu\": \"...\", \"diem\": 0}, \"B\": {...}, \"C\": {...}, \"tong\": 0}\n\n<brief>{{brief}}</brief>\n<bai_viet>{{bai_viet}}</bai_viet>"
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Yếu tố trong prompt giám khảo",
+        "plain": "Yếu tố trong prompt giám khảo"
+       },
+       {
+        "html": "Vì sao cần",
+        "plain": "Vì sao cần"
+       }
+      ],
+      [
+       {
+        "html": "Vai trò giám khảo, chấm “theo từng tiêu chí”",
+        "plain": "Vai trò giám khảo, chấm “theo từng tiêu chí”"
+       },
+       {
+        "html": "Chấm gộp một điểm tổng thì không biết bài yếu ở đâu",
+        "plain": "Chấm gộp một điểm tổng thì không biết bài yếu ở đâu"
+       }
+      ],
+      [
+       {
+        "html": "Nghĩa của từng mức điểm (0, 1, 2)",
+        "plain": "Nghĩa của từng mức điểm (0, 1, 2)"
+       },
+       {
+        "html": "Không định nghĩa mức thì cùng một bài lúc được 1, lúc được 2",
+        "plain": "Không định nghĩa mức thì cùng một bài lúc được 1, lúc được 2"
+       }
+      ],
+      [
+       {
+        "html": "Tiêu chí kiểm tra được (A, B, C)",
+        "plain": "Tiêu chí kiểm tra được (A, B, C)"
+       },
+       {
+        "html": "“Bài hay” không chấm được; “mọi số liệu có trong BRIEF” chấm được",
+        "plain": "“Bài hay” không chấm được; “mọi số liệu có trong BRIEF” chấm được"
+       }
+      ],
+      [
+       {
+        "html": "Trích căn cứ trước khi cho điểm",
+        "plain": "Trích căn cứ trước khi cho điểm"
+       },
+       {
+        "html": "Buộc giám khảo đọc kỹ bài; người kiểm lại xem nhanh được",
+        "plain": "Buộc giám khảo đọc kỹ bài; người kiểm lại xem nhanh được"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra JSON cố định",
+        "plain": "Đầu ra JSON cố định"
+       },
+       {
+        "html": "Máy cộng điểm, tính KPI cho cả bộ đề",
+        "plain": "Máy cộng điểm, tính KPI cho cả bộ đề"
+       }
+      ],
+      [
+       {
+        "html": "BRIEF và bài viết trong thẻ riêng",
+        "plain": "BRIEF và bài viết trong thẻ riêng"
+       },
+       {
+        "html": "Giám khảo không lẫn đề với bài, không làm theo câu lệnh nằm trong bài",
+        "plain": "Giám khảo không lẫn đề với bài, không làm theo câu lệnh nằm trong bài"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Khi chạy:</strong> với mỗi đề, Agent tạo bài → bài và BRIEF được điền vào <code>{{bai_viet}}</code>, <code>{{brief}}</code> → giám khảo trả JSON → bảng tính hoặc script cộng điểm cả bộ đề, ra điểm trung bình và tỷ lệ đạt → con người đọc lại 20–30% số bài, nhất là bài điểm cao bất thường.",
+     "plain": "Khi chạy: với mỗi đề, Agent tạo bài → bài và BRIEF được điền vào {{bai_viet}}, {{brief}} → giám khảo trả JSON → bảng tính hoặc script cộng điểm cả bộ đề, ra điểm trung bình và tỷ lệ đạt → con người đọc lại 20–30% số bài, nhất là bài điểm cao bất thường."
     },
     {
      "t": "p",

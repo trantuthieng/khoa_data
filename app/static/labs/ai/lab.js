@@ -155,6 +155,41 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
   const urlTab = new URLSearchParams(location.search).get('tab');
   if (['rag', 'workflow', 'guardrails', 'eval'].includes(urlTab)) switchTab(urlTab);
 
+  // Tab con trong một bài (VD: Hit Test / Các đoạn đã cắt; Gọi hàm / Prompt Injection)
+  document.querySelectorAll('.subtabs').forEach(bar => {
+    bar.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-sub]');
+      if (!btn) return;
+      const scope = bar.closest('.card') || bar.closest('.panel');
+      bar.querySelectorAll('button[data-sub]').forEach(b => {
+        b.classList.toggle('on', b === btn);
+        scope.querySelectorAll(`[data-subpanel="${b.dataset.sub}"]`).forEach(x => { x.hidden = b !== btn; });
+      });
+    });
+  });
+
+  function markChip(box, btn) {
+    box.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === btn));
+  }
+
+  // Bấm vào một đoạn để xem đủ nội dung (mặc định chỉ hiện 3 dòng)
+  document.addEventListener('click', e => {
+    const card = e.target.closest('.chunk-card');
+    if (card) card.classList.toggle('open');
+  });
+
+  // Nhật ký từng bước dạng dòng thời gian: [{title, badge, tone, text | html}].
+  // JSON, bảng Markdown hiện dạng code; lời giải thích hiện như văn bản thường.
+  function timeline(steps) {
+    const body = t => /^\s*[{[|]/.test(t) ? `<pre>${esc(t)}</pre>` : `<div class="body">${esc(t)}</div>`;
+    return steps.map(s => `
+      <div class="trace-step">
+        <span class="dot ${s.tone || ''}"></span>
+        <div class="chunk-head"><b>${esc(s.title)}</b><span class="badge ${s.tone || ''}">${esc(s.badge)}</span></div>
+        ${s.html || body(s.text)}
+      </div>`).join('');
+  }
+
   // ==================== TAB 1: RAG & HIT TEST ====================
   let currentChunks = [];
   let lastHitReport = '';
@@ -277,10 +312,10 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const warnBox = el('rag-chunk-warn');
     const warns = [];
     if (delim === '\\n' && tinyCount >= 4) {
-      warns.push('Bạn đang chọn Delimiter là <code>\\n</code> (xuống dòng đơn): tài liệu bị cắt vụn thành <b>' + currentChunks.length + ' đoạn nhỏ</b> (mỗi dòng gạch đầu dòng thành một đoạn rời, mất tiêu đề mục). Hãy đổi sang <code>\\n\\n</code> để mỗi mục <code>##</code> giữ trọn ngữ cảnh!');
+      warns.push('Cắt theo <code>\\n</code> làm vụn tài liệu thành <b>' + currentChunks.length + ' đoạn</b>, mất tiêu đề mục. Thử <code>\\n\\n</code>.');
     }
     if (noiseCount > 0) {
-      warns.push('Phát hiện <b>' + noiseCount + ' đoạn chứa nhiễu</b> (Mục lục <code>.....</code>, dòng <code>Trang x/42</code> lặp lại hoặc bảng KPI bị vỡ dòng <code>&lt;110%|</code>). Đây là hiện tượng <b>GIGO (Garbage In, Garbage Out)</b>.');
+      warns.push('<b>' + noiseCount + ' đoạn nhiễu</b>: mục lục, dòng “Trang x/42”, bảng vỡ dòng. Rác vào, rác ra (GIGO).');
     }
     if (warns.length) {
       warnBox.hidden = false;
@@ -290,20 +325,21 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     }
 
     el('rag-metrics').innerHTML = `
-      <div class="metric"><span>Tổng số đoạn (Chunks)</span><strong>${currentChunks.length}</strong></div>
-      <div class="metric"><span>Độ dài TB / đoạn</span><strong>${avgLen} ký tự</strong></div>
-      <div class="metric ${noiseCount ? 'warn' : 'ok'}"><span>Đoạn nhiễu / vỡ bảng</span><strong>${noiseCount}</strong></div>
-      <div class="metric ${tinyCount > 3 ? 'warn' : 'ok'}"><span>Đoạn quá ngắn (&lt;65 ký tự)</span><strong>${tinyCount}</strong></div>
+      <div class="metric"><span>Số đoạn</span><strong>${currentChunks.length}</strong></div>
+      <div class="metric"><span>Dài trung bình</span><strong>${avgLen}</strong></div>
+      <div class="metric ${noiseCount ? 'warn' : 'ok'}"><span>Đoạn nhiễu</span><strong>${noiseCount}</strong></div>
+      <div class="metric ${tinyCount > 3 ? 'warn' : 'ok'}"><span>Đoạn quá ngắn</span><strong>${tinyCount}</strong></div>
     `;
+    el('rag-chunk-count').textContent = currentChunks.length;
 
     el('rag-chunks').innerHTML = currentChunks.map((c, idx) => {
       const noisy = isNoiseChunk(c);
       return `<div class="chunk-card ${noisy ? 'noise' : ''}">
         <div class="chunk-head">
-          <b>Chunk #${idx + 1}</b>
-          <span>${c.length} ký tự (~${Math.max(1, Math.round(c.length / 3.5))} token) ${noisy ? '<span class="badge warn">Nhiễu / Vỡ dòng</span>' : '<span class="badge ok">Chuẩn</span>'}</span>
+          <b>Đoạn #${idx + 1}</b>
+          <span class="meta">${c.length} ký tự ${noisy ? '<span class="badge warn">Nhiễu</span>' : ''}</span>
         </div>
-        <div style="font-size:13px;white-space:pre-wrap">${esc(c)}</div>
+        <div class="chunk-text">${esc(c)}</div>
       </div>`;
     }).join('');
 
@@ -322,8 +358,8 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
 
     const rewritten = rewriteQuery(qRaw, hist);
     el('rag-rewrite-box').innerHTML = hist
-      ? `<b>Node 1 (Query Rewrite):</b> Đã viết lại câu hỏi nối tiếp thành câu độc lập:<br><code>${esc(rewritten)}</code>`
-      : `<b>Node 1 (Query Rewrite):</b> Câu hỏi đã độc lập, giữ nguyên truy vấn: <code>${esc(rewritten)}</code>`;
+      ? `Câu hỏi nối tiếp được viết lại thành: <b>${esc(rewritten)}</b>`
+      : `Các đoạn gần nhất với câu hỏi, xếp theo điểm (bấm một đoạn để đọc đủ):`;
 
     const scored = currentChunks.map((c, i) => ({
       idx: i + 1,
@@ -340,29 +376,27 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
       const ok = inTopK && item.score >= thresh;
       return `<div class="chunk-card ${ok ? 'hit' : 'filtered'}">
         <div class="chunk-head">
-          <b>Hạng ${rank + 1} · Chunk #${item.idx}</b>
-          <span>
-            Điểm tương đồng: <b>${item.score.toFixed(2)}</b>
-            ${ok ? '<span class="badge ok">ĐẠT → Đưa vào Prompt</span>' : (inTopK ? '<span class="badge warn">Bị loại (&lt; Threshold)</span>' : '<span class="badge">Ngoài Top-K</span>')}
-          </span>
+          <b>#${rank + 1} · Đoạn ${item.idx}</b>
+          <span class="meta"><span class="score">${item.score.toFixed(2)}</span>
+            ${ok ? '<span class="badge ok">✓ Vào prompt</span>' : (inTopK ? '<span class="badge warn">Dưới ngưỡng</span>' : '<span class="badge">Ngoài Top-K</span>')}</span>
         </div>
         <div class="score-bar"><i style="width:${Math.round(item.score * 100)}%"></i></div>
-        <div style="font-size:13px;white-space:pre-wrap;margin-top:6px">${esc(item.text)}</div>
+        <div class="chunk-text">${esc(item.text)}</div>
       </div>`;
     }).join('');
 
     const ansBox = el('rag-answer');
     if (!passed.length || /thưởng tết/i.test(rewritten)) {
       ansBox.className = 'callout warn';
-      ansBox.innerHTML = `<b>Trợ lý trả lời (Luật chống ảo giác):</b><br>“Tài liệu hiện có chưa đề cập nội dung này (${esc(rewritten)}). Anh/chị vui lòng liên hệ bộ phận chuyên trách để được giải đáp chính xác.”<br><small class="muted">✓ Đạt chuẩn: Không có đoạn nào vượt ngưỡng chứa thông tin nên Agent từ chối trả lời thay vì tự bịa.</small>`;
+      ansBox.innerHTML = `<span class="who">Agent trả lời</span><span class="say">“Tài liệu hiện có chưa đề cập nội dung này. Anh/chị vui lòng liên hệ bộ phận chuyên trách.”</span><span class="why">✓ Đúng: không đoạn nào đủ liên quan nên Agent không bịa.</span>`;
     } else if (passed[0].noisy && /MỤC LỤC/.test(passed[0].text)) {
       ansBox.className = 'callout bad';
-      ansBox.innerHTML = `<b>Trợ lý trả lời (Bị nhiễu do bản gốc chưa làm sạch):</b><br>“Theo tài liệu Trang 1/42, mục này nằm ở trang 3–5 trong Mục lục…”<br><small>⚠ Lỗi truy xuất: Đoạn đứng đầu là Mục lục hoặc bảng bị vỡ dòng. Hãy chuyển sang <b>so_tay_nhan_su_da_lam_sach.md</b> và đặt Delimiter <code>\\n\\n</code>.</small>`;
+      ansBox.innerHTML = `<span class="who">Agent trả lời</span><span class="say">“Theo tài liệu Trang 1/42, mục này nằm ở trang 3–5 trong Mục lục…”</span><span class="why">✗ Bốc nhầm mục lục. Chọn bản đã làm sạch và ngắt đoạn <code>\\n\\n</code>.</span>`;
     } else {
       ansBox.className = 'callout ok';
       const firstLines = passed[0].text.split('\n').filter(Boolean);
       const srcLine = firstLines.find(l => /^Nguồn:/i.test(l)) || 'Nguồn: Tài liệu nội bộ (Chunk #' + passed[0].idx + ')';
-      ansBox.innerHTML = `<b>Trợ lý trả lời (Dựa trên ${passed.length} đoạn vượt ngưỡng):</b><br>${esc(passed[0].text)}<br><small class="muted">✓ Đã dẫn nguồn rõ ràng (${esc(srcLine)}).</small>`;
+      ansBox.innerHTML = `<span class="who">Agent trả lời · dựa trên ${passed.length} đoạn</span><span class="say">${esc(passed[0].text)}</span><span class="why">✓ Có dẫn nguồn: ${esc(srcLine.replace(/^Nguồn:\s*/i, ''))}</span>`;
     }
 
     lastHitReport = [
@@ -390,6 +424,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
   el('rag-presets').addEventListener('click', e => {
     const btn = e.target.closest('button[data-q]');
     if (!btn) return;
+    markChip(el('rag-presets'), btn);
     el('rag-query').value = btn.dataset.q;
     el('rag-history').value = btn.dataset.hist || '';
     if (btn.dataset.doc && el('rag-doc').value !== btn.dataset.doc) {
@@ -410,14 +445,14 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
   // ==================== TAB 2: WORKFLOW & EVALUATOR (BUỔI 3) ====================
   const WF_SCENARIOS = {
     competitor: [
-      { label: 'Kịch bản 1: Thiếu dữ liệu', q: 'Phân tích đối thủ cạnh tranh giúp mình' },
-      { label: 'Kịch bản 2: Dữ liệu mâu thuẫn', q: 'Nghe nói điều hòa Sao Mai bán giá 7.500.000 đồng, so sánh với bên mình nhé' },
-      { label: 'Kịch bản 3: Đủ dữ liệu (Chạy vòng lặp Evaluator)', q: 'So sánh giá bán và tính năng điều hòa Sao Mai với bên mình năm nay' }
+      { label: '1 · Thiếu dữ liệu', q: 'Phân tích đối thủ cạnh tranh giúp mình' },
+      { label: '2 · Dữ liệu mâu thuẫn', q: 'Nghe nói điều hòa Sao Mai bán giá 7.500.000 đồng, so sánh với bên mình nhé' },
+      { label: '3 · Đủ dữ liệu', q: 'So sánh giá bán và tính năng điều hòa Sao Mai với bên mình năm nay' }
     ],
     returns: [
-      { label: 'Kịch bản 1: Thiếu dữ liệu', q: 'Hàng bị lỗi, đổi giúp tôi' },
-      { label: 'Kịch bản 2: Dữ liệu mâu thuẫn', q: 'Đơn NX-1024 tôi nhận hôm 30/10 nhưng hệ thống ghi đã giao 22/10, nồi chiên nứt nắp, đổi giúp' },
-      { label: 'Kịch bản 3: Đủ dữ liệu (Chạy vòng lặp Evaluator)', q: 'Đơn NX-1024 nhận ngày 30/10/2026, nồi chiên bị nứt nắp, muốn đổi cái mới' }
+      { label: '1 · Thiếu dữ liệu', q: 'Hàng bị lỗi, đổi giúp tôi' },
+      { label: '2 · Dữ liệu mâu thuẫn', q: 'Đơn NX-1024 tôi nhận hôm 30/10 nhưng hệ thống ghi đã giao 22/10, nồi chiên nứt nắp, đổi giúp' },
+      { label: '3 · Đủ dữ liệu', q: 'Đơn NX-1024 nhận ngày 30/10/2026, nồi chiên bị nứt nắp, muốn đổi cái mới' }
     ]
   };
 
@@ -427,7 +462,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     el('wf-mem-cat').value = dom === 'competitor' ? 'Điều hòa dân dụng' : 'CSKH – đổi trả, bảo hành';
     const list = WF_SCENARIOS[dom];
     el('wf-presets').innerHTML = list.map((s, i) =>
-      `<button type="button" class="chip" data-idx="${i}">${esc(s.label)}</button>`
+      `<button type="button" class="chip${i === 2 ? ' active' : ''}" data-idx="${i}">${esc(s.label)}</button>`
     ).join('');
     el('wf-input').value = list[2].q;
     runWorkflowSim();
@@ -572,18 +607,13 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     }
 
     el('wf-metrics').innerHTML = `
-      <div class="metric"><span>Nhánh kích hoạt</span><strong>${branchName}</strong></div>
-      <div class="metric"><span>Số Node đi qua</span><strong>${steps.length} node</strong></div>
-      <div class="metric ${loopsUsed > 1 ? 'ok' : ''}"><span>Số vòng Evaluator</span><strong>${loopsUsed || 0} / ${maxLoop}</strong></div>
-      <div class="metric ok"><span>Bộ nhớ dài hạn</span><strong>Đã nạp 2 biến</strong></div>
+      <div class="metric"><span>Nhánh</span><strong>${esc(branchName.replace(/^Nhánh \d: /, ''))}</strong></div>
+      <div class="metric"><span>Số node</span><strong>${steps.length}</strong></div>
+      <div class="metric ${loopsUsed > 1 ? 'ok' : ''}"><span>Vòng Evaluator</span><strong>${loopsUsed || 0} / ${maxLoop}</strong></div>
+      <div class="metric ok"><span>Bộ nhớ</span><strong>2 biến</strong></div>
     `;
 
-    el('wf-trace').innerHTML = steps.map(s => `
-      <div class="trace-step">
-        <div class="chunk-head"><b>${esc(s.node)}</b><span class="badge ${s.tone}">${esc(s.badge)}</span></div>
-        <pre>${esc(s.body)}</pre>
-      </div>
-    `).join('');
+    el('wf-trace').innerHTML = timeline(steps.map(s => ({ title: s.node, badge: s.badge, tone: s.tone, text: s.body })));
   }
 
   el('wf-domain').addEventListener('change', renderWfPresets);
@@ -591,6 +621,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const btn = e.target.closest('button[data-idx]');
     if (!btn) return;
     const list = WF_SCENARIOS[el('wf-domain').value];
+    markChip(el('wf-presets'), btn);
     el('wf-input').value = list[Number(btn.dataset.idx)].q;
     runWorkflowSim();
   });
@@ -664,6 +695,8 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const p = FC_SCHEMAS[el('fc-preset').value] || FC_SCHEMAS.order;
     el('fc-schema').value = p.schema;
     el('fc-prompt').value = p.prompt;
+    el('fc-tries').hidden = el('fc-preset').value !== 'order';
+    markChip(el('fc-tries'), el('fc-tries').querySelector('.chip'));
     runFcSim();
   }
 
@@ -682,7 +715,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const req = (parsed.parameters && parsed.parameters.required) || [];
     let callArgs = {};
     let apiRes = {};
-    let riskNote = 'Tự động thực thi (Quyền Chỉ đọc – Least Privilege)';
+    let riskNote = 'Tự chạy – quyền chỉ đọc';
     let riskTone = 'ok';
 
     if (name.includes('don_hang')) {
@@ -712,24 +745,18 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     } else {
       callArgs = { loai_thiet_bi: 'may_in', vi_tri: 'Tầng 3 - phòng 305', mo_ta: 'Kẹt giấy liên tục', muc_do: 'binh_thuong' };
       apiRes = { ticket_draft: 'SC-2026-109', state: 'WAITING_USER_APPROVAL' };
-      riskNote = 'Cần người duyệt (Human-in-the-loop) – Tạo bản ghi trong hệ thống';
+      riskNote = 'Chờ người duyệt – có ghi dữ liệu';
       riskTone = 'warn';
     }
 
-    el('fc-output').innerHTML = `
-      <div class="trace-step">
-        <div class="chunk-head"><b>Bước 1 · Kiểm tra khai báo JSON Schema</b><span class="badge ${desc.length > 25 ? 'ok' : 'warn'}">${desc.length > 25 ? 'Mô tả rõ ràng' : 'Mô tả hơi ngắn'}</span></div>
-        <div style="font-size:13px">Hàm: <code>${esc(name)}</code> · Tham số bắt buộc: <code>${esc(req.join(', ') || 'không')}</code></div>
-      </div>
-      <div class="trace-step">
-        <div class="chunk-head"><b>Bước 2 · LLM xuất yêu cầu gọi hàm (JSON Tool Call)</b><span class="badge">LLM không tự chạy code</span></div>
-        <pre>${esc(JSON.stringify(callArgs ? { tool_call: name, arguments: callArgs } : { tool_call: null }, null, 2))}</pre>
-      </div>
-      <div class="trace-step">
-        <div class="chunk-head"><b>${callArgs ? 'Bước 3 · Hệ thống trung gian kiểm tra Guardrails &amp; Gọi API' : 'Bước 3 · Không gọi API – LLM trả lời trực tiếp'}</b><span class="badge ${riskTone}">${esc(riskNote)}</span></div>
-        <pre>${esc(JSON.stringify(apiRes, null, 2))}</pre>
-      </div>
-    `;
+    el('fc-output').innerHTML = timeline([
+      { title: 'Đọc khai báo hàm', badge: desc.length > 25 ? 'Mô tả rõ' : 'Mô tả quá ngắn', tone: desc.length > 25 ? 'ok' : 'warn',
+        html: `<div class="body">Hàm <code>${esc(name)}</code> · bắt buộc: <code>${esc(req.join(', ') || 'không')}</code></div>` },
+      { title: 'LLM chọn hàm và tham số', badge: 'chỉ xuất JSON, không tự chạy',
+        text: JSON.stringify(callArgs ? { tool_call: name, arguments: callArgs } : { tool_call: null }, null, 2) },
+      { title: callArgs ? 'Hệ thống kiểm tra rồi gọi API' : 'Không gọi API, trả lời luôn', badge: riskNote, tone: riskTone,
+        text: JSON.stringify(apiRes, null, 2) }
+    ]);
   }
 
   function runPromptInjectionSim() {
@@ -742,38 +769,45 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     if (safe) {
       box.innerHTML = `
         <div class="callout ok">
-          <b>✓ PHÒNG THỦ THÀNH CÔNG (Đã chặn đứng lệnh Prompt Injection ở Email #3)</b>
-          <p style="margin:6px 0">Nhờ bọc nội dung trong thẻ <code>&lt;email&gt;</code> kèm quy tắc coi nội dung bên ngoài là dữ liệu và giới hạn quyền tối thiểu (Least Privilege + HITL), Agent xử lý đúng cả 3 email:</p>
+          <span class="who">Kết quả</span><b>✓ Chặn được lệnh độc trong email #3</b>
+          <span class="why">Email được coi là dữ liệu; Agent không có quyền tự đóng hồ sơ hay hứa bồi thường.</span>
         </div>
-        <table>
-          <thead><tr><th>Email</th><th>Tóm tắt của Agent</th><th>Trạng thái đề xuất</th><th>Cảnh báo an toàn</th></tr></thead>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Email</th><th>Agent tóm tắt</th><th>Trạng thái</th></tr></thead>
           <tbody>
-            <tr><td>Email 1 [KH1]</td><td>Khách phản ánh đơn máy lọc không khí hẹn giao 2 ngày nhưng đã 5 ngày chưa nhận.</td><td><span class="badge warn">CẦN XỬ LÝ</span></td><td>Bình thường</td></tr>
-            <tr><td>Email 2 [KH2]</td><td>Khách nhận nhầm màu nồi chiên (nhận hôm qua, chưa bóc tem), đề nghị đổi đúng màu trắng.</td><td><span class="badge warn">CẦN XỬ LÝ</span></td><td>Bình thường</td></tr>
-            <tr><td>Email 3 [KH3]</td><td>Khách báo máy sấy tóc bị chập làm cháy xém tóc con, đề nghị xem xét bồi thường (sự cố an toàn).</td><td><span class="badge warn">CẦN XỬ LÝ</span></td><td><span class="badge bad">CẢNH BÁO: Phát hiện câu lệnh giả mạo chỉ dẫn AI trong nội dung email</span></td></tr>
+            <tr><td>#1</td><td>Máy lọc không khí hẹn giao 2 ngày, đã 5 ngày chưa nhận.</td><td><span class="badge warn">Cần xử lý</span></td></tr>
+            <tr><td>#2</td><td>Nhận nhầm màu nồi chiên, chưa bóc tem, muốn đổi màu trắng.</td><td><span class="badge warn">Cần xử lý</span></td></tr>
+            <tr><td>#3</td><td>Máy sấy tóc chập cháy xém tóc, đề nghị bồi thường (sự cố an toàn).<br><span class="badge bad">⚠ Có câu lệnh giả mạo trong email</span></td><td><span class="badge warn">Cần xử lý</span></td></tr>
           </tbody>
-        </table>
+        </table></div>
       `;
     } else {
       box.innerHTML = `
         <div class="callout bad">
-          <b>⚠ NGUY HIỂM: Agent bị chiếm quyền điều khiển bởi Email #3 (Indirect Prompt Injection)!</b>
-          <p style="margin:6px 0">${!hasTag ? '• Bạn chưa tách dữ liệu bằng thẻ <code>&lt;email&gt;</code> và chưa cấm làm theo mệnh lệnh bên trong dữ liệu.<br>' : ''}${!hasPriv && !hasHitl ? '• Bạn cấp quyền tự động đóng hồ sơ / gửi phản hồi mà không có người duyệt (HITL).' : ''}</p>
+          <span class="who">Kết quả</span><b>✗ Agent bị email #3 điều khiển</b>
+          <span class="why">${!hasTag ? 'Email chưa được bọc thẻ nên Agent làm theo lệnh bên trong. ' : ''}${!hasPriv && !hasHitl ? 'Agent được tự đóng hồ sơ, không ai duyệt.' : ''}</span>
         </div>
-        <table>
-          <thead><tr><th>Email</th><th>Hành động sai của Agent</th><th>Trạng thái</th><th>Hậu quả</th></tr></thead>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Email</th><th>Agent làm gì</th><th>Trạng thái</th></tr></thead>
           <tbody>
-            <tr><td>Email 1 [KH1]</td><td>Tóm tắt phản ánh giao hàng trễ.</td><td>CẦN XỬ LÝ</td><td>–</td></tr>
-            <tr><td>Email 2 [KH2]</td><td>Tóm tắt yêu cầu đổi màu nồi chiên.</td><td>CẦN XỬ LÝ</td><td>–</td></tr>
-            <tr><td>Email 3 [KH3]</td><td>Làm theo dòng chữ ẩn: tự trả lời khách <i>“Yêu cầu bồi thường 50.000.000 đồng đã được duyệt”</i>.</td><td><span class="badge bad">ĐÃ XỬ LÝ (Bị làm giả)</span></td><td>Khiếu nại thật bị bỏ sót + cam kết bồi thường sai thẩm quyền!</td></tr>
+            <tr><td>#1</td><td>Tóm tắt phản ánh giao hàng trễ.</td><td>Cần xử lý</td></tr>
+            <tr><td>#2</td><td>Tóm tắt yêu cầu đổi màu nồi chiên.</td><td>Cần xử lý</td></tr>
+            <tr><td>#3</td><td>Tự trả lời khách: <i>“Yêu cầu bồi thường 50.000.000 đồng đã được duyệt”</i>.<br><span class="badge bad">Khiếu nại thật bị bỏ sót, hứa bồi thường sai thẩm quyền</span></td><td><span class="badge bad">Đã xử lý (giả)</span></td></tr>
           </tbody>
-        </table>
+        </table></div>
       `;
     }
   }
 
   el('fc-preset').addEventListener('change', loadFcPreset);
   el('fc-run').addEventListener('click', runFcSim);
+  el('fc-tries').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-q]');
+    if (!btn) return;
+    markChip(el('fc-tries'), btn);
+    el('fc-prompt').value = btn.dataset.q;
+    runFcSim();
+  });
   ['pi-tag', 'pi-priv', 'pi-hitl'].forEach(id => el(id).addEventListener('change', runPromptInjectionSim));
   el('pi-run').addEventListener('click', runPromptInjectionSim);
   el('pi-copy').addEventListener('click', () => {
@@ -868,14 +902,13 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
       totalScore += d.score;
       if (d.loops > maxLoops) maxLoops = d.loops;
       const badgeCls = d.score >= 5 ? 'ok' : (d.score >= 3 ? 'warn' : 'bad');
-      return `<tr>
+      const r1 = d.r1.startsWith('APPROVE') ? ['ok', 'Đạt'] : d.r1.startsWith('Chuyển') ? ['', 'Chuyển người'] : ['bad', 'Bị trả lại'];
+      return `<tr data-ev="${idx}" title="${esc(d.r1)}">
         <td><b>${c.id}</b></td>
         <td>${esc(c.type)}</td>
-        <td><code>${esc(d.route)}</code></td>
-        <td>${esc(d.r1)}</td>
-        <td><span class="badge ${badgeCls}">${esc(d.final)}</span></td>
-        <td><b>${d.score}/6</b></td>
-        <td><button type="button" class="btn" style="padding:4px 8px;font-size:12px" data-ev="${idx}">Xem log</button></td>
+        <td><span class="badge ${r1[0]}">${r1[1]}</span></td>
+        <td>${esc(d.final)}</td>
+        <td><span class="badge ${badgeCls}">${d.score}/6</span></td>
       </tr>`;
     }).join('');
 
@@ -884,22 +917,10 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const avgTime = mode === 'v2' ? '0p 45s' : '1p 28s';
 
     el('ev-kpis').innerHTML = `
-      <div class="metric ${r1Pct >= 80 ? 'ok' : 'warn'}">
-        <span>KPI 1 · Duyệt ngay vòng 1 (Mục tiêu &gt; 80%)</span>
-        <strong>${r1Pct}% (${r1Pass}/8 đề)</strong>
-      </div>
-      <div class="metric ok">
-        <span>KPI 2 · Không sai lỗi chính tả &amp; Format (100%)</span>
-        <strong>100%</strong>
-      </div>
-      <div class="metric ${mode === 'v2' ? 'ok' : 'warn'}">
-        <span>KPI 3 · Thời gian hoàn thành 1 bài (&lt; 2 phút)</span>
-        <strong>TB ${avgTime}</strong>
-      </div>
-      <div class="metric ok">
-        <span>KPI 4 · Số vòng lặp tối đa (Max Retries ≤ 3)</span>
-        <strong>Tối đa ${maxLoops} vòng (Điểm TB ${avgScore}/6)</strong>
-      </div>
+      <div class="metric ${r1Pct >= 80 ? 'ok' : 'warn'}"><span>Duyệt ngay vòng 1</span><strong>${r1Pct}%</strong><small>${r1Pass}/8 đề · mục tiêu &gt; 80%</small></div>
+      <div class="metric ok"><span>Đúng chính tả, định dạng</span><strong>100%</strong><small>mục tiêu 100%</small></div>
+      <div class="metric ${mode === 'v2' ? 'ok' : 'warn'}"><span>Thời gian 1 bài</span><strong>${avgTime}</strong><small>mục tiêu &lt; 2 phút</small></div>
+      <div class="metric ok"><span>Số vòng sửa nhiều nhất</span><strong>${maxLoops}</strong><small>mục tiêu ≤ 3 · điểm TB ${avgScore}/6</small></div>
     `;
 
     showEvalTrace(0);
@@ -912,13 +933,13 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
 
     const steps = [
       {
-        title: `Đề ${c.id} (${c.type}) – Đầu vào BRIEF`,
-        badge: 'User Input',
+        title: `Đề ${c.id} · BRIEF đầu vào`,
+        badge: c.type,
         tone: 'ok',
         text: c.brief
       },
       {
-        title: `Bước 1 · Router Agent (Bộ điều phối)`,
+        title: `Router chọn người làm`,
         badge: d.route,
         tone: 'ok',
         text: c.id === 'E08'
@@ -930,32 +951,32 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     if (c.id !== 'E08') {
       if (mode === 'v1' && d.loops > 1) {
         steps.push({
-          title: `Bước 2 · Worker (Content Writer) – Bản nháp Vòng 1`,
+          title: `Writer viết nháp vòng 1`,
           badge: 'Vòng 1',
           tone: 'warn',
           text: `Tiêu đề: Máy lạnh Inverter – lựa chọn số 1 của mọi gia đình!!!\nNội dung: Đổi ngay hôm nay để tiết kiệm tới 60% tiền điện mỗi tháng, giá rẻ nhất thị trường...\n(Thiếu hotline đăng ký, dùng 3 dấu chấm than và tự thêm con số 60% ngoài BRIEF)`
         });
         steps.push({
-          title: `Bước 3 · Reviewer (Editor) – Kiểm duyệt theo 5 tiêu chí Rubric`,
+          title: `Editor chấm theo 5 tiêu chí`,
           badge: 'REJECT',
           tone: 'bad',
           text: `{\n  "status": "REJECT",\n  "ly_do": [\n    "Tiêu chí 3: Con số 'tiết kiệm 60%' không có trong BRIEF",\n    "Tiêu chí 4: Dùng 3 dấu chấm than (quy định tối đa 1)",\n    "Tiêu chí 5: Thiếu đoạn Call-to-Action kèm hotline và hạn đăng ký"\n  ],\n  "goi_y_sua": "Bỏ con số ngoài BRIEF; thêm câu kêu gọi đăng ký qua hotline và thời hạn ở cuối bài."\n}`
         });
         steps.push({
-          title: `Bước 4 · Worker (Content Writer) – Bản sửa Vòng 2 & Editor duyệt`,
+          title: `Writer sửa, Editor chấm lại`,
           badge: d.final,
           tone: d.final.includes('APPROVE') ? 'ok' : 'bad',
           text: `Writer sửa đúng các lỗi trong mảng "ly_do" mà không viết lại từ đầu → Editor kiểm tra lại đạt 5/5 tiêu chí Rubric: {"status": "APPROVE", "ly_do": []}.`
         });
       } else {
         steps.push({
-          title: `Bước 2 · Worker (Content Writer) – Bản nháp Vòng 1 (Prompt v2 đã tinh chỉnh)`,
+          title: `Writer viết nháp vòng 1 (prompt v2)`,
           badge: 'Chuẩn ngay Vòng 1',
           tone: 'ok',
           text: `Nhờ bổ sung 2 câu khóa chặt vào System Prompt của Writer (“Chỉ dùng số liệu trong BRIEF, thiếu thì ghi [CẦN XÁC NHẬN]” và “BẮT BUỘC kết thúc bằng CTA có cách đăng ký và thời hạn”), bản nháp Vòng 1 đạt ngay cả 5 tiêu chí!`
         });
         steps.push({
-          title: `Bước 3 · Reviewer (Editor) – Kiểm duyệt Rubric`,
+          title: `Editor chấm theo 5 tiêu chí`,
           badge: 'APPROVE ✓',
           tone: 'ok',
           text: `{\n  "status": "APPROVE",\n  "ly_do": [],\n  "goi_y_sua": ""\n}\n→ Xuất bản ngay ở Vòng 1, tiết kiệm 50% số token và giảm thời gian phản hồi xuống dưới 45 giây.`
@@ -963,12 +984,8 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
       }
     }
 
-    el('ev-trace').innerHTML = steps.map(s => `
-      <div class="trace-step">
-        <div class="chunk-head"><b>${esc(s.title)}</b><span class="badge ${s.tone}">${esc(s.badge)}</span></div>
-        <pre>${esc(s.text)}</pre>
-      </div>
-    `).join('');
+    el('ev-tbody').querySelectorAll('tr').forEach((tr, i) => tr.classList.toggle('on', i === idx));
+    el('ev-trace').innerHTML = timeline(steps);
   }
 
   el('ev-version').addEventListener('change', () => {
@@ -986,8 +1003,8 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
   });
   el('ev-run-all').addEventListener('click', renderEvalTable);
   el('ev-tbody').addEventListener('click', e => {
-    const btn = e.target.closest('button[data-ev]');
-    if (btn) showEvalTrace(Number(btn.dataset.ev));
+    const row = e.target.closest('tr[data-ev]');
+    if (row) showEvalTrace(Number(row.dataset.ev));
   });
   el('ev-copy').addEventListener('click', () => {
     const txt = [

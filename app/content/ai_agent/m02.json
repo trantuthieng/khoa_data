@@ -347,6 +347,17 @@
     },
     {
      "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_da_lam_sach.md\" download>so_tay_nhan_su_da_lam_sach.md</a> – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
+      }
+     ]
+    },
+    {
+     "t": "list",
      "ordered": true,
      "items": [
       {
@@ -360,9 +371,9 @@
        "plain": "Ghi lại câu trả lời: AI nói không biết, hay đưa ra con số cụ thể?"
       },
       {
-       "html": "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code> (mục Bộ file luyện tập ở phần Tổng quan), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi.",
+       "html": "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code> (tải ở trên), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi.",
        "level": 0,
-       "plain": "Mở cuộc trò chuyện mới, đính kèm so_tay_nhan_su_da_lam_sach.md (mục Bộ file luyện tập ở phần Tổng quan), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi."
+       "plain": "Mở cuộc trò chuyện mới, đính kèm so_tay_nhan_su_da_lam_sach.md (tải ở trên), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói rõ.” rồi dán 3 câu hỏi."
       },
       {
        "html": "So hai lần trả lời với đáp án.",
@@ -1043,6 +1054,18 @@
      "t": "p",
      "html": "Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất.",
      "plain": "Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất."
+    },
+    {
+     "t": "p",
+     "html": "Mô hình động dưới đây chạy đủ một vòng trên tài liệu đổi trả của Nhà Xanh. Bấm <strong>▶ Tự chạy</strong> hoặc từng bước; từ bước 3 đổi câu hỏi, chuyển “Theo nghĩa / Theo từ khóa”, kéo Top-K và Ngưỡng để thấy kết quả đổi theo. Bấm vào một chấm để xem đoạn văn và vector của nó.",
+     "plain": "Mô hình động dưới đây chạy đủ một vòng trên tài liệu đổi trả của Nhà Xanh. Bấm ▶ Tự chạy hoặc từng bước; từ bước 3 đổi câu hỏi, chuyển “Theo nghĩa / Theo từ khóa”, kéo Top-K và Ngưỡng để thấy kết quả đổi theo. Bấm vào một chấm để xem đoạn văn và vector của nó.",
+     "callout": "example"
+    },
+    {
+     "t": "widget",
+     "name": "vectordb",
+     "caption": "Vector Database: đoạn cùng nghĩa nằm gần nhau; câu hỏi được đặt lên cùng bản đồ và lấy các đoạn gần nhất",
+     "plain": "Vector Database: đoạn cùng nghĩa nằm gần nhau; câu hỏi được đặt lên cùng bản đồ và lấy các đoạn gần nhất"
     },
     {
      "t": "table",
@@ -1821,6 +1844,22 @@
     },
     {
      "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_ban_goc.txt\" download>so_tay_nhan_su_ban_goc.txt</a> – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_ban_goc.txt – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_da_lam_sach.md\" download>so_tay_nhan_su_da_lam_sach.md</a> – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
+      }
+     ]
+    },
+    {
+     "t": "list",
      "ordered": true,
      "items": [
       {
@@ -1922,6 +1961,27 @@
     {
      "t": "h3",
      "text": "Cắt đoạn kém và cắt đoạn tốt"
+    },
+    {
+     "t": "p",
+     "html": "Tải hai bản của cùng sổ tay nhân sự để đối chiếu khi đọc ví dụ: bản chép từ PDF còn mục lục, header/footer, bảng vỡ dòng; bản đã làm sạch mỗi mục là một khối Markdown có đề mục và dòng Nguồn.",
+     "plain": "Tải hai bản của cùng sổ tay nhân sự để đối chiếu khi đọc ví dụ: bản chép từ PDF còn mục lục, header/footer, bảng vỡ dòng; bản đã làm sạch mỗi mục là một khối Markdown có đề mục và dòng Nguồn."
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_ban_goc.txt\" download>so_tay_nhan_su_ban_goc.txt</a> – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_ban_goc.txt – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_da_lam_sach.md\" download>so_tay_nhan_su_da_lam_sach.md</a> – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
+      }
+     ]
     },
     {
      "t": "p",
@@ -2250,6 +2310,164 @@
      "plain": "Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử."
     },
     {
+     "t": "h3",
+     "text": "Một prompt hỏi đáp tài liệu tốt cần 7 yếu tố"
+    },
+    {
+     "t": "p",
+     "html": "Mẫu bên dưới có đủ 7 yếu tố. Thiếu yếu tố nào, Agent sẽ mắc đúng lỗi ở cột cuối – dùng bảng này để tự rà prompt của bạn.",
+     "plain": "Mẫu bên dưới có đủ 7 yếu tố. Thiếu yếu tố nào, Agent sẽ mắc đúng lỗi ở cột cuối – dùng bảng này để tự rà prompt của bạn."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "#",
+        "plain": "#"
+       },
+       {
+        "html": "Yếu tố",
+        "plain": "Yếu tố"
+       },
+       {
+        "html": "Trong mẫu",
+        "plain": "Trong mẫu"
+       },
+       {
+        "html": "Thiếu thì Agent sẽ…",
+        "plain": "Thiếu thì Agent sẽ…"
+       }
+      ],
+      [
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Vai trò và phạm vi",
+        "plain": "Vai trò và phạm vi"
+       },
+       {
+        "html": "# VAI TRÒ: trợ lý tra cứu quy định nội bộ Công ty ABC",
+        "plain": "# VAI TRÒ: trợ lý tra cứu quy định nội bộ Công ty ABC"
+       },
+       {
+        "html": "Trả lời lan sang chủ đề ngoài tài liệu, giọng không hợp người dùng",
+        "plain": "Trả lời lan sang chủ đề ngoài tài liệu, giọng không hợp người dùng"
+       }
+      ],
+      [
+       {
+        "html": "2",
+        "plain": "2"
+       },
+       {
+        "html": "Luật bám tài liệu",
+        "plain": "Luật bám tài liệu"
+       },
+       {
+        "html": "Luật 1: chỉ dùng thông tin trong &lt;tai_lieu&gt;",
+        "plain": "Luật 1: chỉ dùng thông tin trong &lt;tai_lieu&gt;"
+       },
+       {
+        "html": "Trộn hiểu biết chung, đưa con số “nghe hợp lý” nhưng không có trong tài liệu",
+        "plain": "Trộn hiểu biết chung, đưa con số “nghe hợp lý” nhưng không có trong tài liệu"
+       }
+      ],
+      [
+       {
+        "html": "3",
+        "plain": "3"
+       },
+       {
+        "html": "Cách trình bày",
+        "plain": "Cách trình bày"
+       },
+       {
+        "html": "Luật 2–3: câu đầu trả lời thẳng, giải thích tối đa 4 câu",
+        "plain": "Luật 2–3: câu đầu trả lời thẳng, giải thích tối đa 4 câu"
+       },
+       {
+        "html": "Dài dòng; người hỏi phải đọc hết mới biết “có” hay “không”",
+        "plain": "Dài dòng; người hỏi phải đọc hết mới biết “có” hay “không”"
+       }
+      ],
+      [
+       {
+        "html": "4",
+        "plain": "4"
+       },
+       {
+        "html": "Dẫn nguồn",
+        "plain": "Dẫn nguồn"
+       },
+       {
+        "html": "Luật 4: (Nguồn: tên tài liệu – mục)",
+        "plain": "Luật 4: (Nguồn: tên tài liệu – mục)"
+       },
+       {
+        "html": "Người dùng không kiểm chứng được; câu trả lời sai khó bị phát hiện",
+        "plain": "Người dùng không kiểm chứng được; câu trả lời sai khó bị phát hiện"
+       }
+      ],
+      [
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Lối thoát khi không có thông tin",
+        "plain": "Lối thoát khi không có thông tin"
+       },
+       {
+        "html": "Luật 5: một câu trả lời cố định, không suy đoán",
+        "plain": "Luật 5: một câu trả lời cố định, không suy đoán"
+       },
+       {
+        "html": "Đoán ra câu trả lời (ảo giác) – lỗi nguy hiểm nhất của RAG",
+        "plain": "Đoán ra câu trả lời (ảo giác) – lỗi nguy hiểm nhất của RAG"
+       }
+      ],
+      [
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Xử lý tài liệu mâu thuẫn",
+        "plain": "Xử lý tài liệu mâu thuẫn"
+       },
+       {
+        "html": "Luật 6: nêu cả hai, ưu tiên văn bản hiệu lực mới hơn",
+        "plain": "Luật 6: nêu cả hai, ưu tiên văn bản hiệu lực mới hơn"
+       },
+       {
+        "html": "Chọn ngẫu nhiên một bản, có khi là quy định cũ",
+        "plain": "Chọn ngẫu nhiên một bản, có khi là quy định cũ"
+       }
+      ],
+      [
+       {
+        "html": "7",
+        "plain": "7"
+       },
+       {
+        "html": "Chỗ đặt dữ liệu, có thẻ bọc",
+        "plain": "Chỗ đặt dữ liệu, có thẻ bọc"
+       },
+       {
+        "html": "&lt;tai_lieu&gt;{{ket_qua_truy_xuat}}&lt;/tai_lieu&gt; và Câu hỏi: {{cau_hoi}}",
+        "plain": "&lt;tai_lieu&gt;{{ket_qua_truy_xuat}}&lt;/tai_lieu&gt; và Câu hỏi: {{cau_hoi}}"
+       },
+       {
+        "html": "Không có biến tài liệu: LLM không thấy gì để bám. Không có thẻ bọc: LLM lẫn tài liệu với chỉ dẫn, dễ làm theo câu lệnh lạ nằm trong tài liệu",
+        "plain": "Không có biến tài liệu: LLM không thấy gì để bám. Không có thẻ bọc: LLM lẫn tài liệu với chỉ dẫn, dễ làm theo câu lệnh lạ nằm trong tài liệu"
+       }
+      ]
+     ]
+    },
+    {
      "t": "code",
      "text": "# VAI TRÒ\nBạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.\n\n# CÁCH TRẢ LỜI\n1. Chỉ dùng thông tin trong <tai_lieu>. Không dùng hiểu biết bên ngoài.\n2. Câu đầu tiên trả lời thẳng câu hỏi (Có/Không, con số, tên bước...).\n3. Sau đó giải thích ngắn, tối đa 4 câu.\n4. Cuối câu trả lời ghi nguồn: (Nguồn: tên tài liệu – mục).\n5. <tai_lieu> không có thông tin thì trả lời đúng câu: \"Tài liệu hiện có chưa đề cập nội dung\n   này. Anh/chị vui lòng liên hệ phòng Nhân sự.\" Không suy đoán.\n6. Hai tài liệu mâu thuẫn: nêu cả hai kèm ngày hiệu lực, ưu tiên văn bản hiệu lực mới hơn.\n\n<tai_lieu>\n{{ket_qua_truy_xuat}}\n</tai_lieu>\n\nCâu hỏi: {{cau_hoi}}"
     },
@@ -2257,6 +2475,184 @@
      "t": "p",
      "html": "<code>{{ket_qua_truy_xuat}}</code> và <code>{{cau_hoi}}</code> là <strong>biến</strong>: nền tảng tự điền kết quả truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể khác nhau theo nền tảng.",
      "plain": "{{ket_qua_truy_xuat}} và {{cau_hoi}} là biến: nền tảng tự điền kết quả truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể khác nhau theo nền tảng."
+    },
+    {
+     "t": "h3",
+     "text": "Prompt này chạy thế nào mỗi khi có câu hỏi"
+    },
+    {
+     "t": "figure",
+     "html": "<svg class=\"dg\" viewBox=\"0 0 720 238\" role=\"img\" aria-label=\"Prompt hỏi đáp tài liệu gồm ba phần: chỉ dẫn cố định, tài liệu và câu hỏi điền lại mỗi lần\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-prag-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-prag-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-prag-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-prag-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-prag-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><text x=\"350\" y=\"18\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">Prompt hoàn chỉnh gửi cho LLM (mỗi câu hỏi một bản)</text><rect x=\"206\" y=\"28\" width=\"288\" height=\"176\" rx=\"8\" class=\"box\"/><rect x=\"220\" y=\"40\" width=\"260\" height=\"44\" rx=\"8\" class=\"r-brand\"/><text x=\"350.0\" y=\"58.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">① Chỉ dẫn: vai trò + 6 luật trả lời</text><text x=\"350.0\" y=\"74.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"f-mut\">giữ nguyên mọi lần</text><text x=\"10\" y=\"58\" font-size=\"12.5\" text-anchor=\"start\" font-weight=\"600\">Bạn viết</text><text x=\"10\" y=\"74\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">một lần</text><line x1=\"150\" y1=\"62\" x2=\"218\" y2=\"62\" class=\"l-mut dash\" marker-end=\"url(#ai-prag-mut)\"/><rect x=\"220\" y=\"94\" width=\"260\" height=\"44\" rx=\"8\" class=\"r-note\"/><text x=\"350.0\" y=\"112.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">② &lt;tai_lieu&gt; các đoạn tìm được</text><text x=\"350.0\" y=\"128.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"mono f-mut\">{{ket_qua_truy_xuat}}</text><text x=\"10\" y=\"112\" font-size=\"12.5\" text-anchor=\"start\" font-weight=\"600\">Knowledge Base</text><text x=\"10\" y=\"128\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">tìm Top-K đoạn</text><line x1=\"150\" y1=\"116\" x2=\"218\" y2=\"116\" class=\"l-brand\" marker-end=\"url(#ai-prag-brand)\"/><rect x=\"220\" y=\"148\" width=\"260\" height=\"44\" rx=\"8\" class=\"r-note\"/><text x=\"350.0\" y=\"166.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">③ Câu hỏi</text><text x=\"350.0\" y=\"182.6\" font-size=\"11.0\" text-anchor=\"middle\" class=\"mono f-mut\">{{cau_hoi}}</text><text x=\"10\" y=\"166\" font-size=\"12.5\" text-anchor=\"start\" font-weight=\"600\">Người dùng hỏi</text><text x=\"10\" y=\"182\" font-size=\"11.5\" text-anchor=\"start\" class=\"f-mut\">(đã viết lại nếu cần)</text><line x1=\"150\" y1=\"170\" x2=\"218\" y2=\"170\" class=\"l-brand\" marker-end=\"url(#ai-prag-brand)\"/><line x1=\"494\" y1=\"116\" x2=\"522\" y2=\"116\" class=\"l-brand\" marker-end=\"url(#ai-prag-brand)\"/><rect x=\"524\" y=\"88\" width=\"86\" height=\"56\" rx=\"8\" class=\"r-brand\"/><text x=\"567.0\" y=\"103.9\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">LLM</text><text x=\"567.0\" y=\"120.4\" font-size=\"11.0\" text-anchor=\"middle\">đọc từ trên</text><text x=\"567.0\" y=\"136.9\" font-size=\"11.0\" text-anchor=\"middle\">xuống</text><line x1=\"610\" y1=\"116\" x2=\"628\" y2=\"116\" class=\"l-brand\" marker-end=\"url(#ai-prag-brand)\"/><rect x=\"630\" y=\"88\" width=\"82\" height=\"56\" rx=\"8\" class=\"r-ok\"/><text x=\"671.0\" y=\"112.1\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"600\">Câu trả lời</text><text x=\"671.0\" y=\"128.6\" font-size=\"11.0\" text-anchor=\"middle\">kèm nguồn</text><text x=\"360\" y=\"228\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">Câu hỏi đặt cuối cùng, sát chỗ LLM bắt đầu viết; tài liệu nằm trong thẻ để không lẫn với chỉ dẫn.</text></svg>",
+     "caption": "Phần chỉ dẫn viết một lần; tài liệu và câu hỏi được điền lại mỗi lần có câu hỏi",
+     "plain": "Phần chỉ dẫn viết một lần; tài liệu và câu hỏi được điền lại mỗi lần có câu hỏi"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "<strong>Người dùng hỏi.</strong> Nếu là câu nối tiếp (“còn hạng B?”), node viết lại câu hỏi chạy trước để câu hỏi đứng được một mình (prompt ở cuối phần này).",
+       "level": 0,
+       "plain": "Người dùng hỏi. Nếu là câu nối tiếp (“còn hạng B?”), node viết lại câu hỏi chạy trước để câu hỏi đứng được một mình (prompt ở cuối phần này)."
+      },
+      {
+       "html": "<strong>Truy xuất.</strong> Câu hỏi được đổi thành vector; Knowledge Base trả về các đoạn gần nghĩa nhất, đã lọc theo Top-K và ngưỡng.",
+       "level": 0,
+       "plain": "Truy xuất. Câu hỏi được đổi thành vector; Knowledge Base trả về các đoạn gần nghĩa nhất, đã lọc theo Top-K và ngưỡng."
+      },
+      {
+       "html": "<strong>Điền biến.</strong> Nền tảng ghép các đoạn vào <code>{{ket_qua_truy_xuat}}</code>, câu hỏi vào <code>{{cau_hoi}}</code>. Phần chỉ dẫn giữ nguyên.",
+       "level": 0,
+       "plain": "Điền biến. Nền tảng ghép các đoạn vào {{ket_qua_truy_xuat}}, câu hỏi vào {{cau_hoi}}. Phần chỉ dẫn giữ nguyên."
+      },
+      {
+       "html": "<strong>LLM đọc từ trên xuống:</strong> biết mình là ai và phải trả lời theo luật nào, đọc tài liệu, cuối cùng đọc câu hỏi rồi viết câu trả lời. Câu hỏi đặt cuối để nằm sát chỗ LLM bắt đầu viết.",
+       "level": 0,
+       "plain": "LLM đọc từ trên xuống: biết mình là ai và phải trả lời theo luật nào, đọc tài liệu, cuối cùng đọc câu hỏi rồi viết câu trả lời. Câu hỏi đặt cuối để nằm sát chỗ LLM bắt đầu viết."
+      },
+      {
+       "html": "<strong>Trả về.</strong> Người dùng nhận câu trả lời kèm nguồn; log lưu prompt đã điền để bạn kiểm tra khi có lỗi.",
+       "level": 0,
+       "plain": "Trả về. Người dùng nhận câu trả lời kèm nguồn; log lưu prompt đã điền để bạn kiểm tra khi có lỗi."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "html": "Prompt LLM thực sự nhận được với câu hỏi “Hạng B được thưởng KPI bao nhiêu?” (phần chỉ dẫn rút gọn):",
+     "plain": "Prompt LLM thực sự nhận được với câu hỏi “Hạng B được thưởng KPI bao nhiêu?” (phần chỉ dẫn rút gọn):"
+    },
+    {
+     "t": "code",
+     "text": "# VAI TRÒ\nBạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.\n# CÁCH TRẢ LỜI\n1. Chỉ dùng thông tin trong <tai_lieu>. ...  (đủ 6 luật như mẫu)\n\n<tai_lieu>\n[Đoạn 1] Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý\n- Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý.\n- Hạng B: KPI từ 95% đến dưới 110%, thưởng 3.000.000 đồng/quý.\n- Hạng C: KPI dưới 95%, không có thưởng.\n- Nhân viên thử việc không áp dụng thưởng KPI quý.\nNguồn: Sổ tay nhân sự 2025, mục 3.2 – hiệu lực 01/01/2025\n[Đoạn 2] Hỏi: Nhân viên thử việc có được thưởng KPI quý không? Đáp: Không. ...\n</tai_lieu>\n\nCâu hỏi: Hạng B được thưởng KPI bao nhiêu?\n\n→ LLM trả lời:\nHạng B được thưởng 3.000.000 đồng/quý. Mức này áp dụng khi KPI từ 95% đến dưới 110%;\nnhân viên thử việc không áp dụng. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)"
+    },
+    {
+     "t": "p",
+     "html": "Câu đầu trả lời thẳng (luật 2), không thêm thông tin ngoài hai đoạn (luật 1), có nguồn (luật 4). Đoạn 2 nói về thử việc – LLM chỉ dùng phần liên quan, nên Top-K hơi dư cũng không sao, miễn đoạn đúng có mặt.",
+     "plain": "Câu đầu trả lời thẳng (luật 2), không thêm thông tin ngoài hai đoạn (luật 1), có nguồn (luật 4). Đoạn 2 nói về thử việc – LLM chỉ dùng phần liên quan, nên Top-K hơi dư cũng không sao, miễn đoạn đúng có mặt.",
+     "callout": "example"
+    },
+    {
+     "t": "h3",
+     "text": "Mỗi luật xử lý tình huống nào"
+    },
+    {
+     "t": "p",
+     "html": "Thử prompt bằng các câu hỏi dưới đây. Mỗi câu kiểm tra một luật; câu trả lời khác cột cuối nghĩa là luật đó viết chưa đủ rõ.",
+     "plain": "Thử prompt bằng các câu hỏi dưới đây. Mỗi câu kiểm tra một luật; câu trả lời khác cột cuối nghĩa là luật đó viết chưa đủ rõ."
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu hỏi thử",
+        "plain": "Câu hỏi thử"
+       },
+       {
+        "html": "Tài liệu tìm được",
+        "plain": "Tài liệu tìm được"
+       },
+       {
+        "html": "Luật quyết định",
+        "plain": "Luật quyết định"
+       },
+       {
+        "html": "Câu trả lời đúng",
+        "plain": "Câu trả lời đúng"
+       }
+      ],
+      [
+       {
+        "html": "“Hạng B được thưởng KPI bao nhiêu?”",
+        "plain": "“Hạng B được thưởng KPI bao nhiêu?”"
+       },
+       {
+        "html": "Mục 3.2 có mức hạng B",
+        "plain": "Mục 3.2 có mức hạng B"
+       },
+       {
+        "html": "1, 2, 4",
+        "plain": "1, 2, 4"
+       },
+       {
+        "html": "“3.000.000 đồng/quý…” kèm nguồn mục 3.2",
+        "plain": "“3.000.000 đồng/quý…” kèm nguồn mục 3.2"
+       }
+      ],
+      [
+       {
+        "html": "“Thưởng Tết được mấy tháng lương?”",
+        "plain": "“Thưởng Tết được mấy tháng lương?”"
+       },
+       {
+        "html": "Không đoạn nào nói về thưởng Tết",
+        "plain": "Không đoạn nào nói về thưởng Tết"
+       },
+       {
+        "html": "5",
+        "plain": "5"
+       },
+       {
+        "html": "Đúng câu “Tài liệu hiện có chưa đề cập…”; không đưa con số nào",
+        "plain": "Đúng câu “Tài liệu hiện có chưa đề cập…”; không đưa con số nào"
+       }
+      ],
+      [
+       {
+        "html": "“Thử việc có được thưởng KPI không?”",
+        "plain": "“Thử việc có được thưởng KPI không?”"
+       },
+       {
+        "html": "Mục 3.2 và Chương 4",
+        "plain": "Mục 3.2 và Chương 4"
+       },
+       {
+        "html": "2, 3",
+        "plain": "2, 3"
+       },
+       {
+        "html": "Câu đầu: “Không.”, rồi giải thích ngắn",
+        "plain": "Câu đầu: “Không.”, rồi giải thích ngắn"
+       }
+      ],
+      [
+       {
+        "html": "“Phụ cấp công tác ngoài tỉnh bao nhiêu?” (kho còn cả quy định 2023)",
+        "plain": "“Phụ cấp công tác ngoài tỉnh bao nhiêu?” (kho còn cả quy định 2023)"
+       },
+       {
+        "html": "Hai đoạn ghi hai mức khác nhau",
+        "plain": "Hai đoạn ghi hai mức khác nhau"
+       },
+       {
+        "html": "6",
+        "plain": "6"
+       },
+       {
+        "html": "Nêu cả hai kèm ngày hiệu lực, áp dụng mức của văn bản 2025",
+        "plain": "Nêu cả hai kèm ngày hiệu lực, áp dụng mức của văn bản 2025"
+       }
+      ],
+      [
+       {
+        "html": "“Các công ty thường thưởng KPI bao nhiêu?”",
+        "plain": "“Các công ty thường thưởng KPI bao nhiêu?”"
+       },
+       {
+        "html": "Chỉ có quy định của ABC",
+        "plain": "Chỉ có quy định của ABC"
+       },
+       {
+        "html": "1",
+        "plain": "1"
+       },
+       {
+        "html": "Chỉ nêu quy định của ABC; không đưa mức “thông thường” từ hiểu biết chung",
+        "plain": "Chỉ nêu quy định của ABC; không đưa mức “thông thường” từ hiểu biết chung"
+       }
+      ]
+     ]
     },
     {
      "t": "p",
@@ -2267,6 +2663,11 @@
     {
      "t": "h3",
      "text": "Prompt viết lại câu hỏi (Query Rewrite)"
+    },
+    {
+     "t": "p",
+     "html": "Prompt này chạy <strong>trước</strong> bước truy xuất; kết quả không hiển thị cho người dùng mà được đem đi tìm kiếm. Cần 3 yếu tố: <strong>nhiệm vụ</strong> (câu hỏi phải đứng được một mình), <strong>luật thay thế</strong> (đại từ, “còn … thì sao” → nội dung cụ thể; giữ nguyên mã số, tên riêng, con số) và <strong>đầu ra chỉ có câu hỏi</strong> – thêm lời giải thích thì chính lời giải thích bị đem đi tìm.",
+     "plain": "Prompt này chạy trước bước truy xuất; kết quả không hiển thị cho người dùng mà được đem đi tìm kiếm. Cần 3 yếu tố: nhiệm vụ (câu hỏi phải đứng được một mình), luật thay thế (đại từ, “còn … thì sao” → nội dung cụ thể; giữ nguyên mã số, tên riêng, con số) và đầu ra chỉ có câu hỏi – thêm lời giải thích thì chính lời giải thích bị đem đi tìm."
     },
     {
      "t": "code",
@@ -2882,6 +3283,27 @@
         "plain": "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?” (Nhà Xanh) hoặc một câu bạn biết chắc tài liệu không có."
        }
       ]
+     ]
+    },
+    {
+     "t": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_ban_goc.txt\" download>so_tay_nhan_su_ban_goc.txt</a> – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_ban_goc.txt – sổ tay nhân sự bản chép từ PDF, còn “bẩn” (buổi 2)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/so_tay_nhan_su_da_lam_sach.md\" download>so_tay_nhan_su_da_lam_sach.md</a> – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)",
+       "level": 0,
+       "plain": "so_tay_nhan_su_da_lam_sach.md – sổ tay nhân sự đã làm sạch, mỗi mục một đoạn (buổi 2)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/chinh_sach_doi_tra_gia_lap.md\" download>chinh_sach_doi_tra_gia_lap.md</a> – chính sách đổi trả – bảo hành, tài liệu Knowledge cho trợ lý CSKH (buổi 1)",
+       "level": 0,
+       "plain": "chinh_sach_doi_tra_gia_lap.md – chính sách đổi trả – bảo hành, tài liệu Knowledge cho trợ lý CSKH (buổi 1)"
+      }
      ]
     },
     {

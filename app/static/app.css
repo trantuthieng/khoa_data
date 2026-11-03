@@ -268,3 +268,95 @@ svg.dg .l-acc { stroke: var(--accent); } svg.dg .m-acc { fill: var(--accent); }
 .course-switch button { border: 0; border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 600; background: transparent; color: var(--muted); cursor: pointer; }
 .course-switch button.active { background: var(--brand); color: #fff; }
 
+
+/* Mô hình động Vector Database (static/vectordb.js) */
+.vdb { margin: 18px 0; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.vdb figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 8px; }
+.vdb-steps { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.vdb-step { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 4px 10px 4px 4px; font-size: 13px; cursor: pointer; }
+.vdb-step b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--note-soft); color: var(--muted); font-size: 12px; }
+.vdb-step.done b { background: var(--brand-soft); color: var(--brand); }
+.vdb-step.on { border-color: var(--brand); color: var(--brand); font-weight: 600; }
+.vdb-step.on b { background: var(--brand); color: var(--brand-ink); }
+.vdb-nav { margin-left: auto; display: inline-flex; gap: 6px; }
+.vdb-nav .btn { padding: 4px 12px; }
+.vdb-ask { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin-top: 10px; font-size: 13px; }
+.vdb-label { color: var(--muted); font-weight: 600; }
+.vdb-chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 3px 10px; font-size: 13px; cursor: pointer; }
+.vdb-chip.on { background: var(--accent); border-color: var(--accent); color: #1d1608; font-weight: 600; }
+.vdb-range { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; }
+.vdb-range input { width: 110px; accent-color: var(--brand); }
+.vdb-range.off { opacity: .45; }
+.vdb-stage { overflow-x: auto; margin-top: 8px; }
+.vdb-svg { display: block; width: 100%; min-width: 600px; max-width: 980px; height: auto; margin: 0 auto; }
+.vdb-svg text { fill: var(--ink); font-family: inherit; }
+.vdb-svg .vdb-mut { fill: var(--muted); }
+.vdb-map { fill: var(--bg); stroke: var(--line); }
+.vdb-grid line { stroke: var(--line); stroke-dasharray: 2 5; }
+.vdb-fade { transition: opacity .8s; }
+.vdb-halo { fill: var(--brand-soft); stroke: var(--brand); stroke-opacity: .35; }
+.vdb-halo.empty { fill: none; stroke: var(--muted); stroke-dasharray: 5 5; }
+.vdb-topic { fill: var(--brand); font-weight: 600; }
+.vdb-doc { fill: var(--panel); stroke: var(--muted); }
+.vdb-doc.live { stroke: var(--accent); stroke-width: 2; }
+.vdb-fold { fill: none; stroke: var(--muted); }
+.vdb-docline { stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
+.vdb-dot { cursor: pointer; transition: transform 1s cubic-bezier(.3, .7, .2, 1), opacity .6s; }
+.vdb-dot circle { fill: var(--brand); stroke: var(--panel); stroke-width: 2; transition: fill .4s, opacity .4s; }
+.vdb-dot circle.vdb-hit { fill: transparent; stroke: none; }
+.vdb-dot text { fill: var(--brand-ink); font-weight: 700; pointer-events: none; }
+.vdb-dot text.vdb-score, .vdb-dot text.vdb-rank { fill: var(--ink); font-weight: 600; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.vdb-dot text.vdb-rank { fill: var(--ok); }
+.vdb-dot.kept circle:not(.vdb-hit), .vdb-dot.hit circle:not(.vdb-hit) { fill: var(--ok); }
+.vdb-dot.cut circle:not(.vdb-hit) { fill: var(--bad); }
+.vdb-dot.dim { opacity: .3 !important; }
+.vdb-dot.sel circle.vdb-hit, .vdb-dot:focus-visible circle.vdb-hit { stroke: var(--accent); stroke-width: 3; }
+.vdb-dot:focus { outline: none; }
+.vdb-q { transition: transform .9s cubic-bezier(.3, .7, .2, 1), opacity .5s; }
+.vdb-star { fill: var(--accent); stroke: var(--panel); stroke-width: 1.5; }
+.vdb-ray { stroke: var(--brand); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: vdb-draw .7s .8s ease-out forwards; }
+.vdb-ray.hot { stroke: var(--ok); stroke-width: 3; }
+.vdb-ray.cut { stroke: var(--bad); stroke-dasharray: .02 .02; animation: none; stroke-dashoffset: 0; }
+.vdb-ripple { transform-box: fill-box; transform-origin: center; fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; animation: vdb-ripple 2.4s .8s ease-out 2; }
+.vdb-ripple.two { animation-delay: 1.6s; }
+@keyframes vdb-draw { to { stroke-dashoffset: 0; } }
+@keyframes vdb-ripple { 0% { transform: scale(.2); opacity: .9; } 100% { transform: scale(4.5); opacity: 0; } }
+.vdb-sel { position: relative; margin-top: 8px; padding: 8px 30px 8px 12px; border-left: 4px solid var(--accent); background: var(--note-soft); border-radius: 0 8px 8px 0; font-size: 14px; }
+.vdb-vec { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: var(--muted); margin-left: 6px; }
+.vdb-x { position: absolute; top: 4px; right: 6px; border: 0; background: none; color: var(--muted); font-size: 18px; cursor: pointer; }
+.vdb-panel { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.vdb-panel h4 { margin: 0 0 6px; }
+.vdb-panel p { margin: 6px 0; }
+.vdb-small { font-size: 13.5px; }
+.vdb-panel .vdb-mut { color: var(--muted); }
+.vdb-ok { color: var(--ok); font-weight: 600; }
+.vdb-bad { color: var(--bad); font-weight: 600; }
+.vdb-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px; max-height: 300px; overflow-y: auto; }
+.vdb-card { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; font-size: 13px; cursor: pointer; animation: vdb-in .5s both; }
+.vdb-card.sel { border-color: var(--accent); }
+@keyframes vdb-in { from { opacity: 0; transform: translateY(6px); } }
+.vdb-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 26px; flex: none; padding: 2px; border-radius: 4px; background: var(--note-soft); vertical-align: middle; }
+.vdb-bars i { display: block; width: 5px; min-height: 1px; background: var(--brand); border-radius: 1px; }
+.vdb-bars.big { height: 34px; }
+.vdb-bars.big i { width: 8px; background: var(--accent); }
+.vdb-list { display: grid; gap: 3px; max-height: 300px; overflow-y: auto; font-size: 13px; }
+.vdb-row { display: grid; grid-template-columns: 34px 120px 92px 1fr; gap: 8px; align-items: center; }
+.vdb-row.dim { opacity: .4; }
+.vdb-no { color: var(--muted); font-weight: 600; }
+.vdb-meter { height: 8px; border-radius: 4px; background: var(--note-soft); overflow: hidden; }
+.vdb-meter i { display: block; height: 100%; background: var(--brand); border-radius: 4px; }
+.vdb-txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.present .vdb-step, .present .vdb-chip, .present .vdb-ask { font-size: 17px; }
+.present .vdb-panel { font-size: 19px; }
+@media (max-width: 640px) {
+  .vdb { padding: 8px; }
+  .vdb-nav { margin-left: 0; }
+  .vdb-step span { display: none; }
+  .vdb-step.on span { display: inline; }
+  .vdb-row { grid-template-columns: 30px 70px 80px 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vdb-dot, .vdb-q, .vdb-fade { transition: none; }
+  .vdb-ray { animation: none; stroke-dashoffset: 0; }
+  .vdb-ripple, .vdb-card { animation: none; }
+}

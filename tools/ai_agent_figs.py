@@ -577,6 +577,31 @@ def fig_rag_errors():
     return f
 
 
+def fig_prompt_rag():
+    f = Fig("ai-prag", 720, 238, "Prompt hỏi đáp tài liệu gồm ba phần: chỉ dẫn cố định, tài liệu và câu hỏi điền lại mỗi lần")
+    f.text(350, 18, "Prompt hoàn chỉnh gửi cho LLM (mỗi câu hỏi một bản)", "f-mut", 12)
+    f.rect(206, 28, 288, 176, "box")
+    parts = [(["① Chỉ dẫn: vai trò + 6 luật trả lời", ("giữ nguyên mọi lần", "f-mut")], "r-brand",
+              ["Bạn viết", "một lần"]),
+             (["② <tai_lieu> các đoạn tìm được", ("{{ket_qua_truy_xuat}}", "mono f-mut")], "r-note",
+              ["Knowledge Base", "tìm Top-K đoạn"]),
+             (["③ Câu hỏi", ("{{cau_hoi}}", "mono f-mut")], "r-note",
+              ["Người dùng hỏi", "(đã viết lại nếu cần)"])]
+    for i, (lines, cls, src) in enumerate(parts):
+        y = 40 + i * 54
+        f.box(220, y, 260, 44, lines, cls, 12.5)
+        f.text(10, y + 18, src[0], "", 12.5, "start", bold=True)
+        f.text(10, y + 34, src[1], "f-mut", 11.5, "start")
+        f.arrow(150, y + 22, 218, y + 22, "brand" if i else "mut", dash=not i)
+    f.arrow(494, 116, 522, 116, "brand")
+    f.box(524, 88, 86, 56, ["LLM", "đọc từ trên", "xuống"], "r-brand", 12.5)
+    f.arrow(610, 116, 628, 116, "brand")
+    f.box(630, 88, 82, 56, ["Câu trả lời", "kèm nguồn"], "r-ok", 12.5)
+    f.text(360, 228, "Câu hỏi đặt cuối cùng, sát chỗ LLM bắt đầu viết; tài liệu nằm trong thẻ để không lẫn với chỉ dẫn.",
+           "f-mut", 12)
+    return f
+
+
 def fig_chain_patterns():
     f = Fig("ai-chp", 720, 230, "Bốn mẫu xâu chuỗi prompt: tuần tự, rẽ nhánh, chia nhỏ rồi gộp, tạo rồi kiểm")
     ps = mini_panels(f, ["Tuần tự", "Rẽ nhánh", "Chia nhỏ rồi gộp", "Tạo rồi kiểm"],

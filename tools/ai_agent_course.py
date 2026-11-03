@@ -68,6 +68,11 @@ def figure(fig, caption):
     return {"t": "figure", "html": fig.render(), "caption": caption, "plain": caption}
 
 
+def widget(name, caption):
+    """Mô hình động chạy ngay trong bài (component Vue cùng tên trong static/, VD vectordb.js)."""
+    return {"t": "widget", "name": name, "caption": caption, "plain": caption}
+
+
 def so(x, le=0):
     """Số kiểu Việt Nam: 1.234.567 và 12,34."""
     return f"{x:,.{le}f}".replace(",", " ").replace(".", ",").replace(" ", ".")
@@ -89,9 +94,13 @@ def tu_kiem_tra(*pairs):
             {"t": "details", "title": "Xem đáp án (tự trả lời trước rồi mới mở)", "blocks": [ol(*(a for _, a in pairs))]}]
 
 
-def lam_ngay(title, phut, steps, prompt=None, ket_qua=None):
-    """Bài làm ngay trên công cụ AI thật, chen giữa phần kiến thức: các bước, nội dung dán sẵn, kết quả thường thấy gập lại."""
-    blocks = [h3(f"Làm ngay ({phut} phút) – {title}"), ol(*steps)]
+def lam_ngay(title, phut, steps, prompt=None, ket_qua=None, files=()):
+    """Bài làm ngay trên công cụ AI thật, chen giữa phần kiến thức: file cần tải, các bước, nội dung dán sẵn,
+    kết quả thường thấy gập lại."""
+    blocks = [h3(f"Làm ngay ({phut} phút) – {title}")]
+    if files:
+        blocks.append(download(*files))
+    blocks.append(ol(*steps))
     if prompt:
         blocks.append(code(prompt))
     if ket_qua:
@@ -1909,6 +1918,33 @@ Bạn có nhiệm vụ...
             code(INSTRUCTIONS_DOI_TRA),
             p("Mỗi khối trích từ một nhóm ô Canvas. Khi test case sai, Improvement Log ghi rõ sửa ở khối nào – lần sửa sau dễ hơn "
               "nhiều so với một đoạn prompt liền khối.", "apply"),
+            h3("System Instructions chạy thế nào"),
+            p("Agent không “ghi nhớ” chỉ dẫn. Mỗi lượt, nền tảng gửi lại cho LLM toàn bộ System Instructions, cùng đoạn tài liệu "
+              "tra được, lịch sử hội thoại và tin nhắn mới. LLM đọc lại 8 khối rồi mới trả lời – luật nào không được viết ra "
+              "thì không có tác dụng."),
+            p("WORKFLOW là trình tự LLM đi qua; các khối khác là chỗ WORKFLOW tra cứu. Ba tin nhắn dưới đây đi theo ba đường khác "
+              "nhau:"),
+            code("""Tin nhắn: "Khách bảo hàng bị lỗi, muốn trả"
+WORKFLOW 1 → SCOPE       : đổi trả – trong phạm vi, đi tiếp
+WORKFLOW 2 → INPUT CHECK : thiếu ngày nhận hàng và lỗi gì → hỏi lại, dừng
+  Agent: "Anh/chị cho em xin ngày nhận hàng (hoặc mã đơn) và sản phẩm lỗi thế nào ạ?"
+
+Tin nhắn: "Khách nhận nồi chiên 3 ngày trước, chưa dùng, còn hộp, muốn đổi màu khác"
+WORKFLOW 1 → SCOPE       : trong phạm vi
+WORKFLOW 2 → INPUT CHECK : đủ ngày nhận và tình trạng sản phẩm
+WORKFLOW 3 → Knowledge   : mục "Đổi trả trong 7 ngày"
+           → OUTPUT      : câu đầu trả lời thẳng, tối đa 5 câu, có nguồn
+           → BOUNDARIES  : không hứa gì ngoài chính sách
+  Agent: "Được đổi. Khách đổi ý trong 7 ngày, sản phẩm còn tem, hộp thì được đổi; khách
+          chịu phí vận chuyển hai chiều. (Nguồn: Đổi trả trong 7 ngày)"
+
+Tin nhắn: "Máy sấy tóc bốc khói khi đang dùng, khách bị bỏng nhẹ"
+WORKFLOW 1 → SCOPE       : sự cố an toàn – ngoài phạm vi → ESCALATION
+  Agent: "Đây là sự cố an toàn – anh/chị đề nghị khách ngừng dùng, rút phích cắm và
+          chuyển ngay bộ phận Kỹ thuật – An toàn sản phẩm."
+"""),
+            p("MISSION và ROLE không hiện ra ở bước nào nhưng định hướng mọi câu trả lời: viết cho ai, giọng nào, ưu tiên gì khi "
+              "luật không nói tới. BOUNDARIES áp dụng cho mọi câu trả lời, kể cả khi người dùng yêu cầu ngược lại.", "apply"),
             h3("Bộ 10 test case mẫu"),
             p("Ghi cột “Kết quả mong đợi” <strong>trước khi chạy</strong>. Chạy rồi mới đánh giá, bạn dễ chấp nhận câu trả lời “nghe "
               "cũng được”."),
@@ -2305,10 +2341,10 @@ def m02():
             *lam_ngay("AI không có tài liệu và AI có tài liệu", 10, [
                 "Mở cuộc trò chuyện mới, <strong>tắt tìm kiếm web</strong>. Gửi 3 câu hỏi bên dưới, chưa đính kèm gì.",
                 "Ghi lại câu trả lời: AI nói không biết, hay đưa ra con số cụ thể?",
-                "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code> (mục Bộ file luyện tập ở phần Tổng "
-                "quan), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói "
+                "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code> (tải ở trên), gửi: “Chỉ dựa vào file đính kèm, trả lời 3 câu sau, mỗi câu ghi nguồn (mục nào). File không có thì nói "
                 "rõ.” rồi dán 3 câu hỏi.",
                 "So hai lần trả lời với đáp án."],
+                files=["so_tay_nhan_su_da_lam_sach.md"],
                 prompt="""1. Công ty ABC thưởng KPI quý hạng A bao nhiêu tiền?
 2. Nhân viên thử việc của Công ty ABC có được thưởng KPI quý không?
 3. Công ty ABC thưởng Tết Nguyên đán mấy tháng lương?""",
@@ -2418,6 +2454,11 @@ def m02():
             h3("Vector Database hoạt động ra sao?"),
             p("Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu "
               "tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất."),
+            p("Mô hình động dưới đây chạy đủ một vòng trên tài liệu đổi trả của Nhà Xanh. Bấm <strong>▶ Tự chạy</strong> hoặc "
+              "từng bước; từ bước 3 đổi câu hỏi, chuyển “Theo nghĩa / Theo từ khóa”, kéo Top-K và Ngưỡng để thấy kết quả "
+              "đổi theo. Bấm vào một chấm để xem đoạn văn và vector của nó.", "example"),
+            widget("vectordb", "Vector Database: đoạn cùng nghĩa nằm gần nhau; câu hỏi được đặt lên cùng bản đồ và lấy các "
+                   "đoạn gần nhất"),
             table(["Sản phẩm", "Đặc điểm"],
                   ["Pinecone", "Dịch vụ quản lý sẵn, dễ dùng, không cần quản lý hạ tầng."],
                   ["Milvus / Zilliz", "Mã nguồn mở, hiệu năng cao, quy mô hàng tỷ vector."],
@@ -2538,6 +2579,7 @@ Cách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × 
                 "Tự kiểm tra kết quả theo 4 điểm: còn sót header/footer, số trang không? Bảng thưởng KPI đã thành câu, đúng 3 hạng, "
                 "đúng số tiền chưa? Mỗi mục có dòng Nguồn chưa? Có con số nào bị đổi hoặc thêm vào không?",
                 "So với <code>so_tay_nhan_su_da_lam_sach.md</code> – bản làm sạch mẫu. Lưu bản của bạn để dùng ở Thực hành 2."],
+                files=["so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md"],
                 prompt="""Làm sạch tài liệu đính kèm để nạp vào Knowledge Base:
 1. Bỏ trang bìa, mục lục, header, footer, số trang.
 2. Mỗi mục thành một khối Markdown bắt đầu bằng "## Sổ tay nhân sự 2025 › Chương … › tên mục",
@@ -2559,6 +2601,9 @@ Cách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × 
                  "Bỏ bản nháp, bản trùng; bỏ bản hết hiệu lực; bỏ tài liệu người dùng Agent không được quyền đọc."))),
         sec("Hướng dẫn – Làm sạch và cắt đoạn: làm mẫu",
             h3("Cắt đoạn kém và cắt đoạn tốt"),
+            p("Tải hai bản của cùng sổ tay nhân sự để đối chiếu khi đọc ví dụ: bản chép từ PDF còn mục lục, header/footer, "
+              "bảng vỡ dòng; bản đã làm sạch mỗi mục là một khối Markdown có đề mục và dòng Nguồn."),
+            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md"),
             p("Cùng một quy định, cắt theo số ký tự cố định và cắt theo đề mục cho kết quả rất khác:"),
             table(["Cắt cố định theo số ký tự (kém)", "Cắt theo đề mục (tốt)"],
                   ["Đoạn 1: “…3.2 Thưởng KPI quý. Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý. Hạng B: KPI từ 95%”",
@@ -2626,6 +2671,26 @@ Nguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025"""),
         sec("Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu",
             p("Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được "
               "trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử."),
+            h3("Một prompt hỏi đáp tài liệu tốt cần 7 yếu tố"),
+            p("Mẫu bên dưới có đủ 7 yếu tố. Thiếu yếu tố nào, Agent sẽ mắc đúng lỗi ở cột cuối – dùng bảng này để tự rà "
+              "prompt của bạn."),
+            table(["#", "Yếu tố", "Trong mẫu", "Thiếu thì Agent sẽ…"],
+                  ["1", "Vai trò và phạm vi", "# VAI TRÒ: trợ lý tra cứu quy định nội bộ Công ty ABC",
+                   "Trả lời lan sang chủ đề ngoài tài liệu, giọng không hợp người dùng"],
+                  ["2", "Luật bám tài liệu", "Luật 1: chỉ dùng thông tin trong &lt;tai_lieu&gt;",
+                   "Trộn hiểu biết chung, đưa con số “nghe hợp lý” nhưng không có trong tài liệu"],
+                  ["3", "Cách trình bày", "Luật 2–3: câu đầu trả lời thẳng, giải thích tối đa 4 câu",
+                   "Dài dòng; người hỏi phải đọc hết mới biết “có” hay “không”"],
+                  ["4", "Dẫn nguồn", "Luật 4: (Nguồn: tên tài liệu – mục)",
+                   "Người dùng không kiểm chứng được; câu trả lời sai khó bị phát hiện"],
+                  ["5", "Lối thoát khi không có thông tin", "Luật 5: một câu trả lời cố định, không suy đoán",
+                   "Đoán ra câu trả lời (ảo giác) – lỗi nguy hiểm nhất của RAG"],
+                  ["6", "Xử lý tài liệu mâu thuẫn", "Luật 6: nêu cả hai, ưu tiên văn bản hiệu lực mới hơn",
+                   "Chọn ngẫu nhiên một bản, có khi là quy định cũ"],
+                  ["7", "Chỗ đặt dữ liệu, có thẻ bọc",
+                   "&lt;tai_lieu&gt;{{ket_qua_truy_xuat}}&lt;/tai_lieu&gt; và Câu hỏi: {{cau_hoi}}",
+                   "Không có biến tài liệu: LLM không thấy gì để bám. Không có thẻ bọc: LLM lẫn tài liệu với chỉ dẫn, dễ "
+                   "làm theo câu lệnh lạ nằm trong tài liệu"]),
             code("""# VAI TRÒ
 Bạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.
 
@@ -2646,10 +2711,62 @@ Câu hỏi: {{cau_hoi}}"""),
             p("<code>{{ket_qua_truy_xuat}}</code> và <code>{{cau_hoi}}</code> là <strong>biến</strong>: nền tảng tự điền kết quả "
               "truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể "
               "khác nhau theo nền tảng."),
+            h3("Prompt này chạy thế nào mỗi khi có câu hỏi"),
+            figure(fg.fig_prompt_rag(), "Phần chỉ dẫn viết một lần; tài liệu và câu hỏi được điền lại mỗi lần có câu hỏi"),
+            ol("<strong>Người dùng hỏi.</strong> Nếu là câu nối tiếp (“còn hạng B?”), node viết lại câu hỏi chạy trước để câu "
+               "hỏi đứng được một mình (prompt ở cuối phần này).",
+               "<strong>Truy xuất.</strong> Câu hỏi được đổi thành vector; Knowledge Base trả về các đoạn gần nghĩa nhất, đã lọc "
+               "theo Top-K và ngưỡng.",
+               "<strong>Điền biến.</strong> Nền tảng ghép các đoạn vào <code>{{ket_qua_truy_xuat}}</code>, câu hỏi vào "
+               "<code>{{cau_hoi}}</code>. Phần chỉ dẫn giữ nguyên.",
+               "<strong>LLM đọc từ trên xuống:</strong> biết mình là ai và phải trả lời theo luật nào, đọc tài liệu, cuối cùng "
+               "đọc câu hỏi rồi viết câu trả lời. Câu hỏi đặt cuối để nằm sát chỗ LLM bắt đầu viết.",
+               "<strong>Trả về.</strong> Người dùng nhận câu trả lời kèm nguồn; log lưu prompt đã điền để bạn kiểm tra khi có lỗi."),
+            p("Prompt LLM thực sự nhận được với câu hỏi “Hạng B được thưởng KPI bao nhiêu?” (phần chỉ dẫn rút gọn):"),
+            code("""# VAI TRÒ
+Bạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.
+# CÁCH TRẢ LỜI
+1. Chỉ dùng thông tin trong <tai_lieu>. ...  (đủ 6 luật như mẫu)
+
+<tai_lieu>
+[Đoạn 1] Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý
+- Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý.
+- Hạng B: KPI từ 95% đến dưới 110%, thưởng 3.000.000 đồng/quý.
+- Hạng C: KPI dưới 95%, không có thưởng.
+- Nhân viên thử việc không áp dụng thưởng KPI quý.
+Nguồn: Sổ tay nhân sự 2025, mục 3.2 – hiệu lực 01/01/2025
+[Đoạn 2] Hỏi: Nhân viên thử việc có được thưởng KPI quý không? Đáp: Không. ...
+</tai_lieu>
+
+Câu hỏi: Hạng B được thưởng KPI bao nhiêu?
+
+→ LLM trả lời:
+Hạng B được thưởng 3.000.000 đồng/quý. Mức này áp dụng khi KPI từ 95% đến dưới 110%;
+nhân viên thử việc không áp dụng. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)"""),
+            p("Câu đầu trả lời thẳng (luật 2), không thêm thông tin ngoài hai đoạn (luật 1), có nguồn (luật 4). Đoạn 2 nói về "
+              "thử việc – LLM chỉ dùng phần liên quan, nên Top-K hơi dư cũng không sao, miễn đoạn đúng có mặt.", "example"),
+            h3("Mỗi luật xử lý tình huống nào"),
+            p("Thử prompt bằng các câu hỏi dưới đây. Mỗi câu kiểm tra một luật; câu trả lời khác cột cuối nghĩa là luật đó viết "
+              "chưa đủ rõ."),
+            table(["Câu hỏi thử", "Tài liệu tìm được", "Luật quyết định", "Câu trả lời đúng"],
+                  ["“Hạng B được thưởng KPI bao nhiêu?”", "Mục 3.2 có mức hạng B", "1, 2, 4",
+                   "“3.000.000 đồng/quý…” kèm nguồn mục 3.2"],
+                  ["“Thưởng Tết được mấy tháng lương?”", "Không đoạn nào nói về thưởng Tết", "5",
+                   "Đúng câu “Tài liệu hiện có chưa đề cập…”; không đưa con số nào"],
+                  ["“Thử việc có được thưởng KPI không?”", "Mục 3.2 và Chương 4", "2, 3",
+                   "Câu đầu: “Không.”, rồi giải thích ngắn"],
+                  ["“Phụ cấp công tác ngoài tỉnh bao nhiêu?” (kho còn cả quy định 2023)", "Hai đoạn ghi hai mức khác nhau", "6",
+                   "Nêu cả hai kèm ngày hiệu lực, áp dụng mức của văn bản 2025"],
+                  ["“Các công ty thường thưởng KPI bao nhiêu?”", "Chỉ có quy định của ABC", "1",
+                   "Chỉ nêu quy định của ABC; không đưa mức “thông thường” từ hiểu biết chung"]),
             p("Lỗi rất hay gặp: viết prompt đẹp nhưng <strong>quên nối biến kết quả truy xuất</strong> vào prompt. LLM không thấy "
               "tài liệu nào và trả lời bằng hiểu biết chung – nhìn bề ngoài như RAG đang chạy. Luôn mở log xem prompt thực tế đã "
               "được điền những gì.", "misconception"),
             h3("Prompt viết lại câu hỏi (Query Rewrite)"),
+            p("Prompt này chạy <strong>trước</strong> bước truy xuất; kết quả không hiển thị cho người dùng mà được đem đi tìm "
+              "kiếm. Cần 3 yếu tố: <strong>nhiệm vụ</strong> (câu hỏi phải đứng được một mình), <strong>luật thay thế</strong> "
+              "(đại từ, “còn … thì sao” → nội dung cụ thể; giữ nguyên mã số, tên riêng, con số) và <strong>đầu ra chỉ có câu "
+              "hỏi</strong> – thêm lời giải thích thì chính lời giải thích bị đem đi tìm."),
             code("""Viết lại câu hỏi mới nhất của người dùng thành một câu hỏi đầy đủ, hiểu được
 mà không cần đọc lịch sử chat.
 - Thay "đó", "cái này", "còn ... thì sao", "tháng trước"... bằng nội dung cụ thể từ lịch sử.
@@ -2763,6 +2880,7 @@ Câu hỏi mới nhất: {{cau_hoi}}"""),
                   ["Đề B (Nhà Xanh hoặc tài liệu của bạn)", "Chính sách đổi trả – bảo hành Nhà Xanh (<code>chinh_sach_doi_tra_gia_lap.md</code>), "
                    "hoặc 3–5 trang quy định, hướng dẫn <strong>không mật</strong> của chính đơn vị bạn – cách học sát việc thật nhất.",
                    "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?” (Nhà Xanh) hoặc một câu bạn biết chắc tài liệu không có."]),
+            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md", "chinh_sach_doi_tra_gia_lap.md"),
             h3("Bước 1 – Làm sạch và định dạng tài liệu"),
             p("Không upload thẳng PDF gốc. Đây là một trang trích từ tài liệu gốc sau khi chuyển sang văn bản:"),
             code(POLICY_RAW),
@@ -3131,6 +3249,22 @@ Agent: Em xác nhận: bảo hành tại nhà cho máy giặt, đơn [MÃ ĐƠN]
         sec("Hướng dẫn – Viết prompt cho từng loại node",
             p("Mỗi node LLM trong workflow là một prompt nhỏ: <strong>làm đúng một việc</strong> và <strong>trả kết quả có cấu "
               "trúc</strong> để node sau dùng được. Ba loại node hay gặp nhất:"),
+            table(["Yếu tố của prompt node", "Viết gì", "Vì sao cần"],
+                  ["Một việc duy nhất", "Câu đầu nêu đúng việc: trích xuất, phân loại hay chấm",
+                   "Node làm hai việc thì khó biết lỗi nằm ở việc nào"],
+                  ["Đầu vào", "Biến từ node trước, VD <code>{{cau_hoi}}</code>, <code>{{ban_nhap}}</code>",
+                   "Node chỉ thấy những gì được điền vào biến"],
+                  ["Đầu ra cố định", "Đúng JSON hoặc đúng một nhãn; ghi rõ “không thêm chữ nào khác”",
+                   "Node sau (Condition, Code) đọc bằng máy – thừa một câu chào là hỏng"],
+                  ["Luật khi thiếu hoặc mơ hồ", "Không nêu thì <code>null</code>; không rõ thì nhãn <code>KHAC</code>; luật ưu "
+                   "tiên khi trùng nhãn", "Không có luật này, LLM tự đoán để điền cho đủ"],
+                  ["Ví dụ (khi cần)", "2–3 cặp đầu vào → đầu ra mẫu",
+                   "LLM hiểu ranh giới giữa các nhãn nhanh hơn đọc mô tả dài"]),
+            p("<strong>Các prompt nối với nhau thế nào:</strong> đầu ra của node này là biến đầu vào của node sau. Node trích "
+              "xuất trả JSON → node Condition đọc từng trường để rẽ nhánh → node viết bảng nhận JSON cùng kết quả tìm kiếm → "
+              "Evaluator nhận <code>{{ban_nhap}}</code>, trả <code>{{ket_qua_danh_gia}}</code> → chưa đạt thì node viết bảng nhận "
+              "thêm góp ý để sửa. Định dạng đầu ra là giao kèo giữa hai node: đổi tên một trường JSON thì phải sửa cả node đọc "
+              "nó."),
             h3("1. Node trích xuất thông tin"),
             code("""Trích xuất thông tin từ yêu cầu của người dùng.
 Trả về đúng JSON, không thêm chữ nào khác:
@@ -3714,6 +3848,21 @@ def m04():
             p("Khách nhắn “Đơn NX-1024 của tôi bao giờ giao?” → Agent gọi "
               "<code>tra_cuu_don_hang(ma_don=\"NX-1024\", thong_tin=\"lich_giao\")</code>. Khách nhắn “Hủy đơn NX-1024 giúp "
               "tôi” → Agent <em>không</em> gọi hàm này, nhờ câu “KHÔNG dùng để hủy đơn”, mà chuyển nhân viên.", "example"),
+            h3("Agent dùng mô tả công cụ thế nào khi chạy"),
+            ol("Mỗi lượt, nền tảng gửi cho LLM danh sách công cụ (tên, mô tả, tham số) cùng tin nhắn của khách. LLM "
+               "<strong>không thấy code</strong> của hàm, chỉ thấy phần mô tả.",
+               "LLM so tin nhắn với <code>description</code>: khớp phần “Dùng khi…” thì chọn hàm; khớp phần “KHÔNG dùng…” thì "
+               "không gọi; không khớp hàm nào thì trả lời bình thường.",
+               "LLM điền tham số theo mô tả từng tham số và danh sách <code>enum</code>. Thiếu tham số trong "
+               "<code>required</code> thì hỏi lại khách thay vì đoán.",
+               "LLM trả về JSON yêu cầu gọi hàm rồi dừng. Runtime kiểm tra tham số, quyền, rồi mới gọi API thật.",
+               "Kết quả API được gửi lại cho LLM; LLM viết câu trả lời cho khách dựa trên kết quả đó."),
+            table(["Câu trong mô tả", "Quyết định hành vi nào"],
+                  ["“Tra trạng thái và lịch giao của MỘT đơn hàng…”", "Chọn hàm khi khách hỏi đơn ở đâu, bao giờ giao"],
+                  ["“KHÔNG dùng để hủy đơn, đổi địa chỉ hay hoàn tiền”", "Không gọi hàm với yêu cầu hủy đơn; chuyển nhân viên"],
+                  ["<code>\"required\": [\"ma_don\"]</code>", "Khách không nêu mã đơn → hỏi lại"],
+                  ["“Mã đơn dạng NX- và 4 chữ số, VD: NX-1024”", "Điền đúng định dạng; gặp “NX-77” thì hỏi lại"],
+                  ["<code>enum</code> và “Không rõ thì dùng ca_hai”", "Chỉ chọn trong 3 giá trị, không tự nghĩ ra giá trị mới"]),
             *lam_ngay("đóng vai runtime cho Function Calling", 15, [
                 "Mở cuộc trò chuyện mới, dán prompt bên dưới, thay dòng trong thẻ &lt;cong_cu&gt; bằng khối JSON mô tả hàm ở trên.",
                 "Gửi lần lượt 4 tin nhắn khách: (1) “Đơn NX-1024 của tôi bao giờ giao?” (2) “Đơn của tôi đâu rồi?” (3) “Hủy "
@@ -4201,6 +4350,23 @@ def m05():
                 ("Khi truy vết lỗi trong đội Agent, tìm điều gì?",
                  "Chỗ đầu tiên thông tin bị sai hoặc bị rơi, bằng cách đi ngược từ kết quả cuối qua từng bàn giao."))),
         sec("Hướng dẫn – Prompt cho Router, Worker và thông điệp bàn giao",
+            h3("Mỗi prompt trong đội cần gì"),
+            table(["Prompt", "Yếu tố bắt buộc", "Thiếu thì…"],
+                  ["Router", "Danh sách Agent, mỗi Agent một dòng mô tả việc; lối thoát Human; luật “không tự trả lời”; đầu ra "
+                   "JSON có <code>next_agent</code> và yêu cầu đã viết lại",
+                   "Chọn nhầm Agent; tự làm luôn việc của Worker; hệ thống không đọc được kết quả để chuyển việc"],
+                  ["Worker (Writer)", "Vai trò; đầu vào là gì; yêu cầu bài viết khớp từng tiêu chí của Editor; cách xử lý phản "
+                   "hồi; đầu ra", "Bị REJECT mãi vì không biết bị chấm theo tiêu chí nào; vòng sau viết lại từ đầu, sinh lỗi mới"],
+                  ["Reviewer (Editor)", "Rubric đánh số; luật “chỉ chấm, không tự sửa”; đầu ra JSON <code>status</code>, "
+                   "<code>ly_do</code>, <code>goi_y_sua</code>", "Chấm cảm tính; Writer không biết phải sửa gì"]),
+            h3("Một yêu cầu chạy qua đội thế nào"),
+            ol("Router nhận yêu cầu, trả JSON chọn Agent. Hệ thống đọc <code>next_agent</code> để chuyển việc – Router không tự "
+               "viết bài.",
+               "Hệ thống gửi <code>yeu_cau_cho_agent</code> kèm BRIEF cho Content_Writer. Writer viết bản nháp vòng 1.",
+               "Editor nhận BRIEF và bản nháp, chấm theo rubric, trả APPROVE hoặc REJECT kèm lý do.",
+               "REJECT: hệ thống đóng gói thông điệp bàn giao (vòng, bản nháp, phản hồi) gửi lại Writer; Writer chỉ sửa lỗi được "
+               "nêu.",
+               "Lặp tối đa 3 vòng. APPROVE thì xuất bài; quá 3 vòng thì chuyển người duyệt."),
             h3("Router – chỉ phân việc, không làm việc"),
             code("""Bạn là bộ điều phối của phòng Truyền thông ảo. Đọc yêu cầu và chọn MỘT Agent xử lý:
 - Content_Writer: viết bài fanpage, bài PR, thông cáo báo chí
@@ -4380,6 +4546,16 @@ Chỉ trả về JSON:
 
 <brief>{{brief}}</brief>
 <bai_viet>{{bai_viet}}</bai_viet>"""),
+            table(["Yếu tố trong prompt giám khảo", "Vì sao cần"],
+                  ["Vai trò giám khảo, chấm “theo từng tiêu chí”", "Chấm gộp một điểm tổng thì không biết bài yếu ở đâu"],
+                  ["Nghĩa của từng mức điểm (0, 1, 2)", "Không định nghĩa mức thì cùng một bài lúc được 1, lúc được 2"],
+                  ["Tiêu chí kiểm tra được (A, B, C)", "“Bài hay” không chấm được; “mọi số liệu có trong BRIEF” chấm được"],
+                  ["Trích căn cứ trước khi cho điểm", "Buộc giám khảo đọc kỹ bài; người kiểm lại xem nhanh được"],
+                  ["Đầu ra JSON cố định", "Máy cộng điểm, tính KPI cho cả bộ đề"],
+                  ["BRIEF và bài viết trong thẻ riêng", "Giám khảo không lẫn đề với bài, không làm theo câu lệnh nằm trong bài"]),
+            p("<strong>Khi chạy:</strong> với mỗi đề, Agent tạo bài → bài và BRIEF được điền vào <code>{{bai_viet}}</code>, "
+              "<code>{{brief}}</code> → giám khảo trả JSON → bảng tính hoặc script cộng điểm cả bộ đề, ra điểm trung bình và tỷ lệ "
+              "đạt → con người đọc lại 20–30% số bài, nhất là bài điểm cao bất thường."),
             p("Giám khảo LLM cũng chấm sai, thường dễ dãi với bài dài và trôi chảy. Bắt buộc trích căn cứ trước khi cho điểm và "
               "định kỳ so với điểm chấm tay giúp giảm sai lệch.", "misconception"),
             h3("Bước 3 – Nhật ký phiên bản"),

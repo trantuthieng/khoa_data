@@ -1143,6 +1143,100 @@
      "plain": "Mỗi node LLM trong workflow là một prompt nhỏ: làm đúng một việc và trả kết quả có cấu trúc để node sau dùng được. Ba loại node hay gặp nhất:"
     },
     {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Yếu tố của prompt node",
+        "plain": "Yếu tố của prompt node"
+       },
+       {
+        "html": "Viết gì",
+        "plain": "Viết gì"
+       },
+       {
+        "html": "Vì sao cần",
+        "plain": "Vì sao cần"
+       }
+      ],
+      [
+       {
+        "html": "Một việc duy nhất",
+        "plain": "Một việc duy nhất"
+       },
+       {
+        "html": "Câu đầu nêu đúng việc: trích xuất, phân loại hay chấm",
+        "plain": "Câu đầu nêu đúng việc: trích xuất, phân loại hay chấm"
+       },
+       {
+        "html": "Node làm hai việc thì khó biết lỗi nằm ở việc nào",
+        "plain": "Node làm hai việc thì khó biết lỗi nằm ở việc nào"
+       }
+      ],
+      [
+       {
+        "html": "Đầu vào",
+        "plain": "Đầu vào"
+       },
+       {
+        "html": "Biến từ node trước, VD <code>{{cau_hoi}}</code>, <code>{{ban_nhap}}</code>",
+        "plain": "Biến từ node trước, VD {{cau_hoi}}, {{ban_nhap}}"
+       },
+       {
+        "html": "Node chỉ thấy những gì được điền vào biến",
+        "plain": "Node chỉ thấy những gì được điền vào biến"
+       }
+      ],
+      [
+       {
+        "html": "Đầu ra cố định",
+        "plain": "Đầu ra cố định"
+       },
+       {
+        "html": "Đúng JSON hoặc đúng một nhãn; ghi rõ “không thêm chữ nào khác”",
+        "plain": "Đúng JSON hoặc đúng một nhãn; ghi rõ “không thêm chữ nào khác”"
+       },
+       {
+        "html": "Node sau (Condition, Code) đọc bằng máy – thừa một câu chào là hỏng",
+        "plain": "Node sau (Condition, Code) đọc bằng máy – thừa một câu chào là hỏng"
+       }
+      ],
+      [
+       {
+        "html": "Luật khi thiếu hoặc mơ hồ",
+        "plain": "Luật khi thiếu hoặc mơ hồ"
+       },
+       {
+        "html": "Không nêu thì <code>null</code>; không rõ thì nhãn <code>KHAC</code>; luật ưu tiên khi trùng nhãn",
+        "plain": "Không nêu thì null; không rõ thì nhãn KHAC; luật ưu tiên khi trùng nhãn"
+       },
+       {
+        "html": "Không có luật này, LLM tự đoán để điền cho đủ",
+        "plain": "Không có luật này, LLM tự đoán để điền cho đủ"
+       }
+      ],
+      [
+       {
+        "html": "Ví dụ (khi cần)",
+        "plain": "Ví dụ (khi cần)"
+       },
+       {
+        "html": "2–3 cặp đầu vào → đầu ra mẫu",
+        "plain": "2–3 cặp đầu vào → đầu ra mẫu"
+       },
+       {
+        "html": "LLM hiểu ranh giới giữa các nhãn nhanh hơn đọc mô tả dài",
+        "plain": "LLM hiểu ranh giới giữa các nhãn nhanh hơn đọc mô tả dài"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "html": "<strong>Các prompt nối với nhau thế nào:</strong> đầu ra của node này là biến đầu vào của node sau. Node trích xuất trả JSON → node Condition đọc từng trường để rẽ nhánh → node viết bảng nhận JSON cùng kết quả tìm kiếm → Evaluator nhận <code>{{ban_nhap}}</code>, trả <code>{{ket_qua_danh_gia}}</code> → chưa đạt thì node viết bảng nhận thêm góp ý để sửa. Định dạng đầu ra là giao kèo giữa hai node: đổi tên một trường JSON thì phải sửa cả node đọc nó.",
+     "plain": "Các prompt nối với nhau thế nào: đầu ra của node này là biến đầu vào của node sau. Node trích xuất trả JSON → node Condition đọc từng trường để rẽ nhánh → node viết bảng nhận JSON cùng kết quả tìm kiếm → Evaluator nhận {{ban_nhap}}, trả {{ket_qua_danh_gia}} → chưa đạt thì node viết bảng nhận thêm góp ý để sửa. Định dạng đầu ra là giao kèo giữa hai node: đổi tên một trường JSON thì phải sửa cả node đọc nó."
+    },
+    {
      "t": "h3",
      "text": "1. Node trích xuất thông tin"
     },

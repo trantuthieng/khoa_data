@@ -951,6 +951,106 @@
     },
     {
      "t": "h3",
+     "text": "Agent dùng mô tả công cụ thế nào khi chạy"
+    },
+    {
+     "t": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Mỗi lượt, nền tảng gửi cho LLM danh sách công cụ (tên, mô tả, tham số) cùng tin nhắn của khách. LLM <strong>không thấy code</strong> của hàm, chỉ thấy phần mô tả.",
+       "level": 0,
+       "plain": "Mỗi lượt, nền tảng gửi cho LLM danh sách công cụ (tên, mô tả, tham số) cùng tin nhắn của khách. LLM không thấy code của hàm, chỉ thấy phần mô tả."
+      },
+      {
+       "html": "LLM so tin nhắn với <code>description</code>: khớp phần “Dùng khi…” thì chọn hàm; khớp phần “KHÔNG dùng…” thì không gọi; không khớp hàm nào thì trả lời bình thường.",
+       "level": 0,
+       "plain": "LLM so tin nhắn với description: khớp phần “Dùng khi…” thì chọn hàm; khớp phần “KHÔNG dùng…” thì không gọi; không khớp hàm nào thì trả lời bình thường."
+      },
+      {
+       "html": "LLM điền tham số theo mô tả từng tham số và danh sách <code>enum</code>. Thiếu tham số trong <code>required</code> thì hỏi lại khách thay vì đoán.",
+       "level": 0,
+       "plain": "LLM điền tham số theo mô tả từng tham số và danh sách enum. Thiếu tham số trong required thì hỏi lại khách thay vì đoán."
+      },
+      {
+       "html": "LLM trả về JSON yêu cầu gọi hàm rồi dừng. Runtime kiểm tra tham số, quyền, rồi mới gọi API thật.",
+       "level": 0,
+       "plain": "LLM trả về JSON yêu cầu gọi hàm rồi dừng. Runtime kiểm tra tham số, quyền, rồi mới gọi API thật."
+      },
+      {
+       "html": "Kết quả API được gửi lại cho LLM; LLM viết câu trả lời cho khách dựa trên kết quả đó.",
+       "level": 0,
+       "plain": "Kết quả API được gửi lại cho LLM; LLM viết câu trả lời cho khách dựa trên kết quả đó."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "rows": [
+      [
+       {
+        "html": "Câu trong mô tả",
+        "plain": "Câu trong mô tả"
+       },
+       {
+        "html": "Quyết định hành vi nào",
+        "plain": "Quyết định hành vi nào"
+       }
+      ],
+      [
+       {
+        "html": "“Tra trạng thái và lịch giao của MỘT đơn hàng…”",
+        "plain": "“Tra trạng thái và lịch giao của MỘT đơn hàng…”"
+       },
+       {
+        "html": "Chọn hàm khi khách hỏi đơn ở đâu, bao giờ giao",
+        "plain": "Chọn hàm khi khách hỏi đơn ở đâu, bao giờ giao"
+       }
+      ],
+      [
+       {
+        "html": "“KHÔNG dùng để hủy đơn, đổi địa chỉ hay hoàn tiền”",
+        "plain": "“KHÔNG dùng để hủy đơn, đổi địa chỉ hay hoàn tiền”"
+       },
+       {
+        "html": "Không gọi hàm với yêu cầu hủy đơn; chuyển nhân viên",
+        "plain": "Không gọi hàm với yêu cầu hủy đơn; chuyển nhân viên"
+       }
+      ],
+      [
+       {
+        "html": "<code>\"required\": [\"ma_don\"]</code>",
+        "plain": "\"required\": [\"ma_don\"]"
+       },
+       {
+        "html": "Khách không nêu mã đơn → hỏi lại",
+        "plain": "Khách không nêu mã đơn → hỏi lại"
+       }
+      ],
+      [
+       {
+        "html": "“Mã đơn dạng NX- và 4 chữ số, VD: NX-1024”",
+        "plain": "“Mã đơn dạng NX- và 4 chữ số, VD: NX-1024”"
+       },
+       {
+        "html": "Điền đúng định dạng; gặp “NX-77” thì hỏi lại",
+        "plain": "Điền đúng định dạng; gặp “NX-77” thì hỏi lại"
+       }
+      ],
+      [
+       {
+        "html": "<code>enum</code> và “Không rõ thì dùng ca_hai”",
+        "plain": "enum và “Không rõ thì dùng ca_hai”"
+       },
+       {
+        "html": "Chỉ chọn trong 3 giá trị, không tự nghĩ ra giá trị mới",
+        "plain": "Chỉ chọn trong 3 giá trị, không tự nghĩ ra giá trị mới"
+       }
+      ]
+     ]
+    },
+    {
+     "t": "h3",
      "text": "Làm ngay (15 phút) – đóng vai runtime cho Function Calling"
     },
     {

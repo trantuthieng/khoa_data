@@ -67,6 +67,7 @@ function initPayload(act, existing) {
 
 const ContentBlocks = {
   name: 'ContentBlocks',
+  components: typeof VectorDbDemo === 'undefined' ? {} : { VectorDbDemo },
   props: { blocks: Array, teacher: Boolean, revealed: Array, stage: Number },
   data() { return { copied: null }; },
   methods: {
@@ -119,6 +120,7 @@ const ContentBlocks = {
       <blockquote v-else-if="b.t === 'quote'" v-html="b.html"></blockquote>
       <img v-else-if="b.t === 'img'" :src="b.src" alt="Hình minh họa trong giáo trình" loading="lazy">
       <figure v-else-if="b.t === 'figure'" class="figure"><div class="figbody" v-html="b.html"></div><figcaption v-if="b.caption">{{ b.caption }}</figcaption></figure>
+      <vector-db-demo v-else-if="b.t === 'widget' && b.name === 'vectordb'" :caption="b.caption"></vector-db-demo>
       <details v-else-if="b.t === 'details'" class="card hint-details">
         <summary>{{ b.title || '💡 Xem gợi ý & lời giải mẫu' }}</summary>
         <content-blocks :blocks="b.blocks" :teacher="teacher" :revealed="revealed" :stage="stage">

@@ -4651,6 +4651,30 @@
     },
     {
      "t": "h3",
+     "text": "System Instructions chạy thế nào"
+    },
+    {
+     "t": "p",
+     "html": "Agent không “ghi nhớ” chỉ dẫn. Mỗi lượt, nền tảng gửi lại cho LLM toàn bộ System Instructions, cùng đoạn tài liệu tra được, lịch sử hội thoại và tin nhắn mới. LLM đọc lại 8 khối rồi mới trả lời – luật nào không được viết ra thì không có tác dụng.",
+     "plain": "Agent không “ghi nhớ” chỉ dẫn. Mỗi lượt, nền tảng gửi lại cho LLM toàn bộ System Instructions, cùng đoạn tài liệu tra được, lịch sử hội thoại và tin nhắn mới. LLM đọc lại 8 khối rồi mới trả lời – luật nào không được viết ra thì không có tác dụng."
+    },
+    {
+     "t": "p",
+     "html": "WORKFLOW là trình tự LLM đi qua; các khối khác là chỗ WORKFLOW tra cứu. Ba tin nhắn dưới đây đi theo ba đường khác nhau:",
+     "plain": "WORKFLOW là trình tự LLM đi qua; các khối khác là chỗ WORKFLOW tra cứu. Ba tin nhắn dưới đây đi theo ba đường khác nhau:"
+    },
+    {
+     "t": "code",
+     "text": "Tin nhắn: \"Khách bảo hàng bị lỗi, muốn trả\"\nWORKFLOW 1 → SCOPE       : đổi trả – trong phạm vi, đi tiếp\nWORKFLOW 2 → INPUT CHECK : thiếu ngày nhận hàng và lỗi gì → hỏi lại, dừng\n  Agent: \"Anh/chị cho em xin ngày nhận hàng (hoặc mã đơn) và sản phẩm lỗi thế nào ạ?\"\n\nTin nhắn: \"Khách nhận nồi chiên 3 ngày trước, chưa dùng, còn hộp, muốn đổi màu khác\"\nWORKFLOW 1 → SCOPE       : trong phạm vi\nWORKFLOW 2 → INPUT CHECK : đủ ngày nhận và tình trạng sản phẩm\nWORKFLOW 3 → Knowledge   : mục \"Đổi trả trong 7 ngày\"\n           → OUTPUT      : câu đầu trả lời thẳng, tối đa 5 câu, có nguồn\n           → BOUNDARIES  : không hứa gì ngoài chính sách\n  Agent: \"Được đổi. Khách đổi ý trong 7 ngày, sản phẩm còn tem, hộp thì được đổi; khách\n          chịu phí vận chuyển hai chiều. (Nguồn: Đổi trả trong 7 ngày)\"\n\nTin nhắn: \"Máy sấy tóc bốc khói khi đang dùng, khách bị bỏng nhẹ\"\nWORKFLOW 1 → SCOPE       : sự cố an toàn – ngoài phạm vi → ESCALATION\n  Agent: \"Đây là sự cố an toàn – anh/chị đề nghị khách ngừng dùng, rút phích cắm và\n          chuyển ngay bộ phận Kỹ thuật – An toàn sản phẩm.\""
+    },
+    {
+     "t": "p",
+     "html": "MISSION và ROLE không hiện ra ở bước nào nhưng định hướng mọi câu trả lời: viết cho ai, giọng nào, ưu tiên gì khi luật không nói tới. BOUNDARIES áp dụng cho mọi câu trả lời, kể cả khi người dùng yêu cầu ngược lại.",
+     "plain": "MISSION và ROLE không hiện ra ở bước nào nhưng định hướng mọi câu trả lời: viết cho ai, giọng nào, ưu tiên gì khi luật không nói tới. BOUNDARIES áp dụng cho mọi câu trả lời, kể cả khi người dùng yêu cầu ngược lại.",
+     "callout": "apply"
+    },
+    {
+     "t": "h3",
      "text": "Bộ 10 test case mẫu"
     },
     {
