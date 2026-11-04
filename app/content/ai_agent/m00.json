@@ -317,6 +317,12 @@
      ]
     },
     {
+     "t": "p",
+     "html": "Riêng buổi 2 là buổi thuần thực hành: không có các mục Phần, Hướng dẫn, Ví dụ mẫu riêng. Làm lần lượt 8 Chặng; kiến thức xen ngay trong từng chặng, phần sâu nằm trong mục “Đọc thêm” gập sẵn.",
+     "plain": "Riêng buổi 2 là buổi thuần thực hành: không có các mục Phần, Hướng dẫn, Ví dụ mẫu riêng. Làm lần lượt 8 Chặng; kiến thức xen ngay trong từng chặng, phần sâu nằm trong mục “Đọc thêm” gập sẵn.",
+     "callout": "apply"
+    },
+    {
      "t": "h3",
      "text": "Mẫu nhật ký prompt"
     },
@@ -800,6 +806,11 @@
        "html": "Các mục <em>Hướng dẫn</em>, <em>Ví dụ mẫu</em>, <em>Đi sâu</em>, <em>Làm trên công cụ thật</em>, <em>Tự luyện</em> viết cho học viên tự học. Trên lớp: trình diễn nhanh phần Ví dụ mẫu (chạy thật prompt trên màn hình); mục Làm trên công cụ thật nằm ngay trước Thực hành – chiếu lên để học viên làm theo từng bước; mục Tự luyện giao về nhà. Trước buổi 2–5, tự chạy lại các bước trên Dify vì giao diện nền tảng thay đổi thường xuyên. Lớp ít thời gian thì bấm Phần sau để bỏ qua, học viên vẫn đọc lại được sau khi buổi học mở hết các phần.",
        "level": 0,
        "plain": "Các mục Hướng dẫn, Ví dụ mẫu, Đi sâu, Làm trên công cụ thật, Tự luyện viết cho học viên tự học. Trên lớp: trình diễn nhanh phần Ví dụ mẫu (chạy thật prompt trên màn hình); mục Làm trên công cụ thật nằm ngay trước Thực hành – chiếu lên để học viên làm theo từng bước; mục Tự luyện giao về nhà. Trước buổi 2–5, tự chạy lại các bước trên Dify vì giao diện nền tảng thay đổi thường xuyên. Lớp ít thời gian thì bấm Phần sau để bỏ qua, học viên vẫn đọc lại được sau khi buổi học mở hết các phần."
+      },
+      {
+       "html": "Buổi 2 dạy theo 8 chặng thực hành, kiến thức chỉ xen kẽ: mở Thực hành 2 ngay đầu giờ và theo bảng thời lượng trong Ghi chú cho giảng viên của buổi đó.",
+       "level": 0,
+       "plain": "Buổi 2 dạy theo 8 chặng thực hành, kiến thức chỉ xen kẽ: mở Thực hành 2 ngay đầu giờ và theo bảng thời lượng trong Ghi chú cho giảng viên của buổi đó."
       }
      ]
     }

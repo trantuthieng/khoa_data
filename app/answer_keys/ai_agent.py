@@ -198,8 +198,9 @@ KEYS = {
 
     "ai02-th2": key(
         "Trợ lý tra cứu Sổ tay nhân sự theo RAG: làm sạch đoạn Thưởng KPI quý thành Markdown, cấu hình Knowledge Base có "
-        "lý do (cắt theo đề mục, overlap 15%, Hybrid Search, Top-K 3, ngưỡng 0,5), Hit Test 5 câu có câu bẫy và chuỗi "
-        "prompt hai bước Query Rewrite → Tổng hợp có luật chống bịa.",
+        "lý do (cắt theo đề mục, overlap 15%, Hybrid Search, Top-K 3, ngưỡng 0,5), Hit Test 5 câu có câu bẫy, chuỗi "
+        "prompt hai bước Query Rewrite → Tổng hợp có luật chống bịa, một lỗi tự cài rồi sửa đúng tầng, và dựng lại trên "
+        "chính sách Nhà Xanh.",
         {
             "so_do_rag": board(
                 [
@@ -261,8 +262,8 @@ KEYS = {
                  "doan": "Mục 3.2 và Chương 4: “Nhân viên thử việc không áp dụng thưởng KPI quý.”", "dung": "Đúng"},
                 {"cau_hoi": "Phụ cấp công tác ngoài tỉnh bao nhiêu?",
                  "doan": "Chương 5 Công tác phí: 300.000 đồng/ngày khi công tác ngoài tỉnh.", "dung": "Đúng"},
-                {"cau_hoi": "Còn hạng C thì sao? (hỏi nối tiếp sau câu hạng B)",
-                 "doan": "Sau Query Rewrite: mục 3.2 – hạng C, KPI dưới 95%, không có thưởng.", "dung": "Đúng"},
+                {"cau_hoi": "Phép năm không dùng hết thì sao?",
+                 "doan": "Cặp hỏi–đáp về phép năm và Chương 2: chuyển sang năm sau, dùng trước khi hết quý I.", "dung": "Đúng"},
                 {"cau_hoi": "Thưởng Tết bao nhiêu? (câu bẫy)",
                  "doan": "Không đoạn nào vượt ngưỡng 0,5 → Agent trả lời tài liệu chưa đề cập, không bịa.", "dung": "Đúng"},
             ],
@@ -282,11 +283,31 @@ KEYS = {
                 "<tai_lieu>{{ket_qua_truy_xuat}}</tai_lieu>\nCâu hỏi: {{cau_hoi_da_viet_lai}}"
             ),
             "bai_hoc": (
-                "Với bản gốc chép từ PDF, câu “Hạng B thưởng KPI bao nhiêu?” bốc đoạn mục lục lên đầu và đoạn bảng bị vỡ "
-                "dòng “B | 95% <= KPI / <110%”; Agent trả lời thiếu điều kiện. Sau khi làm sạch (mỗi mục một đoạn, bảng viết "
-                "lại thành danh sách), đoạn 3.2 lên đầu và câu trả lời đủ cả điều kiện lẫn mức thưởng. Bài học: sửa dữ liệu "
-                "trước, chỉnh thông số truy xuất sau."
+                "Lỗi C – đổi node Knowledge Retrieval sang kho bản gốc. Triệu chứng: câu “Hạng B thưởng KPI bao nhiêu?” trả lời "
+                "thiếu điều kiện. Nhìn ở chi tiết lần chạy: đoạn trả về có dòng “Trang 3/42”, bảng vỡ dòng “B | 95% <= KPI / "
+                "<110%”, đoạn mục lục cũng lọt vào. Tầng: dữ liệu. Sửa: đổi lại kho đã làm sạch; đoạn 3.2 lên đầu và câu trả lời "
+                "đủ cả điều kiện lẫn mức thưởng. Bài học: sửa dữ liệu trước, chỉnh thông số truy xuất sau."
             ),
+            "tu_lam_nguon": (
+                "Chọn chinh_sach_doi_tra_gia_lap.md của Nhà Xanh. Làm sạch: nối câu bị ngắt dòng ở “Cách gửi bảo hành”, thêm "
+                "tên tài liệu vào đầu mỗi mục và dòng Nguồn cuối mỗi mục. Cấu hình giữ nguyên vì tài liệu cũng chia theo ##. "
+                "Prompt: đổi vai trò thành trợ lý đổi trả – bảo hành của Nhà Xanh, đổi câu từ chối sang “liên hệ bộ phận CSKH”. "
+                "Thêm cặp hỏi–đáp “Tủ lạnh hỏng có phải chở ra cửa hàng không?” vì câu này ban đầu bị từ chối oan."
+            ),
+            "tu_lam_test": [
+                {"cau_hoi": "Máy giặt bảo hành bao lâu?", "doan": "Thời hạn bảo hành: điện lạnh 24 tháng.",
+                 "tra_loi": "24 tháng. (Nguồn: Chính sách Nhà Xanh – Thời hạn bảo hành)", "dat": "Đạt"},
+                {"cau_hoi": "Hàng trả hợp lệ được hoàn tiền trong bao lâu?", "doan": "Hoàn tiền: 5 ngày làm việc kể từ khi kho nhận lại hàng.",
+                 "tra_loi": "Trong 5 ngày làm việc kể từ khi kho nhận lại hàng. (Nguồn: Chính sách Nhà Xanh – Hoàn tiền)", "dat": "Đạt"},
+                {"cau_hoi": "Tủ lạnh hỏng có phải chở ra cửa hàng không? (từ khác tài liệu)",
+                 "doan": "Cách gửi bảo hành, hoặc cặp hỏi–đáp vừa thêm: điện lạnh bảo hành tại nhà.",
+                 "tra_loi": "Không. Hàng điện lạnh được bảo hành tại nhà; kỹ thuật viên gọi hẹn lịch trong 2 ngày làm việc.", "dat": "Đạt"},
+                {"cau_hoi": "Thế bao lâu thì sửa xong? (nối tiếp câu trên)",
+                 "doan": "Sau Query Rewrite: Thời hạn bảo hành, thời gian xử lý tối đa 7 ngày làm việc.",
+                 "tra_loi": "Tối đa 7 ngày làm việc kể từ khi trung tâm bảo hành nhận sản phẩm.", "dat": "Đạt"},
+                {"cau_hoi": "Thẻ thành viên hạng Vàng được giảm bao nhiêu %? (câu bẫy)", "doan": "Không đoạn nào vượt ngưỡng.",
+                 "tra_loi": "Tài liệu hiện có chưa đề cập nội dung này. Anh/chị vui lòng liên hệ bộ phận CSKH.", "dat": "Đạt"},
+            ],
         },
         read=[
             AI_LAB("rag", "tab RAG – Chunking & Hit Test"),
@@ -305,10 +326,11 @@ KEYS = {
             ("6–7. Sinh & câu bẫy", "Luật chỉ dùng tài liệu, ghi nguồn, câu “chưa đề cập”", "Buộc AI chứng minh nguồn và biết từ chối."),
         ],
         rubric=[
-            ("Tài liệu sạch, bảng viết lại đúng nghĩa", "3", "Bỏ nhiễu; đủ 3 hạng, điều kiện thử việc và thời hạn chi; có Nguồn."),
-            ("Cấu hình hợp lý, có lý do", "2", "Đủ 7 dòng cấu hình, mỗi giá trị có lý do; ngưỡng có nói kiểm chứng bằng Hit Test."),
-            ("Hit Test đủ 5 câu, có câu bẫy", "3", "Ghi đoạn được bốc và đánh giá trung thực; có câu nối tiếp và câu không có trong tài liệu."),
+            ("Tài liệu sạch, bảng viết lại đúng nghĩa", "2", "Bỏ nhiễu; đủ 3 hạng, điều kiện thử việc và thời hạn chi; có Nguồn."),
+            ("Cấu hình và sơ đồ đường ống hợp lý, có lý do", "2", "Đủ 7 dòng cấu hình, mỗi giá trị có lý do; ngưỡng có nói kiểm chứng bằng Hit Test; sơ đồ nối đúng luồng."),
+            ("Hit Test đủ 5 câu, có câu bẫy", "2", "Ghi đoạn được bốc và đánh giá trung thực; có câu không có trong tài liệu."),
             ("Prompt chuỗi rõ ràng, có câu chống bịa", "2", "Node 1 viết lại câu hỏi; Node 2 chỉ dùng tài liệu, ghi nguồn, có câu mẫu khi không biết."),
+            ("Tự dựng lại và sửa đúng tầng", "2", "Tài liệu mới có 5 câu đủ loại, qua được câu bẫy; lỗi đã cài hoặc gặp phải được quy về đúng tầng và có kết quả sau sửa."),
         ],
         mistakes=[
             ("Giữ nguyên bảng vỡ dòng, để chế độ Auto", "Hit Test câu “Hạng B” bốc đoạn mục lục",
@@ -317,6 +339,10 @@ KEYS = {
              "Kéo thanh Overlap trên tab RAG từ 0% lên 15% để thấy đoạn gối đầu."),
             ("Top-K quá cao (10–20)", "Câu trả lời lẫn quy định khác", "Giảm Top-K về 3–5 và chạy lại Hit Test."),
             ("Không có câu mẫu từ chối", "Câu bẫy “Thưởng Tết” vẫn có con số", "Bổ sung câu từ chối nguyên văn và giảm temperature."),
+            ("Quy lỗi về mô hình, không chỉ ra tầng", "Ô Chặng 7 chỉ ghi “AI trả lời sai”, không nói đã xem đoạn nào",
+             "Hỏi: đoạn đúng có được bốc không? Có đoạn đúng trong prompt thực tế không? Hai câu này tách được ba tầng."),
+            ("Sang tài liệu mới vẫn giữ prompt cũ", "Agent Nhà Xanh vẫn tự xưng Công ty ABC, từ chối bằng “phòng Nhân sự”",
+             "Cho học viên đối chiếu 7 yếu tố của prompt với tài liệu mới."),
         ],
         flow=[
             "Mở tab RAG, chọn bản gốc rồi bản sạch, chạy cùng câu “Hạng B thưởng KPI bao nhiêu?” – so sánh đoạn đứng đầu.",

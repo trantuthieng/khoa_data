@@ -114,6 +114,21 @@ def lam_ngay(title, phut, steps, prompt=None, ket_qua=None, files=()):
     return blocks
 
 
+def doc_them(title, *blocks):
+    """Phần kiến thức sâu của buổi thực hành: gập lại, đọc sau giờ học, không giảng trên lớp."""
+    return [{"t": "details", "title": f"📖 Đọc thêm sau giờ học: {title}", "blocks": list(blocks)}]
+
+
+def ghi_phieu(html):
+    """Nhắc ghi kết quả của chặng vào phiếu thực hành."""
+    return p(f"📝 <strong>Ghi vào phiếu:</strong> {html}", "question")
+
+
+def xong_khi(*items):
+    """Điều kiện để sang chặng sau, học viên tự kiểm tra."""
+    return p("✅ <strong>Xong chặng khi:</strong> " + "; ".join(items) + ".", "apply")
+
+
 def lab_box(tab, title, desc):
     """Khối liên kết mở Phòng thí nghiệm AI Agent ngay trên trình duyệt."""
     return p(f'🧪 <strong>Phòng thí nghiệm trực tuyến ({title}):</strong> {desc} '
@@ -570,6 +585,8 @@ def m00():
                   ["3. Tự luyện", "Làm bài trong mục “Tự luyện” ra giấy hoặc file riêng, chạy thử, rồi mới đọc gợi ý.", "30–45 phút"],
                   ["4. Thực hành chính", "Làm bài Thực hành của buổi và nộp ngay trên trang này.", "45–75 phút"],
                   ["5. Ghi nhật ký prompt", "Ghi lại prompt tốt nhất, lỗi đã gặp và cách sửa.", "10 phút"]),
+            p("Riêng buổi 2 là buổi thuần thực hành: không có các mục Phần, Hướng dẫn, Ví dụ mẫu riêng. Làm lần lượt 8 Chặng; kiến thức "
+              "xen ngay trong từng chặng, phần sâu nằm trong mục “Đọc thêm” gập sẵn.", "apply"),
             h3("Mẫu nhật ký prompt"),
             code("""Ngày: 05/11/2026          Buổi: 1          Công cụ: ChatGPT
 Việc cần làm : Soạn thông báo lịch tập huấn phần mềm bán hàng mới cho phòng
@@ -658,7 +675,9 @@ Bài học      : luôn ghi độ dài, giọng văn và luật "không thêm th
                "viết cho học viên tự học. Trên lớp: trình diễn nhanh phần Ví dụ mẫu (chạy thật prompt trên màn hình); mục Làm trên "
                "công cụ thật nằm ngay trước Thực hành – chiếu lên để học viên làm theo từng bước; mục Tự luyện giao về nhà. Trước "
                "buổi 2–5, tự chạy lại các bước trên Dify vì giao diện nền tảng thay đổi thường xuyên. Lớp ít thời gian thì bấm Phần sau để bỏ qua, học viên vẫn đọc lại được "
-               "sau khi buổi học mở hết các phần."),
+               "sau khi buổi học mở hết các phần.",
+               "Buổi 2 dạy theo 8 chặng thực hành, kiến thức chỉ xen kẽ: mở Thực hành 2 ngay đầu giờ và theo bảng thời lượng trong Ghi chú "
+               "cho giảng viên của buổi đó."),
             kind="teacher"),
         sec("Kiến thức nền – LLM hoạt động thế nào?",
             p("Không cần biết toán để dùng AI tốt, nhưng hiểu 6 ý dưới đây giúp bạn đoán trước AI sẽ sai ở đâu và viết "
@@ -2117,17 +2136,7 @@ trực tiếp (máy lẻ 123)."
 
 # ================================================================ Buổi 2
 
-POLICY_RAW = """CÔNG TY TNHH ABC – SỔ TAY NHÂN SỰ 2025            Trang 3/42
-MỤC LỤC .......................................................... 1
-Chương 3. Chế độ thưởng ............................................ 3
-
-3.2 Thưởng KPI quý
-| Xếp hạng | Điều kiện       | Mức thưởng |
-| A        | KPI >= 110%     | 5.000.000  |
-| B        | 95% <= KPI <110%| 3.000.000  |
-| C        | KPI < 95%       | 0          |
-Ghi chú: nhân viên thử việc không áp dụng. Thời hạn chi: ngày 15 tháng đầu quý sau.
-CÔNG TY TNHH ABC – Lưu hành nội bộ                    Trang 3/42"""
+PHIEU_AI02 = "Thực hành 2 – Phiếu dựng trợ lý tra cứu tài liệu (ghi suốt buổi)"
 
 REFUND_RAW = """QUY TRÌNH HOÀN TIỀN – CÔNG TY ABC        Mã: QT-07    Lần ban hành: 03
 Trang 1/6
@@ -2146,6 +2155,7 @@ def m02():
         "Tài liệu đó hiện ở dạng gì (PDF scan, Word, Excel…)? Bạn đoán AI đọc nó có gặp khó khăn gì không?",
     ])
     th = "ai02-th2"
+    phieu = act(th, PHIEU_AI02)
     acts = [
         op,
         mcq("ai02-check", "Kiểm tra nhanh: RAG và dữ liệu",
@@ -2165,20 +2175,24 @@ def m02():
                   "Bỏ chunk overlap", "Tăng chunk size lên 5.000 token"],
                  "A", "Ngưỡng tương đồng loại bỏ đoạn “rác”; Hit Test cho thấy hệ thống thực sự bốc đoạn nào."),
             ]),
-        practice(th, "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)", None,
-                 "Thiết kế đường ống RAG trên bảng kéo–thả, làm sạch tài liệu, tạo Knowledge Base trên Coze/Dify (hoặc Phòng thí nghiệm AI), "
-                 "cấu hình chunking và truy xuất, kiểm thử bằng Hit Test và viết prompt chuỗi hai bước.", [
-                     BOARD_AI02,
-                     ta("lam_sach", "Bước 1 – Viết lại đoạn “Thưởng KPI quý” (Đề A) hoặc một mục tài liệu Đề B thành Markdown sạch",
-                        "Bỏ header/footer, số trang, mục lục; biến bảng thành câu văn hoặc bảng Markdown; thêm metadata."),
-                     tbl("cau_hinh", "Bước 2 – Cấu hình Knowledge Base", [("gia_tri", "Giá trị bạn đặt", None), ("ly_do", "Lý do", None)],
+        practice(th, PHIEU_AI02, None,
+                 "Phiếu ghi suốt buổi: hết mỗi chặng, ghi vào đúng ô rồi bấm Nộp bài. Nộp lại được nhiều lần cho đến khi giảng viên "
+                 "đóng bài. Chặng 2–7 làm trên Sổ tay nhân sự, chặng 8 làm trên tài liệu bạn tự chọn.", [
+                     ta("lam_sach", "Chặng 2 – Khối “Thưởng KPI quý” bạn đã làm sạch",
+                        "Bỏ header/footer, số trang, mục lục; biến bảng thành câu văn hoặc gạch đầu dòng đủ ý; có dòng Nguồn."),
+                     tbl("cau_hinh", "Chặng 3–4 – Cấu hình Knowledge Base", [("gia_tri", "Giá trị bạn đặt", None), ("ly_do", "Lý do", None)],
                          rows=["Nền tảng (Coze/Dify)", "Mô hình Embedding", "Chunk size", "Chunk overlap", "Delimiter",
                                "Top-K", "Score Threshold"]),
-                     tbl("hit_test", "Bước 3 – Hit Test: 5 câu hỏi thử",
+                     tbl("hit_test", "Chặng 4 – Hit Test: 5 câu hỏi thử",
                          [("cau_hoi", "Câu hỏi", None), ("doan", "Đoạn được bốc ra (tóm tắt) và điểm", None),
                           ("dung", "Bốc đúng đoạn?", ["Đúng", "Sai", "Thiếu"])], min_rows=5),
-                     ta("prompt_chain", "Bước 4 – Prompt của 2 node: Viết lại câu hỏi (Query Rewrite) và Tổng hợp câu trả lời"),
-                     ta("bai_hoc", "Một điều bạn đã chỉnh sau khi Hit Test và tác động của nó"),
+                     ta("prompt_chain", "Chặng 5–6 – Prompt của 2 node: Tổng hợp câu trả lời và Viết lại câu hỏi (Query Rewrite)"),
+                     ta("bai_hoc", "Chặng 7 – Một lỗi bạn đã cài: triệu chứng, nhìn ở đâu, lỗi ở tầng nào, sửa xong kết quả đổi ra sao"),
+                     ta("tu_lam_nguon", "Chặng 8 – Tài liệu bạn chọn và những gì phải đổi so với Sổ tay (làm sạch, cấu hình, prompt)"),
+                     tbl("tu_lam_test", "Chặng 8 – 5 câu kiểm thử trên tài liệu mới (2 thẳng, 1 từ khác tài liệu, 1 nối tiếp, 1 bẫy)",
+                         [("cau_hoi", "Câu hỏi", None), ("doan", "Đoạn được bốc ra", None), ("tra_loi", "Câu trả lời của Agent", None),
+                          ("dat", "Kết quả", ["Đạt", "Chưa đạt"])], min_rows=5),
+                     BOARD_AI02,
                  ]),
         review(2, [
             ("Nêu 4 vấn đề của LLM “thuần” khi dùng trong doanh nghiệp.",
@@ -2196,65 +2210,46 @@ def m02():
         ]),
     ]
     sections = [
-        sec("Giới thiệu",
-            p("Buổi 2 xây <strong>bộ não tri thức</strong> cho Agent. LLM giỏi ngôn ngữ nhưng không biết quy định, sản phẩm, "
-              "quy trình của đơn vị bạn. RAG (Retrieval-Augmented Generation) cho Agent “mở sách” trước khi trả lời."),
+        sec("Bắt đầu – Hôm nay bạn dựng gì",
+            p("Buổi 2 không có phần lý thuyết riêng. Từ một tài liệu chép từ PDF còn “bẩn”, bạn tự dựng một <strong>trợ lý tra cứu "
+              "Sổ tay nhân sự</strong>: trả lời đúng theo tài liệu, ghi được nguồn, không có thì nói không có. Mỗi chặng "
+              "<strong>làm trước</strong>; kiến thức chỉ xen vào vài phút, đúng lúc bạn vừa thấy vấn đề nó giải quyết."),
             quote("LLM mà không có ngữ cảnh giống như một con vẹt khổng lồ. RAG chính là bộ não và cuốn bách khoa toàn thư "
                   "để nó thực sự hiểu biết."),
-            op_block),
-        sec("Mục tiêu học tập",
-            p("Sau buổi học, học viên có thể:"),
-            ol("Giải thích giới hạn Context Window, nguyên nhân ảo giác và lý do cần RAG.",
-               "Mô tả cách Vector Database đọc văn bản dưới dạng vector và tìm kiếm theo ngữ nghĩa.",
-               "Xâu chuỗi câu lệnh (Prompt Chain) để Agent suy luận logic và chính xác hơn.",
-               "Làm sạch, định dạng và chia nhỏ dữ liệu thô trước khi nạp vào Knowledge Base.")),
-        sec("Phần 1 – Giới hạn ngữ cảnh",
-            h3("Vấn đề của LLM truyền thống"),
-            ul("<strong>Lỗi thời (out-of-date):</strong> kiến thức bị đóng băng tại thời điểm huấn luyện.",
-               "<strong>Ảo giác (hallucination):</strong> không biết thì “bịa” ra thông tin nghe hợp lý nhưng sai.",
-               "<strong>Thiếu ngữ cảnh nội bộ:</strong> không biết quy trình, chính sách riêng của doanh nghiệp bạn.",
-               "<strong>Không thể nhồi nhét mọi thứ:</strong> đưa toàn bộ tài liệu công ty vào một prompt là bất khả thi."),
-            h3("Context Window và nút thắt chi phí"),
-            p("Nhiều mô hình hỗ trợ cửa sổ ngữ cảnh rất lớn (128k, thậm chí 1 triệu token). Nhưng đẩy toàn bộ dữ liệu vào "
-              "prompt mỗi lần hỏi gặp ba vấn đề:"),
-            ul("<strong>Chi phí cực cao:</strong> trả tiền cho hàng trăm nghìn token mỗi lần gọi.",
-               "<strong>Độ trễ:</strong> chờ AI đọc xong tài liệu khổng lồ rất lâu.",
-               "<strong>Lost in the middle:</strong> AI thường “quên” hoặc giảm chú ý vào thông tin nằm giữa văn bản quá dài."),
-            h3("Hiểu sâu: vì sao LLM “không biết” chuyện của đơn vị bạn"),
-            p("Kiến thức của LLM đến từ dữ liệu huấn luyện – chủ yếu là văn bản công khai đến một thời điểm. Quy định nội bộ, "
-              "số liệu vận hành, hồ sơ khách hàng của đơn vị không nằm trong đó. Khi bị hỏi, mô hình không “tra cứu trí nhớ” như "
-              "con người mà sinh ra câu trả lời có xác suất cao nhất. Vì vậy với câu hỏi về nội bộ, nó tạo ra một câu trả lời "
-              "<em>giống như quy định thường thấy</em> – nghe hợp lý nhưng không phải quy định của bạn."),
-            h3("Ba cách đưa kiến thức riêng cho AI"),
-            table(["Cách", "Làm thế nào", "Ưu điểm", "Nhược điểm", "Hợp khi"],
-                  ["Đưa thẳng vào prompt (ngữ cảnh dài)", "Dán hoặc đính kèm toàn bộ tài liệu mỗi lần hỏi",
-                   "Đơn giản, không cần hạ tầng", "Tốn token mỗi lượt, chậm, giới hạn kích thước, lost in the middle",
-                   "Phân tích vài tài liệu cụ thể, dùng thỉnh thoảng"],
-                  ["Fine-tuning (huấn luyện thêm)", "Huấn luyện tiếp mô hình trên dữ liệu của bạn",
-                   "Học được giọng văn, định dạng, thuật ngữ",
-                   "Tốn kém, mất thời gian; cập nhật phải huấn luyện lại; không đảm bảo nhớ đúng từng con số; không trích được nguồn",
-                   "Dạy cách viết, định dạng đầu ra cố định"],
-                  ["RAG", "Tìm đoạn liên quan rồi đưa vào prompt",
-                   "Cập nhật tức thì bằng cách thay tài liệu; trích được nguồn; chỉ tốn token cho phần liên quan",
-                   "Phải chuẩn bị dữ liệu, cấu hình truy xuất; tìm nhầm thì trả lời sai",
-                   "Kho tài liệu lớn, thay đổi thường xuyên, cần dẫn nguồn"]),
-            figure(fg.fig_ba_cach(), "Ba cách đưa kiến thức riêng cho AI và khi nào hợp với từng cách"),
-            p("Hiểu nhầm phổ biến: “muốn AI biết quy định công ty thì phải fine-tune”. Với kiến thức dạng sự kiện, con số, quy định "
-              "thay đổi theo thời gian, RAG thường là lựa chọn đúng; fine-tuning hợp hơn để dạy cách viết.", "misconception"),
-            h3("Lost in the middle là gì?"),
-            p("Nghiên cứu của Liu và cộng sự (2023) cho thấy: khi đưa nhiều tài liệu vào một prompt dài, mô hình dùng thông tin ở "
-              "đầu và cuối tốt hơn hẳn thông tin nằm giữa. Các mô hình mới đã cải thiện nhiều, nhưng nguyên tắc vẫn đúng: càng nhồi "
-              "nhiều nội dung không liên quan, đoạn quan trọng càng dễ bị bỏ qua."),
-            figure(fg.fig_lost_middle(), "Lost in the middle: thông tin nằm giữa prompt dài dễ bị bỏ qua (minh họa xu hướng)"),
-            p("Đưa vào ít nhưng đúng (RAG với Top-K nhỏ) thường tốt hơn đưa vào tất cả. Khi buộc phải dán tài liệu dài, đặt tài liệu "
-              "lên trước và câu hỏi, chỉ dẫn quan trọng ở cuối prompt.", "apply"),
-            h3("Đưa thẳng tài liệu hay dùng RAG?"),
-            table(["Tình huống", "Nên dùng"],
-                  ["Tóm tắt, rà soát một hợp đồng 30 trang", "Đưa thẳng tài liệu vào prompt"],
-                  ["So sánh 3 dự thảo văn bản với nhau", "Đưa thẳng – 3 tài liệu vừa cửa sổ ngữ cảnh"],
-                  ["Trợ lý trả lời 500 nhân viên về 200 văn bản quy định", "RAG"],
-                  ["Tra cứu quy trình được cập nhật hằng tháng", "RAG – thay tài liệu là xong"],
-                  ["Hỏi số liệu từ bảng hàng nghìn dòng", "Không phải RAG văn bản: dùng công cụ truy vấn, chạy mã (buổi 4)"]),
+            table(["Chặng", "Bạn làm", "Dừng lại xem", "Kiến thức xen kẽ", "Phút"],
+                  ["1", "Hỏi AI khi chưa có và khi đã có tài liệu", "AI bịa mức thưởng", "Giới hạn LLM, Context Window, RAG", "15"],
+                  ["2", "Nhờ AI làm sạch bản PDF, tự đối chiếu", "Bảng KPI có bị ghép sai không", "GIGO, kỹ thuật làm sạch", "20"],
+                  ["3", "Tạo kho tài liệu, cắt hỏng thử một lần", "Từng đoạn máy đã cắt", "Chunking, overlap", "20"],
+                  ["4", "Hit Test 5 câu trên hai kho, chỉnh thông số", "Đoạn nào đứng đầu, điểm bao nhiêu",
+                   "Embedding, Vector DB, ba kiểu tìm kiếm, Top-K, ngưỡng", "25"],
+                  ["", "Nghỉ giữa buổi", "", "", "10"],
+                  ["5", "Nối LLM thành trợ lý, viết prompt chống bịa", "Prompt thực tế LLM nhận được", "7 yếu tố của prompt hỏi đáp tài liệu", "25"],
+                  ["6", "Sửa câu hỏi nối tiếp bằng node viết lại câu hỏi", "Câu đem đi tìm trước và sau khi sửa", "Prompt Chain", "15"],
+                  ["7", "Tự cài 2 lỗi vào trợ lý rồi tìm và sửa", "Lỗi nằm ở tầng nào", "5 kiểu lỗi RAG, phân quyền dữ liệu", "20"],
+                  ["8", "Tự dựng lại trên tài liệu khác, không có hướng dẫn từng bước", "Trợ lý mới có qua được câu bẫy không", "Không có", "25"],
+                  ["", "Chữa bài và chốt buổi", "", "", "10"]),
+            h3("Cuối buổi bạn làm được"),
+            ol("Làm sạch tài liệu thô thành Markdown và tự kiểm tra lại con số.",
+               "Tạo Knowledge Base, chọn thông số cắt đoạn và truy xuất có lý do.",
+               "Dùng Hit Test để biết hệ thống tìm đúng hay sai trước khi nối với LLM.",
+               "Viết chuỗi prompt để Agent hiểu câu hỏi nối tiếp và không bịa.",
+               "Khi Agent trả lời sai, chỉ ra lỗi nằm ở dữ liệu, truy xuất hay bước sinh câu trả lời."),
+            h3("Chuẩn bị trong 5 phút"),
+            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md", "chinh_sach_doi_tra_gia_lap.md"),
+            table(["Bạn có", "Đi theo đường", "Lưu ý"],
+                  ["Tài khoản Dify cloud", "Làm trên Dify ở chặng 3–7",
+                   "Gói Sandbox có 200 lượt dùng mô hình, cấp một lần: đủ cho buổi học nếu thử có chủ đích"],
+                  ["Chưa có Dify, hoặc hết lượt", "Phòng thí nghiệm AI ở chặng 3, 4, 6; ChatGPT/Claude/Gemini kèm file ở chặng 5, 7",
+                   "Chỉ cần trình duyệt. Mỗi chặng đều ghi cách làm cho đường này"]),
+            lab_box("rag", "Buổi 2 – Chunking & Hit Test",
+                    "Chỉnh Delimiter, Chunk size, Overlap, Top-K, Ngưỡng và chạy Hit Test ngay trên trình duyệt. Đường Dify cũng dùng "
+                    "Phòng thí nghiệm này ở phần cắt hỏng thử và chỉnh thông số."),
+            p("<strong>Phiếu Thực hành 2 đi cùng bạn suốt buổi.</strong> Hết mỗi chặng, ghi vào đúng ô của phiếu rồi bấm <strong>Nộp "
+              "bài</strong>. Bạn nộp lại được nhiều lần cho đến khi giảng viên đóng bài, nên cứ nộp phần đã có.", "apply"),
+            phieu,
+            op_block,
+            kind="practice"),
+        sec("Chặng 1 – Bắt AI bịa, rồi đưa sách cho nó",
             *lam_ngay("AI không có tài liệu và AI có tài liệu", 10, [
                 "Mở cuộc trò chuyện mới, <strong>tắt tìm kiếm web</strong>. Gửi 3 câu hỏi bên dưới, chưa đính kèm gì.",
                 "Ghi lại câu trả lời: AI nói không biết, hay đưa ra con số cụ thể?",
@@ -2270,232 +2265,87 @@ def m02():
                         "3.2; (2) không, nguồn mục 3.2 và Chương 4; (3) sổ tay chưa đề cập. Câu 3 là câu quan trọng nhất: AI có "
                         "tài liệu mà vẫn bịa thưởng Tết thì prompt thiếu luật “không có thì nói không có”. Đây chính là việc RAG "
                         "làm tự động: tìm đoạn liên quan rồi đưa vào prompt cho bạn."),
-            *tu_kiem_tra(
-                ("Vì sao hỏi ChatGPT về chế độ thưởng của chính công ty bạn, nó vẫn trả lời trôi chảy?",
-                 "Mô hình sinh câu trả lời có xác suất cao nhất theo dữ liệu huấn luyện – một quy định “thường thấy”, nghe hợp lý "
-                 "nhưng không phải quy định của bạn (ảo giác)."),
-                ("Trợ lý cần trả lời theo 200 văn bản quy định, cập nhật hằng tháng. Fine-tuning hay RAG? Vì sao?",
-                 "RAG: cập nhật bằng cách thay tài liệu, trích được nguồn, chỉ dùng phần liên quan. Fine-tuning tốn kém, phải huấn "
-                 "luyện lại mỗi lần cập nhật và không đảm bảo nhớ đúng con số."),
-                ("Muốn biết “tổng doanh thu 9 tháng của CH TP.HCM” từ bảng 10.000 dòng, có nên dùng RAG không?",
-                 "Không. Dữ liệu bảng cần tính toán: dùng công cụ truy vấn hoặc chạy mã (buổi 4); RAG văn bản không cộng số chính xác."))),
-        sec("Phần 2 – Giải pháp RAG",
+            xong_khi("đã thấy ít nhất một con số AI tự đưa ra khi chưa có tài liệu",
+                     "có file đính kèm thì câu thưởng Tết được trả lời là tài liệu chưa đề cập"),
+            h3("Xen kẽ 5 phút – Vì sao AI bịa, và vì sao không đính kèm cả kho tài liệu?"),
+            ul("<strong>Lỗi thời (out-of-date):</strong> kiến thức bị đóng băng tại thời điểm huấn luyện.",
+               "<strong>Ảo giác (hallucination):</strong> không biết thì “bịa” ra thông tin nghe hợp lý nhưng sai.",
+               "<strong>Thiếu ngữ cảnh nội bộ:</strong> không biết quy trình, chính sách riêng của doanh nghiệp bạn.",
+               "<strong>Không thể nhồi nhét mọi thứ:</strong> đưa toàn bộ tài liệu công ty vào một prompt là bất khả thi."),
+            p("Lần đính kèm vừa rồi hiệu quả vì file chỉ vài trang. Với cả kho tài liệu thì khác."),
+            h3("Context Window và nút thắt chi phí"),
+            p("Nhiều mô hình hỗ trợ cửa sổ ngữ cảnh rất lớn (128k, thậm chí 1 triệu token). Nhưng đẩy toàn bộ dữ liệu vào "
+              "prompt mỗi lần hỏi gặp ba vấn đề:"),
+            ul("<strong>Chi phí cực cao:</strong> trả tiền cho hàng trăm nghìn token mỗi lần gọi.",
+               "<strong>Độ trễ:</strong> chờ AI đọc xong tài liệu khổng lồ rất lâu.",
+               "<strong>Lost in the middle:</strong> AI thường “quên” hoặc giảm chú ý vào thông tin nằm giữa văn bản quá dài."),
             p("RAG là một kỹ thuật kiến trúc: thay vì bắt AI học thuộc, cho AI <strong>tìm thông tin trước khi trả lời</strong>."),
             table(["Bước", "Việc hệ thống làm"],
                   ["R – Retrieval (Truy xuất)", "Đổi câu hỏi thành vector, tìm các đoạn (chunk) có nghĩa gần nhất trong Vector Database."],
                   ["A – Augmented (Tăng cường)", "Ghép câu hỏi + các đoạn vừa tìm thành một prompt đầy đủ ngữ cảnh."],
                   ["G – Generation (Sinh)", "LLM đọc prompt đã tăng cường và tổng hợp câu trả lời dựa trên dữ liệu thật."]),
-            h3("So sánh: thi đóng và thi mở"),
-            table(["Thi đóng – LLM thuần", "Thi mở – dùng RAG"],
-                  ["Chỉ dựa vào trí nhớ lúc huấn luyện, dễ nhớ sai.", "Tìm đúng trang sách trước khi viết đáp án."],
-                  ["Không biết kiến thức mới xuất hiện hôm qua.", "Thêm file vào kho là cập nhật kiến thức ngay, không cần huấn luyện lại."],
-                  ["Cập nhật bằng fine-tuning rất tốn kém.", "Câu trả lời bám tài liệu, trích dẫn được nguồn."]),
             figure(fg.fig_thi_dong_mo(), "Thi đóng và thi mở: RAG tìm trang tài liệu trước rồi mới trả lời"),
             p("RAG giảm mạnh ảo giác nhưng không tự động đúng 100%: tài liệu sai, cắt đoạn kém hoặc truy xuất nhầm vẫn cho "
               "câu trả lời sai. Vì vậy phần chuẩn bị dữ liệu và kiểm thử truy xuất quan trọng không kém.", "misconception"),
-            h3("Hiểu sâu: từ RAG cơ bản đến RAG nâng cao"),
-            table(["Mức", "Cách làm", "Khắc phục được"],
-                  ["RAG cơ bản", "Câu hỏi → tìm Top-K đoạn → LLM trả lời", "Ảo giác do thiếu kiến thức nội bộ"],
-                  ["+ Viết lại câu hỏi", "Câu hỏi nối tiếp, mơ hồ được viết lại thành câu đầy đủ trước khi tìm",
-                   "Câu hỏi kiểu “còn hạng B thì sao?”"],
-                  ["+ Tìm kết hợp và xếp hạng lại (Hybrid + Rerank)",
-                   "Tìm cả theo nghĩa lẫn từ khóa, rồi một mô hình xếp hạng lại để chọn đoạn sát nhất",
-                   "Bỏ sót mã số; đoạn đúng bị xếp thấp"],
-                  ["+ Lọc theo metadata", "Chỉ tìm trong văn bản còn hiệu lực, đúng đơn vị, đúng loại",
-                   "Trộn quy định cũ và mới"],
-                  ["Agentic RAG", "Agent tự quyết có cần tìm không, tìm mấy lần, tìm ở kho nào",
-                   "Câu hỏi phức tạp cần ghép nhiều nguồn"]),
-            p("Bắt đầu từ RAG cơ bản, đo bằng Hit Test, chỉ thêm kỹ thuật khi thấy một lỗi cụ thể mà kỹ thuật đó giải quyết.", "apply"),
-            h3("Rerank – xếp hạng lại là gì?"),
-            p("Tìm theo vector rất nhanh nhưng chỉ so “gần đúng”. Rerank dùng một mô hình chuyên chấm mức liên quan giữa câu hỏi "
-              "và từng đoạn – đọc cả hai cùng lúc – nên chính xác hơn nhưng chậm hơn. Vì vậy hệ thống thường làm hai tầng: tìm "
-              "nhanh 20–50 đoạn ứng viên, rồi rerank chọn 3–5 đoạn tốt nhất đưa cho LLM. Dify có tùy chọn Rerank Model trong cài "
-              "đặt truy xuất."),
-            figure(fg.fig_rerank(), "Truy xuất hai tầng: tìm nhanh trên cả kho, rerank kỹ trên vài chục ứng viên"),
-            h3("Năm kiểu lỗi của hệ thống RAG"),
-            table(["Lỗi", "Ví dụ", "Nằm ở đâu, sửa thế nào"],
-                  ["Tài liệu không có thông tin", "Hỏi thưởng Tết, sổ tay không quy định",
-                   "Dữ liệu – Agent phải nói “chưa đề cập”, không bịa"],
-                  ["Có nhưng không tìm thấy", "Tài liệu ghi “hoàn tiền”, người hỏi “trả hàng lấy tiền”",
-                   "Truy xuất – Hybrid, viết lại câu hỏi, viết FAQ bằng lời người dùng"],
-                  ["Tìm thấy đoạn sai", "Bốc mục lục thay vì nội dung", "Dữ liệu và cắt đoạn – làm sạch, cắt theo đề mục"],
-                  ["Tìm đúng nhưng trả lời sai", "Đoạn ghi 7 ngày, Agent trả lời 30 ngày", "Sinh câu trả lời – siết prompt, giảm temperature"],
-                  ["Tài liệu lỗi thời", "Trả lời theo quy định đã bị thay thế", "Quản trị dữ liệu – gỡ bản cũ, gắn ngày hiệu lực"]),
-            figure(fg.fig_rag_errors(), "Năm kiểu lỗi RAG nằm ở ba tầng – sửa đúng tầng sinh ra lỗi"),
-            h3("RAG và phân quyền dữ liệu"),
-            p("RAG trả lời bằng chính nội dung tài liệu. Nếu kho chung có cả tài liệu chỉ dành cho lãnh đạo (bảng lương, hồ sơ kỷ "
-              "luật), bất kỳ ai hỏi khéo cũng có thể nhận được nội dung đó. Dòng “không tiết lộ tài liệu mật” trong prompt không "
-              "phải cơ chế bảo vệ.", "misconception"),
-            p("Chỉ nạp vào kho những tài liệu mà <strong>mọi người dùng của Agent đều được phép đọc</strong>. Tài liệu có quyền "
-              "khác nhau thì tách kho, tách Agent theo nhóm người dùng, hoặc dùng nền tảng hỗ trợ lọc theo quyền của người hỏi.",
-              "apply"),
-            h3("Trích dẫn nguồn: không chỉ để đẹp"),
-            p("Bắt Agent ghi nguồn (tài liệu – mục) có ba tác dụng: người dùng kiểm chứng nhanh; giảm bịa vì mô hình phải bám vào "
-              "một đoạn cụ thể; người bảo trì phát hiện được tài liệu nào hay bị dùng sai. Câu trả lời ghi nguồn nhưng nguồn đó "
-              "không chứa thông tin đã nêu là dấu hiệu lỗi cần sửa ngay."),
-            *tu_kiem_tra(
-                ("Người dùng hỏi “trả hàng lấy tiền thế nào?”, tài liệu ghi “quy trình hoàn tiền”, Agent nói không tìm thấy. Lỗi "
-                 "thuộc kiểu nào, khắc phục ra sao?",
-                 "Có nhưng không tìm thấy (lỗi truy xuất). Bật Hybrid, thêm FAQ dùng lời người dùng, thêm bước viết lại câu hỏi."),
-                ("Vì sao không nên nạp bảng lương vào kho chung của trợ lý nhân sự, kể cả khi đã dặn “không tiết lộ lương”?",
-                 "RAG trả lời bằng nội dung tài liệu; người hỏi khéo vẫn lấy được. Lời dặn không phải cơ chế phân quyền; phải "
-                 "tách kho hoặc lọc theo quyền người hỏi."),
-                ("Rerank giải quyết vấn đề gì, và vì sao không chạy rerank trên toàn bộ kho?",
-                 "Chọn chính xác hơn đoạn sát câu hỏi nhất; nhưng chậm, nên chỉ chạy trên 20–50 đoạn đã tìm nhanh trước."))),
-        sec("Ví dụ mẫu – Một câu hỏi đi qua hệ thống RAG",
-            p("Hệ thống RAG có hai giai đoạn: <strong>nạp tài liệu</strong> (làm một lần, làm lại khi tài liệu thay đổi) và "
-              "<strong>hỏi đáp</strong> (mỗi câu hỏi)."),
-            flow(fl.fl_rag(), "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"),
-            h3("Theo dõi một câu hỏi"),
-            p("Người dùng vừa hỏi về thưởng KPI hạng A, rồi hỏi tiếp: <em>“Thế người thử việc có được không?”</em>"),
-            table(["Bước", "Dữ liệu tại bước đó"],
-                  ["Câu hỏi gốc", "“Thế người thử việc có được không?” – thiếu chủ ngữ, tìm kiếm theo câu này sẽ lạc."],
-                  ["Viết lại câu hỏi", "“Nhân viên thử việc có được hưởng thưởng KPI quý không?”"],
-                  ["Truy xuất (Top-K = 3)", "Đoạn 1 – điểm 0,82: “Thưởng KPI quý… Nhân viên thử việc không áp dụng.”<br>"
-                   "Đoạn 2 – điểm 0,61: “Chế độ thử việc: lương thử việc bằng 85% lương của vị trí…”<br>"
-                   "Đoạn 3 – điểm 0,38: “Thưởng sáng kiến: mỗi sáng kiến được công nhận…”"],
-                  ["Lọc ngưỡng 0,5", "Bỏ đoạn 3 (0,38 &lt; 0,5). Còn đoạn 1 và 2."],
-                  ["Ghép prompt", "Chỉ dẫn trả lời + đoạn 1, 2 trong thẻ &lt;tai_lieu&gt; + câu hỏi đã viết lại."],
-                  ["Sinh câu trả lời", "“Không. Nhân viên thử việc không áp dụng thưởng KPI quý. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”"]),
-            p("Khi Agent trả lời sai, đi lại từng bước như bảng trên. <strong>Bốc nhầm đoạn</strong> → lỗi truy xuất: sửa dữ liệu, "
-              "cách cắt đoạn, ngưỡng. <strong>Bốc đúng đoạn mà vẫn trả lời sai</strong> → lỗi sinh: sửa prompt.", "apply")),
-        sec("Phần 3 – Vector Database",
-            h3("Embeddings: biến chữ thành số"),
-            p("Mô hình embedding (VD: text-embedding-3-small) chuyển một câu thành một vector – mảng hàng nghìn con số. "
-              "Các câu cùng nghĩa có vector gần nhau: “chó” và “mèo” nằm gần nhau hơn “chó” và “máy tính”."),
-            h3("Ba kiểu tìm kiếm"),
-            table(["Kiểu", "Cách hoạt động", "Điểm yếu / mạnh"],
-                  ["Keyword Search", "Khớp chính xác từng từ.", "Tìm “xe hơi” sẽ bỏ sót tài liệu ghi “ô tô”."],
-                  ["Semantic Search", "So khớp ý nghĩa qua vector.", "Tìm “hủy đơn hàng” lấy được cả “quy trình trả hàng, hoàn tiền”."],
-                  ["Hybrid Search", "Kết hợp cả hai.", "Bắt được cả ngữ nghĩa lẫn mã số, từ khóa đặc thù."]),
-            h3("Vector Database hoạt động ra sao?"),
-            p("Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu "
-              "tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất."),
-            p("Mô hình động dưới đây chạy đủ một vòng trên tài liệu đổi trả của Nhà Xanh. Bấm <strong>▶ Tự chạy</strong> hoặc "
-              "từng bước; từ bước 3 đổi câu hỏi, chuyển “Theo nghĩa / Theo từ khóa”, kéo Top-K và Ngưỡng để thấy kết quả "
-              "đổi theo. Bấm vào một chấm để xem đoạn văn và vector của nó.", "example"),
-            widget("vectordb", "Vector Database: đoạn cùng nghĩa nằm gần nhau; câu hỏi được đặt lên cùng bản đồ và lấy các "
-                   "đoạn gần nhất"),
-            table(["Sản phẩm", "Đặc điểm"],
-                  ["Pinecone", "Dịch vụ quản lý sẵn, dễ dùng, không cần quản lý hạ tầng."],
-                  ["Milvus / Zilliz", "Mã nguồn mở, hiệu năng cao, quy mô hàng tỷ vector."],
-                  ["Qdrant, Weaviate", "Cân bằng tốc độ và tính năng, hỗ trợ tốt Hybrid Search."],
-                  ["PostgreSQL + pgvector", "Tận dụng Postgres sẵn có bằng extension."]),
-            p("Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.", "apply"),
-            h3("Hiểu sâu: chọn mô hình embedding"),
-            ul("<strong>Hỗ trợ tiếng Việt:</strong> mô hình đa ngôn ngữ (multilingual) cho kết quả tốt hơn hẳn mô hình chủ yếu học "
-               "tiếng Anh. Thử bằng Hit Test với câu hỏi có dấu, không dấu, viết tắt (“HĐ”, “CSKH”).",
-               "<strong>Số chiều:</strong> nhiều chiều thường biểu diễn nghĩa tinh hơn nhưng tốn bộ nhớ hơn; với vài nghìn đoạn, "
-               "khác biệt chi phí không đáng kể.",
-               "<strong>Không trộn mô hình:</strong> câu hỏi và tài liệu phải được đổi thành vector bằng cùng một mô hình. Đổi mô "
-               "hình embedding thì phải nạp lại (re-index) toàn bộ kho."),
-            h3("Tìm nhanh trong hàng triệu vector"),
-            p("So câu hỏi với từng đoạn một sẽ rất chậm khi kho lớn. Vector Database dùng chỉ mục tìm gần đúng (ANN – Approximate "
-              "Nearest Neighbor, phổ biến là HNSW): sắp các vector thành một mạng lưới để đi nhanh tới vùng gần câu hỏi, chấp nhận "
-              "đôi khi bỏ sót một đoạn rất sát để đổi lấy tốc độ. Với kho vài nghìn đoạn của một phòng ban, bạn gần như không cần "
-              "bận tâm chi tiết này – nền tảng đã lo."),
-            h3("Tìm theo từ khóa hoạt động thế nào?"),
-            p("Tìm theo từ khóa hiện đại (BM25) không chỉ đếm số lần xuất hiện: từ hiếm (mã “QT-07”, tên riêng) được tính điểm cao "
-              "hơn từ phổ biến (“quy định”, “các”), và đoạn quá dài bị trừ điểm để không lấn át. Vì vậy nó mạnh với mã số, tên "
-              "riêng, thuật ngữ chính xác – đúng chỗ mà tìm theo nghĩa hay yếu."),
-            table(["Câu hỏi", "Theo nghĩa", "Theo từ khóa", "Kết hợp (Hybrid)"],
-                  ["“Trả hàng lấy lại tiền thế nào?” (tài liệu ghi “hoàn tiền”)", "Tốt", "Kém", "Tốt"],
-                  ["“Quy trình QT-07 bước 3?”", "Trung bình – mã số ít mang nghĩa", "Tốt", "Tốt"],
-                  ["“Hàng giao trễ có được bồi thường không?”", "Tốt", "Trung bình", "Tốt"]),
-            h3("Metadata: lọc trước, tìm sau"),
-            p("Metadata là thông tin đi kèm mỗi đoạn: tên tài liệu, đơn vị ban hành, ngày hiệu lực, loại văn bản, phạm vi áp dụng. "
-              "Lọc theo metadata trước khi tìm (chỉ văn bản còn hiệu lực, chỉ tài liệu khối Kinh doanh) loại hẳn những đoạn đúng "
-              "nghĩa nhưng sai bối cảnh – điều mà tìm theo vector không tự phân biệt được."),
-            *tu_kiem_tra(
-                ("Đơn vị đổi sang mô hình embedding mới tốt hơn. Cần làm gì với kho tài liệu?",
-                 "Nạp lại (re-index) toàn bộ kho bằng mô hình mới; câu hỏi và tài liệu phải dùng cùng một mô hình."),
-                ("Người dùng hay hỏi theo mã biểu mẫu (“mẫu BM-12”). Chế độ tìm nào phù hợp? Vì sao?",
-                 "Hybrid (có tìm theo từ khóa): mã số ít mang nghĩa nên tìm theo vector dễ bỏ sót; từ khóa khớp chính xác mã."),
-                ("Kho có cả quy định 2023 (hết hiệu lực) và 2025. Ngoài việc gỡ bản cũ, còn cách nào?",
-                 "Gắn metadata ngày hiệu lực/trạng thái và chỉ tìm văn bản còn hiệu lực; thêm luật ưu tiên văn bản mới trong prompt."))),
-        sec("Đi sâu – Embedding và độ tương đồng bằng con số",
-            p("Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến <em>giao nhận hàng</em>, đến <em>tiền, "
-              "thanh toán</em>, đến <em>thủ tục, giấy tờ</em>. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều "
-              "không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt."),
-            table(["Câu", "Giao hàng", "Tiền", "Thủ tục"],
-                  ["A. “Đơn của tôi vẫn chưa nhận được”", "0,9", "0,1", "0,1"],
-                  ["B. “Shipper chưa tới dù đã quá hẹn”", "0,8", "0,1", "0,2"],
-                  ["C. “Sao tôi bị trừ tiền hai lần?”", "0,1", "0,9", "0,2"],
-                  ["<strong>Câu hỏi Q: “Sao hàng mãi chưa giao?”</strong>", "0,85", "0,15", "0,1"]),
-            p("<strong>Độ tương đồng cosine</strong> đo góc giữa hai vector: càng gần 1, nghĩa càng giống."),
-            code("""cos(Q, A) ≈ 0,998   → rất gần nghĩa
-cos(Q, B) ≈ 0,991   → rất gần nghĩa, dù B không có từ "giao"
-cos(Q, C) ≈ 0,298   → khác nghĩa
-
-Cách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × độ dài A)
-                   = 0,79 ÷ (0,869 × 0,911) ≈ 0,998"""),
-            figure(fg.fig_embedding(), "Độ tương đồng cosine đo góc giữa hai vector: góc nhỏ là gần nghĩa"),
-            p("Tìm theo từ khóa “giao” không thấy câu A, B vì chúng dùng “chưa nhận được”, “shipper chưa tới”. Tìm theo ngữ nghĩa "
-              "lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã đơn hàng, tìm theo từ khóa lại chính xác hơn – "
-              "đó là lý do có Hybrid Search.", "example"),
-            p("Score Threshold chính là ngưỡng trên thang điểm này. Nhưng mức điểm thực tế phụ thuộc mô hình embedding: có mô "
-              "hình cho điểm phổ biến 0,7–0,9, có mô hình chỉ 0,3–0,6. Hãy dùng Hit Test xem điểm thực tế trên dữ liệu của "
-              "bạn rồi mới chọn ngưỡng; 0,5 chỉ là điểm xuất phát.", "apply")),
-        sec("Phần 4 – Chuẩn bị dữ liệu",
-            p("<strong>GIGO – Garbage In, Garbage Out:</strong> dữ liệu rác tạo ra Agent rác. Hệ thống RAG tốt đến mấy cũng vô "
-              "dụng nếu tài liệu đầu vào lộn xộn."),
-            ul("PDF scan dạng ảnh mà không OCR → máy chỉ thấy khoảng trắng.",
-               "Bảng phức tạp bị vỡ dòng → thông tin bị nối sai ngữ cảnh.",
-               "Header/footer lặp lại mọi trang → gây nhiễu khi tìm kiếm."),
-            h3("Kỹ thuật làm sạch"),
-            ul("<strong>Loại bỏ nhiễu:</strong> xóa ký tự đặc biệt, số trang, tiêu đề lặp.",
-               "<strong>Chuẩn hóa định dạng:</strong> chuyển về Markdown – giữ cấu trúc H1, H2, in đậm, thân thiện với LLM.",
-               "<strong>Xử lý bảng:</strong> chuyển thành bảng Markdown hoặc viết lại thành câu văn dễ hiểu.",
-               "<strong>Gắn metadata:</strong> ngày hiệu lực, danh mục, đơn vị ban hành – giúp lọc trước khi tìm."),
-            h3("Chunking – cắt nhỏ dữ liệu"),
-            table(["Vấn đề", "Khuyến nghị"],
-                  ["Vì sao phải cắt?", "Không thể embed cả cuốn sách vào một vector. Cỡ chunk lý tưởng khoảng 500–1.000 token."],
-                  ["Cắt thế nào?", "Cắt theo số ký tự (fixed-size), hoặc tốt hơn: semantic chunking theo câu, đoạn, heading."],
-                  ["Chunk overlap", "Cho các đoạn gối lên nhau (VD: 1.000 từ, gối 150 từ) để không mất ý nằm vắt ngang điểm cắt."]),
-            figure(fg.fig_chunking(), "Cắt cố định dễ cắt ngang một mục; gối đầu giữ ý ở điểm cắt; cắt theo đề mục cho mỗi đoạn trọn ý"),
-            h3("Hiểu sâu: quy trình 7 bước chuẩn bị tri thức"),
-            ol("<strong>Kiểm kê:</strong> liệt kê tài liệu Agent cần, ai sở hữu, bản nào là bản chính thức đang hiệu lực.",
-               "<strong>Lọc:</strong> bỏ bản nháp, bản trùng, bản hết hiệu lực; bỏ tài liệu mà người dùng Agent không được quyền đọc.",
-               "<strong>Chuyển đổi:</strong> PDF scan phải OCR; Word, PDF văn bản chuyển sang Markdown; kiểm tra lại số liệu sau "
-               "khi chuyển.",
-               "<strong>Làm sạch và cấu trúc:</strong> bỏ nhiễu, giữ đề mục, viết lại bảng, che thông tin cá nhân không cần thiết.",
-               "<strong>Gắn metadata:</strong> tên, số hiệu, ngày hiệu lực, đơn vị, phạm vi áp dụng.",
-               "<strong>Cắt đoạn và kiểm tra:</strong> xem trước các đoạn, chạy Hit Test.",
-               "<strong>Bảo trì:</strong> ai cập nhật khi văn bản thay đổi, bao lâu rà soát một lần."),
-            figure(fg.fig_7_buoc(), "Bảy bước chuẩn bị tri thức – bảo trì là vòng lặp, không phải việc làm một lần"),
-            h3("Các chiến lược cắt đoạn"),
-            table(["Chiến lược", "Cách cắt", "Ưu", "Nhược", "Hợp với"],
-                  ["Cố định", "Mỗi N ký tự hoặc token", "Đơn giản", "Cắt ngang câu, ngang bảng", "Văn bản đồng nhất, không đề mục"],
-                  ["Theo cấu trúc", "Theo đề mục, đoạn văn, dấu phân cách", "Mỗi đoạn trọn ý", "Mục quá dài vẫn phải cắt tiếp",
-                   "Quy định, sổ tay, quy trình có đề mục"],
-                  ["Theo ngữ nghĩa", "Cắt ở chỗ nội dung đổi chủ đề", "Ranh giới tự nhiên", "Tốn tính toán, khó dự đoán",
-                   "Văn bản dài không có đề mục"],
-                  ["Cha – con (parent-child)", "Tìm bằng đoạn con nhỏ, trả về đoạn cha lớn chứa nó",
-                   "Tìm chính xác mà vẫn đủ ngữ cảnh", "Cấu hình phức tạp hơn",
-                   "Quy định nhiều điều kiện, ngoại lệ cần đọc kèm bối cảnh"]),
-            p("Dify có hai chế độ General và Parent-child. Với Parent-child, câu hỏi khớp với một câu nhỏ (đoạn con) nhưng LLM "
-              "nhận cả mục chứa câu đó (đoạn cha) – rất hợp với quy định có nhiều điều kiện, ngoại lệ."),
-            figure(fg.fig_parent_child(), "Parent-child: khớp bằng đoạn con nhỏ, đưa đoạn cha cho LLM đọc"),
-            h3("Đoạn to hay đoạn nhỏ?"),
-            table(["", "Đoạn nhỏ (100–300 token)", "Đoạn lớn (800–1.500 token)"],
-                  ["Tìm kiếm", "Chính xác, khớp đúng câu", "Kém chính xác hơn, ý chính bị pha loãng"],
-                  ["Ngữ cảnh cho LLM", "Dễ thiếu điều kiện, ngoại lệ", "Đủ ngữ cảnh"],
-                  ["Chi phí", "Mỗi đoạn rẻ nhưng có thể cần Top-K lớn", "Mỗi đoạn tốn hơn"]),
-            p("Không có con số đúng cho mọi tài liệu. Bắt đầu với 500–800 token cắt theo đề mục, chạy Hit Test, rồi điều chỉnh "
-              "theo lỗi thấy được.", "apply"),
-            h3("Bảng, hình ảnh và dữ liệu cá nhân"),
-            ul("<strong>Bảng nhỏ</strong> (vài dòng): viết lại thành câu hoặc bảng Markdown, mỗi dòng giữ đủ tiêu đề cột. "
-               "<strong>Bảng lớn</strong> (hàng trăm dòng số liệu): không đưa vào RAG văn bản – dùng công cụ phân tích dữ liệu (buổi 4).",
-               "<strong>Hình ảnh, sơ đồ:</strong> mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Bộ phận tiếp nhận → "
-               "Phòng Kinh doanh → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ.",
-               "<strong>Dữ liệu cá nhân:</strong> xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi "
-               "nạp – Agent không cần chúng để trả lời câu hỏi về quy định."),
+            *doc_them("LLM thuần và RAG, ba cách đưa kiến thức cho AI, lost in the middle",
+                h3("Hiểu sâu: vì sao LLM “không biết” chuyện của đơn vị bạn"),
+                p("Kiến thức của LLM đến từ dữ liệu huấn luyện – chủ yếu là văn bản công khai đến một thời điểm. Quy định nội bộ, "
+                  "số liệu vận hành, hồ sơ khách hàng của đơn vị không nằm trong đó. Khi bị hỏi, mô hình không “tra cứu trí nhớ” như "
+                  "con người mà sinh ra câu trả lời có xác suất cao nhất. Vì vậy với câu hỏi về nội bộ, nó tạo ra một câu trả lời "
+                  "<em>giống như quy định thường thấy</em> – nghe hợp lý nhưng không phải quy định của bạn."),
+                h3("So sánh: thi đóng và thi mở"),
+                table(["Thi đóng – LLM thuần", "Thi mở – dùng RAG"],
+                      ["Chỉ dựa vào trí nhớ lúc huấn luyện, dễ nhớ sai.", "Tìm đúng trang sách trước khi viết đáp án."],
+                      ["Không biết kiến thức mới xuất hiện hôm qua.", "Thêm file vào kho là cập nhật kiến thức ngay, không cần huấn luyện lại."],
+                      ["Cập nhật bằng fine-tuning rất tốn kém.", "Câu trả lời bám tài liệu, trích dẫn được nguồn."]),
+                h3("Ba cách đưa kiến thức riêng cho AI"),
+                table(["Cách", "Làm thế nào", "Ưu điểm", "Nhược điểm", "Hợp khi"],
+                      ["Đưa thẳng vào prompt (ngữ cảnh dài)", "Dán hoặc đính kèm toàn bộ tài liệu mỗi lần hỏi",
+                       "Đơn giản, không cần hạ tầng", "Tốn token mỗi lượt, chậm, giới hạn kích thước, lost in the middle",
+                       "Phân tích vài tài liệu cụ thể, dùng thỉnh thoảng"],
+                      ["Fine-tuning (huấn luyện thêm)", "Huấn luyện tiếp mô hình trên dữ liệu của bạn",
+                       "Học được giọng văn, định dạng, thuật ngữ",
+                       "Tốn kém, mất thời gian; cập nhật phải huấn luyện lại; không đảm bảo nhớ đúng từng con số; không trích được nguồn",
+                       "Dạy cách viết, định dạng đầu ra cố định"],
+                      ["RAG", "Tìm đoạn liên quan rồi đưa vào prompt",
+                       "Cập nhật tức thì bằng cách thay tài liệu; trích được nguồn; chỉ tốn token cho phần liên quan",
+                       "Phải chuẩn bị dữ liệu, cấu hình truy xuất; tìm nhầm thì trả lời sai",
+                       "Kho tài liệu lớn, thay đổi thường xuyên, cần dẫn nguồn"]),
+                figure(fg.fig_ba_cach(), "Ba cách đưa kiến thức riêng cho AI và khi nào hợp với từng cách"),
+                p("Hiểu nhầm phổ biến: “muốn AI biết quy định công ty thì phải fine-tune”. Với kiến thức dạng sự kiện, con số, quy định "
+                  "thay đổi theo thời gian, RAG thường là lựa chọn đúng; fine-tuning hợp hơn để dạy cách viết.", "misconception"),
+                h3("Lost in the middle là gì?"),
+                p("Nghiên cứu của Liu và cộng sự (2023) cho thấy: khi đưa nhiều tài liệu vào một prompt dài, mô hình dùng thông tin ở "
+                  "đầu và cuối tốt hơn hẳn thông tin nằm giữa. Các mô hình mới đã cải thiện nhiều, nhưng nguyên tắc vẫn đúng: càng nhồi "
+                  "nhiều nội dung không liên quan, đoạn quan trọng càng dễ bị bỏ qua."),
+                figure(fg.fig_lost_middle(), "Lost in the middle: thông tin nằm giữa prompt dài dễ bị bỏ qua (minh họa xu hướng)"),
+                p("Đưa vào ít nhưng đúng (RAG với Top-K nhỏ) thường tốt hơn đưa vào tất cả. Khi buộc phải dán tài liệu dài, đặt tài liệu "
+                  "lên trước và câu hỏi, chỉ dẫn quan trọng ở cuối prompt.", "apply"),
+                h3("Đưa thẳng tài liệu hay dùng RAG?"),
+                table(["Tình huống", "Nên dùng"],
+                      ["Tóm tắt, rà soát một hợp đồng 30 trang", "Đưa thẳng tài liệu vào prompt"],
+                      ["So sánh 3 dự thảo văn bản với nhau", "Đưa thẳng – 3 tài liệu vừa cửa sổ ngữ cảnh"],
+                      ["Trợ lý trả lời 500 nhân viên về 200 văn bản quy định", "RAG"],
+                      ["Tra cứu quy trình được cập nhật hằng tháng", "RAG – thay tài liệu là xong"],
+                      ["Hỏi số liệu từ bảng hàng nghìn dòng", "Không phải RAG văn bản: dùng công cụ truy vấn, chạy mã (buổi 4)"]),
+                *tu_kiem_tra(
+                    ("Vì sao hỏi ChatGPT về chế độ thưởng của chính công ty bạn, nó vẫn trả lời trôi chảy?",
+                     "Mô hình sinh câu trả lời có xác suất cao nhất theo dữ liệu huấn luyện – một quy định “thường thấy”, nghe hợp lý "
+                     "nhưng không phải quy định của bạn (ảo giác)."),
+                    ("Trợ lý cần trả lời theo 200 văn bản quy định, cập nhật hằng tháng. Fine-tuning hay RAG? Vì sao?",
+                     "RAG: cập nhật bằng cách thay tài liệu, trích được nguồn, chỉ dùng phần liên quan. Fine-tuning tốn kém, phải huấn "
+                     "luyện lại mỗi lần cập nhật và không đảm bảo nhớ đúng con số."),
+                    ("Muốn biết “tổng doanh thu 9 tháng của CH TP.HCM” từ bảng 10.000 dòng, có nên dùng RAG không?",
+                     "Không. Dữ liệu bảng cần tính toán: dùng công cụ truy vấn hoặc chạy mã (buổi 4); RAG văn bản không cộng số chính xác.")),
+            ),
+            kind="practice"),
+        sec("Chặng 2 – Làm sạch tài liệu bẩn",
             *lam_ngay("nhờ AI làm sạch tài liệu, rồi tự kiểm tra lại", 15, [
                 "Mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_ban_goc.txt</code> (bản “bẩn”, chép từ PDF).",
                 "Dán prompt bên dưới, gửi.",
                 "Tự kiểm tra kết quả theo 4 điểm: còn sót header/footer, số trang không? Bảng thưởng KPI đã thành câu, đúng 3 hạng, "
                 "đúng số tiền chưa? Mỗi mục có dòng Nguồn chưa? Có con số nào bị đổi hoặc thêm vào không?",
-                "So với <code>so_tay_nhan_su_da_lam_sach.md</code> – bản làm sạch mẫu. Lưu bản của bạn để dùng ở Thực hành 2."],
+                "So với <code>so_tay_nhan_su_da_lam_sach.md</code> – bản làm sạch mẫu. Các chặng sau dùng bản mẫu này để kết quả khớp bảng đối chiếu."],
                 files=["so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md"],
                 prompt="""Làm sạch tài liệu đính kèm để nạp vào Knowledge Base:
 1. Bỏ trang bìa, mục lục, header, footer, số trang.
@@ -2509,87 +2359,355 @@ Cách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × 
                         "vỡ dòng (“95% <= KPI” xuống dòng “<110%”) – AI có thể ghép nhầm điều kiện hạng B; và đôi khi AI “làm "
                         "đẹp” câu chữ mà đổi nghĩa (VD “trước hết quý I” thành “trong quý I”). Vì vậy bước 6 và việc bạn tự đối "
                         "chiếu con số là bắt buộc: AI làm sạch nhanh, con người chịu trách nhiệm cuối."),
-            *tu_kiem_tra(
-                ("Bảng giá 300 dòng theo từng mã vật tư có nên đưa vào RAG văn bản không?",
-                 "Không. Bảng lớn nên tra bằng công cụ truy vấn/phân tích dữ liệu; RAG văn bản dễ bốc nhầm dòng và không tính toán được."),
-                ("Khi nào nên dùng chế độ Parent-child?",
-                 "Khi cần tìm chính xác đến câu nhỏ nhưng LLM phải đọc cả mục chứa nó để không thiếu điều kiện, ngoại lệ."),
-                ("Kể 3 việc của bước “Lọc” trước khi nạp tài liệu.",
-                 "Bỏ bản nháp, bản trùng; bỏ bản hết hiệu lực; bỏ tài liệu người dùng Agent không được quyền đọc."))),
-        sec("Hướng dẫn – Làm sạch và cắt đoạn: làm mẫu",
-            h3("Cắt đoạn kém và cắt đoạn tốt"),
-            p("Tải hai bản của cùng sổ tay nhân sự để đối chiếu khi đọc ví dụ: bản chép từ PDF còn mục lục, header/footer, "
-              "bảng vỡ dòng; bản đã làm sạch mỗi mục là một khối Markdown có đề mục và dòng Nguồn."),
-            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md"),
-            p("Cùng một quy định, cắt theo số ký tự cố định và cắt theo đề mục cho kết quả rất khác:"),
-            table(["Cắt cố định theo số ký tự (kém)", "Cắt theo đề mục (tốt)"],
-                  ["Đoạn 1: “…3.2 Thưởng KPI quý. Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý. Hạng B: KPI từ 95%”",
-                   "Đoạn 1: “Sổ tay nhân sự 2025 › 3.2 Thưởng KPI quý: Hạng A… Hạng B… Hạng C… Thử việc không áp dụng. Chi ngày 15 "
-                   "tháng đầu quý sau.”"],
-                  ["Đoạn 2: “đến dưới 110%, thưởng 3.000.000 đồng/quý. Hạng C: KPI dưới 95%… 3.3 Thưởng sáng kiến…”",
-                   "Đoạn 2: “Sổ tay nhân sự 2025 › 3.3 Thưởng sáng kiến: …”"]),
-            p("Ở cách cắt kém, đoạn 2 mất tiêu đề “Thưởng KPI quý”: AI đọc “thưởng 3.000.000 đồng/quý” mà không biết là thưởng "
-              "gì; còn đoạn 1 thì thiếu mức thưởng hạng B. Câu hỏi “Hạng B được thưởng bao nhiêu?” rất dễ bị trả lời sai.",
-              "misconception"),
-            h3("Mẹo: mỗi đoạn phải tự đứng được"),
-            ul("Thêm tên tài liệu và đề mục vào đầu mỗi đoạn (“Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý”).",
-               "Mỗi đoạn trọn một ý: một quy định, một bước quy trình, một cặp hỏi–đáp.",
-               "Tài liệu dạng hỏi–đáp (FAQ): mỗi cặp là một đoạn; dùng tiêu đề hoặc dòng trống làm dấu phân đoạn (delimiter).",
-               "Đoạn quá ngắn (một dòng) cho điểm tương đồng thiếu ổn định – gộp các ý nhỏ cùng mục."),
-            h3("Định dạng FAQ mẫu"),
-            code("""## Hỏi: Nhân viên thử việc có được thưởng KPI quý không?
+            ghi_phieu("ô <strong>Chặng 2</strong>: dán khối “Thưởng KPI quý” bản của bạn."),
+            phieu,
+            xong_khi("đủ 3 hạng, đúng điều kiện và số tiền; có dòng thử việc và thời hạn chi",
+                     "không còn dòng “Trang x/42”; khối có dòng Nguồn"),
+            h3("Xen kẽ 5 phút – Vì sao phải làm sạch trước khi nạp?"),
+            p("<strong>GIGO – Garbage In, Garbage Out:</strong> dữ liệu rác tạo ra Agent rác. Hệ thống RAG tốt đến mấy cũng vô "
+              "dụng nếu tài liệu đầu vào lộn xộn."),
+            ul("PDF scan dạng ảnh mà không OCR → máy chỉ thấy khoảng trắng.",
+               "Bảng phức tạp bị vỡ dòng → thông tin bị nối sai ngữ cảnh.",
+               "Header/footer lặp lại mọi trang → gây nhiễu khi tìm kiếm."),
+            h3("Kỹ thuật làm sạch"),
+            ul("<strong>Loại bỏ nhiễu:</strong> xóa ký tự đặc biệt, số trang, tiêu đề lặp.",
+               "<strong>Chuẩn hóa định dạng:</strong> chuyển về Markdown – giữ cấu trúc H1, H2, in đậm, thân thiện với LLM.",
+               "<strong>Xử lý bảng:</strong> chuyển thành bảng Markdown hoặc viết lại thành câu văn dễ hiểu.",
+               "<strong>Gắn metadata:</strong> ngày hiệu lực, danh mục, đơn vị ban hành – giúp lọc trước khi tìm."),
+            p("Vì vậy không upload thẳng PDF gốc: làm sạch trước, nạp sau. AI làm sạch rất nhanh, nhưng bạn vẫn phải đối chiếu con số như vừa làm.", "apply"),
+            *doc_them("Quy trình 7 bước chuẩn bị tri thức; bảng, hình ảnh và dữ liệu cá nhân",
+                ul("Xóa trang bìa, mục lục (mục lục làm nhiễu tìm kiếm ngữ nghĩa), header/footer, số trang.",
+                   "Biến bảng thành câu: “Thưởng KPI quý: hạng A (KPI từ 110%) được 5.000.000 đồng…”.",
+                   "Lưu thành file Markdown (.md) sạch."),
+                h3("Hiểu sâu: quy trình 7 bước chuẩn bị tri thức"),
+                ol("<strong>Kiểm kê:</strong> liệt kê tài liệu Agent cần, ai sở hữu, bản nào là bản chính thức đang hiệu lực.",
+                   "<strong>Lọc:</strong> bỏ bản nháp, bản trùng, bản hết hiệu lực; bỏ tài liệu mà người dùng Agent không được quyền đọc.",
+                   "<strong>Chuyển đổi:</strong> PDF scan phải OCR; Word, PDF văn bản chuyển sang Markdown; kiểm tra lại số liệu sau "
+                   "khi chuyển.",
+                   "<strong>Làm sạch và cấu trúc:</strong> bỏ nhiễu, giữ đề mục, viết lại bảng, che thông tin cá nhân không cần thiết.",
+                   "<strong>Gắn metadata:</strong> tên, số hiệu, ngày hiệu lực, đơn vị, phạm vi áp dụng.",
+                   "<strong>Cắt đoạn và kiểm tra:</strong> xem trước các đoạn, chạy Hit Test.",
+                   "<strong>Bảo trì:</strong> ai cập nhật khi văn bản thay đổi, bao lâu rà soát một lần."),
+                figure(fg.fig_7_buoc(), "Bảy bước chuẩn bị tri thức – bảo trì là vòng lặp, không phải việc làm một lần"),
+                h3("Bảng, hình ảnh và dữ liệu cá nhân"),
+                ul("<strong>Bảng nhỏ</strong> (vài dòng): viết lại thành câu hoặc bảng Markdown, mỗi dòng giữ đủ tiêu đề cột. "
+                   "<strong>Bảng lớn</strong> (hàng trăm dòng số liệu): không đưa vào RAG văn bản – dùng công cụ phân tích dữ liệu (buổi 4).",
+                   "<strong>Hình ảnh, sơ đồ:</strong> mô tả bằng lời nội dung quan trọng (VD “Sơ đồ: hồ sơ đi từ Bộ phận tiếp nhận → "
+                   "Phòng Kinh doanh → Giám đốc ký”), vì phần lớn hệ thống RAG chỉ đọc chữ.",
+                   "<strong>Dữ liệu cá nhân:</strong> xóa hoặc che họ tên, số điện thoại, mã khách hàng trong ví dụ, biên bản trước khi "
+                   "nạp – Agent không cần chúng để trả lời câu hỏi về quy định."),
+                *tu_kiem_tra(
+                    ("Bảng giá 300 dòng theo từng mã vật tư có nên đưa vào RAG văn bản không?",
+                     "Không. Bảng lớn nên tra bằng công cụ truy vấn/phân tích dữ liệu; RAG văn bản dễ bốc nhầm dòng và không tính toán được."),
+                    ("Khi nào nên dùng chế độ Parent-child?",
+                     "Khi cần tìm chính xác đến câu nhỏ nhưng LLM phải đọc cả mục chứa nó để không thiếu điều kiện, ngoại lệ."),
+                    ("Kể 3 việc của bước “Lọc” trước khi nạp tài liệu.",
+                     "Bỏ bản nháp, bản trùng; bỏ bản hết hiệu lực; bỏ tài liệu người dùng Agent không được quyền đọc.")),
+            ),
+            kind="practice"),
+        sec("Chặng 3 – Tạo kho tài liệu và xem máy cắt đoạn",
+            h3("Làm ngay (15 phút) – Nạp hai bản, đọc từng đoạn đã cắt"),
+            p("Các chặng 3–7 làm trên Dify bản cloud (cloud.dify.ai). Tên nút ghi theo giao diện tiếng Anh; nếu giao diện "
+              "của bạn là tiếng Việt hoặc đã đổi, tìm nút có ý nghĩa tương tự."),
+            h3("Trên Dify – Tài khoản và mô hình"),
+            ol("Vào cloud.dify.ai, đăng ký bằng email hoặc tài khoản Google/GitHub. Tài khoản mới ở gói <strong>Sandbox</strong> có "
+               "200 lượt dùng mô hình (credit), cấp một lần, không tự nạp lại – đủ cho bài học nếu thử có chủ đích.",
+               "Vào <strong>Integrations → Model Provider</strong>, cài nhà cung cấp mô hình (VD OpenAI). Mô hình nằm trong credit "
+               "thì không cần API key.",
+               "Nếu đến bước tạo Knowledge mà báo chưa có mô hình embedding, quay lại Model Provider kiểm tra nhà cung cấp đã cài "
+               "có mô hình embedding."),
+            h3("Trên Dify – Tạo Knowledge từ bản gốc (bẩn)"),
+            ol("Mở <strong>Knowledge</strong> → <strong>Create</strong> → chọn tạo knowledge base dùng ngay (ready-to-use) → nguồn "
+               "dữ liệu: tải file từ máy → chọn so_tay_nhan_su_ban_goc.txt → Next.",
+               "<strong>Chunk settings</strong>: chế độ <strong>General</strong>; Delimiter <code>\\n\\n</code> (dòng trống); Maximum "
+               "chunk length 500; Chunk overlap 50; đánh dấu “Replace consecutive spaces, newlines, and tabs”.",
+               "Bấm <strong>Preview</strong> và đọc các đoạn đã cắt: đoạn nào là mục lục? đoạn nào lặp dòng “Trang x/42”? bảng KPI "
+               "bị cắt ra sao?",
+               "<strong>Index method</strong>: High Quality. <strong>Retrieval setting</strong>: Hybrid Search (hoặc Vector Search); "
+               "TopK 3; bật Score Threshold 0,5 nếu có.",
+               "Lưu, chờ xử lý xong. Đặt tên knowledge “So tay – ban goc”."),
+            h3("Trên Dify – Tạo Knowledge từ bản đã làm sạch"),
+            p("Lặp lại các bước trên với file so_tay_nhan_su_da_lam_sach.md, cùng cấu hình, đặt tên “So tay – ban sach”. Ở Preview, mỗi "
+              "mục bắt đầu bằng ## phải thành đúng một đoạn, có tên tài liệu và dòng Nguồn."),
+            p("<strong>Chưa có Dify:</strong> mở Phòng thí nghiệm, giữ dấu ngắt <code>\\n\\n</code>, Chunk size 500, Overlap 50. Chọn "
+              "tài liệu “bản gốc”, mở tab <strong>Các đoạn đã cắt</strong>; rồi đổi sang “bản đã làm sạch”.", "example"),
+            lab_box("rag", "Chặng 3", "Đổi tài liệu, dấu ngắt, Chunk size, Overlap và xem ngay các đoạn đã cắt."),
+            h3("Mọi người cùng làm – Cắt hỏng một lần"),
+            ol("Trong Phòng thí nghiệm, chọn bản đã làm sạch, đổi dấu ngắt sang <strong>Cắt cứng theo ký tự</strong>, Chunk size 150, "
+               "Overlap 0. Bấm ▶ Chạy với câu “Hạng B được thưởng KPI bao nhiêu?”, đọc các đoạn đứng đầu.",
+               "Tăng Overlap lên 50, chạy lại.",
+               "Trả về dấu ngắt <code>\\n\\n</code>, Chunk size 500, Overlap 50 trước khi sang chặng sau."),
+            {"t": "details", "title": "Kết quả thường thấy (làm xong rồi mới mở)", "blocks": [
+                p("Bản gốc và bản sạch đều ra 9 đoạn với cấu hình trên Phòng thí nghiệm, nhưng bản gốc có cả 9 đoạn nhiễu, bản sạch "
+                  "không có đoạn nào: số đoạn giống nhau không có nghĩa là chất lượng giống nhau."),
+                p("Cắt cứng 150 ký tự, không overlap: 16 đoạn; hạng C và dòng thử việc bị tách khỏi đoạn có tiêu đề “Thưởng KPI quý”. "
+                  "Thêm overlap 50: 24 đoạn, ý vắt ngang điểm cắt được giữ lại, nhưng đoạn đứng đầu bắt đầu giữa câu (“% trở lên, "
+                  "thưởng…”) và mất tiêu đề. Overlap giảm mất ý ở điểm cắt, không thay được việc cắt đúng chỗ.")]},
+            ghi_phieu("ô <strong>Chặng 3–4</strong>: các dòng Nền tảng, Mô hình Embedding, Chunk size, Chunk overlap, Delimiter, mỗi dòng "
+                      "một lý do. Hai dòng còn lại ghi ở chặng 4."),
+            phieu,
+            xong_khi("có hai kho (hoặc đã xem hai bản trên Phòng thí nghiệm)",
+                     "chỉ ra được một đoạn rác trong bản gốc và nói được vì sao nó rác"),
+            h3("Xen kẽ 5 phút – Cắt thế nào là đúng?"),
+            table(["Vấn đề", "Khuyến nghị"],
+                  ["Vì sao phải cắt?", "Không thể embed cả cuốn sách vào một vector. Cỡ chunk lý tưởng khoảng 500–1.000 token."],
+                  ["Cắt thế nào?", "Cắt theo số ký tự (fixed-size), hoặc tốt hơn: semantic chunking theo câu, đoạn, heading."],
+                  ["Chunk overlap", "Cho các đoạn gối lên nhau (VD: 1.000 từ, gối 150 từ) để không mất ý nằm vắt ngang điểm cắt."]),
+            figure(fg.fig_chunking(), "Cắt cố định dễ cắt ngang một mục; gối đầu giữ ý ở điểm cắt; cắt theo đề mục cho mỗi đoạn trọn ý"),
+            h3("Chọn thông số"),
+            ul("Vào mục Knowledge/Dataset, tạo mới, upload các file .md đã làm sạch.",
+               "Chọn mô hình embedding (VD: <code>text-embedding-3-small</code>).",
+               "Chọn chế độ <strong>Custom / General</strong> thay vì Auto và chọn thông số phù hợp với cấu trúc tài liệu:",
+               "<strong>Delimiter (dấu ngắt đoạn):</strong> đặt <code>\\n\\n</code> (dòng trống) khi tài liệu đã chuẩn hóa Markdown theo từng mục <code>##</code> (như <code>so_tay_nhan_su_da_lam_sach.md</code>) để mỗi điều khoản/cặp FAQ thành trọn một chunk; đặt <code>\\n</code> khi cắt văn bản thuần theo từng dòng.",
+               "<strong>Chunk size & Overlap:</strong> trên Dify (đơn vị ký tự), đặt <code>500–800 ký tự</code> và overlap <code>50–100 ký tự</code> (~10–15%) cho sổ tay ngắn; với văn bản quy định dài nhiều trang (tính theo token trên slide), đặt <code>500–1.000 token</code> và overlap <code>15–20%</code>."),
+            *doc_them("Chiến lược cắt đoạn, Parent-child, đoạn to hay nhỏ, cắt kém và cắt tốt, định dạng FAQ",
+                h3("Các chiến lược cắt đoạn"),
+                table(["Chiến lược", "Cách cắt", "Ưu", "Nhược", "Hợp với"],
+                      ["Cố định", "Mỗi N ký tự hoặc token", "Đơn giản", "Cắt ngang câu, ngang bảng", "Văn bản đồng nhất, không đề mục"],
+                      ["Theo cấu trúc", "Theo đề mục, đoạn văn, dấu phân cách", "Mỗi đoạn trọn ý", "Mục quá dài vẫn phải cắt tiếp",
+                       "Quy định, sổ tay, quy trình có đề mục"],
+                      ["Theo ngữ nghĩa", "Cắt ở chỗ nội dung đổi chủ đề", "Ranh giới tự nhiên", "Tốn tính toán, khó dự đoán",
+                       "Văn bản dài không có đề mục"],
+                      ["Cha – con (parent-child)", "Tìm bằng đoạn con nhỏ, trả về đoạn cha lớn chứa nó",
+                       "Tìm chính xác mà vẫn đủ ngữ cảnh", "Cấu hình phức tạp hơn",
+                       "Quy định nhiều điều kiện, ngoại lệ cần đọc kèm bối cảnh"]),
+                p("Dify có hai chế độ General và Parent-child. Với Parent-child, câu hỏi khớp với một câu nhỏ (đoạn con) nhưng LLM "
+                  "nhận cả mục chứa câu đó (đoạn cha) – rất hợp với quy định có nhiều điều kiện, ngoại lệ."),
+                figure(fg.fig_parent_child(), "Parent-child: khớp bằng đoạn con nhỏ, đưa đoạn cha cho LLM đọc"),
+                h3("Đoạn to hay đoạn nhỏ?"),
+                table(["", "Đoạn nhỏ (100–300 token)", "Đoạn lớn (800–1.500 token)"],
+                      ["Tìm kiếm", "Chính xác, khớp đúng câu", "Kém chính xác hơn, ý chính bị pha loãng"],
+                      ["Ngữ cảnh cho LLM", "Dễ thiếu điều kiện, ngoại lệ", "Đủ ngữ cảnh"],
+                      ["Chi phí", "Mỗi đoạn rẻ nhưng có thể cần Top-K lớn", "Mỗi đoạn tốn hơn"]),
+                p("Không có con số đúng cho mọi tài liệu. Bắt đầu với 500–800 token cắt theo đề mục, chạy Hit Test, rồi điều chỉnh "
+                  "theo lỗi thấy được.", "apply"),
+                h3("Cắt đoạn kém và cắt đoạn tốt"),
+                p("Cùng một quy định, cắt theo số ký tự cố định và cắt theo đề mục cho kết quả rất khác:"),
+                table(["Cắt cố định theo số ký tự (kém)", "Cắt theo đề mục (tốt)"],
+                      ["Đoạn 1: “…3.2 Thưởng KPI quý. Hạng A: KPI từ 110% trở lên, thưởng 5.000.000 đồng/quý. Hạng B: KPI từ 95%”",
+                       "Đoạn 1: “Sổ tay nhân sự 2025 › 3.2 Thưởng KPI quý: Hạng A… Hạng B… Hạng C… Thử việc không áp dụng. Chi ngày 15 "
+                       "tháng đầu quý sau.”"],
+                      ["Đoạn 2: “đến dưới 110%, thưởng 3.000.000 đồng/quý. Hạng C: KPI dưới 95%… 3.3 Thưởng sáng kiến…”",
+                       "Đoạn 2: “Sổ tay nhân sự 2025 › 3.3 Thưởng sáng kiến: …”"]),
+                p("Ở cách cắt kém, đoạn 2 mất tiêu đề “Thưởng KPI quý”: AI đọc “thưởng 3.000.000 đồng/quý” mà không biết là thưởng "
+                  "gì; còn đoạn 1 thì thiếu mức thưởng hạng B. Câu hỏi “Hạng B được thưởng bao nhiêu?” rất dễ bị trả lời sai.",
+                  "misconception"),
+                h3("Mẹo: mỗi đoạn phải tự đứng được"),
+                ul("Thêm tên tài liệu và đề mục vào đầu mỗi đoạn (“Sổ tay nhân sự 2025 › Chương 3 › 3.2 Thưởng KPI quý”).",
+                   "Mỗi đoạn trọn một ý: một quy định, một bước quy trình, một cặp hỏi–đáp.",
+                   "Tài liệu dạng hỏi–đáp (FAQ): mỗi cặp là một đoạn; dùng tiêu đề hoặc dòng trống làm dấu phân đoạn (delimiter).",
+                   "Đoạn quá ngắn (một dòng) cho điểm tương đồng thiếu ổn định – gộp các ý nhỏ cùng mục."),
+                h3("Định dạng FAQ mẫu"),
+                code("""## Hỏi: Nhân viên thử việc có được thưởng KPI quý không?
 Đáp: Không. Nhân viên thử việc không áp dụng thưởng KPI quý.
 Nguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025
 
 ## Hỏi: Thưởng KPI quý được chi khi nào?
 Đáp: Ngày 15 của tháng đầu tiên quý sau. VD: thưởng quý III chi ngày 15/10.
 Nguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025"""),
-            p("Viết câu hỏi trong FAQ bằng chính lời nhân viên hay hỏi (“thử việc có được thưởng không”), không chỉ bằng thuật "
-              "ngữ trong văn bản. Câu hỏi càng giống cách người dùng gõ, truy xuất càng trúng.", "apply")),
-        sec("Phần 5 – Prompt Chain",
-            p("<strong>Chia để trị:</strong> đừng bắt Agent “tìm kiếm + phân tích + trả lời” trong một prompt. Chia thành "
-              "workflow nhiều bước; đầu ra bước trước là đầu vào bước sau → giảm ảo giác, tăng độ chính xác."),
-            h3("Ví dụ: chuỗi lệnh RAG nâng cao"),
-            table(["Node", "Việc", "Prompt mẫu"],
-                  ["1. Viết lại câu hỏi (Query Rewrite)", "Người dùng hỏi “Thế còn tháng trước thì sao?” – thiếu ngữ cảnh.",
-                   "“Dựa vào lịch sử chat, hãy viết lại câu hỏi trên thành một câu truy vấn độc lập và rõ nghĩa.” → "
-                   "“Doanh thu bán hàng của tháng 9/2023 là bao nhiêu?”"],
-                  ["2. Tìm kiếm & tổng hợp", "Dùng câu đã viết lại để tìm trong Vector DB.",
-                   "“Dựa vào bộ tài liệu dưới đây, hãy trả lời câu hỏi: [Câu hỏi]. Nếu tài liệu không có thông tin, hãy nói "
-                   "‘Tôi không biết’, TUYỆT ĐỐI không bịa đặt.”"]),
-            h3("Hiểu sâu: các mẫu xâu chuỗi thường dùng"),
-            table(["Mẫu", "Cách làm", "Ví dụ"],
-                  ["Tuần tự", "Bước 1 → bước 2 → bước 3; đầu ra bước trước là đầu vào bước sau",
-                   "Viết lại câu hỏi → tìm tài liệu → trả lời"],
-                  ["Rẽ nhánh", "Một bước phân loại; mỗi loại đi một chuỗi riêng",
-                   "Câu hỏi về đổi trả → kho Chính sách bán hàng; về nhân sự → kho Sổ tay"],
-                  ["Chia nhỏ rồi gộp (map-reduce)", "Chia tài liệu dài thành phần, xử lý từng phần, rồi gộp kết quả",
-                   "Tóm tắt từng chương của báo cáo 80 trang → tổng hợp"],
-                  ["Tạo rồi kiểm", "Một bước tạo, một bước kiểm tra theo tiêu chí",
-                   "Soạn câu trả lời → kiểm tra có trích dẫn, không bịa"]),
-            figure(fg.fig_chain_patterns(), "Bốn mẫu xâu chuỗi prompt thường dùng"),
-            h3("Thiết kế đầu ra trung gian"),
-            p("Mắt xích yếu nhất của chuỗi là chỗ nối giữa hai bước. Đầu ra của mỗi bước nên: có định dạng cố định (danh sách, "
-              "JSON, bảng) để bước sau đọc chắc chắn; chỉ chứa đúng thứ bước sau cần; có cách báo “không có kết quả” rõ ràng (trả "
-              "về rỗng thay vì một câu văn giải thích)."),
-            h3("Khi nào xâu chuỗi là thừa?"),
-            p("Mỗi bước thêm thời gian chờ, chi phí và một chỗ có thể sai. Việc đơn giản một bước làm tốt (dịch một đoạn văn, "
-              "viết lại một câu) thì không cần chuỗi. Chỉ tách bước khi: một prompt làm nhiều việc cho kết quả không ổn định; cần "
-              "kiểm tra kết quả giữa chừng; hoặc các phần cần cấu hình khác nhau (bước phân loại dùng temperature thấp, bước viết "
-              "dùng cao hơn)."),
-            *tu_kiem_tra(
-                ("Cần tóm tắt báo cáo 80 trang, quá dài để xử lý tốt trong một lần. Dùng mẫu chuỗi nào?",
-                 "Chia nhỏ rồi gộp (map-reduce): tóm tắt từng phần, rồi tổng hợp các bản tóm tắt."),
-                ("Vì sao đầu ra trung gian nên là JSON hoặc danh sách thay vì đoạn văn?",
-                 "Bước sau đọc chắc chắn, không phải đoán; dễ kiểm tra rỗng hoặc thiếu; không mang theo chữ thừa."),
-                ("Nêu 2 dấu hiệu cho thấy nên tách một prompt thành chuỗi.",
-                 "Một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra giữa chừng; các phần cần cấu hình khác nhau.")),
-            act("ai02-check", "Kiểm tra nhanh: RAG và dữ liệu")),
-        sec("Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu",
-            p("Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được "
-              "trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử."),
-            h3("Một prompt hỏi đáp tài liệu tốt cần 7 yếu tố"),
-            p("Mẫu bên dưới có đủ 7 yếu tố. Thiếu yếu tố nào, Agent sẽ mắc đúng lỗi ở cột cuối – dùng bảng này để tự rà "
+                p("Viết câu hỏi trong FAQ bằng chính lời nhân viên hay hỏi (“thử việc có được thưởng không”), không chỉ bằng thuật "
+                  "ngữ trong văn bản. Câu hỏi càng giống cách người dùng gõ, truy xuất càng trúng.", "apply"),
+            ),
+            kind="practice"),
+        sec("Chặng 4 – Hit Test: hệ thống có bốc đúng đoạn không?",
+            h3("Làm ngay (15 phút) – 5 câu hỏi trên cả hai bản"),
+            p("<strong>Dự đoán trước khi chạy:</strong> với mỗi câu, bản nào sẽ đưa đúng đoạn lên đầu?"),
+            ol("Hạng B được thưởng KPI bao nhiêu?",
+               "Người thử việc có được thưởng KPI không?",
+               "Đi công tác ngoài tỉnh được phụ cấp bao nhiêu một ngày?",
+               "Phép năm không dùng hết thì sao?",
+               "Thưởng Tết bao nhiêu? <em>(câu bẫy: tài liệu không có)</em>"),
+            p("Mở từng knowledge → biểu tượng <strong>Retrieval Testing</strong> ở thanh bên trái → gõ từng câu ở trên → ghi đoạn "
+              "đứng đầu và điểm của nó."),
+            p("<strong>Chưa có Dify:</strong> trên Phòng thí nghiệm, bấm các chip câu hỏi có sẵn, lần lượt với bản gốc và bản đã làm "
+              "sạch. Mỗi đoạn có điểm và nhãn <em>Vào prompt</em>, <em>Dưới ngưỡng</em> hoặc <em>Ngoài Top-K</em>.", "example"),
+            {"t": "details", "title": "Đối chiếu kết quả (làm xong rồi mới mở)", "blocks": [
+                table(["Câu hỏi thử", "Đáp án trong tài liệu", "Bản gốc thường thấy", "Bản sạch cần đạt"],
+                      ["Hạng B được thưởng KPI bao nhiêu?", "3.000.000 đồng/quý (KPI 95% đến dưới 110%)",
+                       "Bốc đoạn mục lục hoặc đoạn bảng bị vỡ dòng", "Đoạn 3.2 đứng đầu, đủ cả 3 hạng"],
+                      ["Người thử việc có được thưởng KPI không?", "Không",
+                       "Bốc được Chương 4 nhưng lẫn dòng tiêu đề trang", "Đoạn 3.2, Chương 4 hoặc cặp hỏi–đáp về thử việc"],
+                      ["Đi công tác ngoài tỉnh được phụ cấp bao nhiêu một ngày?", "300.000 đồng/ngày",
+                       "Đoạn lẫn mục lục và Chương 5", "Đoạn Chương 5"],
+                      ["Phép năm không dùng hết thì sao?", "Chuyển sang năm sau, dùng trước khi hết quý I",
+                       "Chương 1 và 2 dính chung một đoạn", "Đoạn Chương 2 hoặc cặp hỏi–đáp về phép năm"],
+                      ["Thưởng Tết bao nhiêu?", "Không có trong tài liệu", "Vẫn trả về đoạn có chữ “thưởng” với điểm khá cao",
+                       "Điểm thấp, bị ngưỡng loại, hoặc chỉ còn đoạn không liên quan"]),
+                p("Số liệu trên Phòng thí nghiệm (ngưỡng mặc định 0,45). <strong>Hạng B:</strong> bản gốc đứng đầu 0,82 nhưng đoạn mục "
+                  "lục 0,55 cũng lọt vào prompt; bản sạch đứng đầu 0,80 đúng mục 3.2. <strong>Phép năm:</strong> bản gốc đứng đầu là "
+                  "đoạn dính Chương 1 và 2, đoạn thứ hai bắt đầu giữa chữ (“ép chưa dùng hết…”); bản sạch đứng đầu là cặp hỏi–đáp, "
+                  "0,92. <strong>Thưởng Tết:</strong> cả hai bản chỉ đạt 0,31, dưới ngưỡng."),
+                p("Điểm số phụ thuộc mô hình embedding nên bài không ghi con số cụ thể. Điều cần quan sát là <strong>đoạn nào đứng "
+                  "đầu</strong> và <strong>đoạn đó có đủ ý để trả lời không</strong>. Thử đổi TopK, ngưỡng ngay trên trang Retrieval "
+                  "Testing – thay đổi ở đây chỉ áp dụng cho lần thử, không đổi cấu hình thật.", "apply"),
+            ]},
+            h3("Chỉnh thông số, xem kết quả đổi"),
+            lab_box("rag", "Chặng 4", "Kéo Top-K, Ngưỡng và đổi Cách tìm, kết quả đổi theo ngay."),
+            p("Làm trên Phòng thí nghiệm với bản đã làm sạch; mỗi thử nghiệm chỉ đổi một thông số rồi trả về như cũ."),
+            table(["Thử", "Đổi gì", "Câu hỏi", "Sẽ thấy", "Rút ra"],
+                  ["A", "Ngưỡng 0,85", "Hạng B được thưởng KPI bao nhiêu?",
+                   "Đoạn đúng 0,80 bị loại; Agent nói chưa đề cập dù tài liệu có", "Ngưỡng cao quá thì từ chối oan"],
+                  ["B", "Ngưỡng 0", "Thưởng Tết bao nhiêu?",
+                   "Ba đoạn 0,31 có nhãn “Vào prompt”. Xem nhãn của đoạn, không xem ô câu trả lời: ô này được dựng sẵn để từ chối câu thưởng Tết",
+                   "Ngưỡng thấp quá thì đoạn không liên quan đi vào prompt, tốn token và dễ khiến LLM bịa"],
+                  ["C", "Top-K 1", "Phép năm không dùng hết thì sao?",
+                   "Chỉ cặp hỏi–đáp vào prompt; mục Chương 2 (0,76) nằm “Ngoài Top-K”", "Top-K nhỏ quá có thể thiếu ý"],
+                  ["D", "Tài liệu Nhà Xanh; Cách tìm “Theo từ khóa”, rồi “Theo nghĩa”",
+                   "Mua về 5 ngày rồi, chưa dùng, muốn trả lại lấy tiền được không?",
+                   "Từ khóa: 0,33, dưới ngưỡng, Agent từ chối. Theo nghĩa: 0,76, đúng đoạn Đổi trả",
+                   "Câu dùng lời khác tài liệu cần tìm theo nghĩa"]),
+            ghi_phieu("ô <strong>Chặng 4</strong>: 5 câu hỏi, đoạn được bốc kèm điểm, đánh giá Đúng/Sai/Thiếu trên kho sạch. Ô "
+                      "<strong>Chặng 3–4</strong>: dòng Top-K và Score Threshold bạn chọn, kèm lý do."),
+            phieu,
+            xong_khi("4 câu đầu có đoạn đúng đứng đầu trên kho sạch", "câu thưởng Tết không có đoạn nào đủ ngưỡng, hoặc chỉ còn đoạn không liên quan"),
+            h3("Xen kẽ 10 phút – Máy tìm theo nghĩa bằng cách nào?"),
+            h3("Embeddings: biến chữ thành số"),
+            p("Mô hình embedding (VD: text-embedding-3-small) chuyển một câu thành một vector – mảng hàng nghìn con số. "
+              "Các câu cùng nghĩa có vector gần nhau: “chó” và “mèo” nằm gần nhau hơn “chó” và “máy tính”."),
+            h3("Vector Database hoạt động ra sao?"),
+            p("Mỗi đoạn văn bản là một điểm trong không gian nhiều chiều. Câu hỏi mới cũng được đổi thành vector; cơ sở dữ liệu "
+              "tính khoảng cách (VD: cosine similarity) và trả về các điểm gần nhất."),
+            p("Mô hình động dưới đây chạy đủ một vòng trên tài liệu đổi trả của Nhà Xanh. Bấm <strong>▶ Tự chạy</strong> hoặc "
+              "từng bước; từ bước 3 đổi câu hỏi, chuyển “Theo nghĩa / Theo từ khóa”, kéo Top-K và Ngưỡng để thấy kết quả "
+              "đổi theo. Bấm vào một chấm để xem đoạn văn và vector của nó.", "example"),
+            widget("vectordb", "Vector Database: đoạn cùng nghĩa nằm gần nhau; câu hỏi được đặt lên cùng bản đồ và lấy các "
+                   "đoạn gần nhất"),
+            h3("Ba kiểu tìm kiếm"),
+            table(["Kiểu", "Cách hoạt động", "Điểm yếu / mạnh"],
+                  ["Keyword Search", "Khớp chính xác từng từ.", "Tìm “xe hơi” sẽ bỏ sót tài liệu ghi “ô tô”."],
+                  ["Semantic Search", "So khớp ý nghĩa qua vector.", "Tìm “hủy đơn hàng” lấy được cả “quy trình trả hàng, hoàn tiền”."],
+                  ["Hybrid Search", "Kết hợp cả hai.", "Bắt được cả ngữ nghĩa lẫn mã số, từ khóa đặc thù."]),
+            table(["Sản phẩm", "Đặc điểm"],
+                  ["Pinecone", "Dịch vụ quản lý sẵn, dễ dùng, không cần quản lý hạ tầng."],
+                  ["Milvus / Zilliz", "Mã nguồn mở, hiệu năng cao, quy mô hàng tỷ vector."],
+                  ["Qdrant, Weaviate", "Cân bằng tốc độ và tính năng, hỗ trợ tốt Hybrid Search."],
+                  ["PostgreSQL + pgvector", "Tận dụng Postgres sẵn có bằng extension."]),
+            p("Trên Coze/Dify, phần Vector Database đã được nền tảng lo; bạn chỉ chọn mô hình embedding và cấu hình truy xuất.", "apply"),
+            h3("Top-K và Score Threshold"),
+            ul("<strong>Top-K</strong> 3–5: ít quá thiếu ý, nhiều quá tốn token.",
+               "<strong>Score Threshold</strong> khoảng 0,5: bỏ qua đoạn tương đồng thấp.",
+               "<strong>Hit Test</strong>: gõ thử câu hỏi, xem hệ thống bốc đúng đoạn quy định chưa, trước khi nối với LLM."),
+            *doc_them("Cosine bằng con số, chọn mô hình embedding, ANN, BM25, metadata",
+                p("Hình dung mỗi câu được chấm điểm theo 3 “chiều nghĩa”: liên quan đến <em>giao nhận hàng</em>, đến <em>tiền, "
+                  "thanh toán</em>, đến <em>thủ tục, giấy tờ</em>. Mô hình thật dùng hàng trăm đến hàng nghìn chiều và các chiều "
+                  "không có tên dễ hiểu như vậy – nhưng nguyên lý giống hệt."),
+                table(["Câu", "Giao hàng", "Tiền", "Thủ tục"],
+                      ["A. “Đơn của tôi vẫn chưa nhận được”", "0,9", "0,1", "0,1"],
+                      ["B. “Shipper chưa tới dù đã quá hẹn”", "0,8", "0,1", "0,2"],
+                      ["C. “Sao tôi bị trừ tiền hai lần?”", "0,1", "0,9", "0,2"],
+                      ["<strong>Câu hỏi Q: “Sao hàng mãi chưa giao?”</strong>", "0,85", "0,15", "0,1"]),
+                p("<strong>Độ tương đồng cosine</strong> đo góc giữa hai vector: càng gần 1, nghĩa càng giống."),
+                code("""cos(Q, A) ≈ 0,998   → rất gần nghĩa
+cos(Q, B) ≈ 0,991   → rất gần nghĩa, dù B không có từ "giao"
+cos(Q, C) ≈ 0,298   → khác nghĩa
+
+Cách tính (Q với A): (0,85×0,9 + 0,15×0,1 + 0,1×0,1) ÷ (độ dài Q × độ dài A)
+                   = 0,79 ÷ (0,869 × 0,911) ≈ 0,998"""),
+                figure(fg.fig_embedding(), "Độ tương đồng cosine đo góc giữa hai vector: góc nhỏ là gần nghĩa"),
+                p("Tìm theo từ khóa “giao” không thấy câu A, B vì chúng dùng “chưa nhận được”, “shipper chưa tới”. Tìm theo ngữ nghĩa "
+                  "lấy được cả hai. Ngược lại, khi người dùng hỏi mã số cụ thể như “QT-05” hay mã đơn hàng, tìm theo từ khóa lại chính xác hơn – "
+                  "đó là lý do có Hybrid Search.", "example"),
+                p("Score Threshold chính là ngưỡng trên thang điểm này. Nhưng mức điểm thực tế phụ thuộc mô hình embedding: có mô "
+                  "hình cho điểm phổ biến 0,7–0,9, có mô hình chỉ 0,3–0,6. Hãy dùng Hit Test xem điểm thực tế trên dữ liệu của "
+                  "bạn rồi mới chọn ngưỡng; 0,5 chỉ là điểm xuất phát.", "apply"),
+                h3("Hiểu sâu: chọn mô hình embedding"),
+                ul("<strong>Hỗ trợ tiếng Việt:</strong> mô hình đa ngôn ngữ (multilingual) cho kết quả tốt hơn hẳn mô hình chủ yếu học "
+                   "tiếng Anh. Thử bằng Hit Test với câu hỏi có dấu, không dấu, viết tắt (“HĐ”, “CSKH”).",
+                   "<strong>Số chiều:</strong> nhiều chiều thường biểu diễn nghĩa tinh hơn nhưng tốn bộ nhớ hơn; với vài nghìn đoạn, "
+                   "khác biệt chi phí không đáng kể.",
+                   "<strong>Không trộn mô hình:</strong> câu hỏi và tài liệu phải được đổi thành vector bằng cùng một mô hình. Đổi mô "
+                   "hình embedding thì phải nạp lại (re-index) toàn bộ kho."),
+                h3("Tìm nhanh trong hàng triệu vector"),
+                p("So câu hỏi với từng đoạn một sẽ rất chậm khi kho lớn. Vector Database dùng chỉ mục tìm gần đúng (ANN – Approximate "
+                  "Nearest Neighbor, phổ biến là HNSW): sắp các vector thành một mạng lưới để đi nhanh tới vùng gần câu hỏi, chấp nhận "
+                  "đôi khi bỏ sót một đoạn rất sát để đổi lấy tốc độ. Với kho vài nghìn đoạn của một phòng ban, bạn gần như không cần "
+                  "bận tâm chi tiết này – nền tảng đã lo."),
+                h3("Tìm theo từ khóa hoạt động thế nào?"),
+                p("Tìm theo từ khóa hiện đại (BM25) không chỉ đếm số lần xuất hiện: từ hiếm (mã “QT-07”, tên riêng) được tính điểm cao "
+                  "hơn từ phổ biến (“quy định”, “các”), và đoạn quá dài bị trừ điểm để không lấn át. Vì vậy nó mạnh với mã số, tên "
+                  "riêng, thuật ngữ chính xác – đúng chỗ mà tìm theo nghĩa hay yếu."),
+                table(["Câu hỏi", "Theo nghĩa", "Theo từ khóa", "Kết hợp (Hybrid)"],
+                      ["“Trả hàng lấy lại tiền thế nào?” (tài liệu ghi “hoàn tiền”)", "Tốt", "Kém", "Tốt"],
+                      ["“Quy trình QT-07 bước 3?”", "Trung bình – mã số ít mang nghĩa", "Tốt", "Tốt"],
+                      ["“Hàng giao trễ có được bồi thường không?”", "Tốt", "Trung bình", "Tốt"]),
+                h3("Metadata: lọc trước, tìm sau"),
+                p("Metadata là thông tin đi kèm mỗi đoạn: tên tài liệu, đơn vị ban hành, ngày hiệu lực, loại văn bản, phạm vi áp dụng. "
+                  "Lọc theo metadata trước khi tìm (chỉ văn bản còn hiệu lực, chỉ tài liệu khối Kinh doanh) loại hẳn những đoạn đúng "
+                  "nghĩa nhưng sai bối cảnh – điều mà tìm theo vector không tự phân biệt được."),
+                *tu_kiem_tra(
+                    ("Đơn vị đổi sang mô hình embedding mới tốt hơn. Cần làm gì với kho tài liệu?",
+                     "Nạp lại (re-index) toàn bộ kho bằng mô hình mới; câu hỏi và tài liệu phải dùng cùng một mô hình."),
+                    ("Người dùng hay hỏi theo mã biểu mẫu (“mẫu BM-12”). Chế độ tìm nào phù hợp? Vì sao?",
+                     "Hybrid (có tìm theo từ khóa): mã số ít mang nghĩa nên tìm theo vector dễ bỏ sót; từ khóa khớp chính xác mã."),
+                    ("Kho có cả quy định 2023 (hết hiệu lực) và 2025. Ngoài việc gỡ bản cũ, còn cách nào?",
+                     "Gắn metadata ngày hiệu lực/trạng thái và chỉ tìm văn bản còn hiệu lực; thêm luật ưu tiên văn bản mới trong prompt.")),
+            ),
+            kind="practice"),
+        sec("Chặng 5 – Nối LLM: trợ lý trả lời có nguồn, không bịa",
+            h3("Làm ngay (20 phút) – Tạo Chatflow và chạy thử từng luật"),
+            ol("Vào <strong>Studio</strong> → <strong>Create from Blank</strong> → chọn <strong>Chatflow</strong> → đặt tên “Tro ly "
+               "so tay” → Create. Chatflow mặc định có các node <strong>User Input → LLM → Answer</strong>.",
+               "Rê chuột vào đường nối giữa User Input và LLM, bấm “+”, thêm node <strong>Knowledge Retrieval</strong>. Ô truy vấn "
+               "chọn biến câu hỏi của người dùng (<code>sys.query</code>); thêm knowledge “So tay – ban sach”.",
+               "Mở node <strong>LLM</strong>: chọn mô hình, chọn kiểu tham số <em>Precise</em> (temperature thấp). Ô "
+               "<strong>Context</strong>: chọn biến <code>result</code> của node Knowledge Retrieval.",
+               "Ô <strong>SYSTEM</strong>: dán prompt ngay bên dưới. Xóa dòng "
+               "<code>{{ket_qua_truy_xuat}}</code>, đặt con trỏ giữa hai thẻ &lt;tai_lieu&gt; rồi chèn biến Context (gõ "
+               "<code>{</code> hoặc <code>/</code> để mở danh sách biến). Xóa dòng “Câu hỏi: {{cau_hoi}}” – câu hỏi của người "
+               "dùng đã được gửi kèm.",
+               "Node <strong>Answer</strong>: nội dung là biến <code>text</code> của node LLM (thường đã đặt sẵn).",
+               "Bấm <strong>Preview</strong> (góc trên bên phải), hỏi 5 câu ở chặng 4."),
+            code("""# VAI TRÒ
+Bạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.
+
+# CÁCH TRẢ LỜI
+1. Chỉ dùng thông tin trong <tai_lieu>. Không dùng hiểu biết bên ngoài.
+2. Câu đầu tiên trả lời thẳng câu hỏi (Có/Không, con số, tên bước...).
+3. Sau đó giải thích ngắn, tối đa 4 câu.
+4. Cuối câu trả lời ghi nguồn: (Nguồn: tên tài liệu – mục).
+5. <tai_lieu> không có thông tin thì trả lời đúng câu: "Tài liệu hiện có chưa đề cập nội dung
+   này. Anh/chị vui lòng liên hệ phòng Nhân sự." Không suy đoán.
+6. Hai tài liệu mâu thuẫn: nêu cả hai kèm ngày hiệu lực, ưu tiên văn bản hiệu lực mới hơn.
+
+<tai_lieu>
+{{ket_qua_truy_xuat}}
+</tai_lieu>
+
+Câu hỏi: {{cau_hoi}}"""),
+            p("<strong>Chưa có Dify:</strong> mở cuộc trò chuyện mới, đính kèm <code>so_tay_nhan_su_da_lam_sach.md</code>, dán prompt trên "
+              "làm tin nhắn đầu tiên (bỏ hai dòng biến và thẻ &lt;tai_lieu&gt;, thay bằng “Tài liệu là file đính kèm”), rồi hỏi các câu "
+              "ở bảng dưới. Yêu cầu AI trích nguyên văn đoạn đã dùng để thay cho log.", "example"),
+            h3("Mỗi luật xử lý tình huống nào"),
+            p("Thử prompt bằng các câu hỏi dưới đây. Mỗi câu kiểm tra một luật; câu trả lời khác cột cuối nghĩa là luật đó viết "
+              "chưa đủ rõ."),
+            table(["Câu hỏi thử", "Tài liệu tìm được", "Luật quyết định", "Câu trả lời đúng"],
+                  ["“Hạng B được thưởng KPI bao nhiêu?”", "Mục 3.2 có mức hạng B", "1, 2, 4",
+                   "“3.000.000 đồng/quý…” kèm nguồn mục 3.2"],
+                  ["“Thưởng Tết được mấy tháng lương?”", "Không đoạn nào nói về thưởng Tết", "5",
+                   "Đúng câu “Tài liệu hiện có chưa đề cập…”; không đưa con số nào"],
+                  ["“Thử việc có được thưởng KPI không?”", "Mục 3.2 và Chương 4", "2, 3",
+                   "Câu đầu: “Không.”, rồi giải thích ngắn"],
+                  ["“Phụ cấp công tác ngoài tỉnh bao nhiêu?” (kho còn cả quy định 2023)", "Hai đoạn ghi hai mức khác nhau", "6",
+                   "Nêu cả hai kèm ngày hiệu lực, áp dụng mức của văn bản 2025"],
+                  ["“Các công ty thường thưởng KPI bao nhiêu?”", "Chỉ có quy định của ABC", "1",
+                   "Chỉ nêu quy định của ABC; không đưa mức “thông thường” từ hiểu biết chung"]),
+            p("Câu ở hàng 4 chỉ kiểm tra được khi kho có thêm quy định 2023; chưa có thì bỏ qua."),
+            p("Mở chi tiết từng lần chạy để xem từng node: Knowledge Retrieval trả về đoạn nào, prompt thực tế gửi cho LLM có chứa "
+              "tài liệu không. Đây là cách nhanh nhất để biết lỗi nằm ở bước truy xuất hay bước sinh câu trả lời.", "apply"),
+            h3("Làm trên Coze, hoặc khi không có nền tảng"),
+            table(["Việc", "Dify", "Coze", "Không có nền tảng"],
+                  ["Tạo kho tài liệu", "Knowledge", "Knowledge loại Text", "Đính kèm file vào Claude Project, Gem hoặc cuộc trò chuyện"],
+                  ["Cấu hình cắt đoạn", "Chunk settings", "Chế độ phân đoạn tùy chỉnh (Custom)", "Không chỉnh được – công cụ tự xử lý"],
+                  ["Thử truy xuất", "Retrieval Testing", "Xem đoạn được bốc trong chi tiết lần chạy ở Preview & Debug",
+                   "Yêu cầu AI trích nguyên văn đoạn tài liệu đã dùng"],
+                  ["Prompt trả lời", "SYSTEM của node LLM", "Persona & Prompt, hoặc node LLM trong Workflow",
+                   "Dán prompt hỏi đáp tài liệu làm tin nhắn đầu tiên"]),
+            ghi_phieu("ô <strong>Chặng 5–6</strong>: prompt <strong>Tổng hợp câu trả lời</strong> bạn đang dùng."),
+            phieu,
+            xong_khi("câu hạng B có câu trả lời thẳng và nguồn", "câu thưởng Tết nhận đúng câu “chưa đề cập”, không có con số",
+                     "đã mở log và thấy tài liệu nằm trong prompt thực tế"),
+            h3("Xen kẽ 5 phút – Một prompt hỏi đáp tài liệu cần những gì?"),
+            p("Prompt bạn vừa dán có đủ 7 yếu tố. Thiếu yếu tố nào, Agent sẽ mắc đúng lỗi ở cột cuối – dùng bảng này để tự rà "
               "prompt của bạn."),
             table(["#", "Yếu tố", "Trong mẫu", "Thiếu thì Agent sẽ…"],
                   ["1", "Vai trò và phạm vi", "# VAI TRÒ: trợ lý tra cứu quy định nội bộ Công ty ABC",
@@ -2608,39 +2726,44 @@ Nguồn: Sổ tay nhân sự 2025 – mục 3.2 – hiệu lực 01/01/2025"""),
                    "&lt;tai_lieu&gt;{{ket_qua_truy_xuat}}&lt;/tai_lieu&gt; và Câu hỏi: {{cau_hoi}}",
                    "Không có biến tài liệu: LLM không thấy gì để bám. Không có thẻ bọc: LLM lẫn tài liệu với chỉ dẫn, dễ "
                    "làm theo câu lệnh lạ nằm trong tài liệu"]),
-            code("""# VAI TRÒ
-Bạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.
-
-# CÁCH TRẢ LỜI
-1. Chỉ dùng thông tin trong <tai_lieu>. Không dùng hiểu biết bên ngoài.
-2. Câu đầu tiên trả lời thẳng câu hỏi (Có/Không, con số, tên bước...).
-3. Sau đó giải thích ngắn, tối đa 4 câu.
-4. Cuối câu trả lời ghi nguồn: (Nguồn: tên tài liệu – mục).
-5. <tai_lieu> không có thông tin thì trả lời đúng câu: "Tài liệu hiện có chưa đề cập nội dung
-   này. Anh/chị vui lòng liên hệ phòng Nhân sự." Không suy đoán.
-6. Hai tài liệu mâu thuẫn: nêu cả hai kèm ngày hiệu lực, ưu tiên văn bản hiệu lực mới hơn.
-
-<tai_lieu>
-{{ket_qua_truy_xuat}}
-</tai_lieu>
-
-Câu hỏi: {{cau_hoi}}"""),
             p("<code>{{ket_qua_truy_xuat}}</code> và <code>{{cau_hoi}}</code> là <strong>biến</strong>: nền tảng tự điền kết quả "
               "truy xuất và câu hỏi vào đó mỗi lần chạy. Coze và Dify đều có nút chèn biến ngay trong ô prompt; tên biến cụ thể "
               "khác nhau theo nền tảng."),
-            h3("Prompt này chạy thế nào mỗi khi có câu hỏi"),
-            figure(fg.fig_prompt_rag(), "Phần chỉ dẫn viết một lần; tài liệu và câu hỏi được điền lại mỗi lần có câu hỏi"),
-            ol("<strong>Người dùng hỏi.</strong> Nếu là câu nối tiếp (“còn hạng B?”), node viết lại câu hỏi chạy trước để câu "
-               "hỏi đứng được một mình (prompt ở cuối phần này).",
-               "<strong>Truy xuất.</strong> Câu hỏi được đổi thành vector; Knowledge Base trả về các đoạn gần nghĩa nhất, đã lọc "
-               "theo Top-K và ngưỡng.",
-               "<strong>Điền biến.</strong> Nền tảng ghép các đoạn vào <code>{{ket_qua_truy_xuat}}</code>, câu hỏi vào "
-               "<code>{{cau_hoi}}</code>. Phần chỉ dẫn giữ nguyên.",
-               "<strong>LLM đọc từ trên xuống:</strong> biết mình là ai và phải trả lời theo luật nào, đọc tài liệu, cuối cùng "
-               "đọc câu hỏi rồi viết câu trả lời. Câu hỏi đặt cuối để nằm sát chỗ LLM bắt đầu viết.",
-               "<strong>Trả về.</strong> Người dùng nhận câu trả lời kèm nguồn; log lưu prompt đã điền để bạn kiểm tra khi có lỗi."),
-            p("Prompt LLM thực sự nhận được với câu hỏi “Hạng B được thưởng KPI bao nhiêu?” (phần chỉ dẫn rút gọn):"),
-            code("""# VAI TRÒ
+            p("Lỗi rất hay gặp: viết prompt đẹp nhưng <strong>quên nối biến kết quả truy xuất</strong> vào prompt. LLM không thấy "
+              "tài liệu nào và trả lời bằng hiểu biết chung – nhìn bề ngoài như RAG đang chạy. Luôn mở log xem prompt thực tế đã "
+              "được điền những gì.", "misconception"),
+            p("Hệ thống RAG có hai giai đoạn: <strong>nạp tài liệu</strong> (làm một lần, làm lại khi tài liệu thay đổi) và "
+              "<strong>hỏi đáp</strong> (mỗi câu hỏi)."),
+            flow(fl.fl_rag(), "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"),
+            *doc_them("Theo dõi một câu hỏi qua từng bước; prompt chạy thế nào; prompt LLM thực sự nhận được; trích dẫn nguồn",
+                h3("Theo dõi một câu hỏi"),
+                p("Người dùng vừa hỏi về thưởng KPI hạng A, rồi hỏi tiếp: <em>“Thế người thử việc có được không?”</em>"),
+                table(["Bước", "Dữ liệu tại bước đó"],
+                      ["Câu hỏi gốc", "“Thế người thử việc có được không?” – thiếu chủ ngữ, tìm kiếm theo câu này sẽ lạc."],
+                      ["Viết lại câu hỏi", "“Nhân viên thử việc có được hưởng thưởng KPI quý không?”"],
+                      ["Truy xuất (Top-K = 3)", "Đoạn 1 – điểm 0,82: “Thưởng KPI quý… Nhân viên thử việc không áp dụng.”<br>"
+                       "Đoạn 2 – điểm 0,61: “Chế độ thử việc: lương thử việc bằng 85% lương của vị trí…”<br>"
+                       "Đoạn 3 – điểm 0,38: “Thưởng sáng kiến: mỗi sáng kiến được công nhận…”"],
+                      ["Lọc ngưỡng 0,5", "Bỏ đoạn 3 (0,38 &lt; 0,5). Còn đoạn 1 và 2."],
+                      ["Ghép prompt", "Chỉ dẫn trả lời + đoạn 1, 2 trong thẻ &lt;tai_lieu&gt; + câu hỏi đã viết lại."],
+                      ["Sinh câu trả lời", "“Không. Nhân viên thử việc không áp dụng thưởng KPI quý. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”"]),
+                p("Khi Agent trả lời sai, đi lại từng bước như bảng trên. <strong>Bốc nhầm đoạn</strong> → lỗi truy xuất: sửa dữ liệu, "
+                  "cách cắt đoạn, ngưỡng. <strong>Bốc đúng đoạn mà vẫn trả lời sai</strong> → lỗi sinh: sửa prompt.", "apply"),
+                p("Prompt của node sinh câu trả lời quyết định Agent có trung thành với tài liệu hay không. Mẫu dưới đây dùng được "
+                  "trên Coze, Dify, hoặc dán thẳng vào ChatGPT/Claude kèm tài liệu để thử."),
+                h3("Prompt này chạy thế nào mỗi khi có câu hỏi"),
+                figure(fg.fig_prompt_rag(), "Phần chỉ dẫn viết một lần; tài liệu và câu hỏi được điền lại mỗi lần có câu hỏi"),
+                ol("<strong>Người dùng hỏi.</strong> Nếu là câu nối tiếp (“còn hạng B?”), node viết lại câu hỏi chạy trước để câu "
+                   "hỏi đứng được một mình (chặng 6).",
+                   "<strong>Truy xuất.</strong> Câu hỏi được đổi thành vector; Knowledge Base trả về các đoạn gần nghĩa nhất, đã lọc "
+                   "theo Top-K và ngưỡng.",
+                   "<strong>Điền biến.</strong> Nền tảng ghép các đoạn vào <code>{{ket_qua_truy_xuat}}</code>, câu hỏi vào "
+                   "<code>{{cau_hoi}}</code>. Phần chỉ dẫn giữ nguyên.",
+                   "<strong>LLM đọc từ trên xuống:</strong> biết mình là ai và phải trả lời theo luật nào, đọc tài liệu, cuối cùng "
+                   "đọc câu hỏi rồi viết câu trả lời. Câu hỏi đặt cuối để nằm sát chỗ LLM bắt đầu viết.",
+                   "<strong>Trả về.</strong> Người dùng nhận câu trả lời kèm nguồn; log lưu prompt đã điền để bạn kiểm tra khi có lỗi."),
+                p("Prompt LLM thực sự nhận được với câu hỏi “Hạng B được thưởng KPI bao nhiêu?” (phần chỉ dẫn rút gọn):"),
+                code("""# VAI TRÒ
 Bạn là trợ lý tra cứu quy định nội bộ của Công ty ABC.
 # CÁCH TRẢ LỜI
 1. Chỉ dùng thông tin trong <tai_lieu>. ...  (đủ 6 luật như mẫu)
@@ -2660,30 +2783,24 @@ Câu hỏi: Hạng B được thưởng KPI bao nhiêu?
 → LLM trả lời:
 Hạng B được thưởng 3.000.000 đồng/quý. Mức này áp dụng khi KPI từ 95% đến dưới 110%;
 nhân viên thử việc không áp dụng. (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)"""),
-            p("Câu đầu trả lời thẳng (luật 2), không thêm thông tin ngoài hai đoạn (luật 1), có nguồn (luật 4). Đoạn 2 nói về "
-              "thử việc – LLM chỉ dùng phần liên quan, nên Top-K hơi dư cũng không sao, miễn đoạn đúng có mặt.", "example"),
-            h3("Mỗi luật xử lý tình huống nào"),
-            p("Thử prompt bằng các câu hỏi dưới đây. Mỗi câu kiểm tra một luật; câu trả lời khác cột cuối nghĩa là luật đó viết "
-              "chưa đủ rõ."),
-            table(["Câu hỏi thử", "Tài liệu tìm được", "Luật quyết định", "Câu trả lời đúng"],
-                  ["“Hạng B được thưởng KPI bao nhiêu?”", "Mục 3.2 có mức hạng B", "1, 2, 4",
-                   "“3.000.000 đồng/quý…” kèm nguồn mục 3.2"],
-                  ["“Thưởng Tết được mấy tháng lương?”", "Không đoạn nào nói về thưởng Tết", "5",
-                   "Đúng câu “Tài liệu hiện có chưa đề cập…”; không đưa con số nào"],
-                  ["“Thử việc có được thưởng KPI không?”", "Mục 3.2 và Chương 4", "2, 3",
-                   "Câu đầu: “Không.”, rồi giải thích ngắn"],
-                  ["“Phụ cấp công tác ngoài tỉnh bao nhiêu?” (kho còn cả quy định 2023)", "Hai đoạn ghi hai mức khác nhau", "6",
-                   "Nêu cả hai kèm ngày hiệu lực, áp dụng mức của văn bản 2025"],
-                  ["“Các công ty thường thưởng KPI bao nhiêu?”", "Chỉ có quy định của ABC", "1",
-                   "Chỉ nêu quy định của ABC; không đưa mức “thông thường” từ hiểu biết chung"]),
-            p("Lỗi rất hay gặp: viết prompt đẹp nhưng <strong>quên nối biến kết quả truy xuất</strong> vào prompt. LLM không thấy "
-              "tài liệu nào và trả lời bằng hiểu biết chung – nhìn bề ngoài như RAG đang chạy. Luôn mở log xem prompt thực tế đã "
-              "được điền những gì.", "misconception"),
-            h3("Prompt viết lại câu hỏi (Query Rewrite)"),
-            p("Prompt này chạy <strong>trước</strong> bước truy xuất; kết quả không hiển thị cho người dùng mà được đem đi tìm "
-              "kiếm. Cần 3 yếu tố: <strong>nhiệm vụ</strong> (câu hỏi phải đứng được một mình), <strong>luật thay thế</strong> "
-              "(đại từ, “còn … thì sao” → nội dung cụ thể; giữ nguyên mã số, tên riêng, con số) và <strong>đầu ra chỉ có câu "
-              "hỏi</strong> – thêm lời giải thích thì chính lời giải thích bị đem đi tìm."),
+                p("Câu đầu trả lời thẳng (luật 2), không thêm thông tin ngoài hai đoạn (luật 1), có nguồn (luật 4). Đoạn 2 nói về "
+                  "thử việc – LLM chỉ dùng phần liên quan, nên Top-K hơi dư cũng không sao, miễn đoạn đúng có mặt.", "example"),
+                h3("Trích dẫn nguồn: không chỉ để đẹp"),
+                p("Bắt Agent ghi nguồn (tài liệu – mục) có ba tác dụng: người dùng kiểm chứng nhanh; giảm bịa vì mô hình phải bám vào "
+                  "một đoạn cụ thể; người bảo trì phát hiện được tài liệu nào hay bị dùng sai. Câu trả lời ghi nguồn nhưng nguồn đó "
+                  "không chứa thông tin đã nêu là dấu hiệu lỗi cần sửa ngay."),
+            ),
+            kind="practice"),
+        sec("Chặng 6 – Prompt Chain: để Agent hiểu câu hỏi nối tiếp",
+            h3("Làm ngay (10 phút) – Tái hiện lỗi rồi thêm node viết lại câu hỏi"),
+            ol("Trong Preview của Chatflow, hỏi “Hạng A được thưởng KPI bao nhiêu?”, rồi hỏi tiếp “Thế người thử việc có được không?”.",
+               "Mở chi tiết lần chạy, xem câu đem đi tìm ở node Knowledge Retrieval và các đoạn trả về. Câu trả lời cuối có thể vẫn đúng "
+               "nhờ LLM đọc lịch sử chat, nhưng câu đem đi tìm thì đang thiếu nghĩa.",
+               "Thêm một node <strong>LLM</strong> trước Knowledge Retrieval, dán prompt bên dưới (chèn biến câu hỏi vào vị trí "
+               "<code>{{cau_hoi}}</code>; bật <em>Enable Memory</em> để node đọc được lịch sử chat, xóa dòng lịch sử nếu nền tảng tự đưa "
+               "lịch sử vào).",
+               "Cho Knowledge Retrieval dùng kết quả của node mới làm truy vấn. Hỏi lại hai câu, so sánh câu đem đi tìm và đoạn đứng đầu.",
+               "Đã ổn thì <strong>Publish</strong> → <strong>Publish Update</strong>, mở web app dùng thử. Chỉ chia sẻ đường link trong nhóm học."),
             code("""Viết lại câu hỏi mới nhất của người dùng thành một câu hỏi đầy đủ, hiểu được
 mà không cần đọc lịch sử chat.
 - Thay "đó", "cái này", "còn ... thì sao", "tháng trước"... bằng nội dung cụ thể từ lịch sử.
@@ -2694,129 +2811,170 @@ Lịch sử chat:
 {{lich_su}}
 
 Câu hỏi mới nhất: {{cau_hoi}}"""),
-            table(["Lịch sử", "Câu hỏi mới", "Sau khi viết lại"],
-                  ["“Thưởng KPI quý hạng A bao nhiêu?” – “5 triệu đồng/quý.”", "“Còn hạng B?”",
-                   "“Mức thưởng KPI quý của hạng B là bao nhiêu?”"],
-                  ["“Quy trình hoàn hàng thế nào?” – (Agent trả lời 4 bước)", "“Bước 3 mất mấy ngày?”",
-                   "“Bước 3 trong quy trình hoàn hàng mất bao nhiêu ngày?”"]),
-            h3("Chẩn đoán lỗi Agent hỏi đáp tài liệu"),
-            table(["Triệu chứng", "Kiểm tra", "Cách sửa"],
-                  ["Trả lời “không biết” dù tài liệu có", "Hit Test: đoạn đúng có được bốc không, điểm bao nhiêu?",
-                   "Hạ ngưỡng; thêm node viết lại câu hỏi; thêm từ đồng nghĩa vào đoạn; bật Hybrid Search"],
-                  ["Sai số liệu", "Đoạn được bốc có đúng số không?",
-                   "Đoạn đúng → siết prompt “chỉ dùng tài liệu”. Đoạn sai → làm sạch bảng, cắt lại đoạn"],
-                  ["Trộn quy định cũ và mới", "Kho có nhiều phiên bản cùng văn bản?",
-                   "Gỡ bản hết hiệu lực hoặc gắn metadata hiệu lực; thêm luật ưu tiên văn bản mới"],
-                  ["Lan man, lẫn chủ đề khác", "Top-K bao nhiêu? Có đoạn điểm thấp lọt vào?", "Giảm Top-K, tăng ngưỡng"],
-                  ["Không hiểu câu hỏi nối tiếp (“còn hạng B?”)", "Câu đem đi tìm kiếm có đủ nghĩa không?",
-                   "Thêm node viết lại câu hỏi"])),
-        sec("Làm trên Dify – Knowledge Base và trợ lý hỏi đáp, từng bước",
-            p("Bài làm trên Dify bản cloud (cloud.dify.ai), khoảng 60 phút. Tên nút ghi theo giao diện tiếng Anh; nếu giao diện "
-              "của bạn là tiếng Việt hoặc đã đổi, tìm nút có ý nghĩa tương tự."),
-            lab_box("rag", "Buổi 2 – Chunking & Hit Test",
-                    "Chưa có tài khoản Dify hoặc hết credit? Bấm mở Phòng thí nghiệm để chỉnh trực tiếp Delimiter (\\n\\n vs \\n), "
-                    "Chunk size, Overlap, Top-K, Score Threshold và chạy Hit Test so sánh Bản gốc (bẩn) với Bản đã làm sạch ngay trên trình duyệt."),
-            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md"),
-            h3("Bước 0 – Tài khoản và mô hình"),
-            ol("Vào cloud.dify.ai, đăng ký bằng email hoặc tài khoản Google/GitHub. Tài khoản mới ở gói <strong>Sandbox</strong> có "
-               "200 lượt dùng mô hình (credit), cấp một lần, không tự nạp lại – đủ cho bài học nếu thử có chủ đích.",
-               "Vào <strong>Integrations → Model Provider</strong>, cài nhà cung cấp mô hình (VD OpenAI). Mô hình nằm trong credit "
-               "thì không cần API key.",
-               "Nếu đến bước tạo Knowledge mà báo chưa có mô hình embedding, quay lại Model Provider kiểm tra nhà cung cấp đã cài "
-               "có mô hình embedding."),
-            h3("Bước 1 – Tạo Knowledge từ bản gốc (bẩn)"),
-            ol("Mở <strong>Knowledge</strong> → <strong>Create</strong> → chọn tạo knowledge base dùng ngay (ready-to-use) → nguồn "
-               "dữ liệu: tải file từ máy → chọn so_tay_nhan_su_ban_goc.txt → Next.",
-               "<strong>Chunk settings</strong>: chế độ <strong>General</strong>; Delimiter <code>\\n\\n</code> (dòng trống); Maximum "
-               "chunk length 500; Chunk overlap 50; đánh dấu “Replace consecutive spaces, newlines, and tabs”.",
-               "Bấm <strong>Preview</strong> và đọc các đoạn đã cắt: đoạn nào là mục lục? đoạn nào lặp dòng “Trang x/42”? bảng KPI "
-               "bị cắt ra sao?",
-               "<strong>Index method</strong>: High Quality. <strong>Retrieval setting</strong>: Hybrid Search (hoặc Vector Search); "
-               "TopK 3; bật Score Threshold 0,5 nếu có.",
-               "Lưu, chờ xử lý xong. Đặt tên knowledge “So tay – ban goc”."),
-            h3("Bước 2 – Tạo Knowledge từ bản đã làm sạch"),
-            p("Lặp lại bước 1 với file so_tay_nhan_su_da_lam_sach.md, cùng cấu hình, đặt tên “So tay – ban sach”. Ở Preview, mỗi "
-              "mục bắt đầu bằng ## phải thành đúng một đoạn, có tên tài liệu và dòng Nguồn."),
-            h3("Bước 3 – Hit Test: so sánh hai Knowledge"),
-            p("Mở từng knowledge → biểu tượng <strong>Retrieval Testing</strong> ở thanh bên trái → gõ từng câu dưới đây → ghi đoạn "
-              "đứng đầu và điểm của nó."),
-            table(["Câu hỏi thử", "Đáp án trong tài liệu", "Bản gốc thường thấy", "Bản sạch cần đạt"],
-                  ["Hạng B được thưởng KPI bao nhiêu?", "3.000.000 đồng/quý (KPI 95% đến dưới 110%)",
-                   "Bốc đoạn mục lục hoặc đoạn bảng bị vỡ dòng", "Đoạn 3.2 đứng đầu, đủ cả 3 hạng"],
-                  ["Người thử việc có được thưởng KPI không?", "Không",
-                   "Bốc được Chương 4 nhưng lẫn dòng tiêu đề trang", "Đoạn 3.2, Chương 4 hoặc cặp hỏi–đáp về thử việc"],
-                  ["Đi công tác ngoài tỉnh được phụ cấp bao nhiêu một ngày?", "300.000 đồng/ngày",
-                   "Đoạn lẫn mục lục và Chương 5", "Đoạn Chương 5"],
-                  ["Phép năm không dùng hết thì sao?", "Chuyển sang năm sau, dùng trước khi hết quý I",
-                   "Chương 1 và 2 dính chung một đoạn", "Đoạn Chương 2 hoặc cặp hỏi–đáp về phép năm"],
-                  ["Thưởng Tết bao nhiêu?", "Không có trong tài liệu", "Vẫn trả về đoạn có chữ “thưởng” với điểm khá cao",
-                   "Điểm thấp, bị ngưỡng loại, hoặc chỉ còn đoạn không liên quan"]),
-            p("Điểm số phụ thuộc mô hình embedding nên bài không ghi con số cụ thể. Điều cần quan sát là <strong>đoạn nào đứng "
-              "đầu</strong> và <strong>đoạn đó có đủ ý để trả lời không</strong>. Thử đổi TopK, ngưỡng ngay trên trang Retrieval "
-              "Testing – thay đổi ở đây chỉ áp dụng cho lần thử, không đổi cấu hình thật.", "apply"),
-            h3("Bước 4 – Tạo trợ lý hỏi đáp (Chatflow)"),
-            ol("Vào <strong>Studio</strong> → <strong>Create from Blank</strong> → chọn <strong>Chatflow</strong> → đặt tên “Tro ly "
-               "so tay” → Create. Chatflow mặc định có các node <strong>User Input → LLM → Answer</strong>.",
-               "Rê chuột vào đường nối giữa User Input và LLM, bấm “+”, thêm node <strong>Knowledge Retrieval</strong>. Ô truy vấn "
-               "chọn biến câu hỏi của người dùng (<code>sys.query</code>); thêm knowledge “So tay – ban sach”.",
-               "Mở node <strong>LLM</strong>: chọn mô hình, chọn kiểu tham số <em>Precise</em> (temperature thấp). Ô "
-               "<strong>Context</strong>: chọn biến <code>result</code> của node Knowledge Retrieval.",
-               "Ô <strong>SYSTEM</strong>: dán prompt ở mục “Hướng dẫn – Viết prompt cho Agent hỏi đáp tài liệu”. Xóa dòng "
-               "<code>{{ket_qua_truy_xuat}}</code>, đặt con trỏ giữa hai thẻ &lt;tai_lieu&gt; rồi chèn biến Context (gõ "
-               "<code>{</code> hoặc <code>/</code> để mở danh sách biến). Xóa dòng “Câu hỏi: {{cau_hoi}}” – câu hỏi của người "
-               "dùng đã được gửi kèm.",
-               "Node <strong>Answer</strong>: nội dung là biến <code>text</code> của node LLM (thường đã đặt sẵn).",
-               "Bấm <strong>Preview</strong> (góc trên bên phải), hỏi 5 câu ở bước 3, thêm một cặp câu nối tiếp: “Hạng A được bao "
-               "nhiêu?” rồi “Còn hạng B?”."),
-            p("Mở chi tiết từng lần chạy để xem từng node: Knowledge Retrieval trả về đoạn nào, prompt thực tế gửi cho LLM có chứa "
-              "tài liệu không. Đây là cách nhanh nhất để biết lỗi nằm ở bước truy xuất hay bước sinh câu trả lời.", "apply"),
-            h3("Bước 5 – So sánh và hoàn thiện"),
-            ul("Đổi knowledge trong node Knowledge Retrieval sang “So tay – ban goc”, hỏi lại 5 câu, ghi các câu trả lời khác nhau.",
-               "Câu “Còn hạng B?” trả lời sai? Thêm một node LLM viết lại câu hỏi (prompt Query Rewrite ở mục Hướng dẫn) trước "
-               "Knowledge Retrieval, bật <em>Enable Memory</em> cho node này để nó đọc được lịch sử chat, rồi cho Knowledge "
-               "Retrieval dùng câu đã viết lại làm truy vấn.",
-               "Khi đã ổn: <strong>Publish</strong> → <strong>Publish Update</strong>, mở web app để dùng thử. Chỉ chia sẻ đường "
-               "link trong nhóm học."),
-            h3("Làm trên Coze, hoặc khi không có nền tảng"),
-            table(["Việc", "Dify", "Coze", "Không có nền tảng"],
-                  ["Tạo kho tài liệu", "Knowledge", "Knowledge loại Text", "Đính kèm file vào Claude Project, Gem hoặc cuộc trò chuyện"],
-                  ["Cấu hình cắt đoạn", "Chunk settings", "Chế độ phân đoạn tùy chỉnh (Custom)", "Không chỉnh được – công cụ tự xử lý"],
-                  ["Thử truy xuất", "Retrieval Testing", "Xem đoạn được bốc trong chi tiết lần chạy ở Preview & Debug",
-                   "Yêu cầu AI trích nguyên văn đoạn tài liệu đã dùng"],
-                  ["Prompt trả lời", "SYSTEM của node LLM", "Persona & Prompt, hoặc node LLM trong Workflow",
-                   "Dán prompt hỏi đáp tài liệu làm tin nhắn đầu tiên"])),
-        sec("Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)",
-            act(th, "Thực hành 2 – Knowledge Base tư vấn chính sách nội bộ (60 phút)"),
-            lab_box("rag", "Buổi 2 – Mô phỏng RAG & Hit Test",
-                    "Dùng tab Buổi 2 trong Phòng thí nghiệm để thử nghiệm nhanh thông số Chunking, xem các đoạn được cắt và chạy 5 câu Hit Test."),
-            p("<strong>Mục tiêu:</strong> tạo một Agent nội bộ trả lời nhanh quy định và quy trình cho nhân viên mới; đúng theo tài liệu, "
-              "không ảo giác, dẫn được nguồn. Chọn <strong>một trong hai phương án đề bài</strong>:"),
-            table(["Phương án", "Tài liệu nguồn & phạm vi", "Câu hỏi bẫy gợi ý (ngoài tài liệu)"],
-                  ["Đề A (Theo slide)", "Sổ tay nhân sự & Chính sách thưởng KPI quý (<code>so_tay_nhan_su_ban_goc.txt</code> và <code>so_tay_nhan_su_da_lam_sach.md</code>).",
-                   "“Thưởng Tết Nguyên đán năm nay được mấy tháng lương?”"],
-                  ["Đề B (Nhà Xanh hoặc tài liệu của bạn)", "Chính sách đổi trả – bảo hành Nhà Xanh (<code>chinh_sach_doi_tra_gia_lap.md</code>), "
-                   "hoặc 3–5 trang quy định, hướng dẫn <strong>không mật</strong> của chính đơn vị bạn – cách học sát việc thật nhất.",
-                   "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?” (Nhà Xanh) hoặc một câu bạn biết chắc tài liệu không có."]),
-            download("so_tay_nhan_su_ban_goc.txt", "so_tay_nhan_su_da_lam_sach.md", "chinh_sach_doi_tra_gia_lap.md"),
-            h3("Bước 1 – Làm sạch và định dạng tài liệu"),
-            p("Không upload thẳng PDF gốc. Đây là một trang trích từ tài liệu gốc sau khi chuyển sang văn bản:"),
-            code(POLICY_RAW),
-            ul("Xóa trang bìa, mục lục (mục lục làm nhiễu tìm kiếm ngữ nghĩa), header/footer, số trang.",
-               "Biến bảng thành câu: “Thưởng KPI quý: hạng A (KPI từ 110%) được 5.000.000 đồng…”.",
-               "Lưu thành file Markdown (.md) sạch."),
-            h3("Bước 2 – Tạo Knowledge Base và thống nhất thông số Chunking"),
-            ul("Vào mục Knowledge/Dataset, tạo mới, upload các file .md đã làm sạch.",
-               "Chọn mô hình embedding (VD: <code>text-embedding-3-small</code>).",
-               "Chọn chế độ <strong>Custom / General</strong> thay vì Auto và chọn thông số phù hợp với cấu trúc tài liệu:",
-               "<strong>Delimiter (dấu ngắt đoạn):</strong> đặt <code>\\n\\n</code> (dòng trống) khi tài liệu đã chuẩn hóa Markdown theo từng mục <code>##</code> (như <code>so_tay_nhan_su_da_lam_sach.md</code>) để mỗi điều khoản/cặp FAQ thành trọn một chunk; đặt <code>\\n</code> khi cắt văn bản thuần theo từng dòng.",
-               "<strong>Chunk size & Overlap:</strong> trên Dify (đơn vị ký tự), đặt <code>500–800 ký tự</code> và overlap <code>50–100 ký tự</code> (~10–15%) cho sổ tay ngắn; với văn bản quy định dài nhiều trang (tính theo token trên slide), đặt <code>500–1.000 token</code> và overlap <code>15–20%</code>."),
-            h3("Bước 3 – Kiểm thử và tinh chỉnh truy xuất"),
-            ul("<strong>Top-K</strong> 3–5: ít quá thiếu ý, nhiều quá tốn token.",
-               "<strong>Score Threshold</strong> khoảng 0,5: bỏ qua đoạn tương đồng thấp.",
-               "<strong>Hit Test</strong>: gõ thử câu hỏi, xem hệ thống bốc đúng đoạn quy định chưa, trước khi nối với LLM."),
-            h3("Bước 4 – Nối Knowledge Base vào Agent với prompt chuỗi hai bước"),
-            p("Tiêu chí chữa bài (10 điểm): tài liệu sạch, bảng được viết lại đúng nghĩa (3); cấu hình hợp lý, có lý do (2); "
-              "Hit Test đủ 5 câu, có câu “bẫy” không có trong tài liệu (3); prompt chuỗi rõ ràng, có câu chống bịa (2)."),
+            p("<strong>Chưa có Dify:</strong> trên Phòng thí nghiệm, nhập câu “Thế người thử việc có được không?”, chạy với ô <em>Hội thoại "
+              "trước</em> để trống. Sau đó điền <em>Người dùng: Thưởng KPI quý hạng A bao nhiêu?</em> vào ô đó, chạy lại. Để thử prompt, dán "
+              "prompt trên vào ChatGPT/Claude/Gemini, tự điền lịch sử và câu hỏi.", "example"),
+            {"t": "details", "title": "Kết quả thường thấy (làm xong rồi mới mở)", "blocks": [
+                p("Trên Phòng thí nghiệm, chưa có hội thoại trước thì đoạn đứng đầu đạt 0,71. Có hội thoại trước, câu được viết lại thành "
+                  "“Nhân viên thử việc có được hưởng thưởng KPI quý không?” và điểm tăng lên 0,97. Đoạn đúng được tìm chắc chắn hơn vì câu "
+                  "đem đi tìm đã đủ nghĩa."),
+                table(["Lịch sử", "Câu hỏi mới", "Sau khi viết lại"],
+                      ["“Thưởng KPI quý hạng A bao nhiêu?” – “5 triệu đồng/quý.”", "“Còn hạng B?”",
+                       "“Mức thưởng KPI quý của hạng B là bao nhiêu?”"],
+                      ["“Quy trình hoàn hàng thế nào?” – (Agent trả lời 4 bước)", "“Bước 3 mất mấy ngày?”",
+                       "“Bước 3 trong quy trình hoàn hàng mất bao nhiêu ngày?”"]),
+            ]},
+            lab_box("rag", "Chặng 6", "Ô Hội thoại trước cho thấy câu hỏi nối tiếp được viết lại thành gì."),
+            ghi_phieu("ô <strong>Chặng 5–6</strong>: thêm prompt <strong>Viết lại câu hỏi</strong> và một cặp câu trước/sau khi viết lại."),
+            phieu,
+            xong_khi("câu đem đi tìm của câu nối tiếp đứng được một mình", "đầu ra của node viết lại chỉ có câu hỏi, không có lời giải thích"),
+            h3("Xen kẽ 5 phút – Vì sao chia thành nhiều bước?"),
+            p("<strong>Chia để trị:</strong> đừng bắt Agent “tìm kiếm + phân tích + trả lời” trong một prompt. Chia thành "
+              "workflow nhiều bước; đầu ra bước trước là đầu vào bước sau → giảm ảo giác, tăng độ chính xác."),
+            h3("Ví dụ: chuỗi lệnh RAG nâng cao"),
+            table(["Node", "Việc", "Prompt mẫu"],
+                  ["1. Viết lại câu hỏi (Query Rewrite)", "Người dùng hỏi “Thế còn tháng trước thì sao?” – thiếu ngữ cảnh.",
+                   "“Dựa vào lịch sử chat, hãy viết lại câu hỏi trên thành một câu truy vấn độc lập và rõ nghĩa.” → "
+                   "“Doanh thu bán hàng của tháng 9/2023 là bao nhiêu?”"],
+                  ["2. Tìm kiếm & tổng hợp", "Dùng câu đã viết lại để tìm trong Vector DB.",
+                   "“Dựa vào bộ tài liệu dưới đây, hãy trả lời câu hỏi: [Câu hỏi]. Nếu tài liệu không có thông tin, hãy nói "
+                   "‘Tôi không biết’, TUYỆT ĐỐI không bịa đặt.”"]),
+            p("Prompt này chạy <strong>trước</strong> bước truy xuất; kết quả không hiển thị cho người dùng mà được đem đi tìm "
+              "kiếm. Cần 3 yếu tố: <strong>nhiệm vụ</strong> (câu hỏi phải đứng được một mình), <strong>luật thay thế</strong> "
+              "(đại từ, “còn … thì sao” → nội dung cụ thể; giữ nguyên mã số, tên riêng, con số) và <strong>đầu ra chỉ có câu "
+              "hỏi</strong> – thêm lời giải thích thì chính lời giải thích bị đem đi tìm."),
+            *doc_them("Bốn mẫu xâu chuỗi, thiết kế đầu ra trung gian, khi nào xâu chuỗi là thừa",
+                h3("Hiểu sâu: các mẫu xâu chuỗi thường dùng"),
+                table(["Mẫu", "Cách làm", "Ví dụ"],
+                      ["Tuần tự", "Bước 1 → bước 2 → bước 3; đầu ra bước trước là đầu vào bước sau",
+                       "Viết lại câu hỏi → tìm tài liệu → trả lời"],
+                      ["Rẽ nhánh", "Một bước phân loại; mỗi loại đi một chuỗi riêng",
+                       "Câu hỏi về đổi trả → kho Chính sách bán hàng; về nhân sự → kho Sổ tay"],
+                      ["Chia nhỏ rồi gộp (map-reduce)", "Chia tài liệu dài thành phần, xử lý từng phần, rồi gộp kết quả",
+                       "Tóm tắt từng chương của báo cáo 80 trang → tổng hợp"],
+                      ["Tạo rồi kiểm", "Một bước tạo, một bước kiểm tra theo tiêu chí",
+                       "Soạn câu trả lời → kiểm tra có trích dẫn, không bịa"]),
+                figure(fg.fig_chain_patterns(), "Bốn mẫu xâu chuỗi prompt thường dùng"),
+                h3("Thiết kế đầu ra trung gian"),
+                p("Mắt xích yếu nhất của chuỗi là chỗ nối giữa hai bước. Đầu ra của mỗi bước nên: có định dạng cố định (danh sách, "
+                  "JSON, bảng) để bước sau đọc chắc chắn; chỉ chứa đúng thứ bước sau cần; có cách báo “không có kết quả” rõ ràng (trả "
+                  "về rỗng thay vì một câu văn giải thích)."),
+                h3("Khi nào xâu chuỗi là thừa?"),
+                p("Mỗi bước thêm thời gian chờ, chi phí và một chỗ có thể sai. Việc đơn giản một bước làm tốt (dịch một đoạn văn, "
+                  "viết lại một câu) thì không cần chuỗi. Chỉ tách bước khi: một prompt làm nhiều việc cho kết quả không ổn định; cần "
+                  "kiểm tra kết quả giữa chừng; hoặc các phần cần cấu hình khác nhau (bước phân loại dùng temperature thấp, bước viết "
+                  "dùng cao hơn)."),
+                *tu_kiem_tra(
+                    ("Cần tóm tắt báo cáo 80 trang, quá dài để xử lý tốt trong một lần. Dùng mẫu chuỗi nào?",
+                     "Chia nhỏ rồi gộp (map-reduce): tóm tắt từng phần, rồi tổng hợp các bản tóm tắt."),
+                    ("Vì sao đầu ra trung gian nên là JSON hoặc danh sách thay vì đoạn văn?",
+                     "Bước sau đọc chắc chắn, không phải đoán; dễ kiểm tra rỗng hoặc thiếu; không mang theo chữ thừa."),
+                    ("Nêu 2 dấu hiệu cho thấy nên tách một prompt thành chuỗi.",
+                     "Một prompt làm nhiều việc cho kết quả không ổn định; cần kiểm tra giữa chừng; các phần cần cấu hình khác nhau.")),
+            ),
+            kind="practice"),
+        sec("Chặng 7 – Tự cài lỗi, tự tìm, tự sửa",
+            h3("Làm ngay (15 phút) – Chọn 2 lỗi, mỗi lần cài một lỗi"),
+            p("Sau mỗi lỗi, hỏi lại “Hạng B được thưởng KPI bao nhiêu?” và “Thưởng Tết bao nhiêu?”. <strong>Ghi triệu chứng trước</strong>, "
+              "rồi mở chi tiết lần chạy tìm nguyên nhân, sửa về như cũ và hỏi lại."),
+            table(["Lỗi", "Cách cài trên Dify", "Khi chưa có Dify"],
+                  ["A", "Xóa biến Context khỏi ô SYSTEM, giữ nguyên hai thẻ &lt;tai_lieu&gt;", "Hỏi trong cuộc trò chuyện mới, không đính kèm file"],
+                  ["B", "Đặt Score Threshold của node Knowledge Retrieval lên 0,95", "Phòng thí nghiệm: ngưỡng 0,85"],
+                  ["C", "Đổi knowledge của node Knowledge Retrieval sang “So tay – ban goc”", "Phòng thí nghiệm: tài liệu bản gốc"],
+                  ["D", "Xóa luật 1 và luật 5 trong prompt", "Bỏ luật 1 và luật 5 khỏi prompt, dán vào cuộc trò chuyện mới có đính kèm file"]),
+            {"t": "details", "title": "Đối chiếu (ghi triệu chứng xong rồi mới mở)", "blocks": [
+                table(["Lỗi", "Triệu chứng thường thấy", "Nhìn ở đâu", "Tầng"],
+                      ["A", "Trả lời theo hiểu biết chung, hoặc nói chưa đề cập dù đã tìm đúng đoạn",
+                       "Knowledge Retrieval có đoạn đúng, nhưng prompt thực tế gửi LLM không có", "Sinh câu trả lời (ghép prompt)"],
+                      ["B", "Nói chưa đề cập với cả câu tài liệu có", "Knowledge Retrieval không trả về đoạn nào", "Truy xuất"],
+                      ["C", "Thiếu điều kiện, lẫn nội dung trang khác, đôi khi trích mục lục", "Đoạn trả về có “Trang x/42”, bảng vỡ dòng", "Dữ liệu"],
+                      ["D", "Câu thưởng Tết có thể xuất hiện con số. Mô hình tốt vẫn có lúc từ chối, nên hỏi 2–3 lần",
+                       "Không đoạn nào nói về thưởng Tết, nhưng câu trả lời vẫn khẳng định", "Sinh câu trả lời (luật prompt)"]),
+            ]},
+            ghi_phieu("ô <strong>Chặng 7</strong>: một lỗi bạn đã cài: triệu chứng, nhìn ở đâu, tầng nào, sửa xong kết quả đổi ra sao."),
+            phieu,
+            xong_khi("đã khôi phục trợ lý và câu hạng B, thưởng Tết trả lời đúng như chặng 5"),
+            h3("Xen kẽ 5 phút – Năm kiểu lỗi, ba tầng"),
+            table(["Lỗi", "Ví dụ", "Nằm ở đâu, sửa thế nào"],
+                  ["Tài liệu không có thông tin", "Hỏi thưởng Tết, sổ tay không quy định",
+                   "Dữ liệu – Agent phải nói “chưa đề cập”, không bịa"],
+                  ["Có nhưng không tìm thấy", "Tài liệu ghi “hoàn tiền”, người hỏi “trả hàng lấy tiền”",
+                   "Truy xuất – Hybrid, viết lại câu hỏi, viết FAQ bằng lời người dùng"],
+                  ["Tìm thấy đoạn sai", "Bốc mục lục thay vì nội dung", "Dữ liệu và cắt đoạn – làm sạch, cắt theo đề mục"],
+                  ["Tìm đúng nhưng trả lời sai", "Đoạn ghi 7 ngày, Agent trả lời 30 ngày", "Sinh câu trả lời – siết prompt, giảm temperature"],
+                  ["Tài liệu lỗi thời", "Trả lời theo quy định đã bị thay thế", "Quản trị dữ liệu – gỡ bản cũ, gắn ngày hiệu lực"]),
+            figure(fg.fig_rag_errors(), "Năm kiểu lỗi RAG nằm ở ba tầng – sửa đúng tầng sinh ra lỗi"),
+            h3("RAG và phân quyền dữ liệu"),
+            p("RAG trả lời bằng chính nội dung tài liệu. Nếu kho chung có cả tài liệu chỉ dành cho lãnh đạo (bảng lương, hồ sơ kỷ "
+              "luật), bất kỳ ai hỏi khéo cũng có thể nhận được nội dung đó. Dòng “không tiết lộ tài liệu mật” trong prompt không "
+              "phải cơ chế bảo vệ.", "misconception"),
+            p("Chỉ nạp vào kho những tài liệu mà <strong>mọi người dùng của Agent đều được phép đọc</strong>. Tài liệu có quyền "
+              "khác nhau thì tách kho, tách Agent theo nhóm người dùng, hoặc dùng nền tảng hỗ trợ lọc theo quyền của người hỏi.",
+              "apply"),
+            act("ai02-check", "Kiểm tra nhanh: RAG và dữ liệu"),
+            *doc_them("Bảng chẩn đoán lỗi, từ RAG cơ bản đến RAG nâng cao, Rerank",
+                h3("Chẩn đoán lỗi Agent hỏi đáp tài liệu"),
+                table(["Triệu chứng", "Kiểm tra", "Cách sửa"],
+                      ["Trả lời “không biết” dù tài liệu có", "Hit Test: đoạn đúng có được bốc không, điểm bao nhiêu?",
+                       "Hạ ngưỡng; thêm node viết lại câu hỏi; thêm từ đồng nghĩa vào đoạn; bật Hybrid Search"],
+                      ["Sai số liệu", "Đoạn được bốc có đúng số không?",
+                       "Đoạn đúng → siết prompt “chỉ dùng tài liệu”. Đoạn sai → làm sạch bảng, cắt lại đoạn"],
+                      ["Trộn quy định cũ và mới", "Kho có nhiều phiên bản cùng văn bản?",
+                       "Gỡ bản hết hiệu lực hoặc gắn metadata hiệu lực; thêm luật ưu tiên văn bản mới"],
+                      ["Lan man, lẫn chủ đề khác", "Top-K bao nhiêu? Có đoạn điểm thấp lọt vào?", "Giảm Top-K, tăng ngưỡng"],
+                      ["Không hiểu câu hỏi nối tiếp (“còn hạng B?”)", "Câu đem đi tìm kiếm có đủ nghĩa không?",
+                       "Thêm node viết lại câu hỏi"]),
+                h3("Hiểu sâu: từ RAG cơ bản đến RAG nâng cao"),
+                table(["Mức", "Cách làm", "Khắc phục được"],
+                      ["RAG cơ bản", "Câu hỏi → tìm Top-K đoạn → LLM trả lời", "Ảo giác do thiếu kiến thức nội bộ"],
+                      ["+ Viết lại câu hỏi", "Câu hỏi nối tiếp, mơ hồ được viết lại thành câu đầy đủ trước khi tìm",
+                       "Câu hỏi kiểu “còn hạng B thì sao?”"],
+                      ["+ Tìm kết hợp và xếp hạng lại (Hybrid + Rerank)",
+                       "Tìm cả theo nghĩa lẫn từ khóa, rồi một mô hình xếp hạng lại để chọn đoạn sát nhất",
+                       "Bỏ sót mã số; đoạn đúng bị xếp thấp"],
+                      ["+ Lọc theo metadata", "Chỉ tìm trong văn bản còn hiệu lực, đúng đơn vị, đúng loại",
+                       "Trộn quy định cũ và mới"],
+                      ["Agentic RAG", "Agent tự quyết có cần tìm không, tìm mấy lần, tìm ở kho nào",
+                       "Câu hỏi phức tạp cần ghép nhiều nguồn"]),
+                p("Bắt đầu từ RAG cơ bản, đo bằng Hit Test, chỉ thêm kỹ thuật khi thấy một lỗi cụ thể mà kỹ thuật đó giải quyết.", "apply"),
+                h3("Rerank – xếp hạng lại là gì?"),
+                p("Tìm theo vector rất nhanh nhưng chỉ so “gần đúng”. Rerank dùng một mô hình chuyên chấm mức liên quan giữa câu hỏi "
+                  "và từng đoạn – đọc cả hai cùng lúc – nên chính xác hơn nhưng chậm hơn. Vì vậy hệ thống thường làm hai tầng: tìm "
+                  "nhanh 20–50 đoạn ứng viên, rồi rerank chọn 3–5 đoạn tốt nhất đưa cho LLM. Dify có tùy chọn Rerank Model trong cài "
+                  "đặt truy xuất."),
+                figure(fg.fig_rerank(), "Truy xuất hai tầng: tìm nhanh trên cả kho, rerank kỹ trên vài chục ứng viên"),
+                *tu_kiem_tra(
+                    ("Người dùng hỏi “trả hàng lấy tiền thế nào?”, tài liệu ghi “quy trình hoàn tiền”, Agent nói không tìm thấy. Lỗi "
+                     "thuộc kiểu nào, khắc phục ra sao?",
+                     "Có nhưng không tìm thấy (lỗi truy xuất). Bật Hybrid, thêm FAQ dùng lời người dùng, thêm bước viết lại câu hỏi."),
+                    ("Vì sao không nên nạp bảng lương vào kho chung của trợ lý nhân sự, kể cả khi đã dặn “không tiết lộ lương”?",
+                     "RAG trả lời bằng nội dung tài liệu; người hỏi khéo vẫn lấy được. Lời dặn không phải cơ chế phân quyền; phải "
+                     "tách kho hoặc lọc theo quyền người hỏi."),
+                    ("Rerank giải quyết vấn đề gì, và vì sao không chạy rerank trên toàn bộ kho?",
+                     "Chọn chính xác hơn đoạn sát câu hỏi nhất; nhưng chậm, nên chỉ chạy trên 20–50 đoạn đã tìm nhanh trước.")),
+            ),
+            kind="practice"),
+        sec("Chặng 8 – Tự dựng lại trên tài liệu khác và nộp bài",
+            p("Không có hướng dẫn từng bước ở chặng này. Lặp lại những gì vừa làm trên một tài liệu mới, trong 25 phút."),
+            table(["Chọn một", "Tài liệu", "Câu bẫy gợi ý"],
+                  ["Nhà Xanh", "<code>chinh_sach_doi_tra_gia_lap.md</code>", "“Thẻ thành viên hạng Vàng được giảm bao nhiêu %?”"],
+                  ["Việc thật của bạn", "3–5 trang quy định, hướng dẫn <strong>không mật</strong> của đơn vị, không có dữ liệu cá nhân. "
+                   "Đây là cách học sát việc thật nhất", "Một câu bạn biết chắc tài liệu không có"]),
+            h3("Yêu cầu"),
+            ol("Làm sạch tài liệu: mỗi mục đứng được một mình, có dòng Nguồn.",
+               "Tạo kho mới, Hit Test bằng 5 câu tự viết: 2 câu hỏi thẳng, 1 câu dùng từ khác tài liệu, 1 câu nối tiếp, 1 câu bẫy.",
+               "Đổi prompt cho đúng tài liệu mới, chạy lại 5 câu.",
+               "Câu nào chưa đạt: xác định tầng lỗi, sửa một chỗ, chạy lại.",
+               "Điền nốt phiếu, vẽ lại đường ống vừa dựng trên bảng, rồi bấm <strong>Nộp bài</strong>."),
+            {"t": "details", "title": "💡 Bí quá? Mở gợi ý (cố tự làm 10 phút trước)", "blocks": [
+                ul("File Nhà Xanh chưa có dòng Nguồn, và phần “Cách gửi bảo hành” còn câu bị ngắt dòng.",
+                   "Prompt ở chặng 5 đang ghi Công ty ABC và phòng Nhân sự: đổi vai trò và câu từ chối.",
+                   "Trên Phòng thí nghiệm, chọn “Xem / sửa nội dung tài liệu” để dán bản bạn đã sửa.",
+                   "Câu dùng lời khác tài liệu bị từ chối oan? Thêm một cặp hỏi–đáp bằng chính lời người dùng rồi chạy lại.")]},
+            phieu,
+            p("Tiêu chí chữa bài (10 điểm): tài liệu sạch, bảng được viết lại đúng nghĩa (2); cấu hình và sơ đồ đường ống hợp lý, có lý do (2); "
+              "Hit Test đủ 5 câu, có câu bẫy (2); prompt chuỗi rõ ràng, có câu chống bịa (2); trợ lý trên tài liệu mới qua được câu bẫy và "
+              "có ít nhất một lần sửa đúng tầng (2)."),
             *reveal(th, [
                 h3("Gợi ý chữa bài"),
                 code("""---
@@ -2832,8 +2990,10 @@ hieu_luc: 2025
 - Thời hạn chi: ngày 15 tháng đầu tiên của quý sau."""),
                 p("Hit Test nên có ít nhất một câu hỏi mà tài liệu không có câu trả lời (VD: “Thưởng Tết bao nhiêu?”). "
                   "Agent đạt khi trả lời “Tôi không biết / tài liệu chưa đề cập” thay vì bịa."),
+                p("Với Nhà Xanh: máy giặt bảo hành 24 tháng; mua 5 ngày, chưa dùng thì được trả nếu còn nguyên tem, hộp, phụ kiện, khách chịu "
+                  "phí vận chuyển hai chiều; tủ lạnh được bảo hành tại nhà; thẻ thành viên không có trong tài liệu."),
                 p("Lỗi hay gặp: giữ nguyên bảng vỡ dòng; để chế độ Auto; Top-K quá cao (10–20) khiến câu trả lời lẫn quy định khác; "
-                  "không thử câu hỏi bẫy."),
+                  "không thử câu hỏi bẫy; sang tài liệu mới vẫn giữ tên Công ty ABC trong prompt."),
             ]),
             kind="practice", activity=th),
         sec("Tự luyện buổi 2",
@@ -2876,7 +3036,7 @@ Không áp dụng cho hàng khuyến mãi giảm trên 50%.
                      "Kiểm tra trước tiên: biến kết quả truy xuất có thực sự được chèn vào prompt không (xem log).",
                      "Siết prompt: “Chỉ dùng thông tin trong &lt;tai_lieu&gt;”, bắt buộc ghi nguồn; giảm temperature.",
                      "Thêm câu hỏi này vào bộ Hit Test để kiểm tra lại sau mỗi lần sửa."))),
-        sec("Tóm tắt",
+        sec("Chốt buổi",
             ul("LLM thuần lỗi thời, dễ ảo giác, không biết nội bộ; nhồi cả kho tài liệu vào prompt thì đắt, chậm và “lost in the middle”.",
                "RAG = tìm đoạn liên quan → ghép vào prompt → sinh câu trả lời dựa trên dữ liệu thật.",
                "Embedding biến chữ thành vector; Vector DB tìm theo nghĩa; Hybrid Search kết hợp từ khóa và ngữ nghĩa.",
@@ -2884,9 +3044,25 @@ Không áp dụng cho hàng khuyến mãi giảm trên 50%.
                "Prompt Chain: viết lại câu hỏi → tìm và tổng hợp, kèm luật “không biết thì nói không biết”."),
             act("ai02-review", "Câu hỏi ôn tập")),
         sec("Ghi chú cho giảng viên",
-            p("Trình diễn quan trọng nhất của buổi: nạp cùng một tài liệu ở hai bản – PDF gốc (có mục lục, bảng vỡ) và Markdown "
-              "đã làm sạch – rồi Hit Test cùng một câu hỏi. Cho lớp thấy điểm tương đồng và đoạn được bốc ra khác nhau thế nào."),
-            p("Nếu thời gian ngắn: bỏ bước 4, chỉ yêu cầu Hit Test và một prompt tổng hợp có câu chống bịa."),
+            p("Buổi này giảng viên dẫn theo chặng, không giảng trước. Mở Câu hỏi của buổi và Thực hành 2 ngay đầu giờ, để Thực hành 2 mở "
+              "đến hết chặng 8. Chiếu từng bước, đi vòng quanh lớp; chỉ dừng cả lớp ở các mục “Xen kẽ”."),
+            table(["Thời lượng", "Nội dung", "Slide dùng khi xen kẽ"],
+                  ["5 phút", "Bắt đầu: câu hỏi của buổi, chọn đường Dify hoặc Phòng thí nghiệm, mở phiếu.", "1–3, 23–24"],
+                  ["15 phút", "Chặng 1. Chạy cùng lớp, hỏi xem ai nhận được con số nào rồi mới giải thích.", "4–10"],
+                  ["20 phút", "Chặng 2. Nhắc đối chiếu bảng KPI: AI hay ghép sai điều kiện hạng B.", "16–18, 25"],
+                  ["20 phút", "Chặng 3. Kiểm tra tài khoản Dify ngay từ đầu chặng; ai vướng chuyển sang Phòng thí nghiệm, không chờ.", "19, 26"],
+                  ["25 phút", "Chặng 4. Trình diễn quan trọng nhất của buổi: cùng một câu hỏi trên bản gốc và bản sạch; cho lớp thấy "
+                   "đoạn được bốc ra khác nhau thế nào.", "11–15, 27"],
+                  ["10 phút", "Nghỉ giữa buổi.", ""],
+                  ["25 phút", "Chặng 5. Mở log của một học viên lên màn hình, chỉ vào tài liệu trong prompt thực tế.", "22 (Node 2)"],
+                  ["15 phút", "Chặng 6.", "20–22"],
+                  ["20 phút", "Chặng 7. Cuối chặng mở Kiểm tra nhanh, 3 phút.", ""],
+                  ["25 phút", "Chặng 8. Giảng viên không làm mẫu; chỉ gợi ý bằng câu hỏi “lỗi ở tầng nào?”.", ""],
+                  ["10 phút", "Đóng bài, chữa 1–2 bài theo mục 📘 Đáp án, công bố, nhắc Tự luyện và Câu hỏi ôn tập.", "28–29"]),
+            p("Mục “Đọc thêm” gập sẵn để học viên đọc sau giờ học, không giảng trên lớp. Kết quả ghi số là số đo trên Phòng thí nghiệm; "
+              "trên Dify, điểm số tùy mô hình embedding."),
+            p("Nếu thời gian ngắn: giao chặng 8 về nhà và chấm phần còn lại trên 8 điểm. Nếu Dify gặp sự cố: cả lớp đi đường Phòng thí "
+              "nghiệm và công cụ chat, phiếu vẫn điền đủ. Trước buổi học, tự chạy lại các bước trên Dify vì giao diện thay đổi thường xuyên."),
             kind="teacher"),
     ]
     return module(2, "Buổi 2 – Quản lý tri thức & Knowledge Base (RAG)", "Quản lý tri thức & Knowledge Base (RAG)",

@@ -104,6 +104,50 @@ class Courses(unittest.TestCase):
         self.assertEqual(lab.status_code, 200)
         self.assertIn('Phòng thí nghiệm AI Agent', lab.text)
 
+    def test_ai02_is_hands_on(self):
+        """Buổi 2 thuần thực hành: mỗi chặng làm trước, kiến thức xen sau, nội dung slide không mất."""
+        from app.content import ACTIVITIES, course_modules, student_module
+        m = course_modules('ai-agent')[2]
+        titles = [s['title'] for s in m['sections']]
+        self.assertFalse([t for t in titles if t.startswith(('Phần ', 'Hướng dẫn', 'Ví dụ mẫu', 'Đi sâu'))])
+        stages = [s for s in m['sections'] if s['title'].startswith('Chặng ')]
+        self.assertEqual([s['title'].split(' – ')[0] for s in stages], [f'Chặng {i}' for i in range(1, 9)])
+        for s in stages:
+            self.assertEqual(s['kind'], 'practice', s['title'])
+            heads = [b['text'] for b in s['blocks'] if b['t'] == 'h3']
+            xen = [i for i, h in enumerate(heads) if h.startswith('Xen kẽ')]
+            if s['title'].startswith('Chặng 8'):
+                self.assertEqual(xen, [])
+                continue
+            # có đúng một lần xen kẽ, và khối đầu tiên của chặng là việc phải làm
+            self.assertEqual(len(xen), 1, s['title'])
+            self.assertTrue(s['blocks'][0]['text'].startswith('Làm ngay'), s['title'])
+
+        def text(blocks):
+            out = []
+            for b in blocks:
+                out.append(b.get('plain', '') + b.get('text', ''))
+                for it in b.get('items', []):
+                    out.append(it.get('plain', ''))
+                for r in b.get('rows', []):
+                    out.extend(c.get('plain', '') for c in r)
+                out.append(text(b.get('blocks', [])))
+            return '\n'.join(out)
+        body = text(b for s in m['sections'] for b in s['blocks'])
+        for slide_term in ('128k', 'Lost in the middle', 'Retrieval', 'Augmented', 'Generation', 'thi đóng', 'text-embedding-3-small',
+                           'Keyword Search', 'Semantic Search', 'Hybrid Search', 'cosine', 'Pinecone', 'Milvus', 'Qdrant', 'pgvector',
+                           'GIGO', 'OCR', 'Metadata', 'Chunk overlap', 'Query Rewrite', 'Top-K', 'Score Threshold', 'Hit Test', 'Coze'):
+            self.assertIn(slide_term.lower(), body.lower(), slide_term)
+
+        # khóa trường cũ còn nguyên để bài đã nộp vẫn đọc được; phiếu mở được từ đề bài ở chặng 8
+        th = ACTIVITIES['ai02-th2']
+        self.assertTrue({'so_do_rag', 'lam_sach', 'cau_hinh', 'hit_test', 'prompt_chain', 'bai_hoc'} <= {f['key'] for f in th['fields']})
+        self.assertEqual(th['section'], stages[-1]['id'])
+        # gợi ý chữa bài không lộ trước khi công bố, kể cả trong phần gập
+        shown = student_module(2, None, set(), 'ai-agent')
+        self.assertFalse(any(b.get('reveal') for s in shown['sections'] for b in s['blocks']))
+        self.assertTrue(any(b.get('reveal') for s in student_module(2, None, {'ai02-th2'}, 'ai-agent')['sections'] for b in s['blocks']))
+
 
 if __name__ == '__main__':
     unittest.main()
