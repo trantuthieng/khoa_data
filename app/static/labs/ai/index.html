@@ -43,6 +43,7 @@
             <option value="clean">Sổ tay nhân sự – bản đã làm sạch (.md)</option>
             <option value="raw">Sổ tay nhân sự – bản gốc chép từ PDF (bẩn)</option>
             <option value="shop">Nhà Xanh – chính sách đổi trả (.md)</option>
+            <option value="spd">Tuyển sinh SPD 2026 – bộ mẫu buổi 2 (.md)</option>
           </select>
           <details class="fold">
             <summary>Xem / sửa nội dung tài liệu</summary>
@@ -54,6 +55,7 @@
               <label for="rag-delim">Dấu ngắt đoạn</label>
               <select id="rag-delim">
                 <option value="\n\n">\n\n – theo mục</option>
+                <option value="\n## ">\n## – theo đề mục ##</option>
                 <option value="\n">\n – theo từng dòng</option>
                 <option value="fixed">Cắt cứng theo ký tự</option>
               </select>
@@ -81,6 +83,11 @@
             <button type="button" class="chip" data-q="Phép năm không dùng hết thì sao?">Phép năm còn dư?</button>
             <button type="button" class="chip trap" data-q="Thưởng Tết bao nhiêu?">Thưởng Tết? <em>bẫy</em></button>
             <button type="button" class="chip" data-q="Còn hạng B thì sao?" data-hist="Người dùng: Thưởng KPI quý hạng A bao nhiêu? | Trợ lý: Hạng A (KPI >= 110%) được thưởng 5.000.000 đồng/quý.">“Còn hạng B thì sao?” <em>nối tiếp</em></button>
+            <button type="button" class="chip" data-doc="spd" data-q="Giáo dục Mầm non cao đẳng mã xét tuyển và chỉ tiêu dự kiến bao nhiêu?">SPD: Mầm non CĐ?</button>
+            <button type="button" class="chip" data-doc="spd" data-q="Phương thức 100 có cộng điểm chứng chỉ ngoại ngữ không?">SPD: PT 100 cộng điểm?</button>
+            <button type="button" class="chip" data-doc="spd" data-q="Tổ hợp X70 dùng cho phương thức nào?">SPD: X70?</button>
+            <button type="button" class="chip trap" data-doc="spd" data-q="Học phí bao nhiêu?">SPD: Học phí? <em>bẫy</em></button>
+            <button type="button" class="chip" data-doc="spd" data-q="Còn đại học thì sao?" data-hist="Người dùng: Giáo dục Mầm non cao đẳng chỉ tiêu dự kiến bao nhiêu? | Trợ lý: Dự kiến 100.">SPD: “Còn đại học thì sao?” <em>nối tiếp</em></button>
             <button type="button" class="chip" data-doc="shop" data-q="Mua về 5 ngày rồi, chưa dùng, muốn trả lại lấy tiền được không?">Nhà Xanh: trả hàng sau 5 ngày?</button>
           </div>
           <div class="row">

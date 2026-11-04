@@ -623,6 +623,28 @@ def fig_chain_patterns():
 
 # ================================================================ Buổi 3
 
+def fig_chatflow_sau_khoi():
+    f = Fig("ai-cf6", 720, 300, "Chatflow sáu khối: nhận câu hỏi, tìm tài liệu, kiểm tra kết quả có rỗng không; có kết quả thì LLM tư vấn theo nguồn rồi trả lời, rỗng thì báo chưa đủ thông tin")
+    f.box(6, 96, 106, 64, ["1. Nhận câu hỏi", "Start · sys.query"], "r-brand", size=12)
+    f.box(126, 96, 124, 64, ["2. Tìm tài liệu", "Knowledge Retrieval"], "r-ok", size=12.5)
+    f.poly([(336, 76), (416, 128), (336, 180), (264, 128)], "r-warn")
+    f.text(340, 124, "3. Có kết quả?", "", 12.5, bold=True)
+    f.text(340, 141, "IF/ELSE", "", 11)
+    f.box(450, 28, 136, 64, ["4. Tư vấn theo nguồn", "LLM + Context"], "r-brand", size=12)
+    f.box(600, 28, 114, 64, ["5. Trả lời có nguồn", "Answer + trích dẫn"], "r-ok", size=11.5)
+    f.box(450, 176, 264, 64, ["6. Báo chưa đủ thông tin", "Answer cố định, chỉ nơi kiểm tra"], "r-note", size=12.5)
+    f.arrow(112, 128, 124, 128, "brand")
+    f.arrow(250, 128, 262, 128, "brand")
+    f.path("M416,128 H432 V60 H448", "ok")
+    f.text(404, 72, "có đoạn", "f-ok", 12)
+    f.arrow(586, 60, 598, 60, "brand")
+    f.path("M336,180 V208 H448", "acc")
+    f.text(392, 224, "mảng rỗng", "f-acc", 12)
+    f.text(360, 272, "Có đoạn trả về chưa có nghĩa là đủ bằng chứng: LLM ở khối 4 vẫn phải báo thiếu", "f-mut", 12.5)
+    f.text(360, 290, "khi đoạn tìm được không trả lời được câu hỏi.", "f-mut", 12.5)
+    return f
+
+
 def fig_doi_tra_wf():
     f = Fig("ai-dtwf", 720, 280, "Workflow đổi trả bảy bước: mỗi bước dùng đúng loại node – LLM, điều kiện, công cụ, code, con người")
     W = 160

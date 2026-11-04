@@ -30,8 +30,8 @@
     },
     {
      "t": "p",
-     "html": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: <strong>Nhà Xanh</strong> – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), trợ lý hỏi đáp sổ tay nhân sự (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên <strong>công việc thật của bạn</strong> – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
-     "plain": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: Nhà Xanh – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), trợ lý hỏi đáp sổ tay nhân sự (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên công việc thật của bạn – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
+     "html": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: <strong>Nhà Xanh</strong> – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), chatbot tư vấn tuyển sinh theo tài liệu (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên <strong>công việc thật của bạn</strong> – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
+     "plain": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: Nhà Xanh – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), chatbot tư vấn tuyển sinh theo tài liệu (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên công việc thật của bạn – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
      "callout": "example"
     },
     {
@@ -100,8 +100,8 @@
         "plain": "Làm sao để Agent trả lời đúng theo tài liệu của mình?"
        },
        {
-        "html": "Knowledge Base tư vấn chính sách nội bộ trên Coze/Dify",
-        "plain": "Knowledge Base tư vấn chính sách nội bộ trên Coze/Dify"
+        "html": "Chatbot tư vấn theo tài liệu trên Dify: Knowledge Base + Chatflow sáu khối + bảng kiểm thử",
+        "plain": "Chatbot tư vấn theo tài liệu trên Dify: Knowledge Base + Chatflow sáu khối + bảng kiểm thử"
        }
       ],
       [
@@ -793,9 +793,9 @@
        "plain": "Chuẩn bị sẵn một Custom GPT, một Knowledge Base và một workflow mẫu cho từng buổi để trình diễn khi học viên gặp sự cố tài khoản."
       },
       {
-       "html": "Chuẩn bị 3–5 file PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” (có bảng, header/footer, trang mục lục) cho buổi 2 – nên có cả bản “bẩn” và bản đã làm sạch để so sánh.",
+       "html": "Buổi 2 dùng sẵn bộ mẫu tuyển sinh SPD 2026 (PDF gốc, bản thô, bốn Markdown, hai CSV, tệp DSL) và hai tài liệu giả lập cho phần dựng lại; tự chạy lại trên Dify của lớp trước buổi học.",
        "level": 0,
-       "plain": "Chuẩn bị 3–5 file PDF giả lập “Chính sách bán hàng”, “Sổ tay nhân sự” (có bảng, header/footer, trang mục lục) cho buổi 2 – nên có cả bản “bẩn” và bản đã làm sạch để so sánh."
+       "plain": "Buổi 2 dùng sẵn bộ mẫu tuyển sinh SPD 2026 (PDF gốc, bản thô, bốn Markdown, hai CSV, tệp DSL) và hai tài liệu giả lập cho phần dựng lại; tự chạy lại trên Dify của lớp trước buổi học."
       },
       {
        "html": "Mỗi buổi: mở câu hỏi mở đầu ngay đầu giờ, mở kiểm tra nhanh sau phần lý thuyết, mở bài thực hành khi bắt đầu phần thực hành; đóng bài trước khi chấm, công bố sau khi chữa.",

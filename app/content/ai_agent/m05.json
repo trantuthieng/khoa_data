@@ -3986,7 +3986,7 @@
     },
     {
      "id": "q7",
-     "text": "Khuyến nghị tỷ lệ gối đầu (chunk overlap) khi cắt văn bản trên Coze/Dify trong bài thực hành?",
+     "text": "Khuyến nghị tỷ lệ gối đầu (chunk overlap) khi cắt văn bản dài ở chế độ General trên Coze/Dify?",
      "options": [
       {
        "key": "A",

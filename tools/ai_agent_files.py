@@ -305,6 +305,22 @@ FILES = {
 }
 
 
+# Bộ mẫu tuyển sinh SPD của buổi 2: tài liệu thật, chép nguyên từ gói hướng dẫn, nằm sẵn trong static/labs/ai/spd
+# (không sinh từ script để giữ đúng bản đã đối chiếu và đã chạy thử trên Dify).
+SPD_URL = URL + "spd/"
+SPD_FILES = {
+    "SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf": "PDF gốc 39 trang, thông báo 2805/TB-ĐHĐT ngày 15/05/2026",
+    "toan_bo_39_trang_tho.md": "bản trích xuất thô cả 39 trang, chưa duyệt, không nạp vào chatbot",
+    "thong_tin_chung.md": "thông tin trường và liên hệ, trang 1 (nạp kho)",
+    "ho_so_12_nganh_mau.md": "12 dòng ngành, trang 13 (nạp kho)",
+    "to_hop_53_dong.md": "53 dòng tổ hợp, trang 18–19 (nạp kho)",
+    "quy_dinh_muc_5_1_den_5_3.md": "điều kiện phụ, chứng chỉ, nguyện vọng, trang 19 (nạp kho, cần sửa ở chặng 2)",
+    "nganh_trang13_12_dong_mau.csv": "12 dòng ngành dạng bảng, để đối chiếu và cập nhật",
+    "to_hop_53_dong.csv": "53 dòng tổ hợp dạng bảng, để đối chiếu và cập nhật",
+    "SPD-2026-chatflow-demo.yml": "tệp DSL của Chatflow sáu khối, không chứa API key",
+}
+
+
 def write_files():
     TARGET.mkdir(parents=True, exist_ok=True)
     for name, (text, _) in FILES.items():

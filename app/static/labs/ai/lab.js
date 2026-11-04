@@ -1,6 +1,260 @@
 /* Phòng thí nghiệm AI Agent chạy trực tiếp trên trình duyệt (không cần API key ngoài) */
 (function () {
   const DOCS = {
+    spd: `# Thông tin chung - Đại học Đồng Tháp - Tuyển sinh 2026
+
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf
+Mã tài liệu: SPD_2805_2026_05_15
+Trường: Trường Đại học Đồng Tháp (SPD)
+Năm tuyển sinh: 2026
+Ngày thông báo: 15/05/2026
+Phạm vi: Thông tin theo tài liệu gốc; chưa kiểm tra thông báo bổ sung.
+
+Trang nguồn PDF: 1. Mục I.
+
+- Tên cơ sở đào tạo: Trường Đại học Đồng Tháp.
+- Ký hiệu cơ sở đào tạo trong tuyển sinh: SPD.
+- Địa chỉ: số 783 Phạm Hữu Lầu, Phường Cao Lãnh, Tỉnh Đồng Tháp.
+- Website trường: https://dthu.edu.vn
+- Website tuyển sinh: https://tuyensinh.dthu.edu.vn
+- Đăng ký thi năng khiếu: https://thinangkhieu.dthu.edu.vn
+- Đăng ký thi V-SAT: https://vsat.dthu.edu.vn
+- Đăng ký xét tuyển các phương thức và nộp minh chứng: https://xettuyen.dthu.edu.vn
+- Liên hệ tuyển sinh: Phòng Bảo đảm chất lượng, điện thoại 0277.3882258, email tuyensinh@dthu.edu.vn.
+
+# Ngành tuyển sinh - mẫu 12 dòng trang 13
+
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf
+Mã tài liệu: SPD_2805_2026_05_15
+Trường: Trường Đại học Đồng Tháp (SPD)
+Năm tuyển sinh: 2026
+Ngày thông báo: 15/05/2026
+Phạm vi: Thông tin theo tài liệu gốc; chưa kiểm tra thông báo bổ sung.
+
+Phạm vi: chỉ 12 dòng trang PDF 13, không phải toàn bộ danh mục ngành.
+
+Không ghép chéo toàn bộ tổ hợp và phương thức. Đối chiếu bảng tổ hợp mục 4.2 và điều kiện từng phương thức.
+
+## Giáo dục Mầm non (CĐ) - mã xét tuyển 51140201 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 1.
+Record ID: SPD_2805_2026_05_15_nganh_51140201
+- Trình độ: Cao đẳng.
+- Chỉ tiêu dự kiến: 100.
+- Tổ hợp được liệt kê: X70;X74;X01;M00;M05;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Công nghệ Giáo dục - mã xét tuyển 7140103 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 2.
+Record ID: SPD_2805_2026_05_15_nganh_7140103
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 50.
+- Tổ hợp được liệt kê: X26;A00;C01;X03;X27;D01;NL1.
+- Phương thức được liệt kê: 100;200;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Giáo dục Mầm non - mã xét tuyển 7140201 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 3.
+Record ID: SPD_2805_2026_05_15_nganh_7140201
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 450.
+- Tổ hợp được liệt kê: X70;X74;X01;M05;M00;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Giáo dục Tiểu học - mã xét tuyển 7140202 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 4.
+Record ID: SPD_2805_2026_05_15_nganh_7140202
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 800.
+- Tổ hợp được liệt kê: C03;C01;C04;B03;D01;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Giáo dục Công dân - mã xét tuyển 7140204 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 5.
+Record ID: SPD_2805_2026_05_15_nganh_7140204
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 70.
+- Tổ hợp được liệt kê: C00;X70;D01;X01;X74;D14;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Giáo dục Chính trị - mã xét tuyển 7140205 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 6.
+Record ID: SPD_2805_2026_05_15_nganh_7140205
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 70.
+- Tổ hợp được liệt kê: C00;X70;X01;X74;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Giáo dục Thể chất - mã xét tuyển 7140206 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 7.
+Record ID: SPD_2805_2026_05_15_nganh_7140206
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 115.
+- Tổ hợp được liệt kê: T06;T00;T03;T01;T15;T02.
+- Phương thức được liệt kê: 100;301;416.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Sư phạm Toán học - mã xét tuyển 7140209 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 8.
+Record ID: SPD_2805_2026_05_15_nganh_7140209
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 115.
+- Tổ hợp được liệt kê: A00;A01;A02;C02;D01;C01;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+- Ghi chú: Có 02 chuyên ngành: Chương trình đại trà; Chương trình toán tiếng Anh. Chỉ tiêu 115 là của dòng ngành, không chia đều cho hai chuyên ngành.
+
+
+## Sư phạm Tin học - mã xét tuyển 7140210 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 9.
+Record ID: SPD_2805_2026_05_15_nganh_7140210
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 205.
+- Tổ hợp được liệt kê: X06;A00;X02;A01;C01;D01;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Sư phạm Vật lý - mã xét tuyển 7140211 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 10.
+Record ID: SPD_2805_2026_05_15_nganh_7140211
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 70.
+- Tổ hợp được liệt kê: X06;A02;A00;X07;A01;C01;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Sư phạm Hóa học - mã xét tuyển 7140212 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 11.
+Record ID: SPD_2805_2026_05_15_nganh_7140212
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 70.
+- Tổ hợp được liệt kê: X10;A00;B00;D07;X11;C02;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+
+
+## Sư phạm Sinh học - mã xét tuyển 7140213 - năm 2026
+
+Trường: Đại học Đồng Tháp (SPD). Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, trang PDF 13, mục 4.1, dòng 12.
+Record ID: SPD_2805_2026_05_15_nganh_7140213
+- Trình độ: Đại học.
+- Chỉ tiêu dự kiến: 70.
+- Tổ hợp được liệt kê: X14;B00;X16;A02;D08;B03;NL1.
+- Phương thức được liệt kê: 100;301;416;402.
+- Lưu ý phạm vi: Danh sách tổ hợp và phương thức chưa phải ánh xạ mọi cặp hợp lệ; phải đối chiếu mục 4.2 và điều kiện từng phương thức.
+
+# Điều kiện phụ, chứng chỉ ngoại ngữ và nguyện vọng - SPD 2026
+
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf
+Mã tài liệu: SPD_2805_2026_05_15
+Trường: Trường Đại học Đồng Tháp (SPD)
+Năm tuyển sinh: 2026
+Ngày thông báo: 15/05/2026
+Phạm vi: Thông tin theo tài liệu gốc; chưa kiểm tra thông báo bổ sung.
+
+Trang nguồn PDF: 19. Phạm vi trích: mục 5.1 đến 5.3.
+
+## 5.1. Các điều kiện phụ sử dụng trong xét tuyển
+
+Trường hợp tại mức điểm trúng tuyển có nhiều thí sinh bằng điểm nhau ở cuối danh sách, thứ tự xét tiêu chí phụ là:
+1. Ưu tiên thí sinh có tổng điểm cộng thấp hơn.
+2. Nếu vẫn bằng nhau, ưu tiên thí sinh có thứ tự nguyện vọng cao hơn.
+
+Riêng các ngành có môn Năng khiếu trong tổ hợp xét tuyển: thí sinh phải tham dự kỳ thi Năng khiếu do Trường Đại học Đồng Tháp tổ chức để làm điều kiện tham gia xét tuyển và đạt kết quả từ 6,0 trở lên.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 5.1, trang PDF 19.
+
+## 5.2. Điểm cộng và quy đổi điểm chứng chỉ ngoại ngữ
+
+- Tổng điểm cộng gồm điểm thưởng, điểm xét thưởng, điểm khuyến khích không vượt quá 10% điểm tối đa của thang điểm xét tuyển; thang điểm xét tuyển là 30.
+- Việc áp dụng điểm cộng theo Phụ lục 2 của tài liệu gốc. Bộ mẫu này chưa chứa Phụ lục 2.
+- Với phương thức 100, chứng chỉ ngoại ngữ dùng để quy đổi điểm môn Tiếng Anh, Tiếng Trung theo Phụ lục 3, không dùng để cộng điểm xét tuyển. Bộ mẫu này chưa chứa bảng Phụ lục 3.
+- Với các phương thức còn lại, chứng chỉ ngoại ngữ không dùng để quy đổi điểm môn thi; việc cộng điểm (nếu có) theo Phụ lục 2.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 5.2, trang PDF 19.
+
+## 5.3. Tiêu chí phân bổ ngành, chương trình đào tạo
+
+- Thí sinh được đăng ký tối đa 15 nguyện vọng, xếp ưu tiên từ cao xuống thấp; ưu tiên 01 là cao nhất.
+- Trong từng ngành, thí sinh được xét bình đẳng theo điểm xét tuyển từ cao xuống thấp, không phân biệt thứ tự ưu tiên nguyện vọng đăng ký.
+- Mỗi thí sinh chỉ trúng tuyển vào 01 nguyện vọng có ưu tiên cao nhất trong số các nguyện vọng đủ điều kiện trúng tuyển.
+- Điểm trúng tuyển giữa các tổ hợp trong cùng 01 ngành bằng nhau, được xác định theo ngành; đó là điểm xét tuyển của thí sinh cuối cùng trong danh sách trúng tuyển.
+- Với ngành có chuyên ngành, thí sinh chọn chuyên ngành sau khi trúng tuyển và nhập học theo ngành.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 5.3, trang PDF 19.
+
+# Tổ hợp xét tuyển SPD 2026 (trích 5/53 dòng cho Phòng thí nghiệm)
+
+## Tổ hợp A00 - SPD - năm 2026
+
+Record ID: SPD_2805_2026_05_15_tohop_A00
+Thành phần: Toán, Vật lí, Hóa học.
+Tổ hợp dùng cho phương thức (nguyên văn ô nguồn): PT 100; PT 200; PT 416.
+Giới hạn áp dụng: Khả năng dùng tổ hợp còn phụ thuộc ngành cụ thể và điều kiện của phương thức; không suy ra ngành nào cũng nhận mọi phương thức trong bảng này.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 4.2, trang PDF 18, dòng 1.
+
+## Tổ hợp M00 - SPD - năm 2026
+
+Record ID: SPD_2805_2026_05_15_tohop_M00
+Thành phần: Ngữ văn, Toán, NK GDMN.
+Tổ hợp dùng cho phương thức (nguyên văn ô nguồn): (PT 100; PT 416) + NK.
+Giới hạn áp dụng: Khả năng dùng tổ hợp còn phụ thuộc ngành cụ thể và điều kiện của phương thức; không suy ra ngành nào cũng nhận mọi phương thức trong bảng này.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 4.2, trang PDF 18, dòng 26.
+
+## Tổ hợp X01 - SPD - năm 2026
+
+Record ID: SPD_2805_2026_05_15_tohop_X01
+Thành phần: Toán, Ngữ văn, Giáo dục Kinh tế và pháp luật.
+Tổ hợp dùng cho phương thức (nguyên văn ô nguồn): PT 100; PT 200.
+Giới hạn áp dụng: Khả năng dùng tổ hợp còn phụ thuộc ngành cụ thể và điều kiện của phương thức; không suy ra ngành nào cũng nhận mọi phương thức trong bảng này.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 4.2, trang PDF 18, dòng 36.
+
+## Tổ hợp X70 - SPD - năm 2026
+
+Record ID: SPD_2805_2026_05_15_tohop_X70
+Thành phần: Ngữ văn, Lịch sử, Giáo dục Kinh tế và pháp luật.
+Tổ hợp dùng cho phương thức (nguyên văn ô nguồn): PT 100; PT 200.
+Giới hạn áp dụng: Khả năng dùng tổ hợp còn phụ thuộc ngành cụ thể và điều kiện của phương thức; không suy ra ngành nào cũng nhận mọi phương thức trong bảng này.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 4.2, trang PDF 19, dòng 50.
+
+## Tổ hợp NL1 - SPD - năm 2026
+
+Record ID: SPD_2805_2026_05_15_tohop_NL1
+Thành phần: Điểm đánh giá năng lực ĐHQG HCM năm 2026.
+Tổ hợp dùng cho phương thức (nguyên văn ô nguồn): PT 402.
+Giới hạn áp dụng: Khả năng dùng tổ hợp còn phụ thuộc ngành cụ thể và điều kiện của phương thức; không suy ra ngành nào cũng nhận mọi phương thức trong bảng này.
+Nguồn: SPD-thong-tin-tuyen-sinh-dai-hoc-cao-dang-2026.pdf, mục 4.2, trang PDF 19, dòng 53.`,
     clean: `# Sổ tay nhân sự 2025 – Công ty TNHH ABC (TÀI LIỆU GIẢ LẬP – CHỈ DÙNG ĐỂ HỌC)
 
 ## Sổ tay nhân sự 2025 › Chương 1 › Thời giờ làm việc
@@ -209,7 +463,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
       }
       return chunks;
     }
-    const sep = delimMode === '\\n\\n' ? '\n\n' : '\n';
+    const sep = delimMode === '\\n## ' ? '\n## ' : (delimMode === '\\n\\n' ? '\n\n' : '\n');
     const blocks = text.split(sep).map(s => s.trim()).filter(Boolean);
     for (const b of blocks) {
       if (b.length <= maxLen) {
@@ -236,7 +490,11 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     ['công tác', 'ngoài tỉnh', 'trong tỉnh', 'phụ cấp', 'lưu trú', 'tiền phòng'],
     ['nghỉ phép', 'phép năm', '12 ngày', 'chưa dùng hết', 'quý i năm sau', 'chuyển sang'],
     ['đổi trả', 'trả hàng', 'trả lại', 'đổi ý', 'đổi hàng', '7 ngày', 'hoàn tiền', 'lấy tiền'],
-    ['bảo hành', 'tại nhà', 'kỹ thuật viên', '2 ngày làm việc', '24 tháng', '12 tháng']
+    ['bảo hành', 'tại nhà', 'kỹ thuật viên', '2 ngày làm việc', '24 tháng', '12 tháng'],
+    ['chứng chỉ ngoại ngữ', 'quy đổi', 'cộng điểm', 'điểm cộng', 'phụ lục 3'],
+    ['chỉ tiêu', 'mã xét tuyển', 'chỉ tiêu dự kiến'],
+    ['nguyện vọng', 'trúng tuyển', 'ưu tiên 01'],
+    ['năng khiếu', 'kỳ thi năng khiếu', '6,0']
   ];
 
   function rewriteQuery(q, hist) {
@@ -247,6 +505,9 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     }
     if (/thử việc thì sao|người thử việc/i.test(cleanQ) && /kpi/i.test(hist)) {
       return 'Nhân viên thử việc có được hưởng thưởng KPI quý không?';
+    }
+    if (/còn đại học/i.test(cleanQ) && /mầm non/i.test(hist)) {
+      return 'Mã xét tuyển và chỉ tiêu dự kiến của ngành Giáo dục Mầm non trình độ đại học năm 2026 là gì?';
     }
     return cleanQ + ' (Bối cảnh trước: ' + hist.trim().slice(0, 80) + ')';
   }
@@ -279,6 +540,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     }
     // Phạt nhẹ nếu chunk quá ngắn (bị cắt vụn bởi \n) hoặc dính mục lục rác
     let penalty = 0;
+    if (/trình độ đại học/.test(qLow) && /trình độ: cao đẳng/.test(cLow)) penalty += 0.1;
     if (chunk.length < 55) penalty += 0.14;
     if (/MỤC LỤC|\.{6,}/i.test(chunk) && !/3\.000\.000|200\.000|12 ngày/.test(chunk)) {
       // Mục lục trùng từ khóa tiêu đề nhưng không có nội dung
@@ -313,6 +575,9 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     const warns = [];
     if (delim === '\\n' && tinyCount >= 4) {
       warns.push('Cắt theo <code>\\n</code> làm vụn tài liệu thành <b>' + currentChunks.length + ' đoạn</b>, mất tiêu đề mục. Thử <code>\\n\\n</code>.');
+    }
+    if (el('rag-doc').value === 'spd' && delim !== '\\n## ') {
+      warns.push('Tên ngành, tên tổ hợp đang bị tách khỏi số liệu của nó. Bộ này có dòng trống ngay sau đề mục, nên dùng dấu ngắt <code>\\n## </code>.');
     }
     if (noiseCount > 0) {
       warns.push('<b>' + noiseCount + ' đoạn nhiễu</b>: mục lục, dòng “Trang x/42”, bảng vỡ dòng. Rác vào, rác ra (GIGO).');
@@ -395,8 +660,8 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     } else {
       ansBox.className = 'callout ok';
       const firstLines = passed[0].text.split('\n').filter(Boolean);
-      const srcLine = firstLines.find(l => /^Nguồn:/i.test(l)) || 'Nguồn: Tài liệu nội bộ (Chunk #' + passed[0].idx + ')';
-      ansBox.innerHTML = `<span class="who">Agent trả lời · dựa trên ${passed.length} đoạn</span><span class="say">${esc(passed[0].text)}</span><span class="why">✓ Có dẫn nguồn: ${esc(srcLine.replace(/^Nguồn:\s*/i, ''))}</span>`;
+      const srcLine = firstLines.find(l => /Nguồn:/i.test(l)) || 'Nguồn: Tài liệu nội bộ (Chunk #' + passed[0].idx + ')';
+      ansBox.innerHTML = `<span class="who">Agent trả lời · dựa trên ${passed.length} đoạn</span><span class="say">${esc(passed[0].text)}</span><span class="why">✓ Có dẫn nguồn: ${esc(srcLine.replace(/^.*?Nguồn:\s*/i, ''))}</span>`;
     }
 
     lastHitReport = [
@@ -408,10 +673,20 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     ].join('\n');
   }
 
-  el('rag-doc').addEventListener('change', () => {
-    el('rag-text').value = DOCS[el('rag-doc').value] || DOCS.clean;
+  function loadDoc(doc) {
+    el('rag-doc').value = doc;
+    el('rag-text').value = DOCS[doc] || DOCS.clean;
+    if (doc === 'spd') {
+      el('rag-delim').value = '\\n## ';
+      el('rag-size').value = 1000;
+    } else if (el('rag-delim').value === '\\n## ') {
+      el('rag-delim').value = '\\n\\n';
+      el('rag-size').value = 500;
+    }
     renderChunksAndRunHitTest();
-  });
+  }
+
+  el('rag-doc').addEventListener('change', () => loadDoc(el('rag-doc').value));
   ['rag-text', 'rag-delim', 'rag-size', 'rag-overlap', 'rag-clean-ws'].forEach(id => {
     el(id).addEventListener('input', renderChunksAndRunHitTest);
     el(id).addEventListener('change', renderChunksAndRunHitTest);
@@ -428,9 +703,7 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
     el('rag-query').value = btn.dataset.q;
     el('rag-history').value = btn.dataset.hist || '';
     if (btn.dataset.doc && el('rag-doc').value !== btn.dataset.doc) {
-      el('rag-doc').value = btn.dataset.doc;
-      el('rag-text').value = DOCS[btn.dataset.doc];
-      renderChunksAndRunHitTest();
+      loadDoc(btn.dataset.doc);
     } else {
       runHitTest();
     }
