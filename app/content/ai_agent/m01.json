@@ -1596,8 +1596,381 @@
      "plain": "Trái tim của Agent là một vòng lặp Thought → Action → Observation, lặp lại cho đến khi: đạt mục tiêu · cần con người · chạm điều kiện dừng."
     },
     {
-     "t": "figure",
-     "html": "<svg class=\"dg\" viewBox=\"0 0 720 220\" role=\"img\" aria-label=\"Vòng lặp của Agent: nhận thức, suy luận, hành động, quan sát rồi lặp lại cho đến khi đủ\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-loop-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-loop-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-loop-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-loop-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-loop-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"20\" width=\"110\" height=\"64\" rx=\"8\" class=\"r-note\"/><text x=\"65.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Mục tiêu</text><text x=\"65.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">người dùng giao</text><rect x=\"160\" y=\"20\" width=\"170\" height=\"64\" rx=\"8\" class=\"r-brand\"/><text x=\"245.0\" y=\"39.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">1. Nhận thức</text><text x=\"245.0\" y=\"56.5\" font-size=\"11.5\" text-anchor=\"middle\">đọc yêu cầu, tài liệu,</text><text x=\"245.0\" y=\"73.7\" font-size=\"11.5\" text-anchor=\"middle\">kết quả công cụ</text><rect x=\"390\" y=\"20\" width=\"170\" height=\"64\" rx=\"8\" class=\"r-brand\"/><text x=\"475.0\" y=\"39.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">2. Suy luận</text><text x=\"475.0\" y=\"56.5\" font-size=\"11.5\" text-anchor=\"middle\">lập kế hoạch,</text><text x=\"475.0\" y=\"73.7\" font-size=\"11.5\" text-anchor=\"middle\">chọn công cụ</text><rect x=\"600\" y=\"20\" width=\"110\" height=\"64\" rx=\"8\" class=\"r-ok\"/><text x=\"655.0\" y=\"39.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Xong</text><text x=\"655.0\" y=\"56.5\" font-size=\"11.5\" text-anchor=\"middle\">trả kết quả</text><text x=\"655.0\" y=\"73.7\" font-size=\"11.5\" text-anchor=\"middle\">hoặc chờ duyệt</text><rect x=\"390\" y=\"146\" width=\"170\" height=\"64\" rx=\"8\" class=\"r-warn\"/><text x=\"475.0\" y=\"165.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">3. Hành động</text><text x=\"475.0\" y=\"182.6\" font-size=\"11.5\" text-anchor=\"middle\">gọi công cụ,</text><text x=\"475.0\" y=\"199.7\" font-size=\"11.5\" text-anchor=\"middle\">tạo bản nháp</text><rect x=\"160\" y=\"146\" width=\"170\" height=\"64\" rx=\"8\" class=\"r-note\"/><text x=\"245.0\" y=\"165.4\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Quan sát</text><text x=\"245.0\" y=\"182.6\" font-size=\"11.5\" text-anchor=\"middle\">kết quả hành động</text><text x=\"245.0\" y=\"199.7\" font-size=\"11.5\" text-anchor=\"middle\">thành dữ kiện mới</text><line x1=\"120\" y1=\"52\" x2=\"158\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-loop-mut)\"/><line x1=\"330\" y1=\"52\" x2=\"388\" y2=\"52\" class=\"l-brand\" marker-end=\"url(#ai-loop-brand)\"/><line x1=\"560\" y1=\"52\" x2=\"598\" y2=\"52\" class=\"l-ok\" marker-end=\"url(#ai-loop-ok)\"/><text x=\"579\" y=\"44\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">đủ</text><line x1=\"475\" y1=\"84\" x2=\"475\" y2=\"144\" class=\"l-brand\" marker-end=\"url(#ai-loop-brand)\"/><text x=\"518\" y=\"119\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">chưa đủ</text><line x1=\"390\" y1=\"178\" x2=\"332\" y2=\"178\" class=\"l-acc\" marker-end=\"url(#ai-loop-acc)\"/><line x1=\"245\" y1=\"146\" x2=\"245\" y2=\"86\" class=\"l-mut\" marker-end=\"url(#ai-loop-mut)\"/><text x=\"283\" y=\"119\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">lặp lại</text></svg>",
+     "t": "widget",
+     "name": "flow",
+     "spec": {
+      "label": "Vòng lặp của Agent",
+      "w": 720,
+      "h": 228,
+      "nodes": [
+       {
+        "id": "goal",
+        "x": 10,
+        "y": 20,
+        "w": 110,
+        "h": 64,
+        "t": [
+         "Mục tiêu",
+         "người dùng giao"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "per",
+        "x": 160,
+        "y": 20,
+        "w": 170,
+        "h": 64,
+        "t": [
+         "1. Nhận thức",
+         "đọc yêu cầu, tài liệu,",
+         "kết quả công cụ"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "think",
+        "x": 390,
+        "y": 20,
+        "w": 170,
+        "h": 64,
+        "t": [
+         "2. Suy luận",
+         "lập kế hoạch,",
+         "chọn công cụ"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "done",
+        "x": 600,
+        "y": 20,
+        "w": 110,
+        "h": 64,
+        "t": [
+         "Xong",
+         "trả kết quả",
+         "hoặc chờ duyệt"
+        ],
+        "k": "ok"
+       },
+       {
+        "id": "act",
+        "x": 390,
+        "y": 150,
+        "w": 170,
+        "h": 64,
+        "t": [
+         "3. Hành động",
+         "gọi công cụ,",
+         "tạo bản nháp"
+        ],
+        "k": "warn"
+       },
+       {
+        "id": "obs",
+        "x": 160,
+        "y": 150,
+        "w": 170,
+        "h": 64,
+        "t": [
+         "Quan sát",
+         "kết quả hành động",
+         "thành dữ kiện mới"
+        ],
+        "k": "note"
+       }
+      ],
+      "edges": [
+       {
+        "id": "g1",
+        "a": "goal",
+        "b": "per"
+       },
+       {
+        "id": "g2",
+        "a": "per",
+        "b": "think"
+       },
+       {
+        "id": "g3",
+        "a": "think",
+        "b": "done",
+        "lb": "đủ"
+       },
+       {
+        "id": "g4",
+        "a": "think",
+        "b": "act",
+        "lb": "chưa đủ"
+       },
+       {
+        "id": "g5",
+        "a": "act",
+        "b": "obs"
+       },
+       {
+        "id": "g6",
+        "a": "obs",
+        "b": "per",
+        "lb": "lặp lại"
+       }
+      ],
+      "scenarios": [
+       {
+        "name": "Đơn NX-1024 có kịp thứ Bảy?",
+        "intro": "Khách hỏi: <em>“Đơn NX-1024 của tôi bao giờ giao? Có kịp thứ Bảy không?”</em> Agent CSKH của Nhà Xanh có công cụ <code>tra_cuu_don_hang</code>.",
+        "steps": [
+         {
+          "s": "Nhận việc",
+          "t": "Agent nhận mục tiêu",
+          "on": [
+           "goal"
+          ],
+          "go": [],
+          "x": "Trả lời khách: đơn NX-1024 giao khi nào, có kịp thứ Bảy 07/11/2026 không."
+         },
+         {
+          "s": "Nhận thức",
+          "t": "Đọc yêu cầu",
+          "on": [
+           "per"
+          ],
+          "go": [
+           "g1"
+          ],
+          "x": "Agent tách ra hai dữ kiện: mã đơn NX-1024 và mốc thứ Bảy 07/11.",
+          "msg": "NX-1024 · thứ Bảy?"
+         },
+         {
+          "s": "Suy luận",
+          "t": "Chưa đủ dữ kiện",
+          "on": [
+           "think"
+          ],
+          "go": [
+           "g2"
+          ],
+          "x": "Đã trả lời được chưa? Chưa – không biết lịch giao. Kế hoạch: gọi <code>tra_cuu_don_hang</code>.",
+          "tag": {
+           "think": "chưa biết lịch giao"
+          },
+          "tone": {
+           "think": "warn"
+          }
+         },
+         {
+          "s": "Hành động",
+          "t": "Gọi công cụ",
+          "on": [
+           "act"
+          ],
+          "go": [
+           "g4"
+          ],
+          "x": "Agent viết yêu cầu gọi công cụ; hệ thống chạy công cụ thật.",
+          "msg": "tra_cuu_don_hang",
+          "code": "{\"goi_ham\": \"tra_cuu_don_hang\",\n \"tham_so\": {\"ma_don\": \"NX-1024\", \"thong_tin\": \"lich_giao\"}}"
+         },
+         {
+          "s": "Quan sát",
+          "t": "Nhận kết quả",
+          "on": [
+           "obs"
+          ],
+          "go": [
+           "g5"
+          ],
+          "x": "Kết quả công cụ trở thành dữ kiện mới trong ngữ cảnh.",
+          "msg": "dự kiến 06/11",
+          "code": "{\"ma_don\": \"NX-1024\", \"trang_thai\": \"dang_giao\", \"du_kien_giao\": \"06/11/2026\"}"
+         },
+         {
+          "s": "Suy luận lại",
+          "t": "Đủ dữ kiện",
+          "on": [
+           "per",
+           "think"
+          ],
+          "go": [
+           "g6",
+           "g2"
+          ],
+          "x": "Vòng thứ hai: Agent đọc lại yêu cầu cùng kết quả. Dự kiến giao thứ Sáu 06/11 – trước thứ Bảy. Đủ để trả lời.",
+          "tag": {
+           "think": "đủ: 06/11 trước thứ Bảy"
+          },
+          "tone": {
+           "think": "ok"
+          }
+         },
+         {
+          "s": "Xong",
+          "t": "Trả lời khách",
+          "on": [
+           "done"
+          ],
+          "go": [
+           "g3"
+          ],
+          "x": "“Đơn NX-1024 đang được giao, dự kiến đến thứ Sáu 06/11/2026 – kịp trước thứ Bảy ạ.” Agent dừng vì đã đạt mục tiêu.",
+          "tone": {
+           "done": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Không cần công cụ",
+        "intro": "Khách hỏi: <em>“Đổi trả trong mấy ngày?”</em> Chính sách đổi trả đã có sẵn trong ngữ cảnh của Agent.",
+        "steps": [
+         {
+          "s": "Nhận việc",
+          "t": "Agent nhận mục tiêu",
+          "on": [
+           "goal"
+          ],
+          "go": [],
+          "x": "Trả lời thời hạn đổi trả."
+         },
+         {
+          "s": "Nhận thức",
+          "t": "Đọc yêu cầu và tài liệu",
+          "on": [
+           "per"
+          ],
+          "go": [
+           "g1"
+          ],
+          "x": "Đoạn “Đổi trả trong 7 ngày” đã nằm trong ngữ cảnh.",
+          "msg": "Đổi trả mấy ngày?"
+         },
+         {
+          "s": "Suy luận",
+          "t": "Đủ ngay",
+          "on": [
+           "think"
+          ],
+          "go": [
+           "g2"
+          ],
+          "x": "Không cần hành động nào thêm.",
+          "tag": {
+           "think": "đủ ngay"
+          },
+          "tone": {
+           "think": "ok"
+          }
+         },
+         {
+          "s": "Xong",
+          "t": "Trả lời",
+          "on": [
+           "done"
+          ],
+          "go": [
+           "g3"
+          ],
+          "x": "“Trong 7 ngày kể từ ngày nhận hàng… (Nguồn: Đổi trả trong 7 ngày).” Agent tự quyết số vòng lặp: đủ dữ kiện thì dừng ngay – khác Workflow luôn đi đủ các bước vẽ sẵn.",
+          "tone": {
+           "done": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Việc cần người duyệt",
+        "intro": "Khách nhắn: <em>“Hủy đơn NX-1024 giúp tôi.”</em> Hủy đơn nằm ở mức <strong>cần duyệt</strong> trong bảng quyền quyết định.",
+        "steps": [
+         {
+          "s": "Nhận việc",
+          "t": "Agent nhận mục tiêu",
+          "on": [
+           "goal"
+          ],
+          "go": [],
+          "x": "Khách muốn hủy đơn NX-1024."
+         },
+         {
+          "s": "Nhận thức",
+          "t": "Đọc yêu cầu",
+          "on": [
+           "per"
+          ],
+          "go": [
+           "g1"
+          ],
+          "msg": "Hủy đơn NX-1024"
+         },
+         {
+          "s": "Suy luận",
+          "t": "Không được tự hủy",
+          "on": [
+           "think"
+          ],
+          "go": [
+           "g2"
+          ],
+          "x": "Theo bảng quyền: Agent chỉ được tạo bản nháp yêu cầu hủy.",
+          "tag": {
+           "think": "mức: cần duyệt"
+          },
+          "tone": {
+           "think": "warn"
+          }
+         },
+         {
+          "s": "Hành động",
+          "t": "Tạo bản nháp",
+          "on": [
+           "act"
+          ],
+          "go": [
+           "g4"
+          ],
+          "x": "Agent tạo bản nháp, không gọi hàm hủy đơn (nó cũng không được cấp hàm đó).",
+          "msg": "nháp yêu cầu hủy"
+         },
+         {
+          "s": "Quan sát",
+          "t": "Bản nháp đã tạo",
+          "on": [
+           "obs"
+          ],
+          "go": [
+           "g5"
+          ],
+          "msg": "nháp #H-102"
+         },
+         {
+          "s": "Dừng",
+          "t": "Chờ con người",
+          "on": [
+           "per",
+           "think",
+           "done"
+          ],
+          "go": [
+           "g6",
+           "g2",
+           "g3"
+          ],
+          "x": "“Em đã chuyển yêu cầu hủy đơn NX-1024 cho nhân viên CSKH, anh/chị sẽ nhận xác nhận trong ít phút.” Điều kiện dừng ở đây là <strong>cần con người</strong>.",
+          "tone": {
+           "done": "warn"
+          },
+          "set": {
+           "done": [
+            "Chờ duyệt",
+            "nhân viên CSKH",
+            "bấm Duyệt"
+           ]
+          }
+         }
+        ]
+       }
+      ]
+     },
      "caption": "Vòng lặp của Agent: chưa đủ thì hành động tiếp, quan sát kết quả rồi suy luận lại",
      "plain": "Vòng lặp của Agent: chưa đủ thì hành động tiếp, quan sát kết quả rồi suy luận lại"
     },
@@ -4664,8 +5037,325 @@
      "plain": "WORKFLOW là trình tự LLM đi qua; các khối khác là chỗ WORKFLOW tra cứu. Ba tin nhắn dưới đây đi theo ba đường khác nhau:"
     },
     {
-     "t": "code",
-     "text": "Tin nhắn: \"Khách bảo hàng bị lỗi, muốn trả\"\nWORKFLOW 1 → SCOPE       : đổi trả – trong phạm vi, đi tiếp\nWORKFLOW 2 → INPUT CHECK : thiếu ngày nhận hàng và lỗi gì → hỏi lại, dừng\n  Agent: \"Anh/chị cho em xin ngày nhận hàng (hoặc mã đơn) và sản phẩm lỗi thế nào ạ?\"\n\nTin nhắn: \"Khách nhận nồi chiên 3 ngày trước, chưa dùng, còn hộp, muốn đổi màu khác\"\nWORKFLOW 1 → SCOPE       : trong phạm vi\nWORKFLOW 2 → INPUT CHECK : đủ ngày nhận và tình trạng sản phẩm\nWORKFLOW 3 → Knowledge   : mục \"Đổi trả trong 7 ngày\"\n           → OUTPUT      : câu đầu trả lời thẳng, tối đa 5 câu, có nguồn\n           → BOUNDARIES  : không hứa gì ngoài chính sách\n  Agent: \"Được đổi. Khách đổi ý trong 7 ngày, sản phẩm còn tem, hộp thì được đổi; khách\n          chịu phí vận chuyển hai chiều. (Nguồn: Đổi trả trong 7 ngày)\"\n\nTin nhắn: \"Máy sấy tóc bốc khói khi đang dùng, khách bị bỏng nhẹ\"\nWORKFLOW 1 → SCOPE       : sự cố an toàn – ngoài phạm vi → ESCALATION\n  Agent: \"Đây là sự cố an toàn – anh/chị đề nghị khách ngừng dùng, rút phích cắm và\n          chuyển ngay bộ phận Kỹ thuật – An toàn sản phẩm.\""
+     "t": "widget",
+     "name": "flow",
+     "spec": {
+      "label": "System Instructions: một tin nhắn đi qua các khối",
+      "w": 720,
+      "h": 290,
+      "nodes": [
+       {
+        "id": "msg",
+        "x": 10,
+        "y": 115,
+        "w": 110,
+        "h": 60,
+        "t": [
+         "Tin nhắn",
+         "của khách"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "scope",
+        "x": 150,
+        "y": 115,
+        "w": 120,
+        "h": 60,
+        "t": [
+         "SCOPE",
+         "trong phạm vi?"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "inp",
+        "x": 300,
+        "y": 115,
+        "w": 130,
+        "h": 60,
+        "t": [
+         "INPUT CHECK",
+         "đủ thông tin?"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "kb",
+        "x": 460,
+        "y": 115,
+        "w": 110,
+        "h": 60,
+        "t": [
+         "Knowledge",
+         "tra chính sách"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "out",
+        "x": 600,
+        "y": 115,
+        "w": 110,
+        "h": 60,
+        "t": [
+         "OUTPUT",
+         "+ BOUNDARIES"
+        ],
+        "k": "ok"
+       },
+       {
+        "id": "ask",
+        "x": 300,
+        "y": 228,
+        "w": 130,
+        "h": 50,
+        "t": [
+         "Hỏi lại",
+         "tối đa 2 câu"
+        ],
+        "k": "warn"
+       },
+       {
+        "id": "esc",
+        "x": 150,
+        "y": 12,
+        "w": 120,
+        "h": 50,
+        "t": [
+         "ESCALATION",
+         "chuyển bộ phận"
+        ],
+        "k": "bad"
+       }
+      ],
+      "edges": [
+       {
+        "id": "s1",
+        "a": "msg",
+        "b": "scope"
+       },
+       {
+        "id": "s2",
+        "a": "scope",
+        "b": "inp",
+        "lb": "trong"
+       },
+       {
+        "id": "s3",
+        "a": "inp",
+        "b": "kb",
+        "lb": "đủ"
+       },
+       {
+        "id": "s4",
+        "a": "kb",
+        "b": "out"
+       },
+       {
+        "id": "s5",
+        "a": "inp",
+        "b": "ask",
+        "lb": "thiếu"
+       },
+       {
+        "id": "s6",
+        "a": "scope",
+        "b": "esc",
+        "lb": "ngoài"
+       }
+      ],
+      "scenarios": [
+       {
+        "name": "Thiếu thông tin",
+        "intro": "Tin nhắn: <em>“Khách bảo hàng bị lỗi, muốn trả.”</em>",
+        "steps": [
+         {
+          "s": "Tin nhắn",
+          "t": "Agent đọc tin nhắn",
+          "on": [
+           "msg"
+          ],
+          "go": [],
+          "x": "WORKFLOW bắt đầu từ bước 1."
+         },
+         {
+          "s": "SCOPE",
+          "t": "Trong phạm vi",
+          "on": [
+           "scope"
+          ],
+          "go": [
+           "s1"
+          ],
+          "x": "Đổi trả thuộc phạm vi của Agent → đi tiếp.",
+          "msg": "hàng lỗi, muốn trả",
+          "tag": {
+           "scope": "đổi trả: trong phạm vi"
+          },
+          "tone": {
+           "scope": "ok"
+          }
+         },
+         {
+          "s": "INPUT CHECK",
+          "t": "Thiếu thông tin bắt buộc",
+          "on": [
+           "inp"
+          ],
+          "go": [
+           "s2"
+          ],
+          "x": "INPUT CHECK ghi: đổi trả cần ngày nhận hàng và tình trạng sản phẩm. Tin nhắn chưa có.",
+          "tag": {
+           "inp": "thiếu ngày nhận, lỗi gì"
+          },
+          "tone": {
+           "inp": "warn"
+          }
+         },
+         {
+          "s": "Hỏi lại",
+          "t": "Hỏi gộp một lượt",
+          "on": [
+           "ask"
+          ],
+          "go": [
+           "s5"
+          ],
+          "x": "“Anh/chị cho em xin ngày nhận hàng (hoặc mã đơn) và sản phẩm lỗi thế nào ạ?” WORKFLOW dừng ở đây – chưa tra tài liệu khi chưa đủ dữ kiện.",
+          "tone": {
+           "ask": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Đủ thông tin",
+        "intro": "Tin nhắn: <em>“Khách nhận nồi chiên 3 ngày trước, chưa dùng, còn hộp, muốn đổi màu khác.”</em>",
+        "steps": [
+         {
+          "s": "Tin nhắn",
+          "t": "Agent đọc tin nhắn",
+          "on": [
+           "msg"
+          ],
+          "go": []
+         },
+         {
+          "s": "SCOPE",
+          "t": "Trong phạm vi",
+          "on": [
+           "scope"
+          ],
+          "go": [
+           "s1"
+          ],
+          "msg": "đổi màu nồi chiên",
+          "tag": {
+           "scope": "đổi trả: trong phạm vi"
+          },
+          "tone": {
+           "scope": "ok"
+          }
+         },
+         {
+          "s": "INPUT CHECK",
+          "t": "Đủ thông tin",
+          "on": [
+           "inp"
+          ],
+          "go": [
+           "s2"
+          ],
+          "x": "Có ngày nhận (3 ngày trước) và tình trạng (chưa dùng, còn hộp).",
+          "tag": {
+           "inp": "đủ: 3 ngày, còn hộp"
+          },
+          "tone": {
+           "inp": "ok"
+          }
+         },
+         {
+          "s": "Knowledge",
+          "t": "Tra chính sách",
+          "on": [
+           "kb"
+          ],
+          "go": [
+           "s3"
+          ],
+          "msg": "đổi ý trong 7 ngày?",
+          "tag": {
+           "kb": "mục Đổi trả trong 7 ngày"
+          }
+         },
+         {
+          "s": "OUTPUT",
+          "t": "Trả lời theo khuôn",
+          "on": [
+           "out"
+          ],
+          "go": [
+           "s4"
+          ],
+          "x": "“<strong>Được đổi.</strong> Khách đổi ý trong 7 ngày, sản phẩm còn tem, hộp thì được đổi; khách chịu phí vận chuyển hai chiều. (Nguồn: Đổi trả trong 7 ngày)” – câu đầu trả lời thẳng, tối đa 5 câu, có nguồn; BOUNDARIES: không hứa gì ngoài chính sách.",
+          "tone": {
+           "out": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Ngoài phạm vi",
+        "intro": "Tin nhắn: <em>“Máy sấy tóc bốc khói khi đang dùng, khách bị bỏng nhẹ.”</em>",
+        "steps": [
+         {
+          "s": "Tin nhắn",
+          "t": "Agent đọc tin nhắn",
+          "on": [
+           "msg"
+          ],
+          "go": []
+         },
+         {
+          "s": "SCOPE",
+          "t": "Ngoài phạm vi",
+          "on": [
+           "scope"
+          ],
+          "go": [
+           "s1"
+          ],
+          "x": "SCOPE liệt kê sự cố an toàn sản phẩm là ngoài phạm vi.",
+          "msg": "bốc khói, bỏng",
+          "tag": {
+           "scope": "sự cố an toàn"
+          },
+          "tone": {
+           "scope": "bad"
+          }
+         },
+         {
+          "s": "ESCALATION",
+          "t": "Chuyển bộ phận an toàn",
+          "on": [
+           "esc"
+          ],
+          "go": [
+           "s6"
+          ],
+          "x": "“Đây là sự cố an toàn – anh/chị đề nghị khách ngừng dùng, rút phích cắm và chuyển ngay bộ phận Kỹ thuật – An toàn sản phẩm.” Agent không tra chính sách đổi trả, không hứa bồi thường.",
+          "tone": {
+           "esc": "ok"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "caption": "Mỗi tin nhắn đi theo WORKFLOW: SCOPE → INPUT CHECK → Knowledge → OUTPUT, hoặc rẽ sang hỏi lại, chuyển bộ phận",
+     "plain": "Mỗi tin nhắn đi theo WORKFLOW: SCOPE → INPUT CHECK → Knowledge → OUTPUT, hoặc rẽ sang hỏi lại, chuyển bộ phận"
     },
     {
      "t": "p",

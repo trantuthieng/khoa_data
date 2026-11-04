@@ -308,7 +308,7 @@ const VectorDbDemo = {
 
       <template v-else>
         <h4>Bước 6 – Ghép đoạn đã chọn vào prompt gửi LLM</h4>
-        <div class="codewrap"><pre><code>{{ prompt }}</code></pre></div>
+        <pre class="flw-code"><code>{{ prompt }}</code></pre>
         <p class="vdb-small" v-if="kept.length">LLM chỉ đọc {{ kept.length }} đoạn này chứ không đọc cả kho. Bốc nhầm đoạn → lỗi truy xuất;
           bốc đúng mà vẫn trả lời sai → lỗi sinh.</p>
         <p class="vdb-small" v-else>Không đoạn nào được gửi: Agent đúng ra phải trả lời “tài liệu không có thông tin này”.</p>

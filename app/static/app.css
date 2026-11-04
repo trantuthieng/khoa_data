@@ -360,3 +360,40 @@ svg.dg .l-acc { stroke: var(--accent); } svg.dg .m-acc { fill: var(--accent); }
   .vdb-ray { animation: none; stroke-dashoffset: 0; }
   .vdb-ripple, .vdb-card { animation: none; }
 }
+
+/* Mô hình động dạng sơ đồ khối (static/flowdemo.js); dùng chung thanh điều khiển với .vdb */
+.flw-svg { display: block; width: 100%; min-width: 600px; max-width: 900px; height: auto; margin: 0 auto; }
+.flw-svg text { fill: var(--ink); font-family: inherit; }
+.flw-node rect { fill: var(--note-soft); stroke: var(--line); stroke-width: 1.5; transition: fill .4s, stroke .4s, opacity .4s; }
+.flw-node.k-brand rect { fill: var(--brand-soft); stroke: var(--brand); stroke-opacity: .45; }
+.flw-node.k-ok rect { fill: var(--ok-soft); stroke: var(--ok); stroke-opacity: .45; }
+.flw-node.k-bad rect { fill: var(--bad-soft); stroke: var(--bad); stroke-opacity: .45; }
+.flw-node.k-warn rect { fill: var(--warn-soft); stroke: var(--accent); stroke-opacity: .5; }
+.flw-node text.sub, .flw-svg .flw-note { fill: var(--muted); }
+.flw-node { transition: opacity .4s; }
+.flw-node.dim { opacity: .28; }
+.flw-node.on rect { stroke: var(--brand); stroke-width: 3; stroke-opacity: 1; animation: flw-pulse 1.6s ease-in-out infinite; }
+.flw-node.on.t-ok rect { stroke: var(--ok); }
+.flw-node.on.t-bad rect { stroke: var(--bad); }
+.flw-node.on.t-warn rect { stroke: var(--accent); }
+@keyframes flw-pulse { 50% { stroke-width: 5; } }
+.flw-edge { fill: none; stroke: var(--muted); stroke-width: 1.6; transition: stroke .4s, opacity .4s; }
+.flw-edge.dim { opacity: .3; stroke-dasharray: 4 4; }
+.flw-edge.seen { stroke: var(--brand); stroke-opacity: .55; }
+.flw-edge.go { stroke: var(--brand); stroke-width: 2.6; }
+.flw-mk.idle { fill: var(--muted); }
+.flw-mk.go { fill: var(--brand); }
+.flw-mk.dim { fill: var(--muted); opacity: .4; }
+.flw-elb { fill: var(--muted) !important; paint-order: stroke; stroke: var(--panel); stroke-width: 3px; }
+.flw-tag rect { fill: var(--brand); }
+.flw-tag text { fill: var(--brand-ink) !important; font-weight: 600; }
+.flw-tag.t-ok rect { fill: var(--ok); }
+.flw-tag.t-bad rect { fill: var(--bad); }
+.flw-tag.t-warn rect { fill: var(--accent); }
+.flw-tag.t-warn text { fill: #1d1608 !important; }
+.flw-pk rect { fill: var(--accent); stroke: var(--panel); stroke-width: 1.5; }
+.flw-pk text { fill: #1d1608 !important; font-weight: 600; }
+.flw-code { margin: 8px 0 4px; padding: 10px 12px; border-radius: 8px; background: var(--code-bg); font-size: 13px; white-space: pre-wrap; overflow-x: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .flw-node.on rect { animation: none; }
+}

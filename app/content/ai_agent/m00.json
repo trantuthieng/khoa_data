@@ -831,8 +831,270 @@
      "callout": "example"
     },
     {
-     "t": "figure",
-     "html": "<svg class=\"dg\" viewBox=\"0 0 720 220\" role=\"img\" aria-label=\"LLM tính xác suất cho chữ tiếp theo, chọn một chữ, nối vào câu rồi đoán tiếp\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-next-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-next-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-next-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-next-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-next-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><rect x=\"10\" y=\"88\" width=\"200\" height=\"56\" rx=\"8\" class=\"r-note\"/><text x=\"110.0\" y=\"112.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Đầu vào</text><text x=\"110.0\" y=\"129.1\" font-size=\"11.5\" text-anchor=\"middle\">“Thủ đô của Việt Nam là”</text><rect x=\"250\" y=\"88\" width=\"110\" height=\"56\" rx=\"8\" class=\"r-brand\"/><text x=\"305.0\" y=\"112.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">LLM</text><text x=\"305.0\" y=\"129.1\" font-size=\"11.5\" text-anchor=\"middle\">tính xác suất</text><line x1=\"210\" y1=\"116\" x2=\"248\" y2=\"116\" class=\"l-mut\" marker-end=\"url(#ai-next-mut)\"/><line x1=\"360\" y1=\"116\" x2=\"452\" y2=\"116\" class=\"l-brand\" marker-end=\"url(#ai-next-brand)\"/><text x=\"520\" y=\"49\" font-size=\"13\" text-anchor=\"end\" font-weight=\"600\">Hà Nội</text><rect x=\"530\" y=\"34\" width=\"136\" height=\"20\" rx=\"4\" class=\"r-ok\"/><text x=\"672\" y=\"49\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">91%</text><text x=\"520\" y=\"79\" font-size=\"13\" text-anchor=\"end\">một</text><rect x=\"530\" y=\"64\" width=\"6\" height=\"20\" rx=\"4\" class=\"r-note\"/><text x=\"542\" y=\"79\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">4%</text><text x=\"520\" y=\"109\" font-size=\"13\" text-anchor=\"end\">thành phố</text><rect x=\"530\" y=\"94\" width=\"4\" height=\"20\" rx=\"4\" class=\"r-note\"/><text x=\"540\" y=\"109\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">3%</text><text x=\"520\" y=\"139\" font-size=\"13\" text-anchor=\"end\">nơi</text><rect x=\"530\" y=\"124\" width=\"4\" height=\"20\" rx=\"4\" class=\"r-note\"/><text x=\"540\" y=\"139\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">1%</text><text x=\"520\" y=\"169\" font-size=\"13\" text-anchor=\"end\">…</text><rect x=\"530\" y=\"154\" width=\"4\" height=\"20\" rx=\"4\" class=\"r-note\"/><text x=\"540\" y=\"169\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">1%</text><path d=\"M600,32 V18 H110 V86\" class=\"ln l-brand dash\" marker-end=\"url(#ai-next-brand)\"/><text x=\"355\" y=\"13\" font-size=\"12\" text-anchor=\"middle\" class=\"f-mut\">nối “Hà Nội” vào câu rồi đoán chữ kế tiếp – lặp lại hàng trăm lần</text><text x=\"360\" y=\"210\" font-size=\"12.5\" text-anchor=\"middle\" class=\"f-bad\">Chọn chữ “nghe hợp lý nhất”, không tra cứu sự thật → thiếu dữ kiện vẫn viết trôi chảy (ảo giác).</text></svg>",
+     "t": "widget",
+     "name": "flow",
+     "spec": {
+      "label": "LLM đoán chữ tiếp theo",
+      "w": 720,
+      "h": 146,
+      "nodes": [
+       {
+        "id": "in",
+        "x": 10,
+        "y": 26,
+        "w": 240,
+        "h": 70,
+        "t": [
+         "Câu đang viết",
+         "“Thủ đô của Việt Nam là”"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "llm",
+        "x": 290,
+        "y": 26,
+        "w": 130,
+        "h": 70,
+        "t": [
+         "LLM",
+         "tính xác suất",
+         "cho mọi chữ"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "pick",
+        "x": 460,
+        "y": 26,
+        "w": 140,
+        "h": 70,
+        "t": [
+         "Chọn chữ",
+         "xác suất cao nhất"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "end",
+        "x": 636,
+        "y": 26,
+        "w": 74,
+        "h": 70,
+        "t": [
+         "Dừng",
+         "gặp dấu",
+         "kết thúc"
+        ],
+        "k": "ok"
+       }
+      ],
+      "edges": [
+       {
+        "id": "e1",
+        "a": "in",
+        "b": "llm"
+       },
+       {
+        "id": "e2",
+        "a": "llm",
+        "b": "pick"
+       },
+       {
+        "id": "e4",
+        "a": "pick",
+        "b": "end"
+       },
+       {
+        "id": "e3",
+        "a": "pick",
+        "b": "in",
+        "d": "M530,96 V132 H130 V98",
+        "lb": "nối chữ vừa chọn vào câu, đoán tiếp"
+       }
+      ],
+      "scenarios": [
+       {
+        "name": "Câu có trong kiến thức",
+        "intro": "LLM viết từng chữ một: tính xác suất cho chữ kế tiếp, chọn một chữ, nối vào câu rồi lặp lại.",
+        "steps": [
+         {
+          "s": "Đọc câu",
+          "t": "LLM đọc phần câu đã có",
+          "on": [
+           "in"
+          ],
+          "go": [],
+          "x": "Đầu vào là đoạn chữ đã có: “Thủ đô của Việt Nam là”. LLM không tra cứu ở đâu – nó chỉ dùng những gì học được lúc huấn luyện."
+         },
+         {
+          "s": "Tính xác suất",
+          "t": "Chấm điểm mọi chữ có thể đứng tiếp theo",
+          "on": [
+           "llm"
+          ],
+          "go": [
+           "e1"
+          ],
+          "x": "Với mỗi chữ trong vốn từ, LLM tính khả năng nó đứng tiếp theo.",
+          "msg": "Thủ đô của Việt Nam là",
+          "code": "Hà Nội      91%\nmột         4%\nthành phố   3%\nnơi         1%\n…"
+         },
+         {
+          "s": "Chọn chữ",
+          "t": "Chọn “Hà Nội”",
+          "on": [
+           "pick"
+          ],
+          "go": [
+           "e2"
+          ],
+          "x": "Chữ có xác suất cao nhất được chọn.",
+          "msg": "Hà Nội · 91%",
+          "tag": {
+           "pick": "Hà Nội · 91%"
+          },
+          "tone": {
+           "pick": "ok"
+          }
+         },
+         {
+          "s": "Nối, đoán tiếp",
+          "t": "Nối vào câu và đoán chữ kế tiếp",
+          "on": [
+           "in"
+          ],
+          "go": [
+           "e3"
+          ],
+          "x": "Câu mới lại thành đầu vào. Một câu trả lời dài là hàng trăm vòng như thế này.",
+          "msg": "Hà Nội",
+          "set": {
+           "in": [
+            "Câu đang viết",
+            "“…Việt Nam là Hà Nội”"
+           ]
+          }
+         },
+         {
+          "s": "Dừng",
+          "t": "Chọn dấu chấm và dừng",
+          "on": [
+           "end"
+          ],
+          "go": [
+           "e4"
+          ],
+          "x": "Câu trả lời đúng vì “Hà Nội” xuất hiện rất nhiều lần trong dữ liệu huấn luyện.",
+          "msg": ".",
+          "tone": {
+           "end": "ok"
+          },
+          "set": {
+           "in": [
+            "Câu đang viết",
+            "“…Việt Nam là Hà Nội.”"
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "name": "Thiếu dữ kiện → ảo giác",
+        "intro": "Cùng cơ chế, nhưng câu hỏi về điều LLM chưa từng thấy: doanh thu của Nhà Xanh (đơn vị giả lập).",
+        "steps": [
+         {
+          "s": "Đọc câu",
+          "t": "LLM đọc phần câu đã có",
+          "on": [
+           "in"
+          ],
+          "go": [],
+          "x": "Đầu vào: “Doanh thu quý III của Nhà Xanh là”."
+         },
+         {
+          "s": "Tính xác suất",
+          "t": "Xác suất chia đều cho nhiều con số",
+          "on": [
+           "llm"
+          ],
+          "go": [
+           "e1"
+          ],
+          "x": "LLM chưa từng thấy số liệu này nên không chữ nào nổi trội.",
+          "msg": "Doanh thu quý III…",
+          "code": "12 tỷ   18%\n15 tỷ   16%\n9 tỷ    14%\n20 tỷ   11%\n…"
+         },
+         {
+          "s": "Chọn chữ",
+          "t": "Vẫn phải chọn một con số",
+          "on": [
+           "pick"
+          ],
+          "go": [
+           "e2"
+          ],
+          "x": "LLM không có lựa chọn “tôi không biết” – trừ khi được dặn trong prompt.",
+          "msg": "12 tỷ · 18%",
+          "tag": {
+           "pick": "12 tỷ · 18%"
+          },
+          "tone": {
+           "pick": "bad"
+          }
+         },
+         {
+          "s": "Nối, đoán tiếp",
+          "t": "Câu trôi chảy dần",
+          "on": [
+           "in"
+          ],
+          "go": [
+           "e3"
+          ],
+          "x": "LLM tiếp tục viết cho tròn câu, giọng rất tự tin.",
+          "msg": "12 tỷ",
+          "set": {
+           "in": [
+            "Câu đang viết",
+            "“…của Nhà Xanh là",
+            "12 tỷ đồng”"
+           ]
+          }
+         },
+         {
+          "s": "Dừng",
+          "t": "Câu trả lời bịa nhưng nghe hợp lý",
+          "on": [
+           "end"
+          ],
+          "go": [
+           "e4"
+          ],
+          "x": "Đây là <strong>ảo giác</strong>. Cách chữa: đưa dữ kiện vào ngữ cảnh (RAG – buổi 2) và dặn “thiếu dữ kiện thì nói không biết”.",
+          "msg": ".",
+          "tone": {
+           "end": "bad"
+          },
+          "set": {
+           "in": [
+            "Câu đang viết",
+            "“…của Nhà Xanh là",
+            "12 tỷ đồng.”"
+           ]
+          }
+         }
+        ],
+        "set": {
+         "in": [
+          "Câu đang viết",
+          "“Doanh thu quý III",
+          "của Nhà Xanh là”"
+         ]
+        }
+       }
+      ]
+     },
      "caption": "LLM chọn chữ có xác suất cao nhất rồi đoán tiếp – nghe hợp lý chưa chắc đã đúng",
      "plain": "LLM chọn chữ có xác suất cao nhất rồi đoán tiếp – nghe hợp lý chưa chắc đã đúng"
     },

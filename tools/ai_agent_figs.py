@@ -61,24 +61,6 @@ def fig_ban_do():
     return f
 
 
-def fig_doan_chu():
-    f = Fig("ai-next", 720, 220, "LLM tính xác suất cho chữ tiếp theo, chọn một chữ, nối vào câu rồi đoán tiếp")
-    f.box(10, 88, 200, 56, ["Đầu vào", "“Thủ đô của Việt Nam là”"], "r-note")
-    f.box(250, 88, 110, 56, ["LLM", "tính xác suất"], "r-brand")
-    f.arrow(210, 116, 248, 116)
-    f.arrow(360, 116, 452, 116, "brand")
-    for i, (word, p) in enumerate([("Hà Nội", .91), ("một", .04), ("thành phố", .03), ("nơi", .01), ("…", .01)]):
-        y = 44 + i * 30
-        f.text(520, y + 5, word, "", 13, "end", bold=i == 0)
-        f.rect(530, y - 10, max(4, round(p * 150)), 20, "r-ok" if i == 0 else "r-note", 4)
-        f.text(536 + max(4, round(p * 150)), y + 5, f"{round(p * 100)}%", "f-mut", 12, "start")
-    f.path("M600,32 V18 H110 V86", "brand", dash=True)
-    f.text(355, 13, "nối “Hà Nội” vào câu rồi đoán chữ kế tiếp – lặp lại hàng trăm lần", "f-mut", 12)
-    f.text(360, 210, "Chọn chữ “nghe hợp lý nhất”, không tra cứu sự thật → thiếu dữ kiện vẫn viết trôi chảy (ảo giác).",
-           "f-bad", 12.5)
-    return f
-
-
 def fig_context_window():
     f = Fig("ai-ctx", 720, 170, "Cửa sổ ngữ cảnh gồm System Prompt, lịch sử hội thoại, tài liệu, câu hỏi và chỗ cho câu trả lời")
     f.text(430, 24, "Cửa sổ ngữ cảnh – giới hạn theo token", "", 13, bold=True)
@@ -687,28 +669,6 @@ def fig_gen_eval():
     return f
 
 
-def fig_intent():
-    f = Fig("ai-intent", 720, 252, "Nhận diện ý định kết hợp: quy tắc từ khóa bắt trường hợp khẩn cấp, LLM phân loại phần còn lại")
-    f.box(10, 104, 100, 50, ["Tin nhắn", "của khách"], "r-note")
-    f.box(140, 104, 170, 50, ["Quy tắc từ khóa", "bốc khói, cháy, giật điện"], "r-warn")
-    f.box(350, 104, 150, 50, ["LLM phân loại", "định nghĩa + few-shot"], "r-brand")
-    f.arrow(110, 129, 138, 129)
-    f.arrow(310, 129, 348, 129, "brand", "không khớp", lx=329, ly=168, lcls="f-mut")
-    targets = [(["SU_CO_AN_TOAN", "chuyển bộ phận An toàn"], "r-bad"), (["HOI_DON_HANG", "tra đơn hàng"], "box"),
-               (["DOI_TRA_BH", "quy trình đổi trả"], "box"), (["KHIEU_NAI", "xin lỗi, xin thông tin"], "box"),
-               (["KHAC", "hỏi lại / chuyển người"], "r-warn")]
-    for i, (lines, cls) in enumerate(targets):
-        y = 8 + i * 48
-        f.box(560, y, 150, 40, [(lines[0], "mono"), lines[1]], cls, 12.5)
-        if i:
-            f.arrow(500, 129, 558, y + 20, "brand")
-    f.path("M225,104 V28 H558", "bad")
-    f.text(392, 20, "khớp: chuyển ngay, không chờ LLM", "f-bad", 12)
-    f.text(255, 210, "Có yếu tố nguy hiểm thì luôn là SU_CO_AN_TOAN –", "f-mut", 12)
-    f.text(255, 228, "luật ưu tiên cho tin nhắn thuộc nhiều nhãn.", "f-mut", 12)
-    return f
-
-
 def fig_slot():
     f = Fig("ai-slot", 720, 226, "Thu thập thông tin còn thiếu: kiểm ô trống, hỏi gộp, xác nhận rồi mới thực hiện")
     f.rect(10, 14, 250, 178, "box")
@@ -994,24 +954,6 @@ def fig_eval_versions():
         f.text(cx, base + 18, v, "", 13, bold=True)
         f.text(cx, base + 34, note, "f-mut", 11.5)
         f.text(cx, base + 50, f"điểm TB {tb}/6", "f-mut", 11.5)
-    return f
-
-
-def fig_vong_doi():
-    f = Fig("ai-life", 720, 230, "Vòng đời bảo trì Agent sáu bước, chạy lại Eval trước khi phát hành")
-    nodes = [((100, 115), ["1. Theo dõi", "log, phản hồi, chỉ số"]), ((230, 46), ["2. Thu thập lỗi", "mỗi lỗi → đề Eval mới"]),
-             ((490, 46), ["3. Tìm nguyên nhân", "thứ tự debug buổi 1"]), ((620, 115), ["4. Sửa một điểm", "ghi Improvement Log"]),
-             ((490, 184), ["5. Chạy lại Eval", "so với bản trước"]), ((230, 184), ["6. Phát hành", "có số phiên bản"])]
-    for i, ((cx, cy), lines) in enumerate(nodes):
-        f.box(cx - 75, cy - 23, 150, 46, lines, "r-ok" if i == 4 else "r-brand")
-    for (x1, y1, x2, y2) in [(130, 92, 172, 69), (305, 46, 413, 46), (548, 69, 590, 92), (590, 138, 548, 161),
-                             (415, 184, 307, 184), (172, 161, 130, 138)]:
-        f.arrow(x1, y1, x2, y2, "brand")
-    f.text(361, 200, "không suy thoái", "f-ok", 11.5)
-    f.arrow(470, 161, 470, 71, "acc", dash=True)
-    f.text(462, 120, "có suy thoái", "f-acc", 11.5, "end")
-    f.text(310, 110, "Người phụ trách", "", 13, bold=True)
-    f.text(310, 128, "rà soát hằng tháng", "f-mut", 12)
     return f
 
 

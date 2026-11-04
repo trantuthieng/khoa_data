@@ -870,8 +870,531 @@
      "plain": "Hệ thống RAG có hai giai đoạn: nạp tài liệu (làm một lần, làm lại khi tài liệu thay đổi) và hỏi đáp (mỗi câu hỏi)."
     },
     {
-     "t": "figure",
-     "html": "<svg class=\"dg\" viewBox=\"0 0 720 190\" role=\"img\" aria-label=\"Hai giai đoạn của RAG: nạp tài liệu vào Vector Database và trả lời từng câu hỏi\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ai-rag-mut\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-mut\"/></marker><marker id=\"ai-rag-brand\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-brand\"/></marker><marker id=\"ai-rag-ok\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-ok\"/></marker><marker id=\"ai-rag-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-bad\"/></marker><marker id=\"ai-rag-acc\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0L10,5L0,10z\" class=\"m-acc\"/></marker></defs><text x=\"10\" y=\"16\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">① Nạp tài liệu – làm một lần, làm lại khi tài liệu thay đổi</text><text x=\"10\" y=\"114\" font-size=\"12\" text-anchor=\"start\" class=\"f-mut\">② Hỏi đáp – mỗi câu hỏi</text><rect x=\"10\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"69.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tài liệu gốc</text><text x=\"69.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">PDF, Word, Excel</text><rect x=\"155\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"214.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Làm sạch</text><text x=\"214.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">chuyển Markdown</text><line x1=\"128\" y1=\"52\" x2=\"153\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"300\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"359.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Cắt đoạn</text><text x=\"359.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">500–1.000 token</text><line x1=\"273\" y1=\"52\" x2=\"298\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"445\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"504.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Embedding</text><text x=\"504.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">chữ → vector</text><line x1=\"418\" y1=\"52\" x2=\"443\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"590\" y=\"26\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-brand\"/><text x=\"649.0\" y=\"48.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Vector DB</text><text x=\"649.0\" y=\"65.1\" font-size=\"11.5\" text-anchor=\"middle\">lưu đoạn + vector</text><line x1=\"563\" y1=\"52\" x2=\"588\" y2=\"52\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"10\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"69.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Câu hỏi</text><text x=\"69.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">của người dùng</text><rect x=\"155\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"214.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Viết lại</text><text x=\"214.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">câu hỏi đủ nghĩa</text><line x1=\"128\" y1=\"152\" x2=\"153\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"300\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-brand\"/><text x=\"359.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Tìm Top-K</text><text x=\"359.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">lọc theo ngưỡng</text><line x1=\"273\" y1=\"152\" x2=\"298\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"445\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-note\"/><text x=\"504.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">Ghép prompt</text><text x=\"504.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">đoạn + câu hỏi</text><line x1=\"418\" y1=\"152\" x2=\"443\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><rect x=\"590\" y=\"126\" width=\"118\" height=\"52\" rx=\"8\" class=\"r-ok\"/><text x=\"649.0\" y=\"148.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"600\">LLM trả lời</text><text x=\"649.0\" y=\"165.1\" font-size=\"11.5\" text-anchor=\"middle\">kèm nguồn</text><line x1=\"563\" y1=\"152\" x2=\"588\" y2=\"152\" class=\"l-mut\" marker-end=\"url(#ai-rag-mut)\"/><path d=\"M649,78 V100 H359 V124\" class=\"ln l-brand\" marker-end=\"url(#ai-rag-brand)\"/><text x=\"504\" y=\"95\" font-size=\"11\" text-anchor=\"middle\" class=\"f-mut\">tìm theo nghĩa</text></svg>",
+     "t": "widget",
+     "name": "flow",
+     "spec": {
+      "label": "Hệ thống RAG hai giai đoạn",
+      "w": 720,
+      "h": 204,
+      "nodes": [
+       {
+        "id": "doc",
+        "x": 10,
+        "y": 30,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Tài liệu gốc",
+         "PDF, Word, Excel"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "clean",
+        "x": 155,
+        "y": 30,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Làm sạch",
+         "chuyển Markdown"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "chunk",
+        "x": 300,
+        "y": 30,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Cắt đoạn",
+         "500–1.000 token"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "emb",
+        "x": 445,
+        "y": 30,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Embedding",
+         "chữ → vector"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "vdb",
+        "x": 590,
+        "y": 30,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Vector DB",
+         "lưu đoạn + vector"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "q",
+        "x": 10,
+        "y": 140,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Câu hỏi",
+         "của người dùng"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "rw",
+        "x": 155,
+        "y": 140,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Viết lại",
+         "câu hỏi đủ nghĩa"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "srch",
+        "x": 300,
+        "y": 140,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Tìm Top-K",
+         "lọc theo ngưỡng"
+        ],
+        "k": "brand"
+       },
+       {
+        "id": "pr",
+        "x": 445,
+        "y": 140,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "Ghép prompt",
+         "đoạn + câu hỏi"
+        ],
+        "k": "note"
+       },
+       {
+        "id": "llm",
+        "x": 590,
+        "y": 140,
+        "w": 118,
+        "h": 54,
+        "t": [
+         "LLM trả lời",
+         "kèm nguồn"
+        ],
+        "k": "ok"
+       }
+      ],
+      "edges": [
+       {
+        "id": "a1",
+        "a": "doc",
+        "b": "clean"
+       },
+       {
+        "id": "a2",
+        "a": "clean",
+        "b": "chunk"
+       },
+       {
+        "id": "a3",
+        "a": "chunk",
+        "b": "emb"
+       },
+       {
+        "id": "a4",
+        "a": "emb",
+        "b": "vdb"
+       },
+       {
+        "id": "b1",
+        "a": "q",
+        "b": "rw"
+       },
+       {
+        "id": "b2",
+        "a": "rw",
+        "b": "srch"
+       },
+       {
+        "id": "b3",
+        "a": "srch",
+        "b": "pr"
+       },
+       {
+        "id": "b4",
+        "a": "pr",
+        "b": "llm"
+       },
+       {
+        "id": "v",
+        "a": "vdb",
+        "b": "srch",
+        "d": "M649,84 V110 H359 V138",
+        "lb": "tìm theo nghĩa"
+       }
+      ],
+      "scenarios": [
+       {
+        "name": "Nạp tài liệu",
+        "intro": "Giai đoạn ①: đưa <em>Sổ tay nhân sự 2025</em> vào Knowledge Base. Làm một lần, làm lại khi tài liệu đổi.",
+        "steps": [
+         {
+          "s": "Tài liệu gốc",
+          "t": "Bản PDF 42 trang",
+          "on": [
+           "doc"
+          ],
+          "go": [],
+          "x": "Có trang bìa, mục lục, header/footer, bảng thưởng KPI.",
+          "tag": {
+           "doc": "so_tay_nhan_su.pdf"
+          }
+         },
+         {
+          "s": "Làm sạch",
+          "t": "Bỏ nhiễu, chuyển Markdown",
+          "on": [
+           "clean"
+          ],
+          "go": [
+           "a1"
+          ],
+          "x": "Bỏ mục lục, header, số trang; viết lại bảng thành câu; mỗi mục bắt đầu bằng đề mục ##.",
+          "msg": "PDF 42 trang",
+          "tag": {
+           "clean": "bỏ mục lục, header"
+          }
+         },
+         {
+          "s": "Cắt đoạn",
+          "t": "Mỗi mục một đoạn",
+          "on": [
+           "chunk"
+          ],
+          "go": [
+           "a2"
+          ],
+          "x": "Cắt theo dòng trống giữa các mục: được 9 đoạn trọn ý.",
+          "msg": "Markdown sạch",
+          "tag": {
+           "chunk": "9 đoạn"
+          }
+         },
+         {
+          "s": "Embedding",
+          "t": "Đổi mỗi đoạn thành vector",
+          "on": [
+           "emb"
+          ],
+          "go": [
+           "a3"
+          ],
+          "x": "Mô hình embedding đổi mỗi đoạn thành một dãy hàng nghìn con số biểu diễn nghĩa.",
+          "msg": "9 đoạn",
+          "tag": {
+           "emb": "1 đoạn → 1 vector"
+          }
+         },
+         {
+          "s": "Lưu kho",
+          "t": "Vector DB lưu đoạn + vector",
+          "on": [
+           "vdb"
+          ],
+          "go": [
+           "a4"
+          ],
+          "x": "Kho sẵn sàng. Từ giờ mỗi câu hỏi chỉ chạy giai đoạn ②.",
+          "msg": "9 vector",
+          "tag": {
+           "vdb": "sẵn sàng"
+          },
+          "tone": {
+           "vdb": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Câu hỏi thường",
+        "intro": "Giai đoạn ②, câu hỏi: <em>“Hạng B được thưởng KPI bao nhiêu?”</em>",
+        "steps": [
+         {
+          "s": "Câu hỏi",
+          "t": "Người dùng hỏi",
+          "on": [
+           "q"
+          ],
+          "go": [],
+          "set": {
+           "q": [
+            "Câu hỏi",
+            "“Hạng B thưởng",
+            "bao nhiêu?”"
+           ]
+          }
+         },
+         {
+          "s": "Viết lại",
+          "t": "Câu hỏi đã đủ nghĩa",
+          "on": [
+           "rw"
+          ],
+          "go": [
+           "b1"
+          ],
+          "x": "Không phải câu nối tiếp nên giữ nguyên.",
+          "msg": "Hạng B thưởng KPI…",
+          "tag": {
+           "rw": "giữ nguyên"
+          }
+         },
+         {
+          "s": "Tìm Top-K",
+          "t": "Tìm đoạn gần nghĩa nhất",
+          "on": [
+           "srch",
+           "vdb"
+          ],
+          "go": [
+           "b2",
+           "v"
+          ],
+          "x": "Câu hỏi được đổi thành vector, so với 9 vector trong kho. Ba đoạn đứng đầu vượt ngưỡng 0,45.",
+          "msg": {
+           "b2": "Hạng B thưởng KPI…",
+           "v": "9 vector"
+          },
+          "tag": {
+           "srch": "0,80 · 0,64 · 0,53"
+          }
+         },
+         {
+          "s": "Ghép prompt",
+          "t": "Điền đoạn và câu hỏi vào prompt",
+          "on": [
+           "pr"
+          ],
+          "go": [
+           "b3"
+          ],
+          "msg": "3 đoạn",
+          "code": "Chỉ dùng thông tin trong <tai_lieu>…\n<tai_lieu>\n[Đoạn 1] 3.2 Thưởng KPI quý: … Hạng B: KPI từ 95% đến dưới 110%, thưởng 3.000.000 đồng/quý …\n[Đoạn 2] …\n</tai_lieu>\nCâu hỏi: Hạng B được thưởng KPI bao nhiêu?"
+         },
+         {
+          "s": "Trả lời",
+          "t": "LLM trả lời kèm nguồn",
+          "on": [
+           "llm"
+          ],
+          "go": [
+           "b4"
+          ],
+          "x": "“Hạng B được thưởng 3.000.000 đồng/quý (KPI từ 95% đến dưới 110%). (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”",
+          "tone": {
+           "llm": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Câu hỏi nối tiếp",
+        "intro": "Người dùng vừa hỏi thưởng hạng A, giờ hỏi tiếp: <em>“Còn hạng B thì sao?”</em>",
+        "steps": [
+         {
+          "s": "Câu hỏi",
+          "t": "Câu hỏi thiếu chủ ngữ",
+          "on": [
+           "q"
+          ],
+          "go": [],
+          "x": "Đem “Còn hạng B thì sao?” đi tìm sẽ lạc.",
+          "set": {
+           "q": [
+            "Câu hỏi",
+            "“Còn hạng B",
+            "thì sao?”"
+           ]
+          }
+         },
+         {
+          "s": "Viết lại",
+          "t": "Bổ sung từ lịch sử chat",
+          "on": [
+           "rw"
+          ],
+          "go": [
+           "b1"
+          ],
+          "x": "Node viết lại đọc lịch sử, thay “còn … thì sao” bằng nội dung cụ thể.",
+          "msg": "Còn hạng B thì sao?",
+          "tag": {
+           "rw": "→ thưởng KPI hạng B?"
+          },
+          "tone": {
+           "rw": "warn"
+          },
+          "code": "Mức thưởng KPI quý của hạng B là bao nhiêu?"
+         },
+         {
+          "s": "Tìm Top-K",
+          "t": "Tìm bằng câu đã viết lại",
+          "on": [
+           "srch",
+           "vdb"
+          ],
+          "go": [
+           "b2",
+           "v"
+          ],
+          "x": "Nhờ câu đầy đủ nghĩa, đoạn 3.2 đứng đầu như câu hỏi thường.",
+          "msg": {
+           "b2": "thưởng KPI quý hạng B",
+           "v": "9 vector"
+          },
+          "tag": {
+           "srch": "0,80 · 0,64 · 0,53"
+          }
+         },
+         {
+          "s": "Ghép prompt",
+          "t": "Điền đoạn và câu đã viết lại",
+          "on": [
+           "pr"
+          ],
+          "go": [
+           "b3"
+          ],
+          "msg": "3 đoạn"
+         },
+         {
+          "s": "Trả lời",
+          "t": "Trả lời đúng mạch hội thoại",
+          "on": [
+           "llm"
+          ],
+          "go": [
+           "b4"
+          ],
+          "x": "“Hạng B được thưởng 3.000.000 đồng/quý…” kèm nguồn mục 3.2.",
+          "tone": {
+           "llm": "ok"
+          }
+         }
+        ]
+       },
+       {
+        "name": "Câu bẫy: tài liệu không có",
+        "intro": "Câu hỏi: <em>“Thưởng Tết bao nhiêu?”</em> – sổ tay không có mục nào về thưởng Tết.",
+        "steps": [
+         {
+          "s": "Câu hỏi",
+          "t": "Người dùng hỏi",
+          "on": [
+           "q"
+          ],
+          "go": [],
+          "set": {
+           "q": [
+            "Câu hỏi",
+            "“Thưởng Tết",
+            "bao nhiêu?”"
+           ]
+          }
+         },
+         {
+          "s": "Viết lại",
+          "t": "Giữ nguyên",
+          "on": [
+           "rw"
+          ],
+          "go": [
+           "b1"
+          ],
+          "msg": "Thưởng Tết bao nhiêu?",
+          "tag": {
+           "rw": "giữ nguyên"
+          }
+         },
+         {
+          "s": "Tìm Top-K",
+          "t": "Không đoạn nào đủ gần",
+          "on": [
+           "srch",
+           "vdb"
+          ],
+          "go": [
+           "b2",
+           "v"
+          ],
+          "x": "Đoạn gần nhất là “Thưởng sáng kiến” chỉ được 0,22 – dưới ngưỡng 0,45 nên bị loại.",
+          "msg": {
+           "b2": "Thưởng Tết…",
+           "v": "9 vector"
+          },
+          "tag": {
+           "srch": "không đoạn nào ≥ 0,45"
+          },
+          "tone": {
+           "srch": "warn"
+          }
+         },
+         {
+          "s": "Ghép prompt",
+          "t": "Thẻ tài liệu rỗng",
+          "on": [
+           "pr"
+          ],
+          "go": [
+           "b3"
+          ],
+          "msg": "0 đoạn",
+          "code": "<tai_lieu>\n(không có đoạn nào)\n</tai_lieu>\nCâu hỏi: Thưởng Tết bao nhiêu?"
+         },
+         {
+          "s": "Trả lời",
+          "t": "Nói rõ là không có",
+          "on": [
+           "llm"
+          ],
+          "go": [
+           "b4"
+          ],
+          "x": "“Tài liệu hiện có chưa đề cập nội dung này. Anh/chị vui lòng liên hệ phòng Nhân sự.” Đúng: luật 5 trong prompt chặn LLM đoán ra một con số.",
+          "tone": {
+           "llm": "ok"
+          }
+         }
+        ]
+       }
+      ],
+      "notes": [
+       {
+        "x": 10,
+        "y": 20,
+        "t": "① Nạp tài liệu – làm một lần, làm lại khi tài liệu thay đổi"
+       },
+       {
+        "x": 10,
+        "y": 130,
+        "t": "② Hỏi đáp – mỗi câu hỏi"
+       }
+      ]
+     },
      "caption": "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi",
      "plain": "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"
     },

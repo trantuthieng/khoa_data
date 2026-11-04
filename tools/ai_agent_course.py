@@ -18,6 +18,7 @@ from ai_agent_files import (BAT_THUONG, FILES, O_TRONG, TRUNG, URL as FILES_URL,
                             write_files)
 from compact_lessons import Fig
 import ai_agent_figs as fg
+import ai_agent_flows as fl
 
 OUT = Path(__file__).resolve().parent.parent / "app" / "content" / "ai_agent"
 
@@ -71,6 +72,11 @@ def figure(fig, caption):
 def widget(name, caption):
     """Mô hình động chạy ngay trong bài (component Vue cùng tên trong static/, VD vectordb.js)."""
     return {"t": "widget", "name": name, "caption": caption, "plain": caption}
+
+
+def flow(sp, caption):
+    """Mô hình động dạng sơ đồ khối chạy từng bước (spec trong tools/ai_agent_flows.py, hiển thị bằng flowdemo.js)."""
+    return {"t": "widget", "name": "flow", "spec": sp, "caption": caption, "plain": caption}
 
 
 def so(x, le=0):
@@ -663,7 +669,7 @@ Bài học      : luôn ghi độ dài, giọng văn và luật "không thêm th
               "“Hà Nội”. Một câu trả lời dài chỉ là bước này lặp lại hàng trăm lần."),
             p("Hệ quả: LLM rất giỏi viết ra văn bản <em>nghe hợp lý</em>, nhưng hợp lý không có nghĩa là đúng. Khi thiếu dữ "
               "kiện, nó vẫn viết trôi chảy – đó là <strong>ảo giác (hallucination)</strong>.", "example"),
-            figure(fg.fig_doan_chu(), "LLM chọn chữ có xác suất cao nhất rồi đoán tiếp – nghe hợp lý chưa chắc đã đúng"),
+            flow(fl.fl_doan_chu(), "LLM chọn chữ có xác suất cao nhất rồi đoán tiếp – nghe hợp lý chưa chắc đã đúng"),
             h3("2. Token – đơn vị đọc và tính tiền"),
             p("Mô hình không đọc theo chữ mà theo <strong>token</strong> – những mẩu chữ dài ngắn khác nhau. Với tiếng Anh, "
               "trung bình một token khoảng 3/4 từ; tiếng Việt có dấu thường tốn nhiều token hơn cho cùng nội dung. Giới hạn "
@@ -1090,44 +1096,6 @@ Email: "[dán email cần phân loại]" →""")),
 
 # ================================================================ sơ đồ
 
-def fig_agent_loop():
-    f = Fig("ai-loop", 720, 220, "Vòng lặp của Agent: nhận thức, suy luận, hành động, quan sát rồi lặp lại cho đến khi đủ")
-    f.box(10, 20, 110, 64, ["Mục tiêu", "người dùng giao"], "r-note")
-    f.box(160, 20, 170, 64, ["1. Nhận thức", "đọc yêu cầu, tài liệu,", "kết quả công cụ"], "r-brand")
-    f.box(390, 20, 170, 64, ["2. Suy luận", "lập kế hoạch,", "chọn công cụ"], "r-brand")
-    f.box(600, 20, 110, 64, ["Xong", "trả kết quả", "hoặc chờ duyệt"], "r-ok")
-    f.box(390, 146, 170, 64, ["3. Hành động", "gọi công cụ,", "tạo bản nháp"], "r-warn")
-    f.box(160, 146, 170, 64, ["Quan sát", "kết quả hành động", "thành dữ kiện mới"], "r-note")
-    f.arrow(120, 52, 158, 52)
-    f.arrow(330, 52, 388, 52, "brand")
-    f.arrow(560, 52, 598, 52, "ok", "đủ", lx=579, ly=44)
-    f.arrow(475, 84, 475, 144, "brand", "chưa đủ", lx=518, ly=119)
-    f.arrow(390, 178, 332, 178, "acc")
-    f.arrow(245, 146, 245, 86, "mut", "lặp lại", lx=283, ly=119)
-    return f
-
-
-def fig_rag():
-    f = Fig("ai-rag", 720, 190, "Hai giai đoạn của RAG: nạp tài liệu vào Vector Database và trả lời từng câu hỏi")
-    xs, w = [10, 155, 300, 445, 590], 118
-    f.text(10, 16, "① Nạp tài liệu – làm một lần, làm lại khi tài liệu thay đổi", "f-mut", 12, anchor="start")
-    row1 = [(["Tài liệu gốc", "PDF, Word, Excel"], "r-note"), (["Làm sạch", "chuyển Markdown"], "r-note"),
-            (["Cắt đoạn", "500–1.000 token"], "r-note"), (["Embedding", "chữ → vector"], "r-note"),
-            (["Vector DB", "lưu đoạn + vector"], "r-brand")]
-    f.text(10, 114, "② Hỏi đáp – mỗi câu hỏi", "f-mut", 12, anchor="start")
-    row2 = [(["Câu hỏi", "của người dùng"], "r-note"), (["Viết lại", "câu hỏi đủ nghĩa"], "r-note"),
-            (["Tìm Top-K", "lọc theo ngưỡng"], "r-brand"), (["Ghép prompt", "đoạn + câu hỏi"], "r-note"),
-            (["LLM trả lời", "kèm nguồn"], "r-ok")]
-    for y, row in ((26, row1), (126, row2)):
-        for i, (lines, cls) in enumerate(row):
-            f.box(xs[i], y, w, 52, lines, cls)
-            if i:
-                f.arrow(xs[i - 1] + w, y + 26, xs[i] - 2, y + 26)
-    f.path("M649,78 V100 H359 V124", "brand")
-    f.text(504, 95, "tìm theo nghĩa", "f-mut", 11)
-    return f
-
-
 def fig_function_calling():
     f = Fig("ai-fc", 720, 320, "Trình tự Function Calling giữa người dùng, LLM, hệ thống trung gian và API")
     cx = [90, 270, 450, 630]
@@ -1145,40 +1113,6 @@ def fig_function_calling():
         f.arrow(cx[a] + 2 * s, y, cx[b] - 2 * s, y, color, label, dash=dash)
     f.text(360, 308, "LLM chỉ đề nghị gọi hàm ở bước ②; hệ thống của bạn quyết định có chạy hay không – nơi đặt Guardrails.",
            "f-mut", 12)
-    return f
-
-
-def fig_workflow():
-    f = Fig("ai-wf", 720, 250, "Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator")
-    f.box(10, 88, 125, 58, ["1. Trích xuất", "& Bộ nhớ dài hạn", "(doi_thu, khia_canh)"], "r-brand")
-    f.box(170, 88, 120, 58, ["2. Rẽ nhánh", "IF / ELIF / ELSE", "(Condition)"], "r-warn")
-    f.box(335, 14, 175, 52, ["Nhánh IF: Thiếu dữ liệu", "Hỏi lại thông tin thiếu"], "r-note")
-    f.box(335, 91, 175, 52, ["Nhánh ELIF: Mâu thuẫn", "Báo chênh lệch, xin xác nhận"], "r-warn")
-    f.box(335, 170, 165, 56, ["Nhánh ELSE: Đủ dữ liệu", "Tra cứu & Viết bảng 3 cột"], "r-brand")
-    f.box(540, 170, 170, 56, ["3. Evaluator", "Chấm Checklist → Đạt?", "(Tối đa 3 vòng sửa)"], "r-ok")
-    f.arrow(135, 117, 168, 117, "brand")
-    f.arrow(290, 100, 333, 40, "mut", "thiếu", lx=305, ly=62)
-    f.arrow(290, 117, 333, 117, "acc", "lệch", lx=312, ly=110)
-    f.arrow(290, 134, 333, 198, "brand", "đủ", lx=305, ly=175)
-    f.arrow(500, 190, 538, 190, "brand")
-    f.arrow(540, 212, 502, 212, "acc", "chưa đạt (≤3)", lx=521, ly=236)
-    return f
-
-
-def fig_multi_agent():
-    f = Fig("ai-ma", 720, 230, "Kiến trúc đội hình Multi-Agent kết hợp Phân cấp (Router) – Tuần tự – Phản hồi (Writer ⇄ Editor)")
-    f.box(10, 78, 110, 54, ["Yêu cầu", "từ người dùng", "(BRIEF)"], "r-note")
-    f.box(155, 78, 135, 54, ["1. Router", "Phân loại ý định", "xuất JSON điều phối"], "r-brand")
-    f.box(155, 162, 135, 48, ["Human-in-the-loop", "Chuyển người xử lý", "(khủng hoảng / nhạy cảm)"], "r-bad")
-    f.box(335, 36, 155, 58, ["2. Content Writer", "(Worker chuyên môn)", "Soạn thảo theo BRIEF"], "r-brand")
-    f.box(335, 136, 155, 58, ["3. Editor khó tính", "(Reviewer + Rubric)", "Trả JSON APPROVE/REJECT"], "r-warn")
-    f.box(540, 78, 170, 58, ["Xuất bản / Bàn giao", "Đạt cả 5 tiêu chí", "(hoặc hết 3 vòng → Người)"], "r-ok")
-    f.arrow(120, 105, 153, 105)
-    f.arrow(222, 132, 222, 160, "bad", "nhạy cảm", lx=262, ly=149)
-    f.arrow(290, 92, 333, 65, "brand", "giao việc", lx=310, ly=68)
-    f.arrow(400, 94, 400, 134, "brand", "bản nháp", lx=362, ly=118)
-    f.arrow(430, 136, 430, 96, "acc", "REJECT + lý do (≤3)", lx=488, ly=118)
-    f.arrow(490, 165, 538, 112, "ok", "APPROVE", lx=522, ly=150)
     return f
 
 
@@ -1502,7 +1436,7 @@ def m01():
         sec("Phần 3 – Agent vận hành thế nào: một vòng lặp",
             p("Trái tim của Agent là một vòng lặp <strong>Thought → Action → Observation</strong>, lặp lại cho đến khi: đạt mục "
               "tiêu · cần con người · chạm điều kiện dừng."),
-            figure(fig_agent_loop(), "Vòng lặp của Agent: chưa đủ thì hành động tiếp, quan sát kết quả rồi suy luận lại"),
+            flow(fl.fl_agent_loop(), "Vòng lặp của Agent: chưa đủ thì hành động tiếp, quan sát kết quả rồi suy luận lại"),
             table(["Nhịp (khái niệm)", "Tên khi vận hành", "Agent làm gì"],
                   ["Perception – nhận thức", "đầu vào của Thought", "Đọc yêu cầu, dữ liệu và kết quả bước trước"],
                   ["Reasoning – suy luận", "Thought", "Chọn bước tiếp theo: hỏi lại, gọi tool hay kết thúc"],
@@ -1924,25 +1858,8 @@ Bạn có nhiệm vụ...
               "thì không có tác dụng."),
             p("WORKFLOW là trình tự LLM đi qua; các khối khác là chỗ WORKFLOW tra cứu. Ba tin nhắn dưới đây đi theo ba đường khác "
               "nhau:"),
-            code("""Tin nhắn: "Khách bảo hàng bị lỗi, muốn trả"
-WORKFLOW 1 → SCOPE       : đổi trả – trong phạm vi, đi tiếp
-WORKFLOW 2 → INPUT CHECK : thiếu ngày nhận hàng và lỗi gì → hỏi lại, dừng
-  Agent: "Anh/chị cho em xin ngày nhận hàng (hoặc mã đơn) và sản phẩm lỗi thế nào ạ?"
-
-Tin nhắn: "Khách nhận nồi chiên 3 ngày trước, chưa dùng, còn hộp, muốn đổi màu khác"
-WORKFLOW 1 → SCOPE       : trong phạm vi
-WORKFLOW 2 → INPUT CHECK : đủ ngày nhận và tình trạng sản phẩm
-WORKFLOW 3 → Knowledge   : mục "Đổi trả trong 7 ngày"
-           → OUTPUT      : câu đầu trả lời thẳng, tối đa 5 câu, có nguồn
-           → BOUNDARIES  : không hứa gì ngoài chính sách
-  Agent: "Được đổi. Khách đổi ý trong 7 ngày, sản phẩm còn tem, hộp thì được đổi; khách
-          chịu phí vận chuyển hai chiều. (Nguồn: Đổi trả trong 7 ngày)"
-
-Tin nhắn: "Máy sấy tóc bốc khói khi đang dùng, khách bị bỏng nhẹ"
-WORKFLOW 1 → SCOPE       : sự cố an toàn – ngoài phạm vi → ESCALATION
-  Agent: "Đây là sự cố an toàn – anh/chị đề nghị khách ngừng dùng, rút phích cắm và
-          chuyển ngay bộ phận Kỹ thuật – An toàn sản phẩm."
-"""),
+            flow(fl.fl_system_instructions(), "Mỗi tin nhắn đi theo WORKFLOW: SCOPE → INPUT CHECK → Knowledge → OUTPUT, "
+                 "hoặc rẽ sang hỏi lại, chuyển bộ phận"),
             p("MISSION và ROLE không hiện ra ở bước nào nhưng định hướng mọi câu trả lời: viết cho ai, giọng nào, ưu tiên gì khi "
               "luật không nói tới. BOUNDARIES áp dụng cho mọi câu trả lời, kể cả khi người dùng yêu cầu ngược lại.", "apply"),
             h3("Bộ 10 test case mẫu"),
@@ -2428,7 +2345,7 @@ def m02():
         sec("Ví dụ mẫu – Một câu hỏi đi qua hệ thống RAG",
             p("Hệ thống RAG có hai giai đoạn: <strong>nạp tài liệu</strong> (làm một lần, làm lại khi tài liệu thay đổi) và "
               "<strong>hỏi đáp</strong> (mỗi câu hỏi)."),
-            figure(fig_rag(), "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"),
+            flow(fl.fl_rag(), "Hai giai đoạn của RAG: nạp tài liệu vào Vector DB, rồi tìm đoạn liên quan cho từng câu hỏi"),
             h3("Theo dõi một câu hỏi"),
             p("Người dùng vừa hỏi về thưởng KPI hạng A, rồi hỏi tiếp: <em>“Thế người thử việc có được không?”</em>"),
             table(["Bước", "Dữ liệu tại bước đó"],
@@ -3053,7 +2970,7 @@ def m03():
             ul("<strong>Phân rã tác vụ:</strong> tách nhiệm vụ lớn thành chuỗi các bước (node) liên kết với nhau.",
                "<strong>Kiểm soát dòng chảy:</strong> dữ liệu từ bước này làm đầu vào cho bước tiếp theo.",
                "<strong>Giảm ảo giác:</strong> chia nhỏ giúp LLM tập trung xử lý từng phần chính xác hơn."),
-            figure(fig_workflow(), "Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator"),
+            flow(fl.fl_workflow(), "Workflow suy luận 3 nhánh (IF / ELIF / ELSE) kết hợp bộ nhớ dài hạn và vòng lặp Evaluator"),
             table(["Loại node thường dùng", "Vai trò"],
                   ["Start / Input", "Nhận câu hỏi và biến đầu vào."],
                   ["LLM", "Một bước suy luận với prompt riêng."],
@@ -3226,7 +3143,7 @@ Dòng đầu chỉ ghi DAT hoặc CHUA_DAT. Các dòng sau: từng lỗi và g�
             p("Với tổng đài CSKH đồ gia dụng, các từ “bốc khói”, “cháy”, “giật điện”, “phát nổ” nên được bắt bằng quy tắc từ khóa "
               "trước và chuyển thẳng bộ phận An toàn sản phẩm – không để một lần phân loại nhầm của LLM làm chậm việc an toàn.",
               "example"),
-            figure(fg.fig_intent(), "Nhận diện ý định kết hợp: quy tắc từ khóa bắt chắc ca khẩn cấp, LLM phân loại phần còn lại"),
+            flow(fl.fl_intent(), "Nhận diện ý định kết hợp: quy tắc từ khóa bắt chắc ca khẩn cấp, LLM phân loại phần còn lại"),
             h3("Thu thập thông tin còn thiếu (slot filling)"),
             p("Nhiều yêu cầu chỉ làm được khi có đủ một số thông tin bắt buộc – gọi là các “ô” (slot). VD đăng ký bảo hành tại nhà "
               "cần: mã đơn hàng, địa chỉ, số điện thoại liên hệ, mô tả lỗi. Agent tốt: kiểm tra ô nào còn trống, hỏi gộp các ô "
@@ -3863,6 +3780,7 @@ def m04():
                   ["<code>\"required\": [\"ma_don\"]</code>", "Khách không nêu mã đơn → hỏi lại"],
                   ["“Mã đơn dạng NX- và 4 chữ số, VD: NX-1024”", "Điền đúng định dạng; gặp “NX-77” thì hỏi lại"],
                   ["<code>enum</code> và “Không rõ thì dùng ca_hai”", "Chỉ chọn trong 3 giá trị, không tự nghĩ ra giá trị mới"]),
+            flow(fl.fl_function_calling(), "Bốn tin nhắn, bốn đường đi: gọi hàm, hỏi lại, chuyển người, runtime chặn tham số sai"),
             *lam_ngay("đóng vai runtime cho Function Calling", 15, [
                 "Mở cuộc trò chuyện mới, dán prompt bên dưới, thay dòng trong thẻ &lt;cong_cu&gt; bằng khối JSON mô tả hàm ở trên.",
                 "Gửi lần lượt 4 tin nhắn khách: (1) “Đơn NX-1024 của tôi bao giờ giao?” (2) “Đơn của tôi đâu rồi?” (3) “Hủy "
@@ -3922,6 +3840,7 @@ trước khi tính tiếp."""),
                   ["Giám sát", "Biết chuyện gì đã xảy ra", "Nhật ký mọi lần gọi công cụ; cảnh báo bất thường; nút dừng khẩn cấp"]),
             figure(fg.fig_defense_layers(), "Phòng thủ nhiều lớp: mỗi lớp có “lỗ”, nhưng lỗ của các lớp không trùng nhau"),
             p("Không lớp nào hoàn hảo; an toàn đến từ việc nhiều lớp cùng chặn. Lời dặn trong prompt chỉ là một phần của lớp đầu vào."),
+            flow(fl.fl_injection(), "Email chứa lệnh độc: không có lớp nào, đủ ba lớp, và khi lớp 1 bị lọt"),
             h3("“Bộ ba nguy hiểm”"),
             p("Simon Willison (2025) gọi đây là <em>lethal trifecta</em>: một Agent đồng thời có (1) quyền truy cập dữ liệu riêng tư, "
               "(2) đọc nội dung không tin cậy từ bên ngoài (web, email, tài liệu khách gửi), và (3) khả năng gửi thông tin ra ngoài "
@@ -4310,7 +4229,7 @@ def m05():
             h3("Sơ đồ luồng công việc"),
             p("Dàn dựng đội hình là thiết kế một <strong>graph</strong>: dữ liệu (messages) chảy qua các node (Agent). Khi Reviewer "
               "không duyệt, luồng quay lại Worker tạo thành vòng lặp cho đến khi đạt chất lượng."),
-            figure(fig_multi_agent(), "Kiến trúc đội hình Multi-Agent: Router định tuyến, Writer và Editor lặp phản hồi tối đa 3 vòng, chuyển người duyệt khi nhạy cảm"),
+            flow(fl.fl_multi_agent(), "Kiến trúc đội hình Multi-Agent: Router định tuyến, Writer và Editor lặp phản hồi tối đa 3 vòng, chuyển người duyệt khi nhạy cảm"),
             code("""Người dùng → [Router] ──► [Writer] ──► [Editor]
                               ▲            │
                               └─ REJECT ───┘   (tối đa 3 vòng)
@@ -4587,7 +4506,7 @@ Chỉ trả về JSON:
                "<strong>Sửa một điểm</strong> và ghi vào Improvement Log.",
                "<strong>Chạy lại bộ Eval:</strong> không có suy thoái mới phát hành.",
                "<strong>Phát hành có phiên bản:</strong> ghi số phiên bản, ngày, người duyệt; giữ bản cũ để quay lại khi cần."),
-            figure(fg.fig_vong_doi(), "Vòng đời bảo trì Agent: có suy thoái thì quay lại tìm nguyên nhân, không phát hành"),
+            flow(fl.fl_vong_doi(), "Vòng đời bảo trì Agent: có suy thoái thì quay lại tìm nguyên nhân, không phát hành"),
             h3("Những thay đổi không do bạn gây ra"),
             table(["Thay đổi", "Ảnh hưởng", "Cách ứng phó"],
                   ["Nhà cung cấp cập nhật hoặc ngừng một mô hình", "Cùng prompt nhưng hành vi khác đi",
