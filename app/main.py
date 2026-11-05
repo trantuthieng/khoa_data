@@ -143,7 +143,11 @@ def activity_states(class_id):
             db.q("SELECT activity_id, status FROM activity_states WHERE class_id=:c", c=class_id)}
 
 
+LAB_TABS = {2: "rag", 3: "workflow", 4: "guardrails", 5: "eval"}  # buổi của khóa AI Agent -> phần trong Phòng thí nghiệm
+
+
 def shared_file_keys(class_id):
+    # shared_files giữ cả file DSL đã chia sẻ lẫn phần Phòng thí nghiệm đã mở (khóa "lab:<phần>")
     return {r["file_key"] for r in db.q("SELECT file_key FROM shared_files WHERE class_id=:c", c=class_id)}
 
 
@@ -346,6 +350,12 @@ def student_module_content(no: int, st=Depends(current_student)):
     revealed = {a for a, s in states.items() if s == "revealed"}
     view = None if no == 0 else view_row(st["class_id"], no)
     return student_module(no, view, revealed, st["course"])
+
+
+@app.get("/api/s/lab")
+def student_lab(st=Depends(current_student)):
+    shared = shared_file_keys(st["class_id"])
+    return {"tabs": [t for t in LAB_TABS.values() if f"lab:{t}" in shared]}
 
 
 @app.get("/api/s/dsl/{key}")
@@ -598,6 +608,25 @@ def share_dsl(cid: int, key: str, body: ShareIn, _=Depends(teacher)):
     return {"ok": True, "shared": body.shared}
 
 
+class LabIn(BaseModel):
+    open: bool
+
+
+@app.post("/api/t/classes/{cid}/lab/{module}")
+@db.batched
+def set_lab(cid: int, module: int, body: LabIn, _=Depends(teacher)):
+    if module not in LAB_TABS or get_class(cid)["course"] != "ai-agent":
+        raise HTTPException(404, "Buổi này không có phần trong Phòng thí nghiệm.")
+    key = f"lab:{LAB_TABS[module]}"
+    if body.open:
+        db.x("""INSERT INTO shared_files (class_id, file_key, shared_at) VALUES (:c, :k, :t)
+                ON CONFLICT (class_id, file_key) DO NOTHING""", c=cid, k=key, t=now())
+    else:
+        db.x("DELETE FROM shared_files WHERE class_id=:c AND file_key=:k", c=cid, k=key)
+    bump(cid)
+    return {"ok": True, "open": body.open}
+
+
 @app.get("/api/t/classes/{cid}/state")
 @db.batched
 def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
@@ -620,7 +649,10 @@ def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
             for a in mods[no]["activities"]]
     shared = shared_file_keys(cid)
     files = [dsl_out(k, k in shared) for k, f in DSL_FILES.items() if f["course"] == cls["course"] and f["module"] == no]
-    return {"cls": cls, "module": no, "view": view, "students": students, "activities": acts, "files": files}
+    lab = None
+    if cls["course"] == "ai-agent" and no in LAB_TABS:
+        lab = {"tab": LAB_TABS[no], "open": f"lab:{LAB_TABS[no]}" in shared}
+    return {"cls": cls, "module": no, "view": view, "students": students, "activities": acts, "files": files, "lab": lab}
 
 
 class ViewIn(BaseModel):

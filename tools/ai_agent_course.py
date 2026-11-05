@@ -170,7 +170,7 @@ def lab_box(tab, title, desc):
     """Khối liên kết mở Phòng thí nghiệm AI Agent ngay trên trình duyệt."""
     return p(f'🧪 <strong>Phòng thí nghiệm trực tuyến ({title}):</strong> {desc} '
              f'<a href="/static/labs/ai/index.html?tab={tab}" target="_blank" rel="noopener">'
-             f'<strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>', "apply")
+             f'<strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a> Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.', "apply")
 
 
 def act(aid, title, questions=None):

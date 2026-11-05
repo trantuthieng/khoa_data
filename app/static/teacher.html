@@ -118,7 +118,11 @@
         <select v-model.number="viewModule" @change="changeViewModule">
           <option v-for="m in index" :key="m.no" :value="m.no">{{ m.no === 0 ? 'Tổng quan (luôn mở cho học viên)' : 'Buổi ' + m.no + ' – ' + m.short }}{{ m.no === cls.active_module ? ' ●' : '' }}</option>
         </select>
-        <a v-if="cls.course === 'ai-agent'" href="/static/labs/ai/index.html" target="_blank" rel="noopener" class="btn sm" style="width:100%;justify-content:center;margin-top:8px">🧪 Mở Phòng thí nghiệm AI ↗</a>
+        <a v-if="cls.course === 'ai-agent'" :href="'/static/labs/ai/index.html' + (room.lab ? '?tab=' + room.lab.tab : '')" target="_blank" rel="noopener" class="btn sm" style="width:100%;justify-content:center;margin-top:8px">🧪 Xem Phòng thí nghiệm AI ↗</a>
+        <div v-if="room.lab" class="row" style="gap:6px;margin-top:6px;align-items:center">
+          <span class="tag grow" :class="room.lab.open ? 'open' : ''" style="text-align:center">{{ room.lab.open ? 'Lớp đã được dùng phần Buổi ' + room.module : 'Lớp chưa được dùng phần Buổi ' + room.module }}</span>
+          <button class="btn sm" :class="{primary: !room.lab.open}" @click="setLab">{{ room.lab.open ? 'Đóng' : 'Mở cho lớp' }}</button>
+        </div>
         <div v-if="viewModule !== 0 && viewModule !== cls.active_module" class="banner" style="margin-top:8px;font-size:14px">
           <span class="grow">Lớp đang học buổi {{ cls.active_module }}.</span>
           <button class="btn sm primary" @click="setActive(viewModule)">Bắt đầu buổi {{ viewModule }}</button>

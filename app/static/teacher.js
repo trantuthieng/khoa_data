@@ -222,6 +222,14 @@ const app = Vue.createApp({
       } catch (e) { if (a) a.status = before; throw e; } finally { this.rev++; }
       if (this.results && this.results.activity.id === id) this.results.status = status;
     },
+    async setLab() {
+      const lab = this.room.lab, no = this.room.module, before = lab.open;
+      this.rev++;
+      lab.open = !before;
+      try {
+        await this.call('POST', `/api/t/classes/${this.cls.id}/lab/${no}`, { open: !before });
+      } catch (e) { lab.open = before; throw e; } finally { this.rev++; }
+    },
     async setShare(f) {
       const before = f.shared;
       this.rev++;

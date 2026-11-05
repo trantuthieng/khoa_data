@@ -11,7 +11,7 @@
 <header>
   <div>
     <h1>Phòng thí nghiệm AI Agent</h1>
-    <p>Thực hành ngay trên trình duyệt · không cần tài khoản hay API key</p>
+    <p>Thực hành ngay trên trình duyệt · không cần API key · giảng viên mở từng phần theo buổi</p>
   </div>
   <div class="header-links">
     <a href="/learn">← Lớp học</a>
@@ -27,8 +27,10 @@
     <button type="button" data-tab="eval"><small>Buổi 5</small>Multi-Agent &amp; Eval</button>
   </nav>
 
+  <div id="lab-gate" class="card lab-gate" role="status">Đang kiểm tra phần được mở cho lớp…</div>
+
   <!-- ==================== BUỔI 2 · RAG & HIT TEST ==================== -->
-  <section id="tab-rag" class="panel">
+  <section id="tab-rag" class="panel" hidden>
     <div class="intro">
       <h2>Cắt tài liệu thành đoạn, rồi xem Agent bốc đoạn nào để trả lời</h2>
       <ol class="howto"><li>Chọn tài liệu, cách cắt</li><li>Chọn câu hỏi</li><li>Đọc câu trả lời và các đoạn được bốc</li></ol>

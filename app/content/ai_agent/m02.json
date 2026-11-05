@@ -566,8 +566,8 @@
     },
     {
      "t": "p",
-     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 2 – dán tài liệu riêng):</strong> Lab mini trong bài dùng bộ SPD. Muốn thử trên tài liệu của bạn, ví dụ ở chặng 8, thì dùng Phòng thí nghiệm này. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
-     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 2 – dán tài liệu riêng): Lab mini trong bài dùng bộ SPD. Muốn thử trên tài liệu của bạn, ví dụ ở chặng 8, thì dùng Phòng thí nghiệm này. Mở Phòng thí nghiệm AI Agent ↗",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Buổi 2 – dán tài liệu riêng):</strong> Lab mini trong bài dùng bộ SPD. Muốn thử trên tài liệu của bạn, ví dụ ở chặng 8, thì dùng Phòng thí nghiệm này. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a> Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Buổi 2 – dán tài liệu riêng): Lab mini trong bài dùng bộ SPD. Muốn thử trên tài liệu của bạn, ví dụ ở chặng 8, thì dùng Phòng thí nghiệm này. Mở Phòng thí nghiệm AI Agent ↗ Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
      "callout": "apply"
     },
     {
@@ -4423,8 +4423,8 @@
     },
     {
      "t": "p",
-     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Chặng 4):</strong> Dán tài liệu riêng, đổi dấu ngắt, Chunk size, Overlap và chạy Hit Test. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
-     "plain": "🧪 Phòng thí nghiệm trực tuyến (Chặng 4): Dán tài liệu riêng, đổi dấu ngắt, Chunk size, Overlap và chạy Hit Test. Mở Phòng thí nghiệm AI Agent ↗",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Chặng 4):</strong> Dán tài liệu riêng, đổi dấu ngắt, Chunk size, Overlap và chạy Hit Test. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a> Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Chặng 4): Dán tài liệu riêng, đổi dấu ngắt, Chunk size, Overlap và chạy Hit Test. Mở Phòng thí nghiệm AI Agent ↗ Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
      "callout": "apply"
     },
     {

@@ -70,6 +70,10 @@ nav.tabs button:hover { border-color: var(--brand); }
 nav.tabs button.active { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
 nav.tabs button.active small { color: inherit; opacity: .8; }
 
+nav.tabs button.locked { opacity: .62; }
+nav.tabs button.locked small::after { content: " · 🔒 chưa mở"; text-transform: none; letter-spacing: 0; font-weight: 500; }
+.lab-gate[hidden] { display: none; }
+.lab-gate { text-align: center; padding: 32px 20px; }
 .panel { display: block; }
 .panel[hidden], [data-subpanel][hidden] { display: none; }
 .intro { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap; margin-bottom: 16px; }

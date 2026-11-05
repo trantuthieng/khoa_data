@@ -36,8 +36,8 @@
     },
     {
      "t": "p",
-     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng):</strong> Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
-     "plain": "🧪 Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng): Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. Mở Phòng thí nghiệm AI Agent ↗",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng):</strong> Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a> Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng): Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. Mở Phòng thí nghiệm AI Agent ↗ Phần của từng buổi dùng được sau khi giảng viên mở cho lớp.",
      "callout": "apply"
     }
    ],

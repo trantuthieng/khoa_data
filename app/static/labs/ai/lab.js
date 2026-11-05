@@ -398,16 +398,68 @@ Khách tra trạng thái đơn trên website bằng mã đơn hàng và số đi
 
   // ==================== CHUYỂN TAB ====================
   const tabBtns = document.querySelectorAll('nav.tabs button[data-tab]');
+  // Giảng viên mở từng phần cho lớp. Đây là nhịp học, không phải lớp bảo mật: mã trang vẫn nằm trong /static.
+  const LAB_TABS = ['rag', 'workflow', 'guardrails', 'eval'];
+  const TAB_BUOI = { rag: 2, workflow: 3, guardrails: 4, eval: 5 };
+  const urlTab = new URLSearchParams(location.search).get('tab');
+  let openTabs = [];
+  let wanted = LAB_TABS.includes(urlTab) ? urlTab : null;
+  let gateNote = '';
   function switchTab(name) {
-    tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-    ['rag', 'workflow', 'guardrails', 'eval'].forEach(t => {
-      const sec = el('tab-' + t);
-      if (sec) sec.hidden = t !== name;
+    wanted = name;
+    renderTabs();
+  }
+  function renderTabs() {
+    const name = wanted || openTabs[0] || 'rag';
+    const unlocked = openTabs.includes(name);
+    tabBtns.forEach(b => {
+      b.classList.toggle('active', b.dataset.tab === name);
+      b.classList.toggle('locked', !openTabs.includes(b.dataset.tab));
     });
+    LAB_TABS.forEach(t => {
+      const sec = el('tab-' + t);
+      if (sec) sec.hidden = !unlocked || t !== name;
+    });
+    const gate = el('lab-gate');
+    gate.hidden = unlocked;
+    if (!unlocked) gate.innerHTML = gateNote || `🔒 Giảng viên chưa mở phần <b>Buổi ${TAB_BUOI[name]}</b> cho lớp. Khi được mở, phần này tự hiện, không cần tải lại trang.`;
   }
   tabBtns.forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
-  const urlTab = new URLSearchParams(location.search).get('tab');
-  if (['rag', 'workflow', 'guardrails', 'eval'].includes(urlTab)) switchTab(urlTab);
+
+  async function startLabGate() {
+    const hdr = { 'X-Requested-With': 'fetch' };
+    const needClass = '🔒 Phòng thí nghiệm mở theo từng buổi. Hãy <a href="/">vào lớp</a> rồi quay lại trang này.';
+    const offline = 'Chưa kết nối được tới hệ thống. Trang sẽ tự thử lại…';
+    try {
+      const t = await fetch('/api/t/me', { credentials: 'same-origin', headers: hdr });
+      if (t.ok) { openTabs = LAB_TABS.slice(); gateNote = ''; renderTabs(); return; }
+    } catch (e) { /* xử lý như học viên bên dưới */ }
+    let token = null;
+    try { token = JSON.parse(localStorage.getItem('session') || 'null').token; } catch (e) { /* chưa vào lớp */ }
+    if (!token) { gateNote = needClass; renderTabs(); return; }
+    const auth = { ...hdr, Authorization: 'Bearer ' + token };
+    let tick = null;
+    async function check() {
+      if (document.hidden && tick !== null) return;
+      try {
+        const r = await fetch('/api/s/tick', { headers: auth });
+        if (r.status === 401) { openTabs = []; gateNote = needClass; renderTabs(); return; }
+        if (!r.ok) throw new Error(String(r.status));
+        const v = (await r.json()).v;
+        if (v === tick) return;
+        const l = await fetch('/api/s/lab', { headers: auth });
+        if (!l.ok) throw new Error(String(l.status));
+        openTabs = (await l.json()).tabs;
+        tick = v; gateNote = '';
+        renderTabs();
+      } catch (e) {
+        if (tick === null) { gateNote = offline; renderTabs(); }
+      }
+    }
+    await check();
+    setInterval(check, 3000);
+  }
+  startLabGate();
 
   // Tab con trong một bài (VD: Hit Test / Các đoạn đã cắt; Gọi hàm / Prompt Injection)
   document.querySelectorAll('.subtabs').forEach(bar => {
