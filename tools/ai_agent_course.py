@@ -4117,7 +4117,7 @@ Khi cần dùng công cụ, CHỈ trả về một dòng JSON: {"goi_ham": "<tê
                "Bấm <strong>Test</strong> ở hàng <code>tinh_diem_xet_tuyen</code>, nhập <code>tong_diem</code> 24.5, <code>muc_uu_tien</code> 0.5, bấm Test. Ô Test Results phải có <code>diem_xet_tuyen</code> 24.87. Đóng hộp Test, bấm <strong>Save</strong>."),
             code("https://lop-an-toan-du-lieu.onrender.com/api/mock-ts/openapi.json"),
             bts("ctSchema", "ctAuth"),
-            p("Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây. Nếu Test báo hết thời gian, mở URL trên trình duyệt một lần rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.", "apply"),
+            p("Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây, trong khi Dify 1.18 chỉ chờ Import from URL 10 giây. Nếu Import from URL hoặc Test báo lỗi, mở URL trên trình duyệt, đợi nội dung JSON hiện ra rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.", "apply"),
             h3("Hoặc gọi trực tiếp bằng khối HTTP Request"),
             p("Trong Chatflow của Buổi 3, khi đường đi đã biết trước, không cần Agent. Thay khối Code bằng <strong>HTTP Request</strong> gọi <code>/tinh-diem</code>, hoặc thêm một nhánh tra hồ sơ. Đây là cách “Workflow”; chặng 3 là cách “Agent”."),
             ol("Thêm khối <strong>HTTP Request</strong>, Method GET, URL <code>https://lop-an-toan-du-lieu.onrender.com/api/mock-ts/ho-so</code>.",
@@ -4403,7 +4403,7 @@ Không cam kết, không xác nhận kết quả thay nhà trường.
                   ["30 phút", "Chặng 6. Trình diễn câu có lệnh chèn, trước và sau khi xóa luật. Kiểm tra nhanh 3 phút."],
                   ["20 phút", "Chặng 7. Đóng bài, chữa, công bố đáp án."]),
             p("Tổng khoảng 205 phút. Nếu lớp có 150 phút: giao chặng 4 phần chạy trên AI và chặng 5 phần Dify về nhà, chấm trên 8 điểm."),
-            p("API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Vào trước buổi học, gọi một lần cho máy chủ thức. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học."),
+            p("API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Trước giờ thực hành, mở URL đặc tả trên trình duyệt và đợi JSON hiện ra để máy chủ thức, nếu không thì Import from URL của học viên đầu tiên có thể báo lỗi. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học."),
             kind="teacher"),
     ]
     return module(4, "Buổi 4 – Trang bị kỹ năng (Plugins) cho Agent", "Trang bị kỹ năng (Plugins) cho Agent", sections, acts)

@@ -1969,8 +1969,8 @@
     },
     {
      "t": "p",
-     "html": "Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây. Nếu Test báo hết thời gian, mở URL trên trình duyệt một lần rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.",
-     "plain": "Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây. Nếu Test báo hết thời gian, mở URL trên trình duyệt một lần rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.",
+     "html": "Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây, trong khi Dify 1.18 chỉ chờ Import from URL 10 giây. Nếu Import from URL hoặc Test báo lỗi, mở URL trên trình duyệt, đợi nội dung JSON hiện ra rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.",
+     "plain": "Máy chủ gói miễn phí có thể ngủ, lần gọi đầu mất tới vài chục giây, trong khi Dify 1.18 chỉ chờ Import from URL 10 giây. Nếu Import from URL hoặc Test báo lỗi, mở URL trên trình duyệt, đợi nội dung JSON hiện ra rồi thử lại. Tên nút ghi theo Dify 1.18; bản khác có thể đặt tên khác.",
      "callout": "apply"
     },
     {
@@ -5436,8 +5436,8 @@
     },
     {
      "t": "p",
-     "html": "API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Vào trước buổi học, gọi một lần cho máy chủ thức. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học.",
-     "plain": "API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Vào trước buổi học, gọi một lần cho máy chủ thức. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học."
+     "html": "API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Trước giờ thực hành, mở URL đặc tả trên trình duyệt và đợi JSON hiện ra để máy chủ thức, nếu không thì Import from URL của học viên đầu tiên có thể báo lỗi. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học.",
+     "plain": "API giả lập chạy trên máy chủ gói miễn phí nên có thể ngủ. Trước giờ thực hành, mở URL đặc tả trên trình duyệt và đợi JSON hiện ra để máy chủ thức, nếu không thì Import from URL của học viên đầu tiên có thể báo lỗi. Tên mục tạo công cụ trên Dify có thể đổi theo phiên bản, kiểm tra trước buổi dạy; khóa API trong bài là khóa công khai để học."
     }
    ],
    "id": "s10"
