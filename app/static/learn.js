@@ -144,11 +144,28 @@ const app = Vue.createApp({
       }
       this.prevStatus = st;
 
+      if (this.prevFiles) {
+        const added = s.files.find(f => !this.prevFiles.includes(f.key));
+        if (added) this.toast = { text: 'Giảng viên vừa chia sẻ: ' + added.title, files: true };
+      }
+      this.prevFiles = s.files.map(f => f.key);
+
       // làm mới bài đang mở khi trạng thái đổi
       if (this.mode === 'activity' && this.activity) {
         const now = st[this.activity.id];
         if (now && (now !== this.activity.status || now === 'revealed')) await this.openActivity(this.activity.id, true);
       }
+    },
+    async downloadFile(f) {
+      try {
+        const res = await fetch('/api/s/dsl/' + f.key, { headers: { Authorization: 'Bearer ' + session.token, 'X-Requested-With': 'fetch' } });
+        if (!res.ok) throw new Error(res.status === 403 ? 'Giảng viên đã thu hồi file này.' : 'Chưa tải được file. Vui lòng thử lại.');
+        const url = URL.createObjectURL(await res.blob());
+        const a = document.createElement('a');
+        a.href = url; a.download = f.file;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      } catch (e) { this.toast = { text: e.message }; }
     },
     goSection(id, module) {
       if (module !== undefined && module !== this.viewModule) { this.viewModule = module; this.loadModule(module); }

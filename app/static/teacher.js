@@ -222,6 +222,14 @@ const app = Vue.createApp({
       } catch (e) { if (a) a.status = before; throw e; } finally { this.rev++; }
       if (this.results && this.results.activity.id === id) this.results.status = status;
     },
+    async setShare(f) {
+      const before = f.shared;
+      this.rev++;
+      f.shared = !before;
+      try {
+        await this.call('POST', `/api/t/classes/${this.cls.id}/dsl/${f.key}`, { shared: !before });
+      } catch (e) { f.shared = before; throw e; } finally { this.rev++; }
+    },
     async openResults(id) { this.answer = null; this.focusGroup = null; this.showKey = false; this.showActivities = false; await this.loadResults(id, false); this.scrollTop(); },
     async loadResults(id, silent) {
       try {

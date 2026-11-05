@@ -13,13 +13,14 @@ from pathlib import Path
 from typing import Literal, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from starlette.middleware.sessions import SessionMiddleware
 
 from . import db
 from .answer_keys import ANSWER_KEYS
+from .dsl import DSL_DIR, DSL_FILES, dsl_out
 from .mock_ts import router as mock_ts_router
 from .content import (ACTIVITIES, COURSES, DEFAULT_COURSE, course_modules, public_activity, score, section_index,
                       student_module)
@@ -140,6 +141,16 @@ def view_row(class_id, module_no, create=False):
 def activity_states(class_id):
     return {r["activity_id"]: r["status"] for r in
             db.q("SELECT activity_id, status FROM activity_states WHERE class_id=:c", c=class_id)}
+
+
+def shared_file_keys(class_id):
+    return {r["file_key"] for r in db.q("SELECT file_key FROM shared_files WHERE class_id=:c", c=class_id)}
+
+
+def dsl_download(key):
+    # tên tệp lấy từ danh mục, không ghép đường dẫn từ dữ liệu gửi lên
+    f = DSL_FILES[key]["file"]
+    return FileResponse(DSL_DIR / f, media_type="application/x-yaml", filename=f, headers={"Cache-Control": "no-store"})
 
 
 def owner_key(a, student):
@@ -312,6 +323,7 @@ def student_state(st=Depends(current_student)):
              "status": states.get(a["id"], "hidden"), "submitted": a["id"] in done}
             for a in ACTIVITIES.values()
             if states.get(a["id"], "hidden") != "hidden" and a["course"] == course and a["module"] in mods]
+    shared = shared_file_keys(cid)
     return {
         "me": {"name": st["name"]},
         "cls": {"name": st["class_name"], "code": st["class_code"], "active_module": active,
@@ -320,6 +332,7 @@ def student_state(st=Depends(current_student)):
         "view": {"module": active, "current_section": view["current_section"], "follow": bool(view["follow"])},
         "content_keys": content_keys,
         "activities": acts,
+        "files": [dsl_out(k) for k, f in DSL_FILES.items() if k in shared and f["course"] == course],
         "server_time": now(),
     }
 
@@ -333,6 +346,13 @@ def student_module_content(no: int, st=Depends(current_student)):
     revealed = {a for a, s in states.items() if s == "revealed"}
     view = None if no == 0 else view_row(st["class_id"], no)
     return student_module(no, view, revealed, st["course"])
+
+
+@app.get("/api/s/dsl/{key}")
+def student_dsl(key: str, st=Depends(current_student)):
+    if key not in DSL_FILES or DSL_FILES[key]["course"] != st["course"] or key not in shared_file_keys(st["class_id"]):
+        raise HTTPException(403, "Giảng viên chưa chia sẻ file này cho lớp.")
+    return dsl_download(key)
 
 
 def my_response(cid, a, st):
@@ -552,6 +572,32 @@ def rls_solution(bai: str, _=Depends(teacher)):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@app.get("/api/t/dsl/{key}")
+def teacher_dsl(key: str, _=Depends(teacher)):
+    # file DSL mẫu nằm ngoài /static: học viên chỉ tải được qua /api/s/dsl sau khi giảng viên chia sẻ cho lớp
+    if key not in DSL_FILES:
+        raise HTTPException(404, "Không có file này.")
+    return dsl_download(key)
+
+
+class ShareIn(BaseModel):
+    shared: bool
+
+
+@app.post("/api/t/classes/{cid}/dsl/{key}")
+@db.batched
+def share_dsl(cid: int, key: str, body: ShareIn, _=Depends(teacher)):
+    if key not in DSL_FILES or DSL_FILES[key]["course"] != get_class(cid)["course"]:
+        raise HTTPException(404, "Lớp này không có file đó.")
+    if body.shared:
+        db.x("""INSERT INTO shared_files (class_id, file_key, shared_at) VALUES (:c, :k, :t)
+                ON CONFLICT (class_id, file_key) DO NOTHING""", c=cid, k=key, t=now())
+    else:
+        db.x("DELETE FROM shared_files WHERE class_id=:c AND file_key=:k", c=cid, k=key)
+    bump(cid)
+    return {"ok": True, "shared": body.shared}
+
+
 @app.get("/api/t/classes/{cid}/state")
 @db.batched
 def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
@@ -572,7 +618,9 @@ def teacher_state(cid: int, module: Optional[int] = None, _=Depends(teacher)):
     acts = [{"id": a["id"], "title": a["title"], "type": a["type"],
              "status": states.get(a["id"], "hidden"), "count": counts.get(a["id"], 0)}
             for a in mods[no]["activities"]]
-    return {"cls": cls, "module": no, "view": view, "students": students, "activities": acts}
+    shared = shared_file_keys(cid)
+    files = [dsl_out(k, k in shared) for k, f in DSL_FILES.items() if f["course"] == cls["course"] and f["module"] == no]
+    return {"cls": cls, "module": no, "view": view, "students": students, "activities": acts, "files": files}
 
 
 class ViewIn(BaseModel):

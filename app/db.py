@@ -88,9 +88,15 @@ SCHEMA = [
         feedback TEXT NOT NULL DEFAULT '',
         graded_at DOUBLE PRECISION NOT NULL
     )""",
+    """CREATE TABLE IF NOT EXISTS shared_files (
+        class_id BIGINT NOT NULL REFERENCES classes(id) ON DELETE CASCADE,
+        file_key TEXT NOT NULL,
+        shared_at DOUBLE PRECISION NOT NULL,
+        PRIMARY KEY (class_id, file_key)
+    )""",
 ]
 
-TABLES = ["classes", "class_modules", "students", "activity_states", "responses", "response_grades"]
+TABLES = ["classes", "class_modules", "students", "activity_states", "responses", "response_grades", "shared_files"]
 
 
 def init_db():

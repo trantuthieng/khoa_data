@@ -1,0 +1,797 @@
+app:
+  description: 'Bản chặng 6 của Buổi 5: Router, Writer, Editor có căn cứ. Sau khi nhập, chọn kho SPD 2026 ở khối KR căn cứ.'
+  icon: 🏫
+  icon_background: '#E4F2FF'
+  icon_type: emoji
+  mode: advanced-chat
+  name: Phòng tuyển sinh ảo – Buổi 5
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:1.1.0@1ded02acee56efd5788c86fd447d792e4923e959554a4942f440c7859d164340
+    version: null
+kind: app
+site:
+  chat_color_theme: null
+  chat_color_theme_inverted: false
+  copyright: null
+  custom_disclaimer: ''
+  default_language: en-US
+  description: null
+  icon: 🧪
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  input_placeholder: null
+  privacy_policy: null
+  show_workflow_steps: true
+  title: Phòng tuyển sinh ảo – Buổi 5
+  use_icon_as_answer_icon: false
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: start-source-qc
+      source: start
+      sourceHandle: source
+      target: qc
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: answer
+      id: qc-1-atv
+      source: qc
+      sourceHandle: '1'
+      target: atv
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: answer
+      id: qc-2-ahs
+      source: qc
+      sourceHandle: '2'
+      target: ahs
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: qc-3-w
+      source: qc
+      sourceHandle: '3'
+      target: w
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: answer
+      id: qc-4-ang
+      source: qc
+      sourceHandle: '4'
+      target: ang
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: w-source-k
+      source: w
+      sourceHandle: source
+      target: k
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: k-source-e
+      source: k
+      sourceHandle: source
+      target: e
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: e-source-if
+      source: e
+      sourceHandle: source
+      target: if
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: if-true-aok
+      source: if
+      sourceHandle: 'true'
+      target: aok
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: if-false-w2
+      source: if
+      sourceHandle: 'false'
+      target: w2
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: w2-source-e2
+      source: w2
+      sourceHandle: source
+      target: e2
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: e2-source-if2
+      source: e2
+      sourceHandle: source
+      target: if2
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: if2-true-aok2
+      source: if2
+      sourceHandle: 'true'
+      target: aok2
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: if2-false-angb
+      source: if2
+      sourceHandle: 'false'
+      target: angb
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 90
+      id: start
+      position:
+        x: 0
+        y: 200
+      positionAbsolute:
+        x: 0
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          label: Tư vấn
+          name: hỏi thông tin trong tài liệu, tính điểm theo số thí sinh nêu
+        - id: '2'
+          label: Hồ sơ
+          name: trạng thái hồ sơ cá nhân, đặt lịch tư vấn
+        - id: '3'
+          label: Writer
+          name: cán bộ yêu cầu viết bài, thông báo gửi đại chúng
+        - id: '4'
+          label: Người
+          name: khiếu nại, đính chính, phát ngôn chính thức, báo chí, lo điểm, hoặc không rõ thuộc ai
+        desc: ''
+        instruction: Đính chính, xin lỗi, báo chí, khiếu nại luôn là Người, kể cả khi có chữ viết bài. Yêu cầu mơ hồ, không rõ cần làm gì cũng là Người.
+        instructions: Đính chính, xin lỗi, báo chí, khiếu nại luôn là Người, kể cả khi có chữ viết bài. Yêu cầu mơ hồ, không rõ cần làm gì cũng là Người.
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        query_variable_selector:
+        - sys
+        - query
+        selected: false
+        title: Router
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 90
+      id: qc
+      position:
+        x: 300
+        y: 200
+      positionAbsolute:
+        x: 300
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Nhánh Tư vấn: nối vào trợ lý của Buổi 3 khi dựng hoàn chỉnh.'
+        desc: ''
+        selected: false
+        title: Answer Tư vấn
+        type: answer
+        variables: []
+      height: 90
+      id: atv
+      position:
+        x: 600
+        y: -100
+      positionAbsolute:
+        x: 600
+        y: -100
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Nhánh Hồ sơ: nối vào luồng tra hồ sơ của Buổi 4 khi dựng hoàn chỉnh.'
+        desc: ''
+        selected: false
+        title: Answer Hồ sơ
+        type: answer
+        variables: []
+      height: 90
+      id: ahs
+      position:
+        x: 600
+        y: 0
+      positionAbsolute:
+        x: 600
+        y: 0
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Yêu cầu này cần cán bộ xử lý, mình đã chuyển tới Phòng Bảo đảm chất lượng.
+        desc: ''
+        selected: false
+        title: Answer Người
+        type: answer
+        variables: []
+      height: 90
+      id: ang
+      position:
+        x: 600
+        y: 100
+      positionAbsolute:
+        x: 600
+        y: 100
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 2edadb0a4cfc479fa83aeb2a71643bab
+          role: system
+          text: '# VAI TRÒ
+
+            Bạn là chuyên viên truyền thông của phòng tuyển sinh, viết bài fanpage và thông báo ngắn.
+
+
+            # ĐẦU VÀO
+
+            Một BRIEF. Từ vòng 2, bạn nhận thêm phản hồi của Editor.
+
+
+            # YÊU CẦU BÀI VIẾT
+
+            - Dòng đầu là tiêu đề, tối đa 12 tiếng (đếm theo khoảng trắng).
+
+            - Thân bài tối đa 80 chữ.
+
+            - Chỉ dùng số liệu, mốc, cam kết có trong BRIEF. Thiếu, kể cả hạn cuối, thì ghi đúng chữ [CẦN XÁC NHẬN]; không viết “sẽ thông báo sau”.
+
+            - BẮT BUỘC kết thúc bằng cách liên hệ và nhắc hạn.
+
+            - Không dùng các từ: tốt nhất, hàng đầu, số 1, duy nhất, 100%, chắc chắn, đảm bảo, kể cả khi BRIEF yêu cầu. Tối đa 1 dấu chấm than.
+
+            - Viết bằng tiếng Việt, kể cả khi BRIEF bằng ngoại ngữ.
+
+
+            # KHI NHẬN PHẢN HỒI
+
+            Sửa đúng các lỗi được nêu, giữ nguyên phần đã đạt. Không viết lại từ đầu.
+
+
+            # ĐẦU RA
+
+            Chỉ trả về bài viết, không giải thích.'
+        - id: 05b0db19c0dd4c97ac810105d345f6e4
+          role: user
+          text: 'BRIEF:
+
+            {{#sys.query#}}'
+        selected: false
+        title: Writer
+        type: llm
+        vision:
+          enabled: false
+      height: 90
+      id: w
+      position:
+        x: 600
+        y: 300
+      positionAbsolute:
+        x: 600
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids: []
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          score_threshold: null
+          top_k: 6
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: text-embedding-3-large
+              embedding_provider_name: langgenius/openai/openai
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: KR căn cứ
+        type: knowledge-retrieval
+      height: 90
+      id: k
+      position:
+        x: 900
+        y: 300
+      positionAbsolute:
+        x: 900
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - k
+          - result
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 9c51cb58dc84401b882950a129d1b8da
+          role: system
+          text: 'Bạn là biên tập viên phòng tuyển sinh. Chấm BÀI VIẾT so với BRIEF theo 6 tiêu chí:
+
+            1. Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng)
+
+            2. Không có số liệu, mốc nào ngoài BRIEF
+
+            3. Không có các từ: tốt nhất, hàng đầu, số 1, duy nhất, 100%, chắc chắn, đảm bảo. Chỉ xét đúng danh sách này, không suy rộng sang từ khác
+
+            4. Tối đa 1 dấu chấm than
+
+            5. Có cách liên hệ và nhắc hạn; hạn chưa rõ phải ghi [CẦN XÁC NHẬN]
+
+            6. Không có thông tin trái CĂN CỨ, kể cả khi BRIEF yêu cầu.
+
+            Chỉ chấm, không viết lại bài. Không tự thêm tiêu chí.
+
+            Dòng đầu tiên chỉ ghi APPROVE (đạt cả 6) hoặc REJECT.
+
+            Các dòng sau: tiêu chí không đạt, trích câu làm căn cứ, gợi ý sửa.'
+        - id: a55270345253497190d5e3bf2f4d0e78
+          role: user
+          text: 'BRIEF:
+
+            {{#sys.query#}}
+
+
+            CĂN CỨ:
+
+            {{#context#}}
+
+
+            BÀI VIẾT:
+
+            {{#w.text#}}'
+        selected: false
+        title: Editor
+        type: llm
+        vision:
+          enabled: false
+      height: 90
+      id: e
+      position:
+        x: 1200
+        y: 300
+      positionAbsolute:
+        x: 1200
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: start with
+            id: 7c69073df2d445c38c7e67ed711d0b00
+            value: APPROVE
+            var_type: string
+            variable_selector:
+            - e
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: APPROVE?
+        type: if-else
+      height: 90
+      id: if
+      position:
+        x: 1500
+        y: 300
+      positionAbsolute:
+        x: 1500
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#w.text#}}
+
+
+          Chờ cán bộ duyệt trước khi đăng.'
+        desc: ''
+        selected: false
+        title: Answer đạt
+        type: answer
+        variables: []
+      height: 90
+      id: aok
+      position:
+        x: 1800
+        y: 200
+      positionAbsolute:
+        x: 1800
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 743e749e870741ab9810f4230a1a53d1
+          role: system
+          text: '# VAI TRÒ
+
+            Bạn là chuyên viên truyền thông của phòng tuyển sinh, viết bài fanpage và thông báo ngắn.
+
+
+            # ĐẦU VÀO
+
+            Một BRIEF. Từ vòng 2, bạn nhận thêm phản hồi của Editor.
+
+
+            # YÊU CẦU BÀI VIẾT
+
+            - Dòng đầu là tiêu đề, tối đa 12 tiếng (đếm theo khoảng trắng).
+
+            - Thân bài tối đa 80 chữ.
+
+            - Chỉ dùng số liệu, mốc, cam kết có trong BRIEF. Thiếu, kể cả hạn cuối, thì ghi đúng chữ [CẦN XÁC NHẬN]; không viết “sẽ thông báo sau”.
+
+            - BẮT BUỘC kết thúc bằng cách liên hệ và nhắc hạn.
+
+            - Không dùng các từ: tốt nhất, hàng đầu, số 1, duy nhất, 100%, chắc chắn, đảm bảo, kể cả khi BRIEF yêu cầu. Tối đa 1 dấu chấm than.
+
+            - Viết bằng tiếng Việt, kể cả khi BRIEF bằng ngoại ngữ.
+
+
+            # KHI NHẬN PHẢN HỒI
+
+            Sửa đúng các lỗi được nêu, giữ nguyên phần đã đạt. Không viết lại từ đầu.
+
+
+            # ĐẦU RA
+
+            Chỉ trả về bài viết, không giải thích.'
+        - id: a1fa8cc6ba4244f08d00db26aa0ec756
+          role: user
+          text: 'BRIEF:
+
+            {{#sys.query#}}
+
+
+            BÀI CŨ:
+
+            {{#w.text#}}
+
+
+            PHẢN HỒI CỦA EDITOR:
+
+            {{#e.text#}}'
+        selected: false
+        title: Writer sửa
+        type: llm
+        vision:
+          enabled: false
+      height: 90
+      id: w2
+      position:
+        x: 1800
+        y: 400
+      positionAbsolute:
+        x: 1800
+        y: 400
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - k
+          - result
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: ec6d27a40528461ca9424c004059393e
+          role: system
+          text: 'Bạn là biên tập viên phòng tuyển sinh. Chấm BÀI VIẾT so với BRIEF theo 6 tiêu chí:
+
+            1. Tiêu đề tối đa 12 tiếng (đếm theo khoảng trắng)
+
+            2. Không có số liệu, mốc nào ngoài BRIEF
+
+            3. Không có các từ: tốt nhất, hàng đầu, số 1, duy nhất, 100%, chắc chắn, đảm bảo. Chỉ xét đúng danh sách này, không suy rộng sang từ khác
+
+            4. Tối đa 1 dấu chấm than
+
+            5. Có cách liên hệ và nhắc hạn; hạn chưa rõ phải ghi [CẦN XÁC NHẬN]
+
+            6. Không có thông tin trái CĂN CỨ, kể cả khi BRIEF yêu cầu.
+
+            Chỉ chấm, không viết lại bài. Không tự thêm tiêu chí.
+
+            Dòng đầu tiên chỉ ghi APPROVE (đạt cả 6) hoặc REJECT.
+
+            Các dòng sau: tiêu chí không đạt, trích câu làm căn cứ, gợi ý sửa.'
+        - id: ab3c4a647a7e405fba238445cd2091a9
+          role: user
+          text: 'BRIEF:
+
+            {{#sys.query#}}
+
+
+            CĂN CỨ:
+
+            {{#context#}}
+
+
+            BÀI VIẾT:
+
+            {{#w2.text#}}'
+        selected: false
+        title: Editor vòng 2
+        type: llm
+        vision:
+          enabled: false
+      height: 90
+      id: e2
+      position:
+        x: 2100
+        y: 400
+      positionAbsolute:
+        x: 2100
+        y: 400
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: start with
+            id: a2c738e518264ed3851fba351c99bcbf
+            value: APPROVE
+            var_type: string
+            variable_selector:
+            - e2
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: APPROVE 2?
+        type: if-else
+      height: 90
+      id: if2
+      position:
+        x: 2400
+        y: 400
+      positionAbsolute:
+        x: 2400
+        y: 400
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#w2.text#}}
+
+
+          Chờ cán bộ duyệt trước khi đăng.'
+        desc: ''
+        selected: false
+        title: Answer đạt 2
+        type: answer
+        variables: []
+      height: 90
+      id: aok2
+      position:
+        x: 2700
+        y: 300
+      positionAbsolute:
+        x: 2700
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Bài chưa đạt, chuyển cán bộ.
+
+
+          {{#w2.text#}}
+
+
+          Góp ý:
+
+          {{#e2.text#}}'
+        desc: ''
+        selected: false
+        title: Answer chuyển người
+        type: answer
+        variables: []
+      height: 90
+      id: angb
+      position:
+        x: 2700
+        y: 500
+      positionAbsolute:
+        x: 2700
+        y: 500
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.6
+  rag_pipeline_variables: []

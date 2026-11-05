@@ -75,6 +75,14 @@
         </button>
         <p v-if="!state.activities.length" class="muted" style="font-size:14px">Chưa có bài tập nào được mở.</p>
       </div>
+      <template v-if="state.files.length">
+        <h4>File được chia sẻ</h4>
+        <div class="act-list">
+          <button v-for="f in state.files" :key="f.key" class="act-item" @click="mode='activities';showSide=false">
+            <span class="grow" style="font-size:14.5px;line-height:1.35">{{ f.title }}<br><span class="muted" style="font-size:12px">Buổi {{ f.module }} · File DSL Dify</span></span>
+          </button>
+        </div>
+      </template>
     </aside>
 
     <main class="main">
@@ -95,6 +103,15 @@
             </button>
           </div>
           <p v-if="!state.activities.length" class="muted">Chưa có bài tập nào. Giảng viên sẽ mở bài tập trong buổi học.</p>
+          <template v-if="state.files.length">
+            <h3 style="margin-top:24px">File giảng viên chia sẻ</h3>
+            <div v-for="f in state.files" :key="f.key" class="card" style="margin-bottom:12px">
+              <div style="font-weight:600">{{ f.title }}</div>
+              <div class="muted" style="font-size:14px">Buổi {{ f.module }} · {{ f.desc }}</div>
+              <ol style="margin:8px 0;padding-left:20px;font-size:14.5px"><li v-for="(x, i) in f.steps" :key="i">{{ x }}</li></ol>
+              <button class="btn sm primary" @click="downloadFile(f)">Tải {{ f.file }}</button>
+            </div>
+          </template>
         </template>
 
         <!-- làm bài -->
@@ -160,6 +177,7 @@
     <div>{{ toast.text }}</div>
     <div class="row" style="margin-top:10px">
       <button v-if="toast.activity" class="btn sm primary" @click="openActivity(toast.activity); toast=null">Làm bài</button>
+      <button v-if="toast.files" class="btn sm primary" @click="mode='activities'; toast=null">Xem file</button>
       <button class="btn sm" @click="toast=null">Đóng</button>
     </div>
   </div>

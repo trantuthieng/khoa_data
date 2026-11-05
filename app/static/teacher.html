@@ -285,6 +285,20 @@
             <div class="row" style="gap:6px"><button class="btn sm" @click="openResults(a.id)">Xem kết quả</button>
               <button v-if="hasAnswer(a.id)" class="btn sm" @click="openAnswer(a.id)">📘 Đáp án</button></div>
           </div>
+          <template v-if="room.files && room.files.length">
+            <h4 style="margin:14px 0 8px">File DSL Dify</h4>
+            <div v-for="f in room.files" :key="f.key" class="card" style="padding:10px 12px;margin-bottom:10px">
+              <div style="font-weight:600;line-height:1.35">{{ f.title }}</div>
+              <div class="muted" style="font-size:13px">{{ f.desc }}</div>
+              <div style="margin:6px 0"><span class="tag" :class="f.shared ? 'open' : ''">{{ f.shared ? 'Lớp đã thấy' : 'Chỉ giảng viên' }}</span></div>
+              <details style="font-size:13px;margin-bottom:8px"><summary style="cursor:pointer">Sau khi nhập vào Dify</summary><ol style="margin:6px 0 0;padding-left:18px"><li v-for="(x, i) in f.steps" :key="i">{{ x }}</li></ol></details>
+              <div class="row" style="gap:6px">
+                <a class="btn sm" :href="'/api/t/dsl/' + f.key" :download="f.file">Tải về</a>
+                <button class="btn sm" :class="{primary: !f.shared}" @click="setShare(f)">{{ f.shared ? 'Thu hồi' : 'Chia sẻ cho lớp' }}</button>
+              </div>
+            </div>
+            <p class="muted" style="font-size:13px">Chỉ áp dụng cho lớp này. Thu hồi chỉ chặn tải tiếp; file học viên đã tải vẫn ở máy của họ.</p>
+          </template>
           <p class="muted" style="font-size:13px">Ẩn: chưa giao bài. Mở: nhận bài nộp. Đóng: dừng nhận bài để chấm. Công bố: học viên xem đáp án, điểm và nhận xét đã lưu.</p>
         </template>
         <template v-else>

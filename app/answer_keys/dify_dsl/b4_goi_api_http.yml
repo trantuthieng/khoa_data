@@ -1,0 +1,421 @@
+app:
+  description: 'Cách Workflow của Buổi 4: gọi API tra hồ sơ, IF đọc status_code. Không cần cấu hình thêm.'
+  icon: 🔌
+  icon_background: '#E4F2FF'
+  icon_type: emoji
+  mode: advanced-chat
+  name: Tra hồ sơ bằng HTTP Request – Buổi 4
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:1.1.0@1ded02acee56efd5788c86fd447d792e4923e959554a4942f440c7859d164340
+    version: null
+kind: app
+site:
+  chat_color_theme: null
+  chat_color_theme_inverted: false
+  copyright: null
+  custom_disclaimer: ''
+  default_language: en-US
+  description: null
+  icon: 🧪
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  input_placeholder: null
+  privacy_policy: null
+  show_workflow_steps: true
+  title: Tra hồ sơ bằng HTTP Request – Buổi 4
+  use_icon_as_answer_icon: false
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: parameter-extractor
+      id: start-source-pe
+      source: start
+      sourceHandle: source
+      target: pe
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: http-request
+      id: pe-source-http
+      source: pe
+      sourceHandle: source
+      target: http
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: if-else
+      id: http-source-st
+      source: http
+      sourceHandle: source
+      target: st
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: st-ok-l
+      source: st
+      sourceHandle: ok
+      target: l
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: l-source-a200
+      source: l
+      sourceHandle: source
+      target: a200
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: st-e403-a403
+      source: st
+      sourceHandle: e403
+      target: a403
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: st-e404-a404
+      source: st
+      sourceHandle: e404
+      target: a404
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: st-false-aelse
+      source: st
+      sourceHandle: 'false'
+      target: aelse
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 90
+      id: start
+      position:
+        x: 0
+        y: 200
+      positionAbsolute:
+        x: 0
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: Chỉ trích xuất thông tin người dùng nêu rõ. Không nêu thì để trống, không tự đoán.
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        parameters:
+        - description: Mã hồ sơ dạng TS26- và 4 chữ số. Không nêu thì để trống
+          name: ma_ho_so
+          required: false
+          type: string
+        - description: Ngày sinh dạng YYYY-MM-DD. Không nêu thì để trống
+          name: ngay_sinh
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: function_call
+        selected: false
+        title: Parameter Extractor
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 90
+      id: pe
+      position:
+        x: 300
+        y: 200
+      positionAbsolute:
+        x: 300
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config:
+            api_key: demo-tuyen-sinh-2026
+            header: X-Api-Key
+            type: custom
+          type: api-key
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: 'ma_ho_so:{{#pe.ma_ho_so#}}
+
+          ngay_sinh:{{#pe.ngay_sinh#}}'
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP Request
+        type: http-request
+        url: https://lop-an-toan-du-lieu.onrender.com/api/mock-ts/ho-so
+        variables: []
+      height: 90
+      id: http
+      position:
+        x: 600
+        y: 200
+      positionAbsolute:
+        x: 600
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: ok
+          conditions:
+          - comparison_operator: '='
+            id: 80bd4814eb184d93ac597e32a3f1ef08
+            value: '200'
+            var_type: number
+            variable_selector:
+            - http
+            - status_code
+          id: ok
+          logical_operator: and
+        - case_id: e403
+          conditions:
+          - comparison_operator: '='
+            id: 9252ff4f1991409cb4f78624d06eea0e
+            value: '403'
+            var_type: number
+            variable_selector:
+            - http
+            - status_code
+          id: e403
+          logical_operator: and
+        - case_id: e404
+          conditions:
+          - comparison_operator: '='
+            id: fb0861ea32f046f38c5e4919abe5d79a
+            value: '404'
+            var_type: number
+            variable_selector:
+            - http
+            - status_code
+          id: e404
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: Đọc status_code
+        type: if-else
+      height: 90
+      id: st
+      position:
+        x: 900
+        y: 200
+      positionAbsolute:
+        x: 900
+        y: 200
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 900
+            temperature: 0.1
+          mode: chat
+          name: gpt-4.1-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: b0395645d44b483f8799685fc80d9e65
+          role: system
+          text: Bạn là trợ lý tuyển sinh. Dựa vào DỮ LIỆU HỒ SƠ, báo ngắn gọn tình trạng hồ sơ và việc thí sinh cần làm tiếp. Không thêm thông tin ngoài dữ liệu. Không lặp lại ngày sinh.
+        - id: 92ab5db9953145699a5cb23f0904b461
+          role: user
+          text: 'DỮ LIỆU HỒ SƠ:
+
+            {{#http.body#}}
+
+
+            CÂU HỎI:
+
+            {{#sys.query#}}'
+        selected: false
+        title: LLM báo tình trạng
+        type: llm
+        vision:
+          enabled: false
+      height: 90
+      id: l
+      position:
+        x: 1200
+        y: 0
+      positionAbsolute:
+        x: 1200
+        y: 0
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#l.text#}}'
+        desc: ''
+        selected: false
+        title: Answer tình trạng
+        type: answer
+        variables: []
+      height: 90
+      id: a200
+      position:
+        x: 1500
+        y: 0
+      positionAbsolute:
+        x: 1500
+        y: 0
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Ngày sinh không khớp với hồ sơ. Bạn kiểm tra lại giúp mình nhé.
+        desc: ''
+        selected: false
+        title: Answer 403
+        type: answer
+        variables: []
+      height: 90
+      id: a403
+      position:
+        x: 1200
+        y: 150
+      positionAbsolute:
+        x: 1200
+        y: 150
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Mình không tìm thấy hồ sơ với mã này. Bạn kiểm tra lại mã hồ sơ nhé.
+        desc: ''
+        selected: false
+        title: Answer 404
+        type: answer
+        variables: []
+      height: 90
+      id: a404
+      position:
+        x: 1200
+        y: 300
+      positionAbsolute:
+        x: 1200
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Mình chưa tra được hồ sơ. Bạn gửi đủ mã hồ sơ và ngày sinh, hoặc liên hệ Phòng Bảo đảm chất lượng: 0277.3882258.'
+        desc: ''
+        selected: false
+        title: Answer còn lại
+        type: answer
+        variables: []
+      height: 90
+      id: aelse
+      position:
+        x: 1200
+        y: 450
+      positionAbsolute:
+        x: 1200
+        y: 450
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.6
+  rag_pipeline_variables: []
