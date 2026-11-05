@@ -645,33 +645,6 @@ def fig_chatflow_sau_khoi():
     return f
 
 
-def fig_doi_tra_wf():
-    f = Fig("ai-dtwf", 720, 280, "Workflow đổi trả bảy bước: mỗi bước dùng đúng loại node – LLM, điều kiện, công cụ, code, con người")
-    W = 160
-    f.box(10, 20, W, 56, ["1. Trích xuất", "LLM: mã đơn, lý do"], "r-brand")
-    f.box(190, 20, W, 56, ["2. Đủ thông tin?", "Điều kiện"], "r-warn")
-    f.box(370, 20, W, 56, ["3. Tra đơn hàng", "Công cụ: ngày nhận"], "r-ok")
-    f.box(550, 20, W, 56, ["4. Đếm số ngày", "Code"], "r-warn")
-    f.box(10, 140, W, 56, ["Hỏi lại khách", "mã đơn hoặc lý do"], "box")
-    f.box(550, 140, W, 56, ["5. Trong 7 ngày?", "Điều kiện + hàng xả kho"], "r-warn")
-    f.box(370, 140, W, 56, ["6. Soạn hướng dẫn", "LLM: theo mẫu"], "r-brand")
-    f.box(190, 140, W, 56, ["7. Trưởng ca xem xét", "Con người: ngoại lệ"], "r-note")
-    f.arrow(170, 48, 188, 48, "brand")
-    f.arrow(350, 48, 368, 48, "ok", "đủ", lx=359, ly=40)
-    f.arrow(530, 48, 548, 48, "brand")
-    f.arrow(230, 76, 110, 138, "acc", "thiếu", lx=152, ly=104)
-    f.arrow(630, 76, 630, 138, "brand")
-    f.arrow(550, 168, 532, 168, "ok")
-    f.text(541, 130, "có", "f-ok", 12)
-    f.path("M630,196 V222 H270 V198", "acc")
-    f.text(450, 238, "quá 7 ngày hoặc hàng xả kho", "f-acc", 12)
-    for x, cls, t in [(10, "r-brand", "LLM – hiểu ngôn ngữ"), (170, "r-warn", "Quy tắc cứng – điều kiện, code"),
-                      (385, "r-ok", "Công cụ – số liệu thật"), (550, "r-note", "Con người – trách nhiệm")]:
-        f.rect(x, 258, 14, 11, cls, 3)
-        f.text(x + 20, 268, t, "", 11.5, "start")
-    return f
-
-
 def fig_gen_eval():
     f = Fig("ai-ge", 720, 214, "Mẫu Generator – Evaluator: tạo, chấm theo checklist, chưa đạt thì sửa, hết số vòng thì chuyển người")
     f.text(360, 20, "Tách vai: người viết không tự chấm bài của mình", "f-mut", 12.5)

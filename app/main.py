@@ -20,6 +20,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from . import db
 from .answer_keys import ANSWER_KEYS
+from .mock_ts import router as mock_ts_router
 from .content import (ACTIVITIES, COURSES, DEFAULT_COURSE, course_modules, public_activity, score, section_index,
                       student_module)
 
@@ -36,6 +37,7 @@ app = FastAPI(title="Lớp học An toàn dữ liệu", docs_url=None, redoc_url
 app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY, session_cookie="gv_session",
                    max_age=12 * 3600, same_site="strict", https_only=PROD)
 app.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
+app.include_router(mock_ts_router)
 
 
 @app.on_event("startup")

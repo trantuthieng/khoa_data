@@ -559,3 +559,35 @@ svg.dg .l-acc { stroke: var(--accent); } svg.dg .m-acc { fill: var(--accent); }
 }
 @media (prefers-reduced-motion: reduce) { .dl-caret { animation: none; } .dl-prob u, .dl-cmp u { transition: none; } }
 .dl-c-sem { color: var(--brand); } .dl-c-kw { color: var(--accent); }
+
+/* Lab mini Buổi 3–5 (agentlab.js) */
+.al-classes > div { padding: 4px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+.al-tbl tr { cursor: pointer; }
+.dl-vars tr.al-bad td { background: var(--note-soft); }
+.dl-vars tr.al-good td { background: color-mix(in srgb, var(--brand) 12%, transparent); }
+.dl-vars tr.al-off td { color: var(--muted); }
+.al-json { white-space: pre-wrap; word-break: break-word; margin: 0; }
+.al-src { max-height: 170px; overflow: auto; white-space: pre-wrap; font-size: 12px; }
+.al-branches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 6px 0 10px; }
+.al-branches > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px; font-size: 13px; opacity: .55; }
+.al-branches > div.on { border-color: var(--brand); border-width: 2px; opacity: 1; }
+.al-branches b, .al-branches span { display: block; }
+.al-scores { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px; font-size: 13px; }
+.al-scores label { display: flex; flex-direction: column; gap: 2px; }
+.al-scores input { width: 100%; box-sizing: border-box; }
+.al-flags { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; margin: 6px 0; }
+.al-flags span { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+.al-flags .ok { border-color: var(--brand); }
+.al-flags .bad { border-color: var(--accent); }
+.al-round { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
+.al-round.ok { border-color: var(--brand); }
+.al-round pre { white-space: pre-wrap; word-break: break-word; margin: 6px 0; font: inherit; font-size: 13px; }
+.al-area { width: 100%; box-sizing: border-box; font: inherit; font-size: 13px; }
+.al-var { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 3px 0; font-size: 13px; flex-wrap: wrap; }
+.al-pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.al-sel { width: 100%; }
+.al-scroll { max-height: 340px; overflow: auto; }
+.dl-tstep[role=button] { cursor: pointer; }
+.dl-tstep.al-right { outline: 2px solid var(--brand); }
+.dl-tstep.al-wrong { outline: 2px dashed var(--accent); }
+@media (max-width: 720px) { .al-branches { grid-template-columns: 1fr; } }

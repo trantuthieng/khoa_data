@@ -9,6 +9,12 @@
    "blocks": [
     {
      "t": "p",
+     "html": "Đây là bước thứ hai của trợ lý tuyển sinh: Buổi 1 đã có vai trò và giới hạn, hôm nay nó có tài liệu. Chatbot hôm nay là đầu vào của Buổi 3, nên hãy giữ lại.",
+     "plain": "Đây là bước thứ hai của trợ lý tuyển sinh: Buổi 1 đã có vai trò và giới hạn, hôm nay nó có tài liệu. Chatbot hôm nay là đầu vào của Buổi 3, nên hãy giữ lại.",
+     "callout": "apply"
+    },
+    {
+     "t": "p",
      "html": "Cả buổi xoay quanh <strong>một đề bài</strong>: từ một thông báo tuyển sinh PDF 39 trang, dựng chatbot chạy thật trên Dify, biết tìm trong tài liệu rồi mới trả lời, giữ điều kiện và ngoại lệ, dẫn nguồn, thiếu dữ liệu thì nói thiếu. Mỗi kiến thức của buổi được học đúng lúc đề bài cần đến nó, nên bạn vừa hiểu vì sao, vừa có sản phẩm.",
      "plain": "Cả buổi xoay quanh một đề bài: từ một thông báo tuyển sinh PDF 39 trang, dựng chatbot chạy thật trên Dify, biết tìm trong tài liệu rồi mới trả lời, giữ điều kiện và ngoại lệ, dẫn nguồn, thiếu dữ liệu thì nói thiếu. Mỗi kiến thức của buổi được học đúng lúc đề bài cần đến nó, nên bạn vừa hiểu vì sao, vừa có sản phẩm."
     },
@@ -3326,35 +3332,35 @@
         "k": "Đoạn nhỏ tìm chính xác, đoạn lớn đủ ngữ cảnh: Parent-child lấy cả hai ưu điểm."
        },
        "parentMode": {
-        "n": "Parent-chunk (Paragraph / Full Doc)",
+        "n": "Parent-chunk for Context (Paragraph / Full Doc)",
         "a": "<strong>Paragraph</strong>: cắt tài liệu thành nhiều đoạn cha. <strong>Full Doc</strong>: cả tài liệu là một đoạn cha, chỉ xử lý 10.000 token đầu.",
         "v": "Paragraph",
         "c": "Full Doc khiến mỗi câu hỏi kéo cả tài liệu vào prompt: tốn token và dễ “lost in the middle”.",
         "k": "Context Window ở chặng 1."
        },
        "pdelim": {
-        "n": "Parent Delimiter",
+        "n": "Parent Delimiter (Parent-chunk for Context → Delimiter)",
         "a": "Chuỗi đánh dấu chỗ được phép cắt đoạn cha; chuỗi này bị bỏ khỏi đoạn sau khi cắt.",
         "v": "<code>\\n## </code> (có khoảng trắng cuối)",
         "c": "Bộ SPD có dòng trống ngay sau đề mục, nên <code>\\n\\n</code> tách tên ngành khỏi số liệu.",
         "k": "Cắt theo cấu trúc của chính tài liệu, không dùng một giá trị cho mọi file."
        },
        "pmax": {
-        "n": "Maximum Parent Length",
+        "n": "Maximum Parent Length (Parent-chunk for Context → Maximum chunk length)",
         "a": "Độ dài tối đa của đoạn cha, tính bằng ký tự. Vượt mức thì bị cắt cứng, bất kể dấu phân cách.",
         "v": "3000 ký tự",
         "c": "Quá nhỏ: đoạn cha bị cắt giữa chừng, mất điều kiện. Quá lớn: mỗi đoạn cha chở nhiều chữ thừa vào prompt.",
         "k": "Chunk size và mục tiêu “mỗi đoạn trọn ý”."
        },
        "cdelim": {
-        "n": "Child Delimiter",
+        "n": "Child Delimiter (Child-chunk for Retrieval → Delimiter)",
         "a": "Chuỗi cắt đoạn cha thành đoạn con để tìm kiếm.",
         "v": "<code>\\n</code> (mỗi dòng)",
         "c": "Dùng <code>\\n\\n</code> thì mỗi đoạn con quá lớn, tìm kém chính xác.",
         "k": "Đoạn nhỏ cho điểm tương đồng sát câu hỏi hơn."
        },
        "cmax": {
-        "n": "Maximum Child Length",
+        "n": "Maximum Child Length (Child-chunk for Retrieval → Maximum chunk length)",
         "a": "Độ dài tối đa của đoạn con.",
         "v": "512 ký tự",
         "c": "Quá nhỏ thì một dòng dài bị cắt đôi; đoạn quá ngắn cho điểm thiếu ổn định.",
@@ -3620,8 +3626,8 @@
       ],
       [
        {
-        "html": "<strong>Parent-chunk (Paragraph / Full Doc)</strong>",
-        "plain": "Parent-chunk (Paragraph / Full Doc)"
+        "html": "<strong>Parent-chunk for Context (Paragraph / Full Doc)</strong>",
+        "plain": "Parent-chunk for Context (Paragraph / Full Doc)"
        },
        {
         "html": "<strong>Paragraph</strong>: cắt tài liệu thành nhiều đoạn cha. <strong>Full Doc</strong>: cả tài liệu là một đoạn cha, chỉ xử lý 10.000 token đầu.",
@@ -3642,8 +3648,8 @@
       ],
       [
        {
-        "html": "<strong>Parent Delimiter</strong>",
-        "plain": "Parent Delimiter"
+        "html": "<strong>Parent Delimiter (Parent-chunk for Context → Delimiter)</strong>",
+        "plain": "Parent Delimiter (Parent-chunk for Context → Delimiter)"
        },
        {
         "html": "Chuỗi đánh dấu chỗ được phép cắt đoạn cha; chuỗi này bị bỏ khỏi đoạn sau khi cắt.",
@@ -3664,8 +3670,8 @@
       ],
       [
        {
-        "html": "<strong>Maximum Parent Length</strong>",
-        "plain": "Maximum Parent Length"
+        "html": "<strong>Maximum Parent Length (Parent-chunk for Context → Maximum chunk length)</strong>",
+        "plain": "Maximum Parent Length (Parent-chunk for Context → Maximum chunk length)"
        },
        {
         "html": "Độ dài tối đa của đoạn cha, tính bằng ký tự. Vượt mức thì bị cắt cứng, bất kể dấu phân cách.",
@@ -3686,8 +3692,8 @@
       ],
       [
        {
-        "html": "<strong>Child Delimiter</strong>",
-        "plain": "Child Delimiter"
+        "html": "<strong>Child Delimiter (Child-chunk for Retrieval → Delimiter)</strong>",
+        "plain": "Child Delimiter (Child-chunk for Retrieval → Delimiter)"
        },
        {
         "html": "Chuỗi cắt đoạn cha thành đoạn con để tìm kiếm.",
@@ -3708,8 +3714,8 @@
       ],
       [
        {
-        "html": "<strong>Maximum Child Length</strong>",
-        "plain": "Maximum Child Length"
+        "html": "<strong>Maximum Child Length (Child-chunk for Retrieval → Maximum chunk length)</strong>",
+        "plain": "Maximum Child Length (Child-chunk for Retrieval → Maximum chunk length)"
        },
        {
         "html": "Độ dài tối đa của đoạn con.",
@@ -10492,6 +10498,12 @@
        "plain": "Chatflow sáu khối có nhánh thiếu bằng chứng; kiểm thử cả hai nhánh, sửa đúng tầng rồi mới xuất bản."
       }
      ]
+    },
+    {
+     "t": "p",
+     "html": "Chatbot hôm nay chưa tính được điểm, chưa biết hỏi lại, và xác nhận theo lời người hỏi. <strong>Buổi 3</strong> nâng nó thành trợ lý biết suy luận.",
+     "plain": "Chatbot hôm nay chưa tính được điểm, chưa biết hỏi lại, và xác nhận theo lời người hỏi. Buổi 3 nâng nó thành trợ lý biết suy luận.",
+     "callout": "apply"
     },
     {
      "t": "activity",

@@ -30,14 +30,14 @@
     },
     {
      "t": "p",
-     "html": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: <strong>Nhà Xanh</strong> – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), chatbot tư vấn tuyển sinh theo tài liệu (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên <strong>công việc thật của bạn</strong> – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
-     "plain": "Các ví dụ trong khóa dùng chung một doanh nghiệp giả lập: Nhà Xanh – chuỗi bán lẻ đồ gia dụng có 5 cửa hàng và kênh bán online. Bạn lần lượt dựng cho Nhà Xanh một trợ lý CSKH trả lời về đổi trả – bảo hành (buổi 1), chatbot tư vấn tuyển sinh theo tài liệu (buổi 2), Agent phân tích đối thủ (buổi 3), Agent phân tích doanh thu và xử lý email khách hàng (buổi 4), phòng nội dung ảo Writer – Editor (buổi 5). Mỗi bài thực hành cũng cho phép làm trên công việc thật của bạn – nên chọn cách này nếu bạn đã có một việc cụ thể muốn giao cho AI.",
+     "html": "Cả khóa đi cùng <strong>một xương sống: trợ lý tư vấn tuyển sinh của Trường Đại học Đồng Tháp (SPD)</strong>, dựng trên thông báo tuyển sinh 2026 có thật. Trợ lý lớn dần qua từng buổi: biết vai trò và giới hạn (buổi 1), trả lời theo tài liệu (buổi 2), biết phân loại, hỏi lại, tính điểm và tự kiểm tra (buổi 3), có công cụ và rào chắn (buổi 4), thành phòng tuyển sinh ảo đo được (buổi 5). Một số ví dụ kiến thức dùng doanh nghiệp giả lập <strong>Nhà Xanh</strong>, bán đồ gia dụng, để bạn thấy cách làm áp dụng được cho nghề khác. Mỗi bài thực hành cũng cho phép chuyển sang <strong>công việc thật của bạn</strong> ở chặng cuối.",
+     "plain": "Cả khóa đi cùng một xương sống: trợ lý tư vấn tuyển sinh của Trường Đại học Đồng Tháp (SPD), dựng trên thông báo tuyển sinh 2026 có thật. Trợ lý lớn dần qua từng buổi: biết vai trò và giới hạn (buổi 1), trả lời theo tài liệu (buổi 2), biết phân loại, hỏi lại, tính điểm và tự kiểm tra (buổi 3), có công cụ và rào chắn (buổi 4), thành phòng tuyển sinh ảo đo được (buổi 5). Một số ví dụ kiến thức dùng doanh nghiệp giả lập Nhà Xanh, bán đồ gia dụng, để bạn thấy cách làm áp dụng được cho nghề khác. Mỗi bài thực hành cũng cho phép chuyển sang công việc thật của bạn ở chặng cuối.",
      "callout": "example"
     },
     {
      "t": "p",
-     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Toàn khóa – 4 Phòng thí nghiệm tương tác):</strong> Thực hành trực tiếp Chunking & Hit Test (Buổi 2), Workflow 3 nhánh & Evaluator (Buổi 3), Function Calling & Chống Prompt Injection (Buổi 4), Multi-Agent & Chấm bộ đề Eval (Buổi 5) ngay trên trình duyệt. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
-     "plain": "🧪 Phòng thí nghiệm trực tuyến (Toàn khóa – 4 Phòng thí nghiệm tương tác): Thực hành trực tiếp Chunking & Hit Test (Buổi 2), Workflow 3 nhánh & Evaluator (Buổi 3), Function Calling & Chống Prompt Injection (Buổi 4), Multi-Agent & Chấm bộ đề Eval (Buổi 5) ngay trên trình duyệt. Mở Phòng thí nghiệm AI Agent ↗",
+     "html": "🧪 <strong>Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng):</strong> Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. <a href=\"/static/labs/ai/index.html?tab=rag\" target=\"_blank\" rel=\"noopener\"><strong>Mở Phòng thí nghiệm AI Agent ↗</strong></a>",
+     "plain": "🧪 Phòng thí nghiệm trực tuyến (Toàn khóa – Phòng thí nghiệm dán tài liệu riêng): Mỗi buổi đã có lab mini chạy ngay trong bài, dùng dữ liệu tuyển sinh. Phòng thí nghiệm này dùng các ví dụ Nhà Xanh và cho phép dán tài liệu riêng để thử Chunking, Workflow, Function Calling, Eval. Mở Phòng thí nghiệm AI Agent ↗",
      "callout": "apply"
     }
    ],
@@ -82,8 +82,8 @@
         "plain": "Agent khác model và chatbot ở đâu; giao việc, trao quyền cho nó thế nào?"
        },
        {
-        "html": "Agent Design Canvas + System Instructions V1 + Agent V1 chạy được + 10 test case + Improvement Log",
-        "plain": "Agent Design Canvas + System Instructions V1 + Agent V1 chạy được + 10 test case + Improvement Log"
+        "html": "Trợ lý tuyển sinh V1: Agent Design Canvas + System Instructions + Agent chạy được + 10 test case + Improvement Log",
+        "plain": "Trợ lý tuyển sinh V1: Agent Design Canvas + System Instructions + Agent chạy được + 10 test case + Improvement Log"
        }
       ],
       [
@@ -118,8 +118,8 @@
         "plain": "Làm sao để Agent tự kiểm tra, rẽ nhánh và ghi nhớ?"
        },
        {
-        "html": "Workflow Agent phân tích đối thủ cạnh tranh",
-        "plain": "Workflow Agent phân tích đối thủ cạnh tranh"
+        "html": "Trợ lý tuyển sinh V3: phân loại, hỏi lại, tính điểm, tự kiểm tra, nhớ trong phiên",
+        "plain": "Trợ lý tuyển sinh V3: phân loại, hỏi lại, tính điểm, tự kiểm tra, nhớ trong phiên"
        }
       ],
       [
@@ -136,8 +136,8 @@
         "plain": "Làm sao để Agent hành động ngoài đời thực mà vẫn an toàn?"
        },
        {
-        "html": "Kịch bản Agent tổng hợp tin tức + báo giá + báo cáo, có Guardrails",
-        "plain": "Kịch bản Agent tổng hợp tin tức + báo giá + báo cáo, có Guardrails"
+        "html": "Trợ lý tuyển sinh V4: công cụ tính điểm, tra hồ sơ, tìm thông báo, tạo nháp, có Guardrails",
+        "plain": "Trợ lý tuyển sinh V4: công cụ tính điểm, tra hồ sơ, tìm thông báo, tạo nháp, có Guardrails"
        }
       ],
       [
@@ -154,8 +154,8 @@
         "plain": "Làm sao để nhiều Agent phối hợp và ngày càng tốt hơn?"
        },
        {
-        "html": "Phòng ban ảo Writer – Editor, bộ KPI và nhật ký tinh chỉnh",
-        "plain": "Phòng ban ảo Writer – Editor, bộ KPI và nhật ký tinh chỉnh"
+        "html": "Phòng tuyển sinh ảo: Router, Writer – Editor, bộ 20 đề, KPI và nhật ký tinh chỉnh",
+        "plain": "Phòng tuyển sinh ảo: Router, Writer – Editor, bộ 20 đề, KPI và nhật ký tinh chỉnh"
        }
       ]
      ]
@@ -729,6 +729,26 @@
        "html": "<a href=\"/static/labs/ai/bo_de_eval_gia_lap.csv\" download>bo_de_eval_gia_lap.csv</a> – 8 đề kiểm thử và cột ghi điểm cho bộ Eval (buổi 5)",
        "level": 0,
        "plain": "bo_de_eval_gia_lap.csv – 8 đề kiểm thử và cột ghi điểm cho bộ Eval (buổi 5)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/dang_ky_xet_tuyen_gia_lap.csv\" download>dang_ky_xet_tuyen_gia_lap.csv</a> – số nguyện vọng mới theo ngày của 12 ngành, có cài 3 lỗi dữ liệu; chỉ tiêu là thật, số đăng ký là giả lập (buổi 4)",
+       "level": 0,
+       "plain": "dang_ky_xet_tuyen_gia_lap.csv – số nguyện vọng mới theo ngày của 12 ngành, có cài 3 lỗi dữ liệu; chỉ tiêu là thật, số đăng ký là giả lập (buổi 4)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/email_thi_sinh_gia_lap.txt\" download>email_thi_sinh_gia_lap.txt</a> – 3 email của thí sinh, một email có cài lệnh Prompt Injection (buổi 4)",
+       "level": 0,
+       "plain": "email_thi_sinh_gia_lap.txt – 3 email của thí sinh, một email có cài lệnh Prompt Injection (buổi 4)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/bo_de_chatbot_tuyen_sinh.csv\" download>bo_de_chatbot_tuyen_sinh.csv</a> – 20 câu kiểm thử trợ lý tuyển sinh, đáp án lấy từ thông báo 2805 (buổi 5)",
+       "level": 0,
+       "plain": "bo_de_chatbot_tuyen_sinh.csv – 20 câu kiểm thử trợ lý tuyển sinh, đáp án lấy từ thông báo 2805 (buổi 5)"
+      },
+      {
+       "html": "<a href=\"/static/labs/ai/bo_de_brief_tuyen_sinh.csv\" download>bo_de_brief_tuyen_sinh.csv</a> – 8 brief kiểm thử đội Writer – Editor (buổi 5)",
+       "level": 0,
+       "plain": "bo_de_brief_tuyen_sinh.csv – 8 brief kiểm thử đội Writer – Editor (buổi 5)"
       }
      ]
     }

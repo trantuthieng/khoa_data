@@ -217,5 +217,84 @@ class Courses(unittest.TestCase):
         self.assertEqual(len(re.findall(r'^\d\. ', llm['prompt'], flags=re.M)), 9)
 
 
+    def test_ai35_backbone_and_labs(self):
+        """Buổi 3–5 đi theo đề bài tuyển sinh, giữ lý thuyết, nhiệm vụ lab đọc đúng trạng thái."""
+        import json
+        import re
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        must = {3: ['Question Classifier', 'Parameter Extractor', 'Self-Correction', 'Conversation Variables', 'Slot filling', 'Generator', '24,87'],
+                4: ['Function Calling', 'Least Privilege', 'Human-in-the-loop', 'Prompt Injection', 'MCP', 'Maximum Iterations', '/api/mock-ts/openapi.json'],
+                5: ['Router', 'Writer', 'Editor', 'LLM-as-a-judge', 'golden dataset', 'Vòng đời bảo trì', 'bo_de_chatbot_tuyen_sinh.csv']}
+        for no, words in must.items():
+            raw = (root / f'app/content/ai_agent/m0{no}.json').read_text(encoding='utf-8')
+            m = json.loads(raw)
+            titles = [s['title'] for s in m['sections']]
+            self.assertTrue(titles[0].startswith('Đề bài'), no)
+            self.assertGreaterEqual(sum(t.startswith('Chặng') for t in titles), 7, no)
+            for w in words:
+                self.assertIn(w, raw, (no, w))
+            for old in ['Sao Mai', 'NX-1024', 'Slide 15', 'máy lạnh']:
+                self.assertNotIn(old, raw, (no, old))
+            labs = [b for s in m['sections'] for b in s['blocks'] if b.get('t') == 'widget' and b.get('name') == 'agentlab']
+            self.assertGreaterEqual(len(labs), 5, no)
+            for b in labs:
+                sp = b['spec']
+                self.assertTrue(sp['missions'] or sp['lab'] in ('tiers',), sp['title'])
+                for mi in sp['missions']:
+                    for p in mi['when']:
+                        self.assertRegex(p, r'^[\w.]+$')
+            # phiếu thực hành có mặt ở mọi chặng và mọi trường nộp giữ nguyên khóa
+            act = next(a for a in m['activities'] if a['type'] == 'practice')
+            keys = {f['key'] for f in act['fields']}
+            self.assertTrue({3: {'system_prompt', 'checklist', 're_nhanh', 'bo_nho', 'thu_nghiem'}, 4: {'cong_cu', 'ham', 'prompt', 'guardrails', 'ket_qua'},
+                             5: {'writer', 'editor', 'luong', 'kpi', 'log'}}[no] <= keys, no)
+        # số trong bài khớp file phát cho học viên
+        import sys
+        sys.path.insert(0, str(root / 'tools'))
+        from ai_agent_files import DK_BATTHUONG, DK_TRONG, DK_TRUNG, dang_ky_bang, dang_ky_file
+        rows = dang_ky_file()
+        self.assertEqual(len(rows), 49)
+        for k in (DK_TRUNG, DK_TRONG, DK_BATTHUONG):
+            self.assertTrue(any((r[0], r[1]) == k for r in rows))
+        self.assertEqual(next(r for r in dang_ky_bang() if r[0] == '7140209')[3], 145)
+        self.assertEqual(next(r for r in dang_ky_bang(rows) if r[0] == '7140209')[3], 181)
+        # tài liệu mới có dấu phân cách của kho và ghi nguồn
+        for name in ('cong_thuc_diem_xet_tuyen.md', 'lich_tuyen_sinh_2026.md', 'hoc_phi_hoc_bong_2026.md'):
+            t = (root / 'app/static/labs/ai/spd' / name).read_text(encoding='utf-8')
+            self.assertIn('\n## ', t)
+            self.assertIn('Mã tài liệu: SPD_2805_2026_05_15', t)
+            self.assertLessEqual(max(len(x) for x in t.split('\n## ')), 3000, name)
+
+    def test_mock_ts_api(self):
+        """API giả lập của Buổi 4: công thức khớp Phụ lục 1, có xác thực, không trả hồ sơ khi sai ngày sinh."""
+        from app.mock_ts import API_KEY, tinh_diem
+        self.assertEqual(tinh_diem(24.5, .5)['diem_xet_tuyen'], 24.87)
+        self.assertEqual(tinh_diem(24.5, .5)['diem_uu_tien'], .37)
+        self.assertEqual(tinh_diem(21, .5)['diem_xet_tuyen'], 21.5)
+        self.assertFalse(tinh_diem(14.5, 0)['dat_nguong_15'])
+        self.assertEqual(tinh_diem(22.5, 1)['diem_uu_tien'], 1)
+        h = {'X-Api-Key': API_KEY}
+        c = self.client
+        self.assertEqual(c.get('/api/mock-ts/tinh-diem?tong_diem=24.5&muc_uu_tien=0.5').status_code, 401)
+        self.assertEqual(c.get('/api/mock-ts/tinh-diem?tong_diem=24.5&muc_uu_tien=0.5', headers=h).json()['diem_xet_tuyen'], 24.87)
+        self.assertEqual(c.get('/api/mock-ts/tinh-diem?tong_diem=31&muc_uu_tien=0', headers=h).status_code, 422)
+        self.assertEqual(c.get('/api/mock-ts/ho-so?ma_ho_so=TS26-0002&ngay_sinh=2008-07-02', headers=h).json()['thieu'], ['Giấy xác nhận khu vực ưu tiên'])
+        r = c.get('/api/mock-ts/ho-so?ma_ho_so=TS26-0002&ngay_sinh=2000-01-01', headers=h)
+        self.assertEqual(r.status_code, 403)
+        self.assertNotIn('Thí sinh giả lập', r.text)
+        self.assertEqual(c.get('/api/mock-ts/ho-so?ma_ho_so=TS26-9999&ngay_sinh=2008-07-02', headers=h).status_code, 404)
+        self.assertEqual(c.get('/api/mock-ts/ho-so?ma_ho_so=abc&ngay_sinh=2008-07-02', headers=h).status_code, 422)
+        body = {'ma_ho_so': 'TS26-0002', 'ngay': '2026-07-08', 'noi_dung': 'Tư vấn', 'khoa_yeu_cau': 'yc-001'}
+        a = c.post('/api/mock-ts/lich-tu-van', json=body, headers=h).json()
+        b = c.post('/api/mock-ts/lich-tu-van', json=body, headers=h).json()
+        self.assertEqual(a['ma_nhap'], b['ma_nhap'])
+        self.assertEqual(a['trang_thai'], 'cho_can_bo_duyet')
+        spec = c.get('/api/mock-ts/openapi.json').json()
+        ops = {o['operationId'] for p in spec['paths'].values() for o in p.values()}
+        self.assertEqual(ops, {'tinh_diem_xet_tuyen', 'tra_ho_so', 'tim_thong_bao', 'tao_nhap_lich_tu_van'})
+        self.assertTrue(spec['servers'][0]['url'].endswith('/api/mock-ts'))
+
+
 if __name__ == '__main__':
     unittest.main()
