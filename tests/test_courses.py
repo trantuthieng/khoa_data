@@ -109,8 +109,7 @@ class Courses(unittest.TestCase):
         import re
         from app.content import course_modules
         m = course_modules('ai-agent')[2]
-        stages = {s['title'].split(' – ')[0]: s for s in m['sections'] if s['title'].startswith('Chặng ')}
-        heads = [b['text'] for b in stages['Chặng 5']['blocks'] if b['t'] == 'h3']
+        heads = [b['text'] for s in m['sections'] if s['title'].startswith('Chặng 5') for b in s['blocks'] if b['t'] == 'h3']
         self.assertEqual([h.split(' – ')[0] for h in heads if h.startswith('Khối ')], [f'Khối {i}' for i in range(1, 7)])
 
         # đáp án không lộ qua file tải; mọi link và ảnh trong bài đều tới file có thật
@@ -137,24 +136,28 @@ class Courses(unittest.TestCase):
         board = next(f for f in th['fields'] if f['type'] == 'board')
         self.assertEqual({n['id'] for n in ans['so_do_rag']['nodes']}, {n['id'] for n in board['nodes']})
 
-    def test_ai02_is_hands_on(self):
-        """Buổi 2 thuần thực hành: mỗi chặng làm trước, kiến thức xen sau, nội dung slide không mất."""
+    def test_ai02_backbone_keeps_theory(self):
+        """Đề bài chatbot là xương sống: mỗi chặng có đề bài, kiến thức nối vào, mô hình động hoặc lab; lý thuyết không bị gập, tham số có bảng."""
+        import re
         from app.content import ACTIVITIES, course_modules, student_module
         m = course_modules('ai-agent')[2]
         titles = [s['title'] for s in m['sections']]
+        self.assertTrue(titles[0].startswith('Đề bài'))
         self.assertFalse([t for t in titles if t.startswith(('Phần ', 'Hướng dẫn', 'Ví dụ mẫu', 'Đi sâu'))])
         stages = [s for s in m['sections'] if s['title'].startswith('Chặng ')]
-        self.assertEqual([s['title'].split(' – ')[0] for s in stages], [f'Chặng {i}' for i in range(1, 9)])
+        self.assertEqual(sorted({re.match(r'Chặng (\d)', s['title']).group(1) for s in stages}), [str(i) for i in range(1, 9)])
         for s in stages:
             self.assertEqual(s['kind'], 'practice', s['title'])
-            heads = [b['text'] for b in s['blocks'] if b['t'] == 'h3']
-            xen = [i for i, h in enumerate(heads) if h.startswith('Xen kẽ')]
-            if s['title'].startswith('Chặng 8'):
-                self.assertEqual(xen, [])
-                continue
-            # có đúng một lần xen kẽ, và khối đầu tiên của chặng là việc phải làm
-            self.assertEqual(len(xen), 1, s['title'])
-            self.assertTrue(s['blocks'][0]['text'].startswith('Làm ngay'), s['title'])
+        by_no = {}
+        for s in stages:
+            by_no.setdefault(re.match(r'Chặng (\d)', s['title']).group(1), []).append(s)
+        for no, group in by_no.items():
+            blocks = [b for s in group for b in s['blocks']]
+            first = group[0]['blocks'][0]
+            self.assertIn('Đề bài chặng', first.get('html', ''), no)
+            self.assertTrue(any(b['t'] == 'h3' and b['text'].startswith('📚 Kiến thức nối vào') for b in blocks), no)
+            if no != '8':
+                self.assertTrue(any(b['t'] == 'widget' for b in blocks), no)
 
         def text(blocks):
             out = []
@@ -166,10 +169,12 @@ class Courses(unittest.TestCase):
                     out.extend(c.get('plain', '') for c in r)
                 out.append(text(b.get('blocks', [])))
             return '\n'.join(out)
-        body = text(b for s in m['sections'] for b in s['blocks'])
+        # lý thuyết theo slide phải nằm ngoài phần gập; chỉ tự kiểm tra, đối chiếu kết quả mới được gập
+        body = text(b for s in m['sections'] for b in s['blocks'] if b['t'] != 'details')
         for slide_term in ('128k', 'Lost in the middle', 'Retrieval', 'Augmented', 'Generation', 'thi đóng', 'text-embedding-3-small',
                            'Keyword Search', 'Semantic Search', 'Hybrid Search', 'cosine', 'Pinecone', 'Milvus', 'Qdrant', 'pgvector',
-                           'GIGO', 'OCR', 'Metadata', 'Chunk overlap', 'Query Rewrite', 'Top-K', 'Score Threshold', 'Hit Test', 'Coze'):
+                           'GIGO', 'Metadata', 'Chunk overlap', 'Query Rewrite', 'Top-K', 'Score Threshold', 'Hit Test', 'Coze',
+                           'fine-tuning', 'Parent-child', 'Rerank', 'ANN', 'BM25', 'map-reduce', 'Agentic RAG'):
             self.assertIn(slide_term.lower(), body.lower(), slide_term)
 
         # khóa trường cũ còn nguyên để bài đã nộp vẫn đọc được; phiếu mở được từ đề bài ở chặng 8
@@ -181,6 +186,35 @@ class Courses(unittest.TestCase):
         shown = student_module(2, None, set(), 'ai-agent')
         self.assertFalse(any(b.get('reveal') for s in shown['sections'] for b in s['blocks']))
         self.assertTrue(any(b.get('reveal') for s in student_module(2, None, {'ai02-th2'}, 'ai-agent')['sections'] for b in s['blocks']))
+
+    def test_ai02_labs_consistent(self):
+        """Lab mini: đọc được dữ liệu SPD, có đủ giải thích tham số, nhiệm vụ trỏ tới trạng thái có thật, câu hỏi có thật."""
+        import re
+        from pathlib import Path
+        from app.content import course_modules
+        m = course_modules('ai-agent')[2]
+        labs = [b['spec'] for s in m['sections'] for b in s['blocks'] if b['t'] == 'widget' and b['name'] == 'difylab']
+        self.assertEqual({l['lab'] for l in labs}, {'context', 'clean', 'spot', 'cosine', 'chunk', 'retrieval', 'start', 'kr', 'if', 'llm', 'answer', 'rewrite', 'all'})
+        js = Path('app/static/difylab.js').read_text(encoding='utf-8')
+        for name in re.findall(r"\['([\w.]+\.md)', '", js):
+            self.assertEqual(self.client.get(f'/static/labs/ai/spd/{name}').status_code, 200, name)
+        qids = set(re.findall(r"^  (\w+): \{ lb:", js, flags=re.M))
+        roots = {'q', 'cs', 'rs', 'node', 'cond', 'llm', 'rw', 'ans', 'start', 'out', 'off', 'active'}
+        param_keys = set(re.findall(r'<dl-param k="(\w+)"', js))
+        for lab in labs:
+            self.assertTrue(lab['title'] and lab['intro'], lab['lab'])
+            self.assertLessEqual(set(lab.get('qs', [])), qids, lab['lab'])
+            self.assertLessEqual(set(lab['docs']), param_keys, lab['lab'])
+            for mission in lab['missions']:
+                self.assertTrue(mission['why'], mission['t'])
+                self.assertLessEqual({p.split('.')[0] for p in mission['when']}, roots, mission['t'])
+                if 'q' in mission['when']:
+                    self.assertIn(mission['when']['q'], qids, mission['t'])
+        # script được nạp ở cả hai trang có hiển thị bài học
+        for page in ('learn.html', 'teacher.html'):
+            self.assertIn('/static/difylab.js', Path(f'app/static/{page}').read_text(encoding='utf-8'))
+        llm = next(l for l in labs if l['lab'] == 'llm')
+        self.assertEqual(len(re.findall(r'^\d\. ', llm['prompt'], flags=re.M)), 9)
 
 
 if __name__ == '__main__':

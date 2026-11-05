@@ -37,6 +37,47 @@ const VDB_QUESTIONS = [
     note: 'Kho chỉ có chính sách đổi trả: câu hỏi rơi vào vùng trống, không đoạn nào đủ gần. Agent phải nói “không có thông tin”, không được đoán.' },
 ];
 
+// Bộ dữ liệu của đề bài chatbot tuyển sinh: nội dung tóm từ bộ mẫu SPD, vector vẫn là minh họa 6 chiều có tên
+const VDB_SETS = {
+  nhaxanh: { dims: VDB_DIMS, chunks: VDB_CHUNKS, questions: VDB_QUESTIONS, anchors: VDB_ANCHORS, emptyTopic: 'Nhân sự',
+    doc: 'tài liệu <em>chinh_sach_doi_tra_gia_lap.md</em> của Nhà Xanh',
+    cluster: 'các đoạn về giao hàng gom một chỗ, về hoàn tiền gom một chỗ. Đoạn mang hai ý (VD #2 “miễn phí giao hàng” vừa về giao hàng vừa về tiền) nằm lệch về phía cụm còn lại. Vùng <b>Nhân sự</b> trống vì kho này không có tài liệu nhân sự.' },
+  spd: {
+    dims: ['Ngành & trình độ', 'Chỉ tiêu', 'Tổ hợp', 'Phương thức', 'Chứng chỉ & điểm', 'Học phí'],
+    anchors: [[260, 110], [530, 105], [705, 220], [420, 320], [690, 350], [225, 345]],
+    emptyTopic: 'Học phí',
+    doc: 'bốn file Markdown của <em>bộ mẫu SPD</em>',
+    cluster: 'các đoạn về ngành gom một chỗ, về tổ hợp gom một chỗ, về chứng chỉ gom một chỗ. Đoạn mang hai ý (VD #3 vừa nói ngành vừa nói chỉ tiêu) nằm giữa hai cụm. Vùng <b>Học phí</b> trống vì bộ mẫu chưa có trang học phí.',
+    chunks: [
+      { muc: 'Ngành', text: 'Giáo dục Mầm non (CĐ), mã xét tuyển 51140201, trình độ Cao đẳng.', v: [.95, .15, .05, 0, 0, 0], j: [-46, -8] },
+      { muc: 'Ngành', text: 'Giáo dục Mầm non, mã xét tuyển 7140201, trình độ Đại học.', v: [.95, .15, .05, 0, 0, 0], j: [-10, 36] },
+      { muc: 'Ngành', text: 'Sư phạm Toán học, mã 7140209, có 02 chuyên ngành, chỉ tiêu dự kiến 115 của cả dòng ngành.', v: [.8, .6, 0, 0, 0, 0], j: [44, 14] },
+      { muc: 'Chỉ tiêu', text: 'Giáo dục Mầm non (CĐ): chỉ tiêu dự kiến 100.', v: [.5, .9, 0, 0, 0, 0], j: [-24, 34] },
+      { muc: 'Chỉ tiêu', text: 'Giáo dục Mầm non đại học: chỉ tiêu dự kiến 450.', v: [.45, .92, 0, 0, 0, 0], j: [42, -6] },
+      { muc: 'Tổ hợp', text: 'Tổ hợp A00: Toán, Vật lí, Hóa học; ghi cho PT 100, PT 200, PT 416.', v: [0, 0, .95, .35, 0, 0], j: [-40, -20] },
+      { muc: 'Tổ hợp', text: 'Tổ hợp X70: Ngữ văn, Lịch sử, Giáo dục Kinh tế và pháp luật; ghi cho PT 100, PT 200.', v: [0, 0, .95, .3, 0, 0], j: [10, 34] },
+      { muc: 'Tổ hợp', text: 'Tổ hợp M00: có môn năng khiếu; ghi cho PT 100, PT 200.', v: [.1, 0, .9, .3, 0, 0], j: [42, -14] },
+      { muc: 'Phương thức', text: 'Giáo dục Mầm non đại học liệt kê PT 100, 301, 416, 402.', v: [.45, 0, .1, .9, 0, 0], j: [-34, 10] },
+      { muc: 'Phương thức', text: 'Phương thức 200 áp dụng cho thí sinh tốt nghiệp THPT 2023–2025 và lớp 12 năm 2026.', v: [0, 0, .05, .95, 0, 0], j: [30, 22] },
+      { muc: 'Chứng chỉ', text: 'Với phương thức 100, chứng chỉ ngoại ngữ dùng để quy đổi điểm môn, không dùng để cộng điểm.', v: [0, 0, 0, .4, .92, 0], j: [-40, -6] },
+      { muc: 'Chứng chỉ', text: 'Tổng điểm cộng không vượt quá 10% điểm tối đa của thang điểm xét tuyển.', v: [0, 0, 0, .1, .95, 0], j: [36, 8] },
+      { muc: 'Chứng chỉ', text: 'Thí sinh đăng ký tối đa 15 nguyện vọng, xếp ưu tiên từ cao xuống thấp.', v: [.2, 0, 0, .35, .55, 0], j: [-22, -44] },
+    ],
+    questions: [
+      { q: 'Mầm non cao đẳng tuyển bao nhiêu?', v: [.55, .85, 0, 0, 0, 0], kw: ['mầm non', 'cao đẳng'],
+        note: 'Tài liệu ghi “chỉ tiêu dự kiến”, câu hỏi ghi “tuyển bao nhiêu”: khác chữ nhưng vector vẫn gần nhau. Đoạn của đại học cũng rất gần, nên phải giữ rõ trình độ trong đoạn.' },
+      { q: 'Có IELTS thì được thêm điểm không?', v: [0, 0, 0, .25, .96, 0], kw: ['ielts', 'thêm điểm'],
+        note: 'Tài liệu không có chữ “IELTS” lẫn “thêm điểm”. Tìm theo từ khóa trả về rỗng, tìm theo nghĩa vẫn đến đúng cụm chứng chỉ.' },
+      { q: 'Tổ hợp X70 gồm những môn gì?', v: [0, 0, .98, .15, 0, 0], kw: ['x70'],
+        note: 'Theo nghĩa, mọi đoạn tổ hợp đều rất gần nhau nên đoạn X70 không chắc đứng đầu. Chuyển sang “Theo từ khóa” để thấy mã số chỉ khớp đúng đoạn cần tìm: đó là lý do dùng Hybrid.' },
+      { q: 'Phương thức 200 áp dụng cho ai?', v: [0, 0, .05, .98, 0, 0], kw: ['phương thức 200'],
+        note: 'Câu hỏi rơi vào cụm Phương thức.' },
+      { q: 'Học phí bao nhiêu?', v: [0, 0, 0, 0, .05, .99], kw: ['học phí'],
+        note: 'Kho chưa có học phí: câu hỏi rơi vào vùng trống, không đoạn nào đủ gần. Chatbot phải nói chưa có thông tin, không được đoán.' },
+    ],
+  },
+};
+
 const VDB_STEPS = [
   ['Nạp tài liệu', 'Cắt đoạn, đổi thành vector'],
   ['Gom nghĩa', 'Đoạn cùng nghĩa nằm gần nhau'],
@@ -53,9 +94,9 @@ function vdbCos(a, b) {
 }
 
 // hình chiếu 2D: trung bình các tâm theo trọng số mũ 3 (chiều nổi trội kéo điểm về cụm của nó)
-function vdbProject(v, j) {
+function vdbProject(v, j, anchors = VDB_ANCHORS) {
   let x = 0, y = 0, s = 0;
-  v.forEach((w, i) => { const k = w ** 3; x += k * VDB_ANCHORS[i][0]; y += k * VDB_ANCHORS[i][1]; s += k; });
+  v.forEach((w, i) => { const k = w ** 3; x += k * anchors[i][0]; y += k * anchors[i][1]; s += k; });
   return [Math.round(x / s + (j ? j[0] : 0)), Math.round(y / s + (j ? j[1] : 0))];
 }
 
@@ -63,22 +104,23 @@ function vdbNum(x) { return x.toFixed(2).replace('.', ','); }
 
 const VectorDbDemo = {
   name: 'VectorDbDemo',
-  props: { caption: String },
+  props: { caption: String, dataset: { type: String, default: 'nhaxanh' } },
   data() {
     return { step: 0, qi: 0, mode: 'vector', k: 3, th: 0.5, sel: null, timer: null, docPos: [58, 108], askPos: [58, 318] };
   },
   computed: {
     steps() { return VDB_STEPS; },
-    dims() { return VDB_DIMS; },
-    questions() { return VDB_QUESTIONS; },
-    cur() { return VDB_QUESTIONS[this.qi]; },
-    qPos() { return vdbProject(this.cur.v); },
+    set() { return VDB_SETS[this.dataset] || VDB_SETS.nhaxanh; },
+    dims() { return this.set.dims; },
+    questions() { return this.set.questions; },
+    cur() { return this.set.questions[this.qi]; },
+    qPos() { return vdbProject(this.cur.v, null, this.set.anchors); },
     anchors() {
-      return VDB_DIMS.map((name, i) => ({ name, x: VDB_ANCHORS[i][0], y: VDB_ANCHORS[i][1], empty: name === 'Nhân sự' }));
+      return this.set.dims.map((name, i) => ({ name, x: this.set.anchors[i][0], y: this.set.anchors[i][1], empty: name === this.set.emptyTopic }));
     },
     chunks() {
-      return VDB_CHUNKS.map((c, i) => {
-        const [x, y] = vdbProject(c.v, c.j);
+      return this.set.chunks.map((c, i) => {
+        const [x, y] = vdbProject(c.v, c.j, this.set.anchors);
         const low = c.text.toLowerCase();
         const hits = this.cur.kw.filter(w => low.includes(w));
         return { ...c, no: i + 1, x, y, score: vdbCos(this.cur.v, c.v), hits };
@@ -239,7 +281,7 @@ const VectorDbDemo = {
     <div class="vdb-panel">
       <template v-if="step === 0">
         <h4>Kho tài liệu đang trống</h4>
-        <p>Bên trái là tài liệu <em>chinh_sach_doi_tra_gia_lap.md</em> của Nhà Xanh. Bên phải là “bản đồ nghĩa” của Vector Database,
+        <p>Bên trái là <span v-html="set.doc"></span>. Bên phải là “bản đồ nghĩa” của Vector Database,
           nơi mỗi đoạn văn sẽ thành một chấm. Bấm <b>▶ Tự chạy</b> hoặc từng bước 1 → 6 để xem một câu hỏi được trả lời ra sao.</p>
       </template>
 
@@ -258,9 +300,7 @@ const VectorDbDemo = {
 
       <template v-else-if="step === 2">
         <h4>Bước 2 – Đoạn cùng nghĩa tự nằm gần nhau</h4>
-        <p>Không ai xếp tay: vì vector giống nhau nên các đoạn về giao hàng gom một chỗ, về hoàn tiền gom một chỗ.
-          Đoạn mang hai ý (VD #2 “miễn phí giao hàng” vừa về giao hàng vừa về tiền) nằm lệch về phía cụm còn lại.
-          Vùng <b>Nhân sự</b> trống vì kho này không có tài liệu nhân sự.</p>
+        <p>Không ai xếp tay: vì vector giống nhau nên <span v-html="set.cluster"></span></p>
         <p class="vdb-mut vdb-small">Bấm vào một chấm để xem đoạn văn và vector của nó.</p>
       </template>
 

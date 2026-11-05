@@ -195,76 +195,73 @@ def fl_system_instructions():
 
 def fl_rag():
     xs, w = [10, 155, 300, 445, 590], 118
-    r1 = [("doc", ["Tài liệu gốc", "PDF, Word, Excel"], "note"), ("clean", ["Làm sạch", "chuyển Markdown"], "note"),
-          ("chunk", ["Cắt đoạn", "500–1.000 token"], "note"), ("emb", ["Embedding", "chữ → vector"], "note"),
+    r1 = [("doc", ["Tài liệu gốc", "PDF 39 trang"], "note"), ("clean", ["Làm sạch", "Markdown, CSV"], "note"),
+          ("chunk", ["Cắt đoạn", "cha và con"], "note"), ("emb", ["Embedding", "chữ → vector"], "note"),
           ("vdb", ["Vector DB", "lưu đoạn + vector"], "brand")]
-    r2 = [("q", ["Câu hỏi", "của người dùng"], "note"), ("rw", ["Viết lại", "câu hỏi đủ nghĩa"], "note"),
-          ("srch", ["Tìm Top-K", "lọc theo ngưỡng"], "brand"), ("pr", ["Ghép prompt", "đoạn + câu hỏi"], "note"),
+    r2 = [("q", ["Câu hỏi", "của thí sinh"], "note"), ("rw", ["Viết lại", "câu hỏi đủ nghĩa"], "note"),
+          ("srch", ["Tìm Top-K", "Hybrid"], "brand"), ("pr", ["Ghép prompt", "đoạn + câu hỏi"], "note"),
           ("llm", ["LLM trả lời", "kèm nguồn"], "ok")]
     nodes = [N(i, xs[k], 30, w, 54, t, kk) for k, (i, t, kk) in enumerate(r1)]
     nodes += [N(i, xs[k], 140, w, 54, t, kk) for k, (i, t, kk) in enumerate(r2)]
     edges = [E(f"a{k}", r1[k - 1][0], r1[k][0]) for k in range(1, 5)]
     edges += [E(f"b{k}", r2[k - 1][0], r2[k][0]) for k in range(1, 5)]
-    edges.append(E("v", "vdb", "srch", d="M649,84 V110 H359 V138", lb="tìm theo nghĩa"))
+    edges.append(E("v", "vdb", "srch", d="M649,84 V110 H359 V138", lb="tìm theo nghĩa và từ khóa"))
     notes = [{"x": 10, "y": 20, "t": "① Nạp tài liệu – làm một lần, làm lại khi tài liệu thay đổi"},
              {"x": 10, "y": 130, "t": "② Hỏi đáp – mỗi câu hỏi"}]
     ingest = C("Nạp tài liệu",
-               "Giai đoạn ①: đưa <em>Sổ tay nhân sự 2025</em> vào Knowledge Base. Làm một lần, làm lại khi tài liệu đổi.",
-               [S("Tài liệu gốc", "Bản PDF 42 trang", "Có trang bìa, mục lục, header/footer, bảng thưởng KPI.", on=["doc"],
-                  tag={"doc": "so_tay_nhan_su.pdf"}),
-                S("Làm sạch", "Bỏ nhiễu, chuyển Markdown",
-                  "Bỏ mục lục, header, số trang; viết lại bảng thành câu; mỗi mục bắt đầu bằng đề mục ##.", on=["clean"],
-                  go=["a1"], msg="PDF 42 trang", tag={"clean": "bỏ mục lục, header"}),
-                S("Cắt đoạn", "Mỗi mục một đoạn", "Cắt theo dòng trống giữa các mục: được 9 đoạn trọn ý.",
-                  on=["chunk"], go=["a2"], msg="Markdown sạch", tag={"chunk": "9 đoạn"}),
-                S("Embedding", "Đổi mỗi đoạn thành vector",
-                  "Mô hình embedding đổi mỗi đoạn thành một dãy hàng nghìn con số biểu diễn nghĩa.", on=["emb"],
-                  go=["a3"], msg="9 đoạn", tag={"emb": "1 đoạn → 1 vector"}),
+               "Giai đoạn ① là chặng 1–4 của bài: đưa thông báo tuyển sinh vào Knowledge Base. Làm một lần, làm lại khi tài liệu đổi.",
+               [S("Tài liệu gốc", "PDF 39 trang", "Giữ nguyên bản gốc, ghi mã thông báo, ngày, số trang.", on=["doc"],
+                  tag={"doc": "2805/TB-ĐHĐT"}),
+                S("Làm sạch", "Chọn phần cần dùng, đối chiếu",
+                  "Bốn Markdown: thông tin chung, 12 dòng ngành, 53 tổ hợp, mục 5.1–5.3. Mỗi mục bắt đầu bằng đề mục ##.", on=["clean"],
+                  go=["a1"], msg="PDF 39 trang", tag={"clean": "4 file .md"}),
+                S("Cắt đoạn", "Mỗi mục một đoạn cha, mỗi dòng một đoạn con", "Cấu hình của bài cho 72 đoạn cha và 474 đoạn con.",
+                  on=["chunk"], go=["a2"], msg="4 file sạch", tag={"chunk": "72 cha, 474 con"}),
+                S("Embedding", "Đổi mỗi đoạn con thành vector",
+                  "Mô hình embedding đổi mỗi đoạn con thành một dãy hàng nghìn con số biểu diễn nghĩa.", on=["emb"],
+                  go=["a3"], msg="474 đoạn con", tag={"emb": "1 đoạn → 1 vector"}),
                 S("Lưu kho", "Vector DB lưu đoạn + vector",
-                  "Kho sẵn sàng. Từ giờ mỗi câu hỏi chỉ chạy giai đoạn ②.", on=["vdb"], go=["a4"], msg="9 vector",
+                  "Kho sẵn sàng. Từ giờ mỗi câu hỏi chỉ chạy giai đoạn ②.", on=["vdb"], go=["a4"], msg="474 vector",
                   tone={"vdb": "ok"}, tag={"vdb": "sẵn sàng"})])
-    normal = C("Câu hỏi thường", "Giai đoạn ②, câu hỏi: <em>“Hạng B được thưởng KPI bao nhiêu?”</em>",
-               [S("Câu hỏi", "Người dùng hỏi", on=["q"], set={"q": ["Câu hỏi", "“Hạng B thưởng", "bao nhiêu?”"]}),
+    normal = C("Câu hỏi thường", "Giai đoạn ②, câu hỏi: <em>“Phương thức 100 có cộng điểm chứng chỉ ngoại ngữ không?”</em>",
+               [S("Câu hỏi", "Thí sinh hỏi", on=["q"], set={"q": ["Câu hỏi", "“PT 100 có cộng", "điểm chứng chỉ?”"]}),
                 S("Viết lại", "Câu hỏi đã đủ nghĩa", "Không phải câu nối tiếp nên giữ nguyên.", on=["rw"], go=["b1"],
-                  msg="Hạng B thưởng KPI…", tag={"rw": "giữ nguyên"}),
-                S("Tìm Top-K", "Tìm đoạn gần nghĩa nhất",
-                  "Câu hỏi được đổi thành vector, so với 9 vector trong kho. Ba đoạn đứng đầu vượt ngưỡng 0,45.",
-                  on=["srch", "vdb"], go=["b2", "v"], msg={"b2": "Hạng B thưởng KPI…", "v": "9 vector"},
-                  tag={"srch": "0,80 · 0,64 · 0,53"}),
-                S("Ghép prompt", "Điền đoạn và câu hỏi vào prompt", on=["pr"], go=["b3"], msg="3 đoạn",
-                  code="Chỉ dùng thông tin trong <tai_lieu>…\n<tai_lieu>\n[Đoạn 1] 3.2 Thưởng KPI quý: … Hạng B: KPI từ 95% "
-                       "đến dưới 110%, thưởng 3.000.000 đồng/quý …\n[Đoạn 2] …\n</tai_lieu>\nCâu hỏi: Hạng B được thưởng "
-                       "KPI bao nhiêu?"),
+                  msg="PT 100 cộng điểm?", tag={"rw": "giữ nguyên"}),
+                S("Tìm Top-K", "Tìm đoạn gần nhất trong kho",
+                  "Câu hỏi được đổi thành vector, so với 474 đoạn con. Đoạn con về chứng chỉ khớp nhất, kéo theo cả đoạn cha 5.2. Điểm 0,682 lấy từ log lần chạy thật.",
+                  on=["srch", "vdb"], go=["b2", "v"], msg={"b2": "PT 100 cộng điểm?", "v": "474 vector"},
+                  tag={"srch": "đầu bảng 0,682: mục 5.2"}),
+                S("Ghép prompt", "Điền đoạn và câu hỏi vào prompt", on=["pr"], go=["b3"], msg="6 đoạn cha",
+                  code="Chỉ sử dụng bằng chứng trong NGỮ CẢNH…\nNGỮ CẢNH:\n5.2. Điểm cộng và quy đổi điểm chứng chỉ ngoại ngữ\n- Với phương thức 100, chứng chỉ ngoại ngữ dùng để quy đổi điểm môn…\nUSER: Phương thức 100 có cộng điểm chứng chỉ ngoại ngữ không?"),
                 S("Trả lời", "LLM trả lời kèm nguồn",
-                  "“Hạng B được thưởng 3.000.000 đồng/quý (KPI từ 95% đến dưới 110%). (Nguồn: Sổ tay nhân sự 2025 – mục 3.2)”",
+                  "“Không. Với phương thức 100, chứng chỉ dùng để quy đổi điểm môn, không dùng để cộng điểm. Nguồn: mục 5.2, trang PDF 19.”",
                   on=["llm"], go=["b4"], tone={"llm": "ok"})])
     follow = C("Câu hỏi nối tiếp",
-               "Người dùng vừa hỏi thưởng hạng A, giờ hỏi tiếp: <em>“Còn hạng B thì sao?”</em>",
-               [S("Câu hỏi", "Câu hỏi thiếu chủ ngữ", "Đem “Còn hạng B thì sao?” đi tìm sẽ lạc.", on=["q"],
-                  set={"q": ["Câu hỏi", "“Còn hạng B", "thì sao?”"]}),
+               "Thí sinh vừa hỏi Mầm non cao đẳng, giờ hỏi tiếp: <em>“Còn đại học thì sao?”</em>",
+               [S("Câu hỏi", "Câu hỏi thiếu chủ ngữ", "Đem “Còn đại học thì sao?” đi tìm sẽ lạc.", on=["q"],
+                  set={"q": ["Câu hỏi", "“Còn đại học", "thì sao?”"]}),
                 S("Viết lại", "Bổ sung từ lịch sử chat",
-                  "Node viết lại đọc lịch sử, thay “còn … thì sao” bằng nội dung cụ thể.", on=["rw"], go=["b1"],
-                  msg="Còn hạng B thì sao?", tag={"rw": "→ thưởng KPI hạng B?"}, tone={"rw": "warn"},
-                  code="Mức thưởng KPI quý của hạng B là bao nhiêu?"),
+                  "Khối viết lại đọc lịch sử, thay “còn … thì sao” bằng nội dung cụ thể. Bạn dựng khối này ở chặng 6.", on=["rw"], go=["b1"],
+                  msg="Còn đại học thì sao?", tag={"rw": "→ Mầm non đại học"}, tone={"rw": "warn"},
+                  code="Chỉ tiêu dự kiến của Giáo dục Mầm non trình độ đại học là bao nhiêu?"),
                 S("Tìm Top-K", "Tìm bằng câu đã viết lại", on=["srch", "vdb"], go=["b2", "v"],
-                  msg={"b2": "thưởng KPI quý hạng B", "v": "9 vector"}, tag={"srch": "0,80 · 0,64 · 0,53"},
-                  x="Nhờ câu đầy đủ nghĩa, đoạn 3.2 đứng đầu như câu hỏi thường."),
-                S("Ghép prompt", "Điền đoạn và câu đã viết lại", on=["pr"], go=["b3"], msg="3 đoạn"),
-                S("Trả lời", "Trả lời đúng mạch hội thoại", "“Hạng B được thưởng 3.000.000 đồng/quý…” kèm nguồn mục 3.2.",
+                  msg={"b2": "Mầm non đại học", "v": "474 vector"}, tag={"srch": "đầu bảng: mã 7140201"},
+                  x="Nhờ câu đầy đủ nghĩa, đoạn Mầm non đại học đứng đầu."),
+                S("Ghép prompt", "Điền đoạn và câu đã viết lại", on=["pr"], go=["b3"], msg="6 đoạn cha"),
+                S("Trả lời", "Trả lời đúng mạch hội thoại", "“Giáo dục Mầm non trình độ đại học (mã 7140201) có chỉ tiêu dự kiến 450.” kèm nguồn trang 13.",
                   on=["llm"], go=["b4"], tone={"llm": "ok"})])
     trap = C("Câu bẫy: tài liệu không có",
-             "Câu hỏi: <em>“Thưởng Tết bao nhiêu?”</em> – sổ tay không có mục nào về thưởng Tết.",
-             [S("Câu hỏi", "Người dùng hỏi", on=["q"], set={"q": ["Câu hỏi", "“Thưởng Tết", "bao nhiêu?”"]}),
-              S("Viết lại", "Giữ nguyên", on=["rw"], go=["b1"], msg="Thưởng Tết bao nhiêu?", tag={"rw": "giữ nguyên"}),
-              S("Tìm Top-K", "Không đoạn nào đủ gần",
-                "Đoạn gần nhất là “Thưởng sáng kiến” chỉ được 0,22 – dưới ngưỡng 0,45 nên bị loại.",
-                on=["srch", "vdb"], go=["b2", "v"], msg={"b2": "Thưởng Tết…", "v": "9 vector"},
-                tag={"srch": "không đoạn nào ≥ 0,45"}, tone={"srch": "warn"}),
-              S("Ghép prompt", "Thẻ tài liệu rỗng", on=["pr"], go=["b3"], msg="0 đoạn",
-                code="<tai_lieu>\n(không có đoạn nào)\n</tai_lieu>\nCâu hỏi: Thưởng Tết bao nhiêu?"),
-              S("Trả lời", "Nói rõ là không có",
-                "“Tài liệu hiện có chưa đề cập nội dung này. Anh/chị vui lòng liên hệ phòng Nhân sự.” Đúng: luật 5 trong prompt "
-                "chặn LLM đoán ra một con số.", on=["llm"], go=["b4"], tone={"llm": "ok"})])
+             "Câu hỏi: <em>“Học phí bao nhiêu?”</em> Bộ mẫu không có trang học phí.",
+             [S("Câu hỏi", "Thí sinh hỏi", on=["q"], set={"q": ["Câu hỏi", "“Học phí", "bao nhiêu?”"]}),
+              S("Viết lại", "Giữ nguyên", on=["rw"], go=["b1"], msg="Học phí bao nhiêu?", tag={"rw": "giữ nguyên"}),
+              S("Tìm Top-K", "Vẫn có đoạn trả về",
+                "Đoạn đứng đầu là tổ hợp X10, điểm 0,427 theo log, chẳng liên quan gì học phí. Ngưỡng đang tắt nên kết quả không rỗng.",
+                on=["srch", "vdb"], go=["b2", "v"], msg={"b2": "Học phí…", "v": "474 vector"},
+                tag={"srch": "0,427: không liên quan"}, tone={"srch": "warn"}),
+              S("Ghép prompt", "Ngữ cảnh có đoạn nhưng không có câu trả lời", on=["pr"], go=["b3"], msg="6 đoạn không liên quan",
+                code="NGỮ CẢNH:\nTổ hợp X10 - SPD - năm 2026 …\nUSER: Học phí bao nhiêu?"),
+              S("Trả lời", "Nói rõ là chưa có",
+                "“Bộ tài liệu mẫu chưa có thông tin này.” Đúng là nhờ nguyên tắc 1 và 5 trong prompt: LLM đánh giá bằng chứng, không đoán con số.", on=["llm"], go=["b4"], tone={"llm": "ok"})])
     return spec("Hệ thống RAG hai giai đoạn", 720, 204, nodes, edges, [ingest, normal, follow, trap], notes)
 
 
@@ -590,3 +587,168 @@ def fl_vong_doi():
              tone={"run": "ok"}, x="Chất lượng gần bằng v2, chi phí giảm – nhóm quyết định phát hành."),
            S("Phát hành", "Phát hành v3.1", on=["rel"], go=["v5"], msg="v3.1", tag={"rel": "v3.1"}, tone={"rel": "ok"})])
     return spec("Vòng đời bảo trì Agent", 720, 222, nodes, edges, [a, b], notes)
+
+
+# ================================================================ Buổi 2 – các mô hình theo đề bài chatbot tuyển sinh SPD
+
+def fl_thi_mo():
+    nodes = [N("q", 10, 46, 130, 66, ["Câu hỏi", "“Mầm non cao đẳng", "mã nào?”"]),
+             N("kb", 180, 46, 130, 66, ["R – Tìm", "trong kho tài liệu"], "brand"),
+             N("pr", 350, 46, 130, 66, ["A – Ghép", "đoạn vào prompt"]),
+             N("llm", 520, 46, 110, 66, ["G – LLM", "sinh câu trả lời"], "brand"),
+             N("a", 670, 46, 100, 66, ["Câu trả lời"], "ok")]
+    edges = [E("e1", "q", "kb"), E("e2", "kb", "pr"), E("e3", "pr", "llm"), E("e4", "llm", "a"),
+             E("d", "q", "llm", d="M75,46 V18 H575 V44", lb="không có tài liệu: đi thẳng")]
+    closed = C("Thi đóng: LLM thuần", "Chưa có tài liệu nào. Mô hình chỉ có thứ đã học lúc huấn luyện, giống bạn làm bài <strong>thi đóng</strong>.",
+               [S("Câu hỏi", "Hỏi thẳng mô hình", on=["q"]),
+                S("LLM đoán", "Không có gì để tra", "Mô hình không tra cứu; nó sinh ra chuỗi chữ có xác suất cao nhất. Câu về một trường cụ thể cũng được trả lời trôi chảy.",
+                  on=["llm"], go=["d"], msg="Mầm non cao đẳng mã nào?", tag={"llm": "không có nguồn"}, tone={"llm": "warn"}),
+                S("Trả lời", "Nghe hợp lý, không kiểm chứng được", "Một mã số và một chỉ tiêu trông rất thật. Bạn vừa thử điều này ở bước đầu chặng 1.",
+                  on=["a", "llm"], go=["e4"], msg="mã số tự nghĩ", tone={"a": "bad"}, tag={"a": "ảo giác"})])
+    opened = C("Thi mở: RAG", "Cùng câu hỏi, nhưng hệ thống được phép <strong>mở tài liệu</strong> trước khi trả lời.",
+               [S("Câu hỏi", "Câu hỏi đi vào hệ thống", on=["q"]),
+                S("Retrieval", "Tìm đoạn gần nhất", "Đổi câu hỏi thành vector, tìm trong kho. Đoạn về Giáo dục Mầm non (CĐ) đứng đầu.",
+                  on=["kb"], go=["e1"], msg="Mầm non cao đẳng mã nào?", tag={"kb": "đoạn trang 13"}),
+                S("Augmented", "Ghép đoạn vào prompt", "LLM không đọc cả 39 trang, chỉ đọc vài đoạn liên quan cùng câu hỏi.",
+                  on=["pr"], go=["e2"], msg="đoạn trang 13",
+                  code="NGỮ CẢNH:\nGiáo dục Mầm non (CĐ) - mã xét tuyển 51140201\n- Trình độ: Cao đẳng.\n- Chỉ tiêu dự kiến: 100.\n\nCÂU HỎI: Mầm non cao đẳng mã nào?"),
+                S("Generation", "LLM viết câu trả lời", on=["llm"], go=["e3"], msg="prompt đầy đủ", x="Mô hình vẫn là mô hình đó, chỉ khác là có dữ liệu thật trước mặt."),
+                S("Trả lời", "Có nguồn, kiểm chứng được", "“Mã 51140201, chỉ tiêu dự kiến 100. Nguồn: mục 4.1, trang PDF 13.”",
+                  on=["a"], go=["e4"], msg="mã thật + nguồn", tone={"a": "ok"}, tag={"a": "có nguồn"})])
+    return spec("LLM thuần so với RAG", 790, 130, nodes, edges, [closed, opened])
+
+
+def fl_gigo():
+    nodes = [N("raw", 10, 34, 140, 72, ["Bản gốc", "PDF trang 13"]),
+             N("ex", 190, 34, 140, 72, ["Đưa vào kho"], "brand"),
+             N("ch", 370, 34, 150, 72, ["Đoạn con", "được tìm thấy"]),
+             N("a", 560, 34, 160, 72, ["Câu trả lời"], "ok")]
+    edges = [E("e1", "raw", "ex"), E("e2", "ex", "ch"), E("e3", "ch", "a")]
+    dirty = C("Nạp thẳng bản thô", "Câu hỏi: <em>“Mầm non cao đẳng chỉ tiêu bao nhiêu?”</em> Không làm sạch, nạp nguyên bản trích xuất.",
+              [S("Bản gốc", "Bảng trong PDF", "Trên PDF, tên ngành, tổ hợp, chỉ tiêu và phương thức cùng một hàng.", on=["raw"]),
+               S("Trích xuất", "Bảng vỡ thành các dòng rời", on=["ex"], go=["e1"], msg="trang 13",
+                 x="Bộ trích xuất đọc từng dòng chữ, không hiểu cột.",
+                 code="1 51140201 Giáo dục Mầm non (CĐ) X70, X74, X01,\nM00, M05, NL1 100\nPT 100\nPT 301\nPT 416\nPT 402"),
+               S("Tìm kiếm", "Con số nằm khác dòng với tên ngành", on=["ch"], go=["e2"], msg="đoạn rời",
+                 x="Đoạn con “M00, M05, NL1 100” không nói gì về Mầm non. Chuỗi chữ ký số ở cuối trang 1 cũng thành một đoạn rác.",
+                 tag={"ch": "100 của ai?"}, tone={"ch": "bad"}),
+               S("Trả lời", "Sai hoặc từ chối", "LLM nhận mảnh rời nên dễ gán nhầm con số, hoặc nói không tìm thấy. Prompt tốt mấy cũng không cứu được.", on=["a"], go=["e3"], msg="mảnh rời", tone={"a": "bad"}, tag={"a": "rác vào, rác ra"})])
+    clean = C("Nạp bản đã làm sạch", "Cùng câu hỏi, nhưng mỗi dòng ngành đã thành một khối Markdown đối chiếu với PDF.",
+              [S("Bản gốc", "Bảng trong PDF", "Vẫn giữ nguyên PDF để đối chiếu.", on=["raw"]),
+               S("Làm sạch", "Mỗi ngành một khối đủ ý", on=["ex"], go=["e1"], msg="trang 13", tone={"ex": "ok"},
+                 code="## Giáo dục Mầm non (CĐ) - mã xét tuyển 51140201 - năm 2026\nNguồn: …, trang PDF 13, mục 4.1, dòng 1.\n- Trình độ: Cao đẳng.\n- Chỉ tiêu dự kiến: 100."),
+               S("Tìm kiếm", "Đoạn đứng được một mình", on=["ch"], go=["e2"], msg="đoạn đủ ý", x="Tên ngành, mã, chỉ tiêu và nguồn cùng một đoạn cha.", tag={"ch": "đủ tên, số, nguồn"}, tone={"ch": "ok"}),
+               S("Trả lời", "Đúng và có nguồn", "“Chỉ tiêu dự kiến 100. Nguồn: mục 4.1, trang PDF 13.”", on=["a"], go=["e3"], msg="đoạn đủ ý", tone={"a": "ok"}, tag={"a": "kiểm chứng được"})])
+    return spec("Rác vào, rác ra trên trang 13", 730, 118, nodes, edges, [dirty, clean])
+
+
+def fl_parent_child():
+    nodes = [N("q", 10, 34, 130, 76, ["Câu hỏi", "“Sư phạm Toán", "chỉ tiêu?”"]),
+             N("c", 180, 34, 170, 76, ["Đoạn con khớp"], "brand"),
+             N("p", 390, 34, 170, 76, ["Đoạn đưa cho LLM"]),
+             N("a", 600, 34, 130, 76, ["Câu trả lời"], "ok")]
+    edges = [E("e1", "q", "c"), E("e2", "c", "p"), E("e3", "p", "a")]
+    small = C("General, đoạn nhỏ", "Cắt theo <code>\\n\\n</code>: khớp đoạn nào thì LLM nhận đúng đoạn đó.",
+              [S("Câu hỏi", "Câu hỏi đi tìm", on=["q"]),
+               S("Khớp", "Đoạn có chữ chỉ tiêu", on=["c"], go=["e1"], msg="Sư phạm Toán chỉ tiêu?", code="- Trình độ: Đại học.\n- Chỉ tiêu dự kiến: 115.\n- Tổ hợp được liệt kê: A00;A01;…", x="Đoạn này khớp tốt, nhưng dòng tên ngành đã nằm ở đoạn khác.", tag={"c": "khớp, nhưng thiếu tên"}, tone={"c": "warn"}),
+               S("Đưa LLM", "LLM chỉ nhận đúng đoạn nhỏ", on=["p"], go=["e2"], msg="1 đoạn nhỏ", x="Không có tên ngành và không có ghi chú “115 là của cả dòng ngành”.", tag={"p": "thiếu điều kiện"}, tone={"p": "bad"}),
+               S("Trả lời", "Dễ gán nhầm", "LLM không chắc đoạn đó là của ngành nào, và không biết chỉ tiêu được tính cho cả hai chuyên ngành.", on=["a"], go=["e3"], msg="thiếu ngữ cảnh", tone={"a": "bad"})])
+    pc = C("Parent-child", "Tìm bằng đoạn con nhỏ, nhưng LLM đọc <strong>cả đoạn cha</strong> chứa nó.",
+           [S("Câu hỏi", "Câu hỏi đi tìm", on=["q"]),
+            S("Khớp", "Dòng tên ngành khớp chính xác", on=["c"], go=["e1"], msg="Sư phạm Toán chỉ tiêu?", code="Sư phạm Toán học - mã xét tuyển 7140209 - năm 2026", x="Đoạn con ngắn nên điểm sát câu hỏi.", tag={"c": "khớp chính xác"}, tone={"c": "ok"}),
+            S("Đưa LLM", "Trả về cả đoạn cha", on=["p"], go=["e2"], msg="đoạn con → cha", tone={"p": "ok"}, tag={"p": "đủ điều kiện, nguồn"},
+              code="Sư phạm Toán học - mã xét tuyển 7140209 - năm 2026\nNguồn: …, trang PDF 13, mục 4.1, dòng 8.\n- Chỉ tiêu dự kiến: 115.\n- Ghi chú: Có 02 chuyên ngành… Chỉ tiêu 115 là của dòng ngành, không chia đều."),
+            S("Trả lời", "Đúng và đủ", "“Chỉ tiêu dự kiến 115 cho cả dòng ngành, gồm hai chuyên ngành. Nguồn: trang PDF 13.”", on=["a"], go=["e3"], msg="đủ ngữ cảnh", tone={"a": "ok"})])
+    return spec("General và Parent-child", 740, 124, nodes, edges, [small, pc])
+
+
+def fl_hai_tang():
+    nodes = [N("q", 10, 34, 120, 76, ["Query Text", "câu đem đi tìm"]),
+             N("kho", 170, 34, 170, 76, ["Tầng kho", "Hybrid 0,7/0,3", "Top K 6, ngưỡng tắt"], "brand"),
+             N("node", 380, 34, 170, 76, ["Tầng khối", "Top K 6", "ngưỡng tắt"], "brand"),
+             N("r", 590, 34, 140, 76, ["result", "đưa cho khối sau"], "ok")]
+    edges = [E("e1", "q", "kho"), E("e2", "kho", "node"), E("e3", "node", "r")]
+    base = C("Cấu hình của bài", "Câu hỏi: <em>so sánh Mầm non cao đẳng và đại học</em>. Mỗi tầng có Top K và ngưỡng riêng; tầng kho chạy trước.",
+             [S("Vào", "Khối nhận câu hỏi", on=["q"]),
+              S("Tầng kho", "Tìm theo cấu hình của kho", on=["kho"], go=["e1"], msg="Mầm non CĐ và ĐH", tag={"kho": "6 đoạn"}, x="Cấu hình đặt khi tạo kho quyết định cách tìm: Hybrid, trọng số, Top K, ngưỡng."),
+              S("Tầng khối", "Lọc tiếp ở khối", on=["node"], go=["e2"], msg="6 đoạn", tag={"node": "giữ 6"}, x="Khối áp thêm Top K và ngưỡng của mình lên kết quả nhận được."),
+              S("Ra", "Đầu ra result", on=["r"], go=["e3"], msg="6 đoạn", tone={"r": "ok"}, tag={"r": "đủ hai trình độ"})])
+    cut = C("Tầng khối cắt còn 1", "Tầng kho vẫn tốt, nhưng Top K của khối đặt bằng 1.",
+            [S("Vào", "Khối nhận câu hỏi", on=["q"]),
+             S("Tầng kho", "Vẫn tìm được 6 đoạn", on=["kho"], go=["e1"], msg="Mầm non CĐ và ĐH", tag={"kho": "6 đoạn"}),
+             S("Tầng khối", "Chỉ giữ 1", on=["node"], go=["e2"], msg="6 đoạn", tag={"node": "Top K 1"}, tone={"node": "warn"}),
+             S("Ra", "Thiếu một vế", "Câu so sánh chỉ còn một trình độ. Log tầng khối cho thấy 1 đoạn, dù Hit Test của kho trông vẫn ổn.", on=["r"], go=["e3"], msg="1 đoạn", tone={"r": "bad"}, tag={"r": "thiếu một vế"})])
+    tight = C("Tầng kho chỉ trả 1", "Top K của kho đặt bằng 1, còn khối vẫn để 6.",
+              [S("Vào", "Khối nhận câu hỏi", on=["q"]),
+               S("Tầng kho", "Chỉ trả 1 đoạn", on=["kho"], go=["e1"], msg="Mầm non CĐ và ĐH", tag={"kho": "Top K 1"}, tone={"kho": "warn"}),
+               S("Tầng khối", "Không có gì để nới", "Khối đặt 6 nhưng chỉ nhận được 1. Vì vậy có lúc sửa ở khối mà kết quả không đổi: lỗi nằm ở tầng kho.", on=["node"], go=["e2"], msg="1 đoạn", tag={"node": "vẫn 1"}),
+               S("Ra", "Thiếu một vế", on=["r"], go=["e3"], msg="1 đoạn", tone={"r": "bad"}, tag={"r": "thiếu một vế"})])
+    return spec("Hai tầng lọc của truy xuất", 740, 124, nodes, edges, [base, cut, tight])
+
+
+def fl_bien():
+    nodes = [N("s", 10, 70, 120, 62, ["1. Start"]), N("k", 165, 70, 130, 62, ["2. Knowledge", "Retrieval"], "brand"),
+             N("i", 330, 70, 100, 62, ["3. IF/ELSE"]), N("l", 470, 10, 110, 62, ["4. LLM"], "brand"),
+             N("a1", 620, 10, 120, 62, ["5. Answer", "có nguồn"], "ok"), N("a2", 470, 132, 270, 62, ["6. Answer", "báo chưa đủ thông tin"], "ok")]
+    edges = [E("e1", "s", "k"), E("e2", "k", "i"), E("e3", "i", "l", lb="IF"), E("e4", "l", "a1"), E("e5", "i", "a2", lb="ELSE")]
+    yes = C("Có đoạn trả về", "Mỗi khối đọc biến của khối trước và tạo biến mới. Theo dõi gói dữ liệu trên mũi tên: đó chính là thứ bạn chọn bằng trình chọn biến.",
+            [S("Start", "Tạo sys.query", on=["s"], tag={"s": "sys.query"}, code="sys.query = \"Phương thức 100 có cộng điểm chứng chỉ ngoại ngữ không?\""),
+             S("Tìm", "Query Text đọc sys.query, tạo result", on=["k"], go=["e1"], msg="sys.query", tag={"k": "result: 6 đoạn"}),
+             S("Rẽ nhánh", "Đọc result, không đọc nội dung", on=["i"], go=["e2"], msg="result", tag={"i": "is not empty"}),
+             S("LLM", "Context đọc result, User đọc sys.query, tạo text", on=["l"], go=["e3"], msg="result + sys.query", tag={"l": "text"}),
+             S("Answer", "Nội dung là biến text", on=["a1"], go=["e4"], msg="text", tone={"a1": "ok"})])
+    no = C("result rỗng", "Bật ngưỡng 0,99 để ép kết quả rỗng khi kiểm thử.",
+           [S("Start", "Tạo sys.query", on=["s"], tag={"s": "sys.query"}),
+            S("Tìm", "Không đoạn nào vượt ngưỡng", on=["k"], go=["e1"], msg="sys.query", tag={"k": "result: rỗng"}, tone={"k": "warn"}),
+            S("Rẽ nhánh", "Mảng rỗng, đi ELSE", on=["i"], go=["e2"], msg="[ ]", tag={"i": "ELSE"}),
+            S("Answer cố định", "Khối 4 không chạy", "Không gọi mô hình nên không tốn lượt; nội dung là câu cố định bạn đã dán.", on=["a2"], go=["e5"], msg="câu cố định", tone={"a2": "ok"})])
+    miss = C("Quên gán Context", "Lỗi hay gặp nhất: prompt đẹp nhưng biến Context trống.",
+             [S("Start", "Tạo sys.query", on=["s"], tag={"s": "sys.query"}),
+              S("Tìm", "Vẫn tìm đúng", on=["k"], go=["e1"], msg="sys.query", tag={"k": "result: 6 đoạn"}, tone={"k": "ok"}),
+              S("Rẽ nhánh", "Vẫn đi IF", on=["i"], go=["e2"], msg="result"),
+              S("LLM", "result không được đưa vào", "Mũi tên chỉ đưa sys.query sang, Context trống. Log vẫn báo thành công. Mở prompt thực tế mới thấy phần NGỮ CẢNH rỗng.", on=["l"], go=["e3"], msg="chỉ có sys.query", tag={"l": "Context trống"}, tone={"l": "bad"}),
+              S("Answer", "Từ chối oan hoặc nói chung chung", on=["a1"], go=["e4"], msg="text", tone={"a1": "bad"})])
+    return spec("Biến đi qua sáu khối", 750, 204, nodes, edges, [yes, no, miss])
+
+
+def fl_rewrite():
+    nodes = [N("h", 10, 4, 180, 52, ["Lịch sử chat", "Mầm non cao đẳng: dự kiến 100"]),
+             N("q", 10, 92, 150, 62, ["Câu mới", "“Còn đại học thì sao?”"]),
+             N("rw", 200, 92, 140, 62, ["Viết lại câu hỏi", "(LLM)"], "brand"),
+             N("k", 380, 92, 130, 62, ["Tìm tài liệu"], "brand"), N("a", 550, 92, 180, 62, ["Câu trả lời"], "ok")]
+    edges = [E("e0", "h", "rw", d="M190,30 H270 V90"), E("e1", "q", "rw"), E("e2", "rw", "k"), E("e3", "k", "a")]
+    off = C("Chưa viết lại", "Bản sáu khối gốc: đem nguyên câu đi tìm.",
+            [S("Câu mới", "Câu thiếu chủ ngữ", on=["q"]),
+             S("Đi thẳng", "Không ai đọc lịch sử", "Khối viết lại chưa có, câu đi nguyên trạng.", on=["rw"], go=["e1"], msg="Còn đại học thì sao?", set={"rw": ["(chưa có khối này)"]}, tone={"rw": "warn"}),
+             S("Tìm", "Hàng loạt đoạn “Trình độ: Đại học”", "Không còn biết đang nói ngành nào, các đoạn có điểm gần bằng nhau.", on=["k"], go=["e2"], msg="Còn đại học thì sao?", tag={"k": "lạc đề"}, tone={"k": "bad"}),
+             S("Trả lời", "Hỏi ngược hoặc trả lời sai ngành", on=["a"], go=["e3"], msg="đoạn lạc đề", tone={"a": "bad"})])
+    on = C("Có khối viết lại", "Thêm một khối LLM chạy trước bước tìm, bật Memory để đọc lịch sử.",
+           [S("Câu mới", "Câu thiếu chủ ngữ", on=["q", "h"]),
+            S("Viết lại", "Thay “còn … thì sao” bằng nội dung cụ thể", on=["rw"], go=["e0", "e1"], msg={"e0": "lịch sử", "e1": "câu mới"}, tag={"rw": "chỉ trả câu hỏi"},
+              code="Chỉ tiêu dự kiến của Giáo dục Mầm non trình độ đại học là bao nhiêu?"),
+            S("Tìm", "Tìm bằng câu đủ nghĩa", "Đầu ra text của khối viết lại là Query Text của khối tìm. Thêm lời giải thích vào đầu ra thì lời giải thích cũng bị đem đi tìm.", on=["k"], go=["e2"], msg="text", tag={"k": "mã 7140201 đứng đầu"}, tone={"k": "ok"}),
+            S("Trả lời", "Đúng mạch hội thoại", "“Mầm non đại học (mã 7140201) có chỉ tiêu dự kiến 450. Nguồn: trang PDF 13.”", on=["a"], go=["e3"], msg="đoạn đúng", tone={"a": "ok"})])
+    return spec("Viết lại câu hỏi nối tiếp", 745, 166, nodes, edges, [off, on])
+
+
+def fl_loi_ba_tang():
+    nodes = [N("d", 10, 34, 150, 66, ["Tầng dữ liệu", "tài liệu, cắt đoạn"]), N("r", 210, 34, 150, 66, ["Tầng truy xuất", "tìm, Top K, ngưỡng"], "brand"),
+             N("g", 410, 34, 150, 66, ["Tầng sinh", "prompt, Context"], "brand"), N("a", 610, 34, 120, 66, ["Câu trả lời"], "ok")]
+    edges = [E("e1", "d", "r"), E("e2", "r", "g"), E("e3", "g", "a")]
+
+    def ca(name, intro, tang, tag, x_tang, x_sua):
+        steps, go = [], {"d": ["e1"], "r": ["e1"], "g": ["e1", "e2"]}[tang]
+        order = ["d", "r", "g"]
+        for t in order[:order.index(tang)]:
+            steps.append(S({"d": "Dữ liệu", "r": "Truy xuất", "g": "Sinh"}[t], "Tầng này ổn", on=[t], tone={t: "ok"}))
+        steps.append(S("Lỗi ở đây", tag, x_tang, on=[tang], go=[go[-1]] if tang != "d" else [], tone={tang: "bad"}, tag={tang: tag}))
+        steps.append(S("Cách sửa", "Sửa đúng tầng này", x_sua, on=[tang, "a"], tone={tang: "ok"}))
+        return C(name, intro, steps)
+
+    return spec("Năm kiểu lỗi RAG nằm ở ba tầng", 745, 112, nodes, edges, [
+        ca("Tài liệu không có", "Hỏi học phí, bộ mẫu chưa có.", "d", "chưa có trang học phí", "Không đoạn nào chứa câu trả lời. Agent phải nói “chưa có”, không được bịa.", "Muốn trả lời được thì xử lý thêm trang học phí, đối chiếu rồi nạp."),
+        ca("Có nhưng không tìm thấy", "Tài liệu ghi “quy đổi”, người hỏi “chứng chỉ đổi ra điểm”.", "r", "đoạn đúng không lên", "Dữ liệu có, nhưng đoạn đúng không nằm trong kết quả.", "Hybrid, viết lại câu hỏi, thêm FAQ bằng lời người dùng."),
+        ca("Tìm thấy đoạn sai", "Hỏi Mầm non đại học, bốc Mầm non cao đẳng.", "d", "hai đoạn quá giống nhau", "Đoạn không ghi rõ trình độ nên điểm hai đoạn gần bằng nhau.", "Làm sạch, cắt theo đề mục, ghi rõ trình độ trong đoạn."),
+        ca("Tìm đúng, trả lời sai", "Đoạn ghi dự kiến 115, Agent trả lời “mỗi chuyên ngành 115”.", "g", "suy diễn từ đoạn đúng", "Đoạn đúng đã nằm trong prompt, nhưng LLM diễn giải sai.", "Siết prompt, thêm nguyên tắc riêng, giảm temperature. Đổi Top K không có tác dụng."),
+        ca("Tài liệu lỗi thời", "Trả lời theo thông báo đã có bản bổ sung.", "d", "bản cũ còn trong kho", "Tìm đúng và trả lời đúng theo bản cũ, nên log không báo gì.", "Gỡ bản cũ, gắn ngày hiệu lực, giao người bảo trì kho."),
+    ])
